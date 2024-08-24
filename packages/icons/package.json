@@ -25,7 +25,6 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.28",
     "react": "^18.2.0",
-    "@repo/ui": "workspace:*",
-    "@repo/icons": "workspace:*"
+    "@repo/ui": "workspace:*"
   }
 }

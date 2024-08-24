@@ -108,9 +108,6 @@ importers:
 
   packages/icons:
     dependencies:
-      '@repo/icons':
-        specifier: workspace:*
-        version: 'link:'
       '@repo/ui':
         specifier: workspace:*
         version: link:../ui
