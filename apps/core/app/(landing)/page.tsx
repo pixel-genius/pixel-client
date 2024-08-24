@@ -6,6 +6,7 @@ import * as htmlToImage from "html-to-image";
 import { useTheme } from "next-themes";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { ProductCard } from "@repo/ui/components/cards/prodoct-card";
 
 export default function Page() {
   const { theme, setTheme } = useTheme();
@@ -59,6 +60,17 @@ export default function Page() {
       </div>
       <div className=" py-24 sm:py-32 flex justify-center">
         <Button onClick={captureScreenshot}>Change Theme</Button>
+      </div>
+
+      <div className="bg-white py-24 sm:py-32">
+        <ProductCard
+          image="https://picsum.photos/id/10/400/300"
+          title="title"
+          price="price"
+          username="username"
+          see={10}
+          like={10}
+        />
       </div>
 
       {/* <div className="bg-white py-24 sm:py-32">
