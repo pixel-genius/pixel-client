@@ -1,4 +1,4 @@
-import { IconEye, IconHeart } from "@tabler/icons-react";
+import { IconEye, IconHeart, IconShoppingBag } from "@tabler/icons-react";
 import * as React from "react";
 
 export interface ProductCardProps {
@@ -17,11 +17,14 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
     return (
       <div ref={ref} className="bg-[#181818] w-[286px]  rounded-xl p-2 pb-4">
         {/* header - image */}
-        <div className="relative flex justify-center items-center rounded-xl h-full overflow-hidden  ">
+        <div className="relative flex justify-center items-center rounded-xl h-full overflow-hidden mb-1">
           <img className="w-full h-full" src={image} alt="image" />
+        {/* background overlay and shopping bag */}
           <div className="absolute inset-0 bg-slate-600/40 opacity-0 hover:opacity-100 transition-opacity rounded-xl">
             <div className="w-full h-full flex justify-center items-center">
-              icon
+              <div className=" flex justify-center items-center bg-blue-500 rounded-full p-4">
+                <IconShoppingBag color="purple" size={30} />
+              </div>
             </div>
           </div>
         </div>
