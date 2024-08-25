@@ -41,9 +41,10 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
             </div>
           </div>
 
-          {/* footer - username, like and see */}
+          {/* footer - username, like and see ana avatar icon  */}
           <div className="flex justify-between  px-2.5">
-            <div className="flex gap-2">
+            <div className="flex gap-2 items-center">
+              <img src="https://avatar.iran.liara.run/public/34" alt="" className="w-4 h-4 rounded-full"/>
               <p className="text-sm">{username}</p>
             </div>
             <div className="flex gap-1">
