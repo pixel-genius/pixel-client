@@ -1,4 +1,4 @@
-import { IconProps } from "./types";
+import { IconProps } from "./../types/types";
 
 const FocusIcon = (props: IconProps) => {
   const { size = 24, color, ...resProps } = props;
