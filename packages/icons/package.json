@@ -7,6 +7,9 @@
     ".": [
       "./src/components/*.tsx"
     ],
+    "./pxiel": "./src/components/pixel.tsx",
+    "./google": "./src/components/googleicon.tsx",
+    "./linkedin": "./src/components/linkedinicon.tsx",
     "./types": "./src/types/types.ts"
   },
   "scripts": {
