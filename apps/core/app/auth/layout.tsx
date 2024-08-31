@@ -17,17 +17,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }): JSX.Element {
   return (
-    <html lang="en" className="h-full">
-      <body className={cn(inter.className, "h-full")}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+    <div className=" flex justify-center items-center  relative h-full w-full ">
+      <div className="absolute top-0 left-0 w-full h-full">
+        <img src="/images/auth-bg.svg" alt="background" className="w-full" />
+      </div>
+      {children}
+    </div>
   );
 }

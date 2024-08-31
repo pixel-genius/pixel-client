@@ -8,7 +8,7 @@ import PixelIcon from "@repo/icons/pxiel";
 import GoogleIcon from "../../../../../packages/icons/src/components/google";
 import LinkedinIcon from "../../../../../packages/icons/src/components/linkedin";
 
-const LoginPage = () => {
+const SignUpPage = () => {
   return (
     <div className="flex items-center relative z-10 flex-col gap-4 bg-[#262626] w-[450px] rounded-xl ">
       {/* logo */}
@@ -18,26 +18,20 @@ const LoginPage = () => {
       </div>
       {/* input */}
       <div className="w-96">
+        <Label className="text-sm font-medium">Username</Label>
+        <Input className="font-normal text-xs" placeholder="pixel.design " />
         <Label className="text-sm font-medium">User Name & Email</Label>
         <Input
           className="font-normal text-xs"
           placeholder="example@pixel.design "
         />
         <Label className="text-sm font-medium"> password</Label>
-        <Input
-          type="password"
-          placeholder="********"
-          helperText={
-            <a className="mt-4 text-sm font-light text-gray-500 hover:text-gray-700 cursor-pointer">
-              Forgot password?
-            </a>
-          }
-        />
+        <Input type="password" placeholder="********" />
       </div>
       {/* button */}
       <div>
         <Button
-          className="w-96 text-lg font-bold bg-primary-600 hover:bg-primary-500"
+          className="w-96 text-lg font-bold  bg-primary-600 hover:bg-primary-500"
           variant="secondary"
         >
           Log in
@@ -69,4 +63,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignUpPage;
