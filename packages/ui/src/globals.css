@@ -4,6 +4,84 @@
 
 @layer base {
   :root {
+/* primary */
+--primary-50: #ECEFFF;
+--primary-100: #DDE2FF;
+--primary-200: #C2CAFF;
+--primary-300: #9CA5FF;
+--primary-400: #7576FF;
+--primary-500: #6155FF;
+--primary-600: #553AF5;
+--primary-700: #4629D9;
+--primary-800: #3925AE;
+--primary-900: #322689;
+
+/* Erorr */
+--error-50: #fef2f2;
+--error-100: #fee2e2;
+--error-200: #fecaca;
+--error-300: #fca5a5;
+--error-400: #f87171;
+--error-500: #ef4444;
+--error-600: #dc2626;
+--error-700: #b91c1c;
+--error-800:#991b1b ;
+--error-900:#7f1d1d ;
+
+/* Warning */
+--warning-50: #fff4ed;
+--warning-100: #ffe6d5;
+--warning-200: #feccaa;
+--warning-300: #fdac74;
+--warning-400: #fb8a3c;
+--warning-500: #f97316;
+--warning-600: #ea670c;
+--warning-700: #c2570c;
+--warning-800: #9a4a12;
+--warning-900: #7c3d12;
+
+/* gray */
+--gray-50: #f9fafb;
+--gray-100: #f3f4f6;
+--gray-200: #e5e7eb;
+--gray-300: #d1d5db;
+--gray-400: #9ca3af;
+--gray-500: #6b7280;
+--gray-600: #4b5563;
+--gray-700: #374151;
+--gray-800: #1f2937;
+--gray-900: #111827;  
+
+/* Success */
+--success-50: #f0fdf4;
+--success-100: #f0fdf5;
+--success-200: #bbf7d1;
+--success-300: #86efad;
+--success-400: #4ade80;
+--success-500: #22c55e;
+--success-600: #16a34a;
+--success-700: #15803c;
+--success-800: #166533;
+--success-900: #14532b; 
+
+/* Info */
+--info-50: #F0F9FF;
+--info-100: #E0F2FE;
+--info-200: #BAE5FD;
+--info-300: #7DD1FC;
+--info-400: #38BBF8;
+--info-500: #0EA2E9;
+--info-600: #0288D1;
+--info-700: #0367A1;
+--info-800: #075785;
+--info-900: #10C496E;
+
+
+
+
+
+
+
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;

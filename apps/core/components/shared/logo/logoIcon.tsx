@@ -1,8 +1,8 @@
-import FocusIcon from "@repo/icons/focus";
 import { IconProps } from "@repo/icons/types";
+import PixelIcon from "@repo/icons/pxiel";
 
 const LogoIcon = (props: IconProps) => {
-  return <FocusIcon {...props} />;
+  return <PixelIcon size={24} color="currentColor" {...props} />;
 };
 
 export default LogoIcon;

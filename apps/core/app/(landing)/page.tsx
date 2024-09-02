@@ -6,7 +6,7 @@ import * as htmlToImage from "html-to-image";
 import { useTheme } from "next-themes";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ProductCard } from "@repo/ui/components/cards/prodoct-card";
+import { ProductCard } from "@repo/ui/components/prodoct-card";
 
 export default function Page() {
   const { theme, setTheme } = useTheme();
