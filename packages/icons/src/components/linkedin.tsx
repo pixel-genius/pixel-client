@@ -1,5 +1,5 @@
 import { IconProps } from "../types/types";
-const linkedinicon = (props: IconProps) => {
+const Linkedinicon = (props: IconProps) => {
   const { size = 24, color = "currentColor", ...resProps } = props;
 
   return (
@@ -27,4 +27,4 @@ const linkedinicon = (props: IconProps) => {
   );
 };
 
-export default linkedinicon;
+export default Linkedinicon;
