@@ -13,7 +13,7 @@ import Clouddownloadicon from "@repo/icons/clouddownload";
 const ProductDetailPage = () => {
   return (
     <div className="container mx-auto">
-      <div className="flex flex-col gap-4 ">
+      <div className="flex flex-col gap-4 pb-36">
         <div className="">
           <p className="text-5xl font-medium">Dyser - Finance Admin</p>
           <p className="text-5xl font-medium">Dashboard UI Kit</p>
@@ -57,11 +57,11 @@ const ProductDetailPage = () => {
 
           <div className="flex  flex-col">
             <div className="flex gap-1">
-              <Heart1icon size={28} />
+              <Heart1icon size={28} className="cursor-pointer" />
               <p>15</p>
             </div>
             <div className="flex gap-1">
-              <Messagecircleicon size={28} />
+              <Messagecircleicon size={28} className="cursor-pointer" />
               <p>+99</p>
             </div>
           </div>
@@ -154,11 +154,12 @@ const ProductDetailPage = () => {
           </div>
         </div>
       </div>
+      {/* Quick look at */}
       <div className="">
         <p className="text-center text-4xl font-bold pb-7">
           Quick look at the product's key features and design elements.
         </p>
-        <div className="w-[1350xp] h-[553px] bg-gray-500 rounded-xl"></div>
+        <div className="w-[1350xp] h-[553px] bg-gray-500 rounded-xl mb-6"></div>
         <div className="flex gap-2 items-center pb-6">
           <p>#Moive</p>
           <p>#Moive</p>
