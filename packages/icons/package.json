@@ -20,6 +20,8 @@
     "./messagecircle": "./src/components/messagecircle.tsx",
     "./heart1": "./src/components/heart1.tsx",
     "./shoppingcartplus": "./src/components/shoppingcartplus.tsx",
+    "./Circlecheck" : "./src/components/circlecheck.tsx",
+    "./clouddownload": "./src/components/clouddownload.tsx",
     "./types": "./src/types/types.ts"
   },
   "scripts": {
