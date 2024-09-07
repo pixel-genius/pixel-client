@@ -9,6 +9,7 @@ import { Button } from "@repo/ui/components/button";
 import Messagecircleicon from "@repo/icons/messagecircle";
 import Circlecheckicon from "@repo/icons/Circlecheck";
 import Clouddownloadicon from "@repo/icons/clouddownload";
+import ProductFooter from "./_components/product-footer";
 
 const ProductDetailPage = () => {
   return (
@@ -191,6 +192,7 @@ const ProductDetailPage = () => {
           </div>
         </div>
       </div>
+      <ProductFooter />
     </div>
   );
 };
