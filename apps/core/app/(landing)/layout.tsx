@@ -5,11 +5,24 @@ import YouTubeIcon from "@repo/icons/youtube";
 import Linkedinicon from "../../../../packages/icons/src/components/linkedin";
 import Link from "next/link";
 
+
+
 function Layout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <div className="flex flex-col h-full">
-      <nav className="bg-red-950 px-5 py-3 h-11 rounded-xl fixed top-12 -left-1/2 -right-1/2  w-[962px] mx-auto flex justify-between items-center">
-        nav bar
+      <nav className="bg-gray-900 px-5 py-8 z-50 h-11 rounded-xl fixed top-12 -left-1/2 -right-1/2  w-[962px] mx-auto flex justify-between items-center">
+      <div className="flex items-center space-x-4">
+      <PixelIcon size={34} color="currentColor" />
+    
+    <a href="#" className="text-white text-sm">Browse</a>
+    <a href="#" className="text-white text-sm">All-Access</a>
+    <a href="#" className="text-white text-sm">Become an author</a>
+  
+  </div>
+  <div className="flex items-center space-x-4">
+    <a href="#" className="text-white text-sm">Sign up</a>
+    <a href="#" className="text-white text-sm">Log in</a>
+  </div>
       </nav>
 
       <div className="pt-32 grow ">{children}</div>
