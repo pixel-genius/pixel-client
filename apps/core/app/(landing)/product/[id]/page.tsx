@@ -10,6 +10,7 @@ import Messagecircleicon from "@repo/icons/messagecircle";
 import Circlecheckicon from "@repo/icons/Circlecheck";
 import Clouddownloadicon from "@repo/icons/clouddownload";
 import ProductFooter from "./_components/product-footer";
+import CommentSection from "./_components/comment-section";
 
 const ProductDetailPage = () => {
   return (
@@ -193,7 +194,7 @@ const ProductDetailPage = () => {
         </div>
       </div>
       {/* Comments */}
-      <div className="bg-gray-700 rounded-lg">
+      {/* <div className="bg-gray-700 rounded-lg mb-44">
         <div className="p-3 flex flex-col gap-8">
           <div>
             <h2 className="text-3xl font-bold">Comments</h2>
@@ -231,7 +232,8 @@ const ProductDetailPage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      <CommentSection />
       {/* product Footer */}
       <ProductFooter />
     </div>
