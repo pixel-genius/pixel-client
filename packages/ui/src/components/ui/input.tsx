@@ -11,7 +11,7 @@ export const Input = (props: InputProps) => {
   const { label, helperText, id, ...resProps } = props;
 
   return (
-    <div className="grid w-full max-w-sm items-center gap-1.5">
+    <div className="grid w-full items-center gap-1.5">
       <Label  htmlFor={id}>{props.label}</Label>
       <BaseInput id={id} {...resProps} />
       <span>{helperText}</span>
