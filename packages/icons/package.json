@@ -20,8 +20,13 @@
     "./messagecircle": "./src/components/messagecircle.tsx",
     "./heart1": "./src/components/heart1.tsx",
     "./shoppingcartplus": "./src/components/shoppingcartplus.tsx",
-    "./Circlecheck" : "./src/components/circlecheck.tsx",
+    "./Circlecheck": "./src/components/circlecheck.tsx",
     "./clouddownload": "./src/components/clouddownload.tsx",
+    "./search": "./src/components/search.tsx",
+    "./bell": "./src/components/bell.tsx",
+    "./chevrondown": "./src/components/chevrondown.tsx",
+    "./infosquarerounded": "./src/components/infosquarerounded.tsx",
+    "./infocircle" : "./src/components/infocircle.tsx",
     "./types": "./src/types/types.ts"
   },
   "scripts": {
