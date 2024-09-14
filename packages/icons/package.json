@@ -26,6 +26,7 @@
     "./bell": "./src/components/bell.tsx",
     "./chevrondown": "./src/components/chevrondown.tsx",
     "./infosquarerounded": "./src/components/infosquarerounded.tsx",
+    "./infocircle" : "./src/components/infocircle.tsx",
     "./types": "./src/types/types.ts"
   },
   "scripts": {

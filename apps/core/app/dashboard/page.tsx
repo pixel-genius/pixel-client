@@ -14,6 +14,7 @@ import {
   TabsTrigger,
 } from "@repo/ui/components/tabs";
 import { Switch } from "@repo/ui/components/switch";
+import Infocircleicon from "@repo/icons/infocircle";
 
 const DashboardPage = () => {
   return (
@@ -184,39 +185,224 @@ const DashboardPage = () => {
                           <p className="text-xs font-light">Set a discount</p>
                         </div>
                         <div>
-                          <Switch/>
+                          <Switch />
                         </div>
                       </div>
                       <div className="flex gap-2 items-center ">
-                        <Button variant="secondary" className="w-12 h-9 text-sm font-light bg-primary-500">50%</Button>
-                        <Button variant="outline" className="w-12 h-9 text-sm font-light">55%</Button>
-                        <Button variant="outline" className="w-12 h-9 text-sm font-light">60%</Button>
-                        <Button variant="outline" className="w-12 h-9 text-sm font-light">65%</Button>
-                        <Button variant="outline" className="w-12 h-9 text-sm font-light">70%</Button>
-                        <Button variant="outline" className="w-12 h-9 text-sm font-light">75%</Button>
-                        <Button variant="outline" className="w-12 h-9 text-sm font-light">80%</Button>
-                        <Button variant="outline" className="w-12 h-9 text-sm font-light">85%</Button>
-                        <Button variant="outline" className="w-12 h-9 text-sm font-light">90%</Button>
+                        <Button
+                          variant="secondary"
+                          className="w-12 h-9 text-sm font-light bg-primary-500"
+                        >
+                          50%
+                        </Button>
+                        <Button
+                          variant="outline"
+                          className="w-12 h-9 text-sm font-light"
+                        >
+                          55%
+                        </Button>
+                        <Button
+                          variant="outline"
+                          className="w-12 h-9 text-sm font-light"
+                        >
+                          60%
+                        </Button>
+                        <Button
+                          variant="outline"
+                          className="w-12 h-9 text-sm font-light"
+                        >
+                          65%
+                        </Button>
+                        <Button
+                          variant="outline"
+                          className="w-12 h-9 text-sm font-light"
+                        >
+                          70%
+                        </Button>
+                        <Button
+                          variant="outline"
+                          className="w-12 h-9 text-sm font-light"
+                        >
+                          75%
+                        </Button>
+                        <Button
+                          variant="outline"
+                          className="w-12 h-9 text-sm font-light"
+                        >
+                          80%
+                        </Button>
+                        <Button
+                          variant="outline"
+                          className="w-12 h-9 text-sm font-light"
+                        >
+                          85%
+                        </Button>
+                        <Button
+                          variant="outline"
+                          className="w-12 h-9 text-sm font-light"
+                        >
+                          90%
+                        </Button>
                       </div>
                     </div>
                     <div className="h-0.5 bg-gray-700 w-auto rounded mt-10 mb-10"></div>
                     <div className="">
                       <div className="pb-6">
-                        <p className="text-base font-bold">File Formats Included</p>
-                        <p className="text-xs font-normal text-gray-500">Specify the file formats that customers can download after purchase.</p>
+                        <p className="text-base font-bold">
+                          File Formats Included
+                        </p>
+                        <p className="text-xs font-normal text-gray-500">
+                          Specify the file formats that customers can download
+                          after purchase.
+                        </p>
                       </div>
                       {/* file formats */}
-                      <div>
-                        
-                      </div>
+                      <div></div>
                     </div>
                   </div>
                   <div className="w-1/2">gwojgpow</div>
                 </div>
               </div>
             </TabsContent>
-            <TabsContent value="Images">Images</TabsContent>
-            <TabsContent value="file">file</TabsContent>
+            <TabsContent value="Images">
+              <div className="bg-gray-900 flex flex-col gap-4 p-4">
+                <div>
+                  <div className="flex items-center justify-between pb-2 ">
+                    <div>
+                      <p className="text-xl font-bold">Thumbnail</p>
+                    </div>
+                    <div className="flex gap-1 text-gray-500">
+                      <Infocircleicon height={18} width={18} color="white" />
+                      <p className="text-sm font-light">Required</p>
+                    </div>
+                  </div>
+                  <div className="bg-gray-800 p-6 rounded-lg">
+                    <div className=" flex justify-center items-center border-dashed  border border-gray-500">
+                      <div className="flex items-center flex-col justify-center py-12">
+                        <div className="">gif upload</div>
+                        <div className="flex gap-1">
+                          <p className="text-sm font-normal">
+                            Drag & drop image to upload, or
+                          </p>
+                          <p className="text-sm font-bold text-primary-500">
+                            Browse
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-xs font-normal text-gray-500">
+                            Create image at 1800 × 1360 px. Keep images under
+                            3MB and JPEG if possible.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex items-center justify-between pb-2 ">
+                    <div>
+                      <p className="text-xl font-bold">
+                        ThumbnailDetail images (4-8 required for approval)
+                      </p>
+                    </div>
+                    <div className="flex gap-1 text-gray-500">
+                      <Infocircleicon height={18} width={18} color="white" />
+                      <p className="text-sm font-light">Required</p>
+                    </div>
+                  </div>
+                  <div className="bg-gray-800 p-6 rounded-lg">
+                    <div className=" flex justify-center items-center border-dashed  border border-gray-500">
+                      <div className="flex items-center flex-col justify-center py-12">
+                        <div className="">gif upload</div>
+                        <div className="flex gap-1">
+                          <p className="text-sm font-normal">
+                            Drag & drop image to upload, or
+                          </p>
+                          <p className="text-sm font-bold text-primary-500">
+                            Browse
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-xs font-normal text-gray-500">
+                            Create image at 1800 × 1360 px. Keep images under
+                            3MB and JPEG if possible.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex items-center justify-between pb-2 ">
+                    <div>
+                      <p className="text-xl font-bold">Full previews</p>
+                    </div>
+                    <div className="flex gap-1 text-gray-500">
+                      <Infocircleicon height={18} width={18} color="white" />
+                      <p className="text-sm font-light">Required</p>
+                    </div>
+                  </div>
+                  <div className="bg-gray-800 p-6 rounded-lg">
+                    <div className=" flex justify-center items-center border-dashed  border border-gray-500">
+                      <div className="flex items-center flex-col justify-center py-12">
+                        <div className="">gif upload</div>
+                        <div className="flex gap-1">
+                          <p className="text-sm font-normal">
+                            Drag & drop image to upload, or
+                          </p>
+                          <p className="text-sm font-bold text-primary-500">
+                            Browse
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-xs font-normal text-gray-500">
+                            Create image at 1800 × 1360 px. Keep images under
+                            3MB and JPEG if possible.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </TabsContent>
+            <TabsContent value="file">
+              <div className="bg-gray-900 flex flex-col gap-4 p-4">
+                <div>
+                  <div className="flex items-center justify-between pb-2">
+                    <div>
+                      <p className="text-xl font-bold">Files</p>
+                    </div>
+                    <div className="flex gap-1 text-gray-500">
+                      <Infocircleicon height={18} width={18} color="white" />
+                      <p className="text-sm font-light">Required</p>
+                    </div>
+                  </div>
+                  <div className="bg-gray-800 p-6 rounded-lg">
+                    <div className=" flex justify-center items-center border-dashed  border border-gray-500">
+                      <div className="flex items-center flex-col justify-center py-12">
+                        <div className="">gif upload</div>
+                        <div className="flex gap-1">
+                          <p className="text-sm font-normal">
+                            Drag & drop image to upload, or
+                          </p>
+                          <p className="text-sm font-bold text-primary-500">
+                            Browse
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-xs font-normal text-gray-500">
+                            Files must be in a ZIP format, with a maximum size
+                            of 2 GB.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </TabsContent>
             <TabsContent value="Admin Chat">Admin Chat</TabsContent>
           </Tabs>
 
