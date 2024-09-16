@@ -26,7 +26,15 @@
     "./bell": "./src/components/bell.tsx",
     "./chevrondown": "./src/components/chevrondown.tsx",
     "./infosquarerounded": "./src/components/infosquarerounded.tsx",
-    "./infocircle" : "./src/components/infocircle.tsx",
+    "./infocircle": "./src/components/infocircle.tsx",
+    "./Belender": "./src/components/belender.tsx",
+    "./android": "./src/components/android.tsx",
+    "./AfterEffect": "./src/components/after-effect.tsx",
+    "./bootstrap": "./src/components/bootstrap.tsx",
+    "./framer": "./src/components/framer.tsx",
+    "./Html": "./src/components/html.tsx",
+    "./Illustrator": "./src/components/Illustrator.tsx",
+    "./Photoshop": "./src/components/photoshop.tsx",
     "./types": "./src/types/types.ts"
   },
   "scripts": {

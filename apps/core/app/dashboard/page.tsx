@@ -13,118 +13,134 @@ import {
   TabsList,
   TabsTrigger,
 } from "@repo/ui/components/tabs";
+// icoons
 import { Switch } from "@repo/ui/components/switch";
 import Infocircleicon from "@repo/icons/infocircle";
+import Figmaicon from "@repo/icons/figma";
+import Adobexdicon from "@repo/icons/adobexd";
+import Belendericon from "@repo/icons/Belender";
+import Androidicon from "@repo/icons/android";
+import Sketchicon from "@repo/icons/sketch";
+import AfterEffecticon from "../../../../packages/icons/src/components/after-effects";
+import Bootstrapicon from "@repo/icons/bootstrap";
+import Framericon from "@repo/icons/framer";
+import Htmlicon from "@repo/icons/Html";
+import Illustratoricon from "@repo/icons/Illustrator";
+import Photoshopicon from "@repo/icons/Photoshop";
 
 const DashboardPage = () => {
   return (
-    // <div className="container mx-auto">
-    //   {/* dashbord header */}
-    //   <div className="bg-gray-900 rounded-xl mt-4 ">
-    //     <div className="flex items-center justify-between p-2">
-    //       <div>
-    //         <Input placeholder="Please Search" className="w-full" />
-    //       </div>
-    //       <div className=" flex items-center gap-2">
-    //         <div className="bg-black rounded-lg p-2 cursor-pointer">
-    //           <Bellicon
-    //             size={24}
-    //             height={24}
-    //             width={24}
-    //             className="cursor-pointer rounded-lg "
-    //           />
-    //         </div>
-    //         <div className="flex">
-    //           <img
-    //             src="https://avatar.iran.liara.run/public/35"
-    //             height={40}
-    //             width={40}
-    //             className="rounded-full mr-2"
-    //           />
-    //           <div className="">
-    //             <p className="text-sm font-medium">Ali Ebrahimi Kashef</p>
-    //             <p className="text-xs font-light">Product Designer</p>
-    //           </div>
-    //         </div>
+    // dashbord chart
+    // <div>
+    //   <div className="container mx-auto">
+    //     {/* dashbord header */}
+    //     <div className="bg-gray-900 rounded-xl mt-4 ">
+    //       <div className="flex items-center justify-between p-2">
     //         <div>
-    //           <Chevrondownicon
-    //             size={20}
-    //             height={20}
-    //             width={20}
-    //             className="cursor-pointer"
-    //           />
+    //           <Input placeholder="Please Search" className="w-full" />
     //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    //   <div className="flex flex-col gap-4 mt-4">
-    //     <div>
-    //       <h1 className="text-2xl font-bold"> Dashboard </h1>
-    //     </div>
-    //     {/* item dsaheadboard */}
-    //     <div className="flex gap-5">
-    //       <div className="flex flex-col gap-5 w-72 h-auto bg-gray-900 rounded-lg p-2 ">
-    //         <div className="flex items-center justify-between ">
-    //           <div className="p-1">
-    //             <p className="text-lg font-normal">Outstanding owed</p>
-    //             <a className="text-xs font-light underline "> View sales</a>
+    //         <div className=" flex items-center gap-2">
+    //           <div className="bg-black rounded-lg p-2 cursor-pointer">
+    //             <Bellicon
+    //               size={24}
+    //               height={24}
+    //               width={24}
+    //               className="cursor-pointer rounded-lg "
+    //             />
     //           </div>
-    //           <Infosquareroundedicon />
-    //         </div>
-    //         <div>
-    //           <p className="text-3xl font-bold">$123.00</p>
-    //         </div>
-    //       </div>
-    //       <div className="flex flex-col gap-5 w-72 h-auto bg-gray-900 rounded-lg p-2 ">
-    //         <div className="flex items-center justify-between ">
-    //           <div className="p-1">
-    //             <p className="text-lg font-normal">Total payout</p>
-    //             <a className="text-xs font-light underline "> View sales</a>
-    //           </div>
-    //           <Infosquareroundedicon />
-    //         </div>
-    //         <div>
-    //           <p className="text-3xl font-bold">$123.00</p>
-    //         </div>
-    //       </div>
-    //       <div className="flex flex-col gap-5 w-72 h-auto bg-gray-900 rounded-lg p-2 ">
-    //         <div className="flex items-center justify-between ">
-    //           <div className="p-1">
-    //             <p className="text-lg font-normal">Product Count</p>
-    //             <a className="text-xs font-light underline "> View sales</a>
-    //           </div>
-    //           <Infosquareroundedicon />
-    //         </div>
-    //         <div>
-    //           <p className="text-3xl font-bold">$123.00</p>
-    //         </div>
-    //       </div>
-    //     </div>
-    //     {/* earnings history */}
-    //     <div className="w-[935px] h-[325px] bg-gray-900 rounded-xl p-6">
-    //       <div>
-    //         <div className="flex justify-between">
-    //           <div>
-    //             <p className="text-lg font-normal">Earnings history</p>
-    //           </div>
-    //           <div>
-    //             <div className="flex gap-2 items-center">
-    //               <p>This week</p>
-    //               <Chevrondownicon
-    //                 size={20}
-    //                 height={20}
-    //                 width={20}
-    //                 className="cursor-pointer"
-    //               />
+    //           <div className="flex">
+    //             <img
+    //               src="https://avatar.iran.liara.run/public/35"
+    //               height={40}
+    //               width={40}
+    //               className="rounded-full mr-2"
+    //             />
+    //             <div className="">
+    //               <p className="text-sm font-medium">Ali Ebrahimi Kashef</p>
+    //               <p className="text-xs font-light">Product Designer</p>
     //             </div>
     //           </div>
+    //           <div>
+    //             <Chevrondownicon
+    //               size={20}
+    //               height={20}
+    //               width={20}
+    //               className="cursor-pointer"
+    //             />
+    //           </div>
     //         </div>
-    //         {/* chart */}
-    //         <div className=""></div>
+    //       </div>
+    //     </div>
+    //     <div className="flex flex-col gap-4 mt-4">
+    //       <div>
+    //         <h1 className="text-2xl font-bold"> Dashboard </h1>
+    //       </div>
+    //       {/* item dsaheadboard */}
+    //       <div className="flex gap-5">
+    //         <div className="flex flex-col gap-5 w-72 h-auto bg-gray-900 rounded-lg p-2 ">
+    //           <div className="flex items-center justify-between ">
+    //             <div className="p-1">
+    //               <p className="text-lg font-normal">Outstanding owed</p>
+    //               <a className="text-xs font-light underline "> View sales</a>
+    //             </div>
+    //             <Infosquareroundedicon />
+    //           </div>
+    //           <div>
+    //             <p className="text-3xl font-bold">$123.00</p>
+    //           </div>
+    //         </div>
+    //         <div className="flex flex-col gap-5 w-72 h-auto bg-gray-900 rounded-lg p-2 ">
+    //           <div className="flex items-center justify-between ">
+    //             <div className="p-1">
+    //               <p className="text-lg font-normal">Total payout</p>
+    //               <a className="text-xs font-light underline "> View sales</a>
+    //             </div>
+    //             <Infosquareroundedicon />
+    //           </div>
+    //           <div>
+    //             <p className="text-3xl font-bold">$123.00</p>
+    //           </div>
+    //         </div>
+    //         <div className="flex flex-col gap-5 w-72 h-auto bg-gray-900 rounded-lg p-2 ">
+    //           <div className="flex items-center justify-between ">
+    //             <div className="p-1">
+    //               <p className="text-lg font-normal">Product Count</p>
+    //               <a className="text-xs font-light underline "> View sales</a>
+    //             </div>
+    //             <Infosquareroundedicon />
+    //           </div>
+    //           <div>
+    //             <p className="text-3xl font-bold">$123.00</p>
+    //           </div>
+    //         </div>
+    //       </div>
+    //       {/* earnings history */}
+    //       <div className="w-[935px] h-[325px] bg-gray-900 rounded-xl p-6">
+    //         <div>
+    //           <div className="flex justify-between">
+    //             <div>
+    //               <p className="text-lg font-normal">Earnings history</p>
+    //             </div>
+    //             <div>
+    //               <div className="flex gap-2 items-center">
+    //                 <p>This week</p>
+    //                 <Chevrondownicon
+    //                   size={20}
+    //                   height={20}
+    //                   width={20}
+    //                   className="cursor-pointer"
+    //                 />
+    //               </div>
+    //             </div>
+    //           </div>
+    //           {/* chart */}
+    //           <div className=""></div>
+    //         </div>
     //       </div>
     //     </div>
     //   </div>
     // </div>
+
     <div className="container mx-auto">
       <div className="pt-14">
         <div className="flex justify-between">
@@ -257,10 +273,107 @@ const DashboardPage = () => {
                         </p>
                       </div>
                       {/* file formats */}
-                      <div></div>
+                      <div className="flex flex-wrap gap-1">
+                        <Button
+                          variant="secondary"
+                          className="bg-primary-500 text-foreground"
+                        >
+                          <Figmaicon size={16} />
+                          <p className="text-sm font-light pl-1">Figma</p>
+                        </Button>
+                        <Button variant="outline" className="text-foreground">
+                          <Adobexdicon size={16} />
+                          <p className="text-sm font-light pl-1">Adobe XD</p>
+                        </Button>
+                        <Button variant="outline" className="text-foreground">
+                          <Belendericon size={16} />
+                          <p className="text-sm font-light pl-1">Belender</p>
+                        </Button>
+                        <Button variant="outline" className="text-foreground">
+                          <Androidicon size={16} />
+                          <p className="text-sm font-light pl-1">Android</p>
+                        </Button>
+                        <Button variant="outline" className="text-foreground">
+                          <Sketchicon size={16} />
+                          <p className="text-sm font-light pl-1">Sketch</p>
+                        </Button>
+                        <Button variant="outline" className="text-foreground">
+                          <AfterEffecticon size={16} />
+                          <p className="text-sm font-light pl-1">
+                            After Effect
+                          </p>
+                        </Button>
+                        <Button variant="outline" className="text-foreground">
+                          <Bootstrapicon size={16} />
+                          <p className="text-sm font-light pl-1">Bootstrap</p>
+                        </Button>
+                        <Button variant="outline" className="text-foreground">
+                          <Framericon size={16} />
+                          <p className="text-sm font-light pl-1">Framer</p>
+                        </Button>
+                        <Button variant="outline" className="text-foreground">
+                          <Htmlicon size={16} />
+                          <p className="text-sm font-light pl-1">Html</p>
+                        </Button>
+                        <Button variant="outline" className="text-foreground">
+                          <Illustratoricon size={16} />
+                          <p className="text-sm font-light pl-1">Illustrator</p>
+                        </Button>
+                        <Button variant="outline" className="text-foreground">
+                          <Photoshopicon size={16} />
+                          <p className="text-sm font-light pl-1">Photoshop</p>
+                        </Button>
+                      </div>
                     </div>
                   </div>
-                  <div className="w-1/2">gwojgpow</div>
+                  <div className="w-1/2 flex flex-col gap-4">
+                    <div>
+                      <p className="text-lg font-bold">Product Highlights</p>
+                      <p className="text-sm font-normal text-gray-500">
+                        Enter key features and highlights of your product here
+                        (e.g., unique capabilities, special design)
+                      </p>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <Input placeholder="Highlights" className="" />
+                      <Input placeholder="Highlights" className="" />
+                      <Input placeholder="Highlights" className="" />
+                      <Input placeholder="Highlights" className="" />
+                      <Input placeholder="Highlights" className="" />
+                      <Input placeholder="Highlights" className="" />
+                      <Input placeholder="Highlights" className="" />
+                    </div>
+                    <div className="h-0.5 bg-gray-700 w-auto rounded mt-10 mb-10"></div>
+                    <div>
+                      <div className="pb-6">
+                        <p className="text-lg font-bold">Live Preview Link</p>
+                        <p className="text-sm font-normal text-gray-500">
+                          The preview link allows customers to view the live
+                          version of your product.
+                        </p>
+                      </div>
+                      <div>
+                        <div className="pb-6">
+                          <Label className="text-xs font-normal text-gray-400">
+                            Live preview link
+                          </Label>
+                          <Input
+                            placeholder="https://www.example.com"
+                            className="w-full"
+                          />
+                        </div>
+                        <div>
+                          <Label className="text-xs font-normal text-gray-400">
+                            https://yourproductwebsite.com
+                          </Label>
+                          <Input
+                            placeholder="<iframe src='...'></iframe>"
+                            className="w-full"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </TabsContent>
