@@ -7,6 +7,7 @@ import { useTheme } from "next-themes";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ProductCard } from "@repo/ui/components/prodoct-card";
+import SideBarDashboard from "../dashboard/_compnents/sidebar";
 
 export default function Page() {
   const { theme, setTheme } = useTheme();
@@ -157,6 +158,7 @@ export default function Page() {
           </div>
         </div>
       </div> */}
+      <SideBarDashboard />
     </main>
   );
 }
