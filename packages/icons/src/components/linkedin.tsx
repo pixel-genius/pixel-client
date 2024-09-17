@@ -1,11 +1,11 @@
 import { IconProps } from "../types/types";
-const linkedinicon = (props: IconProps) => {
+const Linkedinicon = (props: IconProps) => {
   const { size = 24, color = "currentColor", ...resProps } = props;
 
   return (
     <svg
-      width="24"
-      height="24"
+      width={size}
+      height={size}
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -27,4 +27,4 @@ const linkedinicon = (props: IconProps) => {
   );
 };
 
-export default linkedinicon;
+export default Linkedinicon;

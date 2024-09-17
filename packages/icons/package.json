@@ -10,6 +10,23 @@
     "./pxiel": "./src/components/pixel.tsx",
     "./google": "./src/components/googleicon.tsx",
     "./linkedin": "./src/components/linkedinicon.tsx",
+    "./youtube": "./src/components/youtube.tsx",
+    "./twitter": "./src/components/twitter.tsx",
+    "./instagram": "./src/components/instagram.tsx",
+    "./figma": "./src/components/figma.tsx",
+    "./adobexd": "./src/components/adobexd.tsx",
+    "./sketch": "./src/components/sketch.tsx",
+    "./chevron-right": "./src/components/chevron-right.tsx",
+    "./message-circle": "./src/components/message-circle.tsx",
+    "./heart1": "./src/components/heart1.tsx",
+    "./shopping-cart-plus": "./src/components/shopping-cart-plus.tsx",
+    "./Circle-check": "./src/components/circle-check.tsx",
+    "./cloud-download": "./src/components/cloud-download.tsx",
+    "./search": "./src/components/search.tsx",
+    "./bell": "./src/components/bell.tsx",
+    "./chevron-down": "./src/components/chevron-down.tsx",
+    "./info-square-rounded": "./src/components/info-square-rounded.tsx",
+    "./info-circle": "./src/components/info-circle.tsx",
     "./types": "./src/types/types.ts"
   },
   "scripts": {
@@ -28,7 +45,6 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@repo/ui": "workspace:*",
     "@tabler/icons-react": "^3.12.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.28",

@@ -7,8 +7,8 @@ const GoogleIcon = (props: IconProps) => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xlinkHref="http://www.w3.org/1999/xlink"
-      width="24"
-      height="24"
+      width={size}
+      height={size}
       viewBox="0 0 24 24"
       fill="none"
       {...resProps}
