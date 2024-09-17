@@ -28,7 +28,7 @@ export function NavMain({
             <SidebarMenuButton asChild>
               <a className="py-6" href={item.url}>
                 {/* TODO: change size icon 24 */}
-                <item.icon />
+                <item.icon size={24} />
                 <span>{item.title}</span>
               </a>
             </SidebarMenuButton>
