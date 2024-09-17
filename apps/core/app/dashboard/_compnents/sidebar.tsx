@@ -39,7 +39,7 @@ export default function SideBarDashboard() {
         </h1>
       </div>
       {DASHBOARD_SIDEBAR_ITEMS.map((item) => (
-        <div className="flex items-center space-x-2 p-4">
+        <div className="flex items-center space-y-1 space-x-2 p-4 hover:bg-[#282828] cursor-pointer rounded-md">
           <div>{item.icon}</div>
           <h4>{item.title}</h4>
         </div>
