@@ -1,11 +1,12 @@
+import { Sign } from "crypto";
 import { IconProps } from "../types/types";
 const Twitter = (props: IconProps) => {
   const { size = 24, color = "currentColor", ...resProps } = props;
 
   return (
     <svg
-      width="18"
-      height="15"
+      width={size}
+      height={size}
       viewBox="0 0 18 15"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

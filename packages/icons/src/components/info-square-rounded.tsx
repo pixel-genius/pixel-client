@@ -1,11 +1,11 @@
 import { IconProps } from "../types/types";
-const Bellicon = (props: IconProps) => {
+const Infosquareroundedicon = (props: IconProps) => {
   const { size = 24, color = "currentColor", ...resProps } = props;
 
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={size}
+      width={size}  
       height={size}
       viewBox="0 0 24 24"
       fill="none"
@@ -16,10 +16,11 @@ const Bellicon = (props: IconProps) => {
       {...resProps}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
-      <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
+      <path d="M12 9h.01" />
+      <path d="M11 12h1v4h1" />
+      <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z" />
     </svg>
   );
 };
 
-export default Bellicon;
+export default Infosquareroundedicon;

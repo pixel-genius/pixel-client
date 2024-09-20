@@ -1,6 +1,6 @@
 import Heart1icon from "@repo/icons/heart1";
-import Messagecircleicon from "@repo/icons/messagecircle";
-import Shopingcartplusicon from "@repo/icons/shoppingcartplus";
+import Messagecircleicon from "@repo/icons/message-circle";
+import Shopingcartplusicon from "@repo/icons/shopping-cart-plus";
 import { Button } from "@repo/ui/components/button";
 
 const ProductFooter = () => {

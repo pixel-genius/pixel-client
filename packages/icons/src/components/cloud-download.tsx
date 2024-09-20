@@ -1,5 +1,5 @@
 import { IconProps } from "../types/types";
-const Bellicon = (props: IconProps) => {
+const Clouddownloadicon = (props: IconProps) => {
   const { size = 24, color = "currentColor", ...resProps } = props;
 
   return (
@@ -13,13 +13,14 @@ const Bellicon = (props: IconProps) => {
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
-      {...resProps}
+      {...props}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
-      <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
+      <path d="M19 18a3.5 3.5 0 0 0 0 -7h-1a5 4.5 0 0 0 -11 -2a4.6 4.4 0 0 0 -2.1 8.4" />
+      <path d="M12 13l0 9" />
+      <path d="M9 19l3 3l3 -3" />
     </svg>
   );
 };
 
-export default Bellicon;
+export default Clouddownloadicon;

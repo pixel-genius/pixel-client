@@ -1,14 +1,14 @@
 import Adobexdicon from "@repo/icons/adobexd";
-import Chevronrighticon from "@repo/icons/chevronright";
+import Chevronrighticon from "@repo/icons/chevron-right";
 import Figmaicon from "@repo/icons/figma";
 import Heart1icon from "@repo/icons/heart1";
 import Instagram from "@repo/icons/instagram";
-import Shopingcartplusicon from "@repo/icons/shoppingcartplus";
+import Shopingcartplusicon from "@repo/icons/shopping-cart-plus";
 import Sketchicon from "@repo/icons/sketch";
 import { Button } from "@repo/ui/components/button";
-import Messagecircleicon from "@repo/icons/messagecircle";
-import Circlecheckicon from "@repo/icons/Circlecheck";
-import Clouddownloadicon from "@repo/icons/clouddownload";
+import Messagecircleicon from "@repo/icons/message-circle";
+import Circlecheckicon from "@repo/icons/Circle-check";
+import Clouddownloadicon from "@repo/icons/cloud-download";
 import ProductFooter from "./_components/product-footer";
 import CommentSection from "./_components/comment-section";
 
