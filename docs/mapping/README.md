@@ -12,6 +12,9 @@ This is the mapping of all pages along with their respective design, backend, an
 | **Forgot Password** |            |             |                        |                       |                     | [Link](#) |
 | **Reset Password**  | DONE       |             | 80%                    |                       |                     | [Link](#) |
 
+<br/>
+<br/>
+
 ## Landing
 
 | **Pages**          | **Design** | **Backend** | **Frontend - Desktop** | **Frontend - Mobile** | **API Integration** | **Figma** |
@@ -19,6 +22,9 @@ This is the mapping of all pages along with their respective design, backend, an
 | **Landing**        | DONE       |             | 40%                    |                       |                     | [Link](#) |
 | **Product Detail** |            |             | 60%                    |                       |                     | [Link](#) |
 | **Profile**        | DONE       |             |                        |                       |                     | [Link](#) |
+
+<br/>
+<br/>
 
 ## Dashboard
 
@@ -28,3 +34,6 @@ This is the mapping of all pages along with their respective design, backend, an
 | **Settings**       | DONE       |             |                        |                       |                     | [Link](#) |
 | **Create Product** | DONE       |             | 80%                    |                       |                     | [Link](#) |
 | **Product List**   |            |             |                        |                       |                     | [Link](#) |
+
+<br/>
+<br/>
