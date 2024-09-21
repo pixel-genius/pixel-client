@@ -43,7 +43,7 @@ const config = {
           900: "var(--primary-900)",
           foreground: "hsl(var(--primary-foreground))",
         },
-        // error: 
+        // error:
         error: {
           DEFAULT: "hsl(var(--error))",
           50: "var(--error-50)",
@@ -74,7 +74,7 @@ const config = {
           foreground: "hsl(var(--warning-foreground))",
         },
         // gray
-        Gray : {
+        Gray: {
           DEFAULT: "hsl(var(--gray))",
           50: "var(--gray-50)",
           100: "var(--gray-100)",
@@ -87,6 +87,11 @@ const config = {
           800: "var(--gray-800)",
           900: "var(--gray-900)",
           foreground: "hsl(var(--gray-foreground))",
+        },
+        dark: {
+          DEFAULT: "hsl(var(--dark))",
+          300: "var(--dark-300)",
+          400: "var(--dark-400)",
         },
         // success
         success: {
@@ -103,22 +108,21 @@ const config = {
           900: "var(--success-900)",
           foreground: "hsl(var(--success-foreground))",
         },
-          // info
-          info: {
-            DEFAULT: "hsl(var(--info))",
-            50: "var(--info-50)",
-            100: "var(--info-100)",
-            200: "var(--info-200)",
-            300: "var(--info-300)",
-            400: "var(--info-400)",
-            500: "var(--info-500)",
-            600: "var(--info-600)",
-            700: "var(--info-700)",
-            800: "var(--info-800)",
-            900: "var(--info-900)",
-            foreground: "hsl(var(--info-foreground))",  
-          },
-
+        // info
+        info: {
+          DEFAULT: "hsl(var(--info))",
+          50: "var(--info-50)",
+          100: "var(--info-100)",
+          200: "var(--info-200)",
+          300: "var(--info-300)",
+          400: "var(--info-400)",
+          500: "var(--info-500)",
+          600: "var(--info-600)",
+          700: "var(--info-700)",
+          800: "var(--info-800)",
+          900: "var(--info-900)",
+          foreground: "hsl(var(--info-foreground))",
+        },
 
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
