@@ -88,10 +88,10 @@ const config = {
           900: "var(--gray-900)",
           foreground: "hsl(var(--gray-foreground))",
         },
-        dark: {
-          DEFAULT: "hsl(var(--dark))",
-          300: "var(--dark-300)",
-          400: "var(--dark-400)",
+        black: {
+          DEFAULT: "hsl(var(--black))",
+          300: "var(--black-300)",
+          400: "var(--black-400)",
         },
         // success
         success: {
