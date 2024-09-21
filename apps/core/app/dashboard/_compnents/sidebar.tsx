@@ -32,7 +32,7 @@ const DASHBOARD_SIDEBAR_ITEMS = [
 
 const SideBarDashboard = () => {
   return (
-    <div className="h-full flex flex-col justify-between basis-[355px] bg-[#181818]">
+    <div className="h-full flex flex-col justify-between basis-[355px] bg-dark-400">
       <div className="px-4 py-6">
         <div className="flex items-center space-x-2 mb-8">
           <PixelIcon size={46} color="currentColor" />
@@ -41,7 +41,7 @@ const SideBarDashboard = () => {
           </h1>
         </div>
         {DASHBOARD_SIDEBAR_ITEMS.map((item) => (
-          <div className="flex transition-all items-center space-y-1 space-x-2 p-4 hover:bg-[#282828] cursor-pointer rounded-md">
+          <div className="flex transition-all items-center space-y-1 space-x-2 p-4 hover:bg-dark-300 cursor-pointer rounded-md">
             <div>{item.icon}</div>
             <h4>{item.title}</h4>
           </div>
