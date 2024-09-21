@@ -2,7 +2,7 @@
 
 This is the mapping of all pages along with their respective design, backend, and frontend progress.
 
-## Auth
+### Auth
 
 | **Pages**           | **Design** | **Backend** | **Frontend - Desktop** | **Frontend - Mobile** | **API Integration** | **Figma** |
 | ------------------- | ---------- | ----------- | ---------------------- | --------------------- | ------------------- | --------- |
@@ -13,9 +13,8 @@ This is the mapping of all pages along with their respective design, backend, an
 | **Reset Password**  | DONE       |             | 80%                    |                       |                     | [Link](#) |
 
 <br/>
-<br/>
 
-## Landing
+### Landing
 
 | **Pages**          | **Design** | **Backend** | **Frontend - Desktop** | **Frontend - Mobile** | **API Integration** | **Figma** |
 | ------------------ | ---------- | ----------- | ---------------------- | --------------------- | ------------------- | --------- |
@@ -24,9 +23,8 @@ This is the mapping of all pages along with their respective design, backend, an
 | **Profile**        | DONE       |             |                        |                       |                     | [Link](#) |
 
 <br/>
-<br/>
 
-## Dashboard
+### Dashboard
 
 | **Pages**          | **Design** | **Backend** | **Frontend - Desktop** | **Frontend - Mobile** | **API Integration** | **Figma** |
 | ------------------ | ---------- | ----------- | ---------------------- | --------------------- | ------------------- | --------- |
