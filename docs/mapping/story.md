@@ -38,6 +38,38 @@
 ### Story 12: Product Page Comments
 **Description**: As a user, I want to see a comment box on the product page where only logged-in users can leave comments. Users who are not logged in can only read the comments. Additionally, I want the ability to reply to comments and like them, allowing for more interaction and feedback on the product.
 
+### Story 13: Buyer Profile
+**Description**: As a buyer, I want to have a profile that includes my name, display name, and a short introduction about myself. I also want to see a list of the products I have saved for later, so I can easily access them when needed.
+
+### Story 14: User Purchase History
+**Description**: As a user, I want to see a list of my purchases that includes details about each product I bought, such as the product name, price, and purchase date. Additionally, I want easy access to download the files for the products I have purchased, so I can conveniently retrieve my digital assets.
+
+### Story 15: User Account Settings
+**Description**: As a user, I want to access my account settings, where I can edit my first name, last name, display name, email, and password. I also want to manage my payment methods, adjust notification preferences, and provide a short description about myself. This way, I can keep my account information up to date and personalize my profile.
+
+### Story 16:Designer Dashboard - Product List
+**Description**: As a designer, I want to see a list of my digital products on my dashboard. This list should include details such as the product name, sales status, total revenue, and any other relevant financial information, so I can easily track my performance and earnings.
+
+### Story 17:Title: Designer Dashboard - Sales Overview
+**Description**: As a designer, I want to have a sales overview list on my dashboard where I can review my sales details. This list should display information such as the product status, product date, product type, transaction processing stage, and total earnings, so I can effectively monitor my sales performance.
+
+### Story 17:Payment Report Table
+**Description**: As a designer, I want to see a payment report table that provides me with detailed information about my earnings from the platform. This table should include the total commissions deducted, the amounts that have been credited to my account, their current status, the payment methods used, the payment dates, and the amounts received. Additionally, if there are any notes related to a payment, I want to be able to view them for better clarity on my transactions.
+
+### Story 18: Portfolio Submission
+**Description**:As a designer, I want the ability to publish my portfolio samples, which should include titles, descriptions, and tags for each project. This way, I can showcase my work effectively and help potential clients understand my skills and style.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
