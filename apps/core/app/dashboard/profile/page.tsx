@@ -1,7 +1,10 @@
 import Externallinkicon from "@repo/icons/External-link";
 import Star1icon from "@repo/icons/Star-1";
 import { Button } from "@repo/ui/components/button";
+import { MultiSelect } from "@repo/ui/components/multi-select";
 import { ProductCard } from "@repo/ui/components/prodoct-card";
+
+
 
 const Profilepage = () => {
   return (
@@ -140,23 +143,22 @@ const Profilepage = () => {
           </div>
         </div>
         <div className="flex gap-5 items-center">
-            <div className="w-2/3 bg-pink-600 p-6 rounded-lg">
+          <div className="w-2/3 bg-pink-600 p-6 rounded-lg">
             <div>
-                <div className="pb-2">
-                    <h2 className="text-xl font-bold">Testimonia</h2>
-                </div>
+              <div className="pb-2">
+                <h2 className="text-xl font-bold">Testimonia</h2>
+              </div>
             </div>
-            </div>
-            <div className="w-1/3 bg-purple-600 p-6 rounded-lg">
+          </div>
+          <div className="w-1/3 bg-purple-600 p-6 rounded-lg">
             <div>
-                <div>
-                    <h2 className="text-xl font-bold">Technology</h2>
-                    <div className="flex flex-wrap gap-2">
-                    
-                    </div>
+              <div>
+                <h2 className="text-xl font-bold">Technology</h2>
+                <div className="flex flex-wrap gap-2">
                 </div>
+              </div>
             </div>
-            </div>
+          </div>
         </div>
       </div>
     </div>
