@@ -43,6 +43,7 @@
     "./info-circle": "./src/components/info-circle.tsx",
     "./External-link": "./src/components/external-link.tsx",
     "./Star-1": "./src/components/star-1.tsx",
+    "./Circle-x": "./src/components/circle-x.tsx",
     "./types": "./src/types/types.ts"
   },
   "scripts": {
