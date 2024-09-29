@@ -1,58 +1,112 @@
 <div dir="rtl">
-## اولویت‌های بک‌اند (پیاده‌سازی CRUD)
 
-1. **[داستان ۱: ورود](./story.md#story-1-login)**
+## اولویت‌ها
+
+<div dir="rtl">
+  
+1. **[داستان ۱: ورود](./story.md#story-1-login)**  
    - پیاده‌سازی احراز هویت از طریق ایمیل/نام کاربری و رمز عبور، شامل گزینه‌های OAuth برای گوگل و لینکدین.
-   
-2. **[داستان ۳: ثبت‌نام کاربر](./story.md#story-3-user-registration)**
+</div>
+
+<div dir="rtl">
+  
+2. **[داستان ۳: ثبت‌نام کاربر](./story.md#story-3-user-registration)**  
    - امکان ثبت‌نام کاربران با نام کاربری، ایمیل و رمز عبور یا از طریق حساب گوگل/لینکدین.
+</div>
 
-3. **[داستان ۲: فراموشی رمز عبور](./story.md#story-2-forgot-password)**
+<div dir="rtl">
+  
+3. **[داستان ۲: فراموشی رمز عبور](./story.md#story-2-forgot-password)**  
    - پیاده‌سازی فرآیند بازیابی رمز عبور، شامل ارسال کد تأیید و بروزرسانی رمز عبور.
+</div>
 
-4. **[داستان ۴: تأییدیه OTP](./story.md#story-4-otp-verification)**
+<div dir="rtl">
+  
+4. **[داستان ۴: تأییدیه OTP](./story.md#story-4-otp-verification)**  
    - پیاده‌سازی فرآیند تأییدیه OTP پس از ثبت‌نام برای فعال‌سازی حساب.
+</div>
 
-5. **[داستان ۷: خرید محصولات دیجیتال](./story.md#story-7-purchasing-digital-products)**
+<div dir="rtl">
+  
+5. **[داستان ۷: خرید محصولات دیجیتال](./story.md#story-7-purchasing-digital-products)**  
    - پیاده‌سازی فرآیند خرید شامل سبد خرید، تسویه حساب و تکمیل پرداخت.
+</div>
 
-6. **[داستان ۶: ارسال محصول دیجیتال](./story.md#story-6-digital-product-submission)**
+<div dir="rtl">
+  
+6. **[داستان ۶: ارسال محصول دیجیتال](./story.md#story-6-digital-product-submission)**  
    - ایجاد فرآیند ارسال محصول برای طراحان، شامل آپلود تصاویر، فایل‌ها و جزئیات محصول.
+</div>
 
-7. **[داستان ۱۴: تاریخچه خرید کاربر](./story.md#story-14-user-purchase-history)**
+<div dir="rtl">
+  
+7. **[داستان ۱۴: تاریخچه خرید کاربر](./story.md#story-14-user-purchase-history)**  
    - امکان مشاهده خریدهای گذشته کاربران شامل جزئیات محصول، لینک‌های دانلود و تاریخ‌ها.
+</div>
 
-8. **[داستان ۸: جستجو و یافتن محصولات دیجیتال](./story.md#story-8-searching-and-finding-digital-products)**
+<div dir="rtl">
+  
+8. **[داستان ۸: جستجو و یافتن محصولات دیجیتال](./story.md#story-8-searching-and-finding-digital-products)**  
    - پیاده‌سازی قابلیت جستجو با فیلترهایی برای نوع محصول، ابزارهای طراحی و تطبیق کلمات کلیدی.
+</div>
 
-9. **[داستان ۵: درخواست حساب نویسندگی](./story.md#story-5-author-account-request)**
+<div dir="rtl">
+  
+9. **[داستان ۵: درخواست حساب نویسندگی](./story.md#story-5-author-account-request)**  
    - امکان درخواست حساب نویسندگی توسط طراحان با ارسال مدارک مورد نیاز.
+</div>
 
-10. **[داستان ۱۵: تنظیمات حساب کاربری](./story.md#story-15-user-account-settings)**
+<div dir="rtl">
+  
+10. **[داستان ۱۵: تنظیمات حساب کاربری](./story.md#story-15-user-account-settings)**  
     - پیاده‌سازی گزینه‌های مدیریت حساب برای کاربران جهت بروزرسانی پروفایل، روش‌های پرداخت و تنظیمات.
+</div>
 
-11. **[داستان ۹: صفحه پروفایل طراح](./story.md#story-9-designer-profile-page)**
+<div dir="rtl">
+  
+11. **[داستان ۹: صفحه پروفایل طراح](./story.md#story-9-designer-profile-page)**  
     - امکان مشاهده پروفایل طراحان شامل نمونه‌کارها، مهارت‌ها و محصولات منتشر شده.
+</div>
 
-12. **[داستان ۱۳: پروفایل خریدار](./story.md#story-13-buyer-profile)**
+<div dir="rtl">
+
+  
+12. **[داستان ۱۳: پروفایل خریدار](./story.md#story-13-buyer-profile)**  
     - ایجاد پروفایل خریدار برای نمایش اطلاعات کاربر و محصولات ذخیره شده.
+</div>
 
-13. **[داستان ۱۰: اشتراک همه‌دسترسی برای کاربران](./story.md#story-10-all-access-subscription-for-users)**
+<div dir="rtl">
+  
+13. **[داستان ۱۰: اشتراک همه‌دسترسی برای کاربران](./story.md#story-10-all-access-subscription-for-users)**  
     - پیاده‌سازی پلن اشتراکی که به کاربران اجازه می‌دهد با پرداخت ماهانه به تمامی محصولات دسترسی داشته باشند.
+</div>
 
-14. **[داستان ۱۱: دسته‌بندی محصولات](./story.md#story-11-product-categorization)**
+<div dir="rtl">
+  
+14. **[داستان ۱۱: دسته‌بندی محصولات](./story.md#story-11-product-categorization)**  
     - ایجاد سیستم دسته‌بندی برای نمایش محصولات بر اساس نوع آن‌ها مثل تصاویر، کیت‌های رابط کاربری و غیره.
+</div>
 
-15. **[داستان ۱۲: نظرات صفحه محصول](./story.md#story-12-product-page-comments)**
+<div dir="rtl">
+  
+15. **[داستان ۱۲: نظرات صفحه محصول](./story.md#story-12-product-page-comments)**  
     - امکان گذاشتن نظر، پاسخ به نظرات و لایک کردن آن‌ها در صفحه محصولات.
+</div>
 
-16. **[داستان ۱۷: داشبورد طراح - نمای کلی فروش](./story.md#story-17-title-designer-dashboard-sales-overview)**
+<div dir="rtl">
+  
+16. **[داستان ۱۷: داشبورد طراح - نمای کلی فروش](./story.md#story-17-title-designer-dashboard-sales-overview)**  
     - ارائه داشبوردی برای طراحان جهت بررسی عملکرد فروش و جزئیات تراکنش‌ها.
+</div>
 
-17. **[داستان ۱۷: جدول گزارش پرداخت](./story.md#story-17-payment-report-table)**
+<div dir="rtl">
+  
+17. **[داستان ۱۷: جدول گزارش پرداخت](./story.md#story-17-payment-report-table)**  
     - ایجاد جدول گزارش پرداخت برای طراحان شامل درآمدها، کسورات و وضعیت پرداخت‌ها.
+</div>
 
-18. **[داستان ۱۸: ارسال نمونه‌کار](./story.md#story-18-portfolio-submission)**
+<div dir="rtl">
+  
+18. **[داستان ۱۸: ارسال نمونه‌کار](./story.md#story-18-portfolio-submission)**  
     - امکان ارسال نمونه‌کارها توسط طراحان شامل عنوان‌ها، توضیحات و تگ‌ها.
-
 </div>
