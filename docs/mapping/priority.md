@@ -1,4 +1,4 @@
-## Backend Priorities (CRUD Implementation)
+## Priorities
 
 1. **[Story 1: Login](./story.md#story-1-login)**
    - Implement authentication via email/username and password, including OAuth options for Google and LinkedIn.
