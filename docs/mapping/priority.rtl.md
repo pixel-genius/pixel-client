@@ -101,12 +101,12 @@
 
 <div dir="rtl">
   
-17. **[داستان ۱۷: جدول گزارش پرداخت](./story.md#story-17-payment-report-table)**  
+17. **[داستان ۱۸: جدول گزارش پرداخت](./story.md#story-17-payment-report-table)**  
     - ایجاد جدول گزارش پرداخت برای طراحان شامل درآمدها، کسورات و وضعیت پرداخت‌ها.
 </div>
 
 <div dir="rtl">
   
-18. **[داستان ۱۸: ارسال نمونه‌کار](./story.md#story-18-portfolio-submission)**  
+18. **[داستان 19: ارسال نمونه‌کار](./story.md#story-18-portfolio-submission)**  
     - امکان ارسال نمونه‌کارها توسط طراحان شامل عنوان‌ها، توضیحات و تگ‌ها.
 </div>
