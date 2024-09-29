@@ -53,10 +53,10 @@
 ### Story 17:Title: Designer Dashboard - Sales Overview
 **Description**: As a designer, I want to have a sales overview list on my dashboard where I can review my sales details. This list should display information such as the product status, product date, product type, transaction processing stage, and total earnings, so I can effectively monitor my sales performance.
 
-### Story 17:Payment Report Table
+### Story 18:Payment Report Table
 **Description**: As a designer, I want to see a payment report table that provides me with detailed information about my earnings from the platform. This table should include the total commissions deducted, the amounts that have been credited to my account, their current status, the payment methods used, the payment dates, and the amounts received. Additionally, if there are any notes related to a payment, I want to be able to view them for better clarity on my transactions.
 
-### Story 18: Portfolio Submission
+### Story 19: Portfolio Submission
 **Description**:As a designer, I want the ability to publish my portfolio samples, which should include titles, descriptions, and tags for each project. This way, I can showcase my work effectively and help potential clients understand my skills and style.
 
 
