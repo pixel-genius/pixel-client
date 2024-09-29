@@ -1,55 +1,56 @@
-## Priorities
-
-1. **[Story 1: Login](./story.md#story-1-login)**
+1. **[Story 1: Login](./story.md#story-1-login)**  
    - Implement authentication via email/username and password, including OAuth options for Google and LinkedIn.
-   
-2. **[Story 3: User Registration](./story.md#story-3-user-registration)**
-   - Allow users to register with a username, email, and password, or via Google/LinkedIn.
 
-3. **[Story 2: Forgot Password](./story.md#story-2-forgot-password)**
-   - Password reset flow, including sending verification codes and updating passwords.
+2. **[Story 2: Forgot Password](./story.md#story-2-forgot-password)**  
+   - Implement the password reset request process by sending a verification code to the email.
 
-4. **[Story 4: OTP Verification](./story.md#story-4-otp-verification)**
-   - OTP verification process during user registration for account activation.
+3. **[Story 3: User Registration](./story.md#story-3-user-registration)**  
+   - Allow registration with a username, email, and password or through Google/LinkedIn accounts.
 
-5. **[Story 7: Purchasing Digital Products](./story.md#story-7-purchasing-digital-products)**
-   - Implement the purchasing flow, including shopping cart, checkout, and payment completion.
+4. **[Story 4: OTP Verification](./story.md#story-4-otp-verification)**  
+   - Implement the OTP verification process after registration to activate the account.
 
-6. **[Story 6: Digital Product Submission](./story.md#story-6-digital-product-submission)**
-   - Create product submission flow for designers, including uploading images, files, and product details.
+5. **[Story 5: Author Account Request](./story.md#story-5-author-account-request)**  
+   - Allow authors to request an author account by submitting required documents.
 
-7. **[Story 14: User Purchase History](./story.md#story-14-user-purchase-history)**
-   - Allow users to view their past purchases, including product details, download links, and dates.
+6. **[Story 6: Digital Product Submission](./story.md#story-6-digital-product-submission)**  
+   - Implement the process of publishing digital products through the designer dashboard.
 
-8. **[Story 8: Searching and Finding Digital Products](./story.md#story-8-searching-and-finding-digital-products)**
-   - Implement search functionality with filters for product types, tools used, and keyword matching.
+7. **[Story 7: Purchasing Digital Products](./story.md#story-7-purchasing-digital-products)**  
+   - Implement the search and purchase process for digital products.
 
-9. **[Story 5: Author Account Request](./story.md#story-5-author-account-request)**
-   - Enable designers to apply for author accounts by submitting required documents.
+8. **[Story 8: Searching and Finding Digital Products](./story.md#story-8-searching-and-finding-digital-products)**  
+   - Implement search capabilities with various filters.
 
-10. **[Story 15: User Account Settings](./story.md#story-15-user-account-settings)**
-    - Implement account management options for users to update their profile, payment methods, and preferences.
+9. **[Story 9: Designer Profile Page](./story.md#story-9-designer-profile-page)**  
+   - View designers' profiles including portfolios and skills.
 
-11. **[Story 9: Designer Profile Page](./story.md#story-9-designer-profile-page)**
-    - Allow users to view designers' profiles with their portfolio, skills, and published products.
+10. **[Story 10: All-Access Subscription for Users](./story.md#story-10-all-access-subscription-for-users)**  
+    - Implement the "All-Access" subscription plan for users.
 
-12. **[Story 13: Buyer Profile](./story.md#story-13-buyer-profile)**
-    - Create buyer profiles to display user information and saved products.
+11. **[Story 11: Product Categorization](./story.md#story-11-product-categorization)**  
+    - Create a categorization system for displaying products by type.
 
-13. **[Story 10: All-Access Subscription for Users](./story.md#story-10-all-access-subscription-for-users)**
-    - Implement the subscription plan that gives users access to all products for a monthly fee.
+12. **[Story 12: Product Page Comments](./story.md#story-12-product-page-comments)**  
+    - Enable users to leave comments and reply to comments on product pages.
 
-14. **[Story 11: Product Categorization](./story.md#story-11-product-categorization)**
-    - Create the categorization system to help users find products by type, such as illustrations, UI kits, etc.
+13. **[Story 13: Buyer Profile](./story.md#story-13-buyer-profile)**  
+    - Create a buyer profile that includes user information and saved products.
 
-15. **[Story 12: Product Page Comments](./story.md#story-12-product-page-comments)**
-    - Enable users to leave comments, reply, and like comments on product pages.
+14. **[Story 14: User Purchase History](./story.md#story-14-user-purchase-history)**  
+    - View a list of past purchases for users.
 
-16. **[Story 17: Designer Dashboard - Sales Overview](./story.md#story-17-title-designer-dashboard-sales-overview)**
-    - Provide designers with a dashboard to review their sales performance and transaction details.
+15. **[Story 15: User Account Settings](./story.md#story-15-user-account-settings)**  
+    - Access account settings to update profile information.
 
-17. **[Story 18: Payment Report Table](./story.md#story-18-payment-report-table)**
-    - Create a detailed payment report for designers, showing earnings, deductions, and payment statuses.
+16. **[Story 16: Designer Dashboard - Product List](./story.md#story-16-designer-dashboard-product-list)**  
+    - View a list of digital products on the designer dashboard.
 
-18. **[Story 19: Portfolio Submission](./story.md#story-19-portfolio-submission)**
-    - Allow designers to showcase their portfolio samples with titles, descriptions, and tags.
+17. **[Story 17: Designer Dashboard - Sales Overview](./story.md#story-17-designer-dashboard-sales-overview)**  
+    - Provide a dashboard to review sales details.
+
+18. **[Story 18: Payment Report Table](./story.md#story-18-payment-report-table)**  
+    - View a payment report table with earnings and payment statuses.
+
+19. **[Story 19: Portfolio Submission](./story.md#story-19-portfolio-submission)**  
+    - Allow designers to submit portfolio samples with titles, descriptions, and tags.
