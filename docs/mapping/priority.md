@@ -48,8 +48,8 @@
 16. **[Story 17: Designer Dashboard - Sales Overview](./story.md#story-17-title-designer-dashboard-sales-overview)**
     - Provide designers with a dashboard to review their sales performance and transaction details.
 
-17. **[Story 17: Payment Report Table](./story.md#story-17-payment-report-table)**
+17. **[Story 18: Payment Report Table](./story.md#story-18-payment-report-table)**
     - Create a detailed payment report for designers, showing earnings, deductions, and payment statuses.
 
-18. **[Story 18: Portfolio Submission](./story.md#story-18-portfolio-submission)**
+18. **[Story 19: Portfolio Submission](./story.md#story-19-portfolio-submission)**
     - Allow designers to showcase their portfolio samples with titles, descriptions, and tags.
