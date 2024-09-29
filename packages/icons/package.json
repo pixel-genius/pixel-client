@@ -41,6 +41,7 @@
     "./chevron-down": "./src/components/chevron-down.tsx",
     "./info-square-rounded": "./src/components/info-square-rounded.tsx",
     "./info-circle": "./src/components/info-circle.tsx",
+    "./cursor": "./src/components/cursor.tsx",
     "./types": "./src/types/types.ts"
   },
   "scripts": {
