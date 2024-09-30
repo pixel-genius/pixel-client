@@ -72,12 +72,19 @@
     "./postcss.config": "./postcss.config.mjs",
     "./tailwind.config": "./tailwind.config.ts",
     "./lib/*": "./src/lib/*.ts",
+    "./animations/parallax-scroll-effect": "./src/animations/parallax-scroll-effect.tsx",
     "./components/*": [
       "./src/components/ui/*.tsx",
       "./src/components/ui/*.ts",
       "./src/components/magicui/*.tsx",
       "./src/components/magicui/*.ts",
-      "./src/components/*.ts"
+      "./src/components/animations/*.tsx",
+      "./src/components/animations/*.ts",
+      "./src/components/**/*.tsx",
+      "./src/components/**/*.ts"
+    ],
+    "./hooks/*": [
+      "./src/hooks/*.ts"
     ]
   }
 }

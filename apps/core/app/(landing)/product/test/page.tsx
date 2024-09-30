@@ -14,10 +14,10 @@ import ParallaxScrollEffect from "@repo/ui/animations/parallax-scroll-effect";
 import { Button } from "@repo/ui/components/button";
 import CustomCursor from "@repo/ui/components/custom-cursor";
 
-import ProductGallery from "./_components/product-gallery";
+import ProductGallery from "../[id]/_components/product-gallery";
 import { useRef } from "react";
-import CommentSection from "./_components/comment-section";
-import ProductFooter from "./_components/product-footer";
+import CommentSection from "../[id]/_components/comment-section";
+import ProductFooter from "../[id]/_components/product-footer";
 
 const OverLay = () => {
   return (

@@ -8,7 +8,7 @@ import Link from "next/link";
 function Layout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <div className="flex flex-col h-full">
-      <nav className="bg-red-950 px-5 py-3 h-11 rounded-xl fixed top-12 -left-1/2 -right-1/2  w-[962px] mx-auto flex justify-between items-center">
+      <nav className="bg-gray-900 px-5 py-3 h-11 rounded-xl fixed top-12 -left-1/2 -right-1/2 z-[500]  w-[962px] mx-auto flex justify-between items-center">
         nav bar
       </nav>
 

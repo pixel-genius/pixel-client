@@ -417,7 +417,6 @@ const DashboardPage = () => {
               <Button variant="secondary" className="px-4 py-2 bg-primary-600">
                 Submit for review
               </Button>
-              
             </div>
           </div>
         </div>
