@@ -7,13 +7,13 @@ import { Label } from "@repo/ui/components/label";
 import PixelIcon from "@repo/icons/pxiel";
 import GoogleIcon from "../../../../../packages/icons/src/components/google";
 import LinkedinIcon from "../../../../../packages/icons/src/components/linkedin";
+import AuthCard from "../_components/auth-card";
 
 const SignUpPage = () => {
   return (
-    <div className="flex items-center relative z-10 flex-col gap-4 bg-[#262626] w-[450px] rounded-xl ">
+    <AuthCard>
       {/* logo */}
       <div className=" pt-7 flex flex-col items-center gap-4">
-        <PixelIcon size={86} color="currentColor" />
         <p className="text-2xl font-bold">Log in to your account</p>
       </div>
       {/* input */}
@@ -59,7 +59,7 @@ const SignUpPage = () => {
         <p>Don’t have an account?</p>{" "}
         <a className="underline cursor-pointer">Sign up</a>
       </div>
-    </div>
+    </AuthCard>
   );
 };
 
