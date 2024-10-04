@@ -9,8 +9,8 @@
     "lint": "eslint . --max-warnings 0"
   },
   "dependencies": {
-    "@repo/ui": "workspace:*",
-    "@repo/icons": "workspace:*",
+    "@repo/ui": "*",
+    "@repo/icons": "*",
     "framer-motion": "^11.3.29",
     "html-to-image": "^1.11.11",
     "next": "14.2.4",
@@ -20,8 +20,8 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "14.2.4",
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
     "@types/eslint": "^8",
     "@types/node": "^20",
     "@types/react": "^18",
