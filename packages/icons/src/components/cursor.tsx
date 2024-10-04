@@ -15,7 +15,7 @@ const CursorIcon = (props: IconProps) => {
         <path
           d="M12 36L5 4L34.5 20.5L20.5 23.5L12 36Z"
           stroke="white"
-          stroke-width="3"
+          strokeWidth="3"
         />
       </g>
       <defs>
