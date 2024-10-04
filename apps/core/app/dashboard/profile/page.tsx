@@ -1,12 +1,18 @@
-import Circlexicon from "@repo/icons/Circle-x";
+"use client";
+
 import Externallinkicon from "@repo/icons/External-link";
-import Figmaicon from "@repo/icons/figma";
 import Star1icon from "@repo/icons/Star-1";
 import { Button } from "@repo/ui/components/button";
-import { MultiSelect } from "@repo/ui/components/multi-select";
+import { ModalCard } from "@repo/ui/components/modal-card";
 import { ProductCard } from "@repo/ui/components/prodoct-card";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import { MyProductsModalCard } from "./_components/my-products";
+import { MyPortfolioModal, MyPortfolioModalCard } from "./_components/my-portfolio";
 
 const Profilepage = () => {
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+
   return (
     <div className="container mx-auto">
       <div className="pt-20">
@@ -78,71 +84,12 @@ const Profilepage = () => {
           </div>
         </div>
         <div className="flex gap-5 items-center pb-7">
-          <div className="w-3/5 bg-red-700 p-6 rounded-lg">
-            <div className="flex justify-between items-center pb-2">
-              <h2 className="text-xl font-bold">My Products</h2>
-              <Externallinkicon size={30} className="cursor-pointer" />
-            </div>
-            <div className="flex gap-2 items-center ">
-              <div>
-                {" "}
-                <ProductCard
-                  image="https://picsum.photos/id/10/400/300"
-                  title="title"
-                  price="price"
-                  username="username"
-                  see={10}
-                  like={10}
-                />
-              </div>
+          <MyProductsModalCard />
 
-              <div>
-                {" "}
-                <ProductCard
-                  image="https://picsum.photos/id/10/400/300"
-                  title="title"
-                  price="price"
-                  username="username"
-                  see={10}
-                  like={10}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="w-2/5 bg-green-700 p-6 rounded-lg overflow-hidden">
-            {" "}
-            <div className="flex justify-between items-center pb-2">
-              <h2 className="text-xl font-bold">My Products</h2>
-              <Externallinkicon size={30} className="cursor-pointer" />
-            </div>
-            <div className="flex gap-2 items-center ">
-              <div>
-                {" "}
-                <ProductCard
-                  image="https://picsum.photos/id/10/400/300"
-                  title="title"
-                  price="price"
-                  username="username"
-                  see={10}
-                  like={10}
-                />
-              </div>
-
-              <div>
-                {" "}
-                <ProductCard
-                  image="https://picsum.photos/id/10/400/300"
-                  title="title"
-                  price="price"
-                  username="username"
-                  see={10}
-                  like={10}
-                />
-              </div>
-            </div>
-          </div>
+          <MyPortfolioModalCard />
         </div>
-        <div className="flex gap-5 items-center">
+
+        <div className="flex gap-5">
           <div className="w-2/3 bg-pink-600 p-6 rounded-lg">
             <div>
               <div className="pb-2">
@@ -159,6 +106,7 @@ const Profilepage = () => {
             </div>
           </div>
         </div>
+
         {/* click to see more */}
         {/* <div className="">
           <div className=" bg-gray-900 p-6 rounded-lg h-auto">
@@ -328,6 +276,7 @@ const Profilepage = () => {
                 />
           </div>
         </div> */}
+        
       </div>
     </div>
   );
