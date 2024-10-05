@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { MyProductsModalCard } from "./_components/my-products";
 import { MyPortfolioModal, MyPortfolioModalCard } from "./_components/my-portfolio";
+import { BiographyModalCard } from "./_components/biography";
 
 const Profilepage = () => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -17,58 +18,7 @@ const Profilepage = () => {
     <div className="container mx-auto">
       <div className="pt-20">
         <div className=" flex gap-5 items-center pb-7">
-          <div className="w-3/4 bg-gray-900 p-6 rounded-lg">
-            <div className="flex justify-between items-center pb-10">
-              <div className="flex gap-2 items-center">
-                <div>
-                  {" "}
-                  <img
-                    src="https://avatar.iran.liara.run/public/44"
-                    height={69}
-                    width={69}
-                  />
-                </div>
-                <div>
-                  <p className="text-2xl font-medium ">Ali Ebrahimi Kashef</p>
-                  <p className="text-base font-light text-gray-400">
-                    Product Design, Web Design
-                  </p>
-                </div>
-              </div>
-              <div className="flex gap-2 items-center">
-                <Button
-                  variant="default"
-                  className="bg-primary-600 text-foreground "
-                >
-                  Contact Me
-                </Button>
-                <div>
-                  <Externallinkicon size={30} className="cursor-pointer" />
-                </div>
-              </div>
-            </div>
-            <div className="">
-              <div className="flex flex-col gap-4 pb-4">
-                <h2 className="text-lg font-bold">Biography</h2>
-                <p className="text-sm font-normal">
-                  A freelance graphic and UI/UX designer. I specialise in Web
-                  Design , logo and brand development, motion graphics, and
-                  offer design services to business of all sizes ....
-                </p>
-              </div>
-              <div>
-                <h2 className="text-lg font-bold pb-4">Skills</h2>
-                <div className="flex gap-2 items-center">
-                  <div className="p-3 bg-[#181818] rounded">
-                    <p className="text-sm font-medium">UI/UX</p>
-                  </div>
-                  <div className="p-3 bg-[#181818] rounded">
-                    <p className="text-sm font-medium">Logo</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <BiographyModalCard />
           <div className="w-1/4 bg-gray-900 rounded-lg p-6">
             <div className="flex items-center justify-between">
               <h2 className="text-xs font-bold">Achievements</h2>
