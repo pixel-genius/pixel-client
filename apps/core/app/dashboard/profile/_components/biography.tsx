@@ -125,7 +125,7 @@ export interface BiographyModalCardProps {
 export const BiographyModalCard = (props: BiographyModalCardProps) => {
   return (
     <ProfileCard
-      id="my-product"
+      id="biography"
       className={props.className}
       modal={<BiographyModal />}
     >

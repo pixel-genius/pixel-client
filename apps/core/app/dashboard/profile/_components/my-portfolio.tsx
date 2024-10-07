@@ -111,7 +111,7 @@ export interface MyPortfolioModalCardProps {
 export const MyPortfolioModalCard = (props: MyPortfolioModalCardProps) => {
   return (
     <ProfileCard
-      id="my-product"
+      id="portfolio"
       className={props.className}
       modal={<MyPortfolioModal />}
     >
