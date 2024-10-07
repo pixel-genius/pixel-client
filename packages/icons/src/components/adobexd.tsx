@@ -11,7 +11,7 @@ const Adobexdicon = (props: IconProps) => {
       fill="none"
       {...resProps}
     >
-      <g clip-path="url(#clip0_1279_2359)">
+      <g clipPath="url(#clip0_1279_2359)">
         <path
           d="M13.167 16H2.833C1.267 16 0 14.701 0 13.094V2.906C0 1.299 1.267 0 2.833 0H13.166C14.733 0 16 1.299 16 2.906V13.094C16 14.701 14.733 16 13.167 16Z"
           fill="#FF26BE"

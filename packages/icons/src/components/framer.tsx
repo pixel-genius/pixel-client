@@ -12,20 +12,20 @@ const Framericon = (props: IconProps) => {
       {...resProps}
     >
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M5.00004 5.317H10V0H0.092041V0.049L5.00004 5.317Z"
         fill="url(#paint0_linear_2009_2691)"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M5 5.31702H0V10.634H9.909V10.585L5 5.31702Z"
         fill="url(#paint1_linear_2009_2691)"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M0 10.634H4.955V16L0 10.634Z"
         fill="url(#paint2_linear_2009_2691)"
       />

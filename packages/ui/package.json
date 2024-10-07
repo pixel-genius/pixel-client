@@ -11,8 +11,8 @@
     "react": "^18"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
     "@types/node": "^20",
     "@types/react": "^18",
     "autoprefixer": "^10.4.19",
@@ -46,7 +46,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-switch": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.0",
-    "@repo/icons": "workspace:*",
+    "@repo/icons": "*",
     "@tabler/icons-react": "^3.12.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
