@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    "./ali": "./src/ali.tsx",
     "./eye": "./src/components/eye.tsx",
     ".": [
       "./src/components/*.tsx"

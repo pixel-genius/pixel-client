@@ -1,0 +1,33 @@
+import {
+  ApiError,
+  ApiResponse,
+  UseMutationProps,
+} from "@repo/apis/types/api.types";
+import { useMutation } from "@tanstack/react-query";
+import {
+  {{method}}{{pascalCase name}},
+  {{pascalCase method}}{{pascalCase name}}Props,
+  {{pascalCase method}}{{pascalCase name}}ReturnTransformed,
+} from "./{{method}}-{{kebabCase name}}";
+
+export type Use{{pascalCase method}}{{pascalCase name}}Props = UseMutationProps<
+  ApiResponse<{{pascalCase method}}{{pascalCase name}}ReturnTransformed>,
+  ApiError,
+  {{pascalCase method}}{{pascalCase name}}Props
+>;
+
+export const {{method}}{{pascalCase name}}QueryKey = () => ["{{method}}{{pascalCase name}}"];
+
+export const Use{{pascalCase method}}{{pascalCase name}} = (props: Use{{pascalCase method}}{{pascalCase name}}Props) => {
+  const mutation = useMutation<
+    ApiResponse<{{pascalCase method}}{{pascalCase name}}ReturnTransformed>,
+    ApiError,
+    {{pascalCase method}}{{pascalCase name}}Props
+  >({
+    mutationKey: {{method}}{{pascalCase name}}QueryKey(),
+    mutationFn: (data) => {{method}}{{pascalCase name}}(data),
+    ...props,
+  });
+
+  return mutation;
+};
