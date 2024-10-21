@@ -14,22 +14,17 @@ const forgotPasswordpage = () => {
         <p className="text-2xl font-bold">Log in to your account</p>
       </div>
       {/* input */}
-      <div className="w-96">
+      <div className="w-full">
         <Label className="text-sm font-medium">Email</Label>
         <Input
           className="font-normal text-xs"
           placeholder="genius@exanpel.com"
-          helperText={
-            <a className="mt-4 text-sm font-light text-gray-500 hover:text-gray-700 cursor-pointer">
-              Here is information
-            </a>
-          }
         />
       </div>
       {/* button */}
-      <div className="pb-7">
+      <div className="pb-7 w-full">
         <Button
-          className="w-96 text-lg font-bold  bg-primary-600 hover:bg-primary-500"
+          className="w-full text-lg font-normal bg-primary-600 hover:bg-primary-500"
           variant="secondary"
         >
           Reset{" "}

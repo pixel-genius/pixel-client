@@ -4,7 +4,6 @@ import { Input } from "@repo/ui/components/input";
 import { Label } from "@repo/ui/components/label";
 
 // import icons
-import PixelIcon from "@repo/icons/pxiel";
 import GoogleIcon from "../../../../../packages/icons/src/components/google";
 import LinkedinIcon from "../../../../../packages/icons/src/components/linkedin";
 import AuthCard from "../_components/auth-card";
@@ -17,7 +16,7 @@ const SignUpPage = () => {
         <p className="text-2xl font-bold">Log in to your account</p>
       </div>
       {/* input */}
-      <div className="w-96">
+      <div className="w-full">
         <Label className="text-sm font-medium">Username</Label>
         <Input className="font-normal text-xs" placeholder="pixel.design " />
         <Label className="text-sm font-medium">User Name & Email</Label>
@@ -29,27 +28,27 @@ const SignUpPage = () => {
         <Input type="password" placeholder="********" />
       </div>
       {/* button */}
-      <div>
+      <div className="w-full">
         <Button
-          className="w-96 text-lg font-bold  bg-primary-600 hover:bg-primary-500"
+          className="w-full text-lg font-bold  bg-primary-600 hover:bg-primary-500"
           variant="secondary"
         >
           Log in
         </Button>
       </div>
       {/* line  */}
-      <div className="flex items-center w-[380px] gap-3">
-        <div className="w-[174px] h-[1px] bg-gray-700 rounded-full"></div>
+      <div className="flex items-center w-full gap-3">
+        <div className="w-full h-[1px] bg-gray-700 rounded-full"></div>
         <p className="text-base font-medium">OR</p>
-        <div className="w-[174px] h-[1px] bg-gray-700 rounded-full"></div>
+        <div className="w-full h-[1px] bg-gray-700 rounded-full"></div>
       </div>
       {/* login with google and linkedin */}
-      <div className="flex flex-col items-center gap-3">
-        <Button className="w-96 text-lg bg-[#181818]" variant="secondary">
+      <div className="flex w-full flex-col items-center gap-3">
+        <Button className=" w-full text-lg bg-[#181818]" variant="secondary">
           <GoogleIcon size={24} className="mr-2" />
           Log in with Google
         </Button>
-        <Button className="w-96 text-lg bg-[#181818]" variant="secondary">
+        <Button className="w-full text-lg bg-[#181818]" variant="secondary">
           <LinkedinIcon size={24} className="mr-2" />
           Log in with linkedin
         </Button>

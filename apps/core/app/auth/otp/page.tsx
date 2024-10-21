@@ -1,34 +1,26 @@
 // import components
+"use client";
 import { Button } from "@repo/ui/components/button";
-import { Input } from "@repo/ui/components/input";
-import { Label } from "@repo/ui/components/label";
 import {
   InputOTP,
   InputOTPGroup,
-  InputOTPSeparator,
   InputOTPSlot,
 } from "@repo/ui/components/input-otp";
-import { REGEXP_ONLY_DIGITS_AND_CHARS } from "@repo/ui/lib/utils";
-
+import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
 
 // import icons
-import PixelIcon from "@repo/icons/pxiel";
-import GoogleIcon from "../../../../../packages/icons/src/components/google";
-import LinkedinIcon from "../../../../../packages/icons/src/components/linkedin";
+import AuthCard from "../_components/auth-card";
+import { Countdown } from "@repo/ui/components/countdown";
 
 const Otppage = () => {
   return (
-    <div className="flex items-center relative z-10 flex-col gap-4 bg-[#262626] w-[450px] rounded-xl ">
+    <AuthCard>
       {/* logo */}
       <div className=" pt-7 flex flex-col items-center gap-4">
-        <PixelIcon size={86} color="currentColor" />
-        <p className="text-2xl font-bold">Email Verification </p>
         <div className="flex flex-col items-center gap-2">
-          <p>
+          <p className="text-center">
             We've sent the code to{" "}
-            <span>
-              <a className="underline">example@pixel.design</a>
-            </span>
+            <a className="underline">example@pixel.design</a>
           </p>
           <p>check your email</p>
         </div>
@@ -46,12 +38,11 @@ const Otppage = () => {
           </InputOTPGroup>
         </InputOTP>
       </div>
-      
 
       {/* button */}
-      <div className="pb-4">
+      <div className="pb-7 w-full">
         <Button
-          className="w-96 text-lg font-bold  bg-primary-600 hover:bg-primary-500"
+          className="w-full text-lg font-bold  bg-primary-600 hover:bg-primary-500"
           variant="secondary"
         >
           Verify{" "}
@@ -59,10 +50,10 @@ const Otppage = () => {
       </div>
       <div className="pb-7">
         <p>
-          didnt recieved code yet? <span className="underline">2:32</span>
+          didnt recieved code yet? <Countdown date={Date.now() + 120000} />
         </p>
       </div>
-    </div>
+    </AuthCard>
   );
 };
 
