@@ -1,3 +1,4 @@
+import { signIn } from "../../auth";
 // import components
 import { Button } from "@repo/ui/components/button";
 import { Input } from "@repo/ui/components/input";
@@ -16,33 +17,43 @@ const LoginPage = () => {
         <PixelIcon size={86} color="currentColor" />
         <p className="text-2xl font-bold">Log in to your account</p>
       </div>
-      {/* input */}
-      <div className="w-96">
-        <Label className="text-sm font-medium">User Name & Email</Label>
-        <Input
-          className="font-normal text-xs"
-          placeholder="example@pixel.design "
-        />
-        <Label className="text-sm font-medium"> password</Label>
-        <Input
-          type="password"
-          placeholder="********"
-          helperText={
-            <a className="mt-4 text-sm font-light text-gray-500 hover:text-gray-700 cursor-pointer">
-              Forgot password?
-            </a>
-          }
-        />
-      </div>
-      {/* button */}
-      <div>
-        <Button
-          className="w-96 text-lg font-bold bg-primary-600 hover:bg-primary-500"
-          variant="secondary"
-        >
-          Log in
-        </Button>
-      </div>
+      <form
+        action={async (formData) => {
+          "use server";
+          await signIn("credentials", formData);
+        }}
+      >
+        {/* input */}
+        <div className="w-96">
+          <Label className="text-sm font-medium">User Name & Email</Label>
+          <Input
+            name="username"
+            className="font-normal text-xs"
+            placeholder="example@pixel.design "
+          />
+          <Label className="text-sm font-medium"> password</Label>
+          <Input
+            name="password"
+            type="password"
+            placeholder="********"
+            helperText={
+              <a className="mt-4 text-sm font-light text-gray-500 hover:text-gray-700 cursor-pointer">
+                Forgot password?
+              </a>
+            }
+          />
+        </div>
+        {/* button */}
+        <div>
+          <Button
+            type="submit"
+            className="w-96 text-lg font-bold bg-primary-600 hover:bg-primary-500"
+            variant="secondary"
+          >
+            Log in
+          </Button>
+        </div>
+      </form>
       {/* line  */}
       <div className="flex items-center w-[380px] gap-3">
         <div className="w-[174px] h-[1px] bg-gray-700 rounded-full"></div>

@@ -1,6 +1,8 @@
 {
   "extends": "@repo/typescript-config/react-library.json",
   "compilerOptions": {
+    "module": "ES2015",
+    "moduleResolution": "Bundler",
     "baseUrl": ".",
     "paths": {
       "@repo/apis/*": ["./src/*"]
