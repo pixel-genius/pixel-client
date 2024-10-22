@@ -1,36 +1,28 @@
-import path from "path";
-import { z } from "zod";
-import axios from "axios";
+import { {{service}}Api } from "#instance/{{kebabCase service}}-api"; 
 import { ApiResponse } from "@repo/apis/types/api.types";
 import { requestHandler } from "@repo/apis/utils/request-handler";
-import { {{method}}{{pascalCase name }}Schema as schema } from "./{{method}}-{{kebabCase name}}.schema";
+import path from "path";
+import { {{method}}{{ pascalCase name}}Schema as schema } from "./{{method}}-{{kebabCase name}}.schema";
+import {
+  {{pascalCase method}}{{ pascalCase name}}Request,
+  {{pascalCase method}}{{ pascalCase name}}ResponseTransformed,
+} from "./{{method}}-{{kebabCase name}}.types";
 
-export type {{pascalCase method}}{{pascalCase name }}Props = z.infer<typeof schema.request>;
+export const {{method}}{{ pascalCase name}}URL = () => path.join("/api/{{path}}");
 
-export type {{pascalCase method}}{{pascalCase name }}PropsTransformed = z.infer<
-  typeof schema.requestTransformed
->;
-export type {{pascalCase method}}{{pascalCase name }}Return = z.infer<typeof schema.response>;
+export const {{method}}{{ pascalCase name}} = async (
+  props?: {{pascalCase method}}{{ pascalCase name}}Request,
+): Promise<ApiResponse<{{pascalCase method}}{{ pascalCase name}}ResponseTransformed>> => {
+  const payloadParsed = schema.request.parse(props);
 
-export type {{pascalCase method}}{{pascalCase name }}ReturnTransformed = z.infer<
-  typeof schema.responseTransformed
->;
-
-export const {{method}}{{pascalCase name }}URL = () => path.join("/api/{{ path }}");
-
-export const {{method}}{{pascalCase name }} = async (
-  props: {{pascalCase method}}{{pascalCase name }}Props,
-): Promise<ApiResponse<{{pascalCase method}}{{pascalCase name }}Return>> => {
-  const payloadParsed = schema.requestTransformed.parse(props);
-
-  const URL = {{method}}{{pascalCase name }}URL();
+  const URL = {{method}}{{ pascalCase name}}URL();
 
   const response = await requestHandler(
-    () => axios.{{method}}(URL, payloadParsed),
-    schema.response,
+    () => {{service}}Api.{{method}}(URL, payloadParsed),
+    schema.response._def.schema,
   );
 
-  const dataParsed = schema.responseTransformed.parse(response.data);
+  const dataParsed = schema.response.parse(response.data);
 
   return { ...response, data: dataParsed };
 };

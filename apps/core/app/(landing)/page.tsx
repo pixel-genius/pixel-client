@@ -7,7 +7,6 @@ import { useTheme } from "next-themes";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ProductCard } from "@repo/ui/components/prodoct-card";
-import { UseGetAuthLocal } from "@repo/apis/core/auth/local/get/use-get-auth-local";
 
 export default function Page() {
   const { theme, setTheme } = useTheme();
@@ -21,7 +20,6 @@ export default function Page() {
     setImageUrl(dataUrl);
     setTheme(theme === "dark" ? "light" : "dark");
   };
-  UseGetAuthLocal({ params: { id: 1 } });
 
   return (
     <main className="dark:bg-black bg-white h-full  p-40">
