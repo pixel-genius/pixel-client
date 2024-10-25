@@ -6,7 +6,7 @@ export const postLoginRequestSchemaTransformed = z
     password: z.string(),
     otp: z.string().optional(),
   })
-  .transform((data) => ({ tokentest: data.username + data.password }));
+  .transform((data) => data);
 
 export const postLoginResponseSchemaTransofrmed = z
   .object({
