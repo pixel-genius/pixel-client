@@ -37,5 +37,15 @@
     "./providers/*": "./src/providers/*.tsx",
     "./utils/*": "./src/utils/*.ts",
     "./types/*": "./src/types/*.ts"
+  },
+  "imports": {
+    "#*": [
+      "./src/*",
+      "./src/*.ts",
+      "./src/*.tsx",
+      "./src/*/index.ts",
+      "./src/*/index.tsx", 
+      "./src/instance/*.ts"
+    ]
   }
 }

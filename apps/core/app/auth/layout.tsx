@@ -17,11 +17,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }): JSX.Element {
   return (
-    <div className=" flex justify-center items-center  relative h-full w-full ">
-      <div className="absolute top-0 left-0 w-full h-full">
-        <img src="/images/auth-bg.svg" alt="background" className="w-full" />
+    <div className="flex justify-center items-center relative min-h-screen w-full">
+      <div className="absolute inset-0">
+        <img
+          src="/images/test1.webp"
+          alt="background"
+          className="w-full h-full object-cover"
+        />
       </div>
-      {children}
+      <div>{children}</div>
     </div>
   );
 }

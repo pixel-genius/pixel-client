@@ -1,8 +1,7 @@
+import { {{service}}Api } from "#instance/{{kebabCase service}}-api"; 
 import { ApiResponse } from "@repo/apis/types/api.types";
 import { requestHandler } from "@repo/apis/utils/request-handler";
-import axios from "axios";
 import path from "path";
-import { z } from "zod";
 import { {{method}}{{ pascalCase name}}Schema as schema } from "./{{method}}-{{kebabCase name}}.schema";
 import {
   {{pascalCase method}}{{ pascalCase name}}Request,
@@ -19,7 +18,7 @@ export const {{method}}{{ pascalCase name}} = async (
   const URL = {{method}}{{ pascalCase name}}URL();
 
   const response = await requestHandler(
-    () => axios.{{method}}(URL, payloadParsed),
+    () => {{service}}Api.{{method}}(URL, payloadParsed),
     schema.response._def.schema,
   );
 
