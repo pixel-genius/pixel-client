@@ -1,34 +1,38 @@
-import { useState } from "react";
-import { FormFieldState } from "./loginForm.types";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { postLoginSchema } from "@repo/apis/core/accounts/login/post/post-login.schema";
+import { PostLoginRequest } from "@repo/apis/core/accounts/login/post/post-login.types";
 import { UsePostLogin } from "@repo/apis/core/accounts/login/post/use-post-login";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 import { setAuthTokens } from "@repo/apis/utils/cookies";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 const useLoginForm = () => {
   const router = useRouter();
-  const [formField, setFormField] = useState<FormFieldState>({
-    username: "",
-    password: "",
+  const form = useForm<PostLoginRequest>({
+    resolver: zodResolver(postLoginSchema.request),
   });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = form;
   const login = UsePostLogin();
-  const handleChange = (e: any) => {
-    setFormField((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-  const handleSubmit = () => {
-    if (formField.username && formField.password) {
-      login.mutateAsync(formField).then((res) => {
+  const handleSubmitForm = handleSubmit(() => {
+    const values = form.getValues();
+    if (values.username && values.password) {
+      login.mutateAsync(values).then((res) => {
         toast.success("Logged in successfully");
         router.push("/");
         setAuthTokens(res.data);
       });
-    } else toast.error("Please fill username and password!");
-  };
+    }
+  });
+
   return {
-    username: formField.username,
-    password: formField.password,
-    handleChange,
-    handleSubmit,
+    handleSubmitForm,
+    register,
+    errors,
   };
 };
 
