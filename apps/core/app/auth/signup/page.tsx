@@ -5,14 +5,16 @@ import { postRegisterSchema } from "@repo/apis/core/accounts/register/post/post-
 import { PostRegisterRequest } from "@repo/apis/core/accounts/register/post/post-register.types";
 import { Button } from "@repo/ui/components/button";
 import { Input } from "@repo/ui/components/input";
+
+// import icons
+import { UsePostRegister } from "@repo/apis/core/accounts/register/post/use-post-register";
+import { useRouter } from "next/navigation";
+import path from "path";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import GoogleIcon from "../../../../../packages/icons/src/components/google";
 import LinkedinIcon from "../../../../../packages/icons/src/components/linkedin";
 import AuthCard from "../_components/auth-card";
-import { UsePostRegister } from "@repo/apis/core/accounts/register/post/use-post-register";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
-import path from "path";
 
 const SignUpPage = () => {
   const router = useRouter();
