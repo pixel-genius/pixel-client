@@ -20,6 +20,9 @@ export const postRegister = async (
   const response = await requestHandler(
     () => coreApi.post(URL, payloadParsed),
     schema.response._def.schema,
+    {
+      isMock: true,
+    }
   );
 
   const dataParsed = schema.response.parse(response.data);
