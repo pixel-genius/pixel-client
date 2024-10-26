@@ -22,6 +22,7 @@ export default function RootLayout({
     <ApiProvider>
       <html lang="en" className="h-full">
         <body className={cn(inter.className, "h-full")}>
+          <Toaster richColors />
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
