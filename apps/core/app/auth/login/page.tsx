@@ -14,15 +14,6 @@ const LoginPage = () => {
     <AuthCard>
       <p className="text-2xl font-bold">Log in to your account</p>
       <LoginForm />
-      <div className="w-full">
-        <Button
-          className="w-full text-lg font-bold bg-primary-600 hover:bg-primary-500"
-          variant="secondary"
-          size={"lg"}
-        >
-          Log in
-        </Button>
-      </div>
       {/* line  */}
       <div className="flex items-center w-full gap-3">
         <div className="w-full h-[1px] bg-gray-700 rounded-full"></div>
