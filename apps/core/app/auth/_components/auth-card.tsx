@@ -3,7 +3,7 @@
 // <authCard> form  </authCard>
 
 import PixelIcon from "@repo/icons/pxiel";
-import exp from "constants";
+
 import { ReactNode } from "react";
 
 const AuthCard = ({ children }: { children: ReactNode }) => {
