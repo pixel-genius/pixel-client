@@ -1,0 +1,28 @@
+import { {{service}}Api } from "#instance/{{kebabCase service}}-api"; 
+import { ApiResponse } from "@repo/apis/types/api.types";
+import { requestHandler } from "@repo/apis/utils/request-handler";
+import path from "path";
+import { {{method}}{{ pascalCase name}}Schema as schema } from "./{{method}}-{{kebabCase name}}.schema";
+import {
+  {{pascalCase method}}{{ pascalCase name}}Request,
+  {{pascalCase method}}{{ pascalCase name}}ResponseTransformed,
+} from "./{{method}}-{{kebabCase name}}.types";
+
+export const {{method}}{{ pascalCase name}}URL = () => path.join("/api/{{path}}");
+
+export const {{method}}{{ pascalCase name}} = async (
+  props?: {{pascalCase method}}{{ pascalCase name}}Request,
+): Promise<ApiResponse<{{pascalCase method}}{{ pascalCase name}}ResponseTransformed>> => {
+  const payloadParsed = schema.request.parse(props);
+
+  const URL = {{method}}{{ pascalCase name}}URL();
+
+  const response = await requestHandler(
+    () => {{service}}Api.{{method}}(URL, payloadParsed),
+    schema.response._def.schema,
+  );
+
+  const dataParsed = schema.response.parse(response.data);
+
+  return { ...response, data: dataParsed };
+};

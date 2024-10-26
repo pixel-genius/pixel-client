@@ -1,0 +1,20 @@
+import { z } from "zod";
+
+// Response
+export const {{method}}{{pascalCase name}}RequestSchemaTransformed = z
+  .object({
+    keyPayload: z.string(),
+  })
+  .transform((data) => data);
+
+// Request
+export const {{method}}{{pascalCase name}}ResponseSchemaTransofrmed = z
+  .object({
+    keyBody: z.string(),
+  })
+  .transform((data) => data);
+
+export const {{method}}{{pascalCase name}}Schema = {
+  response: {{method}}{{pascalCase name}}ResponseSchemaTransofrmed,
+  request: {{method}}{{pascalCase name}}RequestSchemaTransformed,
+};

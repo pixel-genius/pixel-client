@@ -9,7 +9,8 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "ui:add": "bun --filter @repo/ui ui:add"
+    "ui:add": "bun --filter @repo/ui ui:add" ,
+    "gen:api": "turbo gen api"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",

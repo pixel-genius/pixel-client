@@ -21,8 +21,6 @@ export default function Page() {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  console.log({ imageUrl });
-
   return (
     <main className="dark:bg-black bg-white h-full  p-40">
       {imageUrl && (

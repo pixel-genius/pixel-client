@@ -1,0 +1,31 @@
+import { {{service}}Api } from "#instance/{{kebabCase service}}-api"; 
+import path from "path";
+import { ApiResponse } from "@repo/apis/types/api.types";
+import { requestHandler } from "@repo/apis/utils/request-handler";
+import { {{method}}{{pascalCase name}}Schema as schema } from "./{{method}}-{{kebabCase name}}.schema";
+import {
+  {{pascalCase method}}{{pascalCase name}}Request,
+  {{pascalCase method}}{{pascalCase name}}Response,
+  {{pascalCase method}}{{pascalCase name}}ResponseTransformed,
+} from "./{{method}}-{{kebabCase name}}.types";
+
+const {{method}}{{pascalCase name}}URL = () => path.join("/api/{{kebabCase name}}");
+
+export const {{method}}{{pascalCase name}} = async (
+  props: {{pascalCase method}}{{pascalCase name}}Request,
+): Promise<ApiResponse<{{pascalCase method}}{{pascalCase name}}ResponseTransformed>> => {
+  const payloadParsed = schema.request.parse(props);
+  const URL = {{method}}{{pascalCase name}}URL();
+
+  const response = await requestHandler(
+    () => {{service}}Api.{{method}}<{{pascalCase method}}{{pascalCase name}}Response>(URL, { params: payloadParsed }),
+    schema.response._def.schema,
+    {
+      isMock: true,
+    },
+  );
+
+  const dataParsed = schema.response.parse(response.data);
+
+  return { ...response, data: dataParsed };
+};
