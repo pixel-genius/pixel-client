@@ -22,10 +22,8 @@ export const postLogin = async (
     schema.response._def.schema,
     {
       isMock: true,
-    }
+    },
   );
-
   const dataParsed = schema.response.parse(response.data);
-
   return { ...response, data: dataParsed };
 };

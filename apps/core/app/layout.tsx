@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import { ApiProvider } from "@repo/apis/providers/api-provider";
-import { Toaster } from "sonner";
+import { Toaster } from "@repo/ui/components/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,6 +31,7 @@ export default function RootLayout({
           >
             {children}
           </ThemeProvider>
+          <Toaster richColors />
         </body>
       </html>
     </ApiProvider>
