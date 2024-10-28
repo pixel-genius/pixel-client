@@ -7,7 +7,7 @@ import AuthCard from "../_components/auth-card";
 // import icons
 import GoogleIcon from "../../../../../packages/icons/src/components/google";
 import LinkedinIcon from "../../../../../packages/icons/src/components/linkedin";
-import { LoginForm } from "./components/form/loginForm";
+import { LoginForm } from "./_components/form/loginForm";
 
 const LoginPage = () => {
   return (
