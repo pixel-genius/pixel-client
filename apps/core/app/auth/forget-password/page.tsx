@@ -1,35 +1,17 @@
 // import components
-import { Button } from "@repo/ui/components/button";
-import { Input } from "@repo/ui/components/input";
-import { Label } from "@repo/ui/components/label";
 
 // import icons
 import AuthCard from "../_components/auth-card";
+import ForgetPasswordForm from "./_components/form/forgetPasswordForm";
 
 const forgotPasswordpage = () => {
   return (
     <AuthCard>
       {/* logo */}
       <div className=" pt-7 flex flex-col items-center gap-4">
-        <p className="text-2xl font-bold">Log in to your account</p>
+        <p className="text-2xl font-bold">Reset your password</p>
       </div>
-      {/* input */}
-      <div className="w-full">
-        <Label className="text-sm font-medium">Email</Label>
-        <Input
-          className="font-normal text-xs"
-          placeholder="genius@exanpel.com"
-        />
-      </div>
-      {/* button */}
-      <div className="pb-7 w-full">
-        <Button
-          className="w-full text-lg font-normal bg-primary-600 hover:bg-primary-500"
-          variant="secondary"
-        >
-          Reset{" "}
-        </Button>
-      </div>
+      <ForgetPasswordForm />
     </AuthCard>
   );
 };
