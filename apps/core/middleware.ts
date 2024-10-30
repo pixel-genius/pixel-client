@@ -1,16 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(request: NextRequest) {
-  const access = request.cookies.get("accessToken");
-  const refresh = request.cookies.get("refreshToken");
-  const nextPath = request.nextUrl.pathname;
-  const loginPath = "/auth/login";
-  if ((!access || !refresh) && nextPath !== loginPath)
-    return NextResponse.redirect(new URL(loginPath, request.url));
-  if (access && nextPath === loginPath)
-    return NextResponse.redirect(new URL("/", request.url));
+  const { pathname } = request.nextUrl;
+
+  // Allow access to routes under /auth/*
+  if (pathname.startsWith("/auth/")) {
+    return NextResponse.next();
+  }
+
+  // Check for authentication cookies
+  const accessToken = request.cookies.get("access");
+  const refreshToken = request.cookies.get("refresh");
+
+  // Redirect to login if unauthenticated
+  if (!accessToken || !refreshToken) {
+    return NextResponse.redirect(new URL("/auth/login", request.url));
+  }
+
+  // Allow access to protected routes if authenticated
   return NextResponse.next();
 }
+
 export const config = {
-  matcher: ["/((?!.*\\..*).*)"], //Exclude all files with extensions (e.g., .js, .css)
+  matcher: ["/((?!.*\\..*).*)"], // Exclude static files (e.g., .js, .css, etc.)
 };
