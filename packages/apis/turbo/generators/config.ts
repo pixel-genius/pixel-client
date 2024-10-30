@@ -45,7 +45,6 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         type: "input",
         name: "path",
         message: "Specify the API path (sample: invoice/detail):",
-        
       },
     ],
     actions(data) {
@@ -89,6 +88,12 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
             type: "add",
             path: `src/services/{{service}}/{{path}}/${method}/${method}-{{kebabCase name}}.ts`,
             templateFile: `templates/function.${type}.hbs`,
+            data: { method, type },
+          },
+          {
+            type: "add",
+            path: `src/services/{{service}}/{{path}}/${method}/${method}-{{kebabCase name}}.types.ts`,
+            templateFile: `templates/types.hbs`,
             data: { method, type },
           },
         );

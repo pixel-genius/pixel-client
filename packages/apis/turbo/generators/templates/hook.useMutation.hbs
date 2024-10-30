@@ -4,25 +4,26 @@ import {
   UseMutationProps,
 } from "@repo/apis/types/api.types";
 import { useMutation } from "@tanstack/react-query";
+import { {{method}}{{pascalCase name}} } from "./{{method}}-{{kebabCase name}}";
+import {} from "./{{method}}-{{kebabCase name}}.schema";
 import {
-  {{method}}{{pascalCase name}},
-  {{pascalCase method}}{{pascalCase name}}Props,
-  {{pascalCase method}}{{pascalCase name}}ReturnTransformed,
-} from "./{{method}}-{{kebabCase name}}";
+  {{pascalCase method}}{{pascalCase name}}Request,
+  {{pascalCase method}}{{pascalCase name}}ResponseTransformed,
+} from "./{{method}}-{{kebabCase name}}.types";
 
 export type Use{{pascalCase method}}{{pascalCase name}}Props = UseMutationProps<
-  ApiResponse<{{pascalCase method}}{{pascalCase name}}ReturnTransformed>,
+  ApiResponse<{{pascalCase method}}{{pascalCase name}}ResponseTransformed>,
   ApiError,
-  {{pascalCase method}}{{pascalCase name}}Props
+  {{pascalCase method}}{{pascalCase name}}Request
 >;
 
 export const {{method}}{{pascalCase name}}QueryKey = () => ["{{method}}{{pascalCase name}}"];
 
-export const Use{{pascalCase method}}{{pascalCase name}} = (props: Use{{pascalCase method}}{{pascalCase name}}Props) => {
+export const Use{{pascalCase method}}{{pascalCase name}} = (props?: Use{{pascalCase method}}{{pascalCase name}}Props) => {
   const mutation = useMutation<
-    ApiResponse<{{pascalCase method}}{{pascalCase name}}ReturnTransformed>,
+    ApiResponse<{{pascalCase method}}{{pascalCase name}}ResponseTransformed>,
     ApiError,
-    {{pascalCase method}}{{pascalCase name}}Props
+    {{pascalCase method}}{{pascalCase name}}Request
   >({
     mutationKey: {{method}}{{pascalCase name}}QueryKey(),
     mutationFn: (data) => {{method}}{{pascalCase name}}(data),
