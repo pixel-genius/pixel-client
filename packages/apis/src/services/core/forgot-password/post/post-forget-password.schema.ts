@@ -18,7 +18,12 @@ export const postForgetPasswordRequestSchemaTransformed = z
     message: "Passwords do not match",
     path: ["confirmPassword"],
   })
-  .transform((data) => data);
+  .transform((data) => {
+    delete data.confirmPassword;
+    delete data.newPassword;
+
+    return { ...data, new_password: data.newPassword };
+  });
 
 // Request
 export const postForgetPasswordResponseSchemaTransofrmed = z

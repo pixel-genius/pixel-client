@@ -49,7 +49,6 @@ const setpasswordpage = () => {
     },
 
     onError: (err) => {
-      console.log(err);
       toast.error(err.response?.data.message || "Something went wrong");
     },
   });

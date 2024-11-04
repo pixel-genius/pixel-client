@@ -23,7 +23,7 @@ export const UsePostForgetPassword = (props?: UsePostForgetPasswordProps) => {
   const mutation = useMutation<
     ApiResponse<PostForgetPasswordResponseTransformed>,
     ApiError,
-    PostForgetPasswordRequest
+    Omit<PostForgetPasswordRequest, "confirmPassword">
   >({
     mutationKey: postForgetPasswordQueryKey(),
     mutationFn: (data) => postForgetPassword(data),
