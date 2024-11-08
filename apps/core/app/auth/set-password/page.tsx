@@ -24,9 +24,7 @@ const setpasswordpage = () => {
   const params = useSearchParams();
   const username = params.get("username");
 
-  const form = useForm<
-    PostForgetPasswordRequest
-  >({
+  const form = useForm<PostForgetPasswordRequest>({
     resolver: zodResolver(postForgetPasswordSchema.request),
   });
 
@@ -42,7 +40,7 @@ const setpasswordpage = () => {
       toast.info(res.data.message);
       router.push(`/auth/set-password?username=${context.username}`);
     },
-    
+
     onError: (err) => {
       toast.error(err.response?.data.message || "Something went wrong");
     },
@@ -94,6 +92,7 @@ const setpasswordpage = () => {
         {/* input */}
         <Input
           label="Password"
+          type="password"
           className="font-normal text-xs text-gray-500"
           placeholder="********"
           {...register("newPassword", {
@@ -104,6 +103,7 @@ const setpasswordpage = () => {
         />
         <Input
           label="Confirm Password"
+          type="password"
           className="font-normal text-xs text-gray-500"
           placeholder="********"
           {...register("confirmPassword")}
