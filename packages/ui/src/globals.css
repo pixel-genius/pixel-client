@@ -52,10 +52,6 @@
     --gray-800: #1f2937;
     --gray-900: #111827;
 
-    /* black */
-    --black-300: #282828;
-    --black-400: #181818;
-
     /* Success */
     --success-50: #f0fdf4;
     --success-100: #f0fdf5;
@@ -141,5 +137,18 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* add the code bellow */
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }

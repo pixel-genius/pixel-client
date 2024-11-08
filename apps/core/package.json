@@ -9,19 +9,23 @@
     "lint": "eslint . --max-warnings 0"
   },
   "dependencies": {
-    "@repo/ui": "workspace:*",
-    "@repo/icons": "workspace:*",
+    "@hookform/resolvers": "^3.9.0",
+    "@repo/apis": "*",
+    "@repo/icons": "*",
+    "@repo/ui": "*",
     "framer-motion": "^11.3.29",
     "html-to-image": "^1.11.11",
     "next": "14.2.4",
     "next-themes": "^0.3.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hook-form": "^7.53.1",
+    "sonner": "^1.5.0"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "14.2.4",
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
     "@types/eslint": "^8",
     "@types/node": "^20",
     "@types/react": "^18",

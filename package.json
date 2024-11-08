@@ -5,19 +5,25 @@
   "license": "MIT",
   "scripts": {
     "build": "turbo build",
+    "type-checks": "turbo build check-types",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "ui:add": "pnpm --filter @repo/ui ui:add"
+    "ui:add": "bun --filter @repo/ui ui:add" ,
+    "gen:api": "turbo gen api"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
     "prettier": "^3.3.2",
     "turbo": "2.0.6"
   },
-  "packageManager": "pnpm@8.9.0",
+  "packageManager": "bun@1.1.29",
   "engines": {
     "node": ">=18"
-  }
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
 }

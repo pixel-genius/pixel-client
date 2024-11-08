@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@repo/ui/lib/utils";
 import LogoIcon from "./logoIcon";
 
 export interface LogoSectionProps {
@@ -9,7 +9,7 @@ const LogoSection = (props: LogoSectionProps) => {
   const { className } = props;
 
   return (
-    <div className={clsx("flex items-center gap-4", className)}>
+    <div className={cn("flex items-center gap-4", className)}>
       <span>
         <LogoIcon />
       </span>

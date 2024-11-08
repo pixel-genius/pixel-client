@@ -5,13 +5,13 @@ const Sketchicon = (props: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
+      width={size}
+      height={size}
       viewBox="0 0 16 16"
       fill="none"
       {...resProps}
     >
-      <g clip-path="url(#clip0_1279_2364)">
+      <g clipPath="url(#clip0_1279_2364)">
         <path
           d="M3.24 5.92101L8 15.25L0 5.92001L3.24 5.92101Z"
           fill="#EA6C00"

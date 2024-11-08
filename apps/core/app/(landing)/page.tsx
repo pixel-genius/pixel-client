@@ -22,8 +22,6 @@ export default function Page() {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  console.log({ imageUrl });
-
   return (
     <main className="dark:bg-black bg-white h-full  p-40">
       {imageUrl && (
@@ -113,13 +111,13 @@ export default function Page() {
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
-                      stroke-width="2"
+                      strokeWidth="2"
                       stroke="currentColor"
                       className="h-6 w-5 flex-none text-indigo-600"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         d="M20 6L9 17L4 12"
                       />
                     </svg>

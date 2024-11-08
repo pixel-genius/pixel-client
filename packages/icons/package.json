@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    "./ali": "./src/ali.tsx",
     "./eye": "./src/components/eye.tsx",
     ".": [
       "./src/components/*.tsx"
@@ -16,8 +17,8 @@
     "./figma": "./src/components/figma.tsx",
     "./adobexd": "./src/components/adobexd.tsx",
     "./sketch": "./src/components/sketch.tsx",
-    "./chevronright": "./src/components/chevronright.tsx",
-    "./messagecircle": "./src/components/messagecircle.tsx",
+    "./chevron-right": "./src/components/chevron-right.tsx",
+    "./message-circle": "./src/components/message-circle.tsx",
     "./heart1": "./src/components/heart1.tsx",
     "./shoppingcartplus": "./src/components/shoppingcartplus.tsx",
     "./Circlecheck": "./src/components/circlecheck.tsx",
@@ -26,7 +27,22 @@
     "./bell": "./src/components/bell.tsx",
     "./chevrondown": "./src/components/chevrondown.tsx",
     "./infosquarerounded": "./src/components/infosquarerounded.tsx",
-    "./infocircle" : "./src/components/infocircle.tsx",
+    "./infocircle": "./src/components/infocircle.tsx",
+    "./Belender": "./src/components/belender.tsx",
+    "./android": "./src/components/android.tsx",
+    "./AfterEffect": "./src/components/after-effect.tsx",
+    "./bootstrap": "./src/components/bootstrap.tsx",
+    "./framer": "./src/components/framer.tsx",
+    "./Html": "./src/components/html.tsx",
+    "./Illustrator": "./src/components/Illustrator.tsx",
+    "./Photoshop": "./src/components/photoshop.tsx",
+    "./shopping-cart-plus": "./src/components/shopping-cart-plus.tsx",
+    "./Circle-check": "./src/components/circle-check.tsx",
+    "./cloud-download": "./src/components/cloud-download.tsx",
+    "./chevron-down": "./src/components/chevron-down.tsx",
+    "./info-square-rounded": "./src/components/info-square-rounded.tsx",
+    "./info-circle": "./src/components/info-circle.tsx",
+    "./cursor": "./src/components/cursor.tsx",
     "./types": "./src/types/types.ts"
   },
   "scripts": {
@@ -34,8 +50,8 @@
     "generate:component": "turbo gen react-component"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
     "@turbo/gen": "^1.12.4",
     "@types/eslint": "^8.56.5",
     "@types/node": "^20.11.24",

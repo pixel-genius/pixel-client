@@ -3,6 +3,8 @@ import { cn } from "@repo/ui/lib/utils";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
+import { ApiProvider } from "@repo/apis/providers/api-provider";
+import { Toaster } from "@repo/ui/components/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,17 +19,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }): JSX.Element {
   return (
-    <html lang="en" className="h-full">
-      <body className={cn(inter.className, "h-full")}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+    <ApiProvider>
+      <html lang="en" className="h-full">
+        <body className={cn(inter.className, "h-full")}>
+          <Toaster richColors />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+          <Toaster richColors />
+        </body>
+      </html>
+    </ApiProvider>
   );
 }
