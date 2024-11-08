@@ -33,12 +33,12 @@ const LoginForm = () => {
 
   const handleSubmitForm = handleSubmit(() => {
     const values = form.getValues();
-    loginMutation.mutate(values)
+    loginMutation.mutate(values);
   });
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <div className="w-96 mb-2">
+      <div className="mb-2 flex flex-wrap gap-4">
         {/* Username and Email */}
         <Input
           label="User Name & Email"
@@ -54,7 +54,10 @@ const LoginForm = () => {
           type="password"
           placeholder="********"
           helperText={
-            <a className="mt-4 text-sm font-light text-gray-500 hover:text-gray-700 cursor-pointer">
+            <a
+              href="/auth/forget-password"
+              className="block mb-3 text-sm font-light text-gray-500 hover:text-gray-700 cursor-pointer"
+            >
               Forgot password?
             </a>
           }
@@ -63,16 +66,15 @@ const LoginForm = () => {
         />
       </div>
       {/* Button */}
-      <div>
-        <Button
-          isLoading={loginMutation.isPending}
-          type="submit"
-          className="w-96 text-lg font-bold bg-primary-600 hover:bg-primary-500"
-          variant="secondary"
-        >
-          Login
-        </Button>
-      </div>
+      <Button
+        size="lg"
+        isLoading={loginMutation.isPending}
+        type="submit"
+        className="flex w-[100%] text-lg font-bold bg-primary-600 hover:bg-primary-500"
+        variant="secondary"
+      >
+        Login
+      </Button>
     </form>
   );
 };
