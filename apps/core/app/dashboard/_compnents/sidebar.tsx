@@ -32,7 +32,7 @@ const DASHBOARD_SIDEBAR_ITEMS = [
 
 const SideBarDashboard = () => {
   return (
-    <div className="h-full flex flex-col justify-between basis-[355px] bg-black-400">
+    <div className="h-full sticky top-0 flex flex-col justify-between flex-shrink-0 basis-[355px] bg-black-400">
       <div className="px-4 py-6">
         <div className="flex items-center space-x-2 mb-8">
           <PixelIcon size={46} color="currentColor" />
@@ -49,7 +49,7 @@ const SideBarDashboard = () => {
       </div>
       <div>
         <Image
-          src="images/clip-path-group.svg"
+          src="/images/clip-path-group.svg"
           width={453}
           height={300}
           alt="Picture of space"

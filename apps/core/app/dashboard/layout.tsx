@@ -7,7 +7,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }): JSX.Element {
   return (
-    <div className="flex h-full">
+    <div className="flex h-full overflow-auto">
       <SideBarDashboard />
       <div className="flex-1">{children}</div>
     </div>
