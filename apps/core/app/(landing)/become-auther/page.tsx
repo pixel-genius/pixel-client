@@ -5,8 +5,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@repo/ui/components/accordion";
-import Image from "next/image";
-import AutherResult from "./_components/auther-result";
 import AutherForm from "./_components/auther-form";
 
 const BecomeAuther = () => {

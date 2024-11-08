@@ -1,17 +1,9 @@
-import Image from "next/image";
+import { AutherLayout } from "./auther-layout";
 
 const AutherResult = () => {
   return (
-    <div>
-      <Image
-        src="/images/_YourRequestWillBeReviewed.png"
-        alt="Description of the image for SEO"
-        layout="fill" // Makes the image fill its parent container
-        objectFit="cover" // Ensures the image scales nicely
-        priority={true} // Preload the image for better performance
-        className="z-[-2]"
-      />
-      <div className="w-1/2 pb-7 ">
+    <>
+      <AutherLayout bgSrc="/images/test2.webp">
         <div className="pb-12 pt-12">
           <h1 className="text-4xl font-bold pb-5 ">
             Your Request Will Be Reviewed
@@ -28,8 +20,8 @@ const AutherResult = () => {
             this process.
           </p>
         </div>
-      </div>
-    </div>
+      </AutherLayout>
+    </>
   );
 };
 export default AutherResult;
