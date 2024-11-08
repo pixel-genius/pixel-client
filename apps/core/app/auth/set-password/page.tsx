@@ -18,11 +18,14 @@ import { Input } from "@repo/ui/components/input";
 import AuthCard from "../_components/auth-card";
 import { postForgetPasswordSchema } from "@repo/apis/core/forgot-password/post/post-forget-password.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 
 const setpasswordpage = () => {
   const router = useRouter();
   const params = useSearchParams();
   const username = params.get("username");
+
+  if (!username) router.replace("/auth/forget-password");
 
   const form = useForm<PostForgetPasswordRequest>({
     resolver: zodResolver(postForgetPasswordSchema.request),
@@ -35,10 +38,14 @@ const setpasswordpage = () => {
     formState: { errors },
   } = form;
 
+  useEffect(() => {
+    setValue("username", username as string);
+  }, []);
+
   const mutation = UsePostForgetPassword({
     onSuccess: (res, context) => {
       toast.info(res.data.message);
-      router.push(`/auth/set-password?username=${context.username}`);
+      router.push(`/auth/login`);
     },
 
     onError: (err) => {
@@ -46,9 +53,9 @@ const setpasswordpage = () => {
     },
   });
 
-  const handleSubmitForm = handleSubmit((data) => {
+  const handleSubmitForm = (data: PostForgetPasswordRequest) => {
     mutation.mutate(data);
-  });
+  };
 
   const otpRegister = register("otp");
 
@@ -68,7 +75,7 @@ const setpasswordpage = () => {
       {/* otp input */}
       <form
         className="w-full flex flex-col items-center gap-4"
-        onSubmit={handleSubmitForm}
+        onSubmit={handleSubmit(handleSubmitForm)}
       >
         <InputOTP
           maxLength={6}
@@ -95,10 +102,7 @@ const setpasswordpage = () => {
           type="password"
           className="font-normal text-xs text-gray-500"
           placeholder="********"
-          {...register("newPassword", {
-            min: 8,
-            required: "Password is required",
-          })}
+          {...register("newPassword")}
           error={errors.newPassword?.message}
         />
         <Input
@@ -112,6 +116,7 @@ const setpasswordpage = () => {
         {/* button reset */}
         <div className="pb-7 w-full">
           <Button
+            isLoading={mutation.isPending}
             className="w-full text-lg font-bold  bg-primary-600 hover:bg-primary-500"
             variant="secondary"
           >
