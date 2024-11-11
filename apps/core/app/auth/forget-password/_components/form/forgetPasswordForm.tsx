@@ -1,4 +1,5 @@
 "use client";
+
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -11,27 +12,31 @@ import { Input } from "@repo/ui/components/input";
 
 const ForgetPasswordForm = () => {
   const router = useRouter();
+
   const form = useForm<PostForgetPasswordRequest>({
     resolver: zodResolver(postForgetPasswordSchema.request),
   });
+  
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = form;
-  const mutation = UsePostForgetPassword();
-  const handleSubmitForm = handleSubmit(
-    (data: { username: PostForgetPasswordRequest["username"] }) => {
-      mutation.mutateAsync(data).then((res) => {
-        const values = form.getValues();
-        toast.info(res.data.message);
-        router.push(`/auth/set-password?username=${values.username}`);
-      });
+  
+  const mutation = UsePostForgetPassword({
+    onSuccess: (res, context) => {
+      toast.info(res.data.message);
+      router.push(`/auth/set-password?username=${context.username}`);
     },
-  );
+  });
+
+  const onSubmit = (data: PostForgetPasswordRequest) => {
+    console.log("Sign Up Data:", data);
+    mutation.mutate(data);
+  };
 
   return (
-    <form onSubmit={handleSubmitForm} className="w-full pb-7">
+    <form onSubmit={handleSubmit(onSubmit)} className="w-full pb-7">
       <Input
         label="Username"
         className="font-normal text-xs"
@@ -39,7 +44,9 @@ const ForgetPasswordForm = () => {
         {...register("username")}
         error={errors.username?.message}
       />
+
       <Button
+        isLoading={mutation.isPending}
         type="submit"
         className="w-full mt-5 text-lg font-normal bg-primary-600 hover:bg-primary-500"
         variant="secondary"
@@ -49,4 +56,5 @@ const ForgetPasswordForm = () => {
     </form>
   );
 };
+
 export default ForgetPasswordForm;

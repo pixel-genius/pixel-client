@@ -5,12 +5,12 @@ type Tokens = { access: string; refresh: string };
 
 const setAuthTokens = (token: Tokens) => {
   Cookie.set(COOKIES.ACCESS_TOKEN, token.access);
-  Cookie.set("refreshToken", token.refresh);
+  Cookie.set(COOKIES.REFRESH_TOKEN, token.refresh);
 };
 
 const getAuthTokens = () => {
-  const access = Cookie.get("accessToken");
-  const refresh = Cookie.get("refreshToken");
+  const access = Cookie.get("access");
+  const refresh = Cookie.get("refresh");
   return {
     access,
     refresh,
