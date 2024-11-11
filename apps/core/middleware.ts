@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { COOKIES } from "@repo/ui/constant/cookie";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -9,8 +10,8 @@ export function middleware(request: NextRequest) {
   }
 
   // Check for authentication cookies
-  const accessToken = request.cookies.get("access");
-  const refreshToken = request.cookies.get("refresh");
+  const accessToken = request.cookies.get(COOKIES.ACCESS_TOKEN); 
+  const refreshToken = request.cookies.get(COOKIES.REFRESH_TOKEN);
 
   // Redirect to login if unauthenticated
   if (!accessToken || !refreshToken) {

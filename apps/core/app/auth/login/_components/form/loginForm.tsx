@@ -26,8 +26,18 @@ const LoginForm = () => {
   const loginMutation = UsePostLogin({
     onSuccess: (res) => {
       toast.success("Logged in successfully");
-      router.push("/");
       setAuthTokens(res.data);
+
+      setTimeout(() => {
+        router.push("/");
+
+        console.log("hiiiii");
+        
+      }, 1000);
+
+
+      console.log("hiiiiiiiii");
+      
     },
   });
 
@@ -76,4 +86,5 @@ const LoginForm = () => {
     </form>
   );
 };
+
 export { LoginForm };

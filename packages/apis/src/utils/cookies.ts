@@ -1,9 +1,10 @@
+import { COOKIES } from "@repo/ui/constant/cookie";
 import Cookie from "js-cookie";
 
 type Tokens = { access: string; refresh: string };
 
 const setAuthTokens = (token: Tokens) => {
-  Cookie.set("accessToken", token.access);
+  Cookie.set(COOKIES.ACCESS_TOKEN, token.access);
   Cookie.set("refreshToken", token.refresh);
 };
 

@@ -1,14 +1,15 @@
 import { ApiResponse } from "@repo/apis/types/api.types";
 import { requestHandler } from "@repo/apis/utils/request-handler";
-import axios from "axios";
+
 import path from "path";
 import { postLoginSchema as schema } from "./post-login.schema";
 import {
   PostLoginRequest,
   PostLoginResponseTransformed,
 } from "./post-login.types";
+import { coreApi } from "./../../../../../instance/core-api";
 
-export const postLoginURL = () => path.join("/api/accounts/login");
+export const postLoginURL = () => path.join("/accounts/login/");
 
 export const postLogin = async (
   props?: PostLoginRequest,
@@ -18,7 +19,7 @@ export const postLogin = async (
   const URL = postLoginURL();
 
   const response = await requestHandler(
-    () => axios.post(URL, payloadParsed),
+    () => coreApi.post(URL, payloadParsed),
     schema.response._def.schema,
     {
       isMock: true,

@@ -86,6 +86,7 @@
     ],
     "./hooks/*": [
       "./src/hooks/*.ts"
-    ]
+    ],
+    "./constant/*": "./src/constant/*.ts" 
   }
 }

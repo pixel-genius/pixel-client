@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const coreApi = axios.create({
-  baseURL: "https://task-manager-server.liara.run/", // You can set your base URL here
+  baseURL: "http://37.152.182.32/", // You can set your base URL here
   headers: {
     "Content-Type": "application/json",
   },
