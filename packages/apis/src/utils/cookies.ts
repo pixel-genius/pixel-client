@@ -9,8 +9,8 @@ const setAuthTokens = (token: Tokens) => {
 };
 
 const getAuthTokens = () => {
-  const access = Cookie.get("access");
-  const refresh = Cookie.get("refresh");
+  const access = Cookie.get(COOKIES.ACCESS_TOKEN);
+  const refresh = Cookie.get(COOKIES.REFRESH_TOKEN);
   return {
     access,
     refresh,
