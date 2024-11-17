@@ -1,20 +1,26 @@
 import React from "react";
 import { BaseInput, BaseInputProps } from "./base-input";
 import { Label } from "./label";
+import { cn } from "@repo/ui/lib/utils";
 
 export interface InputProps extends BaseInputProps {
   label?: React.ReactNode;
   helperText?: React.ReactNode;
+  error?: string;
 }
 
-export const Input = (props: InputProps) => {
-  const { label, helperText, id, ...resProps } = props;
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  (props, ref) => {
+  const { label, error, helperText, id, ...resProps } = props;
+
+  const hasHelperText = !!helperText || !!error;
 
   return (
-    <div className="grid w-full items-center text-gray-400 gap-1.5">
-      <Label htmlFor={id}>{label}</Label>
-      <BaseInput id={id} {...resProps} />
-      <span>{helperText}</span>
+    <div className="w-full">
+      <Label htmlFor={id} className="mb-1 px-1" >{label}</Label>
+      <BaseInput ref={ref} id={id} {...resProps} />
+      <span className={cn( "text-xs mt-1 px-1 hidden", hasHelperText && "block" , !!error && "text-error-400" ,  )}>{error ?? helperText}</span>
     </div>
   );
-};
+
+})

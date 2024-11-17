@@ -86,6 +86,11 @@ const config = {
           900: "var(--gray-900)",
           foreground: "hsl(var(--gray-foreground))",
         },
+        black: {
+          DEFAULT: "hsl(var(--black))",
+          300: "var(--black-300)",
+          400: "var(--black-400)",
+        },
         // success
         success: {
           DEFAULT: "hsl(var(--success))",
@@ -156,10 +161,15 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "caret-blink": {
+          "0%,70%,100%": { opacity: "1" },
+          "20%,50%": { opacity: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "caret-blink": "caret-blink 1.25s ease-out infinite",
       },
     },
   },

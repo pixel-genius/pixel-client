@@ -56,12 +56,6 @@ const ParallaxScrollEffect = ({
 
       if (value < SCROLL_TOP_RANGE + 0.1) {
         mouseX.set(scrolledPixels);
-        console.log(
-          "scrolledPixels + fakeDivHeight:",
-          { scrolledPixels },
-          { fakeDivHeight },
-        );
-
         mouseY.set(scrolledPixels + fakeDivHeight);
       }
     };
