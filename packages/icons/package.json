@@ -43,6 +43,7 @@
     "./info-square-rounded": "./src/components/info-square-rounded.tsx",
     "./info-circle": "./src/components/info-circle.tsx",
     "./cursor": "./src/components/cursor.tsx",
+    "./circle-x": "./src/components/circle-x.tsx",
     "./types": "./src/types/types.ts"
   },
   "scripts": {

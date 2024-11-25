@@ -1,13 +1,11 @@
 "use client";
 
+import Circlxicon from "@repo/icons/circle-x";
 import { Button } from "@repo/ui/components/button";
-import { MagicCard } from "@repo/ui/components/magic-card";
+import { ProductCard } from "@repo/ui/components/prodoct-card";
 import * as htmlToImage from "html-to-image";
 import { useTheme } from "next-themes";
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { ProductCard } from "@repo/ui/components/prodoct-card";
-import SideBarDashboard from "../dashboard/_compnents/sidebar";
 
 export default function Page() {
   const { theme, setTheme } = useTheme();
@@ -23,7 +21,7 @@ export default function Page() {
   };
 
   return (
-    <main className="dark:bg-black bg-white h-full  p-40">
+    <main className="container ">
       {/* <div>
       {imageUrl && (
         <motion.div
@@ -64,7 +62,7 @@ export default function Page() {
       </div> */}
       {/* Heder */}
       <div className="pb-80">
-        <h1 className="text-5xl  text-center">
+        <h1 className="sm:text-5xl text-3xl text-center">
           Find <samp className="font-bold"> thousands</samp> of meticulously
           crafted resources by{" "}
           <samp className="font-extralight text-primary-500">
@@ -76,58 +74,92 @@ export default function Page() {
       {/* Cards */}
       <div className="">
         {/* btn or div */}
-        <div className="pb-4">btn</div>
+        <div className="pb-4 flex gap-2 items-center justify-center">
+          <Button variant="secondary" size="sm">
+            {" "}
+            illustrator <Circlxicon className="ml-1" size={16} />
+          </Button>
+          <Button variant="secondary" size="sm">
+            {" "}
+            illustrator <Circlxicon className="ml-1" size={16} />
+          </Button>
+          <Button variant="secondary" size="sm">
+            {" "}
+            illustrator <Circlxicon className="ml-1" size={16} />
+          </Button>
+          <Button variant="secondary" size="sm">
+            {" "}
+            illustrator <Circlxicon className="ml-1" size={16} />
+          </Button>
+        </div>
         {/* card */}
-        <div className="flex gap-4 items-center flex-wrap">
-          <ProductCard
-            image="https://i.pinimg.com/originals/4c/f0/b4/4cf0b43f5b8402fb0aba8ff1d259de5b.png"
-            title="title"
-            price="10 $"
-            username="username"
-            see={10}
-            like={10}
-          />
+        <div className="pb-60">
+          <div className="flex flex-wrap gap-2 justify-center items-center">
             <ProductCard
-            image="https://i.pinimg.com/originals/25/55/b7/2555b75333af986162a9f229f3fb736b.png"
-            title="title"
-            price="10 $"
-            username="username"
-            see={10}
-            like={10}
-          />
-          <ProductCard
-            image="https://i.pinimg.com/originals/25/55/b7/2555b75333af986162a9f229f3fb736b.png"
-            title="title"
-            price="10 $"
-            username="username"
-            see={10}
-            like={10}
-          />
-          <ProductCard
-            image="https://i.pinimg.com/originals/25/55/b7/2555b75333af986162a9f229f3fb736b.png"
-            title="title"
-            price="10 $"
-            username="username"
-            see={10}
-            like={10}
-          />
-           <ProductCard
-            image="https://i.pinimg.com/originals/25/55/b7/2555b75333af986162a9f229f3fb736b.png"
-            title="title"
-            price="10 $"
-            username="username"
-            see={10}
-            like={10}
-          />
-           <ProductCard
-            image="https://i.pinimg.com/originals/25/55/b7/2555b75333af986162a9f229f3fb736b.png"
-            title="title"
-            price="10 $"
-            username="username"
-            see={10}
-            like={10}
-          />
-          
+              image="https://i.pinimg.com/originals/4c/f0/b4/4cf0b43f5b8402fb0aba8ff1d259de5b.png"
+              title="title"
+              price="10 $"
+              username="username"
+              see={10}
+              like={10}
+            />
+            <ProductCard
+              image="https://i.pinimg.com/originals/25/55/b7/2555b75333af986162a9f229f3fb736b.png"
+              title="title"
+              price="10 $"
+              username="username"
+              see={10}
+              like={10}
+            />
+            <ProductCard
+              image="https://i.pinimg.com/originals/25/55/b7/2555b75333af986162a9f229f3fb736b.png"
+              title="title"
+              price="10 $"
+              username="username"
+              see={10}
+              like={10}
+            />
+            <ProductCard
+              image="https://i.pinimg.com/originals/25/55/b7/2555b75333af986162a9f229f3fb736b.png"
+              title="title"
+              price="10 $"
+              username="username"
+              see={10}
+              like={10}
+            />
+            <ProductCard
+              image="https://i.pinimg.com/originals/25/55/b7/2555b75333af986162a9f229f3fb736b.png"
+              title="title"
+              price="10 $"
+              username="username"
+              see={10}
+              like={10}
+            />
+            <ProductCard
+              image="https://i.pinimg.com/originals/25/55/b7/2555b75333af986162a9f229f3fb736b.png"
+              title="title"
+              price="10 $"
+              username="username"
+              see={10}
+              like={10}
+            />
+            <ProductCard
+              image="https://i.pinimg.com/originals/25/55/b7/2555b75333af986162a9f229f3fb736b.png"
+              title="title"
+              price="10 $"
+              username="username"
+              see={10}
+              like={10}
+            />
+            <ProductCard
+              image="https://i.pinimg.com/originals/25/55/b7/2555b75333af986162a9f229f3fb736b.png"
+              title="title"
+              price="10 $"
+              username="username"
+              see={10}
+              like={10}
+            />
+          </div>
         </div>
       </div>
     </main>

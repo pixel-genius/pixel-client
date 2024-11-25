@@ -47,12 +47,12 @@ const LoginForm = () => {
   });
 
   return (
-    <form onSubmit={handleSubmitForm}>
+    <form  className="w-full" onSubmit={handleSubmitForm}>
       <div className="mb-2 flex flex-wrap gap-4">
         {/* Username and Email */}
         <Input
           label="User Name & Email"
-          className="font-normal text-xs"
+          className="font-normal text-xs w-full"
           placeholder="example@pixel.design "
           {...register("username")}
           error={errors.username?.message}
@@ -63,6 +63,7 @@ const LoginForm = () => {
           label="Password"
           type="password"
           placeholder="********"
+          className="w-full font-normal text-xs"
           helperText={
             <a
               href="/auth/forget-password"
