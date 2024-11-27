@@ -5,9 +5,7 @@
   "exports": {
     "./ali": "./src/ali.tsx",
     "./eye": "./src/components/eye.tsx",
-    ".": [
-      "./src/components/*.tsx"
-    ],
+    "./*": "./src/components/*.tsx",
     "./pxiel": "./src/components/pixel.tsx",
     "./google": "./src/components/googleicon.tsx",
     "./linkedin": "./src/components/linkedinicon.tsx",
