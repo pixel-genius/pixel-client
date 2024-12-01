@@ -1,7 +1,4 @@
-import Heart1icon from "@repo/icons/heart1";
-import Shoppingbagicon from "@repo/icons/shopping-bag";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import FecherNavbarAuthenticated from "./fecher-navbar-authenticated";
 import FecherNavbarGuest from "./fecher-navbar-guest";
 
@@ -9,7 +6,7 @@ export interface AuthStatusBarProps {
   islogin: boolean;
 }
 
-const AuthStatusBar = (props: AuthStatusBarProps) => {
+const Fechernabar = (props: AuthStatusBarProps) => {
   const { islogin } = props;
   return (
     <motion.div
@@ -25,4 +22,4 @@ const AuthStatusBar = (props: AuthStatusBarProps) => {
   );
 };
 
-export default AuthStatusBar;
+export default Fechernabar;

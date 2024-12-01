@@ -1,15 +1,9 @@
 "use client";
-import PixelIcon from "@repo/icons/pxiel";
-import Link from "next/link";
-import Serchinicon from "../../../../../../packages/icons/src/components/serach";
-import Shoppingbagicon from "@repo/icons/shopping-bag";
+import { AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-import Heart1icon from "@repo/icons/heart1";
-
-import { motion, AnimatePresence } from "framer-motion";
-import { BaseInput } from "@repo/ui/components/base-input";
-import Xicon from "@repo/icons/x";
+import Serchinicon from "../../../../../../packages/icons/src/components/serach";
 import AnimatedNavBar from "./animated-navbar";
+import Fechernabar from "./fecher-navbar";
 import SearchBar, { RefSearchHandle } from "./search-bar";
 
 const Navbar = ({ islogin }: { islogin: boolean }) => {
@@ -64,42 +58,7 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
         <AnimatePresence mode="wait">
           {/* login and sign up and cart */}
           {!isSearchActive && !isSearchVisible && (
-            <motion.div
-              initial={{ opacity: 0, width: 0 }}
-              animate={{ opacity: 1, width: "auto" }}
-              exit={{ opacity: 0, width: 0 }}
-              transition={{ duration: 1 }}
-              className="flex items-center "
-            >
-              {islogin && (
-                <div className="flex  flex-shrink-0 items-center gap-3">
-                  <Heart1icon size={24} color="white" />
-                  <Shoppingbagicon size={24} color="white" />
-                  <img
-                    src="https://avatar.iran.liara.run/public/26"
-                    alt="avatar"
-                    className="w-11 h-11 rounded-full"
-                  />
-                </div>
-              )}
-              {!islogin && (
-                <div className="flex items-center gap-3">
-                  <Shoppingbagicon size={24} color="white" />
-                  <Link
-                    href="/"
-                    className="text-sm font-medium text-primary-500"
-                  >
-                    Sign Up
-                  </Link>
-                  <Link
-                    href="/"
-                    className="text-sm font-medium text-primary-500"
-                  >
-                    Log in
-                  </Link>
-                </div>
-              )}
-            </motion.div>
+            <Fechernabar islogin={islogin} />
           )}
         </AnimatePresence>
       </div>
