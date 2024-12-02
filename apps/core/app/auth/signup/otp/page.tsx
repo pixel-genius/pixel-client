@@ -21,9 +21,11 @@ import { useForm } from "react-hook-form";
 import { use, useEffect } from "react";
 
 const OtpPage = () => {
-  const searchParams = useSearchParams();
+  // TODO: Fix this
+  // const searchParams = useSearchParams();
 
-  const email = searchParams.get("email");
+  // const email = searchParams.get("email");
+  const email = "test@gmail.com";
 
   const form = useForm<PostRegisterCompleteRequest>({
     resolver: zodResolver(postRegisterCompleteSchema.request),

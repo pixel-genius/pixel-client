@@ -15,8 +15,9 @@ import GoogleIcon from "../../../../../packages/icons/src/components/google";
 import LinkedinIcon from "../../../../../packages/icons/src/components/linkedin";
 import AuthCard from "../_components/auth-card";
 import { useQueryParams } from "@repo/ui/hooks/use-query-params";
+import { Suspense } from "react";
 
-const SignUpPage = () => {
+const SignUpPageComponent = () => {
   const router = useRouter();
   const form = useForm<PostRegisterRequest>({
     resolver: zodResolver(postRegisterSchema.request),
@@ -136,6 +137,14 @@ const SignUpPage = () => {
         <a className="underline cursor-pointer">Log in</a>
       </div>
     </AuthCard>
+  );
+};
+
+const SignUpPage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SignUpPageComponent />
+    </Suspense>
   );
 };
 
