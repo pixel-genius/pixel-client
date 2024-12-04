@@ -80,24 +80,17 @@ const ParallaxScrollEffect = ({
       </motion.div>
 
       {/* Main Content */}
-      <motion.div
-        className="w-full absolute top-0 left-0 right-0"
-        ref={contentRef}
-        style={{
-          transform: useMotionTemplate`translate( 0, ${mouseX}px)`,
-        }}
-      >
-        {children}
-      </motion.div>
+
+      <div>{children}</div>
 
       {/* FALKSE DIV */}
-      <motion.div
+      {/* <motion.div
         className=" w-full"
         style={{
           minHeight: fakeDivHeight,
           height: useMotionTemplate`${mouseY}px`,
         }}
-      ></motion.div>
+      ></motion.div> */}
     </div>
   );
 };

@@ -12,7 +12,7 @@ function Layout({ children }: { children: React.ReactNode }): JSX.Element {
         nav bar
       </nav>
 
-      <div className="pt-32 grow ">{children}</div>
+      <div className="grow">{children}</div>
 
       <footer className="w-full bg-[#111827] py-24">
         <div className="container ">
