@@ -39,8 +39,7 @@ const useAttachment = ({ allowedTypes, maxSize = 10 }: AttachmentProps) => {
           const tempArr: File[] = [];
           setFiles((prev) => {
             filesInput.forEach((file) => {
-              if (!prev.includes(file))
-                tempArr.push(file)
+              if (!prev.includes(file)) tempArr.push(file);
             });
             return [...prev, ...tempArr];
           });
@@ -55,6 +54,6 @@ const useAttachment = ({ allowedTypes, maxSize = 10 }: AttachmentProps) => {
     }
   };
 
-  return { files, handleChange, allowedTypesText };
+  return { files, setFiles, handleChange, allowedTypesText };
 };
 export { useAttachment };

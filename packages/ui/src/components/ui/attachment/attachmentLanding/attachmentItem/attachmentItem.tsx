@@ -1,10 +1,17 @@
 import { Trash2 } from "lucide-react";
+import { Dispatch, SetStateAction } from "react";
 import { Button } from "../../../button";
+import { useAttachment } from "../../useAttachment";
 
 interface AttachmentItemProps {
   name: string;
+  setFiles: Dispatch<SetStateAction<File[]>>;
 }
 const AttachmentItem = (props: AttachmentItemProps) => {
+  const { setFiles } = props;
+  const handleClick = () => {
+    setFiles((prev) => ({ ...prev }));
+  };
   return (
     <div
       title={props.name}

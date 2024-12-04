@@ -10,8 +10,8 @@ const AttachmentLanding = (props: AttachmentProps) => {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const { title, multiple = false, maxSize = 10, allowedTypes } = props;
 
-  const { files, allowedTypesText, handleChange } = useAttachment(props);
-  console.log(files);
+  const { files, setFiles, allowedTypesText, handleChange } =
+    useAttachment(props);
   const handleClickSelect = () => {
     inputFileRef.current?.click();
   };
@@ -40,6 +40,7 @@ const AttachmentLanding = (props: AttachmentProps) => {
                     <AttachmentItem
                       key={file.name + file.size}
                       name={file.name}
+                      setFiles={setFiles}
                     />
                   ))}
                 </div>
