@@ -1,22 +1,21 @@
+import { guestApi } from "#instance/guest-api"; 
 import { ApiResponse } from "@repo/apis/types/api.types";
 import { requestHandler } from "@repo/apis/utils/request-handler";
-
 import path from "path";
-import { postLoginSchema as schema } from "./post-login.schema";
+import { postForgetSchema as schema } from "./post-forget.schema";
 import {
-  PostLoginRequest,
-  PostLoginResponseTransformed,
-} from "./post-login.types";
-import { guestApi } from "#instance/guest-api";
+  PostForgetRequest,
+  PostForgetResponseTransformed,
+} from "./post-forget.types";
 
-export const postLoginURL = () => path.join("/accounts/login/");
+export const postForgetURL = () => path.join("/api/auth");
 
-export const postLogin = async (
-  props?: PostLoginRequest,
-): Promise<ApiResponse<PostLoginResponseTransformed>> => {
+export const postForget = async (
+  props?: PostForgetRequest,
+): Promise<ApiResponse<PostForgetResponseTransformed>> => {
   const payloadParsed = schema.request.parse(props);
 
-  const URL = postLoginURL();
+  const URL = postForgetURL();
 
   const response = await requestHandler(
     () => guestApi.post(URL, payloadParsed),
@@ -24,5 +23,6 @@ export const postLogin = async (
   );
 
   const dataParsed = schema.response.parse(response.data);
+
   return { ...response, data: dataParsed };
 };

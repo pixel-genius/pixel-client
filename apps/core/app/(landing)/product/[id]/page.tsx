@@ -54,7 +54,7 @@ const OverLay = () => {
       <div className="flex  gap-2">
         <Button
           variant="default"
-          className="bg-primary-600 text-foreground h-auto py-4 w-36"
+          className="bg-primary-600 hover:bg-primary-500 text-foreground h-auto py-4 w-36"
         >
           Buy Now <Shopingcartplusicon size={24} className="ml-2" />
         </Button>
@@ -92,7 +92,13 @@ export default function Example() {
         }
       >
         <div className="bg-background ">
-          <ProductGallery ref={targetRef} className="cursor-none" />
+          <div className="relative w-full h-[300vh]" ref={targetRef}>
+            <div className="sticky top-0 h-screen">
+              <ProductGallery  className="cursor-none" />
+            </div>
+          </div>
+
+          {/* <ProductGallery ref={targetRef} className="cursor-none" /> */}
           <div className="container">
             {/* product detail */}
             <div className="flex justify-around gap-3 pb-9 ">

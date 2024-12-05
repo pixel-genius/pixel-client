@@ -38,7 +38,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         type: "list",
         name: "service",
         message: "Select the service this API belongs to:",
-        choices: ["core"],
+        choices: ["core" , "guest"],
         default: "core",
       },
       {

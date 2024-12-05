@@ -15,6 +15,10 @@ const LoginForm = () => {
   const router = useRouter();
   const form = useForm<PostLoginRequest>({
     resolver: zodResolver(postLoginSchema.request),
+    defaultValues: {
+      password: "abcd@1234",
+      username: "admin",
+    },
   });
 
   const {
@@ -27,19 +31,14 @@ const LoginForm = () => {
     onSuccess: (res) => {
       toast.success("Logged in successfully");
       setAuthTokens(res.data);
-
-      setTimeout(() => {
-        router.push("/");
-
-        console.log("hiiiii");
-        
-      }, 1000);
-
-
-      console.log("hiiiiiiiii");
-      
+      router.push("/");
+    },
+    onError: (res) => {
+      toast.error(res.response?.data.message || "Something went wrong");
     },
   });
+
+  console.log("ispendimng", loginMutation.isPending);
 
   const handleSubmitForm = handleSubmit(() => {
     const values = form.getValues();
@@ -47,7 +46,7 @@ const LoginForm = () => {
   });
 
   return (
-    <form  className="w-full" onSubmit={handleSubmitForm}>
+    <form className="w-full" onSubmit={handleSubmitForm}>
       <div className="mb-2 flex flex-wrap gap-4">
         {/* Username and Email */}
         <Input
