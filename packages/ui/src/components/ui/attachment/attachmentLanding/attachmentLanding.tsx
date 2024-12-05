@@ -1,17 +1,18 @@
+import { motion } from "framer-motion";
 import AttachmentIcon from "@repo/icons/attachment";
-import { useRef } from "react";
 import { Button } from "../../button";
+import { AnimatePresence } from "framer-motion";
 import { Card } from "../../card";
+import { ScrollArea } from "../../scroll-area";
 import { AttachmentProps, useAttachment } from "../useAttachment";
 import { AttachmentItem } from "./attachmentItem/attachmentItem";
-import { ScrollArea } from "../../scroll-area";
 
 const AttachmentLanding = (props: AttachmentProps) => {
-  const inputFileRef = useRef<HTMLInputElement>(null);
   const { title, multiple = false, maxSize = 10, allowedTypes } = props;
 
-  const { files, setFiles, allowedTypesText, handleChange } =
+  const { inputFileRef, files, allowedTypesText, handleChange, handleRemove } =
     useAttachment(props);
+
   const handleClickSelect = () => {
     inputFileRef.current?.click();
   };
@@ -33,29 +34,39 @@ const AttachmentLanding = (props: AttachmentProps) => {
       <Card className="w-full border-dashed border-[0.76px] p-3">
         <div className="flex flex-row flex-flex-wrap items-center justify-between">
           <div className="flex flex-row gap-2 items-center">
-            {files.length ? (
-              <ScrollArea>
-                <div className="flex flex-row gap-2">
-                  {files.map((file) => (
-                    <AttachmentItem
-                      key={file.name + file.size}
-                      name={file.name}
-                      setFiles={setFiles}
-                    />
-                  ))}
-                </div>
-              </ScrollArea>
-            ) : (
-              <>
-                <AttachmentIcon />
-                <div className="flex flex-col gap-3">
-                  <p className="text-sm">Select a file or drag and drop here</p>
-                  <span className="text-xs text-white/40">
-                    {allowedTypesText} , file size no more than {maxSize}MB
-                  </span>
-                </div>
-              </>
-            )}
+            <AnimatePresence>
+              {files.length ? (
+                <ScrollArea>
+                  <div className="flex flex-row gap-2">
+                    {files.map((file) => (
+                      <motion.div
+                        exit={{ opacity: 0, scale: 1 }}
+                        initial={{ opacity: 0, scale: 0.7 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                      >
+                        <AttachmentItem
+                          key={file.name + file.size}
+                          file={file}
+                          handleRemove={handleRemove}
+                        />
+                      </motion.div>
+                    ))}
+                  </div>
+                </ScrollArea>
+              ) : (
+                <>
+                  <AttachmentIcon />
+                  <div className="flex flex-col gap-3">
+                    <p className="text-sm">
+                      Select a file or drag and drop here
+                    </p>
+                    <span className="text-xs text-white/40">
+                      {allowedTypesText} , file size no more than {maxSize}MB
+                    </span>
+                  </div>
+                </>
+              )}
+            </AnimatePresence>
           </div>
           <Button
             variant="outline"
