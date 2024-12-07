@@ -9,15 +9,7 @@ import {
 //logo
 import PixelIcon from "@repo/icons/pxiel";
 
-export function TeamSwitcher({
-  teams,
-}: {
-  teams: {
-    name: string;
-    logo: React.ElementType;
-    plan: string;
-  }[];
-}) {
+export function LogoIconSwitcher() {
   return (
     <SidebarMenu>
       <SidebarMenuItem>
