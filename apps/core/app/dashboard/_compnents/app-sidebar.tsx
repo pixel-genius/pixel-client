@@ -1,77 +1,174 @@
-// icons
-import LayoutDashboard from "../../../../../packages/icons/src/components/layout-dashboard";
-import BoxPackage from "../../../../../packages/icons/src/components/box-package";
-import ChartBarPopular from "../../../../../packages/icons/src/components/chart-bar-popular";
-import ReportMoney from "../../../../../packages/icons/src/components/report-money";
+"use client";
+
+import * as React from "react";
+import {
+  AudioWaveform,
+  BookOpen,
+  Bot,
+  Command,
+  Frame,
+  GalleryVerticalEnd,
+  Map,
+  PieChart,
+  Settings2,
+  SquareTerminal,
+} from "lucide-react";
 
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
+  SidebarHeader,
+  SidebarRail,
+  useSidebar,
 } from "@repo/ui/components/sidebar";
-import PixelIcon from "@repo/icons/pxiel";
+import { TeamSwitcher } from "./team-switcher";
+import { NavMain } from "./nav-main";
+import { NavProjects } from "./nav-projects";
 import Image from "next/image";
+import PixelIcon from "@repo/icons/pxiel";
 
-// Menu items.
-const items = [
-  {
-    icon: LayoutDashboard,
-    title: "Dashboard",
-    url: "/dashboard",
+// This is sample data.
+const data = {
+  user: {
+    name: "shadcn",
+    email: "m@example.com",
+    avatar: "/avatars/shadcn.jpg",
   },
-  {
-    icon: BoxPackage,
-    title: "Products",
-    url: "/products",
-  },
-  {
-    icon: ChartBarPopular,
-    title: "Sales",
-    url: "/sales",
-  },
-  {
-    icon: ReportMoney,
-    title: "Payouts",
-    url: "/payouts",
-  },
-];
+  teams: [
+    {
+      name: "Acme Inc",
+      logo: GalleryVerticalEnd,
+      plan: "Enterprise",
+    },
+    {
+      name: "Acme Corp.",
+      logo: AudioWaveform,
+      plan: "Startup",
+    },
+    {
+      name: "Evil Corp.",
+      logo: Command,
+      plan: "Free",
+    },
+  ],
+  navMain: [
+    {
+      title: "Playground",
+      url: "#",
+      icon: SquareTerminal,
+      isActive: true,
+      items: [
+        {
+          title: "History",
+          url: "#",
+        },
+        {
+          title: "Starred",
+          url: "#",
+        },
+        {
+          title: "Settings",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Models",
+      url: "#",
+      icon: Bot,
+      items: [
+        {
+          title: "Genesis",
+          url: "#",
+        },
+        {
+          title: "Explorer",
+          url: "#",
+        },
+        {
+          title: "Quantum",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Documentation",
+      url: "#",
+      icon: BookOpen,
+      items: [
+        {
+          title: "Introduction",
+          url: "#",
+        },
+        {
+          title: "Get Started",
+          url: "#",
+        },
+        {
+          title: "Tutorials",
+          url: "#",
+        },
+        {
+          title: "Changelog",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Settings",
+      url: "#",
+      icon: Settings2,
+      items: [
+        {
+          title: "General",
+          url: "#",
+        },
+        {
+          title: "Team",
+          url: "#",
+        },
+        {
+          title: "Billing",
+          url: "#",
+        },
+        {
+          title: "Limits",
+          url: "#",
+        },
+      ],
+    },
+  ],
+  projects: [
+    {
+      name: "Design Engineering",
+      url: "#",
+      icon: Frame,
+    },
+    {
+      name: "Sales & Marketing",
+      url: "#",
+      icon: PieChart,
+    },
+    {
+      name: "Travel",
+      url: "#",
+      icon: Map,
+    },
+  ],
+};
 
-export function AppSidebar() {
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar>
-      <SidebarContent className="px-4 py-6">
-        <SidebarGroup>
-          <SidebarGroupLabel>
-            <div className="flex items-center space-x-2 mb-8">
-              <PixelIcon size={46} color="currentColor" />
-              <h1 className="text-base font-bold sm:text-lg md:text-lg lg:text-xl">
-                PixelGenius
-              </h1>
-            </div>
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+    <Sidebar className="pt-2" collapsible="icon" {...props}>
+      <SidebarHeader>
+        <TeamSwitcher teams={data.teams} />
+      </SidebarHeader>
+      <SidebarContent>
+        <NavMain items={data.navMain} />
+        <NavProjects projects={data.projects} />
       </SidebarContent>
-      <SidebarFooter>
+      <SidebarFooter className="px-0">
         <Image
           src="images/clip-path-group.svg"
           width={453}
@@ -79,6 +176,7 @@ export function AppSidebar() {
           alt="Picture of space"
         />
       </SidebarFooter>
+      <SidebarRail />
     </Sidebar>
   );
 }
