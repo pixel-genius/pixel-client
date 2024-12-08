@@ -53,7 +53,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   return (
     <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader className="py-5">
+      <SidebarHeader className="pt-5 pb-6">
         <LogoIconSwitcher />
       </SidebarHeader>
       <SidebarContent>
