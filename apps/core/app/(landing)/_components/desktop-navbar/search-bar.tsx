@@ -12,7 +12,7 @@ export interface RefSearchHandle {
   focus: () => void;
 }
 
-const SearchBar = forwardRef<RefSearchHandle, SearchBarProps>((props, ref) => {
+const Searchbar = forwardRef<RefSearchHandle, SearchBarProps>((props, ref) => {
   const { onClose } = props;
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -47,6 +47,6 @@ const SearchBar = forwardRef<RefSearchHandle, SearchBarProps>((props, ref) => {
   );
 });
 
-SearchBar.displayName = "SearchBar";
+Searchbar.displayName = "SearchBar";
 
-export default SearchBar;
+export default Searchbar;

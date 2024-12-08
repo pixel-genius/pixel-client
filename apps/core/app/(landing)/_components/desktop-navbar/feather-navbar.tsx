@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import FecherNavbarAuthenticated from "./fecher-navbar-authenticated";
-import FecherNavbarGuest from "./fecher-navbar-guest";
+import FecherNavbarAuthenticated from "./feather-navbar-authenticated";
+import FecherNavbarGuest from "./feather-navbar-guest";
 
 export interface AuthStatusBarProps {
   islogin: boolean;

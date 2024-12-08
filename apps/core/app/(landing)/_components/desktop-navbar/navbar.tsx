@@ -3,8 +3,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
 import Serchinicon from "../../../../../../packages/icons/src/components/serach";
 import AnimatedNavBar from "./animated-navbar";
-import Fechernabar from "./fecher-navbar";
-import SearchBar, { RefSearchHandle } from "./search-bar";
+import Fechernabar from "./feather-navbar";
+import Searchbar, { RefSearchHandle } from "./search-bar";
 import PixelIcon from "@repo/icons/pxiel";
 
 const Navbar = ({ islogin }: { islogin: boolean }) => {
@@ -65,7 +65,7 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
             onExitComplete={() => setIsSearchVisible(false)}
           >
             {isSearchActive && isSearchVisible && (
-              <SearchBar ref={refSerchHandle} onClose={handleCloseSearch} />
+              <Searchbar ref={refSerchHandle} onClose={handleCloseSearch} />
             )}
           </AnimatePresence>
         </div>
