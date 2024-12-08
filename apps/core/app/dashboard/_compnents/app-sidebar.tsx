@@ -63,15 +63,15 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         {open ? (
           <Image
             src="images/clip-path-group.svg"
-            width={453}
-            height={100}
+            width={355}
+            height={117}
             alt="Picture of space"
           />
         ) : (
           <Image
             src="images/clip-path-group-sidebar.svg"
-            width={100}
-            height={10}
+            width={49}
+            height={90}
             alt="Picture of space"
           />
         )}
