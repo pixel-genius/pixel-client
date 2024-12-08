@@ -11,7 +11,7 @@ export function NavMain({
   items: {
     title: string;
     url: string;
-    icon?: React.ElementType;
+    icon: React.ElementType;
   }[];
 }) {
   return (
@@ -20,8 +20,8 @@ export function NavMain({
         {items.map((item) => (
           <SidebarMenuItem key={item.title}>
             <SidebarMenuButton asChild>
-              <a href={item.url}>
-                {item.icon && <item.icon />}
+              <a className="py-6" href={item.url}>
+                <item.icon />
                 <span>{item.title}</span>
               </a>
             </SidebarMenuButton>

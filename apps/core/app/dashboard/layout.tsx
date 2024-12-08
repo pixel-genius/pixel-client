@@ -1,7 +1,7 @@
 import React from "react";
-import SideBarDashboard from "./_compnents/sidebar";
 import { SidebarProvider, SidebarTrigger } from "@repo/ui/components/sidebar";
 import { AppSidebar } from "./_compnents/app-sidebar";
+import NavbarDashboard from "./_compnents/navbar-dashboard";
 
 export default function DashboardLayout({
   children,
@@ -9,14 +9,11 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }): JSX.Element {
   return (
-    // <div className="flex h-full">
-    //   <SideBarDashboard />
-    //   <div className="flex-1">{children}</div>
-    // </div>
-    <SidebarProvider>
+    <SidebarProvider className="flex h-full">
       <AppSidebar />
-      <main>
-        <SidebarTrigger />
+      <main className="flex-1">
+        {/* <SidebarTrigger className="mx-2"/> */}
+        <NavbarDashboard />
         {children}
       </main>
     </SidebarProvider>

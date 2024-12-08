@@ -3,8 +3,8 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { VariantProps, cva } from "class-variance-authority";
-import { PanelLeft } from "lucide-react";
 
+import TextIcon from "../../../../icons/src/components/text";
 import { Skeleton } from "./skeleton";
 import {
   Tooltip,
@@ -286,7 +286,7 @@ const SidebarTrigger = React.forwardRef<
       }}
       {...props}
     >
-      <PanelLeft />
+      <TextIcon />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   );

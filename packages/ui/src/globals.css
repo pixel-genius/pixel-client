@@ -49,11 +49,11 @@
     --gray-500: #6b7280;
     --gray-600: #4b5563;
     --gray-700: #374151;
-    --gray-800: #1f2937;
+    --gray-800: #202028;
     --gray-900: #111827;
-
-    /* Success */
-    --success-50: #f0fdf4;
+    --gray-950: #282828
+    
+    /* Success */ --success-50: #f0fdf4;
     --success-100: #f0fdf5;
     --success-200: #bbf7d1;
     --success-300: #86efad;
@@ -136,7 +136,7 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
+    --sidebar-background: 240 20% 14%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
