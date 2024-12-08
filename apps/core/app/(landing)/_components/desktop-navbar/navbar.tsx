@@ -1,10 +1,11 @@
 "use client";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
 import Serchinicon from "../../../../../../packages/icons/src/components/serach";
 import AnimatedNavBar from "./animated-navbar";
 import Fechernabar from "./fecher-navbar";
 import SearchBar, { RefSearchHandle } from "./search-bar";
+import PixelIcon from "@repo/icons/pxiel";
 
 const Navbar = ({ islogin }: { islogin: boolean }) => {
   // isSeaching state
@@ -25,10 +26,10 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
     setIsSearchActive(false);
   };
 
-  console.log("isSearchActive", isSearchActive);
+  const isMobile = false;
 
   return (
-    <nav className="bg-gray-900 overflow-hidden px-5 py-3 h-14 rounded-xl fixed top-12 -left-1/2 -right-1/2 z-[500]   w-[962px] mx-auto">
+    <nav className="bg-gray-900 overflow-hidden px-5 py-3 h-14 rounded-xl fixed top-12 -left-1/2 -right-1/2 z-40   w-[95%] sm:w-[90%] lg:w-[962px]  mx-auto">
       <div className="flex  items-center  h-full  justify-between ">
         <div className="flex items-center w-full">
           <div className="flex  items-center">
@@ -36,7 +37,21 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
               mode="wait"
               onExitComplete={() => setIsSearchVisible(true)}
             >
-              {!isSearchActive && !isSearchVisible && <AnimatedNavBar />}
+              {!isSearchActive && !isSearchVisible && (
+                <motion.div
+                  className="flex items-center w-full overflow-hidden whitespace-nowrap"
+                  key="default"
+                  initial={{ opacity: 0, width: 0 }}
+                  animate={{ opacity: 1, width: "100%" }}
+                  exit={{ opacity: 0, width: 0 }}
+                  transition={{ duration: 1 }}
+                >
+                  <div className="pr-3">
+                    <PixelIcon size={43} />
+                  </div>
+                  {!isMobile && <AnimatedNavBar />}
+                </motion.div>
+              )}
             </AnimatePresence>
 
             {/* Search Icon */}
@@ -58,7 +73,17 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
         <AnimatePresence mode="wait">
           {/* login and sign up and cart */}
           {!isSearchActive && !isSearchVisible && (
-            <Fechernabar islogin={islogin} />
+            <motion.div
+              initial={{ opacity: 0, width: 0 }}
+              animate={{ opacity: 1, width: "auto" }}
+              exit={{ opacity: 0, width: 0 }}
+              transition={{ duration: 1 }}
+              className="flex items-center "
+            >
+              <Fechernabar islogin={islogin} />
+              {/*  mobile menu  */}
+              {isMobile && <>component mobile menu</>}
+            </motion.div>
           )}
         </AnimatePresence>
       </div>
