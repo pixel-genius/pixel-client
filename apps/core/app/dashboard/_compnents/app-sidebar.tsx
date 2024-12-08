@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 
 //components ui
@@ -7,6 +9,7 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
+  useSidebar,
 } from "@repo/ui/components/sidebar";
 import Image from "next/image";
 
@@ -46,21 +49,32 @@ const data = {
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { open } = useSidebar();
+
   return (
-    <Sidebar className="pt-2" collapsible="icon" {...props}>
-      <SidebarHeader>
+    <Sidebar collapsible="icon" {...props}>
+      <SidebarHeader className="pt-5">
         <LogoIconSwitcher />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
       </SidebarContent>
-      <SidebarFooter className="px-0">
-        <Image
-          src="images/clip-path-group.svg"
-          width={453}
-          height={300}
-          alt="Picture of space"
-        />
+      <SidebarFooter className="p-0">
+        {open ? (
+          <Image
+            src="images/clip-path-group.svg"
+            width={453}
+            height={100}
+            alt="Picture of space"
+          />
+        ) : (
+          <Image
+            src="images/clip-path-group-sidebar.svg"
+            width={100}
+            height={10}
+            alt="Picture of space"
+          />
+        )}
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
