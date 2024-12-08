@@ -49,7 +49,7 @@ const data = {
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { open } = useSidebar();
+  const { open, isMobile } = useSidebar();
 
   return (
     <Sidebar collapsible="icon" {...props}>
@@ -59,11 +59,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <NavMain items={data.navMain} />
       </SidebarContent>
-      <SidebarFooter className="p-0">
-        {open ? (
+      <SidebarFooter className="p-0 transition-all duration-100">
+        {isMobile ? (
           <Image
             src="images/clip-path-group.svg"
-            width={355}
+            width={290}
+            height={117}
+            alt="Picture of space"
+          />
+        ) : open ? (
+          <Image
+            src="images/clip-path-group.svg"
+            width={280}
             height={117}
             alt="Picture of space"
           />
