@@ -50,6 +50,7 @@
     "./Settingsicon": "./src/components/settings.tsx",
     "./Doorexiticon": "./src/components/door-exit.tsx",
     "./x": "./src/components/x.tsx",
+    "./menu-2": "./src/components/menu-2.tsx",
     "./types": "./src/types/types.ts"
   },
   "scripts": {

@@ -6,6 +6,7 @@ import AnimatedNavBar from "./animated-navbar";
 import Fechernabar from "./feather-navbar";
 import Searchbar, { RefSearchHandle } from "./search-bar";
 import PixelIcon from "@repo/icons/pxiel";
+import Menu2icon from "@repo/icons/menu-2";
 
 const Navbar = ({ islogin }: { islogin: boolean }) => {
   // isSeaching state
@@ -26,7 +27,7 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
     setIsSearchActive(false);
   };
 
-  const isMobile = false;
+  const isMobile = true;
 
   return (
     <nav className="bg-gray-900 overflow-hidden px-5 py-3 h-14 rounded-xl fixed top-12 -left-1/2 -right-1/2 z-40   w-[95%] sm:w-[90%] lg:w-[962px]  mx-auto">
@@ -82,7 +83,11 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
             >
               <Fechernabar islogin={islogin} />
               {/*  mobile menu  */}
-              {isMobile && <>component mobile menu</>}
+              {isMobile && (
+                <>
+                  <Menu2icon size={25} color="white" />
+                </>
+              )}
             </motion.div>
           )}
         </AnimatePresence>
