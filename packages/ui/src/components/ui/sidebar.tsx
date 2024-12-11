@@ -4,7 +4,7 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { VariantProps, cva } from "class-variance-authority";
 
-import TextIcon from "../../../../icons/src/components/text";
+import MenuIcon from "../../../../icons/src/components/menu";
 import { Skeleton } from "./skeleton";
 import {
   Tooltip,
@@ -286,7 +286,7 @@ const SidebarTrigger = React.forwardRef<
       }}
       {...props}
     >
-      <TextIcon />
+      <MenuIcon />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   );
