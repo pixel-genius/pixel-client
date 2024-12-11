@@ -10,6 +10,7 @@ export const postRequestAuthorRequestSchemaTransformed = z
     link : z.string(),
     file : z.number(),
     information : z.string(),
+    portfolioLink : z.string(),
   })
   .transform((data) => ({
     first_name: data.firstName,
@@ -17,7 +18,8 @@ export const postRequestAuthorRequestSchemaTransformed = z
       email: data.email,
        link: data.link,
         file: data.file,
-         information: data.information
+         information: data.information,
+         portfolioLink: data.portfolioLink
         }));
 
 // Response
