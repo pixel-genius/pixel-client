@@ -25,7 +25,7 @@ export default function RootLayout({
           className="w-full h-full object-cover"
         />
       </div>
-      <div>{children}</div>
+      <div className="w-full flex justify-center">{children}</div>
     </div>
   );
 }
