@@ -1,13 +1,12 @@
 import AttachmentIcon2 from "@repo/icons/attachment2";
 import { AnimatePresence, motion } from "framer-motion";
 import { Card } from "../../card";
-import { ScrollArea } from "../../scroll-area";
 import { AttachmentProps, useAttachment } from "../useAttachment";
 import { AttachmentItem } from "./attachmentItem/attachmentItem";
 
 const AttachmentAdmin = (props: AttachmentProps) => {
-  const { title, multiple = false, maxSize = 10, allowedTypes } = props;
-  const { inputFileRef, handleChange, handleRemove, files } =
+  const { multiple = false, canDeleteFile, allowedTypes } = props;
+  const { inputFileRef, handleChange, allowedTypesText, handleRemove, files } =
     useAttachment(props);
 
   return (
@@ -38,7 +37,7 @@ const AttachmentAdmin = (props: AttachmentProps) => {
               browse
             </span>
             <p className="w-full text-xs text-white/40 text-center">
-              1208x840px size required in PNG or JPG format only.
+              1208x840px size required in {allowedTypesText} format only.
             </p>
           </div>
         </div>
@@ -51,7 +50,7 @@ const AttachmentAdmin = (props: AttachmentProps) => {
             animate={{ opacity: 1, scale: 1 }}
           >
             <Card className="bg-[#26262666] p-4 border-0 flex gap-4">
-              <ScrollArea>
+              <div className="flex flex-row overflow-auto w-full gap-4">
                 {files.map((file) => (
                   <motion.div
                     exit={{ opacity: 0, scale: 1 }}
@@ -59,13 +58,14 @@ const AttachmentAdmin = (props: AttachmentProps) => {
                     animate={{ opacity: 1, scale: 1 }}
                   >
                     <AttachmentItem
+                      canDeleteFile={canDeleteFile || false}
                       key={file.name + file.size}
                       file={file}
                       handleRemove={handleRemove}
                     />
                   </motion.div>
                 ))}
-              </ScrollArea>
+              </div>
             </Card>
           </motion.div>
         ) : null}

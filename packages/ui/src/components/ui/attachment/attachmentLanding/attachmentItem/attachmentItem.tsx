@@ -1,16 +1,16 @@
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { Trash2, Loader } from "lucide-react";
+import { Loader, Trash2 } from "lucide-react";
+import Image from "next/image";
 import { Button } from "../../../button";
-import { FileState } from "../../useAttachment";
+import { AttachmentItemProps } from "../../useAttachment";
 
-interface AttachmentItemProps {
-  file: FileState;
-  handleRemove: (name: string) => void;
-}
-const AttachmentItem = ({ file, handleRemove }: AttachmentItemProps) => {
+const AttachmentItem = ({
+  file,
+  canDeleteFile,
+  handleRemove,
+}: AttachmentItemProps) => {
   const handleClick = () => {
-    handleRemove(file.name);
+    handleRemove(file.id || file.name);
   };
   return (
     <div
@@ -38,13 +38,14 @@ const AttachmentItem = ({ file, handleRemove }: AttachmentItemProps) => {
       ) : (
         <strong className="text-[#737373]">{file.type}</strong>
       )}
-      <Button
-        onClick={handleClick}
-        disabled={file.loading}
-        className="p-0 flex justify-center items-center absolute top-0 bg-[#DC2626] right-0 w-[20px] h-[20px] rounded-sm hover:bg-[#DC2626]"
-      >
-        <Trash2 color="#fff" size={14} />
-      </Button>
+      {file.loading || (!canDeleteFile && file?.previousUploaded) ? null : (
+        <Button
+          onClick={handleClick}
+          className="p-0 flex justify-center items-center absolute top-0 bg-[#DC2626] right-0 w-[20px] h-[20px] rounded-sm hover:bg-[#DC2626]"
+        >
+          <Trash2 color="#fff" size={14} />
+        </Button>
+      )}
     </div>
   );
 };

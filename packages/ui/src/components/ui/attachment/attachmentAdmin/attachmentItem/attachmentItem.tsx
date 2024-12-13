@@ -2,20 +2,26 @@ import { motion } from "framer-motion";
 import { Loader, Trash2 } from "lucide-react";
 import Image from "next/image";
 import { Button } from "../../../button";
-import { FileState } from "../../useAttachment";
+import { AttachmentItemProps } from "../../useAttachment";
 
-interface AttachmentItemProps {
-  file: FileState;
-  handleRemove: (name: string) => void;
-}
-const AttachmentItem = ({ file, handleRemove }: AttachmentItemProps) => {
+const AttachmentItem = ({
+  file,
+  canDeleteFile,
+  handleRemove,
+}: AttachmentItemProps) => {
   const handleClick = () => {
-    handleRemove(file.name);
+    handleRemove(file.id || file.name);
   };
+  File;
   return (
-    <div className="max-w-[155px] flex flex-wrap justify-center">
-      <div className="w-[107px] h-[81px] bg-white relative flex justify-center items-center">
-        <div className="z-10 flex justify-center items-center absolute top-0 left-0 w-full h-full bg-[#000000C9]">
+    <div
+      title={file.name}
+      className="max-w-[155px] flex flex-wrap justify-center"
+    >
+      <div className="w-[107px] h-[81px] bg-white relative rounded-lg flex justify-center items-center">
+        <div
+          className={`z-10 flex justify-center items-center absolute top-0 left-0 w-full h-full ${file.loading ? "bg-[#000000C9]" : "bg-[#26262666]"}`}
+        >
           {file.loading ? (
             <motion.span
               animate={{
@@ -30,15 +36,16 @@ const AttachmentItem = ({ file, handleRemove }: AttachmentItemProps) => {
               <Loader color="#fff" size={22} />
             </motion.span>
           ) : null}
-          {file.loading ? null : (
-            <Button
-              onClick={handleClick}
-              className={`p-0 flex justify-center items-center absolute top-[50%] translate-y-[-50%] bg-[#DC2626] left-[50%] translate-x-[-50%] w-[20px] h-[20px] rounded-sm hover:bg-[#DC2626]`}
-            >
-              <Trash2 color="#fff" size={14} />
-            </Button>
-          )}
         </div>
+        {file.loading || (!canDeleteFile && file?.previousUploaded) ? null : (
+          <Button
+            onClick={handleClick}
+            disabled={file.loading}
+            className={`p-0 flex justify-center z-10 items-center absolute top-0 bg-[#DC2626] right-0 w-[20px] h-[20px] rounded-sm hover:bg-[#DC2626] `}
+          >
+            <Trash2 color="#fff" size={14} />
+          </Button>
+        )}
         {file.fileUrl ? (
           <Image
             className="rounded-lg"
@@ -50,20 +57,6 @@ const AttachmentItem = ({ file, handleRemove }: AttachmentItemProps) => {
           <strong className="text-[#737373]">{file.type}</strong>
         )}
       </div>
-      <p
-        title={file.name}
-        className="w-full text-center flex items-center text-xs"
-      >
-        <span className="inline-block truncate w-[80%]">
-          {file.name.slice(0, file.name.lastIndexOf(".") - 1)}
-        </span>
-        <span className="inline-block w-[20%]">
-          {file.name.slice(file.name.lastIndexOf("."), file.name.length)}
-        </span>
-      </p>
-      <p className="w-full text-center text-xs text-gray-500">
-        {(file.size / 1024 / 1024).toFixed(2)}mb
-      </p>
     </div>
   );
 };

@@ -9,24 +9,47 @@ export interface AttachmentProps {
   onChange: (fileIds: number[] | []) => void;
   maxSize?: number; // in MB
   fileCategory: string;
+  canDeleteFile?: boolean;
+  value?: [];
+  disabled?: boolean;
+  error?: string;
 }
 export interface FileState {
+  id?: number;
   name: string;
   type: string;
   size: number;
   loading?: true;
   fileUrl?: string;
+  previousUploaded?: boolean;
+}
+export interface AttachmentItemProps {
+  file: FileState;
+  canDeleteFile: boolean;
+  handleRemove: (arg: string | number) => void;
 }
 
 const useAttachment = ({
   allowedTypes,
   maxSize = 10,
   fileCategory,
+  canDeleteFile,
   onChange,
 }: AttachmentProps) => {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [files, setFiles] = useState<FileState[]>([]);
-  const fileUploadMutation = UsePostFileUpload();
+  const fileUploadMutation = UsePostFileUpload({
+    onSuccess: (res) => {
+      onChange(res.data?.ids || []);
+      setFiles((prev) =>
+        prev.map((file, index: number) => {
+          delete file.loading;
+          res.data?.ids?.[index] ? (file.id = res.data?.ids?.[index]) : null;
+          return file;
+        }),
+      );
+    },
+  });
 
   const allowedTypesText = useMemo(() => {
     let tempTxt: string = "";
@@ -40,21 +63,14 @@ const useAttachment = ({
     return tempTxt;
   }, [allowedTypes]);
 
-  const handleRemove = (name: string) => {
-    setFiles((prev) => prev.filter((file) => file.name !== name));
-  };
-
-  useEffect(() => {
-    if (fileUploadMutation.data?.data?.ids?.length) {
-      onChange(fileUploadMutation.data?.data.ids);
+  const handleRemove = (arg: string | number) => {
+    if (canDeleteFile)
       setFiles((prev) =>
-        prev.map((file) => {
-          delete file.loading;
-          return file;
-        }),
+        prev.filter(
+          (file) => file[typeof arg === "string" ? "name" : "id"] !== arg,
+        ),
       );
-    }
-  }, [fileUploadMutation.isSuccess]);
+  };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     let filesInput = Array.from(e.target.files || []);
