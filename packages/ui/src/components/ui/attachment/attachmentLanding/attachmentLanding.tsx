@@ -16,8 +16,15 @@ const AttachmentLanding = (props: AttachmentProps) => {
     allowedTypes,
   } = props;
 
-  const { inputFileRef, files, allowedTypesText, handleChange, handleRemove } =
-    useAttachment(props);
+  const {
+    inputFileRef,
+    files,
+    allowedTypesText,
+    handleDragOver,
+    handleDrop,
+    handleChange,
+    handleRemove,
+  } = useAttachment(props);
 
   const handleClickSelect = () => {
     inputFileRef.current?.click();
@@ -37,7 +44,11 @@ const AttachmentLanding = (props: AttachmentProps) => {
             : ""
         }
       />
-      <Card className="w-full border-dashed border-[0.76px] p-3">
+      <Card
+        className="w-full border-dashed border-[0.76px] p-3"
+        onDragOver={handleDragOver}
+        onDrop={handleDrop}
+      >
         <div className="flex flex-row flex-flex-wrap items-center justify-between">
           <div className="flex flex-row gap-2 items-center">
             <AnimatePresence>

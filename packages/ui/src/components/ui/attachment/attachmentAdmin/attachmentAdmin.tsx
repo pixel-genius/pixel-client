@@ -6,12 +6,23 @@ import { AttachmentItem } from "./attachmentItem/attachmentItem";
 
 const AttachmentAdmin = (props: AttachmentProps) => {
   const { multiple = false, canDeleteFile, allowedTypes } = props;
-  const { inputFileRef, handleChange, allowedTypesText, handleRemove, files } =
-    useAttachment(props);
+  const {
+    inputFileRef,
+    handleChange,
+    handleDragOver,
+    handleDrop,
+    allowedTypesText,
+    handleRemove,
+    files,
+  } = useAttachment(props);
 
   return (
     <>
-      <Card className="bg-[#26262666] p-4 border-0 mb-3">
+      <Card
+        className="bg-[#26262666] p-4 border-0 mb-3"
+        onDrop={handleDrop}
+        onDragOver={handleDragOver}
+      >
         <div className="w-full border-dashed border-[0.76px] py-7 flex flex-wrap justify-center">
           <input
             type="file"
@@ -27,7 +38,7 @@ const AttachmentAdmin = (props: AttachmentProps) => {
           />
           <AttachmentIcon2 />
           <div className="flex flex-wrap justify-center w-full gap-2">
-            <h5>Drag & drop image to upload, or</h5>
+            <p className="text-sm">Drag & drop image to upload, or</p>
             <span
               onClick={() => {
                 inputFileRef.current?.click();

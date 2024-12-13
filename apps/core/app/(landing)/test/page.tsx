@@ -1,6 +1,7 @@
 "use client";
 import { AttachmentAdmin } from "@repo/ui/components/attachment/attachmentAdmin/attachmentAdmin";
 import { AttachmentLanding } from "@repo/ui/components/attachment/attachmentLanding/attachmentLanding";
+import { AttachmentThumbnail } from "@repo/ui/components/attachment/attachmentThumbnail/attachmentThumbnail";
 
 export default function Page() {
   return (
@@ -26,6 +27,22 @@ export default function Page() {
           console.log(filesId);
         }}
       />
+      <div style={{ height: "50px" }}></div>
+      <div className="flex justify-center mb-5">
+        <div className="w-[367px]">
+          <AttachmentThumbnail
+            title="Upload Your Portfolio"
+            maxSize={10}
+            price={40}
+            productName="News App UI KIT"
+            username="Ali Ebrahimi Kashef"
+            fileCategory="portfolio"
+            onChange={(filesId: number[]) => {
+              console.log(filesId);
+            }}
+          />
+        </div>
+      </div>
     </div>
   );
 }

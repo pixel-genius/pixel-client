@@ -64,68 +64,81 @@ const useAttachment = ({
   }, [allowedTypes]);
 
   const handleRemove = (arg: string | number) => {
-    if (canDeleteFile)
-      setFiles((prev) =>
-        prev.filter(
-          (file) => file[typeof arg === "string" ? "name" : "id"] !== arg,
-        ),
-      );
+    setFiles((prev) =>
+      prev.filter(
+        (file) => file[typeof arg === "string" ? "name" : "id"] !== arg,
+      ),
+    );
+  };
+  const getUploadFiles = (
+    Files: Array<File>,
+    e: ChangeEvent<HTMLInputElement> | React.DragEvent<HTMLDivElement>,
+  ) => {
+    let filesInput = Files;
+    const includesType = filesInput.every((file) =>
+      allowedTypes?.includes(
+        file.type.slice(file.type.lastIndexOf("/") + 1, file.type.length),
+      ),
+    );
+    if (includesType) {
+      const maxSizeBytes = maxSize * 1024 * 1024;
+      const validSize = filesInput.every((file) => file.size <= maxSizeBytes);
+      if (validSize) {
+        files.forEach((file) => {
+          if (filesInput.some((filesInput) => filesInput.name === file.name)) {
+            toast.warning(`Some Files already exists!`);
+            filesInput = filesInput.filter(
+              (fileInput) => fileInput.name !== file.name,
+            );
+          }
+        });
+        setFiles((prev) => {
+          filesInput.forEach((file) => {
+            if (!prev.some((prevFile) => prevFile.name === file.name)) {
+              const tempObj: FileState = {
+                name: file.name,
+                size: file.size,
+                type: file.type.slice(
+                  file.type.lastIndexOf("/") + 1,
+                  file.type.length,
+                ),
+                loading: true,
+              };
+              if (file.type.includes("image"))
+                tempObj.fileUrl = URL.createObjectURL(file);
+              prev.push(tempObj);
+            }
+          });
+          return [...prev];
+        });
+        if (filesInput.length)
+          fileUploadMutation.mutate({ fileCategory, file: filesInput });
+      } else {
+        e.preventDefault();
+        toast.warning(`File size exceeds ${maxSize}MB!`);
+      }
+    } else {
+      e.preventDefault();
+      toast.warning(`File type must be : ${allowedTypesText}`);
+    }
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    let filesInput = Array.from(e.target.files || []);
-    if (filesInput.length) {
-      const includesType = filesInput.every((file) =>
-        allowedTypes?.includes(
-          file.type.slice(file.type.lastIndexOf("/") + 1, file.type.length),
-        ),
-      );
-
-      if (includesType) {
-        const maxSizeBytes = maxSize * 1024 * 1024;
-        const validSize = filesInput.every((file) => file.size <= maxSizeBytes);
-        if (validSize) {
-          files.forEach((file) => {
-            if (
-              filesInput.some((filesInput) => filesInput.name === file.name)
-            ) {
-              toast.warning(`Some Files already exists!`);
-              filesInput = filesInput.filter(
-                (fileInput) => fileInput.name !== file.name,
-              );
-            }
-          });
-          setFiles((prev) => {
-            filesInput.forEach((file) => {
-              if (!prev.some((prevFile) => prevFile.name === file.name)) {
-                const tempObj: FileState = {
-                  name: file.name,
-                  size: file.size,
-                  type: file.type.slice(
-                    file.type.lastIndexOf("/") + 1,
-                    file.type.length,
-                  ),
-                  loading: true,
-                };
-                if (file.type.includes("image"))
-                  tempObj.fileUrl = URL.createObjectURL(file);
-                prev.push(tempObj);
-              }
-            });
-            return [...prev];
-          });
-          if (filesInput.length)
-            fileUploadMutation.mutate({ fileCategory, file: filesInput });
-        } else {
-          e.preventDefault();
-          toast.warning(`File size exceeds ${maxSize}MB!`);
-        }
-      } else {
-        e.preventDefault();
-        toast.warning(`File type must be : ${allowedTypesText}`);
-      }
-    }
+    const filesInput = Array.from(e.target.files || []);
+    getUploadFiles(filesInput, e);
     e.target.value = "";
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    const filesInput = Array.from(e.dataTransfer.files);
+    getUploadFiles(filesInput, e);
+  };
+
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    const target = e.target as HTMLDivElement;
+    target.style.cursor = "grabbing";
   };
 
   return {
@@ -134,6 +147,8 @@ const useAttachment = ({
     setFiles,
     handleChange,
     handleRemove,
+    handleDragOver,
+    handleDrop,
     allowedTypesText,
   };
 };
