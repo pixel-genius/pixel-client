@@ -6,7 +6,7 @@
 const nextConfig = {
   transpilePackages: ["@repo/ui"],
   images: {
-    domains: ["images.unsplash.com"],
+    domains: ["s3-alpha-sig.figma.com"],
   },
 };
 
