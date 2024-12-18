@@ -8,10 +8,23 @@ import { AttachmentProps, useAttachment } from "../useAttachment";
 import { AttachmentItem } from "./attachmentItem/attachmentItem";
 
 const AttachmentLanding = (props: AttachmentProps) => {
-  const { title, multiple = false, maxSize = 10, allowedTypes } = props;
+  const {
+    title,
+    multiple = false,
+    maxSize = 10,
+    canDeleteFile,
+    allowedTypes,
+  } = props;
 
-  const { inputFileRef, files, allowedTypesText, handleChange, handleRemove } =
-    useAttachment(props);
+  const {
+    inputFileRef,
+    files,
+    allowedTypesText,
+    handleDragOver,
+    handleDrop,
+    handleChange,
+    handleRemove,
+  } = useAttachment(props);
 
   const handleClickSelect = () => {
     inputFileRef.current?.click();
@@ -31,7 +44,11 @@ const AttachmentLanding = (props: AttachmentProps) => {
             : ""
         }
       />
-      <Card className="w-full border-dashed border-[0.76px] p-3">
+      <Card
+        className="w-full border-dashed border-[0.76px] p-3"
+        onDragOver={handleDragOver}
+        onDrop={handleDrop}
+      >
         <div className="flex flex-row flex-flex-wrap items-center justify-between">
           <div className="flex flex-row gap-2 items-center">
             <AnimatePresence>
@@ -45,6 +62,7 @@ const AttachmentLanding = (props: AttachmentProps) => {
                         animate={{ opacity: 1, scale: 1 }}
                       >
                         <AttachmentItem
+                          canDeleteFile={canDeleteFile || false}
                           key={file.name + file.size}
                           file={file}
                           handleRemove={handleRemove}
