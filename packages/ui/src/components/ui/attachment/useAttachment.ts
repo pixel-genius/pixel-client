@@ -1,3 +1,5 @@
+"use client";
+
 import { UsePostFileUpload } from "@repo/apis/core/accounts/file-upload/post/use-post-file-upload";
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
@@ -6,6 +8,7 @@ export interface AttachmentProps {
   title: string;
   multiple?: boolean;
   allowedTypes?: string[];
+  // eslint-disable-next-line no-unused-vars
   onChange: (fileIds: number[] | []) => void;
   maxSize?: number; // in MB
   fileCategory: string;
