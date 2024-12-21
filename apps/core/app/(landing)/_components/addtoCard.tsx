@@ -6,13 +6,27 @@ import { Input } from "@repo/ui/components/input";
 import { Button } from "@repo/ui/components/button";
 import Securityicon from "@repo/icons/security";
 import { Label } from "@repo/ui/components/label";
+import { useState } from "react";
 
 const Addtocard = () => {
+  const [cards, setCards] = useState([
+    { id: 1, title: "Traveler - Travel Agency", price: "$15" },
+    { id: 2, title: "Explorer - Adventure Company", price: "$20" },
+    // می‌توانی کارت‌های دیگری اضافه کنی
+  ]);
+
+  const handleRemove = (id: number) => {
+    setCards(cards.filter((card) => card.id !== id));
+  };
+
   return (
     <div className="flex ">
       <div className="bg-gray-600 w-[411px] p-4">
-        <Card />
+        {cards.map((card) => (
+          <Card key={card.id} id={card.id} onRemove={handleRemove} />
+        ))}
       </div>
+
       <div className="bg-green-600 p-4 w-[522px]">
         <p className="text-xl font-medium pb-5">Checkout</p>
         <div className="flex justify-center gap-3 items-center bg-red-500 p-2 rounded-lg">
