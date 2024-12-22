@@ -12,6 +12,8 @@ const Addtocard = () => {
   const [cards, setCards] = useState([
     { id: 1, title: "Traveler - Travel Agency", price: "$15" },
     { id: 2, title: "Explorer - Adventure Company", price: "$20" },
+    { id: 2, title: "Explorer - Adventure Company", price: "$20" },
+    { id: 2, title: "Explorer - Adventure Company", price: "$20" },
     // می‌توانی کارت‌های دیگری اضافه کنی
   ]);
 
@@ -22,6 +24,10 @@ const Addtocard = () => {
   return (
     <div className="flex ">
       <div className="bg-gray-600 w-[411px] p-4">
+        {cards.map((card) => (
+          <Card key={card.id} id={card.id} onRemove={handleRemove} />
+        ))}
+        
         {cards.map((card) => (
           <Card key={card.id} id={card.id} onRemove={handleRemove} />
         ))}
