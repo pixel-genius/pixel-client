@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import { ApiProvider } from "@repo/apis/providers/api-provider";
-import { Toaster } from "sonner";
+import { Toaster } from "@repo/ui/components/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,17 +20,17 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <ApiProvider>
-      <html lang="en" className="h-full">
+      <html lang="en" className="h-full" suppressHydrationWarning>
         <body className={cn(inter.className, "h-full")}>
-          <Toaster richColors />
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
-            enableSystem
+            enableSystem  
             disableTransitionOnChange
           >
             {children}
           </ThemeProvider>
+          <Toaster  richColors/>
         </body>
       </html>
     </ApiProvider>

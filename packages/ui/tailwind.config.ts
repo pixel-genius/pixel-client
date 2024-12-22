@@ -86,6 +86,11 @@ const config = {
           900: "var(--gray-900)",
           foreground: "hsl(var(--gray-foreground))",
         },
+        black: {
+          DEFAULT: "hsl(var(--black))",
+          300: "var(--black-300)",
+          400: "var(--black-400)",
+        },
         // success
         success: {
           DEFAULT: "hsl(var(--success))",

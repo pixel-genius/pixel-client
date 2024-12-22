@@ -5,7 +5,6 @@ import {
 } from "@repo/apis/types/api.types";
 import { useMutation } from "@tanstack/react-query";
 import { postLogin } from "./post-login";
-import {} from "./post-login.schema";
 import {
   PostLoginRequest,
   PostLoginResponseTransformed,
@@ -29,6 +28,6 @@ export const UsePostLogin = (props?: UsePostLoginProps) => {
     mutationFn: (data) => postLogin(data),
     ...props,
   });
-
+  
   return mutation;
 };

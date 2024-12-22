@@ -25,4 +25,6 @@ export type UseMutationProps<
   TContext = unknown,
 > = Partial<UseMutationOptions<TData, TError, TVariables, TContext>>;
 
-export type ApiError = AxiosError;
+export type ApiError = AxiosError<{
+  message: string;
+}>;

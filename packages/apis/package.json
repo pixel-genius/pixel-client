@@ -16,6 +16,7 @@
     "@repo/typescript-config": "workspace:*",
     "@types/node": "^20",
     "@types/react": "^18",
+    "@types/js-cookie": "",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "postcss-load-config": "^6.0.1",
@@ -24,9 +25,13 @@
   },
   "dependencies": {
     "@anatine/zod-mock": "^3.13.4",
-    "@tanstack/react-query": "^5.59.0",
+    "@repo/ui": "*",
+    "@tanstack/react-query": "^5.62.2",
+    "@tanstack/react-query-devtools": "^5.62.2",
+    "@types/js-cookie": "3.0.6",
     "axios": "^1.7.7",
     "axios-mock-adapter": "^2.0.0",
+    "js-cookie": "3.0.5",
     "zod": "^3.23.8"
   },
   "exports": {
@@ -41,7 +46,7 @@
       "./src/*.ts",
       "./src/*.tsx",
       "./src/*/index.ts",
-      "./src/*/index.tsx", 
+      "./src/*/index.tsx",
       "./src/instance/*.ts"
     ]
   }

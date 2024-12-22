@@ -1,5 +1,7 @@
 // import components
 "use client";
+import { PostForgetPasswordRequest } from "@repo/apis/core/forgot-password/post/post-forget-password.types";
+import { UsePostForgetPassword } from "@repo/apis/core/forgot-password/post/use-post-forget-password";
 import { Button } from "@repo/ui/components/button";
 import {
   InputOTP,
@@ -7,30 +9,85 @@ import {
   InputOTPSlot,
 } from "@repo/ui/components/input-otp";
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 // import icons
-import AuthCard from "../_components/auth-card";
-import { Countdown } from "@repo/ui/components/countdown";
 import { Input } from "@repo/ui/components/input";
-import { Label } from "@repo/ui/components/label";
+import AuthCard from "../_components/auth-card";
+import { postForgetPasswordSchema } from "@repo/apis/core/forgot-password/post/post-forget-password.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Suspense, useEffect } from "react";
 
-const setpasswordpage = () => {
+const Setpasswordpage = () => {
+  const router = useRouter();
+  // TODO: Fix this
+  // const params = useSearchParams();
+  // const username = params.get("username");
+
+  const username = "test@gmail.com";
+
+  if (!username) router.replace("/auth/forget-password");
+
+  const form = useForm<PostForgetPasswordRequest>({
+    resolver: zodResolver(postForgetPasswordSchema.request),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = form;
+
+  useEffect(() => {
+    setValue("username", username as string);
+  }, []);
+
+  const mutation = UsePostForgetPassword({
+    onSuccess: (res, context) => {
+      toast.info(res.data.message);
+      router.push(`/auth/login`);
+    },
+
+    onError: (err) => {
+      toast.error(err.response?.data.message || "Something went wrong");
+    },
+  });
+
+  const handleSubmitForm = (data: PostForgetPasswordRequest) => {
+    mutation.mutate(data);
+  };
+
+  const otpRegister = register("otp");
+
   return (
     <AuthCard>
       {/* logo */}
-      <div className=" pt-7 flex flex-col items-center gap-4">
+      <div className="pt-7 flex flex-col items-center gap-4">
         <div className="flex flex-col items-center gap-2">
           <p className="text-center text-2xl font-bold">Set your Password</p>
           <p className="text-center">
             We've sent the code to{" "}
-            <span className="underline">ali.kashef20@yahoo.com</span>
+            <span className="underline mr-1">{username}</span>
             check your email
           </p>
         </div>
       </div>
       {/* otp input */}
-      <div>
-        <InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS}>
+      <form
+        className="w-full flex flex-col items-center gap-4"
+        onSubmit={handleSubmit(handleSubmitForm)}
+      >
+        <InputOTP
+          maxLength={6}
+          pattern={REGEXP_ONLY_DIGITS_AND_CHARS}
+          name={otpRegister.name}
+          onChange={(value: string) => {
+            setValue("otp", value);
+          }}
+        >
           <InputOTPGroup>
             <InputOTPSlot index={0} />
             <InputOTPSlot index={1} />
@@ -40,38 +97,46 @@ const setpasswordpage = () => {
             <InputOTPSlot index={5} />
           </InputOTPGroup>
         </InputOTP>
-      </div>
+        <span className="text-xs text-error-400">{errors.otp?.message}</span>
 
-      {/* input */}
-      <div className=" w-full">
-        <Label className="text-sm font-medium text-gray-400">
-          New Password
-        </Label>
+        {/* input */}
         <Input
+          label="Password"
+          type="password"
           className="font-normal text-xs text-gray-500"
           placeholder="********"
+          {...register("newPassword")}
+          error={errors.newPassword?.message}
         />
-      </div>
-      <div className=" w-full">
-        <Label className="text-sm font-medium text-gray-400">
-          Confirm Password{" "}
-        </Label>
         <Input
+          label="Confirm Password"
+          type="password"
           className="font-normal text-xs text-gray-500"
           placeholder="********"
+          {...register("confirmPassword")}
+          error={errors.confirmPassword?.message}
         />
-      </div>
-      {/* button reset */}
-      <div className="pb-7 w-full">
-        <Button
-          className="w-full text-lg font-bold  bg-primary-600 hover:bg-primary-500"
-          variant="secondary"
-        >
-          Reset{" "}
-        </Button>
-      </div>
+        {/* button reset */}
+        <div className="pb-7 w-full">
+          <Button
+            isLoading={mutation.isPending}
+            className="w-full text-lg font-bold  bg-primary-600 hover:bg-primary-500"
+            variant="secondary"
+          >
+            Reset
+          </Button>
+        </div>
+      </form>
     </AuthCard>
   );
 };
 
-export default setpasswordpage;
+const Page = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Setpasswordpage />
+    </Suspense>
+  );
+};
+
+export default Page;

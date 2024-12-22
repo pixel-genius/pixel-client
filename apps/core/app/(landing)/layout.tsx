@@ -4,19 +4,18 @@ import Twitter from "@repo/icons/twitter";
 import YouTubeIcon from "@repo/icons/youtube";
 import Linkedinicon from "../../../../packages/icons/src/components/linkedin";
 import Link from "next/link";
+import Navbar from "./_components/desktop-navbar/navbar";
 
 function Layout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <div className="flex flex-col h-full">
-      <nav className="bg-gray-900 px-5 py-3 h-11 rounded-xl fixed top-12 -left-1/2 -right-1/2 z-[500]  w-[962px] mx-auto flex justify-between items-center">
-        nav bar
-      </nav>
+      <Navbar islogin={false} />
 
-      <div className="pt-32 grow ">{children}</div>
+      <div className="grow">{children}</div>
 
-      <footer className="w-full  bg-[#111827] py-24">
-        <div className="container">
-          <div className="flex gap-10 justify-between pb-28">
+      <footer className="w-full bg-[#111827] py-24">
+        <div className="container ">
+          <div className="flex flex-col sm:flex sm:flex-row gap-10 justify-between pb-28">
             {/* logo section */}
             <div className="">
               <div className="pb-8">
@@ -39,57 +38,57 @@ function Layout({ children }: { children: React.ReactNode }): JSX.Element {
                 <div>
                   <ul className="flex flex-col gap-4 font-normal">
                     <Link href="/landing/product/id/page" prefetch={false}>
-                      <li className="text-sm">UI Kits</li>
+                      <li className="text-xs sm:text-sm">UI Kits</li>
                     </Link>
                     <Link href="/landing/product/id/page" prefetch={false}>
-                      <li className="text-sm">Featured products</li>
+                      <li className="text-xs sm:text-sm">Featured products</li>
                     </Link>
                     <Link href="/landing/product/id/page" prefetch={false}>
-                      <li className="text-sm">Coded Templates</li>
+                      <li className="text-xs sm:text-sm">Coded Templates</li>
                     </Link>
                     <Link href="/landing/product/id/page" prefetch={false}>
-                      <li className="text-sm">Wireframe kits</li>
+                      <li className="text-xs sm:text-sm">Wireframe kits</li>
                     </Link>
                     <Link href="/landing/product/id/page" prefetch={false}>
-                      <li className="text-sm">Illustrations</li>
-                    </Link>
-                  </ul>
-                </div>
-                <div>
-                  <ul className="flex flex-col gap-4 font-normal">
-                    <Link href="/landing/product/id/page" prefetch={false}>
-                      <li className="text-sm">UI Kits</li>
-                    </Link>
-                    <Link href="/landing/product/id/page" prefetch={false}>
-                      <li className="text-sm">Featured products</li>
-                    </Link>
-                    <Link href="/landing/product/id/page" prefetch={false}>
-                      <li className="text-sm">Coded Templates</li>
-                    </Link>
-                    <Link href="/landing/product/id/page" prefetch={false}>
-                      <li className="text-sm">Wireframe kits</li>
-                    </Link>
-                    <Link href="/landing/product/id/page" prefetch={false}>
-                      <li className="text-sm">Illustrations</li>
+                      <li className="text-xs sm:text-sm">Illustrations</li>
                     </Link>
                   </ul>
                 </div>
                 <div>
                   <ul className="flex flex-col gap-4 font-normal">
                     <Link href="/landing/product/id/page" prefetch={false}>
-                      <li className="text-sm">UI Kits</li>
+                      <li className="text-xs sm:text-sm">UI Kits</li>
                     </Link>
                     <Link href="/landing/product/id/page" prefetch={false}>
-                      <li className="text-sm">Featured products</li>
+                      <li className="text-xs sm:text-sm">Featured products</li>
                     </Link>
                     <Link href="/landing/product/id/page" prefetch={false}>
-                      <li className="text-sm">Coded Templates</li>
+                      <li className="text-xs sm:text-sm">Coded Templates</li>
                     </Link>
                     <Link href="/landing/product/id/page" prefetch={false}>
-                      <li className="text-sm">Wireframe kits</li>
+                      <li className="text-xs sm:text-sm">Wireframe kits</li>
                     </Link>
                     <Link href="/landing/product/id/page" prefetch={false}>
-                      <li className="text-sm">Illustrations</li>
+                      <li className="text-xs sm:text-sm">Illustrations</li>
+                    </Link>
+                  </ul>
+                </div>
+                <div>
+                  <ul className="flex flex-col gap-4 font-normal">
+                    <Link href="/landing/product/id/page" prefetch={false}>
+                      <li className="text-xs sm:text-sm">UI Kits</li>
+                    </Link>
+                    <Link href="/landing/product/id/page" prefetch={false}>
+                      <li className="text-xs sm:text-sm">Featured products</li>
+                    </Link>
+                    <Link href="/landing/product/id/page" prefetch={false}>
+                      <li className="text-xs sm:text-sm">Coded Templates</li>
+                    </Link>
+                    <Link href="/landing/product/id/page" prefetch={false}>
+                      <li className="text-xs sm:text-sm">Wireframe kits</li>
+                    </Link>
+                    <Link href="/landing/product/id/page" prefetch={false}>
+                      <li className="text-xs sm:text-sm">Illustrations</li>
                     </Link>
                   </ul>
                 </div>
@@ -102,19 +101,19 @@ function Layout({ children }: { children: React.ReactNode }): JSX.Element {
               <div>
                 <ul className="flex flex-col gap-4 font-normal">
                   <Link href="/landing/product/id/page" prefetch={false}>
-                    <li className="text-sm">UI Kits</li>
+                    <li className="text-xs sm:text-sm">UI Kits</li>
                   </Link>
                   <Link href="/landing/product/id/page" prefetch={false}>
-                    <li className="text-sm">Featured products</li>
+                    <li className="text-xs sm:text-sm">Featured products</li>
                   </Link>
                   <Link href="/landing/product/id/page" prefetch={false}>
-                    <li className="text-sm">Coded Templates</li>
+                    <li className="text-xs sm:text-sm">Coded Templates</li>
                   </Link>
                   <Link href="/landing/product/id/page" prefetch={false}>
-                    <li className="text-sm">Wireframe kits</li>
+                    <li className="text-xs sm:text-sm">Wireframe kits</li>
                   </Link>
                   <Link href="/landing/product/id/page" prefetch={false}>
-                    <li className="text-sm">Illustrations</li>
+                    <li className="text-xs sm:text-sm">Illustrations</li>
                   </Link>
                 </ul>
               </div>
@@ -126,10 +125,10 @@ function Layout({ children }: { children: React.ReactNode }): JSX.Element {
               <div>
                 <ul className="flex flex-col gap-4 font-normal">
                   <Link href="/landing/product/id/page" prefetch={false}>
-                    <li className="text-sm">UI Kits</li>
+                    <li className="text-xs sm:text-sm">UI Kits</li>
                   </Link>
                   <Link href="/landing/product/id/page" prefetch={false}>
-                    <li className="text-sm">Featured products</li>
+                    <li className="text-xs sm:text-sm">Featured products</li>
                   </Link>
                 </ul>
               </div>
