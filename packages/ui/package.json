@@ -5,7 +5,8 @@
   "scripts": {
     "ui:add": "pnpm dlx shadcn-ui@latest add",
     "magic:add": "pnpm dlx magicui-cli add",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "type-check": "bun tsc --noEmit"
   },
   "peerDependencies": {
     "react": "^18"

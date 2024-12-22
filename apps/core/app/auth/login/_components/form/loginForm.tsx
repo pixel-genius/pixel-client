@@ -7,6 +7,7 @@ import { UsePostLogin } from "@repo/apis/core/accounts/login/post/use-post-login
 import { setAuthTokens } from "@repo/apis/utils/cookies";
 import { Button } from "@repo/ui/components/button";
 import { Input } from "@repo/ui/components/input";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -64,12 +65,12 @@ const LoginForm = () => {
           placeholder="********"
           className="w-full font-normal text-xs"
           helperText={
-            <a
+            <Link
               href="/auth/forget-password"
               className="block mb-3 text-sm font-light text-gray-500 hover:text-gray-700 cursor-pointer"
             >
               Forgot password?
-            </a>
+            </Link>
           }
           {...register("password")}
           error={errors.password?.message}

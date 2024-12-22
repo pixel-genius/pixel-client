@@ -47,6 +47,13 @@
     "./tonconnect": "./src/components/tonconnect.tsx",
     "./paypal": "./src/components/paypal.tsx",
     "./security": "./src/components/security.tsx",
+    "./shopping-bag": "./src/components/shopping-bag.tsx",
+    "./Usercircleicon": "./src/components/user-circle.tsx",
+    "./Useractionpixelicon": "./src/components/user-action-pixel.tsx",
+    "./Settingsicon": "./src/components/settings.tsx",
+    "./Doorexiticon": "./src/components/door-exit.tsx",
+    "./x": "./src/components/x.tsx",
+    "./menu-2": "./src/components/menu-2.tsx",
     "./types": "./src/types/types.ts"
   },
   "scripts": {

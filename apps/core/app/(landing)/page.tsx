@@ -64,7 +64,7 @@ export default function Page() {
       {/* Heder */}
       <div className="pb-80">
         <h1 className="sm:text-5xl text-3xl text-center">
-          Find <samp className="font-bold"> thousands</samp> of meticulously
+          Find 2 <samp className="font-bold"> thousands</samp> of meticulously
           crafted resources by{" "}
           <samp className="font-extralight text-primary-500">
             pixel geniuses

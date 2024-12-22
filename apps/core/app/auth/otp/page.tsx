@@ -20,7 +20,7 @@ const Otppage = () => {
         <div className="flex flex-col items-center gap-2">
           <p className="text-center">
             We've sent the code to{" "}
-            <a className="underline">example@pixel.design</a>
+            <span className="underline">example@pixel.design</span>
           </p>
           <p>check your email</p>
         </div>
