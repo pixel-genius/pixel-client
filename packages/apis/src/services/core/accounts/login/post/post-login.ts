@@ -7,7 +7,7 @@ import {
   PostLoginRequest,
   PostLoginResponseTransformed,
 } from "./post-login.types";
-import { coreApi } from "./../../../../../instance/core-api";
+import { guestApi } from "#instance/guest-api";
 
 export const postLoginURL = () => path.join("/accounts/login/");
 
@@ -19,12 +19,10 @@ export const postLogin = async (
   const URL = postLoginURL();
 
   const response = await requestHandler(
-    () => coreApi.post(URL, payloadParsed),
+    () => guestApi.post(URL, payloadParsed),
     schema.response._def.schema,
-    {
-      isMock: true,
-    },
   );
+
   const dataParsed = schema.response.parse(response.data);
   return { ...response, data: dataParsed };
 };

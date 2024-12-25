@@ -7,6 +7,7 @@ import { UsePostLogin } from "@repo/apis/core/accounts/login/post/use-post-login
 import { setAuthTokens } from "@repo/apis/utils/cookies";
 import { Button } from "@repo/ui/components/button";
 import { Input } from "@repo/ui/components/input";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -15,6 +16,10 @@ const LoginForm = () => {
   const router = useRouter();
   const form = useForm<PostLoginRequest>({
     resolver: zodResolver(postLoginSchema.request),
+    defaultValues: {
+      password: "abcd@1234",
+      username: "admin",
+    },
   });
 
   const {
@@ -27,19 +32,14 @@ const LoginForm = () => {
     onSuccess: (res) => {
       toast.success("Logged in successfully");
       setAuthTokens(res.data);
-
-      setTimeout(() => {
-        router.push("/");
-
-        console.log("hiiiii");
-        
-      }, 1000);
-
-
-      console.log("hiiiiiiiii");
-      
+      router.push("/");
+    },
+    onError: (res) => {
+      toast.error(res.response?.data.message || "Something went wrong");
     },
   });
+
+  console.log("ispendimng", loginMutation.isPending);
 
   const handleSubmitForm = handleSubmit(() => {
     const values = form.getValues();
@@ -47,7 +47,7 @@ const LoginForm = () => {
   });
 
   return (
-    <form  className="w-full" onSubmit={handleSubmitForm}>
+    <form className="w-full" onSubmit={handleSubmitForm}>
       <div className="mb-2 flex flex-wrap gap-4">
         {/* Username and Email */}
         <Input
@@ -65,12 +65,12 @@ const LoginForm = () => {
           placeholder="********"
           className="w-full font-normal text-xs"
           helperText={
-            <a
+            <Link
               href="/auth/forget-password"
               className="block mb-3 text-sm font-light text-gray-500 hover:text-gray-700 cursor-pointer"
             >
               Forgot password?
-            </a>
+            </Link>
           }
           {...register("password")}
           error={errors.password?.message}

@@ -4,15 +4,14 @@ import Twitter from "@repo/icons/twitter";
 import YouTubeIcon from "@repo/icons/youtube";
 import Linkedinicon from "../../../../packages/icons/src/components/linkedin";
 import Link from "next/link";
+import Navbar from "./_components/desktop-navbar/navbar";
 
 function Layout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <div className="flex flex-col h-full">
-      <nav className="bg-gray-900 px-5 py-3 h-11 rounded-xl fixed top-12 -left-1/2 -right-1/2 z-[500]  w-[962px] mx-auto flex justify-between items-center">
-        nav bar
-      </nav>
+      <Navbar islogin={false} />
 
-      <div className="pt-32 grow ">{children}</div>
+      <div className="grow">{children}</div>
 
       <footer className="w-full bg-[#111827] rounded-t-[48px] py-24">
         <div className="container ">

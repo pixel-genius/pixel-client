@@ -18,12 +18,15 @@ import { Input } from "@repo/ui/components/input";
 import AuthCard from "../_components/auth-card";
 import { postForgetPasswordSchema } from "@repo/apis/core/forgot-password/post/post-forget-password.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 
-const setpasswordpage = () => {
+const Setpasswordpage = () => {
   const router = useRouter();
-  const params = useSearchParams();
-  const username = params.get("username");
+  // TODO: Fix this
+  // const params = useSearchParams();
+  // const username = params.get("username");
+
+  const username = "test@gmail.com";
 
   if (!username) router.replace("/auth/forget-password");
 
@@ -128,4 +131,12 @@ const setpasswordpage = () => {
   );
 };
 
-export default setpasswordpage;
+const Page = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Setpasswordpage />
+    </Suspense>
+  );
+};
+
+export default Page;
