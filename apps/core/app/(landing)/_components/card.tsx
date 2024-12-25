@@ -4,13 +4,17 @@ import Image from "next/image";
 interface CardProps {
   id: number;
   onRemove: (id: number) => void;
+  title: string;
+  price: string;
 }
 
-const Card: React.FC<CardProps> = ({ id, onRemove }) => {
+const Card: React.FC<CardProps> = (props) => {
+  const { id, onRemove, title, price } = props;
+
   return (
     <div className="bg-gray-700 mb-2 rounded-lg overflow-hidden">
       <div className="flex">
-        <div className="p-4 flex gap-2">
+        <div className="p-4 flex gap-2 flex-1">
           <div>
             <Image
               src={
@@ -23,8 +27,8 @@ const Card: React.FC<CardProps> = ({ id, onRemove }) => {
             />
           </div>
           <div>
-            <p className="text-lg font-medium">Traveler - Travel Agency</p>
-            <p className="text-lg font-bold">$15</p>
+            <p className="text-lg font-medium">{title}</p>
+            <p className="text-lg font-bold">{price}</p>
           </div>
         </div>
         <div
