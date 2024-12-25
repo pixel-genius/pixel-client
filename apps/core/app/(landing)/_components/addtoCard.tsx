@@ -7,15 +7,23 @@ import { Button } from "@repo/ui/components/button";
 import Securityicon from "@repo/icons/security";
 import { Label } from "@repo/ui/components/label";
 import { useState } from "react";
+import CardSkeleton from "./card-cart-skeleton";
 
 const Addtocard = () => {
   const [cards, setCards] = useState([
     { id: 1, title: "Traveler - Travel Agency", price: "$15" },
     { id: 2, title: "Explorer - Adventure Company", price: "$20" },
-    { id: 2, title: "Explorer - Adventure Company", price: "$20" },
-    { id: 2, title: "Explorer - Adventure Company", price: "$20" },
     // می‌توانی کارت‌های دیگری اضافه کنی
   ]);
+
+  const temp = [
+    { id: 1, title: "temp", price: "t" },
+    { id: 1, title: "temp", price: "t" },
+    { id: 1, title: "temp", price: "t" },
+    { id: 1, title: "temp", price: "t" },
+  ];
+
+  const activeTemp = temp.splice(cards.length - 4);
 
   const handleRemove = (id: number) => {
     setCards(cards.filter((card) => card.id !== id));
@@ -23,14 +31,27 @@ const Addtocard = () => {
 
   return (
     <div className="flex ">
-      <div className="bg-gray-600 w-[411px] p-4">
-        {cards.map((card) => (
-          <Card key={card.id} id={card.id} onRemove={handleRemove} />
+      <div className="bg-background w-[411px] p-4">
+        {/* {cards.map((card) => (
+          <Card
+            title={card.title}
+            price={card.price}
+            key={card.id}
+            id={card.id}
+            onRemove={handleRemove}
+          />
         ))}
-        
-        {cards.map((card) => (
-          <Card key={card.id} id={card.id} onRemove={handleRemove} />
-        ))}
+
+        {activeTemp.map((card) => (
+          <Card
+            title={card.title}
+            price={card.price}
+            key={card.id}
+            id={card.id}
+            onRemove={handleRemove}
+          />
+        ))} */}
+        <CardSkeleton />
       </div>
 
       <div className="bg-green-600 p-4 w-[522px]">
