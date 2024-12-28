@@ -16,9 +16,9 @@ const LoginPage = () => {
       <LoginForm />
       {/* line  */}
       <div className="flex items-center w-full gap-3">
-        <div className="w-full h-[1px] bg-gray-700 rounded-full"></div>
+        <div className="w-full h-[1px] bg-gray-700 rounded-full" />
         <p className="text-base font-medium">OR</p>
-        <div className="w-full h-[1px] bg-gray-700 rounded-full"></div>
+        <div className="w-full h-[1px] bg-gray-700 rounded-full" />
       </div>
       {/* login with google and linkedin */}
       <div className="w-full flex flex-col items-center gap-3">

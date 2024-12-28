@@ -1,5 +1,5 @@
-import { z } from "zod";
-import { postLoginSchema } from "./post-login.schema";
+import type { z } from "zod";
+import type { postLoginSchema } from "./post-login.schema";
 
 // Response
 export type PostLoginRequest = z.input<typeof postLoginSchema.request>;

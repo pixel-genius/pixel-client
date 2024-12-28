@@ -1,9 +1,9 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { postLoginSchema } from "@repo/apis/core/accounts/login/post/post-login.schema";
-import { PostLoginRequest } from "@repo/apis/core/accounts/login/post/post-login.types";
-import { UsePostLogin } from "@repo/apis/core/accounts/login/post/use-post-login";
+import { postLoginSchema } from "@repo/apis/core/accounts/users/login/post/post-login.schema";
+import type { PostLoginRequest } from "@repo/apis/core/accounts/users/login/post/post-login.types";
+import { UsePostLogin } from "@repo/apis/core/accounts/users/login/post/use-post-login";
 import { setAuthTokens } from "@repo/apis/utils/cookies";
 import { Button } from "@repo/ui/components/button";
 import { Input } from "@repo/ui/components/input";
@@ -35,7 +35,7 @@ const LoginForm = () => {
       router.push("/");
     },
     onError: (res) => {
-      toast.error(res.response?.data.message || "Something went wrong");
+      toast.error(res.response?.data.message ?? "Something went wrong");
     },
   });
 
