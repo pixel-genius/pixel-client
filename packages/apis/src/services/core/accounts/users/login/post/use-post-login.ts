@@ -18,7 +18,7 @@ export type UsePostLoginProps = UseMutationProps<
 
 export const postLoginQueryKey = () => ["postLogin"];
 
-export const UsePostLogin = (props?: UsePostLoginProps) => {
+export const usePostLogin = (props?: UsePostLoginProps) => {
   const mutation = useMutation<
     ApiResponse<PostLoginResponseTransformed>,
     ApiError,

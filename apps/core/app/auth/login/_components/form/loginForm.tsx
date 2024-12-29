@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { postLoginSchema } from "@repo/apis/core/accounts/users/login/post/post-login.schema";
 import type { PostLoginRequest } from "@repo/apis/core/accounts/users/login/post/post-login.types";
-import { UsePostLogin } from "@repo/apis/core/accounts/users/login/post/use-post-login";
+import { usePostLogin } from "@repo/apis/core/accounts/users/login/post/use-post-login";
 import { setAuthTokens } from "@repo/apis/utils/cookies";
 import { Button } from "@repo/ui/components/button";
 import { Input } from "@repo/ui/components/input";
@@ -28,10 +28,10 @@ const LoginForm = () => {
     formState: { errors },
   } = form;
 
-  const loginMutation = UsePostLogin({
+  const loginMutation = usePostLogin({
     onSuccess: (res) => {
       toast.success("Logged in successfully");
-      setAuthTokens(res.data);
+      setAuthTokens(res.data.data);
       router.push("/");
     },
     onError: (res) => {
