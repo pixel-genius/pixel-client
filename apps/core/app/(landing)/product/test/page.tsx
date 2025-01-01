@@ -10,7 +10,7 @@ import Instagram from "@repo/icons/instagram";
 import Messagecircleicon from "@repo/icons/message-circle";
 import Shopingcartplusicon from "@repo/icons/shopping-cart-plus";
 import Sketchicon from "@repo/icons/sketch";
-import ParallaxScrollEffect from "@repo/ui/animations/parallax-scroll-effect";
+import { ParallaxScrollEffect } from "@repo/ui/components/parallax-scroll-effect"; 
 import { Button } from "@repo/ui/components/button";
 import CustomCursor from "@repo/ui/components/custom-cursor";
 
