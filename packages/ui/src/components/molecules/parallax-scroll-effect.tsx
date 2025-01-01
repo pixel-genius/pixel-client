@@ -2,11 +2,10 @@
 
 import {
   motion,
-  useMotionTemplate,
   useMotionValue,
   useScroll,
   useSpring,
-  useTransform,
+  useTransform
 } from "framer-motion";
 import { ReactNode, useEffect, useLayoutEffect, useRef, useState } from "react";
 
@@ -17,7 +16,7 @@ export interface ParallaxScrollEffectProps {
 
 export const SCROLL_TOP_RANGE = 0.3;
 
-const ParallaxScrollEffect = ({
+export const ParallaxScrollEffect = ({
   children,
   overlay,
 }: ParallaxScrollEffectProps) => {
