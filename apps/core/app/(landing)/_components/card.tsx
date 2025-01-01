@@ -12,7 +12,7 @@ const Card: React.FC<CardProps> = (props) => {
   const { id, onRemove, title, price } = props;
 
   return (
-    <div className="bg-gray-700 mb-2 rounded-lg overflow-hidden">
+    <div className="bg-card  flex-shrink-0 rounded-lg overflow-hidden">
       <div className="flex">
         <div className="p-4 flex gap-2 flex-1">
           <div>
@@ -32,10 +32,10 @@ const Card: React.FC<CardProps> = (props) => {
           </div>
         </div>
         <div
-          className="w-9 flex items-center justify-center bg-error-900 cursor-pointer"
+          className="w-9 flex items-center justify-center bg-error cursor-pointer"
           onClick={() => onRemove(id)}
         >
-          <Removeicon size={24} />
+          <Removeicon className="text-error-foreground" size={24} />
         </div>
       </div>
     </div>

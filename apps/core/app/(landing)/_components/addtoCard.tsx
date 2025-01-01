@@ -13,17 +13,18 @@ const Addtocard = () => {
   const [cards, setCards] = useState([
     { id: 1, title: "Traveler - Travel Agency", price: "$15" },
     { id: 2, title: "Explorer - Adventure Company", price: "$20" },
-    // می‌توانی کارت‌های دیگری اضافه کنی
+    { id: 3, title: "Explorer - Adventure Company", price: "$20" },
+    { id: 4, title: "Explorer - Adventure Company", price: "$20" },
+    { id: 5, title: "Explorer - Adventure Company", price: "$20" },
   ]);
 
   const temp = [
     { id: 1, title: "temp", price: "t" },
     { id: 1, title: "temp", price: "t" },
     { id: 1, title: "temp", price: "t" },
-    { id: 1, title: "temp", price: "t" },
   ];
 
-  const activeTemp = temp.splice(cards.length - 4);
+  const activeTemp = temp.splice(cards.length);
 
   const handleRemove = (id: number) => {
     setCards(cards.filter((card) => card.id !== id));
@@ -31,8 +32,8 @@ const Addtocard = () => {
 
   return (
     <div className="flex ">
-      <div className="bg-background w-[411px] p-4">
-        {/* {cards.map((card) => (
+      <div className="bg-background max-h-[421px] overflow-auto w-[411px] p-4 flex flex-col gap-2 ">
+        {cards.map((card) => (
           <Card
             title={card.title}
             price={card.price}
@@ -43,40 +44,39 @@ const Addtocard = () => {
         ))}
 
         {activeTemp.map((card) => (
-          <Card
-            title={card.title}
-            price={card.price}
-            key={card.id}
-            id={card.id}
-            onRemove={handleRemove}
-          />
-        ))} */}
-        <CardSkeleton />
+          <CardSkeleton />
+        ))}
       </div>
 
-      <div className="bg-green-600 p-4 w-[522px]">
+      <div className="bg-background p-4 w-[522px]">
         <p className="text-xl font-medium pb-5">Checkout</p>
-        <div className="flex justify-center gap-3 items-center bg-red-500 p-2 rounded-lg">
+        <div className="flex justify-center gap-3 items-center bg-card p-2 rounded-lg">
           <div className="flex flex-col items-center justify-center">
             <Metamaskicon size={33} />
-            <p className="text-sm font-medium">Metamask</p>
+            <p className="text-sm font-medium text-foreground">Metamask</p>
           </div>
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center grayscale ">
             <Tonconnecticon size={33} />
-            <p className="text-sm font-medium">Tonconnect</p>
+            <p className="text-sm font-medium text-muted-foreground">
+              Tonconnect
+            </p>
           </div>
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center grayscale">
             <Paypalicon size={33} />
-            <p className="text-sm font-medium">Paypal</p>
+            <p className="text-sm font-medium  text-muted-foreground">Paypal</p>
           </div>
         </div>
         <div className=" pb-16">
           <Label>Email</Label>
           <div className="relative flex items-center">
             {/* to do : # label container */}
-            <Input placeholder="ali.kashef29@yahoo.com" type="email" />
+            <Input
+              placeholder="ali.kashef29@yahoo.com"
+              type="email"
+              className="bg-card"
+            />
             <span
-              className="underline absolute right-2 text-xs text-gray-400 cursor-pointer"
+              className="underline absolute right-2 text-sm text-muted-foreground cursor-pointer"
               onClick={() => {
                 // to do : # sign out
               }}
@@ -84,16 +84,21 @@ const Addtocard = () => {
               Sign out
             </span>
           </div>
-          <Input label="full name" placeholder="Ali Kashef" type="text" />
+          <Input
+            label="full name"
+            placeholder="Ali Kashef"
+            type="text"
+            className="bg-card"
+          />
         </div>
         <div className="pb-3 w-full">
-          <Button size={"lg"} className="w-full bg-primary-500 text-white">
+          <Button size={"lg"} className="w-full bg-primary text-white">
             Pay $40
           </Button>
         </div>
         <div className="flex justify-center gap-1 items-center">
-          <Securityicon size={24} />
-          <p className="text-sm font-medium text-gray-700">
+          <Securityicon className="text-foreground" size={24} />
+          <p className="text-sm font-medium text-foreground">
             Your payment is secured by MetaMask
           </p>
         </div>
