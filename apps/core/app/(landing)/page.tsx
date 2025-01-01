@@ -1,7 +1,5 @@
 "use client";
 
-import Circlxicon from "@repo/icons/circle-x";
-import { Button } from "@repo/ui/components/button";
 import { ProductCard } from "@repo/ui/components/prodoct-card";
 import {
   Tabs,

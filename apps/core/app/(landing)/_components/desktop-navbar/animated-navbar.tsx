@@ -1,5 +1,3 @@
-import PixelIcon from "@repo/icons/pxiel";
-import { motion } from "framer-motion";
 import Link from "next/link";
 
 const AnimatedNavBar = () => {
