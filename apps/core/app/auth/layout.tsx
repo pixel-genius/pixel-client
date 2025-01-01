@@ -1,10 +1,5 @@
 import "@repo/ui/globals.css";
-import { cn } from "@repo/ui/lib/utils";
 import type { Metadata } from "next";
-import { ThemeProvider } from "next-themes";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Docs",

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import FecherNavbarAuthenticated from "./feather-navbar-authenticated";
 import FecherNavbarGuest from "./feather-navbar-guest";
 

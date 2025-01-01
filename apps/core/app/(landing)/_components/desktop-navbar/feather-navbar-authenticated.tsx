@@ -1,4 +1,6 @@
+import Doorexiticon from "@repo/icons/Doorexiticon";
 import Heart1icon from "@repo/icons/heart1";
+import Settingsicon from "@repo/icons/Settingsicon";
 import Shoppingbagicon from "@repo/icons/shopping-bag";
 import Usercircleicon from "@repo/icons/Usercircleicon";
 import {
@@ -9,10 +11,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@repo/ui/components/dropdown-menu";
-import Useractionpixelicon from "../../../../../../packages/icons/src/components/useractionpixel";
-import Settingsicon from "@repo/icons/Settingsicon";
-import Doorexiticon from "@repo/icons/Doorexiticon";
 import Link from "next/link";
+import Useractionpixelicon from "@repo/icons/useractionpixel";
 
 const FecherNavbarAuthenticated = () => {
   return (
