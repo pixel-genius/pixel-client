@@ -1,16 +1,26 @@
-import Shoppingbagicon from "@repo/icons/shopping-bag";
-import Link from "next/link";
+import Typography from "@repo/ui/components/typography";
 
 const FecherNavbarGuest = () => {
   return (
     <div className="flex items-center gap-3">
-      <Shoppingbagicon size={24} color="white" />
-      <Link href="/" className="text-sm font-medium text-primary-500">
+      <Typography
+        component="a"
+        href="/auth/register"
+        variant="label/sm"
+        weight="medium"
+        className="text-primary-500 flex-shrink-0"
+      >
         Sign Up
-      </Link>
-      <Link href="/" className="text-sm font-medium text-primary-500">
+      </Typography>
+      <Typography
+        component="a"
+        href="/auth/login"
+        variant="label/sm"
+        weight="medium"
+        className="text-primary-500 flex-shrink-0"
+      >
         Log in
-      </Link>
+      </Typography>
     </div>
   );
 };

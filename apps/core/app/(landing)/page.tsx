@@ -7,6 +7,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@repo/ui/components/tabs";
+import Typography from "@repo/ui/components/typography";
 import * as htmlToImage from "html-to-image";
 import { useTheme } from "next-themes";
 import { useState } from "react";
@@ -84,14 +85,19 @@ export default function Page() {
 
       {/* Heder */}
       <div className="pb-80 pt-48">
-        <h1 className="sm:text-5xl text-3xl  text-center">
-          Find <samp className="font-black"> thousands</samp> of meticulously
+        <Typography
+          component="h1"
+          variant="display/sm"
+          weight="medium"
+          className="text-center"
+        >
+          Find <Typography component="span" variant="inherit" weight="bold"> thousands</Typography> of meticulously
           crafted resources by{" "}
-          <samp className="font-extralight italic text-primary-500">
+          <Typography component="span" variant="inherit" weight="light" className=" italic text-primary-500">
             pixel geniuses
-          </samp>{" "}
+          </Typography>{" "}
           to supercharge your creativity.
-        </h1>
+        </Typography>
       </div>
       {/* Cards */}
       <div className="">
