@@ -41,7 +41,7 @@ const LoginPage = () => {
       </div>
       {/* forgot password */}
       <div className=" flex gap-2 pb-4 text-sm">
-        <p>Don’t have an account?</p>{" "}
+        <p>Don’t have an account?</p>
         <Link href={"/auth/signup"} prefetch={false}>
           <p className="underline cursor-pointer">Sign up</p>
         </Link>

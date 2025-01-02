@@ -17,8 +17,8 @@ const LoginForm = () => {
   const form = useForm<PostLoginRequest>({
     resolver: zodResolver(postLoginSchema.request),
     defaultValues: {
-      password: "abcd@1234",
-      username: "admin",
+      password: "",
+      username: "",
     },
   });
 
@@ -30,16 +30,16 @@ const LoginForm = () => {
 
   const loginMutation = usePostLogin({
     onSuccess: (res) => {
+      console.log(res);
       toast.success("Logged in successfully");
-      setAuthTokens(res.data.data);
+      setAuthTokens(res.data.data.token);
       router.push("/");
     },
     onError: (res) => {
+      console.log(res);
       toast.error(res.response?.data.message ?? "Something went wrong");
     },
   });
-
-  console.log("ispendimng", loginMutation.isPending);
 
   const handleSubmitForm = handleSubmit(() => {
     const values = form.getValues();

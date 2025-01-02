@@ -8,12 +8,21 @@ export const postLoginRequestSchemaTransformed = z
   })
   .transform((data) => data);
 
-export const postLoginResponseSchemaTransofrmed = apiResponseSchema.extend({
-  data: z.object({
-    refresh: z.string(),
-    access: z.string(),
-  }),
-}).transform((data) => data);
+export const postLoginResponseSchemaTransofrmed = apiResponseSchema
+  .extend({
+    data: z.object({
+      id: z.number(),
+      username: z.string(),
+      email: z.string(),
+      is_active: z.boolean(),
+      is_email_verified: z.boolean(),
+      token: z.object({
+        refresh: z.string(),
+        access: z.string(),
+      }),
+    }),
+  })
+  .transform((data) => data);
 
 export const postLoginSchema = {
   response: postLoginResponseSchemaTransofrmed,
