@@ -1,18 +1,19 @@
 import React, { forwardRef, ReactNode } from "react";
 import clsx from "clsx";
+import { cva } from "class-variance-authority";
 
 export type StyleType = "heading" | "display" | "label" | "paragraph";
 export type Variant = "01" | "02" | "03" | "04" | "05";
 
 type TypographyProps = {
-  tag?: keyof JSX.IntrinsicElements; // HTML tag (e.g., h1, p, span)
-  styleType: StyleType; // Type of typography
-  variant?: Variant; // Variant within the style
-  children: ReactNode; // Content inside the typography
-  className?: string; // Additional Tailwind CSS classes
+  tag?: "p" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span"  | "a"  ; // HTML tag (e.g., h1, p, span)
+  styleType: StyleType; 
+  variant?: Variant; 
+  children: ReactNode; 
+  className?: string; 
 };
 
-const Typography = forwardRef<HTMLElement, TypographyProps>(
+const Typography = forwardRef<HTMLAnchorElement, TypographyProps>(
   ({ tag: Tag = "p", styleType, variant = "01", children, className }, ref) => {
     const baseStyles: Record<StyleType, Record<string, string>> = {
       heading: {
@@ -46,6 +47,7 @@ const Typography = forwardRef<HTMLElement, TypographyProps>(
       baseStyles[styleType]?.[variant],
       className // Allow overrides with custom classes
     );
+    
 
     return (
       <Tag ref={ref} className={styles}>
