@@ -1,3 +1,4 @@
+import { apiResponseSchema } from "#schema/api-response-schema";
 import { z } from "zod";
 
 export const postLoginRequestSchemaTransformed = z
@@ -7,12 +8,12 @@ export const postLoginRequestSchemaTransformed = z
   })
   .transform((data) => data);
 
-export const postLoginResponseSchemaTransofrmed = z
-  .object({
+export const postLoginResponseSchemaTransofrmed = apiResponseSchema.extend({
+  data: z.object({
     refresh: z.string(),
     access: z.string(),
-  })
-  .transform((data) => data);
+  }),
+}).transform((data) => data);
 
 export const postLoginSchema = {
   response: postLoginResponseSchemaTransofrmed,
