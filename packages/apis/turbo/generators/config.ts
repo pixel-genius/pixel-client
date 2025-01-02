@@ -1,7 +1,24 @@
+import fs from "fs";
+import path from "path";
 import type { PlopTypes } from "@turbo/gen";
 
-// Generator configuration for creating API files with specified methods and types
+// خواندن فایل Swagger JSON
+function loadSwaggerPaths(filePath: string): string[] {
+  try {
+    const swaggerData = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, filePath), "utf-8")
+    );
+    const paths = Object.keys(swaggerData.paths || {});
+    return paths;
+  } catch (error) {
+    console.error("Error reading Swagger JSON:", error);
+    return [];
+  }
+}
+
 export default function generator(plop: PlopTypes.NodePlopAPI): void {
+  const swaggerPaths = loadSwaggerPaths("./swagger.json");
+
   const methods: Array<"get" | "post" | "put" | "delete" | "patch"> = [
     "get",
     "post",
@@ -20,9 +37,8 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       },
       {
         type: "list",
-        name: "httpMethodChoice", // Changed variable name for clarity
-        message:
-          "Select the HTTP method or choose CRUD to generate all methods:",
+        name: "httpMethodChoice",
+        message: "Select the HTTP method or choose CRUD to generate all methods:",
         choices: [...methods, "CRUD"],
         default: "get",
       },
@@ -32,19 +48,21 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         message: "Select the API type (query or mutation):",
         choices: ["useQuery", "useMutation"],
         default: "useQuery",
-        when: (answers) => answers.httpMethodChoice !== "CRUD", // Conditional prompt
+        when: (answers) => answers.httpMethodChoice !== "CRUD",
       },
       {
         type: "list",
         name: "service",
         message: "Select the service this API belongs to:",
-        choices: ["core" , "guest"],
+        choices: ["core", "guest"],
         default: "core",
       },
       {
-        type: "input",
+        type: "list",
         name: "path",
-        message: "Specify the API path (sample: invoice/detail):",
+        message: "Select the API path from Swagger JSON:",
+        choices: swaggerPaths.length > 0 ? swaggerPaths : ["No paths available"],
+        when: () => swaggerPaths.length > 0,
       },
     ],
     actions(data) {
