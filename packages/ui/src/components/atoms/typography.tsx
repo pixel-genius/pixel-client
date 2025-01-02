@@ -1,62 +1,133 @@
+import { cva, VariantProps } from "class-variance-authority";
+import Link, { LinkProps } from "next/link";
 import React, { forwardRef, ReactNode } from "react";
-import clsx from "clsx";
-import { cva } from "class-variance-authority";
 
-export type StyleType = "heading" | "display" | "label" | "paragraph";
-export type Variant = "01" | "02" | "03" | "04" | "05";
+const typographyVariants = cva("", {
+  variants: {
+    variant: {
+      "display/xs": "font-bold text-[36px] leading-[44px]",
+      "display/sm": "font-bold text-[44px] leading-[52px]",
+      "display/md": "font-bold text-[52px] leading-[64px]",
+      "display/lg": "font-bold text-[96px] leading-[112px]",
 
-type TypographyProps = {
-  tag?: "p" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span"  | "a"  ; // HTML tag (e.g., h1, p, span)
-  styleType: StyleType; 
-  variant?: Variant; 
-  children: ReactNode; 
-  className?: string; 
+      "heading/xs": "font-bold text-[20px] leading-[28px]",
+      "heading/sm": "font-bold text-[24px] leading-[32px]",
+      "heading/md": "font-bold text-[28px] leading-[36px]",
+      "heading/lg": "font-bold text-[32px] leading-[40px]",
+      "heading/xl": "font-bold text-[36px] leading-[44px]",
+      "heading/xxl": "font-bold text-[40px] leading-[52px]",
+
+      "label/xs": "font-medium text-[12px] leading-[16px]",
+      "label/sm": "font-medium text-[14px] leading-[16px]",
+      "label/md": "font-medium text-[16px] leading-[20px]",
+      "label/lg": "font-medium text-[18px] leading-[24px]",
+
+      "paragraph/xs": "font-medium text-[12px] leading-[16px]",
+      "paragraph/sm": "font-medium text-[14px] leading-[16px]",
+      "paragraph/md": "font-medium text-[16px] leading-[20px]",
+      "paragraph/lg": "font-medium text-[18px] leading-[24px]",
+
+      inherit: "font-inherit",
+    },
+    weight: {
+      default: "",
+      thin: "font-thin",
+      "extra-thin": "font-extra-light",
+      light: "font-light",
+      normal: "font-normal",
+      medium: "font-medium",
+      "semi-bold": "font-semibold",
+      bold: "font-bold",
+      "extra-bold": "font-extrabold",
+      black: "font-black",
+    },
+    align: {
+      left: "text-left",
+      center: "text-center",
+      right: "text-right",
+      justify: "text-justify",
+    },
+    transform: {
+      none: "text-none",
+      lowercase: "text-lowercase",
+      uppercase: "text-uppercase",
+      capitalize: "text-capitalize",
+    },
+    decoration: {
+      none: "no-underline",
+      underline: "underline",
+      lineThrough: "line-through",
+      overline: "overline-through",
+      underlineLineThrough: "underline line-through",
+    },
+    truncate: {
+      true: "truncate",
+      false: "truncate-none",
+    },
+  },
+  defaultVariants: {
+    variant: "paragraph/md",
+    weight: "default",
+    transform: "none",
+    decoration: "none",
+    truncate: false,
+  }
+});
+
+type TypographyBaseProps = VariantProps<typeof typographyVariants> & {
+  children: ReactNode;
+  className?: string;
 };
 
-const Typography = forwardRef<HTMLAnchorElement, TypographyProps>(
-  ({ tag: Tag = "p", styleType, variant = "01", children, className }, ref) => {
-    const baseStyles: Record<StyleType, Record<string, string>> = {
-      heading: {
-        "01": "text-4xl font-bold leading-[52px]",
-        "02": "text-3xl font-bold leading-[44px]",
-        "03": "text-2xl font-bold leading-[40px]",
-        "04": "text-xl font-bold leading-[36px]",
-        "05": "text-lg font-bold leading-[32px]",
-      },
-      display: {
-        "01": "text-6xl font-bold leading-[112px]",
-        "02": "text-5xl font-bold leading-[64px]",
-        "03": "text-4xl font-bold leading-[52px]",
-      },
-      label: {
-        "01": "text-lg font-medium leading-[24px]",
-        "02": "text-base font-medium leading-[20px]",
-        "03": "text-sm font-medium leading-[18px]",
-        "04": "text-xs font-medium leading-[16px]",
-      },
-      paragraph: {
-        "01": "text-lg font-medium leading-[24px]",
-        "02": "text-base font-medium leading-[20px]",
-        "03": "text-sm font-medium leading-[18px]",
-        "04": "text-xs font-medium leading-[16px]",
-      },
-    };
+type TypographyProps =
+  | (TypographyBaseProps & {
+      component?:
+        | "p"
+        | "span"
+        | "div"
+        | "h1"
+        | "h2"
+        | "h3"
+        | "h4"
+        | "h5"
+        | "h6";
+      href?: never;
+    })
+  | (TypographyBaseProps &
+      LinkProps & {
+        component: "a";
+      });
 
-    // Combine styles and custom classes
-    const styles = clsx(
-      baseStyles[styleType]?.[variant],
-      className // Allow overrides with custom classes
-    );
-    
+const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(
+  (
+    { component: Component = "p", variant, children, className, href, weight , align , transform, decoration, truncate },
+    ref,
+  ) => {
+    const styles = typographyVariants({ variant, className, weight , align , transform, decoration, truncate });
+
+    if (Component === "a") {
+      return (
+        <Link
+          href={href!}
+          className={styles}
+          ref={ref as React.Ref<HTMLAnchorElement>}
+        >
+          {children}
+        </Link>
+      );
+    }
 
     return (
-      <Tag ref={ref} className={styles}>
+      <Component
+        ref={ref as React.Ref<HTMLParagraphElement>}
+        className={styles}
+      >
         {children}
-      </Tag>
+      </Component>
     );
-  }
+  },
 );
 
-Typography.displayName = "Typography"; // Helpful for debugging
+Typography.displayName = "Typography";
 
 export default Typography;
