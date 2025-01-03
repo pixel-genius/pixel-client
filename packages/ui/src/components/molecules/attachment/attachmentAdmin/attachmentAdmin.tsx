@@ -4,10 +4,11 @@ import { Card } from "../../../atoms/card";
 import { ScrollArea } from "../../../atoms/scroll-area";
 import { AttachmentProps, useAttachment } from "../useAttachment";
 import { AttachmentItem } from "./attachmentItem/attachmentItem";
+import Typography from "@repo/ui/components/typography";
 
 const AttachmentAdmin = (props: AttachmentProps) => {
   const { title, multiple = false, maxSize = 10, allowedTypes } = props;
-  const { inputFileRef, handleChange, handleRemove, files } =
+  const { inputFileRef, handleChange, handleRemove, files, allowedTypesText } =
     useAttachment(props);
 
   return (
@@ -27,19 +28,24 @@ const AttachmentAdmin = (props: AttachmentProps) => {
             }
           />
           <AttachmentIcon2 />
-          <div className="flex flex-wrap justify-center w-full gap-2">
-            <h5>Drag & drop image to upload, or</h5>
-            <span
+          <div className="flex flex-wrap justify-center w-full gap-2 flex-column">
+            <Typography className="text-foreground">
+              Drag & drop image to upload, or
+            </Typography>
+            <Typography
               onClick={() => {
                 inputFileRef.current?.click();
               }}
               className="text-primary-500 hover:cursor-pointer"
             >
               browse
-            </span>
-            <p className="w-full text-xs text-white/40 text-center">
-              1208x840px size required in PNG or JPG format only.
-            </p>
+            </Typography>
+            <Typography
+              component="p"
+              className="text-muted-foreground w-full text-center"
+            >
+              1208x840px size required in {allowedTypesText} format only.
+            </Typography>
           </div>
         </div>
       </Card>

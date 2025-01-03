@@ -45,8 +45,8 @@ const useAttachment = ({
     onSuccess: (res) => {
       const ids: number[] = [];
       const data = res.data;
-      if (data.length) {
-        data.forEach((item) => {
+      if (data.data.length) {
+        data.data.forEach((item) => {
           ids.push(item.id);
         });
         setFiles((prev) =>
@@ -67,7 +67,11 @@ const useAttachment = ({
       allowedTypes.forEach((type, index) => {
         tempTxt +=
           type.toUpperCase() +
-          (index === allowedTypes.length - 2 ? " or " : ", ");
+          (index === allowedTypes.length - 2
+            ? " or "
+            : index === allowedTypes.length - 1
+              ? ""
+              : ", ");
       });
     }
     return tempTxt;

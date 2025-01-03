@@ -6,6 +6,7 @@ import { Card } from "../../../atoms/card";
 import { ScrollArea } from "../../../atoms/scroll-area";
 import { AttachmentProps, useAttachment } from "../useAttachment";
 import { AttachmentItem } from "./attachmentItem/attachmentItem";
+import Typography from "@repo/ui/components/typography";
 
 const AttachmentLanding = (props: AttachmentProps) => {
   const {
@@ -31,7 +32,9 @@ const AttachmentLanding = (props: AttachmentProps) => {
   };
   return (
     <div className="flex flex-wrap gap-2">
-      <h5 className="w-full">{title}</h5>
+      <Typography component="h5" className="text-muted-foreground">
+        {title}
+      </Typography>
       <input
         type="file"
         ref={inputFileRef}
@@ -75,12 +78,15 @@ const AttachmentLanding = (props: AttachmentProps) => {
                 <>
                   <AttachmentIcon />
                   <div className="flex flex-col gap-3">
-                    <p className="text-sm">
+                    <Typography component="p" className="text-foreground">
                       Select a file or drag and drop here
-                    </p>
-                    <span className="text-xs text-white/40">
+                    </Typography>
+                    <Typography
+                      component="span"
+                      className="text-xs text-muted-foreground"
+                    >
                       {allowedTypesText} , file size no more than {maxSize}MB
-                    </span>
+                    </Typography>
                   </div>
                 </>
               )}
@@ -89,10 +95,12 @@ const AttachmentLanding = (props: AttachmentProps) => {
           <Button
             variant="outline"
             size="sm"
-            className="border-primary-500 text-primary-500 rounded-lg"
+            className="border-primary-500 rounded-lg"
             onClick={handleClickSelect}
           >
-            Select File
+            <Typography component="span" className="text-primary-500">
+              Select File
+            </Typography>
           </Button>
         </div>
       </Card>
