@@ -53,7 +53,6 @@ const useAttachment = ({
           prev.map((file, index: number) => {
             delete file.loading;
             ids[index] ? (file.id = ids[index]) : null;
-            file.fileUrl = data[index]?.file;
             return file;
           }),
         );
@@ -115,6 +114,8 @@ const useAttachment = ({
                 ),
                 loading: true,
               };
+
+              console.log();
               if (file.type.includes("image"))
                 tempObj.fileUrl = URL.createObjectURL(file);
               prev.push(tempObj);

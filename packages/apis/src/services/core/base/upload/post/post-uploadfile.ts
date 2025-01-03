@@ -18,7 +18,14 @@ export const postUploadfile = async (
   const URL = postUploadfileURL();
 
   const response = await requestHandler(
-    () => coreApi.post(URL, payloadParsed),
+    () =>
+      coreApi.post(URL, payloadParsed, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2NTAzMzk0LCJpYXQiOjE3MzU4OTg1OTQsImp0aSI6ImY4NmYwYzc5NjNhZTQwYTlhMGMzNzBiYzIyOTAyMmQ1IiwidXNlcl9pZCI6MX0.8c5Nn3ZtgQGHNJjEy2Ywvl9CWWf8BJLFK-4ab4wavCo",
+        },
+      }),
     schema.response._def.schema,
     {
       isMock: true,
