@@ -1,15 +1,15 @@
-import { ApiResponse } from "@repo/apis/types/api.types";
+import type { ApiResponse } from "@repo/apis/types/api.types";
 import { requestHandler } from "@repo/apis/utils/request-handler";
 
 import path from "path";
 import { postLoginSchema as schema } from "./post-login.schema";
-import {
+import type {
   PostLoginRequest,
   PostLoginResponseTransformed,
 } from "./post-login.types";
 import { guestApi } from "#instance/guest-api";
 
-export const postLoginURL = () => path.join("/accounts/login/");
+export const postLoginURL = () => path.join("accounts/users/login/");
 
 export const postLogin = async (
   props?: PostLoginRequest,

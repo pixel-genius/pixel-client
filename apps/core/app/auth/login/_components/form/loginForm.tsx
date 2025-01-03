@@ -1,9 +1,9 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { postLoginSchema } from "@repo/apis/core/accounts/login/post/post-login.schema";
-import { PostLoginRequest } from "@repo/apis/core/accounts/login/post/post-login.types";
-import { UsePostLogin } from "@repo/apis/core/accounts/login/post/use-post-login";
+import { postLoginSchema } from "@repo/apis/core/accounts/users/login/post/post-login.schema";
+import type { PostLoginRequest } from "@repo/apis/core/accounts/users/login/post/post-login.types";
+import { usePostLogin } from "@repo/apis/core/accounts/users/login/post/use-post-login";
 import { setAuthTokens } from "@repo/apis/utils/cookies";
 import { Button } from "@repo/ui/components/button";
 import { Input } from "@repo/ui/components/input";
@@ -17,8 +17,8 @@ const LoginForm = () => {
   const form = useForm<PostLoginRequest>({
     resolver: zodResolver(postLoginSchema.request),
     defaultValues: {
-      password: "abcd@1234",
-      username: "admin",
+      password: "",
+      username: "",
     },
   });
 
@@ -28,18 +28,18 @@ const LoginForm = () => {
     formState: { errors },
   } = form;
 
-  const loginMutation = UsePostLogin({
+  const loginMutation = usePostLogin({
     onSuccess: (res) => {
+      console.log(res);
       toast.success("Logged in successfully");
-      setAuthTokens(res.data);
+      setAuthTokens(res.data.data.token);
       router.push("/");
     },
     onError: (res) => {
-      toast.error(res.response?.data.message || "Something went wrong");
+      console.log(res);
+      toast.error(res.response?.data.message ?? "Something went wrong");
     },
   });
-
-  console.log("ispendimng", loginMutation.isPending);
 
   const handleSubmitForm = handleSubmit(() => {
     const values = form.getValues();
