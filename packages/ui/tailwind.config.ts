@@ -55,6 +55,7 @@ const config = {
           800: "var(--error-800)",
           900: "var(--error-900)",
           foreground: "hsl(var(--error-foreground))",
+          border : "hsl(var(--error-border))",
         },
         // warning
         warning: {
@@ -70,6 +71,7 @@ const config = {
           800: "var(--warning-800)",
           900: "var(--warning-900)",
           foreground: "hsl(var(--warning-foreground))",
+          border : "hsl(var(--warning-border))",
         },
         // gray
         Gray: {
@@ -105,6 +107,7 @@ const config = {
           800: "var(--success-800)",
           900: "var(--success-900)",
           foreground: "hsl(var(--success-foreground))",
+          border: "hsl(var(--success-border))",
         },
         // info
         info: {
@@ -145,6 +148,11 @@ const config = {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        information :{
+          DEFAULT: "hsl(var(--information))",
+          foreground: "hsl(var(--information-foreground))",
+          border: "hsl(var(--information-border))",
         },
       },
       borderRadius: {

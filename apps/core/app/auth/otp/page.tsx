@@ -11,6 +11,7 @@ import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
 // import icons
 import AuthCard from "../_components/auth-card";
 import { Countdown } from "@repo/ui/components/countdown";
+import Link from "next/link";
 
 const Otppage = () => {
   return (
@@ -20,7 +21,7 @@ const Otppage = () => {
         <div className="flex flex-col items-center gap-2">
           <p className="text-center">
             We've sent the code to{" "}
-            <a className="underline">example@pixel.design</a>
+            <span className="underline">example@pixel.design</span>
           </p>
           <p>check your email</p>
         </div>
@@ -37,6 +38,7 @@ const Otppage = () => {
             <InputOTPSlot index={5} />
           </InputOTPGroup>
         </InputOTP>
+
       </div>
 
       {/* button */}
