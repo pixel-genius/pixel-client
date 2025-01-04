@@ -4,10 +4,9 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@repo/ui/lib/utils";
 import { IconProps } from "@repo/icons/types";
-import OrbitingDotsLoading from "./orbitingDotsLoading";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm transition-colors px-3 py-4 transition focus:ring focus:ring-primary-600 relative ",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm transition-colors px-3 py-4 transition focus:ring focus:ring-primary-600  ",
   {
     variants: {
       variant: {
@@ -41,22 +40,23 @@ const statusColorHandler = ({
   variant?: "primary" | "secondary" | "tertiary" | null;
   statusColor?: ButtonStatusColor;
   disabled?: boolean;
-}): string | undefined => {
+}) => {
   if (disabled) return "";
 
   switch (variant) {
+    case "primary":
+      if (statusColor === "success") return "bg-success-500";
+      if (statusColor === "warning") return "bg-warning-500";
+      if (statusColor === "error") return "bg-error-500";
+      break;
     case "secondary":
     case "tertiary":
       if (statusColor === "success") return "text-success-500";
       if (statusColor === "warning") return "text-warning-500";
       if (statusColor === "error") return "text-error-500";
       break;
-    case "primary":
     default:
-      if (statusColor === "success") return "bg-success-500";
-      if (statusColor === "warning") return "bg-warning-500";
-      if (statusColor === "error") return "bg-error-500";
-      break;
+      return "";
   }
 };
 
