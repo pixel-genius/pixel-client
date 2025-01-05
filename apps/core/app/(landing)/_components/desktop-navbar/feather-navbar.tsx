@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import Shoppingbagicon from "@repo/icons/shopping-bag";
 import FecherNavbarAuthenticated from "./feather-navbar-authenticated";
 import FecherNavbarGuest from "./feather-navbar-guest";
 
@@ -9,10 +9,10 @@ export interface AuthStatusBarProps {
 const Fechernabar = (props: AuthStatusBarProps) => {
   const { islogin } = props;
   return (
-    <>
+    <div className="flex items-center gap-3">
       {islogin && <FecherNavbarAuthenticated />}
       {!islogin && <FecherNavbarGuest />}
-    </>
+    </div>
   );
 };
 

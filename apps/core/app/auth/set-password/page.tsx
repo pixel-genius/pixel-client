@@ -9,16 +9,16 @@ import {
   InputOTPSlot,
 } from "@repo/ui/components/input-otp";
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 // import icons
-import { Input } from "@repo/ui/components/input";
-import AuthCard from "../_components/auth-card";
-import { postForgetPasswordSchema } from "@repo/apis/core/forgot-password/post/post-forget-password.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { postForgetPasswordSchema } from "@repo/apis/core/forgot-password/post/post-forget-password.schema";
+import { Input } from "@repo/ui/components/input";
 import { Suspense, useEffect } from "react";
+import AuthCard from "../_components/auth-card";
 
 const Setpasswordpage = () => {
   const router = useRouter();
@@ -46,7 +46,7 @@ const Setpasswordpage = () => {
   }, []);
 
   const mutation = UsePostForgetPassword({
-    onSuccess: (res, context) => {
+    onSuccess: (res) => {
       toast.info(res.data.message);
       router.push(`/auth/login`);
     },

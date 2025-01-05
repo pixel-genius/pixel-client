@@ -1,4 +1,6 @@
+import Doorexiticon from "@repo/icons/Doorexiticon";
 import Heart1icon from "@repo/icons/heart1";
+import Settingsicon from "@repo/icons/Settingsicon";
 import Shoppingbagicon from "@repo/icons/shopping-bag";
 import Usercircleicon from "@repo/icons/Usercircleicon";
 import {
@@ -9,14 +11,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@repo/ui/components/dropdown-menu";
-import Useractionpixelicon from "../../../../../../packages/icons/src/components/useractionpixel";
-import Settingsicon from "@repo/icons/Settingsicon";
-import Doorexiticon from "@repo/icons/Doorexiticon";
 import Link from "next/link";
 import useCartStore from "../../store/cart-store";
+import Useractionpixelicon from "@repo/icons/useractionpixel";
 
 const FecherNavbarAuthenticated = () => {
-  const { openAddToCart, toggleAddToCart } = useCartStore();
+  const { toggleAddToCart } = useCartStore();
 
   return (
     <div className="flex  flex-shrink-0 items-center gap-3">

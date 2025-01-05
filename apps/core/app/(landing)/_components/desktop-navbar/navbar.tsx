@@ -1,11 +1,11 @@
 "use client";
+import PixelIcon from "@repo/icons/pxiel";
+import SearchIcon from "@repo/icons/serach";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
-import Serchinicon from "../../../../../../packages/icons/src/components/serach";
 import AnimatedNavBar from "./animated-navbar";
 import Fechernabar from "./feather-navbar";
 import Searchbar, { RefSearchHandle } from "./search-bar";
-import PixelIcon from "@repo/icons/pxiel";
 import Menu2icon from "@repo/icons/menu-2";
 import Addtocard from "../addtoCard";
 
@@ -58,7 +58,7 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
 
             {/* Search Icon */}
             <div onClick={handleOpenSearch} className="cursor-pointer">
-              <Serchinicon size={24} color="white" />
+              <SearchIcon size={24} color="white" />
             </div>
           </div>
 

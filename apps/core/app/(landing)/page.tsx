@@ -1,8 +1,13 @@
 "use client";
 
-import Circlxicon from "@repo/icons/circle-x";
-import { Button } from "@repo/ui/components/button";
 import { ProductCard } from "@repo/ui/components/prodoct-card";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@repo/ui/components/tabs";
+import Typography from "@repo/ui/components/typography";
 import * as htmlToImage from "html-to-image";
 import { useTheme } from "next-themes";
 import { useState } from "react";
@@ -23,6 +28,23 @@ export default function Page() {
 
   return (
     <main className="container ">
+      <img
+        src="/images/bg-landing.svg"
+        alt="bg-landing"
+        className="top-0 left-0 absolute -z-10"
+      />
+
+      <img
+        src="/images/landing-simbol.svg"
+        alt="bg-landing"
+        className="right-0 hidden sm:block absolute -z-10"
+      />
+      <img
+        src="/images/landing-simbol2.svg"
+        alt="bg-landing"
+        className="left-0 sm:opacity-100 opacity-35  absolute -z-10"
+      />
+
       {/* <div>
       {imageUrl && (
         <motion.div
@@ -61,109 +83,106 @@ export default function Page() {
         <Button onClick={captureScreenshot}>Change Theme</Button>
       </div>
       </div> */}
+
       {/* Heder */}
-      <div className="pb-80">
-        <h1 className="sm:text-5xl text-3xl text-center">
-          Find 2 <samp className="font-bold"> thousands</samp> of meticulously
-          crafted resources by{" "}
-          <samp className="font-extralight text-primary-500">
+      <div className="pb-80 pt-48">
+        <Typography
+          component="h1"
+          variant="display/sm"
+          weight="medium"
+          className="text-center"
+        >
+          Find{" "}
+          <Typography component="span" variant="inherit" weight="bold">
+            {" "}
+            thousands
+          </Typography>{" "}
+          of meticulously crafted resources by{" "}
+          <Typography
+            component="span"
+            variant="inherit"
+            weight="light"
+            className=" italic text-primary-500"
+          >
             pixel geniuses
-          </samp>{" "}
+          </Typography>{" "}
           to supercharge your creativity.
-        </h1>
+        </Typography>
       </div>
       {/* Cards */}
       <div className="">
-        {/* btn or div */}
-        <div className="pb-4 flex gap-2 items-center justify-center">
-          <Button variant="secondary" size="sm">
-            {" "}
-            illustrator <Circlxicon className="ml-1" size={16} />
-          </Button>
-          <Button variant="secondary" size="sm">
-            {" "}
-            illustrator <Circlxicon className="ml-1" size={16} />
-          </Button>
-          <Button variant="secondary" size="sm">
-            {" "}
-            illustrator <Circlxicon className="ml-1" size={16} />
-          </Button>
-          <Button variant="secondary" size="sm">
-            {" "}
-            illustrator <Circlxicon className="ml-1" size={16} />
-          </Button>
-        </div>
-        {/* card */}
-        <div className="pb-60">
-          <div className="flex flex-wrap gap-2 justify-center items-center">
-            <ProductCard
-              image="https://i.pinimg.com/originals/4c/f0/b4/4cf0b43f5b8402fb0aba8ff1d259de5b.png"
-              title="title"
-              price="10 $"
-              username="username"
-              see={10}
-              like={10}
-            />
-            <ProductCard
-              image="https://i.pinimg.com/originals/25/55/b7/2555b75333af986162a9f229f3fb736b.png"
-              title="title"
-              price="10 $"
-              username="username"
-              see={10}
-              like={10}
-            />
-            <ProductCard
-              image="https://i.pinimg.com/originals/25/55/b7/2555b75333af986162a9f229f3fb736b.png"
-              title="title"
-              price="10 $"
-              username="username"
-              see={10}
-              like={10}
-            />
-            <ProductCard
-              image="https://i.pinimg.com/originals/25/55/b7/2555b75333af986162a9f229f3fb736b.png"
-              title="title"
-              price="10 $"
-              username="username"
-              see={10}
-              like={10}
-            />
-            <ProductCard
-              image="https://i.pinimg.com/originals/25/55/b7/2555b75333af986162a9f229f3fb736b.png"
-              title="title"
-              price="10 $"
-              username="username"
-              see={10}
-              like={10}
-            />
-            <ProductCard
-              image="https://i.pinimg.com/originals/25/55/b7/2555b75333af986162a9f229f3fb736b.png"
-              title="title"
-              price="10 $"
-              username="username"
-              see={10}
-              like={10}
-            />
-            <ProductCard
-              image="https://i.pinimg.com/originals/25/55/b7/2555b75333af986162a9f229f3fb736b.png"
-              title="title"
-              price="10 $"
-              username="username"
-              see={10}
-              like={10}
-            />
-            <ProductCard
-              image="https://i.pinimg.com/originals/25/55/b7/2555b75333af986162a9f229f3fb736b.png"
-              title="title"
-              price="10 $"
-              username="username"
-              see={10}
-              like={10}
-            />
-          </div>
+        {/* Tabs */}
+        <div className="pb-32">
+          <Tabs defaultValue="account">
+            <div className="pb-4">
+              <TabsList className="">
+                <TabsTrigger value="General">General</TabsTrigger>
+                <TabsTrigger value="Images">Images</TabsTrigger>
+                <TabsTrigger value="file">file</TabsTrigger>
+                <TabsTrigger value="Admin Chat">Admin Chat</TabsTrigger>
+              </TabsList>
+            </div>
+            <TabsContent value="General">
+              <div className="grid lg:grid-cols-4 sm:lg:grid-cols-1 md:grid-cols-2 grid-rows-1 gap-4">
+                <div>
+                  <ProductCard
+                    image="https://i.pinimg.com/originals/4c/f0/b4/4cf0b43f5b8402fb0aba8ff1d259de5b.png"
+                    title="title"
+                    price="10 $"
+                    username="username"
+                    see={10}
+                    like={10}
+                  />
+                </div>
+                <div>
+                  {" "}
+                  <ProductCard
+                    image="https://i.pinimg.com/originals/4c/f0/b4/4cf0b43f5b8402fb0aba8ff1d259de5b.png"
+                    title="title"
+                    price="10 $"
+                    username="username"
+                    see={10}
+                    like={10}
+                  />
+                </div>
+                <div>
+                  {" "}
+                  <ProductCard
+                    image="https://i.pinimg.com/originals/4c/f0/b4/4cf0b43f5b8402fb0aba8ff1d259de5b.png"
+                    title="title"
+                    price="10 $"
+                    username="username"
+                    see={10}
+                    like={10}
+                  />
+                </div>
+                <div>
+                  {" "}
+                  <ProductCard
+                    image="https://i.pinimg.com/originals/4c/f0/b4/4cf0b43f5b8402fb0aba8ff1d259de5b.png"
+                    title="title"
+                    price="10 $"
+                    username="username"
+                    see={10}
+                    like={10}
+                  />
+                </div>
+                <div>
+                  {" "}
+                  <ProductCard
+                    image="https://i.pinimg.com/originals/4c/f0/b4/4cf0b43f5b8402fb0aba8ff1d259de5b.png"
+                    title="title"
+                    price="10 $"
+                    username="username"
+                    see={10}
+                    like={10}
+                  />
+                </div>
+              </div>
+            </TabsContent>
+          </Tabs>
         </div>
       </div>
-      <Addtocard/>
     </main>
   );
 }
