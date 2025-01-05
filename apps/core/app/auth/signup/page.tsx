@@ -16,6 +16,7 @@ import LinkedinIcon from "../../../../../packages/icons/src/components/linkedin"
 import AuthCard from "../_components/auth-card";
 import { useQueryParams } from "@repo/ui/hooks/use-query-params";
 import { Suspense } from "react";
+import Link from "next/link";
 
 const SignUpPageComponent = () => {
   const router = useRouter();
@@ -134,7 +135,9 @@ const SignUpPageComponent = () => {
       {/* Footer */}
       <div className="flex gap-2 pb-4 text-sm">
         <p>Already have an account?</p>
-        <a className="underline cursor-pointer">Log in</a>
+        <Link href="/auth/login" className="underline cursor-pointer">
+          Log in
+        </Link>
       </div>
     </AuthCard>
   );

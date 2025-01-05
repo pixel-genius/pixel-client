@@ -1,20 +1,15 @@
-import { Input } from "@repo/ui/components/input";
-import Serchinicon from "../../../../packages/icons/src/components/serach";
-import Bellicon from "../../../../packages/icons/src/components/bell";
-import Chevrondownicon from "../../../../packages/icons/src/components/chevron-down";
-import Infosquareroundedicon from "../../../../packages/icons/src/components/info-square-rounded";
 import { Button } from "@repo/ui/components/button";
+import { Input } from "@repo/ui/components/input";
 import { Label } from "@repo/ui/components/label";
 import { Textarea } from "@repo/ui/components/textarea";
-
+import Infocircleicon from "@repo/icons/info-circle";
+import { Switch } from "@repo/ui/components/switch";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "@repo/ui/components/tabs";
-import { Switch } from "@repo/ui/components/switch";
-import Infocircleicon from "@repo/icons/info-circle";
 
 const DashboardPage = () => {
   return (

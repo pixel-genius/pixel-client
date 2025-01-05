@@ -1,10 +1,5 @@
 import "@repo/ui/globals.css";
-import { cn } from "@repo/ui/lib/utils";
 import type { Metadata } from "next";
-import { ThemeProvider } from "next-themes";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Docs",
@@ -25,7 +20,7 @@ export default function RootLayout({
           className="w-full h-full object-cover"
         />
       </div>
-      <div>{children}</div>
+      <div className="w-full flex justify-center">{children}</div>
     </div>
   );
 }

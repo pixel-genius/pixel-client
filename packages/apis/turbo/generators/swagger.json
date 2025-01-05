@@ -1,0 +1,821 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API Documentation",
+    "description": "API documentation with JWT token authentication",
+    "version": "v1"
+  },
+  "host": "api.pixelgenius.design",
+  "schemes": ["https"],
+  "basePath": "/",
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "JWT token in the format: Bearer <token>"
+    }
+  },
+  "security": [
+    {
+      "Bearer": []
+    }
+  ],
+  "paths": {
+    "/accounts/users/": {
+      "get": {
+        "operationId": "accounts_users_list",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "required": ["count", "results"],
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "previous": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Register"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "post": {
+        "operationId": "accounts_users_create",
+        "description": "Register a new user and send an OTP to the email.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Register"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "User registered successfully. Check email for OTP verification."
+          },
+          "400": {
+            "description": "Bad request."
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "parameters": []
+    },
+    "/accounts/users/check-username-email/": {
+      "get": {
+        "operationId": "accounts_users_check_username_or_email",
+        "description": "Check if a given username or email (or both) are available.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "username",
+            "in": "query",
+            "description": "Username to check availability",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Email to check availability",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Username and/or email are available."
+          },
+          "400": {
+            "description": "Username and/or email are not available."
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "parameters": []
+    },
+    "/accounts/users/forgot-password/": {
+      "post": {
+        "operationId": "accounts_users_forgot_password",
+        "description": "Send OTP to user's email for password reset.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ForgotPassword"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OTP sent to your email for password reset."
+          },
+          "400": {
+            "description": "Invalid request."
+          },
+          "404": {
+            "description": "User not found."
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "parameters": []
+    },
+    "/accounts/users/login/": {
+      "post": {
+        "operationId": "accounts_users_login",
+        "description": "Login a user with username and password.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User logged in successfully.",
+            "examples": {
+              "application/json": {
+                "access": "access_token",
+                "refresh": "refresh_token"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid credentials."
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "parameters": []
+    },
+    "/accounts/users/reset-password/": {
+      "post": {
+        "operationId": "accounts_users_reset_password",
+        "description": "Reset password using the OTP sent to the user's email.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ResetPassword"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Password reset successful. You can now log in."
+          },
+          "400": {
+            "description": "Invalid OTP."
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "parameters": []
+    },
+    "/accounts/users/verify_otp/": {
+      "post": {
+        "operationId": "accounts_users_verify_otp",
+        "description": "Verify OTP sent to the email for email verification.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OTPVerification"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Email verified successfully, JWT token returned."
+          },
+          "400": {
+            "description": "Invalid OTP."
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "parameters": []
+    },
+    "/accounts/users/{id}/": {
+      "get": {
+        "operationId": "accounts_users_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Register"
+            }
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "put": {
+        "operationId": "accounts_users_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Register"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Register"
+            }
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "patch": {
+        "operationId": "accounts_users_partial_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Register"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Register"
+            }
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "delete": {
+        "operationId": "accounts_users_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "A unique integer value identifying this user.",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    "/base/upload/": {
+      "post": {
+        "operationId": "base_upload_create",
+        "description": "Upload a file with extension and mimetype saved automatically.",
+        "parameters": [
+          {
+            "name": "file",
+            "in": "formData",
+            "description": "File to upload",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/File"
+            }
+          }
+        },
+        "consumes": [
+          "multipart/form-data",
+          "application/x-www-form-urlencoded"
+        ],
+        "tags": ["base"]
+      },
+      "parameters": []
+    },
+    "/shop/products/": {
+      "get": {
+        "operationId": "shop_products_list",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "required": ["count", "results"],
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "previous": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/ListProduct"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["shop"]
+      },
+      "post": {
+        "operationId": "shop_products_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateProduct"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CreateProduct"
+            }
+          }
+        },
+        "tags": ["shop"]
+      },
+      "parameters": []
+    },
+    "/shop/products/{id}/": {
+      "get": {
+        "operationId": "shop_products_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ProductDetail"
+            }
+          }
+        },
+        "tags": ["shop"]
+      },
+      "put": {
+        "operationId": "shop_products_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateProduct"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CreateProduct"
+            }
+          }
+        },
+        "tags": ["shop"]
+      },
+      "patch": {
+        "operationId": "shop_products_partial_update",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["shop"]
+      },
+      "delete": {
+        "operationId": "shop_products_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["shop"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "A unique integer value identifying this product.",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    "/token/": {
+      "post": {
+        "operationId": "token_create",
+        "description": "Takes a set of user credentials and returns an access and refresh JSON web\ntoken pair to prove the authentication of those credentials.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TokenObtainPair"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TokenObtainPair"
+            }
+          }
+        },
+        "tags": ["token"]
+      },
+      "parameters": []
+    },
+    "/token/refresh/": {
+      "post": {
+        "operationId": "token_refresh_create",
+        "description": "Takes a refresh type JSON web token and returns an access type JSON web\ntoken if the refresh token is valid.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TokenRefresh"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/TokenRefresh"
+            }
+          }
+        },
+        "tags": ["token"]
+      },
+      "parameters": []
+    }
+  },
+  "definitions": {
+    "Register": {
+      "required": ["username", "email", "password", "confirm_password"],
+      "type": "object",
+      "properties": {
+        "username": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "title": "Username",
+          "description": "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
+          "type": "string",
+          "pattern": "^[\\w.@+-]+$",
+          "maxLength": 150,
+          "minLength": 1
+        },
+        "email": {
+          "title": "Email",
+          "type": "string",
+          "format": "email",
+          "maxLength": 254,
+          "minLength": 1
+        },
+        "password": {
+          "title": "Password",
+          "type": "string",
+          "minLength": 1
+        },
+        "confirm_password": {
+          "title": "Confirm password",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "ForgotPassword": {
+      "required": ["username"],
+      "type": "object",
+      "properties": {
+        "username": {
+          "title": "Username",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "Login": {
+      "required": ["username", "password"],
+      "type": "object",
+      "properties": {
+        "username": {
+          "title": "Username",
+          "type": "string",
+          "minLength": 1
+        },
+        "password": {
+          "title": "Password",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "ResetPassword": {
+      "required": ["new_password", "confirm_password", "otp", "username"],
+      "type": "object",
+      "properties": {
+        "new_password": {
+          "title": "New password",
+          "type": "string",
+          "minLength": 1
+        },
+        "confirm_password": {
+          "title": "Confirm password",
+          "type": "string",
+          "minLength": 1
+        },
+        "otp": {
+          "title": "Otp",
+          "type": "string",
+          "maxLength": 6,
+          "minLength": 1
+        },
+        "username": {
+          "title": "Username",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "OTPVerification": {
+      "required": ["otp", "username"],
+      "type": "object",
+      "properties": {
+        "otp": {
+          "title": "Otp",
+          "type": "string",
+          "maxLength": 6,
+          "minLength": 1
+        },
+        "username": {
+          "title": "Username",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "File": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "file": {
+          "title": "File",
+          "type": "string",
+          "readOnly": true,
+          "format": "uri"
+        },
+        "extension": {
+          "title": "Extension",
+          "type": "string",
+          "readOnly": true,
+          "minLength": 1
+        },
+        "mimetype": {
+          "title": "Mimetype",
+          "type": "string",
+          "readOnly": true,
+          "minLength": 1
+        },
+        "created_at": {
+          "title": "Created at",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        }
+      }
+    },
+    "ListProduct": {
+      "required": ["name", "description"],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "name": {
+          "title": "Name",
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "CreateProduct": {
+      "required": ["name", "description"],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "name": {
+          "title": "Name",
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "type": "string",
+          "minLength": 1
+        },
+        "attachment_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "ProductDetail": {
+      "required": ["name", "description"],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "name": {
+          "title": "Name",
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "type": "string",
+          "minLength": 1
+        },
+        "attachments": {
+          "title": "Attachments",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "TokenObtainPair": {
+      "required": ["username", "password"],
+      "type": "object",
+      "properties": {
+        "username": {
+          "title": "Username",
+          "type": "string",
+          "minLength": 1
+        },
+        "password": {
+          "title": "Password",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "TokenRefresh": {
+      "required": ["refresh"],
+      "type": "object",
+      "properties": {
+        "refresh": {
+          "title": "Refresh",
+          "type": "string",
+          "minLength": 1
+        },
+        "access": {
+          "title": "Access",
+          "type": "string",
+          "readOnly": true,
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

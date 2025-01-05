@@ -1,9 +1,11 @@
+import { apiResponseSchema } from "#schema/api-response-schema.js";
 import {
   DefinedInitialDataOptions,
   QueryKey,
   UseMutationOptions,
 } from "@tanstack/react-query";
 import { AxiosError, AxiosResponse } from "axios";
+import z from "zod";
 
 export type ApiResponse<T = any, D = any> = AxiosResponse<T, D>;
 
@@ -25,6 +27,4 @@ export type UseMutationProps<
   TContext = unknown,
 > = Partial<UseMutationOptions<TData, TError, TVariables, TContext>>;
 
-export type ApiError = AxiosError<{
-  message: string;
-}>;
+export type ApiError = AxiosError<z.input<typeof apiResponseSchema>>;

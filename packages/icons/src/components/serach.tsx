@@ -1,5 +1,5 @@
 import { IconProps } from "../types/types";
-const Serchinicon = (props: IconProps) => {
+const SearchIcon = (props: IconProps) => {
   const { size = 24, color = "currentColor", ...resProps } = props;
 
   return (
@@ -22,4 +22,4 @@ const Serchinicon = (props: IconProps) => {
   );
 };
 
-export default Serchinicon;
+export default SearchIcon ;

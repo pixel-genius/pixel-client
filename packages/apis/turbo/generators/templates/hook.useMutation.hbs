@@ -19,7 +19,7 @@ export type Use{{pascalCase method}}{{pascalCase name}}Props = UseMutationProps<
 
 export const {{method}}{{pascalCase name}}QueryKey = () => ["{{method}}{{pascalCase name}}"];
 
-export const Use{{pascalCase method}}{{pascalCase name}} = (props?: Use{{pascalCase method}}{{pascalCase name}}Props) => {
+export const use{{pascalCase method}}{{pascalCase name}} = (props?: Use{{pascalCase method}}{{pascalCase name}}Props) => {
   const mutation = useMutation<
     ApiResponse<{{pascalCase method}}{{pascalCase name}}ResponseTransformed>,
     ApiError,

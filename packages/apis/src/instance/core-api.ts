@@ -1,13 +1,13 @@
 import { COOKIES } from "@repo/ui/constant/cookie";
 import { postRefreshToken } from "../services/core/accounts/refresh/post/post-refresh-token";
-import axios, { AxiosError } from "axios";
+import axios, { type AxiosError } from "axios";
 import Cookie from "js-cookie";
 
 let isRefreshing = false;
 let failedQueue: any[] = [];
 
 export const coreApi = axios.create({
-  baseURL: "http://37.152.182.32/", // You can set your base URL here
+  baseURL: "https://api.pixelgenius.design", // You can set your base URL here
   headers: {
     "Content-Type": "application/json",
   },

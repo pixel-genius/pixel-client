@@ -11,7 +11,7 @@ import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
 // import icons
 import { zodResolver } from "@hookform/resolvers/zod";
 import { postRegisterCompleteSchema } from "@repo/apis/core/accounts/register/complete/post/post-register-complete.schema";
-import { PostRegisterCompleteRequest } from "@repo/apis/core/accounts/register/complete/post/post-register-complete.types";
+import type { PostRegisterCompleteRequest } from "@repo/apis/core/accounts/register/complete/post/post-register-complete.types";
 import { UsePostRegisterComplete } from "@repo/apis/core/accounts/register/complete/post/use-post-register-complete";
 import { Countdown } from "@repo/ui/components/countdown";
 import { useRouter } from "next/navigation";
@@ -46,7 +46,7 @@ export const SignupOtpForm = (props: SignupOtpFormProps) => {
   const muutation = UsePostRegisterComplete({
     onSuccess: (res) => {
       toast.info(res.data.message);
-      router.push(`/auth/login`);
+      router.push("/auth/login");
     },
 
     onError: (err) => {
