@@ -13,12 +13,15 @@ import Useractionpixelicon from "../../../../../../packages/icons/src/components
 import Settingsicon from "@repo/icons/Settingsicon";
 import Doorexiticon from "@repo/icons/Doorexiticon";
 import Link from "next/link";
+import useCartStore from "../../store/cart-store";
 
 const FecherNavbarAuthenticated = () => {
+  const { openAddToCart, toggleAddToCart } = useCartStore();
+
   return (
     <div className="flex  flex-shrink-0 items-center gap-3">
       <Heart1icon size={24} color="white" />
-      <Shoppingbagicon size={24} color="white" />
+      <Shoppingbagicon size={24} color="white" onClick={toggleAddToCart} />
 
       <DropdownMenu>
         <DropdownMenuTrigger>

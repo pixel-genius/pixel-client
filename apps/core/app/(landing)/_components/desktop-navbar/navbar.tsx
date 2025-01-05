@@ -7,6 +7,7 @@ import Fechernabar from "./feather-navbar";
 import Searchbar, { RefSearchHandle } from "./search-bar";
 import PixelIcon from "@repo/icons/pxiel";
 import Menu2icon from "@repo/icons/menu-2";
+import Addtocard from "../addtoCard";
 
 const Navbar = ({ islogin }: { islogin: boolean }) => {
   // isSeaching state
@@ -30,8 +31,8 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
   const isMobile = true;
 
   return (
-    <nav className="bg-gray-900 overflow-hidden px-5 py-3 h-14 rounded-xl fixed top-12 -left-1/2 -right-1/2 z-40   w-[95%] sm:w-[90%] lg:w-[962px]  mx-auto">
-      <div className="flex  items-center  h-full  justify-between ">
+    <nav className="bg-card overflow-hidden  rounded-xl fixed top-12 -left-1/2 -right-1/2 z-40   w-[95%] sm:w-[90%] lg:w-[962px]  mx-auto">
+      <div className="flex  items-center  h-full  justify-between px-5 py-3 ">
         <div className="flex items-center w-full">
           <div className="flex  items-center">
             <AnimatePresence
@@ -83,15 +84,13 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
             >
               <Fechernabar islogin={islogin} />
               {/*  mobile menu  */}
-              {isMobile && (
-                <>
-                  <Menu2icon size={25} color="white" />
-                </>
-              )}
+              {isMobile && <>{/* <Menu2icon size={25} color="white" /> */}</>}
             </motion.div>
           )}
         </AnimatePresence>
       </div>
+
+      <Addtocard />
     </nav>
   );
 };

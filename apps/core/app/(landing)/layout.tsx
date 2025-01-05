@@ -9,7 +9,7 @@ import Navbar from "./_components/desktop-navbar/navbar";
 function Layout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <div className="flex flex-col h-full">
-      <Navbar islogin={false} />
+      <Navbar islogin={true} />
 
       <div className="grow">{children}</div>
 
