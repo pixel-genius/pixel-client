@@ -47,10 +47,10 @@ const config = {
       },
     },
   },
-  plugins: [
-    tailwindcssAnimate,
-    require("tailwind-scrollbar"),
-    require("tailwind-scrollbar-hide"),
+  plugins: [tailwindcssAnimate,
+    require("tailwind-scrollbar"), 
+    require('tailwind-scrollbar-hide'),
+
   ],
 } satisfies Config;
 
