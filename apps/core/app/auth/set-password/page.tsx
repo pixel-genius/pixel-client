@@ -52,7 +52,7 @@ const Setpasswordpage = () => {
     },
 
     onError: (err) => {
-      toast.error(err.response?.data.message || "Something went wrong");
+      toast.error(err.response?.data.message ?? "Something went wrong");
     },
   });
 
@@ -103,7 +103,7 @@ const Setpasswordpage = () => {
         <Input
           label="Password"
           type="password"
-          className="font-normal text-xs text-gray-500"
+          className="font-normal text-xs text-muted-foreground"
           placeholder="********"
           {...register("newPassword")}
           error={errors.newPassword?.message}
@@ -111,7 +111,7 @@ const Setpasswordpage = () => {
         <Input
           label="Confirm Password"
           type="password"
-          className="font-normal text-xs text-gray-500"
+          className="font-normal text-xs text-muted-foreground"
           placeholder="********"
           {...register("confirmPassword")}
           error={errors.confirmPassword?.message}
