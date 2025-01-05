@@ -1,5 +1,6 @@
 import "@repo/ui/globals.scss";
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Docs",
@@ -8,16 +9,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}): JSX.Element {
+}>): JSX.Element {
   return (
     <div className="flex justify-center items-center relative min-h-screen w-full">
       <div className="absolute inset-0">
-        <img
+        <Image
           src="/images/test1.webp"
           alt="background"
           className="w-full h-full object-cover"
+          fill
         />
       </div>
       <div className="w-full flex justify-center">{children}</div>

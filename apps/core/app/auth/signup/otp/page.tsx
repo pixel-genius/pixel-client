@@ -3,12 +3,12 @@ import AuthCard from "../../_components/auth-card";
 import { SignupOtpForm } from "./_components/signup-otp-form";
 import { redirect } from "next/navigation";
 
-type SearchParams = { otp: string | string[] | undefined };
+type SearchParams = { email: string | string[] | undefined };
 
 const SignupOtpPage = ({ searchParams }: { searchParams: SearchParams }) => {
-  const email = Array.isArray(searchParams.otp)
-    ? searchParams.otp[0]
-    : searchParams.otp;
+  const email = Array.isArray(searchParams.email)
+    ? searchParams.email[0]
+    : searchParams.email;
 
   if (!email) {
     redirect("/auth/signup");

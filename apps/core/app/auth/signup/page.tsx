@@ -7,9 +7,9 @@ import { Button } from "@repo/ui/components/button";
 import { Input } from "@repo/ui/components/input";
 
 // import icons
-import { UsePostRegister } from "@repo/apis/core/accounts/register/post/use-post-register";
 import { useQueryParams } from "@repo/ui/hooks/use-query-params";
 import Link from "next/link";
+import { usePostRegister } from "@repo/apis/core/accounts/register/post/use-post-register";
 import { useRouter } from "next/navigation";
 import { Suspense } from "react";
 import { useForm } from "react-hook-form";
@@ -30,22 +30,25 @@ const SignUpPageComponent = () => {
 
   const { createQueryStringFromObject } = useQueryParams();
 
-  const mutation = UsePostRegister({
+  const mutation = usePostRegister({
     onSuccess: (data, context) => {
-      console.log("200: data", data);
-
-      router.push(
-        "/auth/signup/otp" +
-          "?" +
-          createQueryStringFromObject({ email: context.email }),
-      );
-
+      console.log("----------------------");
+      console.log(data.status);
+      const emailQuery = createQueryStringFromObject({
+        email: context.email,
+      });
+      router.push("/auth/signup/otp" + "?" + emailQuery);
       toast.success("Send OTP");
+    },
+    onError: (err) => {
+      console.log("---------------------- err");
+
+      console.log(err);
+      toast.error(err.response?.data.message ?? "Something went wrong");
     },
   });
 
   const onSubmit = (data: PostRegisterRequest) => {
-    console.log("Sign Up Data:", data);
     mutation.mutate(data);
   };
 
@@ -92,8 +95,8 @@ const SignUpPageComponent = () => {
           type="password"
           label="Confirm Password"
           placeholder="********"
-          {...register("confirmPassword")}
-          error={errors.confirmPassword?.message}
+          {...register("confirm_password")}
+          error={errors.password?.message}
         />
 
         {/* Submit Button */}
@@ -114,12 +117,17 @@ const SignUpPageComponent = () => {
         <p className="text-base font-medium">OR</p>
         <div className="w-full h-[1px] bg-gray-700 rounded-full"></div>
       </div> */}
+      <div className="flex items-center w-full gap-3 my-4">
+        <div className="w-full h-[1px] bg-muted-foreground rounded-full"></div>
+        <p className="text-base font-medium">OR</p>
+        <div className="w-full h-[1px] bg-muted-foreground rounded-full"></div>
+      </div>
 
       {/* Social Login Buttons */}
       {/* <div className="flex w-full flex-col items-center gap-3">
         <Button
           size="lg"
-          className="w-full text-lg bg-[#181818]"
+          className="w-full text-lg bg-background"
           variant="secondary"
         >
           <GoogleIcon size={24} className="mr-2" />
@@ -127,7 +135,7 @@ const SignUpPageComponent = () => {
         </Button>
         <Button
           size="lg"
-          className="w-full text-lg bg-[#181818]"
+          className="w-full text-lg bg-background"
           variant="secondary"
         >
           <LinkedinIcon size={24} className="mr-2" />
