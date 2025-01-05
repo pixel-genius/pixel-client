@@ -14,28 +14,14 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import useCartStore from "../../store/cart-store";
-import Useractionpixelicon from "@repo/icons/useractionpixel";
-import {
-  AvatarImage,
-  AvatarFallback,
-  Avatar,
-} from "@repo/ui/components/avatar";
 
-const FeatureNavbarAuthenticated = () => {
-  const { toggleAddToCart } = useCartStore();
+const FecherNavbarAuthenticated = () => {
+  const { openAddToCart, toggleAddToCart } = useCartStore();
 
   return (
     <div className="flex  flex-shrink-0 items-center gap-3">
       <Heart1icon size={24} color="white" />
-
-      <div className="relative cursor-pointer" onClick={toggleAddToCart}>
-        <Shoppingbagicon size={24} color="white" />
-
-        {/* TODO: add badge #erfan*/}
-        <div className="bg-error rounded-full flex items-center justify-center absolute top-0 right-0 w-3 h-3 text-white text-xs">
-          3
-        </div>
-      </div>
+      <Shoppingbagicon size={24} color="white" onClick={toggleAddToCart} />
 
       <DropdownMenu>
         <DropdownMenuTrigger>
