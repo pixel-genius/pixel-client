@@ -4,6 +4,7 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { VariantProps, cva } from "class-variance-authority";
 
+<<<<<<<< HEAD:packages/ui/src/components/atoms/sidebar.tsx
 import { useIsMobile } from "./../../hooks/use-mobile"
 import { cn } from "@repo/ui/lib/utils"
 import { Button } from "./button"
@@ -11,16 +12,29 @@ import { Input } from "./../molecules/input"
 import { Separator } from "./separator"
 import { Sheet, SheetContent } from "./sheet"
 import { Skeleton } from "./skeleton"
-
-import { MenuIcon } from "lucide-react"; 
-
+========
+import MenuIcon from "@repo/icons/menu";
+import { Skeleton } from "../atoms/skeleton";
+>>>>>>>> 674eb7e (FEAT :change sidebar address):packages/ui/src/components/molecules/sidebar.tsx
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
+<<<<<<<< HEAD:packages/ui/src/components/atoms/sidebar.tsx
 } from "./tooltip"
 
+import {  MenuIcon } from "lucide-react"; 
+
+========
+} from "../ui/tooltip";
+import { cn } from "@repo/ui/lib/utils";
+import { useIsMobile } from "../../hooks/use-mobile";
+import { Button } from "../atoms/button";
+import { Input } from "../atoms/input";
+import { Separator } from "../atoms/separator";
+import { Sheet, SheetContent } from "../atoms/sheet";
+>>>>>>>> 674eb7e (FEAT :change sidebar address):packages/ui/src/components/molecules/sidebar.tsx
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
