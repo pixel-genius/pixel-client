@@ -4,20 +4,20 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { VariantProps, cva } from "class-variance-authority";
 
-import MenuIcon from "../../../../icons/src/components/menu";
-import { Skeleton } from "./skeleton";
+import MenuIcon from "@repo/icons/menu";
+import { Skeleton } from "../atoms/skeleton";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "./tooltip";
+} from "../ui/tooltip";
 import { cn } from "@repo/ui/lib/utils";
-import { useIsMobile } from "../../../src/hooks/use-mobile";
-import { Button } from "./button";
-import { Input } from "./input";
-import { Separator } from "./separator";
-import { Sheet, SheetContent } from "./sheet";
+import { useIsMobile } from "../../hooks/use-mobile";
+import { Button } from "../atoms/button";
+import { Input } from "../atoms/input";
+import { Separator } from "../atoms/separator";
+import { Sheet, SheetContent } from "../atoms/sheet";
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
