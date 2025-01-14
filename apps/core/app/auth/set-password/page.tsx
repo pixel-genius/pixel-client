@@ -65,66 +65,72 @@ const Setpasswordpage = () => {
   return (
     <AuthCard>
       {/* logo */}
-      <div className="pt-7 flex flex-col items-center gap-4">
+      <div className="flex flex-col items-center gap-4">
         <div className="flex flex-col items-center gap-2">
-          <p className="text-center text-2xl font-bold">Set your Password</p>
-          <p className="text-center">
+          <p className="text-2xl font-bold">Set your Password</p>
+          <p className="text-center text-sm font-normal">
             We've sent the code to{" "}
-            <span className="underline mr-1">{username}</span>
-            check your email
+            <span className="underline text-sm font-normal">
+              example@pixel.design
+            </span>
           </p>
+          <p className="text-sm font-normal">check your email</p>
         </div>
       </div>
       {/* otp input */}
       <form
-        className="w-full flex flex-col items-center gap-4"
+        className="w-full flex flex-col items-center "
         onSubmit={handleSubmit(handleSubmitForm)}
       >
-        <InputOTP
-          maxLength={6}
-          pattern={REGEXP_ONLY_DIGITS_AND_CHARS}
-          name={otpRegister.name}
-          onChange={(value: string) => {
-            setValue("otp", value);
-          }}
-        >
-          <InputOTPGroup>
-            <InputOTPSlot index={0} />
-            <InputOTPSlot index={1} />
-            <InputOTPSlot index={2} />
-            <InputOTPSlot index={3} />
-            <InputOTPSlot index={4} />
-            <InputOTPSlot index={5} />
-          </InputOTPGroup>
-        </InputOTP>
-        <span className="text-xs text-error-400">{errors.otp?.message}</span>
+        <div className="pb-4">
+          <InputOTP
+            maxLength={6}
+            pattern={REGEXP_ONLY_DIGITS_AND_CHARS}
+            name={otpRegister.name}
+            onChange={(value: string) => {
+              setValue("otp", value);
+            }}
+          >
+            <InputOTPGroup>
+              <InputOTPSlot index={0} />
+              <InputOTPSlot index={1} />
+              <InputOTPSlot index={2} />
+              <InputOTPSlot index={3} />
+              <InputOTPSlot index={4} />
+              <InputOTPSlot index={5} />
+            </InputOTPGroup>
+          </InputOTP>
+          <span className="text-xs text-error-400">{errors.otp?.message}</span>
+        </div>
 
         {/* input */}
-        <Input
-          label="Password"
-          type="password"
-          className="font-normal text-xs text-gray-500"
-          placeholder="********"
-          {...register("newPassword")}
-          error={errors.newPassword?.message}
-        />
-        <Input
-          label="Confirm Password"
-          type="password"
-          className="font-normal text-xs text-gray-500"
-          placeholder="********"
-          {...register("confirmPassword")}
-          error={errors.confirmPassword?.message}
-        />
-        {/* button reset */}
-        <div className="pb-7 w-full">
-          <Button
-            isLoading={mutation.isPending}
-            className="w-full text-lg font-bold  bg-primary-600 hover:bg-primary-500"
-            variant="secondary"
-          >
-            Reset
-          </Button>
+        <div className="w-full flex flex-col gap-5">
+          <Input
+            label="Password"
+            type="password"
+            className="font-normal text-xs text-gray-500"
+            placeholder="********"
+            {...register("newPassword")}
+            error={errors.newPassword?.message}
+          />
+          <Input
+            label="Confirm Password"
+            type="password"
+            className="font-normal text-xs text-gray-500"
+            placeholder="********"
+            {...register("confirmPassword")}
+            error={errors.confirmPassword?.message}
+          />
+          {/* button reset */}
+          <div className="pb-7 w-full">
+            <Button
+              isLoading={mutation.isPending}
+              className="w-full text-lg font-bold  bg-primary-600 hover:bg-primary-500"
+              variant="primary"
+            >
+              Reset
+            </Button>
+          </div>
         </div>
       </form>
     </AuthCard>

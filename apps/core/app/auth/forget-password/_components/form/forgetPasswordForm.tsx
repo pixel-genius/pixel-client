@@ -49,7 +49,7 @@ const ForgetPasswordForm = () => {
         isLoading={mutation.isPending}
         type="submit"
         className="w-full mt-5 text-lg font-normal bg-primary-600 hover:bg-primary-500"
-        variant="secondary"
+        variant="primary"
       >
         Reset
       </Button>

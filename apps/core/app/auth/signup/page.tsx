@@ -8,15 +8,13 @@ import { Input } from "@repo/ui/components/input";
 
 // import icons
 import { UsePostRegister } from "@repo/apis/core/accounts/register/post/use-post-register";
+import { useQueryParams } from "@repo/ui/hooks/use-query-params";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Suspense } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import GoogleIcon from "../../../../../packages/icons/src/components/google";
-import LinkedinIcon from "../../../../../packages/icons/src/components/linkedin";
 import AuthCard from "../_components/auth-card";
-import { useQueryParams } from "@repo/ui/hooks/use-query-params";
-import { Suspense } from "react";
-import Link from "next/link";
 
 const SignUpPageComponent = () => {
   const router = useRouter();
@@ -55,7 +53,12 @@ const SignUpPageComponent = () => {
     <AuthCard>
       {/* Title */}
       <div className="flex flex-col items-center gap-4">
-        <p className="text-2xl font-bold">Create new account</p>
+        <div className="flex flex-col items-center gap-2">
+          <p className="text-2xl font-bold">Sign Up and Get Started</p>
+          <p className="text-sm font-normal">
+            It only takes a few seconds to join us and start exploring.
+          </p>
+        </div>
       </div>
 
       {/* Form */}
@@ -95,9 +98,9 @@ const SignUpPageComponent = () => {
 
         {/* Submit Button */}
         <Button
-          size="lg"
-          className="w-full text-lg font-bold bg-primary-600 hover:bg-primary-500 mt-2"
-          variant="secondary"
+          size="md"
+          className="w-full text-md font-normal bg-primary-600 hover:bg-primary-500 mt-2"
+          variant="primary"
           type="submit"
           isLoading={mutation.isPending}
         >
@@ -106,14 +109,14 @@ const SignUpPageComponent = () => {
       </form>
 
       {/* Divider */}
-      <div className="flex items-center w-full gap-3 my-4">
+      {/* <div className="flex items-center w-full gap-3 my-4">
         <div className="w-full h-[1px] bg-gray-700 rounded-full"></div>
         <p className="text-base font-medium">OR</p>
         <div className="w-full h-[1px] bg-gray-700 rounded-full"></div>
-      </div>
+      </div> */}
 
       {/* Social Login Buttons */}
-      <div className="flex w-full flex-col items-center gap-3">
+      {/* <div className="flex w-full flex-col items-center gap-3">
         <Button
           size="lg"
           className="w-full text-lg bg-[#181818]"
@@ -130,7 +133,7 @@ const SignUpPageComponent = () => {
           <LinkedinIcon size={24} className="mr-2" />
           Log in with LinkedIn
         </Button>
-      </div>
+      </div> */}
 
       {/* Footer */}
       <div className="flex gap-2 pb-4 text-sm">
