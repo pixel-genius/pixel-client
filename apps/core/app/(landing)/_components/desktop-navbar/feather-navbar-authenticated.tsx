@@ -21,7 +21,12 @@ const FecherNavbarAuthenticated = () => {
   return (
     <div className="flex  flex-shrink-0 items-center gap-3">
       <Heart1icon size={24} color="white" />
-      <Shoppingbagicon size={24} color="white" onClick={toggleAddToCart} />
+      <div className="relative">
+        <Shoppingbagicon size={24} color="white" onClick={toggleAddToCart} />
+        <div className="bg-error rounded-full flex items-center justify-center absolute top-0 right-0 w-3 h-3 text-white text-xs">
+          3
+        </div>
+      </div>
 
       <DropdownMenu>
         <DropdownMenuTrigger>
@@ -77,3 +82,5 @@ const FecherNavbarAuthenticated = () => {
 };
 
 export default FecherNavbarAuthenticated;
+
+
