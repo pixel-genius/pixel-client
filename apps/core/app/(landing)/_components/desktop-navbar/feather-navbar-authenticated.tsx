@@ -2,6 +2,7 @@ import Doorexiticon from "@repo/icons/Doorexiticon";
 import Heart1icon from "@repo/icons/heart1";
 import Settingsicon from "@repo/icons/Settingsicon";
 import Shoppingbagicon from "@repo/icons/shopping-bag";
+import Useractionpixelicon from "@repo/icons/useractionpixel";
 import Usercircleicon from "@repo/icons/Usercircleicon";
 import {
   DropdownMenu,
@@ -11,8 +12,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@repo/ui/components/dropdown-menu";
+import Image from "next/image";
 import Link from "next/link";
-import Useractionpixelicon from "@repo/icons/useractionpixel";
 
 const FecherNavbarAuthenticated = () => {
   return (
@@ -22,7 +23,7 @@ const FecherNavbarAuthenticated = () => {
 
       <DropdownMenu>
         <DropdownMenuTrigger>
-          <img
+          <Image
             src="https://avatar.iran.liara.run/public/26"
             alt="avatar"
             className="w-8 h-8 rounded-full"
