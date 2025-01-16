@@ -40,23 +40,22 @@ const statusColorHandler = ({
   variant?: "primary" | "secondary" | "tertiary" | null;
   statusColor?: ButtonStatusColor;
   disabled?: boolean;
-}) => {
+}): string | undefined => {
   if (disabled) return "";
 
   switch (variant) {
-    case "primary":
-      if (statusColor === "success") return "bg-success-500";
-      if (statusColor === "warning") return "bg-warning-500";
-      if (statusColor === "error") return "bg-error-500";
-      break;
     case "secondary":
     case "tertiary":
       if (statusColor === "success") return "text-success-500";
       if (statusColor === "warning") return "text-warning-500";
       if (statusColor === "error") return "text-error-500";
       break;
+    case "primary":
     default:
-      return "";
+      if (statusColor === "success") return "bg-success-500";
+      if (statusColor === "warning") return "bg-warning-500";
+      if (statusColor === "error") return "bg-error-500";
+      break;
   }
 };
 
@@ -87,11 +86,17 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref,
   ) => {
     const Comp = asChild ? Slot : "button";
+
+    const statusColorHandlerMemo = React.useMemo(
+      () => statusColorHandler,
+      [props.disabled, variant, statusColor],
+    );
+
     return (
       <Comp
         className={cn(
           buttonVariants({ variant, size, className }),
-          statusColorHandler({
+          statusColorHandlerMemo({
             statusColor,
             variant,
             disabled: props.disabled,
