@@ -7,6 +7,7 @@ import Image from "next/image";
 import { AttachmentProps, useAttachment } from "../useAttachment";
 import { useState } from "react";
 import { Card } from "../../../atoms/card";
+import Typography from "@repo/ui/components/typography";
 
 interface AttachmentThumbnailProps extends AttachmentProps {
   avatar?: string;
@@ -64,7 +65,7 @@ const AttachmentThumbnail = (
       >
         <AnimatePresence>
           {files[0]?.loading ? (
-            <div className="z-10 flex justify-center items-center absolute top-0 left-0 w-full h-full bg-[#000] rounded-lg opacity-60">
+            <div className="z-10 flex justify-center items-center absolute top-0 left-0 w-full h-full bg-black rounded-lg opacity-60">
               <motion.span
                 animate={{
                   rotate: [0, 180, 360],
@@ -115,29 +116,37 @@ const AttachmentThumbnail = (
             <>
               <AttachmentIcon2 />
               <div className="flex flex-wrap justify-center w-full gap-2">
-                <p className="text-sm">Drag & drop image to upload, or</p>
-                <span
+                <Typography
+                  component="p"
+                  className="text-sm text-card-foreground"
+                >
+                  Drag & drop image to upload, or
+                </Typography>
+                <Typography
                   onClick={() => {
                     inputFileRef.current?.click();
                   }}
-                  className="text-primary-500 text-sm hover:cursor-pointer"
+                  className="text-primary text-sm hover:cursor-pointer"
                 >
                   browse
-                </span>
-                <p className="w-full text-xs text-white/40 text-center">
+                </Typography>
+                <Typography
+                  component="p"
+                  className="w-full text-xs text-white/40 text-center"
+                >
                   1208x840px size required in {allowedTypesText} format only.
-                </p>
+                </Typography>
               </div>
             </>
           )}
         </AnimatePresence>
       </div>
       <div className="flex flex-wrap justify-between text-base mb-2">
-        <strong>News App UI KIT</strong>
-        <strong>
+        <Typography className="text-base font-bold">News App UI KIT</Typography>
+        <Typography className="text-base font-semibold">
           {price}
           {priceUnit}
-        </strong>
+        </Typography>
       </div>
       <div className="flex flex-wrap justify-between text-base">
         <div className="flex flex-wrap items-center gap-1">
@@ -146,7 +155,7 @@ const AttachmentThumbnail = (
           ) : (
             <Avatar />
           )}
-          <span className="text-[10px] font-light">Ali Ebrahimi Kashef</span>
+          <Typography className="text-[10px] font-normal">Ali Ebrahimi Kashef</Typography>
         </div>
         <div className="flex flex-wrap items-center gap-1">
           <span className="cursor-pointer">

@@ -1,3 +1,4 @@
+import { apiResponseSchema } from "#schema/api-response-schema";
 import { z } from "zod";
 
 // Response
@@ -14,16 +15,18 @@ export const postUploadfileRequestSchemaTransformed = z
   });
 
 // Request
-export const postUploadfileResponseSchemaTransofrmed = z
-  .array(
-    z.object({
-      id: z.number(),
-      file: z.string(),
-      extension: z.string(),
-      mimetype: z.string(),
-      created_at: z.string(),
-    }),
-  )
+export const postUploadfileResponseSchemaTransofrmed = apiResponseSchema
+  .extend({
+    data: z.array(
+      z.object({
+        id: z.number(),
+        file: z.string(),
+        extension: z.string(),
+        mimetype: z.string(),
+        created_at: z.string(),
+      }),
+    ),
+  })
   .transform((data) => data);
 
 export const postUploadfileSchema = {
