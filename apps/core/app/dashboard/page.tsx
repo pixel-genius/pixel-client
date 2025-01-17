@@ -185,55 +185,55 @@ const DashboardPage = () => {
                       </div>
                       <div className="flex gap-2 items-center ">
                         <Button
-                          variant="secondary"
+                          // variant="secondary"
                           className="w-12 h-9 text-sm font-light bg-primary-500"
                         >
                           50%
                         </Button>
                         <Button
-                          variant="outline"
+                          // variant="outline"
                           className="w-12 h-9 text-sm font-light"
                         >
                           55%
                         </Button>
                         <Button
-                          variant="outline"
+                          // variant="outline"
                           className="w-12 h-9 text-sm font-light"
                         >
                           60%
                         </Button>
                         <Button
-                          variant="outline"
+                          // variant="outline"
                           className="w-12 h-9 text-sm font-light"
                         >
                           65%
                         </Button>
                         <Button
-                          variant="outline"
+                          // variant="outline"
                           className="w-12 h-9 text-sm font-light"
                         >
                           70%
                         </Button>
                         <Button
-                          variant="outline"
+                          // variant="outline"
                           className="w-12 h-9 text-sm font-light"
                         >
                           75%
                         </Button>
                         <Button
-                          variant="outline"
+                          // variant="outline"
                           className="w-12 h-9 text-sm font-light"
                         >
                           80%
                         </Button>
                         <Button
-                          variant="outline"
+                          // variant="outline"
                           className="w-12 h-9 text-sm font-light"
                         >
                           85%
                         </Button>
                         <Button
-                          variant="outline"
+                          // variant="outline"
                           className="w-12 h-9 text-sm font-light"
                         >
                           90%
@@ -404,12 +404,18 @@ const DashboardPage = () => {
           <div className="flex gap-2">
             {/* button */}
             <div>
-              <Button variant="outline" className="px-4 py-2">
+              <Button
+                // variant="outline"
+                className="px-4 py-2"
+              >
                 Save as draft
               </Button>
             </div>
             <div>
-              <Button variant="secondary" className="px-4 py-2 bg-primary-600">
+              <Button
+                // variant="secondary"
+                className="px-4 py-2 bg-primary-600"
+              >
                 Submit for review
               </Button>
             </div>

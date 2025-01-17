@@ -53,13 +53,15 @@ const OverLay = () => {
 
       <div className="flex  gap-2">
         <Button
-          variant="default"
+          // variant="default"
           className="bg-primary-600 hover:bg-primary-500 text-foreground h-auto py-4 w-36"
         >
           Buy Now <Shopingcartplusicon size={24} className="ml-2" />
         </Button>
 
-        <Button variant="default" className="w-36 h-auto !py-4">
+        <Button 
+        // variant="default" 
+        className="w-36 h-auto !py-4">
           Preview{" "}
         </Button>
 
