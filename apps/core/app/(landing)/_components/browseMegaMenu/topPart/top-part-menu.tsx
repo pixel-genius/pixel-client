@@ -1,10 +1,10 @@
 import Asset3dIcon from "@repo/icons/3dAsset";
-import IconSetsIcon from "@repo/icons/iconSets";
+import IconSetsIcon from "@repo/icons/icon-sets";
 import IllustrationIcon from "@repo/icons/illustration";
 import MockUpsIcon from "@repo/icons/mockups";
 import PolygonImage from "@repo/icons/polygon";
-import UiKitIcon from "@repo/icons/uiKit";
-import WireFrameIcon from "@repo/icons/wireframe";
+import UiKitIcon from "@repo/icons/ui-kit";
+import WireFrameIcon from "@repo/icons/wire-frame";
 import Typography from "@repo/ui/components/typography";
 import Link from "next/link";
 

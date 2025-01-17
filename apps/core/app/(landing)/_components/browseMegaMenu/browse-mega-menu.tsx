@@ -1,5 +1,5 @@
-import { BottomPartMenu } from "./bottomPart/bottomPartMenu";
-import { TopPartMenu } from "./topPart/topPartMenu";
+import { BottomPartMenu } from "./bottomPart/bottom-part-menu";
+import { TopPartMenu } from "./topPart/top-part-menu";
 import { RetroGrid } from "@repo/ui/components/retroGrid";
 
 const BrowseMegaMenu = () => {

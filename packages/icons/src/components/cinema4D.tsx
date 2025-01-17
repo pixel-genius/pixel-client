@@ -11,6 +11,7 @@ const Cinema4DIcon = (props: IconProps) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      {...resProps}
     >
       <rect width="16" height="16" fill="url(#pattern0_4283_2740)" />
       <defs>

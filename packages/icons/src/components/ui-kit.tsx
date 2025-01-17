@@ -5,11 +5,12 @@ const UiKitIcon = (props: IconProps) => {
 
   return (
     <svg
-      width="53"
-      height="53"
+      width={size}
+      height={size}
       viewBox="0 0 53 53"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...resProps}
     >
       <path
         fillRule="evenodd"

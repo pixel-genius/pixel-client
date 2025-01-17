@@ -1,4 +1,4 @@
-import { BrowseMegaMenu } from "../../_components/browseMegaMenu/browseMegaMenu";
+import { BrowseMegaMenu } from "../../_components/browseMegaMenu/browse-mega-menu";
 
 export default function Page() {
   return (

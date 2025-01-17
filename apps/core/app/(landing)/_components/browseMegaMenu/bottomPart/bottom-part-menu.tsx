@@ -3,11 +3,11 @@ import IllustratorIcon from "@repo/icons/Illustrator";
 import Adobexdicon from "@repo/icons/adobexd";
 import Belendericon from "@repo/icons/belender";
 import Sketchicon from "@repo/icons/sketch";
-import AfterEffectIcon from "@repo/icons/afterEffect";
 import Cinema4DIcon from "@repo/icons/cinema4D";
 import Framericon from "@repo/icons/framer";
 import Htmlicon from "@repo/icons/html";
 import Photoshopicon from "@repo/icons/photoshop";
+import AfterEffecticon from "@repo/icons/after-effects";
 
 const BottomPartMenu = () => {
   return (
@@ -29,7 +29,7 @@ const BottomPartMenu = () => {
           <Typography variant="label/sm">Sketch</Typography>
         </div>
         <div className="flex items-center py-3 px-2 bg-background rounded-lg gap-[4px]">
-          <AfterEffectIcon size={16} />
+          <AfterEffecticon size={16} />
           <Typography variant="label/sm">After Effects</Typography>
         </div>
         <div className="flex items-center py-3 px-2 bg-background rounded-lg gap-[4px]">

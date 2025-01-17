@@ -5,7 +5,7 @@ import {
   NavigationMenuTrigger,
 } from "@repo/ui/components/navigation-menu";
 import Link from "next/link";
-import { BrowseMegaMenu } from "../browseMegaMenu/browseMegaMenu";
+import { BrowseMegaMenu } from "../browseMegaMenu/browse-mega-menu";
 
 const AnimatedNavBar = () => {
   return (
