@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { Loader, Trash2 } from "lucide-react";
 import Image from "next/image";
-import { Button } from "../../../button";
+import { Button } from "../../../../atoms/button";
 import { FileState } from "../../useAttachment";
+import Typography from "./../../../../atoms/typography";
 
 interface AttachmentItemProps {
   file: FileState;
@@ -33,7 +34,7 @@ const AttachmentItem = ({ file, handleRemove }: AttachmentItemProps) => {
           {file.loading ? null : (
             <Button
               onClick={handleClick}
-              className={`p-0 flex justify-center items-center absolute top-[50%] translate-y-[-50%] bg-[#DC2626] left-[50%] translate-x-[-50%] w-[20px] h-[20px] rounded-sm hover:bg-[#DC2626]`}
+              className={`p-0 flex justify-center items-center absolute top-[50%] translate-y-[-50%] bg-error left-[50%] translate-x-[-50%] w-[20px] h-[20px] rounded-sm hover:bg-error`}
             >
               <Trash2 color="#fff" size={14} />
             </Button>
@@ -47,7 +48,7 @@ const AttachmentItem = ({ file, handleRemove }: AttachmentItemProps) => {
             alt={file.name}
           />
         ) : (
-          <strong className="text-[#737373]">{file.type}</strong>
+          <Typography className="text-foreground">{file.type}</Typography>
         )}
       </div>
       <p

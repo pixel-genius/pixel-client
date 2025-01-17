@@ -30,6 +30,7 @@
     "@repo/ui": "*",
     "@tanstack/react-query": "^5.62.2",
     "@tanstack/react-query-devtools": "^5.62.2",
+    "@types/js-cookie": "^3.0.6",
     "axios": "^1.7.7",
     "axios-mock-adapter": "^2.0.0",
     "js-cookie": "3.0.5",
