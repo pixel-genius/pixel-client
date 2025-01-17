@@ -8,9 +8,7 @@ import Addtocard from "../addtoCard";
 import NavbarLinks from "./navbar-links";
 import FeaturesNavbar from "./features-navbar";
 import Searchbar, { RefSearchHandle } from "./search-bar";
-import PixelIcon from "@repo/icons/pxiel";
-import Menu2icon from "@repo/icons/menu-2";
-import Addtocard from "../addtoCard";
+import { BrowseMegaMenu } from "../browseMegaMenu/browse-mega-menu";
 
 const Navbar = ({ islogin }: { islogin: boolean }) => {
   // isSeaching state
@@ -34,8 +32,8 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
   const isMobile = false;
 
   return (
-    <nav className="bg-card overflow-hidden  rounded-xl fixed top-12 -left-1/2 -right-1/2 z-40   w-[95%] sm:w-[90%] lg:w-[962px]  mx-auto">
-      <div className="flex  items-center  h-full  justify-between px-5 py-3 ">
+    <div className="bg-background shadow-box rounded-xl fixed top-12 -left-1/2 -right-1/2 z-40 w-[95%] sm:w-[90%] lg:w-[962px] max-w-none mx-auto">
+      <div className="flex  py-3 px-5 items-center h-full w-full justify-between ">
         <div className="flex items-center w-full">
           <div className="flex  items-center">
             <AnimatePresence
@@ -94,7 +92,9 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
       </div>
 
       <Addtocard />
-    </nav>
+
+      {/* <BrowseMegaMenu /> */}
+    </div>
   );
 };
 
