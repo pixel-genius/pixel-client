@@ -78,11 +78,11 @@ const LoginForm = () => {
       </div>
       {/* Button */}
       <Button
-        size="lg"
+        size="md"
         isLoading={loginMutation.isPending}
         type="submit"
-        className="flex w-[100%] text-lg font-bold bg-primary-600 hover:bg-primary-500"
-        variant="secondary"
+        className="flex w-[100%] text-base font-normal bg-primary text-foreground "
+        variant="primary"
       >
         Login
       </Button>

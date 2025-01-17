@@ -7,11 +7,12 @@
     "build": "turbo build",
     "type-checks": "turbo build check-types",
     "dev": "turbo dev",
+    "dev:core": "turbo dev --filter=core",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "ui:add": "bun --filter @repo/ui ui:add",
     "gen:api": "turbo gen api",
-    "prepare": "husky" , 
+    "prepare": "husky",
     "deploy": "git pull origin main && git push vercel main"
   },
   "devDependencies": {

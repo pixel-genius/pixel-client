@@ -12,22 +12,26 @@ import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
 import AuthCard from "../_components/auth-card";
 import { Countdown } from "@repo/ui/components/countdown";
 import Link from "next/link";
+import { AttachmentLanding } from "@repo/ui/components/attachment/attachmentLanding/attachmentLanding";
 
 const Otppage = () => {
   return (
     <AuthCard>
       {/* logo */}
-      <div className=" pt-7 flex flex-col items-center gap-4">
+      <div className="flex flex-col items-center gap-4">
         <div className="flex flex-col items-center gap-2">
-          <p className="text-center">
+          <p className="text-2xl font-bold">Email Verification</p>
+          <p className="text-center text-sm font-normal">
             We've sent the code to{" "}
-            <span className="underline">example@pixel.design</span>
+            <span className="underline text-sm font-normal">
+              example@pixel.design
+            </span>
           </p>
-          <p>check your email</p>
+          <p className="text-sm font-normal">check your email</p>
         </div>
       </div>
       {/* otp input */}
-      <div>
+      <div className="pb-6">
         <InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS}>
           <InputOTPGroup>
             <InputOTPSlot index={0} />
@@ -38,20 +42,19 @@ const Otppage = () => {
             <InputOTPSlot index={5} />
           </InputOTPGroup>
         </InputOTP>
-
       </div>
 
       {/* button */}
-      <div className="pb-7 w-full">
+      <div className=" w-full">
         <Button
-          className="w-full text-lg font-bold  bg-primary-600 hover:bg-primary-500"
-          variant="secondary"
+          className="w-full text-sm font-normal bg-primary text-foreground"
+          variant="primary"
         >
           Verify{" "}
         </Button>
       </div>
-      <div className="pb-7">
-        <p>
+      <div className="pb-4">
+        <p className="text-xs font-base text-foreground">
           didnt recieved code yet? <Countdown date={Date.now() + 120000} />
         </p>
       </div>
