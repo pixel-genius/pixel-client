@@ -68,12 +68,7 @@ const AttachmentLanding = (props: AttachmentProps) => {
               )}
             </AnimatePresence>
           </div>
-          <Button
-            variant="primary"
-            size="sm"
-            className="border-primary-500 text-primary-500 rounded-lg"
-            onClick={handleClickSelect}
-          >
+          <Button variant="primary" size="sm" onClick={handleClickSelect}>
             Select File
           </Button>
         </div>
