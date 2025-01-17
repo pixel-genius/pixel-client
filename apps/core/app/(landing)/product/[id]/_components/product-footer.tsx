@@ -48,13 +48,15 @@ const ProductFooter = () => {
           {/* button */}
           <div className=" flex gap-2 items-center">
             <Button
-              variant="default"
+              // variant="default"
               className="bg-primary-600 text-foreground py-4 "
             >
               Buy Now
               <Shopingcartplusicon size={24} className=" ml-2" />
             </Button>
-            <Button variant="default" className="py-4 ">
+            <Button 
+            // variant="default"
+             className="py-4 ">
               Preview
             </Button>
           </div>

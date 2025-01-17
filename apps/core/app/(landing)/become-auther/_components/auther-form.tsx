@@ -105,7 +105,7 @@ const AutherForm = () => {
             <div>
               <Button
                 type="submit"
-                variant="outline"
+                // variant="outline"
                 className="w-full bg-primary-600"
                 isLoading={mutation.isPending}
               >

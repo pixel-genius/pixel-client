@@ -35,7 +35,7 @@ const CommentSection = () => {
           </div>
           <div className="">
             <Button
-              variant="default"
+              // variant="default"
               className="bg-primary-600 text-foreground w-40 text text-lg font-medium"
             >
               login{" "}

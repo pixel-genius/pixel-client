@@ -2,9 +2,9 @@
 "use client";
 import { Button } from "@repo/ui/components/button";
 import {
-    InputOTP,
-    InputOTPGroup,
-    InputOTPSlot,
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
 } from "@repo/ui/components/input-otp";
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
 
@@ -96,7 +96,7 @@ export const SignupOtpForm = (props: SignupOtpFormProps) => {
       <div className="pb-7 w-full">
         <Button
           className="w-full text-lg font-bold  bg-primary-600 hover:bg-primary-500"
-          variant="secondary"
+          variant="primary"
           isLoading={muutation.isPending}
         >
           Verify
@@ -104,7 +104,7 @@ export const SignupOtpForm = (props: SignupOtpFormProps) => {
       </div>
       <div className="pb-7">
         <p>
-          didnt recieved code yet? <Countdown date={Date.now() + 120000} />
+          didnt recieveddqqdqdqdqdqdqdqdqdq code yet? <Countdown date={Date.now() + 120000} />
         </p>
       </div>
     </form>
