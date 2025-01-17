@@ -8,6 +8,7 @@ import Fechernabar from "./feather-navbar";
 import Searchbar, { RefSearchHandle } from "./search-bar";
 import Menu2icon from "@repo/icons/menu-2";
 import Addtocard from "../addtoCard";
+import { NavigationMenu } from "@repo/ui/components/navigation-menu";
 
 const Navbar = ({ islogin }: { islogin: boolean }) => {
   // isSeaching state
@@ -28,11 +29,11 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
     setIsSearchActive(false);
   };
 
-  const isMobile = true;
+  const isMobile = false;
 
   return (
-    <nav className="bg-card overflow-hidden  rounded-xl fixed top-12 -left-1/2 -right-1/2 z-40   w-[95%] sm:w-[90%] lg:w-[962px]  mx-auto">
-      <div className="flex  items-center  h-full  justify-between px-5 py-3 ">
+    <NavigationMenu className="bg-gray-900 overflow-hidden px-5 py-3 h-14 rounded-xl fixed top-12 -left-1/2 -right-1/2 z-40 w-[95%] sm:w-[90%] lg:w-[962px] max-w-none mx-auto">
+      <div className="flex  items-center h-full w-full justify-between ">
         <div className="flex items-center w-full">
           <div className="flex  items-center">
             <AnimatePresence
@@ -45,7 +46,7 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
                   key="default"
                   initial={{ opacity: 0, width: 0 }}
                   animate={{ opacity: 1, width: "100%" }}
-                  exit={{ opacity: 0, width: 0 }}
+                  exit={{ opacity: 1, width: 1 }}
                   transition={{ duration: 1 }}
                 >
                   <div className="pr-3">
@@ -91,7 +92,7 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
       </div>
 
       <Addtocard />
-    </nav>
+    </NavigationMenu>
   );
 };
 

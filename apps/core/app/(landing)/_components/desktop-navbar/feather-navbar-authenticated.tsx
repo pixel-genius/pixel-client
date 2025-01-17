@@ -11,6 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@repo/ui/components/dropdown-menu";
+import Image from "next/image";
 import Link from "next/link";
 import useCartStore from "../../store/cart-store";
 import Useractionpixelicon from "@repo/icons/useractionpixel";
@@ -30,7 +31,7 @@ const FecherNavbarAuthenticated = () => {
 
       <DropdownMenu>
         <DropdownMenuTrigger>
-          <img
+          <Image
             src="https://avatar.iran.liara.run/public/26"
             alt="avatar"
             className="w-8 h-8 rounded-full"
