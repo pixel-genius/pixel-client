@@ -1,12 +1,9 @@
 import Link from "next/link";
 
 // import components
-import { Button } from "@repo/ui/components/button";
 import AuthCard from "../_components/auth-card";
 
 // import icons
-import GoogleIcon from "../../../../../packages/icons/src/components/google";
-import LinkedinIcon from "../../../../../packages/icons/src/components/linkedin";
 import { LoginForm } from "./_components/form/loginForm";
 
 const LoginPage = () => {
@@ -21,11 +18,11 @@ const LoginPage = () => {
 
       <LoginForm />
       {/* line  */}
-      <div className="flex items-center w-full gap-3">
+      {/* <div className="flex items-center w-full gap-3">
         <div className="w-full h-[1px] bg-gray-700 rounded-full" />
         <p className="text-base font-medium">OR</p>
         <div className="w-full h-[1px] bg-gray-700 rounded-full" />
-      </div>
+      </div> */}
       {/* login with google and linkedin */}
       {/* <div className="w-full flex flex-col items-center gap-3">
         <Button

@@ -99,7 +99,7 @@ const SignUpPageComponent = () => {
         {/* Submit Button */}
         <Button
           size="md"
-          className="w-full text-md font-normal bg-primary-600 hover:bg-primary-500 mt-2"
+          className="w-full text-base font-normal bg-primary text-foreground mt-2"
           variant="primary"
           type="submit"
           isLoading={mutation.isPending}

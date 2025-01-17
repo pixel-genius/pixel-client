@@ -47,7 +47,7 @@ const Otppage = () => {
       {/* button */}
       <div className=" w-full">
         <Button
-          className="w-full text-sm font-normal  bg-primary-600 hover:bg-primary-500"
+          className="w-full text-sm font-normal bg-primary text-foreground"
           variant="primary"
         >
           Verify{" "}

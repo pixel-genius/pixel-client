@@ -81,7 +81,7 @@ const LoginForm = () => {
         size="md"
         isLoading={loginMutation.isPending}
         type="submit"
-        className="flex w-[100%] text-sm font-normal bg-primary-600 hover:bg-primary-500"
+        className="flex w-[100%] text-base font-normal bg-primary text-foreground "
         variant="primary"
       >
         Login

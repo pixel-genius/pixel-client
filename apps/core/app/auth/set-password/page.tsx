@@ -125,7 +125,7 @@ const Setpasswordpage = () => {
           <div className="pb-7 w-full">
             <Button
               isLoading={mutation.isPending}
-              className="w-full text-lg font-bold  bg-primary-600 hover:bg-primary-500"
+              className="w-full text-sm font-bold bg-primary text-foreground"
               variant="primary"
             >
               Reset
