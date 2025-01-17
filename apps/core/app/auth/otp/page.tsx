@@ -58,11 +58,6 @@ const Otppage = () => {
           didnt recieved code yet? <Countdown date={Date.now() + 120000} />
         </p>
       </div>
-      <AttachmentLanding
-        title="hasan"
-        fileCategory="badry"
-        onChange={() => {}}
-      />
     </AuthCard>
   );
 };
