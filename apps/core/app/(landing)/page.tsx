@@ -11,6 +11,7 @@ import Typography from "@repo/ui/components/typography";
 import * as htmlToImage from "html-to-image";
 import { useTheme } from "next-themes";
 import { useState } from "react";
+import { BrowseMegaMenu } from "./_components/browseMegaMenu/browse-mega-menu";
 
 export default function Page() {
   const { theme, setTheme } = useTheme();
@@ -91,9 +92,18 @@ export default function Page() {
           weight="medium"
           className="text-center"
         >
-          Find <Typography component="span" variant="inherit" weight="bold"> thousands</Typography> of meticulously
-          crafted resources by{" "}
-          <Typography component="span" variant="inherit" weight="light" className=" italic text-primary-500">
+          Find{" "}
+          <Typography component="span" variant="inherit" weight="bold">
+            {" "}
+            thousands
+          </Typography>{" "}
+          of meticulously crafted resources by{" "}
+          <Typography
+            component="span"
+            variant="inherit"
+            weight="light"
+            className=" italic text-primary-500"
+          >
             pixel geniuses
           </Typography>{" "}
           to supercharge your creativity.
