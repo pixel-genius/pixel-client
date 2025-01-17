@@ -1,12 +1,11 @@
 "use client";
+import PixelIcon from "@repo/icons/pxiel";
+import SearchIcon from "@repo/icons/serach";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
-import Serchinicon from "../../../../../../packages/icons/src/components/serach";
 import AnimatedNavBar from "./animated-navbar";
 import Fechernabar from "./feather-navbar";
 import Searchbar, { RefSearchHandle } from "./search-bar";
-import PixelIcon from "@repo/icons/pxiel";
-import Menu2icon from "@repo/icons/menu-2";
 
 const Navbar = ({ islogin }: { islogin: boolean }) => {
   // isSeaching state
@@ -31,7 +30,7 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
 
   return (
     <nav className="bg-gray-900 overflow-hidden px-5 py-3 h-14 rounded-xl fixed top-12 -left-1/2 -right-1/2 z-40   w-[95%] sm:w-[90%] lg:w-[962px]  mx-auto">
-      <div className="flex  items-center  h-full  justify-between ">
+      <div className="flex  items-center  h-full  bg-red-200 justify-between ">
         <div className="flex items-center w-full">
           <div className="flex  items-center">
             <AnimatePresence
@@ -57,7 +56,7 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
 
             {/* Search Icon */}
             <div onClick={handleOpenSearch} className="cursor-pointer">
-              <Serchinicon size={24} color="white" />
+              <SearchIcon size={24} color="white" />
             </div>
           </div>
 
@@ -82,12 +81,7 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
               className="flex items-center "
             >
               <Fechernabar islogin={islogin} />
-              {/*  mobile menu  */}
-              {isMobile && (
-                <>
-                  <Menu2icon size={25} color="white" />
-                </>
-              )}
+           
             </motion.div>
           )}
         </AnimatePresence>
