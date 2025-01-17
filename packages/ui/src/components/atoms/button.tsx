@@ -108,7 +108,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={isLoading || props.disabled}
       >
         {IconLeft && <IconLeft className={cn(isLoading && "invisible")} />}
-        {isLoading ? <OrbitingDotsLoading /> : children}
+        <span className={cn(isLoading && "invisible")}>{children}</span>
+        {isLoading && (
+          <span className="absolute">
+            <OrbitingDotsLoading />
+          </span>
+        )}
         {IconRight && <IconRight className={cn(isLoading && "invisible")} />}
       </Comp>
     );
