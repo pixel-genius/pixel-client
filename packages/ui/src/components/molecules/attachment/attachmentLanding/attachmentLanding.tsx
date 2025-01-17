@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import AttachmentIcon from "@repo/icons/attachment";
-import { Button } from "~/components/atoms/button";
+import { Button } from "../../../atoms/button";
 import { AnimatePresence } from "framer-motion";
-import { Card } from "~/components/atoms/card";
-import { ScrollArea } from "~/components/atoms/scroll-area";
+import { Card } from "../../../atoms/card";
+import { ScrollArea } from "../../../atoms/scroll-area";
 import { AttachmentProps, useAttachment } from "../useAttachment";
 import { AttachmentItem } from "./attachmentItem/attachmentItem";
 

@@ -12,6 +12,7 @@ import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
 import AuthCard from "../_components/auth-card";
 import { Countdown } from "@repo/ui/components/countdown";
 import Link from "next/link";
+import { AttachmentLanding } from "@repo/ui/components/attachment/attachmentLanding/attachmentLanding";
 
 const Otppage = () => {
   return (
@@ -41,7 +42,6 @@ const Otppage = () => {
             <InputOTPSlot index={5} />
           </InputOTPGroup>
         </InputOTP>
-
       </div>
 
       {/* button */}
@@ -58,6 +58,11 @@ const Otppage = () => {
           didnt recieved code yet? <Countdown date={Date.now() + 120000} />
         </p>
       </div>
+      <AttachmentLanding
+        title="hasan"
+        fileCategory="badry"
+        onChange={() => {}}
+      />
     </AuthCard>
   );
 };
