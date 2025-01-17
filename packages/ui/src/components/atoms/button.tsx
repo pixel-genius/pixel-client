@@ -7,7 +7,7 @@ import { IconProps } from "@repo/icons/types";
 import OrbitingDotsLoading from "./orbitingDotsLoading";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm transition-colors px-3 py-4 transition focus:ring focus:ring-primary-600  ",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm transition-colors px-3 py-4 transition focus:ring focus:ring-primary-600 relative ",
   {
     variants: {
       variant: {
