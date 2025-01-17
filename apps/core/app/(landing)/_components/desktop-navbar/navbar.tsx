@@ -1,14 +1,14 @@
 "use client";
 import PixelIcon from "@repo/icons/pxiel";
 import SearchIcon from "@repo/icons/serach";
+import { NavigationMenu } from "@repo/ui/components/navigation-menu";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
-import AnimatedNavBar from "./animated-navbar";
-import Fechernabar from "./feather-navbar";
-import Searchbar, { RefSearchHandle } from "./search-bar";
-import Menu2icon from "@repo/icons/menu-2";
 import Addtocard from "../addtoCard";
-import { NavigationMenu } from "@repo/ui/components/navigation-menu";
+import NavbarLinks from "./navbar-links";
+import FeaturesNavbar from "./features-navbar";
+import Searchbar, { RefSearchHandle } from "./search-bar";
+import { BrowseMegaMenu } from "../browseMegaMenu/browse-mega-menu";
 
 const Navbar = ({ islogin }: { islogin: boolean }) => {
   // isSeaching state
@@ -32,8 +32,8 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
   const isMobile = false;
 
   return (
-    <NavigationMenu className="bg-gray-900 overflow-hidden px-5 py-3 h-14 rounded-xl fixed top-12 -left-1/2 -right-1/2 z-40 w-[95%] sm:w-[90%] lg:w-[962px] max-w-none mx-auto">
-      <div className="flex  items-center h-full w-full justify-between ">
+    <div className="bg-background shadow-box rounded-xl fixed top-12 -left-1/2 -right-1/2 z-40 w-[95%] sm:w-[90%] lg:w-[962px] max-w-none mx-auto">
+      <div className="flex  py-3 px-5 items-center h-full w-full justify-between ">
         <div className="flex items-center w-full">
           <div className="flex  items-center">
             <AnimatePresence
@@ -49,17 +49,17 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
                   exit={{ opacity: 1, width: 1 }}
                   transition={{ duration: 1 }}
                 >
-                  <div className="pr-3">
-                    <PixelIcon size={43} />
+                  <div className="pr-5">
+                    <PixelIcon size={36} />
                   </div>
-                  {!isMobile && <AnimatedNavBar />}
+                  <div className="pr-4">{!isMobile && <NavbarLinks />}</div>
                 </motion.div>
               )}
             </AnimatePresence>
 
             {/* Search Icon */}
             <div onClick={handleOpenSearch} className="cursor-pointer">
-              <SearchIcon size={24} color="white" />
+              <SearchIcon size={20} />
             </div>
           </div>
 
@@ -83,7 +83,7 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
               transition={{ duration: 1 }}
               className="flex items-center "
             >
-              <Fechernabar islogin={islogin} />
+              <FeaturesNavbar islogin={islogin} />
               {/*  mobile menu  */}
               {isMobile && <>{/* <Menu2icon size={25} color="white" /> */}</>}
             </motion.div>
@@ -92,7 +92,9 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
       </div>
 
       <Addtocard />
-    </NavigationMenu>
+
+      {/* <BrowseMegaMenu /> */}
+    </div>
   );
 };
 

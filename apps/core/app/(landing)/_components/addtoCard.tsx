@@ -38,12 +38,12 @@ const Addtocard = () => {
   if (!isAddToCartOpen) return null;
 
   return (
-    <div className="flex w-full">
+    <div className="flex w-full bg-background rounded-b-xl">
       <div
         className="flex fixed -z-10 inset-0 w-full h-full"
         onClick={closeAddToCart}
       ></div>
-      <div className="bg-card max-h-[421px] min-w-[472px] overflow-auto p-4 flex flex-col gap-2  scrollbar-hide">
+      <div className=" max-h-[433px] min-w-[472px] overflow-auto p-4 flex flex-col gap-2  scrollbar-hide">
         {cards.map((card) => (
           <Card
             title={card.title}
@@ -59,9 +59,9 @@ const Addtocard = () => {
         ))}
       </div>
 
-      <div className="bg-card p-4 w-[522px]">
+      <div className=" p-4 w-[522px]">
         <p className="text-xl font-medium pb-5">Checkout</p>
-        <div className="flex  justify-center gap-3 items-center bg-background p-2 rounded-lg">
+        <div className="flex  justify-center gap-3 items-center bg-card p-2 rounded-lg">
           <div className="flex flex-col items-center justify-center">
             <Metamaskicon size={33} />
             <p className="text-sm font-medium text-foreground">Metamask</p>

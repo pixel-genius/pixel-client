@@ -1,6 +1,6 @@
 import Typography from "@repo/ui/components/typography";
 
-const FecherNavbarGuest = () => {
+const FeatureNavbarGuest = () => {
   return (
     <div className="flex items-center gap-3">
       <Typography
@@ -25,4 +25,4 @@ const FecherNavbarGuest = () => {
   );
 };
 
-export default FecherNavbarGuest;
+export default FeatureNavbarGuest;

@@ -12,7 +12,7 @@ const Card: React.FC<CardProps> = (props) => {
   const { id, onRemove, title, price } = props;
 
   return (
-    <div className="bg-background  flex-shrink-0 rounded-lg overflow-hidden">
+    <div className="bg-card  flex-shrink-0 rounded-lg overflow-hidden">
       <div className="flex">
         <div className="p-4 flex gap-2 flex-1">
           <div>
