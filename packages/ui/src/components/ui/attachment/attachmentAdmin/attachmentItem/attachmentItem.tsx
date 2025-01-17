@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { Loader, Trash2 } from "lucide-react";
 import Image from "next/image";
-import { Button } from "../../../button";
-import { FileState } from "../../useAttachment";
+import { Button } from "~/components/atoms/button";
+import { FileState } from "~/components/molecules/attachment/useAttachment";
 
 interface AttachmentItemProps {
   file: FileState;

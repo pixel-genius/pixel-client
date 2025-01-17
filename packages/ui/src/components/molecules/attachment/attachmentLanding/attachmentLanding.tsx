@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import AttachmentIcon from "@repo/icons/attachment";
-import { Button } from "../../button";
+import { Button } from "~/components/atoms/button";
 import { AnimatePresence } from "framer-motion";
-import { Card } from "../../card";
-import { ScrollArea } from "../../scroll-area";
+import { Card } from "~/components/atoms/card";
+import { ScrollArea } from "~/components/atoms/scroll-area";
 import { AttachmentProps, useAttachment } from "../useAttachment";
 import { AttachmentItem } from "./attachmentItem/attachmentItem";
 
@@ -69,7 +69,7 @@ const AttachmentLanding = (props: AttachmentProps) => {
             </AnimatePresence>
           </div>
           <Button
-            variant="outline"
+            variant="primary"
             size="sm"
             className="border-primary-500 text-primary-500 rounded-lg"
             onClick={handleClickSelect}
