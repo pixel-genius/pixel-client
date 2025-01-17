@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@repo/ui/lib/utils";
 import { IconProps } from "@repo/icons/types";
-// import OrbitingDotsLoading from "./orbitingDotsLoading";
+import OrbitingDotsLoading from "./orbitingDotsLoading";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm transition-colors px-3 py-4 transition focus:ring focus:ring-primary-600 relative ",
@@ -108,12 +108,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={isLoading || props.disabled}
       >
         {IconLeft && <IconLeft className={cn(isLoading && "invisible")} />}
-        <span className={cn(isLoading && "invisible")}>{children}</span>
-        {isLoading && (
-          <span className="absolute">
-            {/* <OrbitingDotsLoading /> */}
-          </span>
-        )}
+        {isLoading ? <OrbitingDotsLoading /> : children}
         {IconRight && <IconRight className={cn(isLoading && "invisible")} />}
       </Comp>
     );
