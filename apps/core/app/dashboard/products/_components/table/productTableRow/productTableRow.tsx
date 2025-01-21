@@ -5,6 +5,12 @@ import { TableCell, TableRow } from "@repo/ui/components/table";
 import Typography from "@repo/ui/components/typography";
 import { Badge } from "@repo/ui/components/badge";
 import DotsVerticalIcon from "@repo/icons/dotsVertical";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@repo/ui/components/dropdown-menu";
 
 interface ProductTableRowProps {
   rowIndex: number;
@@ -38,7 +44,7 @@ const ProductTableRow = (props: ProductTableRowProps) => {
       <TableCell className="border-b-2 border-background">
         <Typography variant="label/sm">{rowIndex}</Typography>
       </TableCell>
-      <TableCell className="border-b-2 border-background">
+      <TableCell className="border-b-2 border-background max-w-[400px]">
         <div className="flex gap-[10px]">
           <div>
             <Image
@@ -49,7 +55,7 @@ const ProductTableRow = (props: ProductTableRowProps) => {
             />
           </div>
           <div className="flex flex-wrap -86">
-            <Typography variant="label/sm">{productName}</Typography>
+            <Typography variant="label/sm" className="max-w-[200px] truncate">{productName}</Typography>
             <div className="flex gap-2 w-full">
               <span className="inline-flex items-center gap-1">
                 <IconHeart size={20} />
@@ -65,7 +71,7 @@ const ProductTableRow = (props: ProductTableRowProps) => {
       </TableCell>
       <TableCell className="border-b-2 border-background">
         <Badge
-          className={`!bg-${status === "PUBLISHED" ? "success-400" : "secondary"} p-[8px] rounded-lg`}
+          className={`${status==='Published' ? 'bg-success-400' : 'bg-secondary'} p-[8px] rounded-lg`}
         >
           <Typography variant="label/sm">{status}</Typography>
         </Badge>
@@ -81,9 +87,26 @@ const ProductTableRow = (props: ProductTableRowProps) => {
       </TableCell>
       <TableCell className="border-b-2 border-background">{earning}</TableCell>
       <TableCell className="border-b-2 border-background">
-        <span className="cursor-pointer">
-          <DotsVerticalIcon />
-        </span>
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <span className="cursor-pointer">
+              <DotsVerticalIcon />
+            </span>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem onClick={() => {}} className="cursor-pointer">
+              <Typography variant="label/xs">Edit</Typography>
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => {}} className="cursor-pointer">
+              <Typography variant="label/xs">View product</Typography>
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => {}} className="cursor-pointer">
+              <Typography variant="label/xs" className="text-error">
+                Delete
+              </Typography>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </TableCell>
     </TableRow>
   );

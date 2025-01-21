@@ -7,7 +7,7 @@ import { ProductTabs } from "./_components/tabs/productTabs";
 import { ProductTable } from "./_components/table/productTable";
 
 const tabs = [
-  { value: "all", label: "All Products" },
+  { value: "all", label: "Products" },
   { value: "drafts", label: "Drafts" },
 ];
 
