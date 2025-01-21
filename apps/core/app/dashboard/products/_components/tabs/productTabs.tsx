@@ -16,13 +16,14 @@ const ProductTabs = (props: ProductTabsProps) => {
 
   return (
     <Tabs defaultValue="all" onValueChange={handleValueChange}>
-      <TabsList className="bg-transparent">
+      <TabsList className="bg-transparent gap-[8px]">
         {tabs.map((tab, index) => (
           <TabsTrigger
             key={tab.label + "-" + index}
-            className="p-4 data-[state=active]:bg-secondary"
+            className="p-4 data-[state=active]:bg-primary bg-secondary rounded-lg"
             value={tab.value}
           >
+            
             <Typography variant="label/md">{tab.label}</Typography>
           </TabsTrigger>
         ))}
