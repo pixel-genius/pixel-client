@@ -1,0 +1,24 @@
+name: Update Leaderboard
+
+on:
+  issues:
+    types: [closed]
+
+jobs:
+  update-leaderboard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run script to update leaderboard
+        run: |
+          node updateLeaderboard.js
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add leaderboard.md
+          git commit -m "Update leaderboard"
+          git push
