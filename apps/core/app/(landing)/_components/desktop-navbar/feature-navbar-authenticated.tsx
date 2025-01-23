@@ -2,7 +2,6 @@ import Doorexiticon from "@repo/icons/Doorexiticon";
 import Heart1icon from "@repo/icons/heart1";
 import Settingsicon from "@repo/icons/Settingsicon";
 import Shoppingbagicon from "@repo/icons/shopping-bag";
-import Useractionpixelicon from "@repo/icons/useractionpixel";
 import Usercircleicon from "@repo/icons/Usercircleicon";
 import {
   DropdownMenu,
@@ -14,20 +13,37 @@ import {
 } from "@repo/ui/components/dropdown-menu";
 import Image from "next/image";
 import Link from "next/link";
+import useCartStore from "../../store/cart-store";
+import Useractionpixelicon from "@repo/icons/useractionpixel";
+import {
+  AvatarImage,
+  AvatarFallback,
+  Avatar,
+} from "@repo/ui/components/avatar";
 
-const FecherNavbarAuthenticated = () => {
+const FeatureNavbarAuthenticated = () => {
+  const { toggleAddToCart } = useCartStore();
+
   return (
     <div className="flex  flex-shrink-0 items-center gap-3">
       <Heart1icon size={24} color="white" />
-      <Shoppingbagicon size={24} color="white" />
+
+      <div className="relative cursor-pointer" onClick={toggleAddToCart}>
+        <Shoppingbagicon size={24} color="white" />
+
+        {/* TODO: add badge #erfan*/}
+        <div className="bg-error rounded-full flex items-center justify-center absolute top-0 right-0 w-3 h-3 text-white text-xs">
+          3
+        </div>
+      </div>
 
       <DropdownMenu>
         <DropdownMenuTrigger>
-          <Image
-            src="https://avatar.iran.liara.run/public/26"
-            alt="avatar"
-            className="w-8 h-8 rounded-full"
-          />
+          <Avatar className="size-8">
+            {/* TODO: Add User info */}
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="z-50">
           <DropdownMenuLabel className="text-white text-base font-medium">
@@ -74,4 +90,4 @@ const FecherNavbarAuthenticated = () => {
   );
 };
 
-export default FecherNavbarAuthenticated;
+export default FeatureNavbarAuthenticated;
