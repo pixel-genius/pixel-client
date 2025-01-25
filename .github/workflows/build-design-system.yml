@@ -1,0 +1,34 @@
+name: Build Design System
+
+on:
+  push:
+    paths:
+      - "packages/design-system/src/tokens/**" # Trigger only when files in the tokens folder change
+  pull_request:
+    paths:
+      - "packages/design-system/src/tokens/**"
+
+jobs:
+  build-design-system:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Bun
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v1
+      with:
+        bun-version: latest
+
+    # Step 3: Navigate to the design-system package and install dependencies
+    - name: Install dependencies
+      working-directory: ./packages/design-system
+      run: bun install
+
+    # Step 4: Run the build script
+    - name: Run build script
+      working-directory: ./packages/design-system
+      run: bun run build

@@ -1,4 +1,4 @@
-import "@repo/ui/globals.css";
+import "@repo/ui/globals.scss";
 import { cn } from "@repo/ui/lib/utils";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";

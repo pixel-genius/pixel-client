@@ -24,6 +24,8 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@repo/design-system": "*",
+    "@repo/icons": "*",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
@@ -49,7 +51,7 @@
     "@radix-ui/react-switch": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.0",
-    "@repo/icons": "*",
+
     "@tabler/icons-react": "^3.12.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -61,11 +63,13 @@
     "lucide-react": "^0.395.0",
     "next": "14.2.4",
     "next-themes": "^0.3.0",
+    "postcss-scss": "^4.0.9",
     "react-countdown": "^2.3.6",
     "react-day-picker": "8.10.1",
     "react-hook-form": "^7.53.0",
     "react-resizable-panels": "^2.1.1",
     "recharts": "^2.12.7",
+    "sass": "^1.83.4",
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.3.0",
     "tailwind-scrollbar-hide": "^2.0.0",
@@ -74,7 +78,7 @@
     "zod": "^3.23.8"
   },
   "exports": {
-    "./globals.css": "./src/globals.css",
+    "./globals.scss": "./src/styles/globals.scss",
     "./postcss.config": "./postcss.config.mjs",
     "./tailwind.config": "./tailwind.config.ts",
     "./lib/*": "./src/lib/*.ts",
