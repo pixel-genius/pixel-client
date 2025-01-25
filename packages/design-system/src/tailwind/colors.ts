@@ -2,6 +2,7 @@ export const colors = {
   "accent": "hsl(var(--accent))",
   "accent-foreground": "hsl(var(--accent-foreground))",
   "background": "hsl(var(--background))",
+  "black": "hsl(var(--black))",
   "border": "hsl(var(--border))",
   "card": "hsl(var(--card))",
   "card-foreground": "hsl(var(--card-foreground))",
@@ -32,4 +33,5 @@ export const colors = {
   "warning": "hsl(var(--warning))",
   "warning-border": "hsl(var(--warning-border))",
   "warning-foreground": "hsl(var(--warning-foreground))",
+  "white": "hsl(var(--white))",
 };

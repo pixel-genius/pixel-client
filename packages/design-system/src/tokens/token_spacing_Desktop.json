@@ -1,0 +1,114 @@
+{
+  "spacing-1": {
+    "$type": "number",
+    "$value": 4
+  },
+  "spacing-10": {
+    "$type": "number",
+    "$value": 40
+  },
+  "spacing-11": {
+    "$type": "number",
+    "$value": 44
+  },
+  "spacing-12": {
+    "$type": "number",
+    "$value": 48
+  },
+  "spacing-16": {
+    "$type": "number",
+    "$value": 64
+  },
+  "spacing-2": {
+    "$type": "number",
+    "$value": 8
+  },
+  "spacing-20": {
+    "$type": "number",
+    "$value": 80
+  },
+  "spacing-24": {
+    "$type": "number",
+    "$value": 96
+  },
+  "spacing-28": {
+    "$type": "number",
+    "$value": 112
+  },
+  "spacing-3": {
+    "$type": "number",
+    "$value": 12
+  },
+  "spacing-32": {
+    "$type": "number",
+    "$value": 128
+  },
+  "spacing-36": {
+    "$type": "number",
+    "$value": 144
+  },
+  "spacing-4": {
+    "$type": "number",
+    "$value": 16
+  },
+  "spacing-40": {
+    "$type": "number",
+    "$value": 160
+  },
+  "spacing-44": {
+    "$type": "number",
+    "$value": 176
+  },
+  "spacing-48": {
+    "$type": "number",
+    "$value": 192
+  },
+  "spacing-5": {
+    "$type": "number",
+    "$value": 20
+  },
+  "spacing-52": {
+    "$type": "number",
+    "$value": 208
+  },
+  "spacing-56": {
+    "$type": "number",
+    "$value": 224
+  },
+  "spacing-6": {
+    "$type": "number",
+    "$value": 24
+  },
+  "spacing-60": {
+    "$type": "number",
+    "$value": 240
+  },
+  "spacing-64": {
+    "$type": "number",
+    "$value": 256
+  },
+  "spacing-7": {
+    "$type": "number",
+    "$value": 28
+  },
+  "spacing-72": {
+    "$type": "number",
+    "$value": 288
+  },
+  "spacing-8": {
+    "$type": "number",
+    "$value": 32
+  },
+  "spacing-80": {
+    "$type": "number",
+    "$value": 320
+  },
+  "spacing-9": {
+    "$type": "number",
+    "$value": 36
+  },
+  "spacing-96": {
+    "$type": "number",
+    "$value": 384
+  }
+}

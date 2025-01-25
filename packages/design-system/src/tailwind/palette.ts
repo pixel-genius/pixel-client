@@ -1,8 +1,4 @@
 export const palette = {
-  "General": {
-    "black": "var(--General-black)",
-    "white": "var(--General-white)",
-  },
   "amber": {
     "50": "var(--amber-50)",
     "100": "var(--amber-100)",
@@ -68,7 +64,12 @@ export const palette = {
     "900": "var(--fuchsia-900)",
     "950": "var(--fuchsia-950)",
   },
+  "general": {
+    "black": "var(--general-black)",
+    "white": "var(--general-white)",
+  },
   "gray": {
+    "50": "var(--gray-50)",
     "100": "var(--gray-100)",
     "200": "var(--gray-200)",
     "300": "var(--gray-300)",
@@ -79,7 +80,6 @@ export const palette = {
     "800": "var(--gray-800)",
     "900": "var(--gray-900)",
     "950": "var(--gray-950)",
-    "ali": "var(--gray-ali)",
   },
   "green": {
     "50": "var(--green-50)",
