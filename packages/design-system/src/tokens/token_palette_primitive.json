@@ -988,10 +988,6 @@
       "$type": "color",
       "$value": "#a1a1aa"
     },
-    "50": {
-      "$type": "color",
-      "$value": "#fafafa"
-    },
     "500": {
       "$type": "color",
       "$value": "#71717a"
@@ -1015,6 +1011,10 @@
     "950": {
       "$type": "color",
       "$value": "#09090b"
+    },
+    "ali2": {
+      "$type": "color",
+      "$value": "#fafafa"
     }
   }
 }
