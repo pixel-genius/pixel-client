@@ -1,0 +1,16 @@
+{
+  "icon size": {
+    "LG": {
+      "$type": "number",
+      "$value": 24
+    },
+    "MD": {
+      "$type": "number",
+      "$value": 18
+    },
+    "XS": {
+      "$type": "number",
+      "$value": 16
+    }
+  }
+}
