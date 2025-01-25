@@ -22,7 +22,7 @@ jobs:
     # Step 2: Cache Bun dependencies
     - name: Cache Bun dependencies
       id: cache-deps
-      uses: actions/cache@v3
+      uses: actions/cache@v4.2.0
       with:
         path: ~/.bun/install/cache
         key: ${{ runner.os }}-bun-dependencies-${{ hashFiles('**/bun.lockb') }}
@@ -49,8 +49,8 @@ jobs:
     # Step 6: Check for changes
     - name: Check for changes
       run: |
-        git config --global user.name "GitHub Actions"
-        git config --global user.email "actions@github.com"
+        git config --global user.name "mrbadri" 
+        git config --global user.email "mrbadri.dev@gmail.com"
         if [[ -n "$(git status --porcelain)" ]]; then
           echo "Changes detected, committing..."
           git add .
