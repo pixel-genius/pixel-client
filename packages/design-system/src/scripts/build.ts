@@ -6,16 +6,27 @@ import { buildTailwindConfig } from "./build-config-tailwind.js";
 import { buildMainScss } from "./build-main-style.js";
 
 const main = () => {
-  // Styles
-  buildPaletteScss();
-  buildColorsScss("light");
-  buildColorsScss("dark");
-  buildMainScss();
+  try {
+    console.log("🎨 Building design system...");
 
-  // Tailiwnd 
-  buildColorsTailwind();
-  buildPaletteTailwind();
-  buildTailwindConfig();
+    // Styles
+    console.log("Building SCSS styles...");
+    buildPaletteScss();
+    buildColorsScss("light");
+    buildColorsScss("dark");
+    buildMainScss();
+
+    // Tailwind
+    console.log("Building Tailwind configurations...");
+    buildColorsTailwind();
+    buildPaletteTailwind();
+    buildTailwindConfig();
+
+    console.log("✅ Design system built successfully!");
+  } catch (error) {
+    console.error("❌ Build failed:", error);
+    process.exit(1);
+  }
 };
 
 main();
