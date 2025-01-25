@@ -61,7 +61,7 @@
     },
     "foreground": {
       "$type": "color",
-      "$value": "{zinc.50}",
+      "$value": "{zinc.ali2}",
       "$description": "Default foreground color of <body />...etc"
     },
     "information": {
