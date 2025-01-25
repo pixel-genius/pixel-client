@@ -1,9 +1,6 @@
 name: Build Design System
 
 on:
-  # push:
-    # paths:
-      # - "packages/design-system/src/tokens/**" # Trigger only when files in the tokens folder change
   pull_request:
     paths:
       - "packages/design-system/src/tokens/**"
@@ -17,12 +14,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
       with:
-        ref: ${{ github.head_ref }} # Checkout the branch for the PR
+        ref: ${{ github.head_ref }}
 
     # Step 2: Cache Bun dependencies
     - name: Cache Bun dependencies
       id: cache-deps
-      uses: actions/cache@v4.2.0
+      uses: actions/cache@v4
       with:
         path: ~/.bun/install/cache
         key: ${{ runner.os }}-bun-dependencies-${{ hashFiles('**/bun.lockb') }}
@@ -46,6 +43,10 @@ jobs:
       working-directory: ./packages/design-system
       run: bun run build
 
-    # Step 6: Check for changes
-    - name: Check for changes 
-    - uses: stefanzweifel/git-auto-commit-action@v5
+    # Step 6: Commit and push changes
+    - name: Commit and push changes
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "chore: update design system tokens"
+        branch: ${{ github.head_ref }}
+        file_pattern: ./packages/design-system/src/tokens/**
