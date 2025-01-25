@@ -1,0 +1,39 @@
+@use "_palette.scss" as *;
+
+@layer base {
+  .light {
+    --accent: var(--zinc-100);
+    --accent-foreground: var(--zinc-900);
+    --background: var(--General-white);
+    --border: var(--zinc-200);
+    --card: var(--zinc-100);
+    --card-foreground: var(--slate-900);
+    --destructive: var(--red-600);
+    --destructive-foreground: var(--General-white);
+    --error: var(--red-500);
+    --error-border: var(--red-200);
+    --error-foreground: var(--red-600);
+    --foreground: var(--zinc-950);
+    --information: var(--blue-100);
+    --information-border: var(--blue-200);
+    --information-foreground: var(--blue-700);
+    --input: var(--zinc-200);
+    --muted: var(--zinc-100);
+    --muted-foreground: var(--zinc-500);
+    --popover: var(--General-white);
+    --popover-foreground: var(--slate-900);
+    --primary: var(--purple-500);
+    --primary-foreground: var(--General-white);
+    --primary-light: var(--purple-100);
+    --ring: var(--zinc-400);
+    --secondary: var(--zinc-100);
+    --secondary-foreground: var(--zinc-900);
+    --success: var(--green-100);
+    --success-border: var(--green-200);
+    --success-foreground: var(--green-700);
+    --table-header: rgba(244, 244, 245, 0.5000);
+    --warning: var(--amber-500);
+    --warning-border: var(--amber-200);
+    --warning-foreground: var(--General-white);
+  }
+}
