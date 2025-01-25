@@ -1,9 +1,9 @@
 name: Build Design System
 
 on:
-  push:
-    paths:
-      - "packages/design-system/src/tokens/**" # Trigger only when files in the tokens folder change
+  # push:
+    # paths:
+      # - "packages/design-system/src/tokens/**" # Trigger only when files in the tokens folder change
   pull_request:
     paths:
       - "packages/design-system/src/tokens/**"
@@ -16,19 +16,46 @@ jobs:
     # Step 1: Checkout the repository
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        ref: ${{ github.head_ref }} # Checkout the branch for the PR
 
-    # Step 2: Set up Bun
+    # Step 2: Cache Bun dependencies
+    - name: Cache Bun dependencies
+      id: cache-deps
+      uses: actions/cache@v3
+      with:
+        path: ~/.bun/install/cache
+        key: ${{ runner.os }}-bun-dependencies-${{ hashFiles('**/bun.lockb') }}
+        restore-keys: |
+          ${{ runner.os }}-bun-dependencies-
+
+    # Step 3: Set up Bun
     - name: Setup Bun
       uses: oven-sh/setup-bun@v1
       with:
         bun-version: latest
 
-    # Step 3: Navigate to the design-system package and install dependencies
+    # Step 4: Install dependencies only if the cache was not restored
     - name: Install dependencies
+      if: steps.cache-deps.outputs.cache-hit != 'true'
       working-directory: ./packages/design-system
       run: bun install
 
-    # Step 4: Run the build script
+    # Step 5: Run the build script
     - name: Run build script
       working-directory: ./packages/design-system
       run: bun run build
+
+    # Step 6: Check for changes
+    - name: Check for changes
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        if [[ -n "$(git status --porcelain)" ]]; then
+          echo "Changes detected, committing..."
+          git add .
+          git commit -m "chore: update design system tokens"
+          git push
+        else
+          echo "No changes to commit."
+        fi
