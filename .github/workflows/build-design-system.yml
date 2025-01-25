@@ -15,6 +15,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         ref: ${{ github.head_ref }}
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
     # Step 2: Cache Bun dependencies
     - name: Cache Bun dependencies
@@ -50,3 +51,4 @@ jobs:
         commit_message: "chore: update design system tokens"
         branch: ${{ github.head_ref }}
         file_pattern: ./packages/design-system/**
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
