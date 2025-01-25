@@ -49,4 +49,4 @@ jobs:
       with:
         commit_message: "chore: update design system tokens"
         branch: ${{ github.head_ref }}
-        file_pattern: ./packages/design-system/src/tokens/**
+        file_pattern: ./packages/design-system/**
