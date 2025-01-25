@@ -47,15 +47,5 @@ jobs:
       run: bun run build
 
     # Step 6: Check for changes
-    - name: Check for changes
-      run: |
-        git config --global user.name "mrbadri" 
-        git config --global user.email "mrbadri.dev@gmail.com"
-        if [[ -n "$(git status --porcelain)" ]]; then
-          echo "Changes detected, committing..."
-          git add .
-          git commit -m "chore: update design system tokens"
-          git push
-        else
-          echo "No changes to commit."
-        fi
+    - name: Check for changes 
+    - uses: stefanzweifel/git-auto-commit-action@v5
