@@ -276,7 +276,6 @@ export const palette = {
     "950": "var(--yellow-950)",
   },
   "zinc": {
-    "50": "var(--zinc-50)",
     "100": "var(--zinc-100)",
     "200": "var(--zinc-200)",
     "300": "var(--zinc-300)",
@@ -287,5 +286,6 @@ export const palette = {
     "800": "var(--zinc-800)",
     "900": "var(--zinc-900)",
     "950": "var(--zinc-950)",
+    "ali2": "var(--zinc-ali2)",
   },
 };
