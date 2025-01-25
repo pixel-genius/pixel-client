@@ -44,10 +44,10 @@ const generateScssContent = (
 // Function to build and write SCSS for a given theme
 export const buildColorsScss = (theme: "dark" | "light"): void => {
   // Define the input and output file paths
-  const partFileName = theme === "dark" ? "Default" : "Light";
+  const partFileName = theme === "dark" ? "default" : "light";
   const inputFilePath = path.join(
     tokensDir,
-    `token_Color_${partFileName}.json`,
+    `token_color_${partFileName}.json`,
   );
   const outputFilePath = path.join(stylesDir, `_colors-${theme}.scss`);
 

@@ -31,7 +31,7 @@ const generateColorsTsContent = (tokens: Record<string, any>): string => {
 
 // Function to build and write colors.ts
 export const buildColorsTailwind = (): void => {
-  const inputFilePath = path.join(tokensDir, `token_Color_Light.json`);
+  const inputFilePath = path.join(tokensDir, `token_color_light.json`);
   const outputFilePath = path.join(outputDir, `colors.ts`);
 
   // Ensure the input file exists

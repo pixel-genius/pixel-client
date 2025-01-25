@@ -3,7 +3,7 @@ import * as path from 'path';
 import { hexToHsl } from './utills.js';
 
 // Paths for input and output files
-const inputFilePath = path.join(__dirname, '../tokens/token_Palette_Primitive.json');
+const inputFilePath = path.join(__dirname, '../tokens/token_palette_primitive.json');
 const outputFilePath = path.join(__dirname, '../styles/base/_palette.scss');
 
 // Generate SCSS content with groups separated by an empty line

@@ -4,12 +4,13 @@
   .light {
     --accent: var(--zinc-100);
     --accent-foreground: var(--zinc-900);
-    --background: var(--General-white);
+    --background: var(--general-white);
+    --black: var(--general-black);
     --border: var(--zinc-200);
     --card: var(--zinc-100);
     --card-foreground: var(--slate-900);
     --destructive: var(--red-600);
-    --destructive-foreground: var(--General-white);
+    --destructive-foreground: var(--general-white);
     --error: var(--red-500);
     --error-border: var(--red-200);
     --error-foreground: var(--red-600);
@@ -20,10 +21,10 @@
     --input: var(--zinc-200);
     --muted: var(--zinc-100);
     --muted-foreground: var(--zinc-500);
-    --popover: var(--General-white);
+    --popover: var(--general-white);
     --popover-foreground: var(--slate-900);
     --primary: var(--purple-500);
-    --primary-foreground: var(--General-white);
+    --primary-foreground: var(--general-white);
     --primary-light: var(--purple-100);
     --ring: var(--zinc-400);
     --secondary: var(--zinc-100);
@@ -34,6 +35,7 @@
     --table-header: rgba(244, 244, 245, 0.5000);
     --warning: var(--amber-500);
     --warning-border: var(--amber-200);
-    --warning-foreground: var(--General-white);
+    --warning-foreground: var(--general-white);
+    --white: var(--general-white);
   }
 }
