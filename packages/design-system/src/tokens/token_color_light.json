@@ -12,8 +12,12 @@
     },
     "background": {
       "$type": "color",
-      "$value": "{General.white}",
+      "$value": "{general.white}",
       "$description": "Default background color of <body />...etc"
+    },
+    "black": {
+      "$type": "color",
+      "$value": "{general.black}"
     },
     "border": {
       "$type": "color",
@@ -37,7 +41,7 @@
     },
     "destructive-foreground": {
       "$type": "color",
-      "$value": "{General.white}",
+      "$value": "{general.white}",
       "$description": "Used for destructive actions such as <Button variant=\"destructive\">"
     },
     "error": {
@@ -92,7 +96,7 @@
     },
     "popover": {
       "$type": "color",
-      "$value": "{General.white}",
+      "$value": "{general.white}",
       "$description": "Background color for popovers such as <DropdownMenu />, <HoverCard />, <Popover />"
     },
     "popover-foreground": {
@@ -107,7 +111,7 @@
     },
     "primary-foreground": {
       "$type": "color",
-      "$value": "{General.white}",
+      "$value": "{general.white}",
       "$description": "Secondary colors for <Button />"
     },
     "primary-light": {
@@ -161,8 +165,12 @@
     },
     "warning-foreground": {
       "$type": "color",
-      "$value": "{General.white}",
+      "$value": "{general.white}",
       "$description": "Used for destructive actions such as <Button variant=\"destructive\">"
+    },
+    "white": {
+      "$type": "color",
+      "$value": "{general.white}"
     }
   }
 }
