@@ -26,7 +26,7 @@ const LoginPage = () => {
       {/* login with google and linkedin */}
       {/* <div className="w-full flex flex-col items-center gap-3">
         <Button
-          className="w-full text-lg bg-[#181818]"
+          className="w-full text-lg bg-background"
           variant="secondary"
           size={"lg"}
         >
@@ -34,7 +34,7 @@ const LoginPage = () => {
           Log in with Google
         </Button>
         <Button
-          className="w-full text-lg bg-[#181818]"
+          className="w-full text-lg bg-background"
           variant="secondary"
           size={"lg"}
         >

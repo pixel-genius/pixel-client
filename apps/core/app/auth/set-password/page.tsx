@@ -52,7 +52,7 @@ const Setpasswordpage = () => {
     },
 
     onError: (err) => {
-      toast.error(err.response?.data.message || "Something went wrong");
+      toast.error(err.response?.data.message ?? "Something went wrong");
     },
   });
 
@@ -104,33 +104,31 @@ const Setpasswordpage = () => {
         </div>
 
         {/* input */}
-        <div className="w-full flex flex-col gap-5">
-          <Input
-            label="Password"
-            type="password"
-            className="font-normal text-xs text-gray-500"
-            placeholder="********"
-            {...register("newPassword")}
-            error={errors.newPassword?.message}
-          />
-          <Input
-            label="Confirm Password"
-            type="password"
-            className="font-normal text-xs text-gray-500"
-            placeholder="********"
-            {...register("confirmPassword")}
-            error={errors.confirmPassword?.message}
-          />
-          {/* button reset */}
-          <div className="pb-7 w-full">
-            <Button
-              isLoading={mutation.isPending}
-              className="w-full text-sm font-bold bg-primary text-foreground"
-              variant="primary"
-            >
-              Reset
-            </Button>
-          </div>
+        <Input
+          label="Password"
+          type="password"
+          className="font-normal text-xs text-muted-foreground"
+          placeholder="********"
+          {...register("newPassword")}
+          error={errors.newPassword?.message}
+        />
+        <Input
+          label="Confirm Password"
+          type="password"
+          className="font-normal text-xs text-muted-foreground"
+          placeholder="********"
+          {...register("confirmPassword")}
+          error={errors.confirmPassword?.message}
+        />
+        {/* button reset */}
+        <div className="pb-7 w-full">
+          <Button
+            isLoading={mutation.isPending}
+            className="w-full text-lg font-bold  bg-primary-600 hover:bg-primary-500"
+            variant="secondary"
+          >
+            Reset
+          </Button>
         </div>
       </form>
     </AuthCard>
