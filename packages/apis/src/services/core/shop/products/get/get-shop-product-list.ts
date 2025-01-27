@@ -1,4 +1,4 @@
-import { coreApi } from "#instance/core-api"; 
+import { coreApi } from "#instance/core-api";
 import path from "path";
 import { ApiResponse } from "@repo/apis/types/api.types";
 import { requestHandler } from "@repo/apis/utils/request-handler";
@@ -9,7 +9,7 @@ import {
   GetShopProductListResponseTransformed,
 } from "./get-shop-product-list.types";
 
-const getShopProductListURL = () => path.join("/api/shop-product-list");
+const getShopProductListURL = () => path.join("/shop/products/");
 
 export const getShopProductList = async (
   props: GetShopProductListRequest,
@@ -18,10 +18,11 @@ export const getShopProductList = async (
   const URL = getShopProductListURL();
 
   const response = await requestHandler(
-    () => coreApi.get<GetShopProductListResponse>(URL, { params: payloadParsed }),
+    () =>
+      coreApi.get<GetShopProductListResponse>(URL, { params: payloadParsed }),
     schema.response._def.schema,
     {
-      isMock: true,
+      isMock: false,
     },
   );
 

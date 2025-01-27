@@ -5,9 +5,9 @@ import { z } from "zod";
 export const getShopProductListRequestSchemaTransformed = z
   .object({
     page: z.number(),
-    page_size: z.number(),
+    pageSize: z.number(),
   })
-  .transform((data) => data);
+  .transform((data) => ({ ...data, page_size: data.pageSize }));
 
 // Response
 export const getShopProductListResponseSchemaTransofrmed = apiResponseSchema
