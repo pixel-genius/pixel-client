@@ -1,8 +1,8 @@
 export const colors = {
   "accent": "hsl(var(--accent))",
   "accent-foreground": "hsl(var(--accent-foreground))",
+  "aliblack": "hsl(var(--aliblack))",
   "background": "hsl(var(--background))",
-  "black": "hsl(var(--black))",
   "border": "hsl(var(--border))",
   "card": "hsl(var(--card))",
   "card-foreground": "hsl(var(--card-foreground))",
