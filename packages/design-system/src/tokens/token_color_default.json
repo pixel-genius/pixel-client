@@ -10,14 +10,14 @@
       "$value": "{general.white}",
       "$description": "Used for accents such as hover effects on <DropdownMenuItem>, <SelectItem>...etc"
     },
+    "aliblack": {
+      "$type": "color",
+      "$value": "{general.black}"
+    },
     "background": {
       "$type": "color",
       "$value": "{zinc.950}",
       "$description": "Default background color of <body />...etc"
-    },
-    "black": {
-      "$type": "color",
-      "$value": "{general.black}"
     },
     "border": {
       "$type": "color",
