@@ -1,5 +1,5 @@
 import Doorexiticon from "@repo/icons/Doorexiticon";
-import Heart1icon from "@repo/icons/heart1";
+import Heart1icon from "@repo/icons/heart";
 import Settingsicon from "@repo/icons/Settingsicon";
 import Shoppingbagicon from "@repo/icons/shopping-bag";
 import Usercircleicon from "@repo/icons/Usercircleicon";

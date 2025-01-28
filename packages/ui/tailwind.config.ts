@@ -25,11 +25,7 @@ const config = {
       boxShadow: {
         box: "0px 0px 38px 0px rgba(103, 81, 214, 0.27)",
       },
-      borderRadius: {
-        lg: "8px",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
+
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
