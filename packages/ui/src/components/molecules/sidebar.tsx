@@ -11,8 +11,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "./../atoms/tooltip"
-
+} from "../ui/tooltip";
 import { cn } from "@repo/ui/lib/utils";
 import { useIsMobile } from "../../hooks/use-mobile";
 import { Button } from "../atoms/button";
