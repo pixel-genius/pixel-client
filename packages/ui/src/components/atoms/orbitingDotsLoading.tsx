@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OrbitingDotsLoading = ({ size = '20px', color = 'black', speed = '1.5s' }) => {
+const OrbitingDotsLoading = ({ size = '20px', color = 'currentColor', speed = '1.5s' }) => {
   // Inline styles for dynamic custom properties
   const containerStyle: {[key: string]: string} = {
     '--uib-size': size,
