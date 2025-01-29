@@ -11,18 +11,17 @@ type ButtonGroup = {
   sizes: Array<"sm" | "md" | "lg">; // The button sizes
   isLoading: boolean; // Indicates if the button is in a loading state
   disabled: boolean; // Indicates if the button is disabled
-  statusColor?: "success" | "warning" | "error"; // Optional status color
+  state?: "success" | "warning" | "error"; // Optional status color
 };
 
-
-const buttonData:ButtonGroup[] = [
+const buttonData: ButtonGroup[] = [
   {
     label: "Default",
     variants: ["primary", "secondary", "tertiary"],
     sizes: ["sm", "md", "lg"],
     isLoading: false,
     disabled: false,
-    statusColor: undefined,
+    state: undefined,
   },
   {
     label: "Loading",
@@ -30,7 +29,7 @@ const buttonData:ButtonGroup[] = [
     sizes: ["sm", "md", "lg"],
     isLoading: true,
     disabled: false,
-    statusColor: undefined,
+    state: undefined,
   },
   {
     label: "Disabled",
@@ -38,7 +37,7 @@ const buttonData:ButtonGroup[] = [
     sizes: ["sm", "md", "lg"],
     isLoading: false,
     disabled: true,
-    statusColor: undefined,
+    state: undefined,
   },
   {
     label: "Success",
@@ -46,7 +45,7 @@ const buttonData:ButtonGroup[] = [
     sizes: ["sm", "md", "lg"],
     isLoading: false,
     disabled: false,
-    statusColor: "success",
+    state: "success",
   },
   {
     label: "Success Loading",
@@ -54,7 +53,7 @@ const buttonData:ButtonGroup[] = [
     sizes: ["sm", "md", "lg"],
     isLoading: true,
     disabled: false,
-    statusColor: "success",
+    state: "success",
   },
   {
     label: "Success Disabled",
@@ -62,7 +61,7 @@ const buttonData:ButtonGroup[] = [
     sizes: ["sm", "md", "lg"],
     isLoading: false,
     disabled: true,
-    statusColor: "success",
+    state: "success",
   },
   {
     label: "Warning",
@@ -70,7 +69,23 @@ const buttonData:ButtonGroup[] = [
     sizes: ["sm", "md", "lg"],
     isLoading: false,
     disabled: false,
-    statusColor: "warning",
+    state: "warning",
+  },
+  {
+    label: "Warning Loading",
+    variants: ["primary", "secondary", "tertiary"],
+    sizes: ["sm", "md", "lg"],
+    isLoading: true,
+    disabled: false,
+    state: "warning",
+  },
+  {
+    label: "Warning Loading",
+    variants: ["primary", "secondary", "tertiary"],
+    sizes: ["sm", "md", "lg"],
+    isLoading: false,
+    disabled: true,
+    state: "warning",
   },
   {
     label: "Error",
@@ -78,7 +93,23 @@ const buttonData:ButtonGroup[] = [
     sizes: ["sm", "md", "lg"],
     isLoading: false,
     disabled: false,
-    statusColor: "error",
+    state: "error",
+  },
+  {
+    label: "Error Disabled",
+    variants: ["primary", "secondary", "tertiary"],
+    sizes: ["sm", "md", "lg"],
+    isLoading: true,
+    disabled: false,
+    state: "error",
+  },
+  {
+    label: "Error Loading",
+    variants: ["primary", "secondary", "tertiary"],
+    sizes: ["sm", "md", "lg"],
+    isLoading: false,
+    disabled: true,
+    state: "error",
   },
 ];
 
@@ -91,7 +122,12 @@ const Page = () => {
           {buttonData.map((group, groupIndex) => (
             <div key={groupIndex} className="flex items-center gap-4">
               {/* <p className="w-20">{group.label}</p> */}
-              <Typography className="w-32" component="p" align="right" variant="label/xs">
+              <Typography
+                className="w-32"
+                component="p"
+                align="right"
+                variant="label/xs"
+              >
                 {group.label}
               </Typography>
               {group.variants.map((variant) =>
@@ -102,7 +138,7 @@ const Page = () => {
                     size={size}
                     isLoading={group.isLoading}
                     disabled={group.disabled}
-                    statusColor={group.statusColor}
+                    state={group.state}
                     iconLeft={<Hearticon />}
                     iconRight={<Chevrondownicon />}
                   >

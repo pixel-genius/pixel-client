@@ -3,16 +3,15 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@repo/ui/lib/utils";
-import { IconProps } from "@repo/icons/types";
 import OrbitingDotsLoading from "./orbitingDotsLoading";
 
 const buttonVariants = cva(
-  "inline-flex items-center min-w-[64px] transition-all focus-visible:outline-none  duration-300 justify-center gap-2 whitespace-nowrap text-sm transition-colors px-3 py-4 transition focus:ring focus:ring-primary relative disabled:cursor-not-allowed",
+  "inline-flex   items-center justify-center min-w-[64px] transition-all focus-visible:outline-none  duration-300  gap-2 whitespace-nowrap text-sm  px-3 py-4 focus:ring focus:ring-primary relative disabled:cursor-not-allowed",
   {
     variants: {
       variant: {
         primary:
-          "bg-primary text-white rounded-lg hover:bg-purple-600 disabled:text-gray-400 disabled:bg-gray-200 ",
+          "bg-primary text-white rounded-lg hover:bg-purple-600 disabled:text-gray-400 disabled:!bg-gray-200 ",
         secondary:
           "bg-secondary rounded-lg text-secondary-foreground hover:bg-zinc-900 disabled:text-gray-400 disabled:bg-secondary  ",
         tertiary:
@@ -27,17 +26,53 @@ const buttonVariants = cva(
         true: "!text-foreground",
         false: "",
       },
+      state: {
+        success: "focus:ring-success",
+        warning: "focus:ring-warning",
+        error: "focus:ring-error",
+      },
     },
     compoundVariants: [
       {
         variant: "primary",
         isLoading: true,
-        className: "!bg-primary hover:!bg-primary",
+        className: "!bg-primary pointer-events-none",
       },
       {
         variant: "secondary",
         isLoading: true,
-        className: "!bg-secondary hover:!bg-secondary ",
+        className: "!bg-secondary pointer-events-none",
+      },
+      // state
+      {
+        variant: "primary",
+        state: "success",
+        className: "!bg-success hover:!bg-emerald-700 focus:ring-success",
+      },
+      {
+        variant: "primary",
+        state: "warning",
+        className: "!bg-warning hover:!bg-amber-700 focus:ring-warning",
+      },
+      {
+        variant: "primary",
+        state: "error",
+        className: "!bg-error hover:!bg-rose-700 focus:ring-error",
+      },
+      {
+        variant: ["secondary", "tertiary"],
+        state: "success",
+        className: "text-success focus:ring-success",
+      },
+      {
+        variant: ["secondary", "tertiary"],
+        state: "warning",
+        className: "text-warning focus:ring-warning",
+      },
+      {
+        variant: ["secondary", "tertiary"],
+        state: "error",
+        className: "text-error focus:ring-error",
       },
     ],
     defaultVariants: {
@@ -47,34 +82,8 @@ const buttonVariants = cva(
   },
 );
 
-export type ButtonStatusColor = "success" | "warning" | "error";
+export type ButtonState = "success" | "warning" | "error";
 
-const statusColorHandler = ({
-  statusColor,
-  variant,
-  disabled,
-}: {
-  variant?: "primary" | "secondary" | "tertiary" | null;
-  statusColor?: ButtonStatusColor;
-  disabled?: boolean;
-}): string | undefined => {
-  if (disabled) return "";
-
-  switch (variant) {
-    case "secondary":
-    case "tertiary":
-      if (statusColor === "success") return "text-success focus:ring-success";
-      if (statusColor === "warning") return "text-warning focus:ring-warning";
-      if (statusColor === "error") return "text-error focus:ring-error";
-      break;
-    case "primary":
-    default:
-      if (statusColor === "success") return "!bg-success hover:!bg-emerald-700  focus:ring-success";
-      if (statusColor === "warning") return "!bg-warning hover:bg-amber-700 focus:ring-warning";
-      if (statusColor === "error") return "!bg-error hover:bg-rose-700 focus:ring-error";
-      break;
-  }
-};
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -83,7 +92,7 @@ export interface ButtonProps
   isLoading?: boolean;
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
-  statusColor?: ButtonStatusColor;
+  state?: ButtonState;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -97,44 +106,40 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       iconLeft: IconLeft,
       iconRight: IconRight,
-      statusColor,
+      state,
       ...props
     },
     ref,
   ) => {
     const Comp = asChild ? Slot : "button";
 
-    const statusColorHandlerMemo = React.useMemo(
-      () => statusColorHandler,
-      [props.disabled, variant, statusColor],
-    );
-
     return (
       <Comp
         className={cn(
-          buttonVariants({ variant, size, isLoading, className }),
-          statusColorHandlerMemo({
-            statusColor,
-            variant,
-            disabled: props.disabled,
-          }),
+          buttonVariants({ variant, size, isLoading, state, className }),
         )}
         ref={ref}
         {...props}
-        disabled={isLoading || props.disabled}
+        disabled={props.disabled}
       >
-        {IconLeft && <span className={cn(isLoading && "invisible")}>{IconLeft}</span>}
+        <div className="text-ellipsis" />
+        {IconLeft && (
+          <span className={cn(isLoading && "invisible")}>{IconLeft}</span>
+        )}
         <span className={cn(isLoading && "invisible")}>{children}</span>
         {isLoading && (
           <span className="absolute  ">
             <OrbitingDotsLoading />
           </span>
         )}
-        {IconRight && <span className={cn(isLoading && "invisible")}> {IconRight}</span>}
+        {IconRight && (
+          <span className={cn(isLoading && "invisible")}> {IconRight}</span>
+        )}
       </Comp>
     );
   },
 );
+
 Button.displayName = "Button";
 
 export { Button, buttonVariants };
