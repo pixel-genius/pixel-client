@@ -4,25 +4,42 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@repo/ui/lib/utils";
 import { IconProps } from "@repo/icons/types";
+import OrbitingDotsLoading from "./orbitingDotsLoading";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm transition-colors px-3 py-4 transition focus:ring focus:ring-primary-600  ",
+  "inline-flex items-center min-w-[64px] transition-all focus-visible:outline-none  duration-300 justify-center gap-2 whitespace-nowrap text-sm transition-colors px-3 py-4 transition focus:ring focus:ring-primary relative disabled:cursor-not-allowed",
   {
     variants: {
       variant: {
         primary:
-          "bg-primary-500 text-white rounded-lg hover:bg-primary-400 disabled:text-gray-400 disabled:bg-gray-200 disabled:cursor-not-allowed",
+          "bg-primary text-white rounded-lg hover:bg-purple-600 disabled:text-gray-400 disabled:bg-gray-200 ",
         secondary:
-          "bg-secondary rounded-lg text-secondary-foreground hover:bg-gray-300 hover:text-secondary focus:bg-gray-200 focus:text-secondary disabled:text-gray-400 disabled:bg-gray-200 disabled:cursor-not-allowed",
+          "bg-secondary rounded-lg text-secondary-foreground hover:bg-zinc-900 disabled:text-gray-400 disabled:bg-secondary  ",
         tertiary:
-          "bg-transparent text-white rounded-full hover:bg-accent hover:text-accent-foreground disabled:text-gray-700 disabled:cursor-not-allowed",
+          "bg-transparent text-white rounded-lg disabled:text-gray-700 ",
       },
       size: {
         sm: "h-9 text-sm",
         md: "h-[52px]",
         lg: "h-14 text-lg",
       },
+      isLoading: {
+        true: "!text-foreground",
+        false: "",
+      },
     },
+    compoundVariants: [
+      {
+        variant: "primary",
+        isLoading: true,
+        className: "!bg-primary hover:!bg-primary",
+      },
+      {
+        variant: "secondary",
+        isLoading: true,
+        className: "!bg-secondary hover:!bg-secondary ",
+      },
+    ],
     defaultVariants: {
       variant: "primary",
       size: "md",
@@ -46,15 +63,15 @@ const statusColorHandler = ({
   switch (variant) {
     case "secondary":
     case "tertiary":
-      if (statusColor === "success") return "text-success-500";
-      if (statusColor === "warning") return "text-warning-500";
-      if (statusColor === "error") return "text-error-500";
+      if (statusColor === "success") return "text-success focus:ring-success";
+      if (statusColor === "warning") return "text-warning focus:ring-warning";
+      if (statusColor === "error") return "text-error focus:ring-error";
       break;
     case "primary":
     default:
-      if (statusColor === "success") return "bg-success-500";
-      if (statusColor === "warning") return "bg-warning-500";
-      if (statusColor === "error") return "bg-error-500";
+      if (statusColor === "success") return "!bg-success hover:!bg-emerald-700  focus:ring-success";
+      if (statusColor === "warning") return "!bg-warning hover:bg-amber-700 focus:ring-warning";
+      if (statusColor === "error") return "!bg-error hover:bg-rose-700 focus:ring-error";
       break;
   }
 };
@@ -64,8 +81,8 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   isLoading?: boolean;
-  iconLeft?: (props: IconProps) => JSX.Element;
-  iconRight?: (props: IconProps) => JSX.Element;
+  iconLeft?: React.ReactNode;
+  iconRight?: React.ReactNode;
   statusColor?: ButtonStatusColor;
 }
 
@@ -95,7 +112,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         className={cn(
-          buttonVariants({ variant, size, className }),
+          buttonVariants({ variant, size, isLoading, className }),
           statusColorHandlerMemo({
             statusColor,
             variant,
@@ -106,9 +123,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
         disabled={isLoading || props.disabled}
       >
-        {IconLeft && <IconLeft className={cn(isLoading && "invisible")} />}
-        {isLoading ? "Loading ..." : children}
-        {IconRight && <IconRight className={cn(isLoading && "invisible")} />}
+        {IconLeft && <span className={cn(isLoading && "invisible")}>{IconLeft}</span>}
+        <span className={cn(isLoading && "invisible")}>{children}</span>
+        {isLoading && (
+          <span className="absolute  ">
+            <OrbitingDotsLoading />
+          </span>
+        )}
+        {IconRight && <span className={cn(isLoading && "invisible")}> {IconRight}</span>}
       </Comp>
     );
   },
