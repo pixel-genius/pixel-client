@@ -1,0 +1,46 @@
+name: Create Branch on Issue Creation
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract issue details
+        id: issue
+        run: |
+          TITLE="${{ github.event.issue.title }}"
+          NUMBER="${{ github.event.issue.number }}"
+
+          # Extract the first word as issue type (e.g., "bug: Fix UI" → "bug")
+          ISSUE_TYPE=$(echo "$TITLE" | awk '{print $1}' | tr '[:upper:]' '[:lower:]' | tr -cd '[:alnum:]-')
+
+          # If the first word contains a colon (e.g., "bug: Fix UI"), remove the colon
+          ISSUE_TYPE=$(echo "$ISSUE_TYPE" | sed 's/:$//')
+
+          # If issue type is empty or doesn't match common types, set default to "feat"
+          if [[ -z "$ISSUE_TYPE" || ! "$ISSUE_TYPE" =~ ^(feat|fix|bug|chore|refactor|docs|test|style|perf|ci|build)$ ]]; then
+            ISSUE_TYPE="feat"
+          fi
+
+          # Remove issue type from the title
+          SAFE_TITLE=$(echo "$TITLE" | sed "s/^$ISSUE_TYPE[:]* *//" | tr ' ' '-' | tr -cd '[:alnum:]-')
+
+          # Construct the branch name
+          BRANCH_NAME="${ISSUE_TYPE}/#${NUMBER}-${SAFE_TITLE}"
+
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+          echo "Branch to be created: $BRANCH_NAME"
+
+      - name: Create new branch
+        run: |
+          git fetch origin
+          git checkout -b $BRANCH_NAME origin/main
+          git push origin $BRANCH_NAME
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
