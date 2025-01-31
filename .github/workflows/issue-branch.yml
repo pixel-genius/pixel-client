@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
       - name: Extract issue details
         id: issue
@@ -23,12 +25,12 @@ jobs:
           # If the first word contains a colon (e.g., "bug: Fix UI"), remove the colon
           ISSUE_TYPE=$(echo "$ISSUE_TYPE" | sed 's/:$//')
 
-          # If issue type is empty or doesn't match common types, set default to "feat"
+          # If issue type is empty or not in the common types, set default to "feat"
           if [[ -z "$ISSUE_TYPE" || ! "$ISSUE_TYPE" =~ ^(feat|fix|bug|chore|refactor|docs|test|style|perf|ci|build)$ ]]; then
             ISSUE_TYPE="feat"
           fi
 
-          # Remove issue type from the title
+          # Remove issue type from the title and format safely
           SAFE_TITLE=$(echo "$TITLE" | sed "s/^$ISSUE_TYPE[:]* *//" | tr ' ' '-' | tr -cd '[:alnum:]-')
 
           # Construct the branch name
@@ -39,8 +41,11 @@ jobs:
 
       - name: Create new branch
         run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "github-actions"
+
           git fetch origin
           git checkout -b $BRANCH_NAME origin/main
           git push origin $BRANCH_NAME
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
