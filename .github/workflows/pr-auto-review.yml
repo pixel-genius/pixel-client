@@ -1,0 +1,85 @@
+name: Pull Request Automation
+
+on:
+  pull_request:
+    types: [opened, ready_for_review]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Run Build (Replace with your build commands)
+        run: |
+          echo "Building project..."
+          # Add actual build commands here
+          # Example: npm install && npm run build
+
+  add-reviewer:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Extract Issue Number from Branch
+        id: extract_issue
+        run: |
+          BRANCH_NAME="${{ github.head_ref }}"
+          ISSUE_NUMBER=$(echo "$BRANCH_NAME" | grep -oE '[0-9]+' | head -1)
+
+          if [ -z "$ISSUE_NUMBER" ]; then
+            echo "No issue number found in branch name!"
+            exit 1
+          fi
+
+          echo "ISSUE_NUMBER=$ISSUE_NUMBER" >> $GITHUB_ENV
+
+      - name: Add Reviewer
+        run: |
+          curl -X POST -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+               -H "Accept: application/vnd.github.v3+json" \
+               https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/requested_reviewers \
+               -d '{"reviewers":["mrbadri"]}'
+
+      - name: Add PR Description Comment
+        run: |
+          PR_COMMENT="This pull request is related to issue #${{ env.ISSUE_NUMBER }}\n\nCloses #${{ env.ISSUE_NUMBER }}"
+          
+          curl -X POST -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+               -H "Accept: application/vnd.github.v3+json" \
+               https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments \
+               -d "{\"body\": \"$PR_COMMENT\"}"
+
+  wait-for-approval:
+    runs-on: ubuntu-latest
+    needs: add-reviewer
+    steps:
+      - name: Wait for Approval
+        id: check-approval
+        run: |
+          APPROVED=0
+          while [ $APPROVED -eq 0 ]; do
+            echo "Checking for approval..."
+            REVIEWS=$(curl -s -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+              -H "Accept: application/vnd.github.v3+json" \
+              https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews)
+
+            if echo "$REVIEWS" | grep -q '"state": "APPROVED"'; then
+              APPROVED=1
+              echo "Pull request approved!"
+            else
+              echo "Waiting for approval..."
+              sleep 60
+            fi
+          done
+
+  merge-pr:
+    runs-on: ubuntu-latest
+    needs: wait-for-approval
+    steps:
+      - name: Merge Pull Request
+        run: |
+          curl -X PUT -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+               -H "Accept: application/vnd.github.v3+json" \
+               https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/merge \
+               -d '{"merge_method":"squash"}'
