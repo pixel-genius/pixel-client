@@ -13,22 +13,29 @@ import {
 } from "@repo/ui/components/dropdown-menu";
 import Image from "next/image";
 import Link from "next/link";
-import useCartStore from "../../store/cart-store";
+import {useCartStore} from "../../store/cart-store";
 import Useractionpixelicon from "@repo/icons/useractionpixel";
 import {
   AvatarImage,
   AvatarFallback,
   Avatar,
 } from "@repo/ui/components/avatar";
+import { useMegaMenuStore } from "./../../store/mega-menu";
 
 const FeatureNavbarAuthenticated = () => {
   const { toggleAddToCart } = useCartStore();
+  const { closeMegaMenu} = useMegaMenuStore();
+
+  const onClick = () => {
+    toggleAddToCart();
+    closeMegaMenu();
+  }
 
   return (
     <div className="flex  flex-shrink-0 items-center gap-3">
       <Heart1icon size={24} color="white" />
 
-      <div className="relative cursor-pointer" onClick={toggleAddToCart}>
+      <div className="relative cursor-pointer" onClick={onClick}>
         <Shoppingbagicon size={24} color="white" />
 
         {/* TODO: add badge #erfan*/}

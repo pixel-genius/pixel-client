@@ -1,9 +1,19 @@
 import Typography from "@repo/ui/components/typography";
+import { useMegaMenuStore } from "./../../store/mega-menu";
+import { useCartStore } from "./../../store/cart-store";
 
 const NavbarLinks = () => {
+  const { toggleOpenMegaMenu } = useMegaMenuStore();
+  const { closeAddToCart } = useCartStore();
+
+  const onClick = () => {
+    closeAddToCart();
+    toggleOpenMegaMenu();
+  };
+
   return (
     <div className="flex items-center gap-4">
-      <Typography component="a" href="/browse" variant="label/xs">
+      <Typography onClick={onClick} variant="label/xs">
         Browse
       </Typography>
       <Typography component="a" href="/browse" variant="label/xs">

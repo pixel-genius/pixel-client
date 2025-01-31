@@ -71,7 +71,7 @@ const typographyVariants = cva("", {
     transform: "none",
     decoration: "none",
     truncate: false,
-  }
+  },
 });
 
 type TypographyBaseProps = VariantProps<typeof typographyVariants> & {
@@ -100,10 +100,30 @@ type TypographyProps =
 
 const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(
   (
-    { component: Component = "p", variant, children, className, href, weight , align , transform, decoration, truncate },
+    {
+      component: Component = "p",
+      variant,
+      children,
+      className,
+      href,
+      weight,
+      align,
+      transform,
+      decoration,
+      truncate,
+      ...resProp
+    },
     ref,
   ) => {
-    const styles = typographyVariants({ variant, className, weight , align , transform, decoration, truncate });
+    const styles = typographyVariants({
+      variant,
+      className,
+      weight,
+      align,
+      transform,
+      decoration,
+      truncate,
+    });
 
     if (Component === "a") {
       return (
