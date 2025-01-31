@@ -97,7 +97,7 @@ const Addtocard = () => {
           <div className="relative gap-2 flex items-center">
             <Input
               label="Email"
-              placeholder="ali.kashef29@yahoo.com"
+              placeholder="example@email.com"
               type="email"
             />
           </div>
