@@ -4,7 +4,7 @@ import { Button } from "@repo/ui/components/button";
 import Typography from "@repo/ui/components/typography";
 import { useState } from "react";
 import { ProductTabs } from "./_components/tabs/productTabs";
-import { ProductTable } from "./_components/table/productTable";
+import { ProductTable } from "./_components/table/ProductTableHead";
 
 const tabs = [
   { value: "all", label: "Products" },
