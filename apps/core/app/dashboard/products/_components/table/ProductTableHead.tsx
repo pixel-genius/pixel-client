@@ -7,7 +7,7 @@ const ProductTable = () => {
   return (
     <>
       <Table className="mb-4">
-        <TableHeader className="mb-1">
+        <TableHeader>
           <ProdcutTableHead />
         </TableHeader>
         <TableBody>
@@ -24,7 +24,7 @@ const ProductTable = () => {
           />
         </TableBody>
       </Table>
-      <ProductTablePages page={1} limit={10} total={20}/>
+      <ProductTablePages page={1} limit={10} total={20} />
     </>
   );
 };
