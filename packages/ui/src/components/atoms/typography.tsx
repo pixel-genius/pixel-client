@@ -77,6 +77,7 @@ const typographyVariants = cva("", {
 type TypographyBaseProps = VariantProps<typeof typographyVariants> & {
   children: ReactNode;
   className?: string;
+  onClick?: () => void;
 };
 
 type TypographyProps =
@@ -111,7 +112,7 @@ const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(
       transform,
       decoration,
       truncate,
-      ...resProp
+      onClick,
     },
     ref,
   ) => {
@@ -131,6 +132,7 @@ const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(
           href={href!}
           className={styles}
           ref={ref as React.Ref<HTMLAnchorElement>}
+          onClick={onClick}
         >
           {children}
         </Link>
@@ -141,6 +143,7 @@ const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(
       <Component
         ref={ref as React.Ref<HTMLParagraphElement>}
         className={styles}
+        onClick={onClick}
       >
         {children}
       </Component>

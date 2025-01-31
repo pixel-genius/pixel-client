@@ -183,7 +183,6 @@ export default function Page() {
           </Tabs>
         </div>
       </div>
-      <Addtocard/>
     </main>
   );
 }

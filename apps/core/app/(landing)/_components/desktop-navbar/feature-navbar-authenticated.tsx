@@ -13,7 +13,7 @@ import {
 } from "@repo/ui/components/dropdown-menu";
 import Image from "next/image";
 import Link from "next/link";
-import {useCartStore} from "../../store/cart-store";
+import { useCartStore } from "../../store/cart-store";
 import Useractionpixelicon from "@repo/icons/useractionpixel";
 import {
   AvatarImage,
@@ -24,12 +24,12 @@ import { useMegaMenuStore } from "./../../store/mega-menu";
 
 const FeatureNavbarAuthenticated = () => {
   const { toggleAddToCart } = useCartStore();
-  const { closeMegaMenu} = useMegaMenuStore();
+  const { closeMegaMenu } = useMegaMenuStore();
 
   const onClick = () => {
     toggleAddToCart();
     closeMegaMenu();
-  }
+  };
 
   return (
     <div className="flex  flex-shrink-0 items-center gap-3">

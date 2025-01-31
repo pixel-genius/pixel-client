@@ -18,17 +18,18 @@ const Addtocard = () => {
   const [cards, setCards] = useState([
     { id: 1, title: "Traveler - Travel Agency", price: "$15" },
     { id: 2, title: "Explorer - Adventure Company", price: "$20" },
-    // می‌توانی کارت‌های دیگری اضافه کنی
+    { id: 3, title: "Explorer - Adventure Company", price: "$20" },
+    { id: 4, title: "Explorer - Adventure Company", price: "$20" },
+    { id: 5, title: "Explorer - Adventure Company", price: "$20" },
   ]);
 
   const temp = [
     { id: 1, title: "temp", price: "t" },
     { id: 1, title: "temp", price: "t" },
     { id: 1, title: "temp", price: "t" },
-    { id: 1, title: "temp", price: "t" },
   ];
 
-  const activeTemp = temp.splice(cards.length - 4);
+  const activeTemp = temp.splice(cards.length);
 
   const handleRemove = (id: number) => {
     setCards(cards.filter((card) => card.id !== id));
@@ -52,15 +53,8 @@ const Addtocard = () => {
         ))}
 
         {activeTemp.map((card) => (
-          <Card
-            title={card.title}
-            price={card.price}
-            key={card.id}
-            id={card.id}
-            onRemove={handleRemove}
-          />
-        ))} */}
-        <CardSkeleton />
+          <CardSkeleton />
+        ))}
       </div>
 
       <div className=" p-4 w-[522px]">
@@ -68,13 +62,13 @@ const Addtocard = () => {
         <div className="flex  justify-center gap-3 items-center bg-card p-2 rounded-lg">
           <div className="flex flex-col items-center justify-center">
             <Metamaskicon size={33} />
-            <p className="text-sm font-medium">Metamask</p>
+            <p className="text-sm font-medium text-foreground">Metamask</p>
           </div>
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center grayscale ">
             <Tonconnecticon size={33} />
             <p className="text-sm font-medium text-gray-800">Tonconnect</p>
           </div>
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center grayscale">
             <Paypalicon size={33} />
             <p className="text-sm font-medium  text-gray-800">Paypal</p>
           </div>
@@ -105,7 +99,7 @@ const Addtocard = () => {
           />
         </div>
         <div className="pb-3 w-full">
-          <Button size={"lg"} className="w-full bg-primary-500 text-white">
+          <Button size={"lg"} className="w-full bg-primary text-white">
             Pay $40
           </Button>
         </div>

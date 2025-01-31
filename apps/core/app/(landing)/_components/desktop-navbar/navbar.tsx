@@ -100,7 +100,10 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
             initial={{ opacity: 0, height: "0px" }}
             animate={{ opacity: 1, height: "449px" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ height: { duration: 0.5 }, opacity: { duration: 0.3  } }}
+            transition={{
+              height: { duration: 0.5 },
+              opacity: { duration: 0.3 },
+            }}
           >
             <Addtocard />
           </motion.div>
@@ -113,7 +116,10 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
             initial={{ opacity: 0, height: "0px" }}
             animate={{ opacity: 1, height: "290px" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ height: { duration: 0.5 }, opacity: { duration: 0.3  } }}
+            transition={{
+              height: { duration: 0.5 },
+              opacity: { duration: 0.3 },
+            }}
           >
             <BrowseMegaMenu />
           </motion.div>
