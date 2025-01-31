@@ -1,7 +1,6 @@
 "use client";
 import PixelIcon from "@repo/icons/pxiel";
 import SearchIcon from "@repo/icons/serach";
-import { NavigationMenu } from "@repo/ui/components/navigation-menu";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
 import Addtocard from "../addtoCard";
@@ -9,9 +8,12 @@ import NavbarLinks from "./navbar-links";
 import FeaturesNavbar from "./features-navbar";
 import Searchbar, { RefSearchHandle } from "./search-bar";
 import { BrowseMegaMenu } from "../browseMegaMenu/browse-mega-menu";
+import { useMegaMenuStore } from "../../store/mega-menu";
+import { useCartStore } from "../../store/cart-store";
 
 const Navbar = ({ islogin }: { islogin: boolean }) => {
-  // isSeaching state
+  const { isOpenMegaMenu } = useMegaMenuStore();
+  const { isAddToCartOpen } = useCartStore();
 
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
@@ -91,9 +93,38 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
         </AnimatePresence>
       </div>
 
-      <Addtocard />
-
-      {/* <BrowseMegaMenu /> */}
+      <AnimatePresence mode="wait">
+        {isAddToCartOpen && (
+          <motion.div
+            className="overflow-hidden rounded-b-xl"
+            initial={{ opacity: 0, height: "0px" }}
+            animate={{ opacity: 1, height: "449px" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{
+              height: { duration: 0.5 },
+              opacity: { duration: 0.3 },
+            }}
+          >
+            <Addtocard />
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <AnimatePresence mode="wait">
+        {isOpenMegaMenu && (
+          <motion.div
+            className="overflow-hidden rounded-b-xl"
+            initial={{ opacity: 0, height: "0px" }}
+            animate={{ opacity: 1, height: "290px" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{
+              height: { duration: 0.5 },
+              opacity: { duration: 0.3 },
+            }}
+          >
+            <BrowseMegaMenu />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

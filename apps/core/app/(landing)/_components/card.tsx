@@ -32,10 +32,10 @@ const Card: React.FC<CardProps> = (props) => {
           </div>
         </div>
         <div
-          className="w-9 flex items-center justify-center bg-error cursor-pointer"
+          className="w-9 flex items-center justify-center bg-error-900 cursor-pointer"
           onClick={() => onRemove(id)}
         >
-          <Removeicon className="text-error-foreground" size={24} />
+          <Removeicon size={24} />
         </div>
       </div>
     </div>

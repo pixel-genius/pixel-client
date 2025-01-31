@@ -10,10 +10,10 @@ import Securityicon from "@repo/icons/security";
 import { Label } from "@repo/ui/components/label";
 import { useState } from "react";
 import CardSkeleton from "./card-cart-skeleton";
-import useCartStore from "../store/cart-store";
+import { useCartStore } from "../store/cart-store";
 
 const Addtocard = () => {
-  const { isAddToCartOpen, closeAddToCart, addToCart } = useCartStore();
+  const { closeAddToCart } = useCartStore();
 
   const [cards, setCards] = useState([
     { id: 1, title: "Traveler - Travel Agency", price: "$15" },
@@ -35,10 +35,8 @@ const Addtocard = () => {
     setCards(cards.filter((card) => card.id !== id));
   };
 
-  if (!isAddToCartOpen) return null;
-
   return (
-    <div className="flex w-full bg-background rounded-b-xl">
+    <div className="flex w-full bg-background rounded-b-xl overflow-hidden">
       <div
         className="flex fixed -z-10 inset-0 w-full h-full"
         onClick={closeAddToCart}
