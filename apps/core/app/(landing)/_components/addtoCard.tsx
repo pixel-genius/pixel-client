@@ -17,10 +17,11 @@ const Addtocard = () => {
   const { closeAddToCart } = useCartStore();
 
   const [cards, setCards] = useState([
-    { id: 1, title: "Traveler - Travel Agency", price: "$15" },
     { id: 2, title: "Explorer - Adventure Company", price: "$20" },
     { id: 3, title: "Explorer - Adventure Company", price: "$20" },
+    { id: 1, title: "Traveler - Travel Agency", price: "$15" },
     { id: 4, title: "Explorer - Adventure Company", price: "$20" },
+    { id: 5, title: "Explorer - Adventure Company", price: "$20" },
   ]);
 
   const temp = [
