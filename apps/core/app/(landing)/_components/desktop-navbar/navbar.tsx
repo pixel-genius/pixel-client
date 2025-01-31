@@ -98,7 +98,7 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
           <motion.div
             className="overflow-hidden rounded-b-xl"
             initial={{ opacity: 0, height: "0px" }}
-            animate={{ opacity: 1, height: "449px" }}
+            animate={{ opacity: 1, height: "527px" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{
               height: { duration: 0.5 },
