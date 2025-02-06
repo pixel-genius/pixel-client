@@ -123,7 +123,7 @@ const DashboardPage = () => {
     <div className="container mx-auto">
       <div className="pt-14">
         <div className="flex justify-between">
-          <Tabs defaultValue="account" className="w-screen">
+          <Tabs defaultValue="account" className="w-full">
             <TabsList>
               <TabsTrigger value="General">General</TabsTrigger>
               <TabsTrigger value="Images">Images</TabsTrigger>
