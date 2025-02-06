@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Check if a rebase is already in progress
+if [ -d ".git/rebase-merge" ] || [ -d ".git/rebase-apply" ]; then
+  echo "⚠️ A rebase is already in progress. Please complete or abort it before running another rebase."
+  exit 1
+fi
+
+echo "🔄 Stashing any uncommitted changes..."
+git stash push -m "Pre-rebase stash" || echo "ℹ️ No local changes to stash."
+
+# Find the target branch (default to main)
+TARGET_BRANCH=${1:-main}
+
+echo "📌 Squashing all commits..."
+git reset --soft $TARGET_BRANCH
+
+# Create a new single commit using Git's default message
+git commit --reuse-message=HEAD
+
+echo "✅ Squash completed. Applying stash..."
+git stash pop || echo "ℹ️ No stashed changes to apply."
+
+echo "🎉 Squash completed successfully!"
