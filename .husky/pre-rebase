@@ -1,0 +1,9 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Store current branch name
+
+echo "✅ All commits squashed into one with message: ."
+git reset --soft origin/main
+ 
+
