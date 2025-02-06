@@ -1,11 +1,15 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+ echo "111111"
 # Fetch latest changes from origin/main
 git fetch origin main
 
+ echo "2222"
 # Count the number of commits ahead of origin/main
 commit_count=$(git rev-list --count origin/main..HEAD)
+
+ echo "333333"
 
 if [ "$commit_count" -gt 1 ]; then
     echo "❌ Rebase aborted: More than one commit ahead of origin/main ($commit_count commits)."
