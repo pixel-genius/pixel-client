@@ -1,24 +1,20 @@
 #!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
 
-# Check if a rebase is already in progress
-if [ -d ".git/rebase-merge" ] || [ -d ".git/rebase-apply" ]; then
-  echo "⚠️ A rebase is already in progress. Please complete or abort it before running another rebase."
-  exit 1
-fi
+# Fetch latest changes
+git fetch origin main
 
-echo "🔄 Stashing any uncommitted changes..."
-git stash push -m "Pre-rebase stash" || echo "ℹ️ No local changes to stash."
+# Reset to main but keep changes
+git reset --soft origin/main
 
-# Find the target branch (default to main)
-TARGET_BRANCH=${1:-main}
+# Get commit message from user
+echo "Enter commit message for squashed commit: "
+read commit_message
 
-echo "📌 Squashing all commits..."
-git reset --soft $TARGET_BRANCH
+# Use the entered commit message
+git commit -m "$commit_message"
 
-# Create a new single commit using Git's default message
-git commit --reuse-message=HEAD
+echo "✅ All commits squashed into one with message: '$commit_message'. Starting rebase..."
 
-echo "✅ Squash completed. Applying stash..."
-git stash pop || echo "ℹ️ No stashed changes to apply."
-
-echo "🎉 Squash completed successfully!"
+# Start interactive rebase with autosquash
+git rebase -i --autosquash origin/main
