@@ -1,5 +1,5 @@
-"use client"
-coimport Typography from "@repo/ui/components/typography";
+"use client";
+import Typography from "@repo/ui/components/typography";
 import * as htmlToImage from "html-to-image";
 import { useTheme } from "next-themes";
 import { useState } from "react";
