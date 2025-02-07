@@ -9,7 +9,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@repo/ui/components/tabs";
+} from "@repo/ui/components/tabs/tabs";
 
 const DashboardPage = () => {
   return (

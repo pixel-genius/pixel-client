@@ -9,11 +9,11 @@ export function middleware(request: NextRequest) {
   const isDashboard = pathname.startsWith("/dashboard");
 
   // Redirect to login if unauthenticated
-  if (isDashboard) {
-    if (!accessToken || !refreshToken) {
-      return NextResponse.redirect(new URL("/auth/login", request.url));
-    }
-  }
+  // if (isDashboard) {
+  //   if (!accessToken || !refreshToken) {
+  //     return NextResponse.redirect(new URL("/auth/login", request.url));
+  //   }
+  // }
 
   // Allow access to protected routes if authenticated
   return NextResponse.next();
