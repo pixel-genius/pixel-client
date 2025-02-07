@@ -1,7 +1,5 @@
 // import components
 "use client";
-import { PostForgetPasswordRequest } from "@repo/apis/core/forgot-password/post/post-forget-password.types";
-import { UsePostForgetPassword } from "@repo/apis/core/forgot-password/post/use-post-forget-password";
 import { Button } from "@repo/ui/components/button";
 import {
   InputOTP,
@@ -9,29 +7,29 @@ import {
   InputOTPSlot,
 } from "@repo/ui/components/input-otp";
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 // import icons
 import { zodResolver } from "@hookform/resolvers/zod";
-import { postForgetPasswordSchema } from "@repo/apis/core/forgot-password/post/post-forget-password.schema";
 import { Input } from "@repo/ui/components/input";
 import { Suspense, useEffect } from "react";
 import AuthCard from "../_components/auth-card";
 
+import { postResetPasswordSchema } from "@repo/apis/core/accounts/users/reset-password/post/post-reset-password.schema";
+import { usePostResetPassword } from "@repo/apis/core/accounts/users/reset-password/post/use-post-reset-password";
+import type { PostResetPasswordRequest } from "@repo/apis/core/accounts/users/reset-password/post/post-reset-password.types";
+
 const Setpasswordpage = () => {
   const router = useRouter();
-  // TODO: Fix this
-  // const params = useSearchParams();
-  // const username = params.get("username");
-
-  const username = "test@gmail.com";
+  const params = useSearchParams();
+  const username = params.get("username");
 
   if (!username) router.replace("/auth/forget-password");
 
-  const form = useForm<PostForgetPasswordRequest>({
-    resolver: zodResolver(postForgetPasswordSchema.request),
+  const form = useForm<PostResetPasswordRequest>({
+    resolver: zodResolver(postResetPasswordSchema.request),
   });
 
   const {
@@ -41,22 +39,23 @@ const Setpasswordpage = () => {
     formState: { errors },
   } = form;
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     setValue("username", username as string);
-  }, []);
+  }, [username]);
 
-  const mutation = UsePostForgetPassword({
+  const mutation = usePostResetPassword({
     onSuccess: (res) => {
       toast.info(res.data.message);
-      router.push(`/auth/login`);
+      router.push("/auth/login");
     },
 
     onError: (err) => {
-      toast.error(err.response?.data.message || "Something went wrong");
+      toast.error(err.response?.data.message ?? "Something went wrong");
     },
   });
 
-  const handleSubmitForm = (data: PostForgetPasswordRequest) => {
+  const handleSubmitForm = (data: PostResetPasswordRequest) => {
     mutation.mutate(data);
   };
 
@@ -70,16 +69,14 @@ const Setpasswordpage = () => {
           <p className="text-2xl font-bold">Set your Password</p>
           <p className="text-center text-sm font-normal">
             We've sent the code to{" "}
-            <span className="underline text-sm font-normal">
-              example@pixel.design
-            </span>
+            <span className="underline text-sm font-normal">{username}</span>
           </p>
           <p className="text-sm font-normal">check your email</p>
         </div>
       </div>
       {/* otp input */}
       <form
-        className="w-full flex flex-col items-center "
+        className="w-full flex flex-col items-center gap-4"
         onSubmit={handleSubmit(handleSubmitForm)}
       >
         <div className="pb-4">
@@ -104,33 +101,31 @@ const Setpasswordpage = () => {
         </div>
 
         {/* input */}
-        <div className="w-full flex flex-col gap-5">
-          <Input
-            label="Password"
-            type="password"
-            className="font-normal text-xs text-gray-500"
-            placeholder="********"
-            {...register("newPassword")}
-            error={errors.newPassword?.message}
-          />
-          <Input
-            label="Confirm Password"
-            type="password"
-            className="font-normal text-xs text-gray-500"
-            placeholder="********"
-            {...register("confirmPassword")}
-            error={errors.confirmPassword?.message}
-          />
-          {/* button reset */}
-          <div className="pb-7 w-full">
-            <Button
-              isLoading={mutation.isPending}
-              className="w-full text-sm font-bold bg-primary text-foreground"
-              variant="primary"
-            >
-              Reset
-            </Button>
-          </div>
+        <Input
+          label="Password"
+          type="password"
+          className="font-normal text-xs text-muted-foreground"
+          placeholder="********"
+          {...register("new_password")}
+          error={errors.new_password?.message}
+        />
+        <Input
+          label="Confirm Password"
+          type="password"
+          className="font-normal text-xs text-muted-foreground"
+          placeholder="********"
+          {...register("confirm_password")}
+          error={errors.confirm_password?.message}
+        />
+        {/* button reset */}
+        <div className="pb-7 w-full">
+          <Button
+            isLoading={mutation.isPending}
+            className="w-full text-lg font-bold"
+            variant="primary"
+          >
+            Reset
+          </Button>
         </div>
       </form>
     </AuthCard>

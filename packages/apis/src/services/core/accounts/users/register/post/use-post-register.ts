@@ -1,12 +1,11 @@
-import {
+import type {
   ApiError,
   ApiResponse,
   UseMutationProps,
 } from "@repo/apis/types/api.types";
 import { useMutation } from "@tanstack/react-query";
 import { postRegister } from "./post-register";
-import {} from "./post-register.schema";
-import {
+import type {
   PostRegisterRequest,
   PostRegisterResponseTransformed,
 } from "./post-register.types";
@@ -19,7 +18,7 @@ export type UsePostRegisterProps = UseMutationProps<
 
 export const postRegisterQueryKey = () => ["postRegister"];
 
-export const UsePostRegister = (props?: UsePostRegisterProps) => {
+export const usePostRegister = (props?: UsePostRegisterProps) => {
   const mutation = useMutation<
     ApiResponse<PostRegisterResponseTransformed>,
     ApiError,

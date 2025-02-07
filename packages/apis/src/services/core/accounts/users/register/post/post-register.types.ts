@@ -1,5 +1,5 @@
-import { z } from "zod";
-import { postRegisterSchema } from "./post-register.schema";
+import type { z } from "zod";
+import type { postRegisterSchema } from "./post-register.schema";
 
 // Response
 export type PostRegisterRequest = z.input<typeof postRegisterSchema.request>;

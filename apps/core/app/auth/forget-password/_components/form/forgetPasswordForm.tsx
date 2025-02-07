@@ -4,11 +4,11 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { postForgetPasswordSchema } from "@repo/apis/core/forgot-password/post/post-forget-password.schema";
-import { PostForgetPasswordRequest } from "@repo/apis/core/forgot-password/post/post-forget-password.types";
-import { UsePostForgetPassword } from "@repo/apis/core/forgot-password/post/use-post-forget-password";
 import { Button } from "@repo/ui/components/button";
 import { Input } from "@repo/ui/components/input";
+import { postForgetPasswordSchema } from "@repo/apis/core/accounts/users/forgot-password/post/post-forget-password.schema";
+import type { PostForgetPasswordRequest } from "@repo/apis/core/accounts/users/forgot-password/post/post-forget-password.types";
+import { UsePostForgetPassword } from "@repo/apis/core/accounts/users/forgot-password/post/use-post-forget-password";
 
 const ForgetPasswordForm = () => {
   const router = useRouter();
@@ -26,12 +26,11 @@ const ForgetPasswordForm = () => {
   const mutation = UsePostForgetPassword({
     onSuccess: (res, context) => {
       toast.info(res.data.message);
-      router.push(`/auth/set-password?username=${context.username}`);
+      router.replace(`/auth/set-password?username=${context.username}`);
     },
   });
 
   const onSubmit = (data: PostForgetPasswordRequest) => {
-    console.log("Sign Up Data:", data);
     mutation.mutate(data);
   };
 

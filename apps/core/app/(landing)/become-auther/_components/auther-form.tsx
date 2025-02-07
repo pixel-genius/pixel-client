@@ -32,7 +32,6 @@ const AutherForm = () => {
   });
 
   const onSubmit = (data: PostRequestAuthorRequest) => {
-    console.log("Sign Up Data:", data);
 
     mutation.mutate(data);
   };

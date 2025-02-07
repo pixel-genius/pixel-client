@@ -133,38 +133,6 @@
       "$value": "{general.white}",
       "$description": "Secondary colors for <Button />"
     },
-    "sidebar": {
-      "$type": "color",
-      "$value": "{color.card}"
-    },
-    "sidebar-accent": {
-      "$type": "color",
-      "$value": "{color.background}"
-    },
-    "sidebar-accent-foreground": {
-      "$type": "color",
-      "$value": "{color.foreground}"
-    },
-    "sidebar-border": {
-      "$type": "color",
-      "$value": "rgba(255, 255, 255, 0.0000)"
-    },
-    "sidebar-forground": {
-      "$type": "color",
-      "$value": "{color.foreground}"
-    },
-    "sidebar-primary": {
-      "$type": "color",
-      "$value": "#ff0000"
-    },
-    "sidebar-primary-foreground": {
-      "$type": "color",
-      "$value": "#ff0000"
-    },
-    "sidebar-ring": {
-      "$type": "color",
-      "$value": "#ff0000"
-    },
     "success": {
       "$type": "color",
       "$value": "{emerald.500}",
