@@ -1,2 +1,1 @@
 bun run build 
-git pull --rebase origin main

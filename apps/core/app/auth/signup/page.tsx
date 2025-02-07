@@ -1,20 +1,20 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { postRegisterSchema } from "@repo/apis/core/accounts/register/post/post-register.schema";
-import { PostRegisterRequest } from "@repo/apis/core/accounts/register/post/post-register.types";
 import { Button } from "@repo/ui/components/button";
 import { Input } from "@repo/ui/components/input";
 
 // import icons
-import { UsePostRegister } from "@repo/apis/core/accounts/register/post/use-post-register";
-import { useQueryParams } from "@repo/ui/hooks/use-query-params";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Suspense } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import AuthCard from "../_components/auth-card";
+import { useQueryParams } from "@repo/ui/hooks/use-query-params";
+import { Suspense } from "react";
+import Link from "next/link";
+import type { PostRegisterRequest } from "@repo/apis/core/accounts/users/register/post/post-register.types";
+import { postRegisterSchema } from "@repo/apis/core/accounts/users/register/post/post-register.schema";
+import { usePostRegister } from "@repo/apis/core/accounts/users/register/post/use-post-register";
 
 const SignUpPageComponent = () => {
   const router = useRouter();
@@ -30,22 +30,24 @@ const SignUpPageComponent = () => {
 
   const { createQueryStringFromObject } = useQueryParams();
 
-  const mutation = UsePostRegister({
+  const mutation = usePostRegister({
     onSuccess: (data, context) => {
-      console.log("200: data", data);
+      const usernameQuery = createQueryStringFromObject({
+        username: context.username ?? "",
+      });
+      const emailQuery = createQueryStringFromObject({
+        email: context.email ?? "",
+      });
 
-      router.push(
-        "/auth/signup/otp" +
-          "?" +
-          createQueryStringFromObject({ email: context.email }),
-      );
-
+      router.push(`/auth/signup/otp?${usernameQuery}&${emailQuery}`);
       toast.success("Send OTP");
+    },
+    onError: (err) => {
+      toast.error(err.response?.data.message ?? "Something went wrong");
     },
   });
 
   const onSubmit = (data: PostRegisterRequest) => {
-    console.log("Sign Up Data:", data);
     mutation.mutate(data);
   };
 
@@ -92,8 +94,8 @@ const SignUpPageComponent = () => {
           type="password"
           label="Confirm Password"
           placeholder="********"
-          {...register("confirmPassword")}
-          error={errors.confirmPassword?.message}
+          {...register("confirm_password")}
+          error={errors.password?.message}
         />
 
         {/* Submit Button */}
@@ -114,12 +116,17 @@ const SignUpPageComponent = () => {
         <p className="text-base font-medium">OR</p>
         <div className="w-full h-[1px] bg-gray-700 rounded-full"></div>
       </div> */}
+      <div className="flex items-center w-full gap-3 my-4">
+        <div className="w-full h-[1px] bg-muted-foreground rounded-full" />
+        <p className="text-base font-medium">OR</p>
+        <div className="w-full h-[1px] bg-muted-foreground rounded-full" />
+      </div>
 
       {/* Social Login Buttons */}
       {/* <div className="flex w-full flex-col items-center gap-3">
         <Button
           size="lg"
-          className="w-full text-lg bg-[#181818]"
+          className="w-full text-lg bg-background"
           variant="secondary"
         >
           <GoogleIcon size={24} className="mr-2" />
@@ -127,7 +134,7 @@ const SignUpPageComponent = () => {
         </Button>
         <Button
           size="lg"
-          className="w-full text-lg bg-[#181818]"
+          className="w-full text-lg bg-background"
           variant="secondary"
         >
           <LinkedinIcon size={24} className="mr-2" />

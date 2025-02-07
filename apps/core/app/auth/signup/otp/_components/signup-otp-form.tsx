@@ -10,23 +10,24 @@ import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
 
 // import icons
 import { zodResolver } from "@hookform/resolvers/zod";
-import { postRegisterCompleteSchema } from "@repo/apis/core/accounts/register/complete/post/post-register-complete.schema";
-import type { PostRegisterCompleteRequest } from "@repo/apis/core/accounts/register/complete/post/post-register-complete.types";
-import { UsePostRegisterComplete } from "@repo/apis/core/accounts/register/complete/post/use-post-register-complete";
 import { Countdown } from "@repo/ui/components/countdown";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
+import { usePostVerifyOtp } from "@repo/apis/core/accounts/users/verify_otp/post/use-post-verify-otp";
+import { postVerifyOtpSchema } from "@repo/apis/core/accounts/users/verify_otp/post/post-verify-otp.schema";
+import type { PostVerifyOtpRequest } from "@repo/apis/core/accounts/users/verify_otp/post/post-verify-otp.types";
+import { setAuthTokens } from "@repo/apis/utils/cookies";
+
 export interface SignupOtpFormProps {
-  email: string;
+  username: string | undefined;
 }
 export const SignupOtpForm = (props: SignupOtpFormProps) => {
-  const { email } = props;
+  const { username } = props;
 
-  const form = useForm<PostRegisterCompleteRequest>({
-    resolver: zodResolver(postRegisterCompleteSchema.request),
+  const form = useForm<PostVerifyOtpRequest>({
+    resolver: zodResolver(postVerifyOtpSchema.request),
   });
 
   const {
@@ -37,25 +38,23 @@ export const SignupOtpForm = (props: SignupOtpFormProps) => {
     formState: { errors },
   } = form;
 
-  useEffect(() => {
-    if (email) setValue("email", email);
-  }, [email]);
-
   const router = useRouter();
 
-  const muutation = UsePostRegisterComplete({
+  const mutation = usePostVerifyOtp({
     onSuccess: (res) => {
-      toast.info(res.data.message);
-      router.push("/auth/login");
+      toast.success("Registered successfully, Welcome to Pixel Genius!");
+      setAuthTokens(res.data.data.token);
+      router.push("/");
     },
 
     onError: (err) => {
-      toast.error(err.response?.data.message || "Something went wrong");
+      toast.error(err.response?.data.message ?? "Something went wrong");
     },
   });
 
-  const handleSubmitForm = (data: PostRegisterCompleteRequest) => {
-    muutation.mutate(data);
+  const handleSubmitForm = (data: PostVerifyOtpRequest) => {
+    if (username) mutation.mutate({ ...data, username });
+    else toast.error("username is required");
   };
 
   const otpRegister = register("otp");
@@ -96,8 +95,8 @@ export const SignupOtpForm = (props: SignupOtpFormProps) => {
       <div className="pb-7 w-full">
         <Button
           className="w-full text-lg font-bold  bg-primary-600 hover:bg-primary-500"
-          variant="primary"
-          isLoading={muutation.isPending}
+          variant="secondary"
+          isLoading={mutation.isPending}
         >
           Verify
         </Button>

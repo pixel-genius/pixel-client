@@ -16,7 +16,7 @@ type CartState = {
   toggleAddToCart: () => void;
 };
 
-export const useCartStore = create<CartState>((set) => ({
+const useCartStore = create<CartState>((set) => ({
   isAddToCartOpen: false,
   cartItems: [],
   openAddToCart: () => set({ isAddToCartOpen: true }),
@@ -27,3 +27,5 @@ export const useCartStore = create<CartState>((set) => ({
       cartItems: [...state.cartItems, item],
     })),
 }));
+
+export default useCartStore;

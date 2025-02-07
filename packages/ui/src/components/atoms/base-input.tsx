@@ -33,7 +33,7 @@ const BaseInput = React.forwardRef<HTMLInputElement, BaseInputProps>(
       <input
         type={type}
         className={cn(
-          "flex h-10 w-full rounded-md border border-border ring-offset-background file:border-0 file:bg-transparent  transition-shadow duration-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+          "flex h-10 w-full rounded-md border  border-border ring-offset-background file:border-0 file:bg-transparent  transition-shadow duration-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
           "bg-card  text-foreground",
           "text-sm file:text-sm placeholder:text-muted-foreground font-normal file:font-medium",
           "focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",

@@ -1,4 +1,4 @@
-import Heart1icon from "@repo/icons/heart";
+import Heart1icon from "@repo/icons/heart1";
 import Messagecircleicon from "@repo/icons/message-circle";
 import Shopingcartplusicon from "@repo/icons/shopping-cart-plus";
 import { SCROLL_TOP_RANGE } from "@repo/ui/components/parallax-scroll-effect"; 
