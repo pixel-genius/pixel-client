@@ -23,7 +23,7 @@ const config = {
     },
     extend: {
       boxShadow: {
-        'box': '0px 0px 38px 0px rgba(103, 81, 214, 0.27)',
+        box: "0px 0px 38px 0px rgba(103, 81, 214, 0.27)",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -60,7 +60,7 @@ const config = {
           800: "var(--error-800)",
           900: "var(--error-900)",
           foreground: "hsl(var(--error-foreground))",
-          border : "hsl(var(--error-border))",
+          border: "hsl(var(--error-border))",
         },
         // warning
         warning: {
@@ -76,7 +76,7 @@ const config = {
           800: "var(--warning-800)",
           900: "var(--warning-900)",
           foreground: "hsl(var(--warning-foreground))",
-          border : "hsl(var(--warning-border))",
+          border: "hsl(var(--warning-border))",
         },
         // gray
         Gray: {
@@ -154,13 +154,13 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        information :{
+        information: {
           DEFAULT: "hsl(var(--information))",
           foreground: "hsl(var(--information-foreground))",
           border: "hsl(var(--information-border))",
         },
       },
-    
+
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -182,10 +182,10 @@ const config = {
       },
     },
   },
-  plugins: [tailwindcssAnimate,
-    require("tailwind-scrollbar"), 
-    require('tailwind-scrollbar-hide'),
-
+  plugins: [
+    tailwindcssAnimate,
+    require("tailwind-scrollbar"),
+    require("tailwind-scrollbar-hide"),
   ],
 } satisfies Config;
 
