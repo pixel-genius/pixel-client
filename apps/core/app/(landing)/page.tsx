@@ -1,17 +1,8 @@
-"use client";
-
-import { ProductCard } from "@repo/ui/components/prodoct-card";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@repo/ui/components/tabs";
-import Typography from "@repo/ui/components/typography";
+"use client"
+coimport Typography from "@repo/ui/components/typography";
 import * as htmlToImage from "html-to-image";
 import { useTheme } from "next-themes";
 import { useState } from "react";
-import Addtocard from "./_components/addtoCard";
 
 export default function Page() {
   const { theme, setTheme } = useTheme();
@@ -112,76 +103,7 @@ export default function Page() {
       {/* Cards */}
       <div className="">
         {/* Tabs */}
-        <div className="pb-32">
-          <Tabs defaultValue="account">
-            <div className="pb-4">
-              <TabsList className="">
-                <TabsTrigger value="General">General</TabsTrigger>
-                <TabsTrigger value="Images">Images</TabsTrigger>
-                <TabsTrigger value="file">file</TabsTrigger>
-                <TabsTrigger value="Admin Chat">Admin Chat</TabsTrigger>
-              </TabsList>
-            </div>
-            <TabsContent value="General">
-              <div className="grid lg:grid-cols-4 sm:lg:grid-cols-1 md:grid-cols-2 grid-rows-1 gap-4">
-                <div>
-                  <ProductCard
-                    image="https://i.pinimg.com/originals/4c/f0/b4/4cf0b43f5b8402fb0aba8ff1d259de5b.png"
-                    title="title"
-                    price="10 $"
-                    username="username"
-                    see={10}
-                    like={10}
-                  />
-                </div>
-                <div>
-                  {" "}
-                  <ProductCard
-                    image="https://i.pinimg.com/originals/4c/f0/b4/4cf0b43f5b8402fb0aba8ff1d259de5b.png"
-                    title="title"
-                    price="10 $"
-                    username="username"
-                    see={10}
-                    like={10}
-                  />
-                </div>
-                <div>
-                  {" "}
-                  <ProductCard
-                    image="https://i.pinimg.com/originals/4c/f0/b4/4cf0b43f5b8402fb0aba8ff1d259de5b.png"
-                    title="title"
-                    price="10 $"
-                    username="username"
-                    see={10}
-                    like={10}
-                  />
-                </div>
-                <div>
-                  {" "}
-                  <ProductCard
-                    image="https://i.pinimg.com/originals/4c/f0/b4/4cf0b43f5b8402fb0aba8ff1d259de5b.png"
-                    title="title"
-                    price="10 $"
-                    username="username"
-                    see={10}
-                    like={10}
-                  />
-                </div>
-                <div>
-                  {" "}
-                  <ProductCard
-                    image="https://i.pinimg.com/originals/4c/f0/b4/4cf0b43f5b8402fb0aba8ff1d259de5b.png"
-                    title="title"
-                    price="10 $"
-                    username="username"
-                    see={10}
-                    like={10}
-                  />
-                </div>
-              </div>
-            </TabsContent>
-          </Tabs>
-        </div>
+        <div className="pb-32"></div>
       </div>
     </main>
   );
