@@ -25,12 +25,12 @@ export default function RootLayout({
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
-            enableSystem
+            enableSystem  
             disableTransitionOnChange
           >
             {children}
           </ThemeProvider>
-          <Toaster richColors />
+          <Toaster  richColors/>
         </body>
       </html>
     </ApiProvider>

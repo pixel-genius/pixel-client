@@ -1,5 +1,5 @@
-import { z } from "zod";
-import { postForgetPasswordSchema } from "./post-forget-password.schema";
+import type { z } from "zod";
+import type { postForgetPasswordSchema } from "./post-forget-password.schema";
 
 // Response
 export type PostForgetPasswordRequest = z.input<typeof postForgetPasswordSchema.request>;

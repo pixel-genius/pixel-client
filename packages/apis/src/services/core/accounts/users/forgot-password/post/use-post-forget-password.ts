@@ -1,4 +1,4 @@
-import {
+import type {
   ApiError,
   ApiResponse,
   UseMutationProps,
@@ -6,7 +6,7 @@ import {
 import { useMutation } from "@tanstack/react-query";
 import { postForgetPassword } from "./post-forget-password";
 import {} from "./post-forget-password.schema";
-import {
+import type {
   PostForgetPasswordRequest,
   PostForgetPasswordResponseTransformed,
 } from "./post-forget-password.types";
@@ -23,7 +23,7 @@ export const UsePostForgetPassword = (props?: UsePostForgetPasswordProps) => {
   const mutation = useMutation<
     ApiResponse<PostForgetPasswordResponseTransformed>,
     ApiError,
-    Omit<PostForgetPasswordRequest, "confirmPassword">
+    PostForgetPasswordRequest
   >({
     mutationKey: postForgetPasswordQueryKey(),
     mutationFn: (data) => postForgetPassword(data),

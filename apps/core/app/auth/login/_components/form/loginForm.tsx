@@ -30,13 +30,11 @@ const LoginForm = () => {
 
   const loginMutation = usePostLogin({
     onSuccess: (res) => {
-      console.log(res);
       toast.success("Logged in successfully");
       setAuthTokens(res.data.data.token);
       router.push("/");
     },
     onError: (res) => {
-      console.log(res);
       toast.error(res.response?.data.message ?? "Something went wrong");
     },
   });
@@ -67,7 +65,7 @@ const LoginForm = () => {
           helperText={
             <Link
               href="/auth/forget-password"
-              className="block mb-3 text-sm font-light text-gray-500 hover:text-gray-700 cursor-pointer"
+              className="block mb-3 text-sm font-light text-muted-foreground hover:text-muted cursor-pointer"
             >
               Forgot password?
             </Link>
