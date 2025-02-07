@@ -11,6 +11,7 @@ import Typography from "@repo/ui/components/typography";
 import * as htmlToImage from "html-to-image";
 import { useTheme } from "next-themes";
 import { useState } from "react";
+import Addtocard from "./_components/addtoCard";
 
 export default function Page() {
   const { theme, setTheme } = useTheme();

@@ -19,7 +19,7 @@ const generatePaletteTsContent = (tokens: Record<string, any>): string => {
       const value = groupTokens[key];
       if (value.$type === "color") {
         // Add a line for each color token
-        lines.push(`    "${key}": "var(--${group}-${key})",`);
+        lines.push(`    "${key}": "hsl(var(--${group}-${key}))",`);
       }
     }
     lines.push(`  },`); // Close the group

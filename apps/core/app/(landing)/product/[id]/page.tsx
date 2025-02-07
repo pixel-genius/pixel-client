@@ -5,7 +5,7 @@ import Chevronrighticon from "@repo/icons/chevron-right";
 import Circlecheckicon from "@repo/icons/Circle-check";
 import Clouddownloadicon from "@repo/icons/cloud-download";
 import Figmaicon from "@repo/icons/figma";
-import Heart1icon from "@repo/icons/heart1";
+import Heart1icon from "@repo/icons/heart";
 import Instagram from "@repo/icons/instagram";
 import Messagecircleicon from "@repo/icons/message-circle";
 import Shopingcartplusicon from "@repo/icons/shopping-cart-plus";

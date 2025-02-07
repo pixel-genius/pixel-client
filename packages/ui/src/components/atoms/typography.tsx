@@ -71,12 +71,13 @@ const typographyVariants = cva("", {
     transform: "none",
     decoration: "none",
     truncate: false,
-  }
+  },
 });
 
 type TypographyBaseProps = VariantProps<typeof typographyVariants> & {
   children: ReactNode;
   className?: string;
+  onClick?: () => void;
 };
 
 type TypographyProps =
@@ -100,10 +101,30 @@ type TypographyProps =
 
 const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(
   (
-    { component: Component = "p", variant, children, className, href, weight , align , transform, decoration, truncate },
+    {
+      component: Component = "p",
+      variant,
+      children,
+      className,
+      href,
+      weight,
+      align,
+      transform,
+      decoration,
+      truncate,
+      onClick,
+    },
     ref,
   ) => {
-    const styles = typographyVariants({ variant, className, weight , align , transform, decoration, truncate });
+    const styles = typographyVariants({
+      variant,
+      className,
+      weight,
+      align,
+      transform,
+      decoration,
+      truncate,
+    });
 
     if (Component === "a") {
       return (
@@ -111,6 +132,7 @@ const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(
           href={href!}
           className={styles}
           ref={ref as React.Ref<HTMLAnchorElement>}
+          onClick={onClick}
         >
           {children}
         </Link>
@@ -121,6 +143,7 @@ const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(
       <Component
         ref={ref as React.Ref<HTMLParagraphElement>}
         className={styles}
+        onClick={onClick}
       >
         {children}
       </Component>
