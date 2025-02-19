@@ -230,3 +230,12 @@
     scrollbar-width: none; /* Firefox */
   }
 }
+
+/* Tip Tap Editor */
+.ProseMirror:focus-visible {
+  outline: none !important;
+}
+
+img.ProseMirror-selectednode {
+  outline: 2px solid hsl(var(--c1-400));
+}

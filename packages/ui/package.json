@@ -24,8 +24,6 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@repo/design-system": "*",
-    "@repo/icons": "*",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
@@ -51,9 +49,16 @@
     "@radix-ui/react-switch": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.0",
-
+    "@repo/design-system": "*",
+    "@repo/icons": "*",
     "@tabler/icons-react": "^3.12.0",
     "class-variance-authority": "^0.7.1",
+    "@tiptap/extension-highlight": "^2.11.5",
+    "@tiptap/extension-image": "^2.11.5",
+    "@tiptap/extension-link": "^2.11.5",
+    "@tiptap/extension-text-align": "^2.11.5",
+    "@tiptap/react": "^2.11.5",
+    "@tiptap/starter-kit": "^2.11.5",
     "clsx": "^2.1.1",
     "cmdk": "1.0.0",
     "date-fns": "^3.6.0",

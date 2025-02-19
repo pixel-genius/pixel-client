@@ -1,11 +1,11 @@
 "use client";
 
-import React from "react";
-import { FileFormatField } from "../dashboard/products/create/_components/file-formate-field";
-import { FileFormatSection } from "../dashboard/products/create/_components/file-formate-section";
+import { RichTextEditor } from "@repo/ui/components/editor/editor";
 
 const Page = () => {
-  return <FileFormatSection />;
+  return <div>
+    <RichTextEditor />
+  </div>;
 };
 
 export default Page;
