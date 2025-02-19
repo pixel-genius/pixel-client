@@ -13,7 +13,7 @@
     "ui:add": "bun --filter @repo/ui ui:add",
     "gen:api": "turbo gen api",
     "prepare": "husky",
-    "deploy": "git pull origin main && git push vercel main", 
+    "deploy": "git pull origin main && git push vercel main",
     "rebase:main": "git fetch origin main && git rebase main"
   },
   "devDependencies": {
@@ -30,5 +30,8 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@tiptap/extension-image": "^2.11.5"
+  }
 }

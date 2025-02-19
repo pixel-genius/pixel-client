@@ -14,6 +14,8 @@
     "@repo/icons": "*",
     "@repo/ui": "*",
     "@rive-app/react-canvas": "^4.16.4",
+    "@tiptap/extension-image": "^2.11.5",
+    
     "framer-motion": "^11.3.29",
     "html-to-image": "^1.11.11",
     "next": "14.2.4",

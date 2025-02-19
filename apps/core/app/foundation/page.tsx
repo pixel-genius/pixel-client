@@ -5,6 +5,8 @@ import { FoundationColor } from "@repo/ui/components/foundation-color";
 import { Input } from "@repo/ui/components/input";
 import Typography from "@repo/ui/components/typography";
 
+import Image from "@tiptap/extension-image";
+
 type ButtonGroup = {
   label: string; // Describes the group of buttons
   variants: Array<"primary" | "secondary" | "tertiary">; // The button variants
