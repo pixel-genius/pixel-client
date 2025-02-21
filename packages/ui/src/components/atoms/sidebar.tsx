@@ -4,23 +4,22 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { VariantProps, cva } from "class-variance-authority";
 
-import { useIsMobile } from "./../../hooks/use-mobile"
-import { cn } from "@repo/ui/lib/utils"
-import { Button } from "./button"
-import { Input } from "./../molecules/input"
-import { Separator } from "./separator"
-import { Sheet, SheetContent } from "./sheet"
-import { Skeleton } from "./skeleton"
+import { useIsMobile } from "./../../hooks/use-mobile";
+import { cn } from "@repo/ui/lib/utils";
+import { Button } from "./button";
+import { Input } from "./../molecules/input";
+import { Separator } from "./separator";
+import { Sheet, SheetContent } from "./sheet";
+import { Skeleton } from "./skeleton";
 
-import { MenuIcon } from "lucide-react"; 
+import { MenuIcon } from "lucide-react";
 
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "./tooltip"
-
+} from "./tooltip";
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
