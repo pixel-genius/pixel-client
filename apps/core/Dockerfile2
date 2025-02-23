@@ -1,0 +1,47 @@
+# Use an official Node.js runtime as the base image
+FROM node:18-alpine AS base
+
+# Install Bun
+RUN apk add --no-cache curl unzip \
+    && curl -fsSL https://bun.sh/install | bash \
+    && export PATH="$HOME/.bun/bin:$PATH"
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the root package.json and turbo.json
+COPY package.json .
+COPY turbo.json .
+
+# Copy the local package dependencies
+COPY packages/ui ./packages/ui
+
+# Copy the core app
+COPY apps/core ./apps/core
+
+# Install dependencies using Bun
+RUN bun install
+
+# Build the project using TurboRepo
+RUN bunx turbo build --filter=core
+
+# Use a smaller image for the final stage
+FROM node:18-alpine AS runner
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the built artifacts from the previous stage
+COPY --from=base /app/apps/core/.next ./apps/core/.next
+COPY --from=base /app/apps/core/public ./apps/core/public
+COPY --from=base /app/apps/core/package.json ./apps/core/package.json
+
+# Install production dependencies for the core app
+WORKDIR /app/apps/core
+RUN bun install --production
+
+# Expose the port the app runs on
+EXPOSE 3000
+
+# Start the Next.js app
+CMD ["bun", "run", "start"]

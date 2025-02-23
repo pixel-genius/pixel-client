@@ -1,8 +1,14 @@
-version: '3.8'
+version: "3.8"
+
 services:
-  core-app:
+  core:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: apps/core/Dockerfile2
     ports:
       - "3000:3000"
+
+    environment:
+      - NODE_ENV=production
+    tty: true # Ensures real-time logs
+    stdin_open: true # Keeps stdin open

@@ -8,12 +8,15 @@
     "type-checks": "turbo build check-types",
     "dev": "turbo dev",
     "dev:core": "turbo dev --filter=core",
+    "build:core": "turbo build --filter=core",
+    "start:core": "turbo run start --filter=core",
+    "start": "turbo run start --parallel",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "ui:add": "bun --filter @repo/ui ui:add",
     "gen:api": "turbo gen api",
     "prepare": "husky",
-    "deploy": "git pull origin main && git push vercel main", 
+    "deploy": "git pull origin main && git push vercel main",
     "rebase:main": "git fetch origin main && git rebase main"
   },
   "devDependencies": {
@@ -30,5 +33,10 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@tronweb3/tronwallet-adapter-tronlink": "^1.1.11",
+    "tronweb": "^6.0.1",
+    "web3": "^4.16.0"
+  }
 }
