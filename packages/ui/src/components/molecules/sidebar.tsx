@@ -4,7 +4,7 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { VariantProps, cva } from "class-variance-authority";
 
-import { MenuIcon } from "lucide-react"; 
+import { MenuIcon } from "lucide-react";
 import { Skeleton } from "../atoms/skeleton";
 import {
   Tooltip,
@@ -272,6 +272,14 @@ const SidebarTrigger = React.forwardRef<
   React.ComponentProps<typeof Button>
 >(({ className, onClick, ...props }, ref) => {
   const { toggleSidebar } = useSidebar();
+
+  return (
+    <MenuIcon
+      onClick={(event) => {
+        toggleSidebar();
+      }}
+    />
+  );
 
   return (
     <Button
