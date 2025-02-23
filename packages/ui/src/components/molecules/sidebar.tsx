@@ -4,7 +4,6 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { VariantProps, cva } from "class-variance-authority";
 
-import { MenuIcon } from "lucide-react";
 import { Skeleton } from "../atoms/skeleton";
 import {
   Tooltip,
@@ -18,6 +17,29 @@ import { Button } from "../atoms/button";
 import { Input } from "./input";
 import { Separator } from "../atoms/separator";
 import { Sheet, SheetContent } from "../atoms/sheet";
+
+import Bellicon from "@repo/icons/bell";
+import Doorexiticon from "@repo/icons/door-exit";
+import MenuIcon from "@repo/icons/menu";
+import Moonicon from "@repo/icons/moon";
+import Settingsicon from "@repo/icons/settings";
+import Shoppingbagicon from "@repo/icons/shopping-bag";
+import Usercircleicon from "@repo/icons/user-circle";
+import Useractionpixelicon from "@repo/icons/useractionpixel";
+import {
+  AvatarImage,
+  AvatarFallback,
+  Avatar,
+} from "@repo/ui/components/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@repo/ui/components/dropdown-menu";
+import Link from "next/link";
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -223,7 +245,7 @@ const Sidebar = React.forwardRef<
     return (
       <div
         ref={ref}
-        className="group peer hidden md:block text-sidebar-foreground"
+        className="group peer hidden md:block text-sidebar-foreground bg-card"
         data-state={state}
         data-collapsible={state === "collapsed" ? collapsible : ""}
         data-variant={variant}
@@ -274,27 +296,97 @@ const SidebarTrigger = React.forwardRef<
   const { toggleSidebar } = useSidebar();
 
   return (
-    <MenuIcon
-      onClick={(event) => {
-        toggleSidebar();
-      }}
-    />
-  );
+    // <Button
+    //   ref={ref}
+    //   data-sidebar="trigger"
+    //   className={cn("h-7 w-7", className)}
+    //   onClick={(event) => {
+    //     onClick?.(event);
+    //     toggleSidebar();
+    //   }}
+    //   {...props}
+    // >
+    //   <MenuIcon />
+    //   <span className="sr-only">Toggle Sidebar</span>
+    // </Button>
+    <nav className="bg-card w-full py-4">
+      <div className=" flex items-center justify-between px-6">
+        <Button
+          className="!p-0 min-w-0 !bg-[unset] !h-auto !w-auto focus:ring-0 focus:outline-none"
+          onClick={(event) => {
+            onClick?.(event);
+            toggleSidebar();
+          }}
+        >
+          <MenuIcon />
+        </Button>
+        <div className="flex gap-2 items-center">
+          <div className="p-2 rounded-lg bg-background">
+            <Moonicon size={24} color="currentColor" />
+          </div>
+          <div className="p-2 rounded-lg bg-background">
+            <div className="relative cursor-pointer">
+              <Bellicon size={24} color="currentColor" />
+              <div className="bg-error rounded-full flex items-center justify-center absolute bottom-6 right-6 w-3 h-3 text-white text-xs"></div>
+            </div>
+          </div>
+          <div className="flex">
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <Avatar className="size-8 items-center felx ">
+                  {/* TODO: Add User info */}
+                  <AvatarImage
+                    src="https://github.com/shadcn.png"
+                    alt="@shadcn"
+                  />
+                  <AvatarFallback>SH</AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="z-50">
+                <DropdownMenuLabel className="text-white text-base font-medium">
+                  Ali Ebrahimi Kashef
+                  <p className="text-xs font-light text-gray-600">
+                    alikashef27@gmail.com
+                  </p>
+                </DropdownMenuLabel>
+                <DropdownMenuItem>
+                  <Usercircleicon size={16} className="text-gray-300" />
+                  <Link href="/" className="pl-1 text-gray-300">
+                    Profile
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Shoppingbagicon size={16} className="text-gray-300" />
+                  <Link href="/" className="pl-1 text-gray-300">
+                    Purchases
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Useractionpixelicon size={16} className="text-gray-300" />
 
-  return (
-    <Button
-      ref={ref}
-      data-sidebar="trigger"
-      className={cn("h-7 w-7", className)}
-      onClick={(event) => {
-        onClick?.(event);
-        toggleSidebar();
-      }}
-      {...props}
-    >
-      <MenuIcon />
-      <span className="sr-only">Toggle Sidebar</span>
-    </Button>
+                  <Link href="/" className="pl-1 text-gray-300">
+                    Author dashboard
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <Settingsicon size={16} className="text-gray-300" />
+                  <Link href="/" className="pl-1 text-gray-300">
+                    Settings
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Doorexiticon size={16} className="text-error-500" />
+                  <Link href="/" className="pl-1 text-error-500">
+                    Sing Out
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 });
 SidebarTrigger.displayName = "SidebarTrigger";

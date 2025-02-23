@@ -6,19 +6,20 @@ import * as React from "react";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
   SidebarRail,
   useSidebar,
 } from "@repo/ui/components/sidebar";
-import Image from "next/image";
 
 //icons
-import LayoutDashboard from "../../../../../packages/icons/src/components/layout-dashboard";
-import BoxPackage from "../../../../../packages/icons/src/components/box-package";
-import ChartBarPopular from "../../../../../packages/icons/src/components/chart-bar-popular";
-import ReportMoney from "../../../../../packages/icons/src/components/report-money";
+import BoxPackage from "@repo/icons/box-package";
+import ChartBarPopular from "@repo/icons/chart-bar-popular";
+import LayoutDashboard from "@repo/icons/layout-dashboard";
+import ReportMoney from "@repo/icons/report-money";
+import Usericon from "@repo/icons/user";
+
 //components sidebar
+import Settingsicon from "@repo/icons/settings";
 import { LogoIconSwitcher } from "./logo-icon-switcher";
 import { NavMain } from "./nav-main";
 
@@ -41,9 +42,19 @@ const data = {
       icon: ChartBarPopular,
     },
     {
+      title: "Profile",
+      url: "/profile",
+      icon: Usericon,
+    },
+    {
       title: "Payouts",
       url: "/payouts",
       icon: ReportMoney,
+    },
+    {
+      title: "Settings",
+      url: "/settings",
+      icon: Settingsicon,
     },
   ],
 };
@@ -59,30 +70,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <NavMain items={data.navMain} />
       </SidebarContent>
-      <SidebarFooter className="p-0 transition-all duration-100">
-        {isMobile ? (
-          <Image
-            src="images/clip-path-group.svg"
-            width={290}
-            height={117}
-            alt="Picture of space"
-          />
-        ) : open ? (
-          <Image
-            src="images/clip-path-group.svg"
-            width={280}
-            height={117}
-            alt="Picture of space"
-          />
-        ) : (
-          <Image
-            src="images/clip-path-group-sidebar.svg"
-            width={49}
-            height={90}
-            alt="Picture of space"
-          />
-        )}
-      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   );
