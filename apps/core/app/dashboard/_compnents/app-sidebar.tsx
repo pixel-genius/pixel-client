@@ -63,7 +63,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { open, isMobile } = useSidebar();
 
   return (
-    <Sidebar collapsible="icon" {...props}>
+    <Sidebar collapsible="icon" className="" {...props}>
       <SidebarHeader className="pt-5 pb-6">
         <LogoIconSwitcher />
       </SidebarHeader>
