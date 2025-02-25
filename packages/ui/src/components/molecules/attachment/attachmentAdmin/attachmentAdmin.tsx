@@ -10,10 +10,9 @@ const AttachmentAdmin = (props: AttachmentProps) => {
   const { title, multiple = false, maxSize = 10, allowedTypes } = props;
   const { inputFileRef, handleChange, handleRemove, files, allowedTypesText } =
     useAttachment(props);
-
   return (
     <>
-      <Card className="bg-[#26262666] p-4 border-0 mb-3">
+      <Card className="bg-card p-4 border-0 mb-3">
         <div className="w-full border-dashed border-[0.76px] py-7 flex flex-wrap justify-center">
           <input
             type="file"
@@ -56,7 +55,7 @@ const AttachmentAdmin = (props: AttachmentProps) => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
           >
-            <Card className="bg-[#26262666] p-4 border-0 flex gap-4">
+            <Card className="bg-card p-4 border-0 flex gap-4">
               <ScrollArea>
                 {files.map((file) => (
                   <motion.div

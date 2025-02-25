@@ -9,7 +9,7 @@ import { useState } from "react";
 import { Card } from "../../../atoms/card";
 import Typography from "@repo/ui/components/typography";
 
-interface AttachmentThumbnailProps extends AttachmentProps {
+export interface AttachmentThumbnailProps extends AttachmentProps {
   avatar?: string;
   price: number;
   priceUnit?: string;
@@ -38,7 +38,7 @@ const AttachmentThumbnail = (
 
   return (
     <Card
-      className="bg-[#26262666] py-3 px-4 border-0"
+      className="bg-card py-3 px-4 border-0"
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
@@ -155,7 +155,9 @@ const AttachmentThumbnail = (
           ) : (
             <Avatar />
           )}
-          <Typography className="text-[10px] font-normal">Ali Ebrahimi Kashef</Typography>
+          <Typography className="text-[10px] font-normal">
+            Ali Ebrahimi Kashef
+          </Typography>
         </div>
         <div className="flex flex-wrap items-center gap-1">
           <span className="cursor-pointer">

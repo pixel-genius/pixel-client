@@ -94,6 +94,7 @@ const useAttachment = ({
         file.type.slice(file.type.lastIndexOf("/") + 1, file.type.length),
       ),
     );
+    console.log(allowedTypes);
     if (includesType) {
       const maxSizeBytes = maxSize * 1024 * 1024;
       const validSize = filesInput.every((file) => file.size <= maxSizeBytes);
