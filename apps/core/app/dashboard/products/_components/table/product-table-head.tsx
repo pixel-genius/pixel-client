@@ -1,7 +1,7 @@
 import { Table, TableBody, TableHeader } from "@repo/ui/components/table";
-import { ProdcutTableHead } from "./productTableHead/productTableHead";
-import { ProductTableRow } from "./productTableRow/productTableRow";
-import { ProductTablePages } from "./productTablePages/productTablePages";
+import { ProdcutTableHead } from "./product-table-head/product-table-head";
+import { ProductTableRow } from "./product-table-row/product-table-row";
+import { ProductTablePages } from "./product-table-pages/product-table-pages";
 
 const ProductTable = () => {
   return (
