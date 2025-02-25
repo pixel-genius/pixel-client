@@ -55,14 +55,16 @@ const ProductTableRow = (props: ProductTableRowProps) => {
             />
           </div>
           <div className="flex flex-wrap -86">
-            <Typography variant="label/sm" className="max-w-[200px] truncate">{productName}</Typography>
+            <Typography variant="label/sm" className="max-w-[200px] truncate">
+              {productName}
+            </Typography>
             <div className="flex gap-2 w-full">
               <span className="inline-flex items-center gap-1">
                 <IconHeart size={20} />
                 <Typography variant="label/sm">{likes || 0}</Typography>
               </span>
               <span className="inline-flex items-center gap-1">
-                <MessegeIcon size={20} />
+                <MessegeIcon size={20} color="#A1A1AA" />
                 <Typography variant="label/sm">{comments || 0}</Typography>
               </span>
             </div>
@@ -71,7 +73,7 @@ const ProductTableRow = (props: ProductTableRowProps) => {
       </TableCell>
       <TableCell className="border-b-2 border-background">
         <Badge
-          className={`${status==='Published' ? 'bg-success-400' : 'bg-secondary'} p-[8px] rounded-lg`}
+          className={`${status === "Published" ? "bg-success-400" : "bg-secondary"} p-[8px] rounded-lg`}
         >
           <Typography variant="label/sm">{status}</Typography>
         </Badge>
@@ -90,7 +92,7 @@ const ProductTableRow = (props: ProductTableRowProps) => {
         <DropdownMenu>
           <DropdownMenuTrigger>
             <span className="cursor-pointer">
-              <DotsVerticalIcon />
+              <DotsVerticalIcon color="white" />
             </span>
           </DropdownMenuTrigger>
           <DropdownMenuContent>

@@ -22,7 +22,7 @@ const ProductsListPage = () => {
       <div className="flex flex-row justify-between items-center w-full mb-4">
         <ProductTabs tabs={tabs} setProductTab={setProductTab} />
         <Button variant="primary" size="lg">
-          <CirclePlusIcon />
+          <CirclePlusIcon color="white" />
           Add Product
         </Button>
       </div>
