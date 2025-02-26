@@ -34,7 +34,7 @@ const AttachmentItem = ({ file, handleRemove }: AttachmentItemProps) => {
           {file.loading ? null : (
             <Button
               onClick={handleClick}
-              className={`p-0 flex justify-center items-center absolute top-[50%] translate-y-[-50%] bg-error left-[50%] translate-x-[-50%] w-[20px] h-[20px] rounded-sm hover:bg-error`}
+              className={`p-0 min-w-auto flex justify-center items-center absolute top-[50%] translate-y-[-50%] bg-error left-[50%] translate-x-[-50%] w-[20px] h-[20px] rounded-sm hover:bg-error`}
             >
               <Trash2 color="#fff" size={14} />
             </Button>
@@ -51,16 +51,10 @@ const AttachmentItem = ({ file, handleRemove }: AttachmentItemProps) => {
           <Typography className="text-foreground">{file.type}</Typography>
         )}
       </div>
-      <p
-        title={file.name}
-        className="w-full text-center flex items-center text-xs"
-      >
-        <span className="inline-block truncate w-[80%]">
-          {file.name.slice(0, file.name.lastIndexOf(".") - 1)}
-        </span>
-        <span className="inline-block w-[20%]">
-          {file.name.slice(file.name.lastIndexOf("."), file.name.length)}
-        </span>
+      <p title={file.name}>
+        <Typography variant="paragraph/xs" className="truncate text-center">
+          {file.name}
+        </Typography>
       </p>
       <p className="w-full text-center text-xs text-gray-500">
         {(file.size / 1024 / 1024).toFixed(2)}mb
