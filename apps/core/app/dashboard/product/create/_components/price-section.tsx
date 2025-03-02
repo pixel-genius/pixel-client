@@ -1,15 +1,14 @@
 import { Input } from "@repo/ui/components/input";
 import { useFormContext } from "react-hook-form";
-import { DollarSign, ArrowRight } from "lucide-react";
+import { DollarSign, ArrowRight, Percent } from "lucide-react";
 import { cn } from "@repo/ui/lib/utils";
-import { useState } from "react";
+import { FC, useState } from "react";
 import Typography from "@repo/ui/components/typography";
 import { Switch } from "@repo/ui/components/switch";
 
 const CUSTOM_VALUE = null;
 
 const DISCOUNT_OPTIONS = [
-  { label: "0%", value: 0 },
   { label: "10%", value: 10 },
   { label: "20%", value: 20 },
   { label: "30%", value: 30 },
@@ -17,7 +16,13 @@ const DISCOUNT_OPTIONS = [
   { label: "50%", value: 50 },
 ];
 
-const PriceSection = () => {
+interface PriceSectionProps {
+  isFree: boolean;
+}
+
+const PriceSection: FC<PriceSectionProps> = (props) => {
+  const { isFree } = props;
+
   const { register, formState, setValue, watch } = useFormContext<{
     price: string;
     discount: number | null;
@@ -46,6 +51,8 @@ const PriceSection = () => {
         {...register("price")}
         error={formState.errors.price?.message}
         iconRight={<DollarSign size={20} />}
+        disabled={isFree}
+        value={isFree ? 0 : price}
       />
 
       {/* Discount Chip */}
@@ -54,37 +61,63 @@ const PriceSection = () => {
         <Typography>Set a discount:</Typography>
         <Switch
           checked={hasDiscount}
+          disabled={isFree}
           onClick={() => setHasDiscount((prev) => !prev)}
         />
       </div>
 
       {hasDiscount && (
         <div className="flex flex-row justify-start items-center gap-2">
-          {DISCOUNT_OPTIONS.map((option) => (
-            <button
-              key={option.value}
-              onClick={() => {
-                onChangeDiscount(option.value);
+          {isCustomDiscount ? (
+            <Input
+              placeholder="custom"
+              {...register("discount")}
+              onChange={(e) => {
+                const value = +e.target.value;
+                setValue("discount", value);
               }}
-              className={cn(
-                "flex flex-row items-center gap-2 rounded-lg border border-gray-500 h-12 p-2",
-                { "bg-primary": discount === option.value },
-              )}
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
+              type="number"
+              error={formState.errors.price?.message}
+              className="-mt-2"
+              iconRight={<Percent size={20} />}
+            />
+          ) : (
+            DISCOUNT_OPTIONS.map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                onClick={() => {
                   onChangeDiscount(option.value);
-                }
-              }}
-            >
-              <div className="flex items-center gap-2">
-                <p className="text-sm font-normal">{option.label}</p>
-              </div>
-            </button>
-          ))}
-
+                }}
+                className={cn(
+                  "flex flex-row items-center gap-2 rounded-lg border border-gray-500 h-12 p-2",
+                  { "bg-primary": discount === option.value },
+                )}
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    onChangeDiscount(option.value);
+                  }
+                }}
+              >
+                <div className="flex items-center gap-2">
+                  <p className="text-sm font-normal">{option.label}</p>
+                </div>
+              </button>
+            ))
+          )}
           {/* convert input UI same as chip */}
-          <Input
+          <button
+            type="button"
+            onClick={() => setIsCustomDiscount((prev) => !prev)}
+            className={cn(
+              "flex flex-row items-center gap-2 rounded-lg border border-gray-500 h-12 p-2",
+              isCustomDiscount ? "bg-primary" : "",
+            )}
+          >
+            {isCustomDiscount ? "Return" : "Custom"}
+          </button>
+          {/* <Input
             placeholder="custom"
             {...register("discount")}
             onChange={(e) => {
@@ -94,7 +127,7 @@ const PriceSection = () => {
             type="number"
             error={formState.errors.price?.message}
             className="max-w-28 -mt-2"
-          />
+          /> */}
         </div>
       )}
       {/* Result */}
