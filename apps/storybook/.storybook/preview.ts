@@ -12,7 +12,7 @@ const preview: Preview = {
         { name: "dark", class: "dark", color: "#333333" },
       ],
     },
-    actions: { argTypesRegex: "^on[A-Z].*" },
+
     controls: {
       matchers: {
         color: /(background|color)$/i,
