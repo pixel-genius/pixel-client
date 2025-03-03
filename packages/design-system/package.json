@@ -2,14 +2,15 @@
   "name": "@repo/design-system",
   "version": "1.0.0",
   "scripts": {
-    "build": "bun run src/scripts/build.ts"
+    "build": "ts-node src/scripts/build.ts"
   },
   "exports": {
-    "./styles": "./src/styles/main.scss", 
+    "./styles": "./src/styles/main.scss",
     "./tailwind": "./src/tailwind/config.ts"
   },
   "devDependencies": {
     "@repo/typescript-config": "*",
-    "style-dictionary": "^4.3.2"
+    "style-dictionary": "^4.3.2",
+    "ts-node": "^10.9.2"
   }
 }
