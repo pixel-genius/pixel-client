@@ -84,7 +84,6 @@ const buttonVariants = cva(
 
 export type ButtonState = "success" | "warning" | "error";
 
-
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
@@ -122,7 +121,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
         disabled={props.disabled}
       >
-        <div className="text-ellipsis" />
         {IconLeft && (
           <span className={cn(isLoading && "invisible")}>{IconLeft}</span>
         )}
