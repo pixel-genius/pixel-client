@@ -60,6 +60,7 @@
     "./IllustrationIcon": "./src/components/IllustrationIcon.tsx",
     "./cinema4D": "./src/components/cinema4D.tsx",
     "./Asset3dIcon": "./src/components/3dAsset.tsx,",
+    "./curveX": "./src/components/curveX.tsx",
     "./x": "./src/components/x.tsx",
     "./menu-2": "./src/components/menu-2.tsx",
     "./serach": "./src/components/serach.tsx",
