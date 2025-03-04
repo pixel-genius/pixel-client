@@ -1,24 +1,26 @@
-name: Deploy to Ubuntu Server
+name: CI/CD Pipeline
 
 on:
   push:
     branches:
-      - main # Change to your branch
+      - main  # Change this to your deployment branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repo
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H 185.204.168.45 >> ~/.ssh/known_hosts
-
-      - name: Deploy
-        run: ./deploy.sh
+      - name: SSH into Server and Deploy
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd /path/to/your-repo
+            git pull origin main
+            docker compose down
+            docker compose up --build -d
