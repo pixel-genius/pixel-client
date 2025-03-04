@@ -19,7 +19,7 @@ jobs:
       - name: SSH into Server and Deploy
         uses: appleboy/ssh-action@v0.1.10
         with:
-          host: ${{ secrets.SERVER_IP }}
+          host: 185.204.168.45
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
