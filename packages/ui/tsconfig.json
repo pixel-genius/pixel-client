@@ -6,6 +6,9 @@
      "~/*": ["src/*"]
     }
   },
-  "include": ["src"],
+  "include": [
+    "src",
+    "../../apps/core/app/dashboard/_compnents/app-sidebar.tsx"
+  ],
   "exclude": ["node_modules"]
 }
