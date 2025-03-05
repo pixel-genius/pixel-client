@@ -1,29 +1,78 @@
-name: CI/CD Pipeline
+name: CI/CD to AWS EC2 with Docker Compose
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    # Step 1: Checkout the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Debug Secrets (Do not print sensitive data)
-        run: echo "Secrets Loaded"
+    # Step 2: Set up Docker Buildx
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
 
-      - name: SSH into Server and Deploy
-        uses: appleboy/ssh-action@v0.1.10
-        with:
-          host: 185.204.168.45
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          script: |
-            cd /home/ubuntu/pixel-client
-            git pull origin main
-            docker compose down
-            docker compose up --build -d
+    # Step 3: Create the .env file
+    # - name: Create .env file
+    #   run: |
+    #    echo "${{ secrets.ENV_VARS }}" > .env
+    #    cat .env  # Debugging only, remove for production
+
+    # Step 4: Build and Test with Docker Compose
+    - name: Build and Test Docker Compose
+      run: |
+        docker compose -f docker-compose.yml config
+        docker compose build
+        docker compose up -d
+        sleep 15 # Allow time for services to start
+        docker ps # Verify containers are running
+    - name: Tear Down Docker Containers
+      run: docker compose down
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build  # Ensures build job completes before deploying
+
+    steps:
+    # Step 1: Checkout Code
+    - name: Checkout Code
+      uses: actions/checkout@v3
+    
+    # Step 2: Configure SSH Key
+    - name: Configure SSH Key
+      run: |
+        echo "${{ secrets.SERVER_PRIVET_KEY }}" > /tmp/pro-key.pem
+        chmod 600 /tmp/pro-key.pem
+    
+    # Step 3: Add EC2 Host to known_hosts
+    - name: Add EC2 Host to known_hosts
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+  
+    # Step 4: Ensure EC2 Permissions
+    - name: Ensure EC2 Permissions
+      run: |
+        ssh -i /tmp/pro-key.pem ubuntu@${{ secrets.SERVER_IP }} << 'EOF'
+        sudo chown -R ubuntu:ubuntu /var/www/simoo-backend
+        sudo chmod -R 755 /var/www/simoo-backend
+        EOF
+    
+    # Step 5: Copy Files to EC2
+    - name: Copy Files to EC2
+      run: |
+        scp -i /tmp/pro-key.pem -r . ubuntu@${{ secrets.SERVER_IP }}:/var/www/simoo-backend
+    
+    # Step 6: Deploy Application
+    - name: Deploy Application
+      run: |
+        ssh -i /tmp/pro-key.pem ubuntu@${{ secrets.SERVER_IP }} << 'EOF'
+        cd /var/www/simoo-backend
+        # docker compose down || true
+        docker compose up -d --build
+        EOF
