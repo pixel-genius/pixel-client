@@ -1,2 +1,2 @@
-bun run build 
-git pull --rebase origin main
+bun run build
+# git pull --rebase origin main
