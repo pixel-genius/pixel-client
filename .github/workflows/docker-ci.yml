@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted  # Uses your self-hosted runner
+    runs-on: pixel  # Uses your self-hosted runner
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -24,7 +24,7 @@ jobs:
           sudo docker push mrbadri/pixel-client:latest
 
   deploy:
-    runs-on: self-hosted
+    runs-on: pixel
     needs: build  # Run this after the build job
     steps:
       - name: Pull and Restart Container
