@@ -1,20 +1,18 @@
-import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import {
   CheckIcon,
-  XCircle,
   ChevronDown,
-  XIcon,
-  WandSparkles,
-  PlusIcon,
   ChevronUp,
+  PlusIcon,
+  XCircle,
+  XIcon,
 } from "lucide-react";
+import * as React from "react";
 
 import { cn } from "@repo/ui/lib/utils";
-import { Separator } from "./separator";
-import { Button } from "./button";
 import { Badge } from "./badge";
-import { Popover, PopoverContent, PopoverTrigger } from "./popover";
+import { Button } from "./button";
+import { Chip } from "./chip";
 import {
   Command,
   CommandEmpty,
@@ -24,6 +22,8 @@ import {
   CommandList,
   CommandSeparator,
 } from "./command";
+import { Popover, PopoverContent, PopoverTrigger } from "./popover";
+import { Separator } from "./separator";
 
 /**
  * Variants for the multi-select component to handle different styles.
@@ -201,7 +201,7 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
               )
             }
             className={cn(
-              "flex w-full p-1 rounded-md border min-h-10 h-auto items-center justify-between bg-inherit hover:bg-inherit [&_svg]:pointer-events-auto",
+              "flex w-full p-1 rounded-md border min-h-9 h-auto items-center justify-between bg-inherit hover:bg-inherit [&_svg]:pointer-events-auto",
               className,
             )}
           >
@@ -210,25 +210,24 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
                 <div className="flex flex-wrap items-center">
                   {selectedValues.slice(0, maxCount).map((value) => {
                     const option = optionsState.find((o) => o.value === value);
-                    const IconComponent = option?.icon;
                     return (
-                      <Badge
+                      <Chip
                         key={value}
-                        className={cn(multiSelectVariants({ variant }))}
+                        className={cn(multiSelectVariants({ variant }), "h-4")}
                         style={{ animationDuration: `${animation}s` }}
+                        size={null}
+                        iconRight={
+                          <XCircle
+                            className="ml-2 h-4 w-4 cursor-pointer"
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              toggleOption(value);
+                            }}
+                          />
+                        }
                       >
-                        {IconComponent && (
-                          <IconComponent className="h-4 w-4 mr-2" />
-                        )}
                         {option?.label}
-                        <XCircle
-                          className="ml-2 h-4 w-4 cursor-pointer"
-                          onClick={(event) => {
-                            event.stopPropagation();
-                            toggleOption(value);
-                          }}
-                        />
-                      </Badge>
+                      </Chip>
                     );
                   })}
                   {selectedValues.length > maxCount && (
