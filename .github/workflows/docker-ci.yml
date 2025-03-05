@@ -1,13 +1,13 @@
-name: CI/CD Pipeline
+name: Docker CI/CD - Build, Push & Deploy
 
 on:
   push:
     branches:
-      - main  # Change this to your branch
+      - main
 
 jobs:
   build:
-    runs-on: self-hosted  # Uses your self-hosted runner
+    runs-on: self-hosted
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -25,11 +25,21 @@ jobs:
 
   deploy:
     runs-on: self-hosted
-    needs: build  # Run this after the build job
+    needs: build
     steps:
-      - name: Pull and Restart Container
+      - name: Pull the Latest Docker Image
+        run: sudo docker pull mrbadri/pixel-client:latest
+
+      - name: Stop and Remove Existing Container (if exists)
         run: |
-          sudo docker pull mrbadri/pixel-client:latest
-          sudo docker stop myapp || true
-          sudo docker rm myapp || true
+          if [ $(docker ps -aq -f name=pixel-client) ]; then
+            echo "Stopping and removing existing container..."
+            sudo docker stop pixel-client
+            sudo docker rm pixel-client
+          else
+            echo "No existing container found. Skipping removal."
+          fi
+
+      - name: Run the New Container
+        run: |
           sudo docker run -d --name pixel-client -p 3000:3000 mrbadri/pixel-client:latest
