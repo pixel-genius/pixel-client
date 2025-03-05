@@ -24,7 +24,7 @@ jobs:
           sudo docker push mrbadri/pixel-client:latest
 
   deploy:
-    runs-on: core-runner
+    runs-on: client-runner
     needs: build  
     steps:
       - name: Pull and Restart Container
