@@ -10,7 +10,6 @@ import {
 import * as React from "react";
 
 import { cn } from "@repo/ui/lib/utils";
-import { Badge } from "./badge";
 import { Button } from "./button";
 import { Chip } from "./chip";
 import {
@@ -134,7 +133,9 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
       React.useState<string[]>(defaultValue);
     const [optionsState, setOptionsState] =
       React.useState<MultiSelectProps["options"]>(options);
-    const [isPopoverOpen, setIsPopoverOpen] = React.useState(false);
+    const [searchOptionInput, setSearchOptionInput] =
+      React.useState<string>("");
+    const [isPopoverOpen, setIsPopoverOpen] = React.useState<boolean>(false);
 
     const handleInputKeyDown = (
       event: React.KeyboardEvent<HTMLInputElement>,
@@ -231,22 +232,25 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
                     );
                   })}
                   {selectedValues.length > maxCount && (
-                    <Badge
+                    <Chip
                       className={cn(
-                        "bg-transparent text-foreground border-foreground/1 hover:bg-transparent",
+                        "bg-transparent text-foreground border-foreground/1 hover:bg-transparent h-4",
                         multiSelectVariants({ variant }),
                       )}
                       style={{ animationDuration: `${animation}s` }}
+                      size={null}
+                      iconRight={
+                        <XCircle
+                          className="ml-2 h-4 w-4 cursor-pointer"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            clearExtraOptions();
+                          }}
+                        />
+                      }
                     >
                       {`+ ${selectedValues.length - maxCount} more`}
-                      <XCircle
-                        className="ml-2 h-4 w-4 cursor-pointer"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          clearExtraOptions();
-                        }}
-                      />
-                    </Badge>
+                    </Chip>
                   )}
                 </div>
                 <div className="flex items-center justify-between">
@@ -281,6 +285,9 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
             <CommandInput
               placeholder="Search..."
               onKeyDown={handleInputKeyDown}
+              onChangeCapture={(e) => {
+                setSearchOptionInput(e.currentTarget.value.trim());
+              }}
             />
             <CommandList>
               <CommandEmpty className="p-1">
@@ -289,7 +296,17 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
                   size="sm"
                   iconLeft={<PlusIcon />}
                   onClick={() => {
-                    // setOptionsState()
+                    setOptionsState((prev) => [
+                      ...prev,
+                      {
+                        label: searchOptionInput,
+                        value: searchOptionInput.toLowerCase(),
+                      },
+                    ]);
+                    setSelectedValues((prev) => [
+                      ...prev,
+                      searchOptionInput.toLowerCase(),
+                    ]);
                   }}
                 >
                   Add
