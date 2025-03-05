@@ -3,11 +3,11 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main  # Change this to your branch
+      - main  
 
 jobs:
   build:
-    runs-on: core-runner  # Uses your self-hosted runner
+    runs-on: client-runner  
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -25,7 +25,7 @@ jobs:
 
   deploy:
     runs-on: core-runner
-    needs: build  # Run this after the build job
+    needs: build  
     steps:
       - name: Pull and Restart Container
         run: |
