@@ -55,7 +55,12 @@ jobs:
 
       - name: Comment PR with Preview URL
         run: |
-          PR_COMMENT="🚀 **Your preview is ready!** Check it out here: [http://185.204.168.45:3${{ github.event.number }}](http://185.204.168.45:3${{ github.event.number }}) ✨"
+          PR_COMMENT="🚀 **Your preview is ready!** Check it out here: [http://185.204.168.45:3${{ github.event.number }}](http://185.204.168.45:3${{ github.event.number }}) ✨\n\n"
+
+          if [ -n "${{ env.ROUTE_URLS }}" ]; then
+            PR_COMMENT+="### 📌 Changed Routes:\n${{ env.ROUTE_URLS }}"
+          fi
+
           curl -X POST -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
              -H "Accept: application/vnd.github.v3+json" \
              https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments \
