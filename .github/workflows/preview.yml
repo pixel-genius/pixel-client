@@ -35,18 +35,23 @@ jobs:
       - name: Generate Route Preview URLs
         id: generate_urls
         run: |
+          echo "🔍 Detecting changed files..."
           CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '^apps/core/app/.*/page.tsx' || true)
-          ROUTE_URLS=""
+          echo "📂 Changed Files:"
+          echo "$CHANGED_FILES"
 
+          ROUTE_URLS=""
           for file in $CHANGED_FILES; do
             route=$(echo $file | sed 's|apps/core/app||;s|/page.tsx||')
-            ROUTE_URLS+="- [http://185.204.168.45:3${{ github.event.number }}${route}](http://185.204.168.45:3${{ github.event.number }}${route})\n"
+            url="http://185.204.168.45:3${{ github.event.number }}${route}"
+            echo "🔗 Generated Route: $url"
+            ROUTE_URLS+="- [$url]($url)\n"
           done
 
+          echo "📌 Final Generated URLs:\n$ROUTE_URLS"
           echo "ROUTE_URLS<<EOF" >> $GITHUB_ENV
           echo -e "$ROUTE_URLS" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
-
 
       - name: Comment PR with Preview URL
         run: |
