@@ -20,14 +20,14 @@ jobs:
       - name: Build Docker Image
         if: github.event.action != 'closed'
         run: |
-          docker build -t mrbadri/pixel-client:pr-${{ github.event.number }} .
+          sudo docker build -t mrbadri/pixel-client:pr-${{ github.event.number }} .
 
       - name: Run Preview Container
         if: github.event.action != 'closed'
         run: |
-          docker stop preview-pr-${{ github.event.number }} || true
-          docker rm preview-pr-${{ github.event.number }} || true
-          docker run -d \
+          sudo docker stop preview-pr-${{ github.event.number }} || true
+          sudo docker rm preview-pr-${{ github.event.number }} || true
+          sudo docker run -d \
             --name preview-pr-${{ github.event.number }} \
             -p $((3000 + ${{ github.event.number }})):3000 \
             mrbadri/pixel-client:pr-${{ github.event.number }}
@@ -51,6 +51,6 @@ jobs:
       - name: Clean up Preview Container
         if: github.event.action == 'closed'
         run: |
-          docker stop preview-pr-${{ github.event.number }} || true
-          docker rm preview-pr-${{ github.event.number }} || true
-          docker rmi mrbadri/pixel-client:pr-${{ github.event.number }} || true
+          sudo docker stop preview-pr-${{ github.event.number }} || true
+          sudo docker rm preview-pr-${{ github.event.number }} || true
+          sudo docker rmi mrbadri/pixel-client:pr-${{ github.event.number }} || true
