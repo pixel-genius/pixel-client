@@ -31,6 +31,22 @@ jobs:
             -p $((3000 + ${{ github.event.number }})):3000 \
             mrbadri/pixel-client:pr-${{ github.event.number }}
 
+      - name: Generate Route Preview URLs
+        id: generate_urls
+        run: |
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '^apps/core/app/.*/page.tsx' || true)
+          ROUTE_URLS=""
+
+          for file in $CHANGED_FILES; do
+            route=$(echo $file | sed 's|apps/core/app||;s|/page.tsx||')
+            ROUTE_URLS+="- [http://185.204.168.45:3${{ github.event.number }}${route}](http://185.204.168.45:3${{ github.event.number }}${route})\n"
+          done
+
+          echo "ROUTE_URLS<<EOF" >> $GITHUB_ENV
+          echo -e "$ROUTE_URLS" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+
       - name: Comment PR with Preview URL
         run: |
           PR_COMMENT="🚀 **Your preview is ready!** Check it out here: [http://185.204.168.45:3${{ github.event.number }}](http://185.204.168.45:3${{ github.event.number }}) ✨"
