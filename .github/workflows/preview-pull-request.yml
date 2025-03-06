@@ -6,7 +6,9 @@ on:
 
 jobs:
   preview:
-    runs-on: client-runner
+    runs-on: 
+    - client
+    - self-hosted
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
