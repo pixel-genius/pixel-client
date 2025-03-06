@@ -6,7 +6,8 @@ on:
 
 jobs:
   preview:
-    runs-on: client-runner
+    runs-on: 
+    - core
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
