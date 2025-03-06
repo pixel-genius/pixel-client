@@ -1,0 +1,56 @@
+name: PR Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+jobs:
+  preview:
+    runs-on: client-runner
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Define variables
+        id: vars
+        run: |
+          echo "pr_number=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+          echo "branch=$(echo ${{ github.head_ref }} | tr '/' '-')" >> $GITHUB_ENV
+
+      - name: Build Docker Image
+        if: github.event.action != 'closed'
+        run: |
+          docker build -t mrbadri/pixel-client:pr-${{ github.event.number }} .
+
+      - name: Run Preview Container
+        if: github.event.action != 'closed'
+        run: |
+          docker stop preview-pr-${{ github.event.number }} || true
+          docker rm preview-pr-${{ github.event.number }} || true
+          docker run -d \
+            --name preview-pr-${{ github.event.number }} \
+            -p $((3000 + ${{ github.event.number }})):3000 \
+            mrbadri/pixel-client:pr-${{ github.event.number }}
+
+      - name: Comment PR with Preview URL
+        if: github.event.action != 'closed'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue_number = context.payload.pull_request.number;
+            const previewUrl = `http://YOUR_SERVER_IP:3${issue_number}`;
+            const message = `🚀 Preview ready: [http://YOUR_SERVER_IP:3000](http://YOUR_SERVER_IP:3${issue_number})`;
+            
+            await github.rest.issues.createComment({
+              issue_number: issue_number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `🔍 **Preview Ready**: [View Preview](http://YOUR_SERVER_IP:300${issue_number})`
+            });
+
+      - name: Clean up Preview Container
+        if: github.event.action == 'closed'
+        run: |
+          docker stop preview-pr-${{ github.event.number }} || true
+          docker rm preview-pr-${{ github.event.number }} || true
+          docker rmi mrbadri/pixel-client:pr-${{ github.event.number }} || true
