@@ -38,19 +38,15 @@ jobs:
 
       - name: Comment PR with Preview URL
         if: github.event.action != 'closed'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const issue_number = context.payload.pull_request.number;
-            const previewUrl = `http://YOUR_SERVER_IP:3${issue_number}`;
-            const message = `🚀 Preview ready: [http://YOUR_SERVER_IP:3000](http://YOUR_SERVER_IP:3${issue_number})`;
-            
-            await github.rest.issues.createComment({
-              issue_number: issue_number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `🔍 **Preview Ready**: [View Preview](http://YOUR_SERVER_IP:300${issue_number})`
-            });
+        run: |
+          PR_COMMENT="🚀 Preview ready: [http://185.204.168.45:3${{ github.event.number }}](http://185.204.168.45:3${{ github.event.number }})"
+
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            -d "{\"body\": \"${PR_PREVIEW}\"}" \
+            "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.number }}/comments"
+
 
       - name: Clean up Preview Container
         if: github.event.action == 'closed'
