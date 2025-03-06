@@ -10,19 +10,12 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Fetch full history to avoid git diff issues
 
       - name: Define variables
         id: vars
         run: |
           echo "pr_number=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
           echo "branch=$(echo ${{ github.head_ref }} | tr '/' '-')" >> $GITHUB_ENV
-
-      - name: Ensure Base Branch Exists
-        run: |
-          git fetch origin ${{ github.base_ref }} --depth=1
-          git branch --track ${{ github.base_ref }} origin/${{ github.base_ref }} || true
 
       - name: Build Docker Image
         run: |
@@ -41,42 +34,22 @@ jobs:
       - name: Generate Route Preview URLs
         id: generate_urls
         run: |
-          echo "🔍 Detecting changed files..."
-          
-          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD || true)
-          echo "📂 Changed Files:"
-          echo "$CHANGED_FILES"
-
-          if [[ -z "$CHANGED_FILES" ]]; then
-            echo "No changed files detected. Skipping route generation."
-            exit 0
-          fi
-
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '^apps/core/app/.*/page.tsx' || true)
           ROUTE_URLS=""
-          for file in $CHANGED_FILES; do
-            if [[ "$file" =~ ^apps/core/app/.*/page.tsx$ ]]; then
-              route=$(echo $file | sed 's|apps/core/app||;s|/page.tsx||')
-              url="http://185.204.168.45:3${{ github.event.number }}${route}"
-              echo "🔗 Generated Route: $url"
-              ROUTE_URLS+="- [$url]($url)\n"
-            fi
-          done
 
-          echo "📌 Final Generated URLs:"
-          echo -e "$ROUTE_URLS"
+          for file in $CHANGED_FILES; do
+            route=$(echo $file | sed 's|apps/core/app||;s|/page.tsx||')
+            ROUTE_URLS+="- [http://185.204.168.45:3${{ github.event.number }}${route}](http://185.204.168.45:3${{ github.event.number }}${route})\n"
+          done
 
           echo "ROUTE_URLS<<EOF" >> $GITHUB_ENV
           echo -e "$ROUTE_URLS" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
+
       - name: Comment PR with Preview URL
         run: |
-          PR_COMMENT="🚀 **Your preview is ready!** Check it out here: [http://185.204.168.45:3${{ github.event.number }}](http://185.204.168.45:3${{ github.event.number }}) ✨\n\n"
-
-          if [ -n "${{ env.ROUTE_URLS }}" ]; then
-            PR_COMMENT+="### 📌 Changed Routes:\n${{ env.ROUTE_URLS }}\n\n"
-          fi
-
+          PR_COMMENT="🚀 **Your preview is ready!** Check it out here: [http://185.204.168.45:3${{ github.event.number }}](http://185.204.168.45:3${{ github.event.number }}) ✨"
           curl -X POST -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
              -H "Accept: application/vnd.github.v3+json" \
              https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments \
