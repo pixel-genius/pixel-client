@@ -41,11 +41,10 @@ jobs:
         run: |
           PR_COMMENT="🚀 Preview ready: [http://185.204.168.45:3${{ github.event.number }}](http://185.204.168.45:3${{ github.event.number }})"
 
-          curl -X POST \
-            -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            -d "{\"body\": \"${PR_PREVIEW}\"}" \
-            "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.number }}/comments"
+          curl -X POST -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+             -H "Accept: application/vnd.github.v3+json" \
+             https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments \
+             -d "{\"body\": \"$PR_COMMENT\"}"
 
 
       - name: Clean up Preview Container
