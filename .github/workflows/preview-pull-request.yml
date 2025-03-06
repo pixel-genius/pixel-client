@@ -2,12 +2,11 @@ name: PR Preview
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened, closed]
+    types: [opened, synchronize, reopened]
 
 jobs:
   preview:
-    runs-on: 
-    - client
+    runs-on: client
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -19,15 +18,11 @@ jobs:
           echo "branch=$(echo ${{ github.head_ref }} | tr '/' '-')" >> $GITHUB_ENV
 
       - name: Build Docker Image
-        if: github.event.action != 'closed'
         run: |
-
           sudo docker-compose build
           sudo docker tag pixel-client-core mrbadri/pixel-client:pr-${{ github.event.number }}
 
-
       - name: Run Preview Container
-        if: github.event.action != 'closed'
         run: |
           sudo docker stop preview-pr-${{ github.event.number }} || true
           sudo docker rm preview-pr-${{ github.event.number }} || true
@@ -37,19 +32,9 @@ jobs:
             mrbadri/pixel-client:pr-${{ github.event.number }}
 
       - name: Comment PR with Preview URL
-        if: github.event.action != 'closed'
         run: |
-          PR_COMMENT="🚀 Preview ready: [http://185.204.168.45:3${{ github.event.number }}](http://185.204.168.45:3${{ github.event.number }})"
-
+          PR_COMMENT="🚀 **Your preview is ready!** Check it out here: [http://185.204.168.45:3${{ github.event.number }}](http://185.204.168.45:3${{ github.event.number }}) ✨"
           curl -X POST -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
              -H "Accept: application/vnd.github.v3+json" \
              https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments \
              -d "{\"body\": \"$PR_COMMENT\"}"
-
-
-      - name: Clean up Preview Container
-        if: github.event.action == 'closed'
-        run: |
-          sudo docker stop preview-pr-${{ github.event.number }} || true
-          sudo docker rm preview-pr-${{ github.event.number }} || true
-          sudo docker rmi mrbadri/pixel-client:pr-${{ github.event.number }} || true
