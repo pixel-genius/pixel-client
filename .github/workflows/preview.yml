@@ -31,21 +31,22 @@ jobs:
             -p $((3000 + ${{ github.event.number }})):3000 \
             mrbadri/pixel-client:pr-${{ github.event.number }}
 
-
       - name: Generate Route Preview URLs
         id: generate_urls
         run: |
           echo "🔍 Detecting changed files..."
-          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '^apps/core/app/.*/page.tsx' || true)
-          echo "📂 Changed Files:"
-          echo "$CHANGED_FILES"
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD || true)
+          echo "📂 Changed Files:" >> $GITHUB_ENV
+          echo "$CHANGED_FILES" >> $GITHUB_ENV
 
           ROUTE_URLS=""
           for file in $CHANGED_FILES; do
-            route=$(echo $file | sed 's|apps/core/app||;s|/page.tsx||')
-            url="http://185.204.168.45:3${{ github.event.number }}${route}"
-            echo "🔗 Generated Route: $url"
-            ROUTE_URLS+="- [$url]($url)\n"
+            if [[ "$file" =~ ^apps/core/app/.*/page.tsx$ ]]; then
+              route=$(echo $file | sed 's|apps/core/app||;s|/page.tsx||')
+              url="http://185.204.168.45:3${{ github.event.number }}${route}"
+              echo "🔗 Generated Route: $url"
+              ROUTE_URLS+="- [$url]($url)\n"
+            fi
           done
 
           echo "📌 Final Generated URLs:\n$ROUTE_URLS"
@@ -58,7 +59,14 @@ jobs:
           PR_COMMENT="🚀 **Your preview is ready!** Check it out here: [http://185.204.168.45:3${{ github.event.number }}](http://185.204.168.45:3${{ github.event.number }}) ✨\n\n"
 
           if [ -n "${{ env.ROUTE_URLS }}" ]; then
-            PR_COMMENT+="### 📌 Changed Routes:\n${{ env.ROUTE_URLS }}"
+            PR_COMMENT+="### 📌 Changed Routes:\n${{ env.ROUTE_URLS }}\n\n"
+          fi
+
+          if [ -n "${{ env.CHANGED_FILES }}" ]; then
+            PR_COMMENT+="### 📝 List of Changed Files:\n\n\`\`\`
+            ${{ env.CHANGED_FILES }}
+            \`\`\`
+            "
           fi
 
           curl -X POST -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
