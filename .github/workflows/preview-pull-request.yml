@@ -21,8 +21,10 @@ jobs:
       - name: Build Docker Image
         if: github.event.action != 'closed'
         run: |
+
           sudo docker-compose build
           sudo docker tag pixel-client-core mrbadri/pixel-client:pr-${{ github.event.number }}
+
 
       - name: Run Preview Container
         if: github.event.action != 'closed'
