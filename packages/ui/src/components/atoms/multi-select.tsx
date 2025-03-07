@@ -126,10 +126,13 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
   ) => {
     const [selectedValues, setSelectedValues] =
       React.useState<string[]>(defaultValue);
+
     const [optionsState, setOptionsState] =
       React.useState<MultiSelectProps["options"]>(options);
+
     const [searchOptionInput, setSearchOptionInput] =
       React.useState<string>("");
+
     const [isPopoverOpen, setIsPopoverOpen] = React.useState<boolean>(false);
 
     const handleInputKeyDown = (
@@ -208,7 +211,7 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
               //   )
             }
             className={cn(
-              "flex w-full p-1 rounded-md border min-h-9 h-auto items-center justify-between bg-inherit hover:bg-inherit [&_svg]:pointer-events-auto",
+              "flex w-full p-1 rounded-md border min-h-9 h-auto items-center justify-between bg-card hover:bg-card [&_svg]:pointer-events-auto",
               className,
             )}
           >
@@ -279,6 +282,7 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
             <CommandInput
               placeholder="Search..."
               onKeyDown={handleInputKeyDown}
+              value={searchOptionInput}
               onChangeCapture={(e) => {
                 setSearchOptionInput(e.currentTarget.value.trim());
               }}
@@ -301,6 +305,7 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
                       ...prev,
                       searchOptionInput.toLowerCase(),
                     ]);
+                    setSearchOptionInput("");
                   }}
                 >
                   Add
