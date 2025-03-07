@@ -1,17 +1,10 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import {
-  CheckIcon,
-  ChevronDown,
-  ChevronUp,
-  PlusIcon,
-  XCircle,
-  XIcon,
-} from "lucide-react";
+import { CheckIcon, PlusIcon, XCircle, XIcon } from "lucide-react";
 import * as React from "react";
 
 import { cn } from "@repo/ui/lib/utils";
 import { Button } from "./button";
-import { Chip } from "./chip";
+import { Chip, chipVariants } from "./chip";
 import {
   Command,
   CommandEmpty,
@@ -58,6 +51,7 @@ interface MultiSelectProps
    * An array of option objects to be displayed in the multi-select component.
    * Each option object has a label, value, and an optional icon.
    */
+  chipVariant?: VariantProps<typeof chipVariants>["variant"];
   options: {
     /** The text to display for the option. */
     label: string;
@@ -119,6 +113,7 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
       options,
       onValueChange,
       variant,
+      chipVariant = "secendery",
       defaultValue = [],
       placeholder = "Select options",
       animation = 0,
@@ -195,11 +190,22 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
             {...props}
             onClick={handleTogglePopover}
             iconRight={
-              isPopoverOpen ? (
-                <ChevronUp className="h-4 cursor-pointer text-muted-foreground mx-2" />
-              ) : (
-                <ChevronDown className="h-4 cursor-pointer text-muted-foreground mx-2" />
-              )
+              selectedValues.length > 0 ? (
+                <div className="flex items-center justify-between">
+                  <XIcon
+                    className="h-4 mx-2 cursor-pointer text-muted-foreground"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      handleClear();
+                    }}
+                  />
+                </div>
+              ) : null
+              //   isPopoverOpen ? (
+              //     <ChevronUp className="h-4 cursor-pointer text-muted-foreground mx-2" />
+              //   ) : (
+              //     <ChevronDown className="h-4 cursor-pointer text-muted-foreground mx-2" />
+              //   )
             }
             className={cn(
               "flex w-full p-1 rounded-md border min-h-9 h-auto items-center justify-between bg-inherit hover:bg-inherit [&_svg]:pointer-events-auto",
@@ -217,6 +223,7 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
                         className={cn(multiSelectVariants({ variant }), "h-4")}
                         style={{ animationDuration: `${animation}s` }}
                         size={null}
+                        variant={chipVariant}
                         iconRight={
                           <XCircle
                             className="ml-2 h-4 w-4 cursor-pointer"
@@ -252,19 +259,6 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
                       {`+ ${selectedValues.length - maxCount} more`}
                     </Chip>
                   )}
-                </div>
-                <div className="flex items-center justify-between">
-                  <XIcon
-                    className="h-4 mx-2 cursor-pointer text-muted-foreground"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      handleClear();
-                    }}
-                  />
-                  <Separator
-                    orientation="vertical"
-                    className="flex min-h-6 h-full"
-                  />
                 </div>
               </div>
             ) : (
