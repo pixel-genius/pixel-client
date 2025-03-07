@@ -12,7 +12,7 @@ const chipVariants = cva(
         danger: "bg-rose-500 hover:bg-rose-700   ",
         success: "bg-success hover:bg-emerald-700   ",
         info: "bg-sky-500 hover:bg-sky-700   ",
-        secendery: "bg-secondary hover:bg-zinc-900    ",
+        secondary: "bg-secondary hover:bg-zinc-900    ",
       },
       size: {
         sm: "h-9 text-sm",
