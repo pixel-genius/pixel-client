@@ -1,6 +1,13 @@
-import { cva, type VariantProps } from "class-variance-authority";
-import { CheckIcon, PlusIcon, XCircle, XIcon } from "lucide-react";
 import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import {
+  CheckIcon,
+  ChevronDown,
+  ChevronUp,
+  PlusIcon,
+  XCircle,
+  XIcon,
+} from "lucide-react";
 
 import { cn } from "@repo/ui/lib/utils";
 import { Button } from "./button";
@@ -67,6 +74,8 @@ interface MultiSelectProps
    */
   onValueChange: (value: string[]) => void;
 
+  hasChevronIcon?: boolean;
+
   /** The default selected values when the component mounts. */
   defaultValue?: string[];
 
@@ -113,11 +122,13 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
       options,
       onValueChange,
       variant,
-      chipVariant = "secendery",
+      chipVariant = "secondary",
       defaultValue = [],
       placeholder = "Select options",
-      animation = 0,
+      animation = 2,
       maxCount = 3,
+      hasChevronIcon = false,
+      disabled,
       modalPopover = false,
       className,
       ...props
@@ -187,31 +198,35 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
         onOpenChange={setIsPopoverOpen}
         modal={modalPopover}
       >
-        <PopoverTrigger asChild>
+        <PopoverTrigger asChild disabled={disabled}>
           <Button
             ref={ref}
             {...props}
             onClick={handleTogglePopover}
             iconRight={
-              selectedValues.length > 0 ? (
-                <div className="flex items-center justify-between">
-                  <XIcon
-                    className="h-4 mx-2 cursor-pointer text-muted-foreground"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      handleClear();
-                    }}
-                  />
-                </div>
-              ) : null
-              //   isPopoverOpen ? (
-              //     <ChevronUp className="h-4 cursor-pointer text-muted-foreground mx-2" />
-              //   ) : (
-              //     <ChevronDown className="h-4 cursor-pointer text-muted-foreground mx-2" />
-              //   )
+              <span className="inline-flex items-center ml-2">
+                {selectedValues.length > 0 ? (
+                  <div className="flex items-center justify-between">
+                    <XIcon
+                      className="h-4 cursor-pointer text-muted-foreground"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        handleClear();
+                      }}
+                    />
+                  </div>
+                ) : null}
+                {hasChevronIcon ? (
+                  isPopoverOpen ? (
+                    <ChevronUp className="h-4 cursor-pointer text-muted-foreground" />
+                  ) : (
+                    <ChevronDown className="h-4 cursor-pointer text-muted-foreground" />
+                  )
+                ) : null}
+              </span>
             }
             className={cn(
-              "flex w-full p-1 rounded-md border min-h-9 h-auto items-center justify-between bg-card hover:bg-card [&_svg]:pointer-events-auto",
+              "flex w-full p-1 rounded-md focus:ring-2 focus:ring-primary disabled:!text-white border min-h-9 h-auto items-center justify-between bg-card hover:bg-card disabled:opacity-50 disabled:!bg-card [&_svg]:pointer-events-auto",
               className,
             )}
           >
@@ -266,9 +281,7 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
               </div>
             ) : (
               <div className="flex items-center justify-between w-full mx-auto">
-                <span className="text-sm text-muted-foreground mx-3">
-                  {placeholder}
-                </span>
+                <span className="text-sm mx-3">{placeholder}</span>
               </div>
             )}
           </Button>
