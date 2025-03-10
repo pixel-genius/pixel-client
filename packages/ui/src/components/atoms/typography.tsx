@@ -1,6 +1,8 @@
-import { cva, VariantProps } from "class-variance-authority";
-import Link, { LinkProps } from "next/link";
-import React, { forwardRef, ReactNode } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import Link, { type LinkProps } from "next/link";
+import type React from "react";
+import { createElement, forwardRef } from "react";
+import type { ReactNode } from "react";
 
 const typographyVariants = cva("", {
   variants: {
@@ -80,18 +82,22 @@ type TypographyBaseProps = VariantProps<typeof typographyVariants> & {
   onClick?: () => void;
 };
 
+interface ComponentTypographyProps {
+  a: LinkProps;
+  p: HTMLParagraphElement;
+  span: HTMLSpanElement;
+  div: HTMLDivElement;
+  h1: HTMLHeadingElement;
+  h2: HTMLHeadingElement;
+  h3: HTMLHeadingElement;
+  h4: HTMLHeadingElement;
+  h5: HTMLHeadingElement;
+  h6: HTMLHeadingElement;
+}
+
 type TypographyProps =
   | (TypographyBaseProps & {
-      component?:
-        | "p"
-        | "span"
-        | "div"
-        | "h1"
-        | "h2"
-        | "h3"
-        | "h4"
-        | "h5"
-        | "h6";
+      component?: keyof ComponentTypographyProps;
       href?: never;
     })
   | (TypographyBaseProps &
@@ -129,7 +135,7 @@ const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(
     if (Component === "a") {
       return (
         <Link
-          href={href!}
+          href={href ?? "#"}
           className={styles}
           ref={ref as React.Ref<HTMLAnchorElement>}
           onClick={onClick}
@@ -139,14 +145,14 @@ const Typography = forwardRef<HTMLParagraphElement, TypographyProps>(
       );
     }
 
-    return (
-      <Component
-        ref={ref as React.Ref<HTMLParagraphElement>}
-        className={styles}
-        onClick={onClick}
-      >
-        {children}
-      </Component>
+    return createElement(
+      Component,
+      {
+        ref,
+        className: styles,
+        onClick,
+      },
+      children,
     );
   },
 );
