@@ -6,7 +6,7 @@ services:
       dockerfile: ./apps/core/Dockerfile
     restart: always
     ports:
-      - 3000:3000
+      - 4000:3000
 # Define a network, which allows containers to communicate
 # with each other, by using their container name as a hostname
 # networks:
