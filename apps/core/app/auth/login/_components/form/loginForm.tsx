@@ -60,7 +60,8 @@ const LoginForm = () => {
         {/* Password */}
         <PasswordInput
           label="Password"
-          className="w-full font-normal text-xs"
+          className="w-full font-normal text-md"
+          placeholder="********"
           helperText={
             <Link
               href="/auth/forget-password"
