@@ -6,6 +6,7 @@ import type { PostLoginRequest } from "@repo/apis/core/accounts/users/login/post
 import { usePostLogin } from "@repo/apis/core/accounts/users/login/post/use-post-login";
 import { setAuthTokens } from "@repo/apis/utils/cookies";
 import { Button } from "@repo/ui/components/button";
+import { PasswordInput } from "@repo/ui/components/passwordInput";
 import { Input } from "@repo/ui/components/input";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -57,11 +58,10 @@ const LoginForm = () => {
         />
 
         {/* Password */}
-        <Input
+        <PasswordInput
           label="Password"
-          type="password"
+          className="w-full font-normal text-md"
           placeholder="********"
-          className="w-full font-normal text-xs"
           helperText={
             <Link
               href="/auth/forget-password"
