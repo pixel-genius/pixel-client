@@ -22,7 +22,7 @@ const PasswordInput = React.forwardRef<HTMLInputElement, textFieldProps>(
         label={label}
         error={error}
         helperText={helperText}
-        className={"relative " + className}
+        className={cn("relative ", className)}
       >
         <BaseInput
           type={showPassword ? "text" : "password"}
@@ -34,7 +34,10 @@ const PasswordInput = React.forwardRef<HTMLInputElement, textFieldProps>(
           type="button"
           variant="tertiary"
           size="sm"
-          className={`absolute gap-0 right-0 ${handleEyeIconPosition} !ring-0 !min-w-fit h-fit hover:bg-transparent transition-none`}
+          className={cn(
+            "absolute gap-0 right-0 !ring-0 !min-w-fit h-fit hover:bg-transparent transition-none",
+            handleEyeIconPosition,
+          )}
           onClick={() => setShowPassword((prev) => !prev)}
         >
           {showPassword ? (
