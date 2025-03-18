@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   core:
     container_name: web
@@ -6,11 +8,12 @@ services:
       dockerfile: ./apps/core/Dockerfile
     restart: always
     ports:
-      - 5000:3000
+      - "5000:3000"
     networks:
       - app-network
+
 # Define a network, which allows containers to communicate
 # with each other, by using their container name as a hostname
 networks:
-  app_network:
+  app-network:
     external: true
