@@ -14,4 +14,4 @@ services:
 # with each other, by using their container name as a hostname
 networks:
   app-network:
-    driver: bridge
+    external: true
