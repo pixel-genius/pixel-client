@@ -5,6 +5,8 @@ import { cn } from "@repo/ui/lib/utils";
 import { type FC, useEffect, useState } from "react";
 import Typography from "@repo/ui/components/typography";
 import { Switch } from "@repo/ui/components/switch";
+import { Chip } from "@repo/ui/components/chip";
+import { Button } from "@repo/ui/components/button";
 
 const CUSTOM_VALUE = null;
 
@@ -24,7 +26,7 @@ const PriceSection: FC<PriceSectionProps> = (props) => {
   const { isFree } = props;
 
   const { register, formState, setValue, watch } = useFormContext<{
-    price: string;
+    price: number | null;
     discount: number | null;
   }>();
 
@@ -35,6 +37,8 @@ const PriceSection: FC<PriceSectionProps> = (props) => {
   const [hasDiscount, setHasDiscount] = useState(false);
 
   const onChangeDiscount = (value: number | null) => {
+    console.log("value", value);
+
     setIsCustomDiscount(value === CUSTOM_VALUE);
     setValue("discount", value);
   };
@@ -47,8 +51,8 @@ const PriceSection: FC<PriceSectionProps> = (props) => {
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (isFree) {
-      setValue("price", "0");
-      setValue("discount", 0);
+      setValue("price", null);
+      setValue("discount", null);
       setIsCustomDiscount(false);
       setHasDiscount(false);
     }
@@ -58,11 +62,18 @@ const PriceSection: FC<PriceSectionProps> = (props) => {
     <div className="flex flex-col gap-4">
       <Input
         label="Price"
+        type="number"
+        className="appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-moz-appearance:textfield]"
         {...register("price")}
+        onChange={(e) => {
+          let value = +e.target.value;
+          if (value < 0) value = 0;
+          setValue("price", value);
+        }}
         error={formState.errors.price?.message}
         iconRight={<DollarSign size={20} />}
         disabled={isFree}
-        value={isFree ? 0 : price}
+        value={isFree ? 0 : price?.toString()}
       />
 
       {/* Discount Chip */}
@@ -89,7 +100,10 @@ const PriceSection: FC<PriceSectionProps> = (props) => {
               placeholder="custom"
               {...register("discount")}
               onChange={(e) => {
-                const value = +e.target.value;
+                let value = +e.target.value;
+                if (value > 100) value = 100;
+                if (value < 0) value = 0;
+
                 setValue("discount", value);
               }}
               type="number"
@@ -99,40 +113,32 @@ const PriceSection: FC<PriceSectionProps> = (props) => {
             />
           ) : (
             DISCOUNT_OPTIONS.map((option) => (
-              <button
+              <Chip
                 key={option.value}
-                type="button"
                 onClick={() => {
                   onChangeDiscount(option.value);
                 }}
-                className={cn(
-                  "flex flex-row items-center gap-2 rounded-lg border border-gray-500 h-12 p-2",
-                  { "bg-primary": discount === option.value },
-                )}
+                className={cn({ "bg-secondary": discount !== option.value })}
                 tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    onChangeDiscount(option.value);
-                  }
-                }}
               >
-                <div className="flex items-center gap-2">
-                  <p className="text-sm font-normal">{option.label}</p>
-                </div>
-              </button>
+                <Typography>{option.label}</Typography>
+              </Chip>
             ))
           )}
           {/* convert input UI same as chip */}
-          <button
-            type="button"
-            onClick={() => setIsCustomDiscount((prev) => !prev)}
-            className={cn(
-              "flex flex-row items-center gap-2 rounded-lg border border-gray-500 h-12 p-2",
-              isCustomDiscount ? "bg-primary" : "",
-            )}
-          >
-            {isCustomDiscount ? "Return" : "Custom"}
-          </button>
+
+          {!isCustomDiscount ? (
+            <Chip
+              onClick={() => setIsCustomDiscount((prev) => !prev)}
+              className={"bg-secondary"}
+            >
+              Custom
+            </Chip>
+          ) : (
+            <Button onClick={() => setIsCustomDiscount((prev) => !prev)}>
+              Return
+            </Button>
+          )}
         </div>
       )}
       {/* Result */}
@@ -162,7 +168,7 @@ const PriceSection: FC<PriceSectionProps> = (props) => {
             <ArrowRight size={24} />
           </Typography>
           <Typography variant="label/md" weight="medium">
-            {` ${+price - getDiscountedValue(+price, discount)} $`}
+            {` ${(price || 0) - getDiscountedValue(price || 0, discount)} $`}
           </Typography>
         </div>
       ) : (
