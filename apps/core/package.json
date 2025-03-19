@@ -13,6 +13,7 @@
     "@repo/apis": "*",
     "@repo/icons": "*",
     "@repo/ui": "*",
+    "@repo/utils": "*",
     "@rive-app/react-canvas": "^4.16.4",
     "framer-motion": "^11.3.29",
     "html-to-image": "^1.11.11",
