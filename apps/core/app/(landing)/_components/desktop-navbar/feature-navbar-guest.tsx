@@ -1,26 +1,20 @@
 import Typography from "@repo/ui/components/typography";
+import Link from "next/link";
 
 const FeatureNavbarGuest = () => {
   return (
     <div className="flex items-center gap-3">
-      <Typography
-        component="a"
-        href="/auth/register"
-        variant="label/sm"
-        weight="medium"
-        className="text-primary-500 flex-shrink-0"
-      >
-        Sign Up
-      </Typography>
-      <Typography
-        component="a"
-        href="/auth/login"
-        variant="label/sm"
-        weight="medium"
-        className="text-primary-500 flex-shrink-0"
-      >
-        Log in
-      </Typography>
+      <Link href="/auth/register" className="text-primary-500 flex-shrink-0">
+        <Typography variant="label/sm" weight="medium">
+          Sign Up
+        </Typography>
+      </Link>
+
+      <Link href="/auth/login" className="text-primary-500 flex-shrink-0">
+        <Typography variant="label/sm" weight="medium">
+          Log in
+        </Typography>
+      </Link>
     </div>
   );
 };

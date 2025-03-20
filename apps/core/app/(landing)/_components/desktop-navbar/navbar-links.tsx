@@ -1,6 +1,7 @@
 import Typography from "@repo/ui/components/typography";
 import { useMegaMenuStore } from "./../../store/mega-menu";
 import { useCartStore } from "./../../store/cart-store";
+import Link from "next/link";
 
 const NavbarLinks = () => {
   const { toggleOpenMegaMenu } = useMegaMenuStore();
@@ -16,9 +17,9 @@ const NavbarLinks = () => {
       <Typography onClick={onClick} variant="label/xs">
         Browse
       </Typography>
-      <Typography component="a" href="/browse" variant="label/xs">
-        Become an author
-      </Typography>
+      <Link href="/browse">
+        <Typography variant="label/xs">Become an author</Typography>
+      </Link>
     </div>
   );
 };
