@@ -1,7 +1,10 @@
+import React, { ElementType, PropsWithChildren, useMemo } from "react";
 import { cva, VariantProps } from "class-variance-authority";
-import { PropsWithChildren } from "react";
 import { cn } from "./../../lib/utils";
 
+/**
+ * Variants for Typography component styles.
+ */
 const typographyVariants = cva("", {
   variants: {
     variant: {
@@ -26,7 +29,6 @@ const typographyVariants = cva("", {
       inherit: "font-inherit",
     },
     weight: {
-      default: "",
       thin: "font-thin",
       "extra-thin": "font-extralight",
       light: "font-light",
@@ -44,7 +46,6 @@ const typographyVariants = cva("", {
       justify: "text-justify",
     },
     transform: {
-      none: "",
       lowercase: "lowercase",
       uppercase: "uppercase",
       capitalize: "capitalize",
@@ -63,56 +64,66 @@ const typographyVariants = cva("", {
   },
   defaultVariants: {
     variant: "paragraph/md",
-    weight: "default",
-    transform: "none",
+    weight: "normal",
     decoration: "none",
     truncate: false,
   },
 });
 
-type TypographyComponent =
-  | "p"
-  | "span"
-  | "div"
-  | "h1"
-  | "h2"
-  | "h3"
-  | "h4"
-  | "h5"
-  | "h6";
+/**
+ * Defines supported component types for Typography.
+ */
+type TypographyComponent = ElementType;
 
-type TypographyProps = PropsWithChildren<{
-  className?: string;
-  onClick?: () => void;
+/**
+ * Props for the Typography component.
+ */
+export interface TypographyProps
+  extends PropsWithChildren<VariantProps<typeof typographyVariants>> {
+  /** The HTML or custom component to render */
   component?: TypographyComponent;
-}> &
-  VariantProps<typeof typographyVariants>;
+  /** Additional class names */
+  className?: string;
+  /** Click handler */
+  onClick?: () => void;
+}
 
-const Typography = (props: TypographyProps) => {
-  const {
-    component: Component = "p",
-    variant,
-    children,
-    className,
-    weight,
-    align,
-    transform,
-    decoration,
-    truncate,
-    onClick,
-    ...restProps
-  } = props;
-
-  const styles = cn(
-    typographyVariants({
-      variant,
-      weight,
-      align,
-      transform,
-      decoration,
-      truncate,
-    }),
-    className,
+/**
+ * A flexible Typography component that supports various text styles.
+ *
+ * @example
+ * ```tsx
+ * <Typography variant="heading/lg" weight="bold">Hello World</Typography>
+ * ```
+ */
+const Typography: React.FC<TypographyProps> = ({
+  component: Component = "p",
+  variant,
+  weight,
+  align,
+  transform,
+  decoration,
+  truncate,
+  className,
+  onClick,
+  children,
+  ...restProps
+}) => {
+  // Optimize class computation
+  const styles = useMemo(
+    () =>
+      cn(
+        typographyVariants({
+          variant,
+          weight,
+          align,
+          transform,
+          decoration,
+          truncate,
+        }),
+        className,
+      ),
+    [variant, weight, align, transform, decoration, truncate, className],
   );
 
   return (
