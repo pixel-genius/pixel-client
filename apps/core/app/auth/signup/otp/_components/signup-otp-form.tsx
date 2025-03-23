@@ -19,6 +19,7 @@ import { usePostVerifyOtp } from "@repo/apis/core/accounts/users/verify_otp/post
 import { postVerifyOtpSchema } from "@repo/apis/core/accounts/users/verify_otp/post/post-verify-otp.schema";
 import type { PostVerifyOtpRequest } from "@repo/apis/core/accounts/users/verify_otp/post/post-verify-otp.types";
 import { setAuthTokens } from "@repo/apis/utils/cookies";
+import { Input } from "@repo/ui/components/input";
 
 export interface SignupOtpFormProps {
   username: string | undefined;
@@ -80,6 +81,7 @@ export const SignupOtpForm = (props: SignupOtpFormProps) => {
           autoFocus
         >
           <InputOTPGroup>
+          <Input></Input>
             <InputOTPSlot index={0} />
             <InputOTPSlot index={1} />
             <InputOTPSlot index={2} />
