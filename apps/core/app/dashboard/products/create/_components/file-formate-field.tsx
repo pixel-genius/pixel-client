@@ -90,7 +90,7 @@ export const FileFormatField: React.FC<FileFormatFieldProps> = ({
               size="sm"
               iconLeft={getFileFormatIcon(option.icon)}
               iconRight={isSelected ? <Circlxicon size={16} /> : null}
-              variant={isSelected ? "primary" : "secendery"}
+              variant={isSelected ? "primary" : "secondary"}
               className="cursor-pointer"
               onClick={() => toggleOption(option)}
             >

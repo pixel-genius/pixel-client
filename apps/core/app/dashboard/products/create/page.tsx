@@ -5,6 +5,7 @@ import PriceSection from "./_components/price-section";
 import { useState } from "react";
 import { Switch } from "@repo/ui/components/switch";
 import Typography from "@repo/ui/components/typography";
+import { FileFormatSection } from "./_components/file-formate-section";
 
 const CreateProductPage = () => {
   const [isFree, setIsFree] = useState(false);
@@ -65,7 +66,9 @@ const CreateProductPage = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <div className="flex flex-col gap-4">File Formats Included</div>
+              <div className="flex flex-col gap-4">
+                <FileFormatSection />
+              </div>
               <div className="flex flex-col gap-4">
                 <div className="w-full h-80">Tags </div>
               </div>
