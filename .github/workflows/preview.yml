@@ -19,7 +19,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          sudo docker-compose build
+          sudo docker compose build
           sudo docker tag pixel-client-core mrbadri/pixel-client:pr-${{ github.event.number }}
 
       - name: Run Preview Container
