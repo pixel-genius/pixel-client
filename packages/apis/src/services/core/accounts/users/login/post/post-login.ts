@@ -21,6 +21,9 @@ export const postLogin = async (
   const response = await requestHandler(
     () => guestApi.post(URL, payloadParsed),
     schema.response._def.schema,
+    {
+      isMock: true
+    }
   );
 
   const dataParsed = schema.response.parse(response.data);

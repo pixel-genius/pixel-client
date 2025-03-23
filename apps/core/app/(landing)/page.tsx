@@ -12,6 +12,7 @@ import * as htmlToImage from "html-to-image";
 import { useTheme } from "next-themes";
 import { useState } from "react";
 import Addtocard from "./_components/addtoCard";
+import HighlightSection from "../dashboard/products/create/_components/highlightSection/highlight-section";
 
 export default function Page() {
   const { theme, setTheme } = useTheme();
@@ -178,9 +179,10 @@ export default function Page() {
                     like={10}
                   />
                 </div>
-              </div>
+              </div>s
             </TabsContent>
           </Tabs>
+          <HighlightSection />
         </div>
       </div>
     </main>
