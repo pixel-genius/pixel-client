@@ -20,21 +20,21 @@ const HighlightSection = () => {
   };
 
   return (
-    <>
-      <Typography component="p" variant="label/lg" weight="medium">
+    <div className="text-left">
+      <Typography component="p" variant="label/lg" weight="bold">
         Product Highlights
       </Typography>
-      <Typography component="p" variant={"paragraph/sm"}>
+      <Typography component="p" variant={"label/sm"} className="text-muted-foreground">
         Enter key features and highlights of your product here (e.g., unique capabilities, special design)
       </Typography>
       {fields.length >= 5 && (
-        <Typography component="p" variant={"paragraph/sm"} className="mt-2">
+        <Typography component="p" variant={"label/sm"} className="mt-2 text-muted-foreground">
           Maximum you can enter 5 items
         </Typography>
       )}
-      <div className="flex justify-center items-center mt-8 w-100">
-        <Button className="w-100" variant="secondary" onClick={handleAddHighLights} disabled={fields.length >= 5}>
-          Create Product
+      <div className="flex justify-center items-center mt-8 w-full mb-2">
+        <Button className="w-full" variant="secondary" onClick={handleAddHighLights} disabled={fields.length >= 5}>
+        Add Highlights
         </Button>
       </div>
       {fields.length === 0 && <div className="h-100 flex items-center justify-center mt-8"><img src="/images/noHighlights.svg" alt="noHighlights" /></div>}
@@ -46,7 +46,7 @@ const HighlightSection = () => {
           iconRight={<div className="cursor-pointer" onClick={() => remove(index)}><img src="/images/trash.svg" alt="logo" /></div>}
         />
       ))}
-    </>
+    </div>
   );
 };
 
