@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Switch } from "@repo/ui/components/switch";
 import Typography from "@repo/ui/components/typography";
 import { FileFormatSection } from "./_components/file-formate-section";
+import HighlightSection from "./_components/highlightSection/highlight-section";
 
 const CreateProductPage = () => {
   const [isFree, setIsFree] = useState(false);
@@ -13,6 +14,7 @@ const CreateProductPage = () => {
   const methods = useForm<{ price: string; discount: number | null }>();
   const { handleSubmit } = methods;
   const onSubmit = (data: any) => console.log(data);
+  
 
   return (
     <FormProvider {...methods}>
@@ -61,7 +63,9 @@ const CreateProductPage = () => {
                 <PriceSection isFree={isFree} />
               </div>
               <div className="flex flex-col gap-4">
-                <div className="w-full h-80 text-center">Highlights </div>
+                <div className="w-full h-80 text-center">
+                  <HighlightSection />
+                   </div>
               </div>
             </div>
 
