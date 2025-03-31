@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { cn } from "../../../lib/utils";
 import { Textarea } from "../../atoms/textarea";
 
@@ -82,7 +83,7 @@ export const RichTextEditor = ({
         {/* <RichTextStylesProvider> */}
         <div
           className={cn(
-            "mt-3 flex min-h-[200px] flex-col rounded-md border border-input bg-card",
+            "mt-3 flex min-h-[200px] flex-col bg-background rounded border",
 
             className,
           )}

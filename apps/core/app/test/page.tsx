@@ -3,9 +3,11 @@
 import { RichTextEditor } from "@repo/ui/components/editor/editor";
 
 const Page = () => {
-  return <div>
-    <RichTextEditor />
-  </div>;
+  return (
+    <div className="p-5">
+      <RichTextEditor />
+    </div>
+  );
 };
 
 export default Page;

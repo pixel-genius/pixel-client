@@ -1,27 +1,22 @@
 import { Editor } from "@tiptap/react";
+
 import {
   Bold,
-  Heading1,
-  Heading2,
-  Heading3,
-  Heading4,
-  Highlighter,
   Italic,
+  Link2Off,
   List,
   ListOrdered,
   Quote,
   Redo,
   Strikethrough,
+  Underline,
   Undo,
-  Pilcrow,
-  Minus,
-  Link2Off,
 } from "lucide-react";
 import { Dispatch, SetStateAction } from "react";
+import { Separator } from "./../../atoms/separator";
 import { EditorToolbarButton } from "./editor-toolbar-button";
 import { EditorToolbarImage } from "./editor-toolbar-image";
 import { EditorToolbarViewHtml } from "./editor-toolbar-view-html";
-import { Separator } from "./../../atoms/separator";
 import { EditorToolbarSetLink } from "./editor-toolbar-view-set-link";
 
 export interface ToolbarProps {
@@ -40,67 +35,42 @@ export const EditorToolbar = ({
   if (!editor) return null;
 
   return (
-    <div className="flex flex-wrap gap-2 rounded-md bg-muted p-2 shadow">
+    <div className="flex flex-wrap gap-2 rounded-md  p-2 shadow">
       {/* Typography */}
       <EditorToolbarButton
         disabled={showHtml}
-        onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-        isActive={editor.isActive("heading", { level: 1 })}
-        icon={Heading1}
-        label="H1"
-      />
-      <EditorToolbarButton
-        disabled={showHtml}
-        onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-        isActive={editor.isActive("heading", { level: 2 })}
-        icon={Heading2}
-        label="H2"
-      />
-      <EditorToolbarButton
-        disabled={showHtml}
-        onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-        isActive={editor.isActive("heading", { level: 3 })}
-        icon={Heading3}
-        label="H3"
-      />
-      <EditorToolbarButton
-        disabled={showHtml}
-        onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
-        isActive={editor.isActive("heading", { level: 4 })}
-        icon={Heading4}
-        label="H4"
-      />
-      {/* <EditorToolbarButton
-        disabled={showHtml}
-        onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
-        isActive={editor.isActive('heading', { level: 5 })}
-        icon={Heading5}
-        label="H5"
-      />
-      <EditorToolbarButton
-        disabled={showHtml}
-        onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
-        isActive={editor.isActive('heading', { level: 6 })}
-        icon={Heading6}
-        label="H6"
-      /> */}
-      <EditorToolbarButton
-        disabled={showHtml}
-        onClick={() => editor.chain().focus().setParagraph().run()}
+        onClick={() => editor.chain().focus().undo().run()}
         isActive={false}
-        icon={Pilcrow}
-        label="p"
+        icon={Undo}
+        label="Undo"
       />
+      <EditorToolbarButton
+        disabled={showHtml}
+        onClick={() => editor.chain().focus().redo().run()}
+        isActive={false}
+        icon={Redo}
+        label="Redo"
+      />
+
+      <Separator orientation="vertical" className="h-6 bg-gray-300" />
+
+      {/* to do normal text */}
 
       <Separator orientation="vertical" className="h-6 bg-gray-300" />
 
       <EditorToolbarButton
         disabled={showHtml}
-        onClick={() => editor.chain().focus().setHorizontalRule().run()}
-        isActive={false}
-        icon={Minus}
-        label="seperator"
+        onClick={() => editor.chain().focus().toggleBulletList().run()}
+        isActive={editor.isActive("bulletList")}
+        icon={List}
+        label="Bullet List"
       />
+
+      <Separator orientation="vertical" className="h-6 bg-gray-300" />
+
+      {/* to  do color text */}
+
+      <Separator orientation="vertical" className="h-6 bg-gray-300" />
 
       <EditorToolbarButton
         disabled={showHtml}
@@ -116,6 +86,15 @@ export const EditorToolbar = ({
         icon={Italic}
         label="Italic"
       />
+
+      {/* to do underline text */}
+      <EditorToolbarButton
+        disabled={showHtml}
+        onClick={() => editor.chain().focus().toggleMark("underline").run()}
+        isActive={editor.isActive("italic")}
+        icon={Underline}
+        label="Underline"
+      />
       <EditorToolbarButton
         disabled={showHtml}
         onClick={() => editor.chain().focus().toggleStrike().run()}
@@ -123,23 +102,9 @@ export const EditorToolbar = ({
         icon={Strikethrough}
         label="Strike"
       />
-      {/* <EditorToolbarButton
-        disabled={showHtml}
-        onClick={() => editor.chain().focus().toggleHighlight().run()}
-        isActive={editor.isActive("highlight")}
-        icon={Highlighter}
-        label="Highlight"
-      /> */}
 
       <Separator orientation="vertical" className="h-6 bg-gray-300" />
 
-      <EditorToolbarButton
-        disabled={showHtml}
-        onClick={() => editor.chain().focus().toggleBulletList().run()}
-        isActive={editor.isActive("bulletList")}
-        icon={List}
-        label="Bullet List"
-      />
       <EditorToolbarButton
         disabled={showHtml}
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
@@ -155,22 +120,6 @@ export const EditorToolbar = ({
         label="Blockquote"
       />
 
-      <Separator orientation="vertical" className="h-6 bg-gray-300" />
-
-      <EditorToolbarButton
-        disabled={showHtml}
-        onClick={() => editor.chain().focus().undo().run()}
-        isActive={false}
-        icon={Undo}
-        label="Undo"
-      />
-      <EditorToolbarButton
-        disabled={showHtml}
-        onClick={() => editor.chain().focus().redo().run()}
-        isActive={false}
-        icon={Redo}
-        label="Redo"
-      />
       <Separator orientation="vertical" className="h-6 bg-gray-300" />
 
       <EditorToolbarImage editor={editor} showHtml={showHtml} />
