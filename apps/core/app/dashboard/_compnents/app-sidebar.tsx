@@ -33,8 +33,20 @@ const data = {
     },
     {
       title: "Products",
-      url: "/products",
+      url: "/dashboard/products",
       icon: BoxPackage,
+      children: [
+        {
+          title: "Products",
+          url: "/products",
+          icon: BoxPackage,
+        },
+        {
+          title: "Sales",
+          url: "/sales",
+          icon: ChartBarPopular,
+        },
+      ],
     },
     {
       title: "Sales",

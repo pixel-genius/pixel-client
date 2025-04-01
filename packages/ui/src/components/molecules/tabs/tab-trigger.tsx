@@ -1,36 +1,43 @@
+"use client";
+
+import React from "react";
+import { useQueryState } from "nuqs";
 import { motion } from "framer-motion";
 import { cva, VariantProps } from "class-variance-authority";
-import React from "react";
 import Typography from "../../atoms/typography";
+import { useTabStore } from "./tab-provider";
 
-export const tabTriggerVariants = cva("relative px-3 py-3 transition ", {
-  variants: {
-    variant: {
-      fill: "text-muted-foreground rounded-lg hover:bg-secondary",
-      outline: "",
-    },
-    isActive: {
-      true: "",
-    },
-  },
+export const DEFAULT_TAB_ID = "tab";
 
-  compoundVariants: [
-    {
+export const tabTriggerVariants = cva(
+  "relative px-3 py-3 transition text-muted-foreground ",
+  {
+    variants: {
+      variant: {
+        fill: " rounded-lg hover:bg-secondary",
+        outline: "",
+      },
+      isActive: {
+        true: "",
+      },
+    },
+    compoundVariants: [
+      {
+        variant: "fill",
+        isActive: true,
+        className: "text-secondary-foreground",
+      },
+      {
+        variant: "outline",
+        isActive: true,
+        className: "text-primary",
+      },
+    ],
+    defaultVariants: {
       variant: "fill",
-      isActive: true,
-      className: "text-secondary-foreground",
     },
-    {
-      variant: "outline",
-      isActive: true,
-      className: "text-primary",
-    },
-  ],
-
-  defaultVariants: {
-    variant: "fill",
   },
-});
+);
 
 export const tabActiveTriggerVariants = cva("absolute inset-0", {
   variants: {
@@ -39,48 +46,65 @@ export const tabActiveTriggerVariants = cva("absolute inset-0", {
       outline: "border-b-2 border-primary",
     },
   },
-
   defaultVariants: {
     variant: "fill",
   },
 });
 
 export type TabTriggerProps = VariantProps<typeof tabTriggerVariants> & {
-  title: string;
-  idx: number;
+  children: React.ReactNode;
+  value: string;
   className?: string;
   activeClassName?: string;
-  activeIndex: number;
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
-  onClick: () => void;
+  tabId?: string;
+  variant?: "fill" | "outline";
+  onClick?: () => void;
 };
 
 export const TabTrigger = (props: TabTriggerProps) => {
   const {
-    title,
-    idx,
+    children,
     className,
-    activeIndex,
-    onClick,
     activeClassName,
-    variant,
     iconLeft,
     iconRight,
+    value,
+    tabId: tabIdProps,
+    variant: variantProps,
+    onClick,
   } = props;
 
-  const isActive = activeIndex === idx;
+  const valueStore = useTabStore((s) => s.value);
+  const idStore = useTabStore((s) => s.id);
+  const setValueStore = useTabStore((s) => s.setValue);
+  const onChangeStore = useTabStore((s) => s.onChange);
+  const variantStore = useTabStore((s) => s.variant);
+
+  const variant = variantProps || variantStore;
+  const tabId = tabIdProps || idStore;
+
+  const [queryValue, setQueryValue] = useQueryState(tabId);
+
+  const activeValue = queryValue || valueStore;
+  const isActive = activeValue === value;
+
+  const handleClick = () => {
+    setQueryValue(value);
+    setValueStore(value);
+    onChangeStore?.(value);
+    onClick?.();
+  };
 
   return (
     <button
-      key={title}
-      onClick={onClick}
+      onClick={handleClick}
       className={tabTriggerVariants({ variant, className, isActive })}
     >
-      {/* border | background  */}
       {isActive && (
         <motion.div
-          layoutId="clickedbutton"
+          layoutId={tabId}
           transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
           className={tabActiveTriggerVariants({
             variant,
@@ -89,11 +113,11 @@ export const TabTrigger = (props: TabTriggerProps) => {
         />
       )}
 
-      <span className="relative flex  gap-2 items-center justify-center min-h-6">
+      <span className="relative flex gap-2 items-center justify-center min-h-6">
         {iconLeft && <span>{iconLeft}</span>}
         <span>
           <Typography variant="label/sm" weight="normal">
-            {title}
+            {children}
           </Typography>
         </span>
         {iconRight && <span>{iconRight}</span>}

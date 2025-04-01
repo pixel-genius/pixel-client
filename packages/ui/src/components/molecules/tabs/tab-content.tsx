@@ -1,22 +1,41 @@
-import { Tab } from "./tabs";
+"use client";
 
-export type TabContentProps = {
+import { useQueryState } from "nuqs";
+import React from "react";
+import { cn } from "@repo/ui/lib/utils";
+import { HiddenModeTab, useTabStore } from "./tab-provider";
+
+type TabContentProps = {
+  value: string;
+  tabId?: string;
   className?: string;
-  tabs: Tab[];
-  activeIndex: number;
+  children: React.ReactNode;
+  hiddenMode?: HiddenModeTab;
 };
 
-export const TabContent = (props: TabContentProps) => {
-  const {tabs , className , activeIndex} = props;
+export const TabContent = ({
+  value,
+  tabId,
+  className,
+  children,
+  hiddenMode: hiddenModeProp,
+}: TabContentProps) => {
+  const idStore = useTabStore((s) => s.id);
+  const valueStore = useTabStore((s) => s.value);
+  const hiddenModeStore = useTabStore((s) => s.hiddenMode);
 
-  const tab = tabs[activeIndex] as Tab
+  const [valueQuery] = useQueryState(tabId || idStore);
 
+  const activeValue = valueQuery || valueStore;
+  const hiddenMode = hiddenModeProp || hiddenModeStore;
 
-  console.log("tab" , tab)
+  const isActive = activeValue === value;
+
+  if (!isActive && hiddenMode === "unmount") return null;
 
   return (
-    <div className={className}>
-          {tab.content}
+    <div className={cn("mt-4", { hidden: !isActive }, className)}>
+      {children}
     </div>
   );
 };

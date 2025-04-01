@@ -5,6 +5,7 @@ import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import { ApiProvider } from "@repo/apis/providers/api-provider";
 import { Toaster } from "@repo/ui/components/sonner";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,12 +26,12 @@ export default function RootLayout({
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
-            enableSystem  
+            enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <NuqsAdapter>{children}</NuqsAdapter>
           </ThemeProvider>
-          <Toaster  richColors/>
+          <Toaster richColors />
         </body>
       </html>
     </ApiProvider>

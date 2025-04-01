@@ -1,15 +1,18 @@
+"use client";
+
 import { Button } from "@repo/ui/components/button";
 import { Input } from "@repo/ui/components/input";
 import { Label } from "@repo/ui/components/label";
 import { Textarea } from "@repo/ui/components/textarea";
 import Infocircleicon from "@repo/icons/info-circle";
 import { Switch } from "@repo/ui/components/switch";
+
 import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@repo/ui/components/tabs/tabs";
+  TabList,
+  TabTrigger,
+  TabContent,
+  TabProvider,
+} from "@repo/ui/components/tabs";
 
 const DashboardPage = () => {
   return (
@@ -122,15 +125,20 @@ const DashboardPage = () => {
     // </div>
     <div className="container mx-auto">
       <div className="pt-14">
-        <div className="flex justify-between">
-          <Tabs defaultValue="account" className="w-full">
-            <TabsList>
-              <TabsTrigger value="General">General</TabsTrigger>
-              <TabsTrigger value="Images">Images</TabsTrigger>
-              <TabsTrigger value="file">file</TabsTrigger>
-              <TabsTrigger value="Admin Chat">Admin Chat</TabsTrigger>
-            </TabsList>
-            <TabsContent value="General">
+        <div className="flex flex-col justify-between">
+          <TabProvider
+            hiddenMode="unmount"
+            defaultValue="General"
+            id="test"
+            onChange={(value) => console.log(value)}
+          >
+            <TabList>
+              <TabTrigger value="General">General</TabTrigger>
+              <TabTrigger value="Images">Images</TabTrigger>
+              <TabTrigger value="file">file</TabTrigger>
+              <TabTrigger value="Admin Chat">Admin Chat</TabTrigger>
+            </TabList>
+            <TabContent value="General">
               <div className="bg-gray-900 rounded-lg p-4 mt-4">
                 {/* headline */}
                 <div>
@@ -258,8 +266,8 @@ const DashboardPage = () => {
                   <div className="w-1/2">gwojgpow</div>
                 </div>
               </div>
-            </TabsContent>
-            <TabsContent value="Images">
+            </TabContent>
+            <TabContent value="Images">
               <div className="bg-gray-900 flex flex-col gap-4 p-4">
                 <div>
                   <div className="flex items-center justify-between pb-2 ">
@@ -361,8 +369,8 @@ const DashboardPage = () => {
                   </div>
                 </div>
               </div>
-            </TabsContent>
-            <TabsContent value="file">
+            </TabContent>
+            <TabContent value="file">
               <div className="bg-gray-900 flex flex-col gap-4 p-4">
                 <div>
                   <div className="flex items-center justify-between pb-2">
@@ -397,9 +405,9 @@ const DashboardPage = () => {
                   </div>
                 </div>
               </div>
-            </TabsContent>
-            <TabsContent value="Admin Chat">Admin Chat</TabsContent>
-          </Tabs>
+            </TabContent>
+            <TabContent value="Admin Chat">Admin Chat</TabContent>
+          </TabProvider>
 
           <div className="flex gap-2">
             {/* button */}
