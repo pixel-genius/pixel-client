@@ -18,13 +18,7 @@ const DISCOUNT_OPTIONS = [
   { label: "50%", value: 50 },
 ];
 
-interface PriceSectionProps {
-  isFree: boolean;
-}
-
-const PriceSection: FC<PriceSectionProps> = (props) => {
-  const { isFree } = props;
-
+const PriceSection = () => {
   const { register, formState, setValue, watch } = useFormContext<{
     price: number | null;
     discount: number | null;
@@ -33,6 +27,7 @@ const PriceSection: FC<PriceSectionProps> = (props) => {
   const discount = watch("discount");
   const price = watch("price");
 
+  const [isFree, setIsFree] = useState(false);
   const [isCustomDiscount, setIsCustomDiscount] = useState(false);
   const [hasDiscount, setHasDiscount] = useState(false);
 
@@ -60,130 +55,161 @@ const PriceSection: FC<PriceSectionProps> = (props) => {
 
   return (
     <div className="flex flex-col gap-4">
-      <Input
-        label="Price"
-        type="number"
-        className="appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-moz-appearance:textfield]"
-        {...register("price")}
-        onChange={(e) => {
-          let value = +e.target.value;
-          if (value < 0) value = 0;
-          setValue("price", value);
-        }}
-        error={formState.errors.price?.message}
-        iconRight={<DollarSign size={20} />}
-        disabled={isFree}
-        value={isFree ? 0 : price?.toString()}
-      />
-
-      {/* Discount Chip */}
-
       <div className="flex flex-row justify-between items-center gap-2">
-        <Typography
-          variant="label/sm"
-          weight="light"
-          className="text-foreground"
-        >
-          Set a discount:
-        </Typography>
-        <Switch
-          checked={hasDiscount}
-          disabled={isFree}
-          onClick={() => setHasDiscount((prev) => !prev)}
-        />
-      </div>
-
-      {hasDiscount && (
-        <div className="flex flex-row justify-start items-center gap-2">
-          {isCustomDiscount ? (
-            <Input
-              placeholder="custom"
-              {...register("discount")}
-              onChange={(e) => {
-                let value = +e.target.value;
-                if (value > 100) value = 100;
-                if (value < 0) value = 0;
-
-                setValue("discount", value);
-              }}
-              type="number"
-              error={formState.errors.price?.message}
-              className="-mt-2"
-              iconRight={<Percent size={20} />}
-            />
-          ) : (
-            DISCOUNT_OPTIONS.map((option) => (
-              <Chip
-                key={option.value}
-                onClick={() => {
-                  onChangeDiscount(option.value);
-                }}
-                className={cn({ "bg-secondary": discount !== option.value })}
-                tabIndex={0}
-              >
-                <Typography>{option.label}</Typography>
-              </Chip>
-            ))
-          )}
-          {/* convert input UI same as chip */}
-
-          {!isCustomDiscount ? (
-            <Chip
-              onClick={() => setIsCustomDiscount((prev) => !prev)}
-              className={"bg-secondary"}
-            >
-              Custom
-            </Chip>
-          ) : (
-            <Button onClick={() => setIsCustomDiscount((prev) => !prev)}>
-              Return
-            </Button>
-          )}
-        </div>
-      )}
-      {/* Result */}
-
-      {discount ? (
-        <div
-          className={cn(
-            "px-4 py-2",
-            "bg-background rounded-lg flex flex-row justify-start items-center gap-2 w-fit h-full",
-          )}
-        >
+        <div className="flex flex-col gap-1">
           <Typography
-            variant="label/md"
-            weight="medium"
+            variant="label/lg"
+            weight="bold"
             className="text-foreground"
           >
-            After Discount:
+            Choose the right price!
           </Typography>
           <Typography
-            variant="label/md"
-            weight="medium"
-            decoration="lineThrough"
+            variant="label/sm"
+            weight="normal"
+            className="text-muted-foreground"
           >
-            {price || 0}
-          </Typography>
-          <Typography variant="label/md" weight="medium">
-            <ArrowRight size={24} />
-          </Typography>
-          <Typography variant="label/md" weight="medium">
-            {` ${(price || 0) - getDiscountedValue(price || 0, discount)} $`}
+            Remember, the right pricing can bring you more sales.
           </Typography>
         </div>
-      ) : (
-        <>
-          {price ? (
-            <Typography variant="label/md" weight="medium">
-              {price} $
-            </Typography>
-          ) : (
-            <></>
-          )}
-        </>
-      )}
 
-      {/* Custom Discount Input */}
+        <div className="flex flex-row justify-center items-center gap-2">
+          <Typography
+            variant="label/sm"
+            weight="medium"
+            className="text-muted-foreground"
+          >
+            Free Product
+          </Typography>
+          <Switch checked={isFree} onClick={() => setIsFree((prev) => !prev)} />
+        </div>
+      </div>
+      <div className="flex flex-col gap-4">
+        <Input
+          label="Price"
+          type="number"
+          className="appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-moz-appearance:textfield]"
+          {...register("price")}
+          onChange={(e) => {
+            let value = +e.target.value;
+            if (value < 0) value = 0;
+            setValue("price", value);
+          }}
+          error={formState.errors.price?.message}
+          iconRight={<DollarSign size={20} />}
+          disabled={isFree}
+          value={isFree ? 0 : price?.toString()}
+        />
+
+        {/* Discount Chip */}
+
+        <div className="flex flex-row justify-between items-center gap-2">
+          <Typography
+            variant="label/sm"
+            weight="light"
+            className="text-foreground"
+          >
+            Set a discount:
+          </Typography>
+          <Switch
+            checked={hasDiscount}
+            disabled={isFree}
+            onClick={() => setHasDiscount((prev) => !prev)}
+          />
+        </div>
+
+        {hasDiscount && (
+          <div className="flex flex-row justify-start items-center gap-2">
+            {isCustomDiscount ? (
+              <Input
+                placeholder="custom"
+                {...register("discount")}
+                onChange={(e) => {
+                  let value = +e.target.value;
+                  if (value > 100) value = 100;
+                  if (value < 0) value = 0;
+
+                  setValue("discount", value);
+                }}
+                type="number"
+                error={formState.errors.price?.message}
+                className="-mt-2"
+                iconRight={<Percent size={20} />}
+              />
+            ) : (
+              DISCOUNT_OPTIONS.map((option) => (
+                <Chip
+                  key={option.value}
+                  onClick={() => {
+                    onChangeDiscount(option.value);
+                  }}
+                  className={cn({ "bg-secondary": discount !== option.value })}
+                  tabIndex={0}
+                >
+                  <Typography>{option.label}</Typography>
+                </Chip>
+              ))
+            )}
+            {/* convert input UI same as chip */}
+
+            {!isCustomDiscount ? (
+              <Chip
+                onClick={() => setIsCustomDiscount((prev) => !prev)}
+                className={"bg-secondary"}
+              >
+                Custom
+              </Chip>
+            ) : (
+              <Button onClick={() => setIsCustomDiscount((prev) => !prev)}>
+                Return
+              </Button>
+            )}
+          </div>
+        )}
+        {/* Result */}
+
+        {discount ? (
+          <div
+            className={cn(
+              "px-4 py-2",
+              "bg-background rounded-lg flex flex-row justify-start items-center gap-2 w-fit h-full",
+            )}
+          >
+            <Typography
+              variant="label/md"
+              weight="medium"
+              className="text-foreground"
+            >
+              After Discount:
+            </Typography>
+            <Typography
+              variant="label/md"
+              weight="medium"
+              decoration="lineThrough"
+            >
+              {price || 0}
+            </Typography>
+            <Typography variant="label/md" weight="medium">
+              <ArrowRight size={24} />
+            </Typography>
+            <Typography variant="label/md" weight="medium">
+              {` ${(price || 0) - getDiscountedValue(price || 0, discount)} $`}
+            </Typography>
+          </div>
+        ) : (
+          <>
+            {price ? (
+              <Typography variant="label/md" weight="medium">
+                {price} $
+              </Typography>
+            ) : (
+              <></>
+            )}
+          </>
+        )}
+
+        {/* Custom Discount Input */}
+      </div>
     </div>
   );
 };

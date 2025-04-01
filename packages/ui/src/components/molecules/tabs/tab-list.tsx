@@ -13,7 +13,7 @@ export const TabList = ({
   return (
     <div
       className={cn(
-        "flex flex-row items-center justify-start relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full gap-2",
+        "flex mb-4 flex-row items-center justify-start relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full gap-2",
         className,
       )}
     >

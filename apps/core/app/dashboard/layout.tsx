@@ -13,7 +13,7 @@ export default function DashboardLayout({
       <AppSidebar />
       <main className="flex-1 flex flex-col">
         <NavbarDashboard />
-        <div className="overflow-auto">{children}</div>
+        <div className="overflow-auto px-6 py-6">{children}</div>
       </main>
     </SidebarProvider>
   );

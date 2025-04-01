@@ -7,8 +7,8 @@ import Typography from "@repo/ui/components/typography";
 export const FileFormatSection: React.FC = ({}) => {
   return (
     <div>
-      <div >
-        <Typography variant={"label/lg"} className="text-foreground">
+      <div className="mb-8">
+        <Typography variant={"label/lg"} className="text-foreground mb-1">
           File Formats Included
         </Typography>
         <Typography variant={"label/sm"} className="text-muted-foreground">

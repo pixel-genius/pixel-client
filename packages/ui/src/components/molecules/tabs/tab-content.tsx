@@ -33,9 +33,5 @@ export const TabContent = ({
 
   if (!isActive && hiddenMode === "unmount") return null;
 
-  return (
-    <div className={cn("mt-4", { hidden: !isActive }, className)}>
-      {children}
-    </div>
-  );
+  return <div className={cn({ hidden: !isActive }, className)}>{children}</div>;
 };
