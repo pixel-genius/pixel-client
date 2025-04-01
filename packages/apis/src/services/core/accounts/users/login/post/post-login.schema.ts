@@ -6,7 +6,7 @@ export const postLoginRequestSchemaTransformed = z
     username: z.string().min(3, "Username must be at least 3 characters long"),
     password: z.string().min(8, "Password must be at least 8 characters long"),
   })
-  .transform((data) => data);
+  .transform((data) => ({...data , name: data.username }));
 
 export const postLoginResponseSchemaTransofrmed = apiResponseSchema
   .extend({
