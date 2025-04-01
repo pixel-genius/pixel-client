@@ -77,28 +77,26 @@ export const FileFormatField: React.FC<FileFormatFieldProps> = ({
   }
 
   return (
-    <div className="container mx-auto pt-9">
-      <div className="flex gap-2">
-        {options.map((option) => {
-          const isSelected = currentSelected.some(
-            (item) => item.id === option.id,
-          );
+    <div className="flex gap-2">
+      {options.map((option) => {
+        const isSelected = currentSelected.some(
+          (item) => item.id === option.id,
+        );
 
-          return (
-            <Chip
-              key={option.id}
-              size="sm"
-              iconLeft={getFileFormatIcon(option.icon)}
-              iconRight={isSelected ? <Circlxicon size={16} /> : null}
-              variant={isSelected ? "primary" : "secondary"}
-              className="cursor-pointer"
-              onClick={() => toggleOption(option)}
-            >
-              {option.name}
-            </Chip>
-          );
-        })}
-      </div>
+        return (
+          <Chip
+            key={option.id}
+            size="sm"
+            iconLeft={getFileFormatIcon(option.icon)}
+            iconRight={isSelected ? <Circlxicon size={16} /> : null}
+            variant={isSelected ? "primary" : "secondary"}
+            className="cursor-pointer"
+            onClick={() => toggleOption(option)}
+          >
+            {option.name}
+          </Chip>
+        );
+      })}
     </div>
   );
 };
