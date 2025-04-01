@@ -178,7 +178,7 @@ export default function Page() {
                     like={10}
                   />
                 </div>
-              </div>s
+              </div>
             </TabsContent>
           </Tabs>
         </div>
