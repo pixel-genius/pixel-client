@@ -1,4 +1,3 @@
-import Shoppingbagicon from "@repo/icons/shopping-bag";
 import FeatureNavbarAuthenticated from "./feature-navbar-authenticated";
 import FeatureNavbarGuest from "./feature-navbar-guest";
 
@@ -8,8 +7,10 @@ export interface AuthStatusBarProps {
 
 const FeaturesNavbar = (props: AuthStatusBarProps) => {
   const { islogin } = props;
+
+  // TODO: delete mr-4
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex shrink-0 items-center gap-3  mr-4">
       {islogin && <FeatureNavbarAuthenticated />}
       {!islogin && <FeatureNavbarGuest />}
     </div>

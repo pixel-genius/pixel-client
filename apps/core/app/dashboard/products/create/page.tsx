@@ -35,7 +35,7 @@ const CreateProductPage = () => {
               <Button type="submit">Submit to Review</Button>
             </div>
           </div>
-          {/* Content */}
+          {/* Content */} 
           <div className="bg-card px-4 py-6 rounded-lg">
             <TabContent value="general">
               <TabGeneral />
