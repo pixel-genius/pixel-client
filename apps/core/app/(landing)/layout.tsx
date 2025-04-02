@@ -8,12 +8,14 @@ import Navbar from "./_components/desktop-navbar/navbar";
 
 function Layout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
-    <div className="flex flex-col h-full">
-      <Navbar islogin={true} />
+    <div className="min-h-full flex flex-col">
+      <Navbar islogin={false} />
 
-      <div className="grow">{children}</div>
+      <div className="relative z-10 bg-background pb-6 flex-1 mb-[532px] min-h-screen">
+        {children}
+      </div>
 
-      <footer className="w-full bg-[#111827] rounded-t-[48px] py-24">
+      <footer className="w-full bg-card rounded-t-[48px] py-24 fixed bottom-0 left-0">
         <div className="container ">
           <div className="flex flex-col sm:flex sm:flex-row gap-10 justify-between pb-28">
             {/* logo section */}
@@ -37,7 +39,11 @@ function Layout({ children }: { children: React.ReactNode }): JSX.Element {
               <div className="flex gap-5">
                 <div>
                   <ul className="flex flex-col gap-4 font-normal">
-                    <Link href="/landing/product/id/page" className="hover:text-" prefetch={false}>
+                    <Link
+                      href="/landing/product/id/page"
+                      className="hover:text-"
+                      prefetch={false}
+                    >
                       <li className="text-xs sm:text-sm">UI Kits</li>
                     </Link>
                     <Link href="/landing/product/id/page" prefetch={false}>
