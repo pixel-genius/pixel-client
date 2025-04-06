@@ -2,7 +2,7 @@ import { SidebarTrigger } from "@repo/ui/components/sidebar";
 
 const NavbarDashboard = () => {
   return (
-    <nav className="bg-sidebar flex items-center justify-between">
+    <nav className="bg-sidebar sticky top-0 flex items-center justify-between">
       <div className="w-full">
         <SidebarTrigger />
       </div>

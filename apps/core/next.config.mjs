@@ -7,7 +7,7 @@
 const nextConfig = {
   transpilePackages: ["@repo/ui"],
   images: {
-    domains: ["images.unsplash.com", "github.com/shadcn.png"],
+    domains: ["images.unsplash.com", "github.com/shadcn.png", "images.ui8.net"],
   },
   output: "standalone",
 };

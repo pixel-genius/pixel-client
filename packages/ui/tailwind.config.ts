@@ -22,6 +22,11 @@ const config = {
       },
     },
     extend: {
+      transitionTimingFunction: {
+        printemps: "cubic-bezier(0.25, 1, 0.5, 1)", // Spring-like easing function
+        "in-expo": "cubic-bezier(0.95, 0.05, 0.795, 0.035)",
+        "out-expo": "cubic-bezier(0.19, 1, 0.22, 1)",
+      },
       boxShadow: {
         box: "0px 0px 38px 0px rgba(103, 81, 214, 0.27)",
       },
@@ -166,6 +171,7 @@ const config = {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
         },
+
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
@@ -179,6 +185,7 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "caret-blink": "caret-blink 1.25s ease-out infinite",
+        bouncy: "bouncy 0.5s ease-in-out infinite",
       },
     },
   },

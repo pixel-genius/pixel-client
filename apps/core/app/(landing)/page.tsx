@@ -1,17 +1,23 @@
 "use client";
-
-import { ProductCard } from "@repo/ui/components/prodoct-card";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@repo/ui/components/tabs";
 import Typography from "@repo/ui/components/typography";
 import * as htmlToImage from "html-to-image";
 import { useTheme } from "next-themes";
 import { useState } from "react";
-import Addtocard from "./_components/addtoCard";
+
+import {
+  TabProvider,
+  TabList,
+  TabTrigger,
+  TabContent,
+} from "@repo/ui/components/tabs";
+
+import { ProductCard } from "@repo/ui/components/prodoct-card";
+import {
+  ProductList,
+  ProductListUiUx,
+  ProductList3D,
+  ProductListGraphic,
+} from "./_constant/mock-product-list";
 
 export default function Page() {
   const { theme, setTheme } = useTheme();
@@ -45,47 +51,8 @@ export default function Page() {
         className="left-0 sm:opacity-100 opacity-35  absolute -z-10"
       />
 
-      {/* <div>
-      {imageUrl && (
-        <motion.div
-          key={theme}
-          style={{ overflow: "hidden" }}
-          className="w-screen h-screen fixed inset-0 z-50"
-          initial={{ clipPath: "circle(150% at 0% 0%)" }}
-          animate={{ clipPath: "circle(0% at 0% 0%)" }}
-          transition={{ duration: 2.75, ease: "easeInOut" }}
-        >
-          <motion.img
-            className="w-screen fixed inset-0 z-50 top-[unset] bottom-[unset]"
-            key={imageUrl}
-            src={imageUrl}
-            alt="Captured Screenshot"
-            style={{ maxWidth: "100%" }}
-            transition={{ duration: 1 }}
-          />
-        </motion.div>
-      )}
-      <div className="flex h-[500px] w-full flex-col gap-4 lg:h-[250px] lg:flex-row">
-        <MagicCard
-          className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-4xl"
-          gradientColor={theme === "dark" ? "#262626" : "#cacaca"}
-        >
-          Magic
-        </MagicCard>
-        <MagicCard
-          className="cursor-pointer flex-col items-center justify-center shadow-2xl whitespace-nowrap text-4xl"
-          gradientColor={theme === "dark" ? "#262626" : "#cacaca"}
-        >
-          Card
-        </MagicCard>
-      </div>
-      <div className=" py-24 sm:py-32 flex justify-center">
-        <Button onClick={captureScreenshot}>Change Theme</Button>
-      </div>
-      </div> */}
-
       {/* Heder */}
-      <div className="pb-80 pt-48">
+      <div className="pb-56 pt-48">
         <Typography
           component="h1"
           variant="display/sm"
@@ -110,78 +77,80 @@ export default function Page() {
         </Typography>
       </div>
       {/* Cards */}
-      <div className="">
+      <div className="mb-44">
         {/* Tabs */}
-        <div className="pb-32">
-          <Tabs defaultValue="account">
-            <div className="pb-4">
-              <TabsList className="">
-                <TabsTrigger value="General">General</TabsTrigger>
-                <TabsTrigger value="Images">Images</TabsTrigger>
-                <TabsTrigger value="file">file</TabsTrigger>
-                <TabsTrigger value="Admin Chat">Admin Chat</TabsTrigger>
-              </TabsList>
+        <TabProvider defaultValue="trend">
+          <TabList>
+            <TabTrigger value="trend">Trends</TabTrigger>
+            <TabTrigger value="uiux">UIUX</TabTrigger>
+            <TabTrigger value="3d">3D Model</TabTrigger>
+            <TabTrigger value="graphic">Graphic Design</TabTrigger>
+          </TabList>
+          <TabContent value="trend">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-4">
+              {ProductList.map((product) => (
+                <ProductCard
+                  key={product.title}
+                  title={product.title}
+                  price={product.price}
+                  image={product.image}
+                  username={product.username}
+                  see={product.see}
+                  avatar={product.avatar}
+                  like={product.like}
+                />
+              ))}
             </div>
-            <TabsContent value="General">
-              <div className="grid lg:grid-cols-4 sm:lg:grid-cols-1 md:grid-cols-2 grid-rows-1 gap-4">
-                <div>
-                  <ProductCard
-                    image="https://i.pinimg.com/originals/4c/f0/b4/4cf0b43f5b8402fb0aba8ff1d259de5b.png"
-                    title="title"
-                    price="10 $"
-                    username="username"
-                    see={10}
-                    like={10}
-                  />
-                </div>
-                <div>
-                  {" "}
-                  <ProductCard
-                    image="https://i.pinimg.com/originals/4c/f0/b4/4cf0b43f5b8402fb0aba8ff1d259de5b.png"
-                    title="title"
-                    price="10 $"
-                    username="username"
-                    see={10}
-                    like={10}
-                  />
-                </div>
-                <div>
-                  {" "}
-                  <ProductCard
-                    image="https://i.pinimg.com/originals/4c/f0/b4/4cf0b43f5b8402fb0aba8ff1d259de5b.png"
-                    title="title"
-                    price="10 $"
-                    username="username"
-                    see={10}
-                    like={10}
-                  />
-                </div>
-                <div>
-                  {" "}
-                  <ProductCard
-                    image="https://i.pinimg.com/originals/4c/f0/b4/4cf0b43f5b8402fb0aba8ff1d259de5b.png"
-                    title="title"
-                    price="10 $"
-                    username="username"
-                    see={10}
-                    like={10}
-                  />
-                </div>
-                <div>
-                  {" "}
-                  <ProductCard
-                    image="https://i.pinimg.com/originals/4c/f0/b4/4cf0b43f5b8402fb0aba8ff1d259de5b.png"
-                    title="title"
-                    price="10 $"
-                    username="username"
-                    see={10}
-                    like={10}
-                  />
-                </div>
-              </div>
-            </TabsContent>
-          </Tabs>
-        </div>
+          </TabContent>
+          <TabContent value="uiux">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-4">
+              {ProductListUiUx.map((product) => (
+                <ProductCard
+                  key={product.title}
+                  title={product.title}
+                  price={product.price}
+                  image={product.image}
+                  avatar={product.avatar}
+                  username={product.username}
+                  see={product.see}
+                  like={product.like}
+                />
+              ))}
+            </div>
+          </TabContent>
+          <TabContent value="3d">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-4">
+              {ProductList3D.map((product) => (
+                <ProductCard
+                  key={product.title}
+                  title={product.title}
+                  price={product.price}
+                  image={product.image}
+                  avatar={product.avatar}
+                  username={product.username}
+                  see={product.see}
+                  like={product.like}
+                />
+              ))}
+            </div>
+          </TabContent>
+          <TabContent value="graphic">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-4">
+              {ProductListGraphic.map((product) => (
+                <ProductCard
+                  key={product.title}
+                  title={product.title}
+                  price={product.price}
+                  image={product.image}
+                  avatar={product.avatar}
+                  username={product.username}
+                  see={product.see}
+                  like={product.like}
+                />
+              ))}
+            </div>
+          </TabContent>
+        </TabProvider>
       </div>
     </main>
   );
