@@ -18,13 +18,15 @@ const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & {
     loading?: boolean;
+    size?: "sm" | "md" | "lg";
+    error?: boolean | undefined;
   }
->(({ className, children, loading, ...props }, ref) => (
+>(({ className, children, loading, error, size, ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
       "flex h-10 w-full items-center justify-between rounded-lg border border-input px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
-      baseInputVariants({ size: "sm" }),
+      baseInputVariants({ size, error }),
       className,
     )}
     {...props}
