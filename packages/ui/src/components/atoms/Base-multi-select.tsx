@@ -1,5 +1,6 @@
-import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+"use client";
+
+import { type VariantProps } from "class-variance-authority";
 import {
   CheckIcon,
   ChevronDown,
@@ -8,8 +9,10 @@ import {
   XCircle,
   XIcon,
 } from "lucide-react";
+import * as React from "react";
 
 import { cn } from "@repo/ui/lib/utils";
+import { baseInputVariants } from "./base-input";
 import { Button } from "./button";
 import { Chip, chipVariants } from "./chip";
 import {
@@ -25,35 +28,10 @@ import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { Separator } from "./separator";
 
 /**
- * Variants for the multi-select component to handle different styles.
- * Uses class-variance-authority (cva) to define different styles based on "variant" prop.
- */
-const multiSelectVariants = cva(
-  "m-1 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300",
-  {
-    variants: {
-      variant: {
-        default:
-          "border-foreground/10 text-foreground bg-card hover:bg-card/80",
-        secondary:
-          "border-foreground/10 bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        destructive:
-          "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
-        inverted: "inverted",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-    },
-  },
-);
-
-/**
  * Props for MultiSelect component
  */
-interface MultiSelectProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof multiSelectVariants> {
+export interface BaseMultiSelectProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * An array of option objects to be displayed in the multi-select component.
    * Each option object has a label, value, and an optional icon.
@@ -74,7 +52,17 @@ interface MultiSelectProps
    */
   onValueChange: (value: string[]) => void;
 
-  hasChevronIcon?: boolean;
+  /**
+   * Size of the multi-select component
+   *
+   */
+  size?: "sm" | "md" | "lg";
+
+  /**
+   * If true no chevron icon will be displayed
+   *
+   */
+  noChevronIcon?: boolean;
 
   /** The default selected values when the component mounts. */
   defaultValue?: string[];
@@ -98,6 +86,11 @@ interface MultiSelectProps
   maxCount?: number;
 
   /**
+   * Error flag for styling error input of MultiSelect component
+   */
+  error?: boolean | undefined;
+
+  /**
    * The modality of the popover. When set to true, interaction with outside elements
    * will be disabled and only popover content will be visible to screen readers.
    * Optional, defaults to false.
@@ -116,21 +109,25 @@ interface MultiSelectProps
    */
   className?: string;
 }
-const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
+const BaseMultiSelect = React.forwardRef<
+  HTMLButtonElement,
+  BaseMultiSelectProps
+>(
   (
     {
       options,
       onValueChange,
-      variant,
       chipVariant = "secondary",
       defaultValue = [],
       placeholder = "Select options",
       animation = 2,
       maxCount = 3,
-      hasChevronIcon = false,
+      noChevronIcon,
       disabled,
       modalPopover = false,
       className,
+      size = "sm",
+      error,
       ...props
     },
     ref,
@@ -139,7 +136,7 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
       React.useState<string[]>(defaultValue);
 
     const [optionsState, setOptionsState] =
-      React.useState<MultiSelectProps["options"]>(options);
+      React.useState<BaseMultiSelectProps["options"]>(options);
 
     const [searchOptionInput, setSearchOptionInput] =
       React.useState<string>("");
@@ -204,7 +201,7 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
             {...props}
             onClick={handleTogglePopover}
             iconRight={
-              <span className="inline-flex items-center ml-2">
+              <span className="inline-flex h-full items-center">
                 {selectedValues.length > 0 ? (
                   <div className="flex items-center justify-between">
                     <XIcon
@@ -216,17 +213,16 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
                     />
                   </div>
                 ) : null}
-                {hasChevronIcon ? (
-                  isPopoverOpen ? (
-                    <ChevronUp className="h-4 cursor-pointer text-muted-foreground" />
-                  ) : (
-                    <ChevronDown className="h-4 cursor-pointer text-muted-foreground" />
-                  )
-                ) : null}
+                {noChevronIcon ? null : isPopoverOpen ? (
+                  <ChevronUp className="h-4 w-4 cursor-pointer text-muted-foreground" />
+                ) : (
+                  <ChevronDown className="h-4 w-4 cursor-pointer text-muted-foreground" />
+                )}
               </span>
             }
             className={cn(
-              "flex w-full p-1 rounded-md focus:ring-2 focus:ring-primary disabled:!text-white border min-h-9 h-auto items-center justify-between bg-card hover:bg-card disabled:opacity-50 disabled:!bg-card [&_svg]:pointer-events-auto",
+              "flex w-full rounded-md focus:ring-2 focus:ring-primary disabled:!text-white border items-center justify-between bg-card hover:bg-card disabled:opacity-50 disabled:!bg-card [&_svg]:pointer-events-auto",
+              baseInputVariants({ size, error }),
               className,
             )}
           >
@@ -238,7 +234,7 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
                     return (
                       <Chip
                         key={value}
-                        className={cn(multiSelectVariants({ variant }), "h-4")}
+                        className={"h-4"}
                         style={{ animationDuration: `${animation}s` }}
                         size={null}
                         variant={chipVariant}
@@ -260,7 +256,6 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
                     <Chip
                       className={cn(
                         "bg-transparent text-foreground border-foreground/1 hover:bg-transparent h-4",
-                        multiSelectVariants({ variant }),
                       )}
                       style={{ animationDuration: `${animation}s` }}
                       size={null}
@@ -281,7 +276,7 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
               </div>
             ) : (
               <div className="flex items-center justify-between w-full mx-auto">
-                <span className="text-sm mx-3">{placeholder}</span>
+                <span className="text-sm">{placeholder}</span>
               </div>
             )}
           </Button>
@@ -325,74 +320,84 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
                 </Button>
               </CommandEmpty>
               <CommandGroup>
-                <CommandItem
-                  key="all"
-                  onSelect={toggleAll}
-                  className="cursor-pointer"
-                >
-                  <div
-                    className={cn(
-                      "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
-                      selectedValues.length === optionsState.length
-                        ? "bg-primary text-primary-foreground"
-                        : "opacity-50 [&_svg]:invisible",
-                    )}
-                  >
-                    <CheckIcon className="h-4 w-4" />
-                  </div>
-                  <span>(Select All)</span>
-                </CommandItem>
-                {optionsState.map((option) => {
-                  const isSelected = selectedValues.includes(option.value);
-                  return (
+                {optionsState.length ? (
+                  <>
                     <CommandItem
-                      key={option.value}
-                      onSelect={() => toggleOption(option.value)}
+                      key="all"
+                      onSelect={toggleAll}
                       className="cursor-pointer"
                     >
                       <div
                         className={cn(
                           "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
-                          isSelected
+                          selectedValues.length === optionsState.length
                             ? "bg-primary text-primary-foreground"
                             : "opacity-50 [&_svg]:invisible",
                         )}
                       >
                         <CheckIcon className="h-4 w-4" />
                       </div>
-                      {option.icon && (
-                        <option.icon className="mr-2 h-4 w-4 text-muted-foreground" />
-                      )}
-                      <span>{option.label}</span>
+                      <span>(Select All)</span>
                     </CommandItem>
-                  );
-                })}
+                    {optionsState.map((option) => {
+                      const isSelected = selectedValues.includes(option.value);
+                      return (
+                        <CommandItem
+                          key={option.value}
+                          onSelect={() => toggleOption(option.value)}
+                          className="cursor-pointer"
+                        >
+                          <div
+                            className={cn(
+                              "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
+                              isSelected
+                                ? "bg-primary text-primary-foreground"
+                                : "opacity-50 [&_svg]:invisible",
+                            )}
+                          >
+                            <CheckIcon className="h-4 w-4" />
+                          </div>
+                          {option.icon && (
+                            <option.icon className="mr-2 h-4 w-4 text-muted-foreground" />
+                          )}
+                          <span>{option.label}</span>
+                        </CommandItem>
+                      );
+                    })}
+                  </>
+                ) : (
+                  <></>
+                )}
               </CommandGroup>
-              <CommandSeparator />
-              <CommandGroup>
-                <div className="flex items-center justify-between">
-                  {selectedValues.length > 0 && (
-                    <>
+              {optionsState.length ? (
+                <>
+                  <CommandSeparator />
+                  <CommandGroup>
+                    <div className="flex items-center justify-between">
+                      {selectedValues.length > 0 && (
+                        <>
+                          <CommandItem
+                            onSelect={handleClear}
+                            className="flex-1 justify-center cursor-pointer"
+                          >
+                            Clear
+                          </CommandItem>
+                          <Separator
+                            orientation="vertical"
+                            className="flex min-h-6 h-full"
+                          />
+                        </>
+                      )}
                       <CommandItem
-                        onSelect={handleClear}
-                        className="flex-1 justify-center cursor-pointer"
+                        onSelect={() => setIsPopoverOpen(false)}
+                        className="flex-1 justify-center cursor-pointer max-w-full"
                       >
-                        Clear
+                        Close
                       </CommandItem>
-                      <Separator
-                        orientation="vertical"
-                        className="flex min-h-6 h-full"
-                      />
-                    </>
-                  )}
-                  <CommandItem
-                    onSelect={() => setIsPopoverOpen(false)}
-                    className="flex-1 justify-center cursor-pointer max-w-full"
-                  >
-                    Close
-                  </CommandItem>
-                </div>
-              </CommandGroup>
+                    </div>
+                  </CommandGroup>
+                </>
+              ) : null}
             </CommandList>
           </Command>
         </PopoverContent>
@@ -401,6 +406,6 @@ const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
   },
 );
 
-MultiSelect.displayName = "MultiSelect";
+BaseMultiSelect.displayName = "BaseMultiSelect";
 
-export default MultiSelect;
+export default BaseMultiSelect;
