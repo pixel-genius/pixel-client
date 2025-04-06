@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import MultiSelect from "@repo/ui/components/multi-select";
+import { MultiSelect } from "@repo/ui/components/multi-select";
 
 const frameworksList = [
   {
@@ -36,9 +36,16 @@ const meta: Meta = {
       control: "radio",
       options: ["primary", "warning", "danger", "success", "info", "secondary"],
     },
+    id: {
+      control: "text",
+    },
     variant: {
       control: "radio",
       options: ["default", "secondary", "destructive", "inverted"],
+    },
+    size: {
+      control: "radio",
+      options: ["sm", "md", "lg"],
     },
     maxCount: { control: "number" },
     disabled: { control: "boolean" },
@@ -48,15 +55,20 @@ const meta: Meta = {
     animation: {
       control: "number",
     },
+    label: {
+      control: "text",
+    },
     placeholder: {
       control: "text",
     },
   },
   args: {
     maxCount: 6,
+    size: "sm",
     chipVariant: "secendery",
     disabled: false,
     animation: 2,
+    label: "Select",
     placeholder: "Select options",
     hasChevronIcon: false,
     modalPopover: false,
@@ -70,13 +82,13 @@ type Story = StoryObj<typeof MultiSelect>;
 
 export const Default: Story = {
   args: {
-    variant: "default",
+    id: "1",
     options: frameworksList,
   },
 };
 export const DefaultValue: Story = {
   args: {
-    variant: "default",
+    id: "2",
     options: frameworksList,
     defaultValue: ["next.js"],
   },
@@ -84,21 +96,29 @@ export const DefaultValue: Story = {
 
 export const Secondary: Story = {
   args: {
-    variant: "secondary",
+    id: "3",
     options: frameworksList,
   },
 };
 
 export const Destructive: Story = {
   args: {
-    variant: "destructive",
+    id: "4",
     options: frameworksList,
   },
 };
 
 export const Inverted: Story = {
   args: {
-    variant: "inverted",
+    id: "5",
+    options: frameworksList,
+  },
+};
+
+export const NoIcon: Story = {
+  args: {
+    id: "5",
+    noChevronIcon: true,
     options: frameworksList,
   },
 };
