@@ -51,7 +51,7 @@ export interface BaseMultiSelectProps
    * Callback function triggered when the selected values change.
    * Receives an array of the new selected values.
    */
-  onValueChange: (value: string[]) => void;
+  onValueChange?: (value: string[]) => void;
 
   /**
    * Size of the multi-select component
@@ -89,7 +89,7 @@ export interface BaseMultiSelectProps
   /**
    * Loading state for the MultiSelect component
    */
-  loading: boolean;
+  loading?: boolean;
 
   /**
    * Error flag for styling error input of MultiSelect component
@@ -162,7 +162,7 @@ const BaseMultiSelect = React.forwardRef<
         const newSelectedValues = [...selectedValues];
         newSelectedValues.pop();
         setSelectedValues(newSelectedValues);
-        onValueChange(newSelectedValues);
+        onValueChange?.(newSelectedValues);
       }
     };
 
@@ -171,12 +171,12 @@ const BaseMultiSelect = React.forwardRef<
         ? selectedValues.filter((value) => value !== option)
         : [...selectedValues, option];
       setSelectedValues(newSelectedValues);
-      onValueChange(newSelectedValues);
+      onValueChange?.(newSelectedValues);
     };
 
     const handleClear = () => {
       setSelectedValues([]);
-      onValueChange([]);
+      onValueChange?.([]);
     };
 
     const handleTogglePopover = () => {
@@ -186,7 +186,7 @@ const BaseMultiSelect = React.forwardRef<
     const clearExtraOptions = () => {
       const newSelectedValues = selectedValues.slice(0, maxCount);
       setSelectedValues(newSelectedValues);
-      onValueChange(newSelectedValues);
+      onValueChange?.(newSelectedValues);
     };
 
     const toggleAll = () => {
@@ -195,7 +195,7 @@ const BaseMultiSelect = React.forwardRef<
       } else {
         const allValues = optionsState.map((option) => option.value);
         setSelectedValues(allValues);
-        onValueChange(allValues);
+        onValueChange?.(allValues);
       }
     };
     const renderIconComponent = React.useMemo(
@@ -216,13 +216,13 @@ const BaseMultiSelect = React.forwardRef<
         onOpenChange={setIsPopoverOpen}
         modal={modalPopover}
       >
-        <PopoverTrigger asChild disabled={disabled}>
+        <PopoverTrigger ref={ref} asChild disabled={disabled || loading} {...props} onClick={handleTogglePopover}>
           <Button
             ref={ref}
             {...props}
             onClick={handleTogglePopover}
-            disabled={loading}
-            iconLeft={iconSide === "left" ? renderIconComponent : null}
+            disabled={loading || disabled}
+            iconLeft={iconSide === "left" && renderIconComponent}
             iconRight={
               <span className="inline-flex h-full items-center">
                 {selectedValues.length > 0 ? (
@@ -236,7 +236,7 @@ const BaseMultiSelect = React.forwardRef<
                     />
                   </div>
                 ) : null}
-                {iconSide === "right" ? renderIconComponent : null}
+                {iconSide === "right" && renderIconComponent}
               </span>
             }
             className={cn(
@@ -245,7 +245,7 @@ const BaseMultiSelect = React.forwardRef<
               className,
             )}
           >
-            {selectedValues.length > 0 ? (
+            {selectedValues.length ? (
               <div className="flex justify-between items-center w-full">
                 <div className="flex flex-wrap items-center">
                   {selectedValues.slice(0, maxCount).map((value) => {
