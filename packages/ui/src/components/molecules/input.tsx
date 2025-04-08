@@ -1,7 +1,8 @@
 import React from "react";
 import { BaseInput, type BaseInputProps } from "../atoms/base-input";
 import { LabelWraper } from "./label-wrapper";
-import { cn } from "@repo/ui/lib/utils"
+import { cn } from "@repo/ui/lib/utils";
+import OrbitingDotsLoading from "../atoms/orbitingDotsLoading";
 
 export interface textFieldProps extends Omit<BaseInputProps, "error"> {
   label?: React.ReactNode;
@@ -9,6 +10,7 @@ export interface textFieldProps extends Omit<BaseInputProps, "error"> {
   error?: string;
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
+  loading?: boolean;
 }
 
 const Input = React.forwardRef<HTMLInputElement, textFieldProps>(
@@ -21,6 +23,7 @@ const Input = React.forwardRef<HTMLInputElement, textFieldProps>(
       className,
       iconLeft,
       iconRight,
+      loading,
       ...resProps
     } = props;
 
@@ -33,18 +36,28 @@ const Input = React.forwardRef<HTMLInputElement, textFieldProps>(
         className={cn(className)}
       >
         <div className="flex justify-center items-center relative">
-        {iconLeft && (
-          <div className="absolute left-0  px-4">{iconLeft}</div>
-        )}
-        <BaseInput ref={ref} id={id} error={!!error} className={cn(
-          {
-            "pl-14":  !!iconLeft , 
-            "pr-14":  !!iconRight , 
-          }
-        )} {...resProps} />
-        {iconRight && (
-          <div className="absolute right-0  px-4">{iconRight}</div>
-        )}
+          {iconLeft &&
+            (loading ? (
+              <OrbitingDotsLoading />
+            ) : (
+              <div className="absolute left-0  px-4">{iconLeft}</div>
+            ))}
+          <BaseInput
+            ref={ref}
+            id={id}
+            error={!!error}
+            className={cn({
+              "pl-14": !!iconLeft,
+              "pr-14": !!iconRight,
+            })}
+            {...resProps}
+          />
+          {iconRight &&
+            (loading ? (
+              <OrbitingDotsLoading />
+            ) : (
+              <div className="absolute left-0  px-4">{iconRight}</div>
+            ))}
         </div>
       </LabelWraper>
     );
