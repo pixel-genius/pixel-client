@@ -26,6 +26,7 @@ import {
 } from "./command";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { Separator } from "./separator";
+import OrbitingDotsLoading from "./orbitingDotsLoading";
 
 /**
  * Props for MultiSelect component
@@ -86,6 +87,11 @@ export interface BaseMultiSelectProps
   maxCount?: number;
 
   /**
+   * Loading state for the MultiSelect component
+   */
+  loading: boolean;
+
+  /**
    * Error flag for styling error input of MultiSelect component
    */
   error?: boolean | undefined;
@@ -108,6 +114,8 @@ export interface BaseMultiSelectProps
    * Optional, can be used to add custom styles.
    */
   className?: string;
+
+  iconSide?: "left" | "right";
 }
 const BaseMultiSelect = React.forwardRef<
   HTMLButtonElement,
@@ -128,6 +136,8 @@ const BaseMultiSelect = React.forwardRef<
       className,
       size = "sm",
       error,
+      loading,
+      iconSide = "right",
       ...props
     },
     ref,
@@ -188,6 +198,17 @@ const BaseMultiSelect = React.forwardRef<
         onValueChange(allValues);
       }
     };
+    const renderIconComponent = React.useMemo(
+      () =>
+        loading ? (
+          <OrbitingDotsLoading />
+        ) : noChevronIcon ? null : isPopoverOpen ? (
+          <ChevronUp className="h-4 w-4 cursor-pointer text-muted-foreground" />
+        ) : (
+          <ChevronDown className="h-4 w-4 cursor-pointer text-muted-foreground" />
+        ),
+      [loading, noChevronIcon, isPopoverOpen],
+    );
 
     return (
       <Popover
@@ -200,6 +221,8 @@ const BaseMultiSelect = React.forwardRef<
             ref={ref}
             {...props}
             onClick={handleTogglePopover}
+            disabled={loading}
+            iconLeft={iconSide === "left" ? renderIconComponent : null}
             iconRight={
               <span className="inline-flex h-full items-center">
                 {selectedValues.length > 0 ? (
@@ -213,11 +236,7 @@ const BaseMultiSelect = React.forwardRef<
                     />
                   </div>
                 ) : null}
-                {noChevronIcon ? null : isPopoverOpen ? (
-                  <ChevronUp className="h-4 w-4 cursor-pointer text-muted-foreground" />
-                ) : (
-                  <ChevronDown className="h-4 w-4 cursor-pointer text-muted-foreground" />
-                )}
+                {iconSide === "right" ? renderIconComponent : null}
               </span>
             }
             className={cn(
@@ -291,6 +310,7 @@ const BaseMultiSelect = React.forwardRef<
               placeholder="Search..."
               onKeyDown={handleInputKeyDown}
               value={searchOptionInput}
+              disabled={loading}
               onChangeCapture={(e) => {
                 setSearchOptionInput(e.currentTarget.value.trim());
               }}
@@ -366,7 +386,7 @@ const BaseMultiSelect = React.forwardRef<
                     })}
                   </>
                 ) : (
-                  <></>
+                  <>No Options</>
                 )}
               </CommandGroup>
               {optionsState.length ? (

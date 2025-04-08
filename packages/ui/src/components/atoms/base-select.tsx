@@ -6,6 +6,7 @@ import { Check, ChevronDown, ChevronUp } from "lucide-react";
 
 import { cn } from "@repo/ui/lib/utils";
 import { baseInputVariants } from "./base-input";
+import OrbitingDotsLoading from "./orbitingDotsLoading";
 
 const BaseSelect = BaseSelectPrimitive.Root;
 
@@ -16,22 +17,28 @@ const BaseSelectValue = BaseSelectPrimitive.Value;
 const BaseSelectTrigger = React.forwardRef<
   React.ElementRef<typeof BaseSelectPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof BaseSelectPrimitive.Trigger> & {
+    loading?: boolean;
     size?: "sm" | "md" | "lg";
     error?: boolean | undefined;
   }
->(({ className, children, size = "sm", error, ...props }, ref) => (
+>(({ className, children, loading, error, size, ...props }, ref) => (
   <BaseSelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex h-10 w-full items-center justify-between rounded-lg border border-input  px-3 py-2 text-sm  placeholder:text-muted-foreground focus:outline-none  disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+      "flex h-10 w-full items-center justify-between rounded-lg border border-input px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
       baseInputVariants({ size, error }),
       className,
     )}
     {...props}
+    disabled={loading || props.disabled} // Disable select while loading
   >
     {children}
     <BaseSelectPrimitive.Icon asChild>
-      <ChevronDown className="h-4 w-4 opacity-50" />
+      {loading ? (
+        <OrbitingDotsLoading />
+      ) : (
+        <ChevronDown className="h-4 w-4 opacity-50" />
+      )}
     </BaseSelectPrimitive.Icon>
   </BaseSelectPrimitive.Trigger>
 ));
