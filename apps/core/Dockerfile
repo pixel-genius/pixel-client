@@ -50,4 +50,6 @@ COPY --from=installer --chown=nextjs:nodejs /app/apps/core/.next/standalone ./
 COPY --from=installer --chown=nextjs:nodejs /app/apps/core/.next/static ./apps/core/.next/static
 COPY --from=installer --chown=nextjs:nodejs /app/apps/core/public ./apps/core/public
 
+EXPOSE 3000
+
 CMD node apps/core/server.js
