@@ -64,13 +64,6 @@ export const EditorToolbar = ({
 
       <EditorToolbarButton
         disabled={showHtml}
-        onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-        isActive={editor.isActive("Heading1")}
-        icon={Heading1}
-        label="heading 1"
-      />
-      <EditorToolbarButton
-        disabled={showHtml}
         onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
         isActive={editor.isActive("heading2")}
         icon={Heading2}
@@ -90,7 +83,7 @@ export const EditorToolbar = ({
         icon={Heading4}
         label="heading 4"
       />
-      <EditorToolbarButton
+      {/* <EditorToolbarButton
         disabled={showHtml}
         onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
         isActive={editor.isActive("heading5")}
@@ -103,16 +96,6 @@ export const EditorToolbar = ({
         isActive={editor.isActive("heading6")}
         icon={Heading6}
         label="heading 5"
-      />
-
-      {/* to  do color text */}
-      {/* <input
-        type="color"
-        onInput={(event) =>
-          editor.chain().focus().setColor(event.target.value).run()
-        }
-        value={editor.getAttributes("textStyle").color}
-        data-testid="setColor"
       /> */}
 
       <EditorToolbarButton
@@ -129,15 +112,6 @@ export const EditorToolbar = ({
         icon={Italic}
         label="Italic"
       />
-
-      {/* to do underline text */}
-      {/* <EditorToolbarButton
-        disabled={showHtml}
-        onClick={() => editor.chain().focus().toggleUnderline().run()}
-        isActive={editor.isActive("underline") ? "is-active" : ""}
-        icon={Underline}
-        label="Underline"
-      /> */}
 
       <EditorToolbarButton
         disabled={showHtml}

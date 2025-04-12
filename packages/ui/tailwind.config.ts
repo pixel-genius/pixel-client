@@ -186,6 +186,7 @@ const config = {
     tailwindcssAnimate,
     require("tailwind-scrollbar"),
     require("tailwind-scrollbar-hide"),
+    require("@tailwindcss/typography"),
   ],
 } satisfies Config;
 

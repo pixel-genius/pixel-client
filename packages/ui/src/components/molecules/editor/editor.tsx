@@ -19,6 +19,7 @@ import { EditorToolbar } from "./editor-toolbar";
 import Link from "@tiptap/extension-link";
 import { Input } from "../input";
 import { Underline } from "lucide-react";
+import { RichTextStylesProvider } from "@repo/ui/components/rich-text-style-provider";
 // import { RichTextStylesProvider } from "@/components/providers/rich-text-style-provider";
 
 interface RichTextEditorProps {
@@ -45,7 +46,6 @@ export const RichTextEditor = ({
       // Highlight,
       Image,
       Link,
-      
     ],
     content: defaultValue || value || "",
 
@@ -104,7 +104,9 @@ export const RichTextEditor = ({
             />
           ) : (
             <>
-              <EditorContent className="p-3" editor={editor} />
+              <RichTextStylesProvider>
+                <EditorContent className="p-3" editor={editor} />
+              </RichTextStylesProvider>
             </>
           )}
         </div>
