@@ -9,6 +9,7 @@ import {
 } from "@repo/ui/components";
 import { Button } from "@repo/ui/components";
 import { TabGeneral } from "./_components/tabGeneral";
+import Version from "./_components/version/version";
 
 const CreateProductPage = () => {
   const methods = useForm<{ price: string; discount: number | null }>();
@@ -36,13 +37,15 @@ const CreateProductPage = () => {
             </div>
           </div>
           {/* Content */} 
-          <div className="bg-card px-4 py-6 rounded-lg">
+          <div className=" px-4 py-6 rounded-lg">
             <TabContent value="general">
               <TabGeneral />
             </TabContent>
             <TabContent value="preview">preview</TabContent>
             <TabContent value="file">Files</TabContent>
-            <TabContent value="version">Version</TabContent>
+            <TabContent value="version" className="bg-t">
+              <Version />
+            </TabContent>
             <TabContent value="chat">Admin Chat</TabContent>
           </div>
         </TabProvider>
