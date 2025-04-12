@@ -31,8 +31,5 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ],
-  "dependencies": {
-    "@tiptap/extension-underline": "^2.11.7"
-  }
+  ]
 }

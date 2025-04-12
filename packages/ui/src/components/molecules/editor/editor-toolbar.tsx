@@ -11,6 +11,14 @@ import {
   Strikethrough,
   Underline,
   Undo,
+  Heading1,
+  Heading2,
+  Heading3,
+  Heading4,
+  Heading6,
+  Heading5,
+  ChevronsLeftRightEllipsis,
+  Code,
 } from "lucide-react";
 import { Dispatch, SetStateAction } from "react";
 import { Separator } from "./../../atoms/separator";
@@ -52,25 +60,60 @@ export const EditorToolbar = ({
         label="Redo"
       />
 
-      <Separator orientation="vertical" className="h-6 bg-gray-300" />
-
       {/* to do normal text */}
-
-      <Separator orientation="vertical" className="h-6 bg-gray-300" />
 
       <EditorToolbarButton
         disabled={showHtml}
-        onClick={() => editor.chain().focus().toggleBulletList().run()}
-        isActive={editor.isActive("bulletList")}
-        icon={List}
-        label="Bullet List"
+        onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+        isActive={editor.isActive("Heading1")}
+        icon={Heading1}
+        label="heading 1"
+      />
+      <EditorToolbarButton
+        disabled={showHtml}
+        onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+        isActive={editor.isActive("heading2")}
+        icon={Heading2}
+        label="heading 2"
+      />
+      <EditorToolbarButton
+        disabled={showHtml}
+        onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+        isActive={editor.isActive("heading3")}
+        icon={Heading3}
+        label="heading 3"
+      />
+      <EditorToolbarButton
+        disabled={showHtml}
+        onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
+        isActive={editor.isActive("heading4")}
+        icon={Heading4}
+        label="heading 4"
+      />
+      <EditorToolbarButton
+        disabled={showHtml}
+        onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
+        isActive={editor.isActive("heading5")}
+        icon={Heading5}
+        label="heading 5"
+      />
+      <EditorToolbarButton
+        disabled={showHtml}
+        onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
+        isActive={editor.isActive("heading6")}
+        icon={Heading6}
+        label="heading 5"
       />
 
-      <Separator orientation="vertical" className="h-6 bg-gray-300" />
-
       {/* to  do color text */}
-
-      <Separator orientation="vertical" className="h-6 bg-gray-300" />
+      {/* <input
+        type="color"
+        onInput={(event) =>
+          editor.chain().focus().setColor(event.target.value).run()
+        }
+        value={editor.getAttributes("textStyle").color}
+        data-testid="setColor"
+      /> */}
 
       <EditorToolbarButton
         disabled={showHtml}
@@ -88,13 +131,14 @@ export const EditorToolbar = ({
       />
 
       {/* to do underline text */}
-      <EditorToolbarButton
+      {/* <EditorToolbarButton
         disabled={showHtml}
-        onClick={() => editor.chain().focus().toggleMark("underline").run()}
-        isActive={editor.isActive("italic")}
+        onClick={() => editor.chain().focus().toggleUnderline().run()}
+        isActive={editor.isActive("underline") ? "is-active" : ""}
         icon={Underline}
         label="Underline"
-      />
+      /> */}
+
       <EditorToolbarButton
         disabled={showHtml}
         onClick={() => editor.chain().focus().toggleStrike().run()}
@@ -102,8 +146,14 @@ export const EditorToolbar = ({
         icon={Strikethrough}
         label="Strike"
       />
-
-      <Separator orientation="vertical" className="h-6 bg-gray-300" />
+      {/* to do code text */}
+      <EditorToolbarButton
+        disabled={showHtml}
+        onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+        isActive={editor.isActive("codeBlock")}
+        icon={ChevronsLeftRightEllipsis}
+        label="Strike"
+      />
 
       <EditorToolbarButton
         disabled={showHtml}
@@ -114,34 +164,10 @@ export const EditorToolbar = ({
       />
       <EditorToolbarButton
         disabled={showHtml}
-        onClick={() => editor.chain().focus().toggleBlockquote().run()}
-        isActive={editor.isActive("blockquote")}
-        icon={Quote}
-        label="Blockquote"
-      />
-
-      <Separator orientation="vertical" className="h-6 bg-gray-300" />
-
-      <EditorToolbarImage editor={editor} showHtml={showHtml} />
-
-      <EditorToolbarSetLink editor={editor} showHtml={showHtml} />
-
-      <EditorToolbarButton
-        onClick={() =>
-          editor.chain().focus().extendMarkRange("link").unsetLink().run()
-        }
-        isActive={editor.isActive("link")}
-        icon={Link2Off}
-        label="Remove Link"
-      />
-
-      <Separator orientation="vertical" className="h-6 bg-gray-300" />
-
-      <EditorToolbarViewHtml
-        editor={editor}
-        showHtml={showHtml}
-        setHtmlContent={setHtmlContent}
-        setShowHtml={setShowHtml}
+        onClick={() => editor.chain().focus().toggleCode().run()}
+        isActive={editor.isActive("code")}
+        icon={Code}
+        label="Code"
       />
     </div>
   );

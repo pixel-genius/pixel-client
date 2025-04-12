@@ -10,12 +10,15 @@ import TextAlign from "@tiptap/extension-text-align";
 import {
   // BubbleMenu,
   EditorContent,
+  InputRule,
   // FloatingMenu,
   useEditor,
 } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { EditorToolbar } from "./editor-toolbar";
 import Link from "@tiptap/extension-link";
+import { Input } from "../input";
+import { Underline } from "lucide-react";
 // import { RichTextStylesProvider } from "@/components/providers/rich-text-style-provider";
 
 interface RichTextEditorProps {
@@ -42,6 +45,7 @@ export const RichTextEditor = ({
       // Highlight,
       Image,
       Link,
+      
     ],
     content: defaultValue || value || "",
 
@@ -83,7 +87,7 @@ export const RichTextEditor = ({
         {/* <RichTextStylesProvider> */}
         <div
           className={cn(
-            "mt-3 flex min-h-[200px] flex-col bg-background rounded border",
+            "mt-3 flex min-h-[200px] flex-col bg-background ",
 
             className,
           )}
