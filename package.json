@@ -22,9 +22,9 @@
     "@repo/typescript-config": "*",
     "husky": "^9.1.7",
     "prettier": "^3.3.2",
-    "turbo": "2.0.6"
+    "turbo": "^2.5.0"
   },
-  "packageManager": "bun@1.1.29",
+ "packageManager": "bun@1.2.0",
   "engines": {
     "node": ">=18"
   },
