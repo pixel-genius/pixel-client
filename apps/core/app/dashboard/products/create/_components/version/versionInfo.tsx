@@ -17,11 +17,11 @@ const versionInfo = (data:VersionInfoType) => {
     <div className="border-b border-solid border-border flex flex-row gap-12 py-6">
         <div>
             <Typography variant={"label/lg"} className="font-bold">{data.title}</Typography>
-            <Typography variant={"label/lg"} className="font-normal">{data.version}</Typography>
+            <Typography variant={"label/lg"} weight="normal" className="text-foreground">{data.version}</Typography>
         </div>
         <div>
             <Typography variant={"label/lg"} className="font-bold">Version Nots</Typography>
-            <Typography variant={"label/sm"} className="font-normal">{data.description}</Typography>
+            <Typography variant="label/sm" weight="normal" className="text-foreground">{data.description}</Typography>
         </div>    
         <div className="flex flex-row gap-2 items-center">
             <Typography variant={"label/sm"} className="font-medium">Deactivate</Typography>
