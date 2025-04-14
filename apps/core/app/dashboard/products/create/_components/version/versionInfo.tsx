@@ -9,12 +9,12 @@ export interface VersionInfoType {
     checked:boolean
 
 } 
-const versionInfo = (data:VersionInfoType) => {
+const VersionInfo = (data:VersionInfoType) => {
 
     const [checked, setChecked] = useState<{ checked: boolean }>({ checked: data.checked });
 
   return (
-    <div className="border-b border-solid border-border flex flex-row gap-12 py-6">
+    <div className="border-b border-solid border-border flex flex-row gap-12 py-6" key={data.title}>
         <div>
             <Typography variant={"label/lg"} className="font-bold">{data.title}</Typography>
             <Typography variant={"label/lg"} weight="normal" className="text-foreground">{data.version}</Typography>
@@ -32,4 +32,4 @@ const versionInfo = (data:VersionInfoType) => {
   );
 };  
 
-export default versionInfo;
+export default VersionInfo;
