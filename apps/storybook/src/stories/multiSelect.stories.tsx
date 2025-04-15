@@ -86,6 +86,15 @@ export const Default: Story = {
     options: frameworksList,
   },
 };
+
+export const LeftIcon: Story = {
+  args: {
+    id: "1",
+    options: frameworksList,
+    iconSide: "left",
+  },
+};
+
 export const DefaultValue: Story = {
   args: {
     id: "2",

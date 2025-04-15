@@ -216,35 +216,20 @@ const BaseMultiSelect = React.forwardRef<
         onOpenChange={setIsPopoverOpen}
         modal={modalPopover}
       >
-        <PopoverTrigger ref={ref} asChild disabled={disabled || loading} {...props} onClick={handleTogglePopover}>
-          <Button
-            ref={ref}
-            {...props}
-            onClick={handleTogglePopover}
-            disabled={loading || disabled}
-            iconLeft={iconSide === "left" && renderIconComponent}
-            iconRight={
-              <span className="inline-flex h-full items-center">
-                {selectedValues.length > 0 ? (
-                  <div className="flex items-center justify-between">
-                    <XIcon
-                      className="h-4 cursor-pointer text-muted-foreground"
-                      onClick={(event) => {
-                        event.stopPropagation();
-                        handleClear();
-                      }}
-                    />
-                  </div>
-                ) : null}
-                {iconSide === "right" && renderIconComponent}
-              </span>
-            }
-            className={cn(
-              "flex w-full rounded-md focus:ring-2 focus:ring-primary disabled:!text-white border items-center justify-between bg-card hover:bg-card disabled:opacity-50 disabled:!bg-card [&_svg]:pointer-events-auto",
-              baseInputVariants({ size, error }),
-              className,
-            )}
-          >
+        <PopoverTrigger
+          ref={ref}
+          asChild
+          disabled={loading || disabled}
+          {...props}
+          onClick={handleTogglePopover}
+          className={cn(
+            "flex w-full rounded-md focus:ring-2 focus:ring-primary disabled:!text-white border gap-2 items-center bg-card hover:bg-card disabled:opacity-50 disabled:!bg-card [&_svg]:pointer-events-auto",
+            baseInputVariants({ size, error }),
+            className,
+          )}
+        >
+          <>
+            {iconSide === "left" && renderIconComponent}
             {selectedValues.length ? (
               <div className="flex justify-between items-center w-full">
                 <div className="flex flex-wrap items-center">
@@ -298,7 +283,21 @@ const BaseMultiSelect = React.forwardRef<
                 <span className="text-sm">{placeholder}</span>
               </div>
             )}
-          </Button>
+            <span className="inline-flex h-full items-center">
+              {selectedValues.length > 0 ? (
+                <div className="flex items-center">
+                  <XIcon
+                    className="h-4 cursor-pointer text-muted-foreground"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      handleClear();
+                    }}
+                  />
+                </div>
+              ) : null}
+              {iconSide === "right" && renderIconComponent}
+            </span>
+          </>
         </PopoverTrigger>
         <PopoverContent
           className="w-[--radix-popover-trigger-width] p-0"
