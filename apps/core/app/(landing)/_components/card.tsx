@@ -1,5 +1,5 @@
 import Removeicon from "@repo/icons/remove";
-import Typography from "@repo/ui/components/typography";
+import { Typography } from "@repo/ui/components";
 import Image from "next/image";
 
 interface CardProps {

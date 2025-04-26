@@ -4,7 +4,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@repo/ui/components/accordion";
+} from "@repo/ui/components";
 import AutherForm from "./_components/auther-form";
 
 const BecomeAuther = () => {

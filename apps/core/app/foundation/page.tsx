@@ -1,9 +1,7 @@
 import Chevrondownicon from "@repo/icons/chevron-down";
 import Hearticon from "@repo/icons/heart";
-import { Button } from "@repo/ui/components/button";
-import { FoundationColor } from "@repo/ui/components/foundation-color";
-import { Input } from "@repo/ui/components/input";
-import Typography from "@repo/ui/components/typography";
+import { Button, FoundationColor, Input } from "@repo/ui/components";
+import { Typography } from "@repo/ui/components";
 
 type ButtonGroup = {
   label: string; // Describes the group of buttons

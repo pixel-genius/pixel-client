@@ -2,12 +2,12 @@
 
 import { FormProvider, useForm } from "react-hook-form";
 import {
+  TabProvider ,
   TabContent,
   TabList,
-  TabProvider,
   TabTrigger,
-} from "@repo/ui/components/tabs";
-import { Button } from "@repo/ui/components/button";
+} from "@repo/ui/components";
+import { Button } from "@repo/ui/components";
 import { TabGeneral } from "./_components/tabGeneral";
 
 const CreateProductPage = () => {
@@ -18,7 +18,7 @@ const CreateProductPage = () => {
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <TabProvider variant="outline" defaultValue="general">
+        <TabProvider defaultValue="general">
           <div className="flex  justify-between items-center  mb-4">
             <TabList className="mb-0">
               <TabTrigger value="general">General</TabTrigger>

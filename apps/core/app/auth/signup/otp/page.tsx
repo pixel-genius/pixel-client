@@ -3,16 +3,16 @@ import AuthCard from "../../_components/auth-card";
 import { SignupOtpForm } from "./_components/signup-otp-form";
 import { redirect } from "next/navigation";
 
-type SearchParams = {
-  username: string | string[] | undefined;
-  email: string | string[] | undefined;
+type Props = {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-const SignupOtpPage = ({ searchParams }: { searchParams: SearchParams }) => {
-  const username = Array.isArray(searchParams.username)
-    ? searchParams?.username[0]
-    : searchParams.username;
-  if (!searchParams.email) {
+const SignupOtpPage = async ({ searchParams }: Props) => {
+  const resolvedParams = await searchParams;
+  const username = Array.isArray(resolvedParams.username)
+    ? resolvedParams?.username[0]
+    : resolvedParams.username;
+  if (!resolvedParams.email) {
     redirect("/auth/signup");
   }
 
@@ -24,7 +24,7 @@ const SignupOtpPage = ({ searchParams }: { searchParams: SearchParams }) => {
           <p className="text-center">
             We've sent the code to{" "}
             <Link href="/auth/signup" className="underline">
-              {searchParams.email}
+              {resolvedParams.email}
             </Link>
           </p>
           <p>check your email</p>

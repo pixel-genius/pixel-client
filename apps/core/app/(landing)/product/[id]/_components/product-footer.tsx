@@ -1,8 +1,8 @@
 import Heart1icon from "@repo/icons/heart";
 import Messagecircleicon from "@repo/icons/message-circle";
 import Shopingcartplusicon from "@repo/icons/shopping-cart-plus";
-import { SCROLL_TOP_RANGE } from "@repo/ui/components/parallax-scroll-effect"; 
-import { Button } from "@repo/ui/components/button";
+import { SCROLL_TOP_RANGE } from "@repo/ui/components";
+import { Button } from "@repo/ui/components";
 import { useScroll, useSpring, useTransform, motion } from "framer-motion";
 
 const ProductFooter = () => {

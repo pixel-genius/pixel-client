@@ -1,10 +1,12 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { TabProvider } from "@repo/ui/components/tabs/tab-provider";
-import { TabList } from "@repo/ui/components/tabs/tab-list";
-import { TabTrigger } from "@repo/ui/components/tabs/tab-trigger";
-import { TabContent } from "@repo/ui/components/tabs/tab-content";
+import {
+  TabProvider,
+  TabList,
+  TabTrigger,
+  TabContent,
+} from "@repo/ui/components";
 
 const meta: Meta<typeof TabProvider> = {
   title: "Components/Tabs",

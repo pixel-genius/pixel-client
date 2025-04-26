@@ -1,5 +1,5 @@
 import Xicon from "@repo/icons/x";
-import { BaseInput } from "@repo/ui/components/base-input";
+import { BaseInput } from "@repo/ui/components";
 import { motion } from "framer-motion";
 import { forwardRef } from "react";
 import { useRef, useImperativeHandle } from "react";

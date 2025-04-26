@@ -11,7 +11,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 RUN yarn global add turbo
 COPY . .
-RUN npm run prepare:ci
+# RUN npm run prepare:ci
 RUN turbo prune core --docker
 
 # Add lockfile and package.json's of isolated subworkspace
@@ -34,7 +34,7 @@ COPY --from=builder /app/out/full/ .
 # ARG TURBO_TOKEN
 # ENV TURBO_TOKEN=$TURBO_TOKEN
 
-RUN yarn turbo build
+RUN yarn turbo build --filter=core
 
 FROM base AS runner
 WORKDIR /app

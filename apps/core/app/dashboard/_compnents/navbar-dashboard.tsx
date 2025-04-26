@@ -1,4 +1,4 @@
-import { SidebarTrigger } from "@repo/ui/components/sidebar";
+import { SidebarTrigger } from "@repo/ui/components";
 
 const NavbarDashboard = () => {
   return (

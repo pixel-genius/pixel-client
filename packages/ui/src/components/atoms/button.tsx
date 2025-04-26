@@ -21,6 +21,7 @@ const buttonVariants = cva(
         sm: "h-9 text-sm",
         md: "h-[52px]",
         lg: "h-14 text-lg",
+        icon: "h-9 w-9",
       },
       isLoading: {
         true: "!text-foreground",

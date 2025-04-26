@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Chip } from "@repo/ui/components/chip";
+import { Chip } from "@repo/ui/components";
 import { CheckCircle, XCircle } from "lucide-react";
 
 const chipData = [

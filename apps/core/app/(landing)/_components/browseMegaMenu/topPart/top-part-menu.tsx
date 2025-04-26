@@ -3,9 +3,8 @@ import IconSetsIcon from "@repo/icons/icon-sets";
 import IllustrationIcon from "@repo/icons/illustration";
 import MockUpsIcon from "@repo/icons/mockups";
 import PolygonIcon from "@repo/icons/polygon";
-import UiKitIcon from "@repo/icons/ui-kit";
 import WireFrameIcon from "@repo/icons/wire-frame";
-import Typography from "@repo/ui/components/typography";
+import { Typography } from "@repo/ui/components";
 import Link from "next/link";
 
 interface CategoryItemProps {

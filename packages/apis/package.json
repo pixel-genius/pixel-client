@@ -9,14 +9,14 @@
     "generate:api": "turbo gen api"
   },
   "peerDependencies": {
-    "react": "^18"
+    "react": "^19"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
-    "@types/react": "^18",
+    "@types/react": "^19",
     "autoprefixer": "^10.4.19",
     "inquirer-autocomplete-prompt": "^3.0.1",
     "openapi-types": "^12.1.3",

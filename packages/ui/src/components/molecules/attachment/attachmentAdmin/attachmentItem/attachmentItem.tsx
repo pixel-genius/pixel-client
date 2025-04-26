@@ -3,7 +3,7 @@ import { Loader, Trash2 } from "lucide-react";
 import Image from "next/image";
 import { Button } from "../../../../atoms/button";
 import { FileState } from "../../useAttachment";
-import Typography from "./../../../../atoms/typography";
+import { Typography } from "../../../../atoms/typography";
 
 interface AttachmentItemProps {
   file: FileState;
@@ -62,5 +62,7 @@ const AttachmentItem = ({ file, handleRemove }: AttachmentItemProps) => {
     </div>
   );
 };
+
+AttachmentItem.displayName = "AttachmentAdmin.AttachmentItem";
 
 export { AttachmentItem };
