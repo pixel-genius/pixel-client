@@ -33,11 +33,14 @@ jobs:
         if: steps.cache-deps.outputs.cache-hit != 'true'
         run: bun install
 
+      - name: Install Turbo globally
+        run: bun install -g turbo
+
       - name: Type checking
-        run: bun run type-checks
+        run: bun run type-checks || npx turbo build check-types
 
       - name: Build application
-        run: bun run build
+        run: bun run build || npx turbo build
 
   merge-pr:
     runs-on: ubuntu-latest
