@@ -4,8 +4,9 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import { ApiProvider } from "@repo/apis/providers/api-provider";
-import { Toaster } from "@repo/ui/components/sonner";
+import { Toaster } from "@repo/ui/components";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { ReactNode, Fragment } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,19 +21,24 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }): JSX.Element {
   return (
     <ApiProvider>
       <html lang="en" className="h-full" suppressHydrationWarning>
-        <body className={cn(inter.className, "h-full")}>
+        <body
+          className={cn(inter.className, "h-full")}
+          suppressHydrationWarning
+        >
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
           >
-            <NuqsAdapter>{children}</NuqsAdapter>
+            <NuqsAdapter>
+              <Fragment>{children}</Fragment>
+            </NuqsAdapter>
           </ThemeProvider>
           <Toaster richColors />
         </body>

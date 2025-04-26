@@ -1,4 +1,4 @@
-import Typography from "../atoms/typography";
+import { Typography } from "../atoms/typography";
 
 export const FoundationColor = () => {
   return (

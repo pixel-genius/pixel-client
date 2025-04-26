@@ -3,10 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // UI components
 import {
+  Sidebar,
+  SidebarContent,
+  SidebarHeader,
   SidebarMenu,
+  SidebarMenuButton,
   SidebarMenuItem,
+  SidebarProvider,
   useSidebar,
-} from "@repo/ui/components/sidebar";
+} from "@repo/ui/components";
 
 // Logo
 import PixelIcon from "@repo/icons/pxiel";

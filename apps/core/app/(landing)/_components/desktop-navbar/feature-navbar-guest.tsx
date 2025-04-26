@@ -1,4 +1,4 @@
-import Typography from "@repo/ui/components/typography";
+import { Typography } from "@repo/ui/components";
 import Link from "next/link";
 
 const FeatureNavbarGuest = () => {

@@ -1,8 +1,8 @@
-import Typography from "@repo/ui/components/typography";
+import { Typography } from "@repo/ui/components";
 import { FileFormatSection } from "./file-formate-section";
 import PriceSection from "./price-section";
-import { Input } from "@repo/ui/components/input";
-import { Separator } from "@repo/ui/components/separator";
+import { Input } from "@repo/ui/components";
+import { Separator } from "@repo/ui/components";
 import { HighlightSection } from "./highlight-section";
 
 export const TabGeneral = () => {

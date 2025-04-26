@@ -1,15 +1,14 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@repo/ui/components/button";
-import { Input } from "@repo/ui/components/input";
+import { Button, Input } from "@repo/ui/components";
 
 // import icons
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import AuthCard from "../_components/auth-card";
-import { useQueryParams } from "@repo/ui/hooks/use-query-params";
+import { useQueryParams } from "@repo/ui/hooks";
 import { Suspense } from "react";
 import Link from "next/link";
 import type { PostRegisterRequest } from "@repo/apis/core/accounts/users/register/post/post-register.types";

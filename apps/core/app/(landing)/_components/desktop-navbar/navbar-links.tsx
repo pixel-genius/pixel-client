@@ -1,4 +1,4 @@
-import Typography from "@repo/ui/components/typography";
+import { Typography } from "@repo/ui/components";
 import { useMegaMenuStore } from "./../../store/mega-menu";
 import { useCartStore } from "./../../store/cart-store";
 import Link from "next/link";

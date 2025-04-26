@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "@repo/ui/components/button";
+import { Button } from "@repo/ui/components";
 import Chevrondownicon from "@repo/icons/chevron-down";
 import Hearticon from "@repo/icons/heart";
-import Typography from "@repo/ui/components/typography";
+import { Typography } from "@repo/ui/components";
 
 type ButtonGroup = {
   label: string;

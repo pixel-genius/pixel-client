@@ -2,7 +2,7 @@
 
 import React from "react";
 import { FileFormatField } from "./file-formate-field";
-import Typography from "@repo/ui/components/typography";
+import { Typography } from "@repo/ui/components";
 
 export const FileFormatSection: React.FC = ({}) => {
   return (
