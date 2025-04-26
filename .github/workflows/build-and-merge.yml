@@ -15,6 +15,17 @@ jobs:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "yarn"
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
       - name: Cache Bun dependencies
         id: cache-deps
         uses: actions/cache@v4
@@ -24,17 +35,24 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-bun-dependencies-
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-
-      - name: Install dependencies
-        if: steps.cache-deps.outputs.cache-hit != 'true'
+      - name: Install root dependencies
         run: bun install
 
-      - name: Install Turbo globally
-        run: bun install -g turbo
+      - name: Install design system dependencies
+        run: |
+          cd packages/design-system
+          yarn install
+          yarn add -D ts-node typescript
+
+      - name: Install global tools
+        run: |
+          npm install -g turbo
+          npm install -g ts-node
+
+      - name: Build design system first
+        run: |
+          cd packages/design-system
+          yarn build || npx ts-node src/scripts/build.ts
 
       - name: Type checking
         run: bun run type-checks || npx turbo build check-types
