@@ -131,3 +131,10 @@ export const NoIcon: Story = {
     options: frameworksList,
   },
 };
+
+export const NoOptions: Story = {
+  args: {
+    id: "6",
+    options: [],
+  },
+};

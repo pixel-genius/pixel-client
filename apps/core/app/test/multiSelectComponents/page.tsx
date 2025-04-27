@@ -90,6 +90,18 @@ const Page = () => {
           defaultValue={["next.js"]}
         />
       </div>
+      <hr />
+      <div>
+        <Typography variant="label/md" className="mb-5">
+          No Options
+        </Typography>
+        <MultiSelect
+          id="1"
+          options={[]}
+          iconSide="left"
+          label="Multi Select"
+        />
+      </div>
     </div>
   );
 };
