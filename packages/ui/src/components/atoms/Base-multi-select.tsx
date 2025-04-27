@@ -210,7 +210,7 @@ const BaseMultiSelect = React.forwardRef<
         ),
       [loading, noChevronIcon, isPopoverOpen],
     );
-
+    console.log(selectedValues);
     return (
       <Popover
         open={isPopoverOpen}
@@ -233,15 +233,14 @@ const BaseMultiSelect = React.forwardRef<
             {iconSide === "left" && renderIconComponent}
             {selectedValues.length ? (
               <div className="flex justify-between items-center w-full">
-                <div className="flex flex-wrap items-center">
+                <div className="flex flex-wrap items-center gap-2">
                   {selectedValues.slice(0, maxCount).map((value) => {
                     const option = optionsState.find((o) => o.value === value);
                     return (
                       <Chip
                         key={value}
-                        className={"h-4"}
                         style={{ animationDuration: `${animation}s` }}
-                        size={null}
+                        size={size}
                         variant={chipVariant}
                         iconRight={
                           <XCircle
@@ -260,10 +259,10 @@ const BaseMultiSelect = React.forwardRef<
                   {selectedValues.length > maxCount && (
                     <Chip
                       className={cn(
-                        "bg-transparent text-foreground border-foreground/1 hover:bg-transparent h-4",
+                        "bg-transparent text-foreground border-foreground/1 hover:bg-transparent",
                       )}
                       style={{ animationDuration: `${animation}s` }}
-                      size={null}
+                      size={size}
                       iconRight={
                         <XCircle
                           className="ml-2 h-4 w-4 cursor-pointer"
@@ -306,39 +305,43 @@ const BaseMultiSelect = React.forwardRef<
           onEscapeKeyDown={() => setIsPopoverOpen(false)}
         >
           <Command>
-            <CommandInput
-              placeholder="Search..."
-              onKeyDown={handleInputKeyDown}
-              value={searchOptionInput}
-              disabled={loading}
-              onChangeCapture={(e) => {
-                setSearchOptionInput(e.currentTarget.value.trim());
-              }}
-            />
+            {!!optionsState.length && (
+              <CommandInput
+                placeholder="Search..."
+                onKeyDown={handleInputKeyDown}
+                value={searchOptionInput}
+                disabled={loading}
+                onChangeCapture={(e) => {
+                  setSearchOptionInput(e.currentTarget.value.trim());
+                }}
+              />
+            )}
             <CommandList>
-              <CommandEmpty className="p-1">
-                <Button
-                  className="w-full rounded-none"
-                  size="sm"
-                  iconLeft={<PlusIcon />}
-                  onClick={() => {
-                    setOptionsState((prev) => [
-                      ...prev,
-                      {
-                        label: searchOptionInput,
-                        value: searchOptionInput.toLowerCase(),
-                      },
-                    ]);
-                    setSelectedValues((prev) => [
-                      ...prev,
-                      searchOptionInput.toLowerCase(),
-                    ]);
-                    setSearchOptionInput("");
-                  }}
-                >
-                  Add
-                </Button>
-              </CommandEmpty>
+              {!!optionsState.length && !!searchOptionInput && (
+                <CommandEmpty className="p-1">
+                  <Button
+                    className="w-full rounded-none"
+                    size="sm"
+                    iconLeft={<PlusIcon />}
+                    onClick={() => {
+                      setOptionsState((prev) => [
+                        ...prev,
+                        {
+                          label: searchOptionInput,
+                          value: searchOptionInput.toLowerCase(),
+                        },
+                      ]);
+                      setSelectedValues((prev) => [
+                        ...prev,
+                        searchOptionInput.toLowerCase(),
+                      ]);
+                      setSearchOptionInput("");
+                    }}
+                  >
+                    Add
+                  </Button>
+                </CommandEmpty>
+              )}
               <CommandGroup>
                 {optionsState.length ? (
                   <>
@@ -386,38 +389,36 @@ const BaseMultiSelect = React.forwardRef<
                     })}
                   </>
                 ) : (
-                  <>No Options</>
+                  <p className="text-center">No Options</p>
                 )}
               </CommandGroup>
-              {optionsState.length ? (
-                <>
-                  <CommandSeparator />
-                  <CommandGroup>
-                    <div className="flex items-center justify-between">
-                      {selectedValues.length > 0 && (
-                        <>
-                          <CommandItem
-                            onSelect={handleClear}
-                            className="flex-1 justify-center cursor-pointer"
-                          >
-                            Clear
-                          </CommandItem>
-                          <Separator
-                            orientation="vertical"
-                            className="flex min-h-6 h-full"
-                          />
-                        </>
-                      )}
+              {!!optionsState.length && <CommandSeparator />}
+              <CommandGroup forceMount>
+                <div className="flex items-center justify-between">
+                  {selectedValues.length > 0 && (
+                    <>
                       <CommandItem
-                        onSelect={() => setIsPopoverOpen(false)}
-                        className="flex-1 justify-center cursor-pointer max-w-full"
+                        onSelect={handleClear}
+                        className="flex-1 justify-center cursor-pointer"
                       >
-                        Close
+                        Clear
                       </CommandItem>
-                    </div>
-                  </CommandGroup>
-                </>
-              ) : null}
+                      <Separator
+                        orientation="vertical"
+                        className="flex min-h-6 h-full"
+                      />
+                    </>
+                  )}
+                  {!!optionsState.length && (
+                    <CommandItem
+                      onSelect={() => setIsPopoverOpen(false)}
+                      className="flex-1 justify-center cursor-pointer max-w-full"
+                    >
+                      Close
+                    </CommandItem>
+                  )}
+                </div>
+              </CommandGroup>
             </CommandList>
           </Command>
         </PopoverContent>

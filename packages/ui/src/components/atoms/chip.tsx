@@ -15,9 +15,9 @@ const chipVariants = cva(
         secondary: "bg-secondary hover:bg-zinc-900    ",
       },
       size: {
-        sm: "h-9 text-sm",
-        md: "h-[52px]",
-        lg: "h-14 text-lg",
+        sm: "h-6 text-sm",
+        md: "h-8",
+        lg: "h-10 text-lg",
       },
     },
     defaultVariants: {
