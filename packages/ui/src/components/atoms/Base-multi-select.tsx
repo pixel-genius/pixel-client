@@ -1,6 +1,6 @@
 "use client";
 
-import { type VariantProps } from "class-variance-authority";
+import type { VariantProps } from "class-variance-authority";
 import {
   CheckIcon,
   ChevronDown,
@@ -14,7 +14,8 @@ import * as React from "react";
 import { cn } from "@repo/ui/lib/utils";
 import { baseInputVariants } from "./base-input";
 import { Button } from "./button";
-import { Chip, chipVariants } from "./chip";
+import { Chip } from "./chip";
+import type { chipVariants } from "./chip";
 import {
   Command,
   CommandEmpty,
