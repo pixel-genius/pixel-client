@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { Suspense } from "react";
-import { Typography } from "@repo/ui/components";
-import blenderBG from "./_assets/blender-bg.svg";
-import figmaBG from "./_assets/figma-bg.svg";
-import planetBG from "./_assets/planet-bg.svg";
+import { DashedCircles, Typography } from "@repo/ui/components";
+import blender from "./_assets/blender.svg";
+import planet from "./_assets/planet.svg";
+import figma from "./_assets/figma.svg";
 import shadowBGLanding from "./_assets/shadow-bg.svg";
-import sketchBG from "./_assets/sketch-bg.svg";
+import sketch from "./_assets/sketch.svg";
 import { LandingTabs } from "./_components/landing-tabs";
 
 export default function Page() {
@@ -21,41 +21,113 @@ export default function Page() {
         priority
       />
 
-      {/* Planet Background */}
-      <Image
-        src={planetBG}
-        alt="bg-landing"
-        className="left-0 hidden sm:block absolute -z-10"
-        width={250}
-        height={250}
-      />
+      <div className="-left-4 -top-5 hidden sm:block absolute -z-10">
+        <DashedCircles
+          count={4}
+          baseSize={250}
+          gapSize={40}
+          duration={50}
+          speedFactor={0.8}
+          borderColor="#6155FF"
+          borderWidth={3}
+          dashArray="16,19,24"
+          dashOffset={30}
+          dashArrayFactor={0.85}
+          borderOpacity={0.2}
+          rotationDirection="alternating"
+          className="size-[250px]"
+        >
+          <Image
+            src={planet}
+            alt="bg-landing "
+            width={80}
+            height={80}
+            className="opacity-70"
+            priority
+          />
+        </DashedCircles>
+      </div>
 
-      {/* Figma Background */}
-      <Image
-        src={figmaBG}
-        alt="bg-landing"
-        className="left-10 top-72 sm:opacity-100 opacity-35 absolute -z-10"
-        width={250}
-        height={250}
-      />
+      <div className="left-10 top-72 sm:opacity-100 opacity-35 absolute -z-10">
+        <DashedCircles
+          count={4}
+          baseSize={250}
+          gapSize={40}
+          duration={120}
+          speedFactor={0.7}
+          borderColor="#6155FF"
+          borderWidth={3}
+          dashArray="16,19,24"
+          dashOffset={30}
+          dashArrayFactor={0.85}
+          borderOpacity={0.15}
+          rotationDirection="clockwise"
+          className="size-[250px]"
+        >
+          <Image
+            src={figma}
+            alt="bg-landing "
+            width={100}
+            height={100}
+            className="opacity-70"
+            priority
+          />
+        </DashedCircles>
+      </div>
 
-      {/* Sketch Background */}
-      <Image
-        src={sketchBG}
-        alt="bg-landing"
-        className="right-10 top-12 sm:opacity-100 opacity-35 absolute -z-10"
-        width={250}
-        height={250}
-      />
+      <div className="right-10 top-5 sm:opacity-100 opacity-35 absolute -z-10 ">
+        <DashedCircles
+          count={4}
+          baseSize={250}
+          gapSize={40}
+          duration={180}
+          speedFactor={0.7}
+          borderColor="#6155FF"
+          borderWidth={3}
+          dashArray="16,19,24"
+          dashOffset={30}
+          dashArrayFactor={0.85}
+          borderOpacity={0.2}
+          rotationDirection="counterclockwise"
+          className="size-[250px]"
+        >
+          <Image
+            src={sketch}
+            alt="bg-landing"
+            width={100}
+            height={100}
+            className="opacity-70"
+            priority
+          />
+        </DashedCircles>
+      </div>
 
-      {/* Blender Background */}
-      <Image
-        src={blenderBG}
-        alt="bg-landing"
-        className="right-24 top-80 sm:opacity-100 opacity-35 absolute -z-10"
-        width={250}
-        height={250}
-      />
+      <div className="right-36 top-80 sm:opacity-100 absolute">
+        <DashedCircles
+          count={4}
+          baseSize={250}
+          gapSize={40}
+          duration={50}
+          speedFactor={0.7}
+          borderColor="#6155FF"
+          borderWidth={3}
+          dashArray="16,19,24"
+          dashOffset={30}
+          dashArrayFactor={0.85}
+          borderOpacity={0.2}
+          rotationDirection="alternating"
+          className="size-[250px]"
+        >
+          <Image
+            src={blender}
+            alt="bg-landing"
+            width={100}
+            height={100}
+            className="opacity-70"
+            priority
+          />
+        </DashedCircles>
+      </div>
 
       {/* Header */}
       <div className="pb-56 pt-48">

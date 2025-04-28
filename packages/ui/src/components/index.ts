@@ -19,6 +19,7 @@ export * from "./atoms/command";
 export * from "./atoms/context-menu";
 export * from "./atoms/countdown";
 export * from "./atoms/custom-cursor";
+export * from "./atoms/dashed-circles";
 export * from "./atoms/dialog";
 export * from "./atoms/drawer";
 export * from "./atoms/dropdown-menu";
