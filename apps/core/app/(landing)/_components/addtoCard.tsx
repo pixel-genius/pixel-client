@@ -95,11 +95,7 @@ const Addtocard = () => {
         </div>
         <div className=" flex flex-col gap-3 pb-16">
           <div className="relative gap-2 flex items-center">
-            <Input
-              label="Email"
-              placeholder="example@email.com"
-              type="email"
-            />
+            <Input label="Email" placeholder="example@email.com" type="email" />
           </div>
           <Input label="Full Name" placeholder="Ali Kashef" type="text" />
         </div>
