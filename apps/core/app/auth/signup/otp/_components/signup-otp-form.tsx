@@ -1,16 +1,15 @@
 // import components
 "use client";
-import { Button } from "@repo/ui/components/button";
+import { Button, Countdown, Input } from "@repo/ui/components";
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from "@repo/ui/components/input-otp";
+} from "@repo/ui/components";
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
 
 // import icons
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Countdown } from "@repo/ui/components/countdown";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -19,7 +18,6 @@ import { usePostVerifyOtp } from "@repo/apis/core/accounts/users/verify_otp/post
 import { postVerifyOtpSchema } from "@repo/apis/core/accounts/users/verify_otp/post/post-verify-otp.schema";
 import type { PostVerifyOtpRequest } from "@repo/apis/core/accounts/users/verify_otp/post/post-verify-otp.types";
 import { setAuthTokens } from "@repo/apis/utils/cookies";
-import { Input } from "@repo/ui/components/input";
 
 export interface SignupOtpFormProps {
   username: string | undefined;

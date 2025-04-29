@@ -1,6 +1,6 @@
-import { Button } from "@repo/ui/components/button";
-import { Input } from "@repo/ui/components/input";
-import Typography from "@repo/ui/components/typography";
+import { Button } from "@repo/ui/components";
+import { Input } from "@repo/ui/components";
+import { Typography } from "@repo/ui/components";
 import Image from "next/image";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { Trash2Icon } from "lucide-react";

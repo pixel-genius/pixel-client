@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { AttachmentItemProps } from "../../useAttachment";
-import Typography from "../../../../atoms/typography";
+import { Typography } from "../../../../atoms/typography";
 import { Trash2, Loader } from "lucide-react";
 import { Button } from "../../../../atoms/button";
 
@@ -50,5 +50,7 @@ const AttachmentItem = ({
     </div>
   );
 };
+
+AttachmentItem.displayName = "AttachmentLanding.AttachmentItem";
 
 export { AttachmentItem };

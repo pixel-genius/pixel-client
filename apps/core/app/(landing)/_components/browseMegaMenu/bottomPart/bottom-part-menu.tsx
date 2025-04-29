@@ -1,4 +1,4 @@
-import Typography from "@repo/ui/components/typography";
+import { Typography } from "@repo/ui/components";
 import IllustratorIcon from "@repo/icons/Illustrator";
 import Adobexdicon from "@repo/icons/adobexd";
 import Belendericon from "@repo/icons/belender";

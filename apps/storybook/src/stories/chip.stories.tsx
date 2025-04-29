@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Chip } from "@repo/ui/components/chip";
+import { Chip } from "@repo/ui/components";
 import { CheckCircle, XCircle } from "lucide-react";
 
 const chipData = [
@@ -84,7 +84,7 @@ export const Sizes: Story = {
       },
     },
   },
-  render: (args) => (
+  render: (args: typeof meta["args"]) => (
     <div className="flex gap-4">
       <Chip {...args} size="sm">
         Small

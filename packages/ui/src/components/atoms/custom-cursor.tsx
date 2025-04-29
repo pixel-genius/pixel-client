@@ -1,3 +1,4 @@
+"use client";
 import CursorIcon from "@repo/icons/cursor";
 
 import { motion, useMotionValue } from "framer-motion";
@@ -6,7 +7,7 @@ import React, { useEffect, useState } from "react";
 interface CustomCursorProps {
   color?: string;
   size?: number;
-  targetRef: React.RefObject<HTMLElement>;
+  targetRef: React.RefObject<HTMLDivElement | null>;
   label?: string;
 }
 
@@ -75,4 +76,4 @@ const CustomCursor: React.FC<CustomCursorProps> = ({
   );
 };
 
-export default CustomCursor;
+export { CustomCursor };

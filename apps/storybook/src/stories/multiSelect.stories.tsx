@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { MultiSelect } from "@repo/ui/components/multi-select";
+import { MultiSelect } from "@repo/ui/components";
 
 const frameworksList = [
   {

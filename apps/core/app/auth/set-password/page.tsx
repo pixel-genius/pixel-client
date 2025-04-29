@@ -1,11 +1,11 @@
 // import components
 "use client";
-import { Button } from "@repo/ui/components/button";
+import { Button } from "@repo/ui/components";
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from "@repo/ui/components/input-otp";
+} from "@repo/ui/components";
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -13,7 +13,7 @@ import { toast } from "sonner";
 
 // import icons
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "@repo/ui/components/input";
+import { Input } from "@repo/ui/components";
 import { Suspense, useEffect } from "react";
 import AuthCard from "../_components/auth-card";
 

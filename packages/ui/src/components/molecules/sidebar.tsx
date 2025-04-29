@@ -30,7 +30,7 @@ import {
   AvatarImage,
   AvatarFallback,
   Avatar,
-} from "@repo/ui/components/avatar";
+} from "@repo/ui/components";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -38,7 +38,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@repo/ui/components/dropdown-menu";
+} from "@repo/ui/components";
 import Link from "next/link";
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state";

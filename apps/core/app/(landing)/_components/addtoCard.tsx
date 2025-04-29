@@ -4,14 +4,14 @@ import Metamaskicon from "@repo/icons/metamask";
 import Card from "./card";
 import Tonconnecticon from "@repo/icons/tonconnect";
 import Paypalicon from "@repo/icons/paypal";
-import { Input } from "@repo/ui/components/input";
-import { Button } from "@repo/ui/components/button";
+import { Input } from "@repo/ui/components";
+import { Button } from "@repo/ui/components";
 import Securityicon from "@repo/icons/security";
-import { Label } from "@repo/ui/components/label";
+import { Label } from "@repo/ui/components";
 import { useState } from "react";
 import CardSkeleton from "./card-cart-skeleton";
 import { useCartStore } from "../store/cart-store";
-import Typography from "@repo/ui/components/typography";
+import { Typography } from "@repo/ui/components";
 
 const Addtocard = () => {
   const { closeAddToCart } = useCartStore();
@@ -95,11 +95,7 @@ const Addtocard = () => {
         </div>
         <div className=" flex flex-col gap-3 pb-16">
           <div className="relative gap-2 flex items-center">
-            <Input
-              label="Email"
-              placeholder="example@email.com"
-              type="email"
-            />
+            <Input label="Email" placeholder="example@email.com" type="email" />
           </div>
           <Input label="Full Name" placeholder="Ali Kashef" type="text" />
         </div>

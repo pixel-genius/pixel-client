@@ -1,12 +1,12 @@
-import { Input } from "@repo/ui/components/input";
+import { Input } from "@repo/ui/components";
 import { useFormContext } from "react-hook-form";
 import { DollarSign, ArrowRight, Percent } from "lucide-react";
 import { cn } from "@repo/ui/lib/utils";
 import { type FC, useEffect, useState } from "react";
-import Typography from "@repo/ui/components/typography";
-import { Switch } from "@repo/ui/components/switch";
-import { Chip } from "@repo/ui/components/chip";
-import { Button } from "@repo/ui/components/button";
+import { Typography } from "@repo/ui/components";
+import { Switch } from "@repo/ui/components";
+import { Chip } from "@repo/ui/components";
+import { Button } from "@repo/ui/components";
 
 const CUSTOM_VALUE = null;
 

@@ -10,6 +10,13 @@ const nextConfig = {
     domains: ["images.unsplash.com", "github.com/shadcn.png", "images.ui8.net"],
   },
   output: "standalone",
+
+  // Disable styled-jsx during server-side rendering to avoid useContext issues
+  compiler: {
+    styledComponents: true, // Enable styled-components instead
+  },
+
+  serverExternalPackages: ["styled-jsx"], // Push styled-jsx to client side only
 };
 
 export default nextConfig;

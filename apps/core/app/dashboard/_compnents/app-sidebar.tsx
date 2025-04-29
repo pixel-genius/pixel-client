@@ -9,7 +9,11 @@ import {
   SidebarHeader,
   SidebarRail,
   useSidebar,
-} from "@repo/ui/components/sidebar";
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
+} from "@repo/ui/components";
 
 //icons
 import BoxPackage from "@repo/icons/box-package";

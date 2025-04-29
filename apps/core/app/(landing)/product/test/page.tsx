@@ -10,9 +10,9 @@ import Instagram from "@repo/icons/instagram";
 import Messagecircleicon from "@repo/icons/message-circle";
 import Shopingcartplusicon from "@repo/icons/shopping-cart-plus";
 import Sketchicon from "@repo/icons/sketch";
-import { ParallaxScrollEffect } from "@repo/ui/components/parallax-scroll-effect"; 
-import { Button } from "@repo/ui/components/button";
-import CustomCursor from "@repo/ui/components/custom-cursor";
+import { ParallaxScrollEffect } from "@repo/ui/components";
+import { Button } from "@repo/ui/components";
+import {CustomCursor} from "@repo/ui/components";
 
 import ProductGallery from "../[id]/_components/product-gallery";
 import { useRef } from "react";
@@ -147,7 +147,7 @@ export default function Example() {
               {/* highlights you can't miss */}
               <div className="w-[30%]">
                 <h2 className="text-3xl font-bold pb-6">
-                  Highlights You Can’t Miss
+                  Highlights You Can't Miss
                 </h2>
                 <div className="flex flex-col gap-2">
                   <div className="bg-gray-800 rounded-2xl p-4">

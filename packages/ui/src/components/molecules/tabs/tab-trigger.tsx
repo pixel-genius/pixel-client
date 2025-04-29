@@ -1,10 +1,9 @@
 "use client";
 
 import React from "react";
-import { useQueryState } from "nuqs";
 import { motion } from "framer-motion";
 import { cva, VariantProps } from "class-variance-authority";
-import Typography from "../../atoms/typography";
+import { Typography } from "../../atoms/typography";
 import { useTabStore } from "./tab-provider";
 
 export const DEFAULT_TAB_ID = "tab";
@@ -61,6 +60,8 @@ export type TabTriggerProps = VariantProps<typeof tabTriggerVariants> & {
   tabId?: string;
   variant?: "fill" | "outline";
   onClick?: () => void;
+  searchParams?: URLSearchParams;
+  setSearchParams?: (params: URLSearchParams) => void;
 };
 
 export const TabTrigger = (props: TabTriggerProps) => {
@@ -74,6 +75,8 @@ export const TabTrigger = (props: TabTriggerProps) => {
     tabId: tabIdProps,
     variant: variantProps,
     onClick,
+    searchParams,
+    setSearchParams,
   } = props;
 
   const valueStore = useTabStore((s) => s.value);
@@ -85,13 +88,16 @@ export const TabTrigger = (props: TabTriggerProps) => {
   const variant = variantProps || variantStore;
   const tabId = tabIdProps || idStore;
 
-  const [queryValue, setQueryValue] = useQueryState(tabId);
-
+  const queryValue = searchParams?.get(tabId);
   const activeValue = queryValue || valueStore;
   const isActive = activeValue === value;
 
   const handleClick = () => {
-    setQueryValue(value);
+    if (searchParams && setSearchParams) {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set(tabId, value);
+      setSearchParams(params);
+    }
     setValueStore(value);
     onChangeStore?.(value);
     onClick?.();

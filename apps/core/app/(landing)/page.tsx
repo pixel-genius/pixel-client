@@ -1,57 +1,135 @@
-"use client";
-import Typography from "@repo/ui/components/typography";
-import * as htmlToImage from "html-to-image";
-import { useTheme } from "next-themes";
-import { useState } from "react";
-
-import {
-  TabProvider,
-  TabList,
-  TabTrigger,
-  TabContent,
-} from "@repo/ui/components/tabs";
-
-import { ProductCard } from "@repo/ui/components/prodoct-card";
-import {
-  ProductList,
-  ProductListUiUx,
-  ProductList3D,
-  ProductListGraphic,
-} from "./_constant/mock-product-list";
+import Image from "next/image";
+import { Suspense } from "react";
+import { DashedCircles, Typography } from "@repo/ui/components";
+import blender from "./_assets/blender.svg";
+import planet from "./_assets/planet.svg";
+import figma from "./_assets/figma.svg";
+import shadowBGLanding from "./_assets/shadow-bg.svg";
+import sketch from "./_assets/sketch.svg";
+import { LandingTabs } from "./_components/landing-tabs";
 
 export default function Page() {
-  const { theme, setTheme } = useTheme();
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
-
-  const captureScreenshot = async () => {
-    const dataUrl = await htmlToImage.toPng(document.body, {
-      width: document.documentElement.scrollWidth,
-      height: document.documentElement.scrollHeight,
-    });
-    setImageUrl(dataUrl);
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
-
   return (
-    <main className="container ">
-      <img
-        src="/images/bg-landing.svg"
+    <main className="container">
+      {/* Background Shadow */}
+      <Image
+        src={shadowBGLanding}
         alt="bg-landing"
         className="top-0 left-0 absolute -z-10"
+        width={1440}
+        height={1024}
+        priority
       />
 
-      <img
-        src="/images/landing-simbol.svg"
-        alt="bg-landing"
-        className="right-0 hidden sm:block absolute -z-10"
-      />
-      <img
-        src="/images/landing-simbol2.svg"
-        alt="bg-landing"
-        className="left-0 sm:opacity-100 opacity-35  absolute -z-10"
-      />
+      <div className="-left-4 -top-5 hidden sm:block absolute -z-10">
+        <DashedCircles
+          count={4}
+          baseSize={250}
+          gapSize={40}
+          duration={50}
+          speedFactor={0.8}
+          borderColor="#6155FF"
+          borderWidth={3}
+          dashArray="16,19,24"
+          dashOffset={30}
+          dashArrayFactor={0.85}
+          borderOpacity={0.2}
+          rotationDirection="alternating"
+          className="size-[250px]"
+        >
+          <Image
+            src={planet}
+            alt="bg-landing "
+            width={80}
+            height={80}
+            className="opacity-70"
+            priority
+          />
+        </DashedCircles>
+      </div>
 
-      {/* Heder */}
+      <div className="left-10 top-72 sm:opacity-100 opacity-35 absolute -z-10">
+        <DashedCircles
+          count={4}
+          baseSize={250}
+          gapSize={40}
+          duration={120}
+          speedFactor={0.7}
+          borderColor="#6155FF"
+          borderWidth={3}
+          dashArray="16,19,24"
+          dashOffset={30}
+          dashArrayFactor={0.85}
+          borderOpacity={0.15}
+          rotationDirection="clockwise"
+          className="size-[250px]"
+        >
+          <Image
+            src={figma}
+            alt="bg-landing "
+            width={100}
+            height={100}
+            className="opacity-70"
+            priority
+          />
+        </DashedCircles>
+      </div>
+
+      <div className="right-10 top-5 sm:opacity-100 opacity-35 absolute -z-10 ">
+        <DashedCircles
+          count={4}
+          baseSize={250}
+          gapSize={40}
+          duration={180}
+          speedFactor={0.7}
+          borderColor="#6155FF"
+          borderWidth={3}
+          dashArray="16,19,24"
+          dashOffset={30}
+          dashArrayFactor={0.85}
+          borderOpacity={0.2}
+          rotationDirection="counterclockwise"
+          className="size-[250px]"
+        >
+          <Image
+            src={sketch}
+            alt="bg-landing"
+            width={100}
+            height={100}
+            className="opacity-70"
+            priority
+          />
+        </DashedCircles>
+      </div>
+
+      <div className="right-36 top-80 sm:opacity-100 absolute">
+        <DashedCircles
+          count={4}
+          baseSize={250}
+          gapSize={40}
+          duration={50}
+          speedFactor={0.7}
+          borderColor="#6155FF"
+          borderWidth={3}
+          dashArray="16,19,24"
+          dashOffset={30}
+          dashArrayFactor={0.85}
+          borderOpacity={0.2}
+          rotationDirection="alternating"
+          className="size-[250px]"
+        >
+          <Image
+            src={blender}
+            alt="bg-landing"
+            width={100}
+            height={100}
+            className="opacity-70"
+            priority
+          />
+        </DashedCircles>
+      </div>
+
+      {/* Header */}
       <div className="pb-56 pt-48">
         <Typography
           component="h1"
@@ -69,89 +147,18 @@ export default function Page() {
             component="span"
             variant="inherit"
             weight="light"
-            className=" italic text-primary-500"
+            className="italic text-primary-500"
           >
             pixel geniuses
           </Typography>{" "}
           to supercharge your creativity.
         </Typography>
       </div>
-      {/* Cards */}
-      <div className="mb-44">
-        {/* Tabs */}
-        <TabProvider defaultValue="trend">
-          <TabList>
-            <TabTrigger value="trend">Trends</TabTrigger>
-            <TabTrigger value="uiux">UIUX</TabTrigger>
-            <TabTrigger value="3d">3D Model</TabTrigger>
-            <TabTrigger value="graphic">Graphic Design</TabTrigger>
-          </TabList>
-          <TabContent value="trend">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-4">
-              {ProductList.map((product) => (
-                <ProductCard
-                  key={product.title}
-                  title={product.title}
-                  price={product.price}
-                  image={product.image}
-                  username={product.username}
-                  see={product.see}
-                  avatar={product.avatar}
-                  like={product.like}
-                />
-              ))}
-            </div>
-          </TabContent>
-          <TabContent value="uiux">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-4">
-              {ProductListUiUx.map((product) => (
-                <ProductCard
-                  key={product.title}
-                  title={product.title}
-                  price={product.price}
-                  image={product.image}
-                  avatar={product.avatar}
-                  username={product.username}
-                  see={product.see}
-                  like={product.like}
-                />
-              ))}
-            </div>
-          </TabContent>
-          <TabContent value="3d">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-4">
-              {ProductList3D.map((product) => (
-                <ProductCard
-                  key={product.title}
-                  title={product.title}
-                  price={product.price}
-                  image={product.image}
-                  avatar={product.avatar}
-                  username={product.username}
-                  see={product.see}
-                  like={product.like}
-                />
-              ))}
-            </div>
-          </TabContent>
-          <TabContent value="graphic">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-4">
-              {ProductListGraphic.map((product) => (
-                <ProductCard
-                  key={product.title}
-                  title={product.title}
-                  price={product.price}
-                  image={product.image}
-                  avatar={product.avatar}
-                  username={product.username}
-                  see={product.see}
-                  like={product.like}
-                />
-              ))}
-            </div>
-          </TabContent>
-        </TabProvider>
-      </div>
+
+      {/* Product Tabs */}
+      <Suspense>
+        <LandingTabs />
+      </Suspense>
     </main>
   );
 }

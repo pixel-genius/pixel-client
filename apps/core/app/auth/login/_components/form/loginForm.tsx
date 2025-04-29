@@ -5,9 +5,7 @@ import { postLoginSchema } from "@repo/apis/core/accounts/users/login/post/post-
 import type { PostLoginRequest } from "@repo/apis/core/accounts/users/login/post/post-login.types";
 import { usePostLogin } from "@repo/apis/core/accounts/users/login/post/use-post-login";
 import { setAuthTokens } from "@repo/apis/utils/cookies";
-import { Button } from "@repo/ui/components/button";
-import { PasswordInput } from "@repo/ui/components/passwordInput";
-import { Input } from "@repo/ui/components/input";
+import { Button, PasswordInput, Input } from "@repo/ui/components";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";

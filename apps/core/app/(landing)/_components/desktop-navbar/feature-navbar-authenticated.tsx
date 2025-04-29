@@ -10,7 +10,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@repo/ui/components/dropdown-menu";
+} from "@repo/ui/components";
 import Image from "next/image";
 import Link from "next/link";
 import { useCartStore } from "../../store/cart-store";
@@ -19,7 +19,7 @@ import {
   AvatarImage,
   AvatarFallback,
   Avatar,
-} from "@repo/ui/components/avatar";
+} from "@repo/ui/components";
 import { useMegaMenuStore } from "./../../store/mega-menu";
 
 const FeatureNavbarAuthenticated = () => {

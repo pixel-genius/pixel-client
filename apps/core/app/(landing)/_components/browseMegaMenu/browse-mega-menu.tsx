@@ -1,7 +1,7 @@
 import { useMegaMenuStore } from "../../store/mega-menu";
 import { BottomPartMenu } from "./bottomPart/bottom-part-menu";
 import { TopPartMenu } from "./topPart/top-part-menu";
-import { RetroGrid } from "@repo/ui/components/retroGrid";
+import { RetroGrid } from "@repo/ui/components";
 
 const BrowseMegaMenu = () => {
   const { closeMegaMenu } = useMegaMenuStore();

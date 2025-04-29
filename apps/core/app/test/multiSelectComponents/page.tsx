@@ -1,7 +1,6 @@
 "use client";
 
-import { MultiSelect } from "@repo/ui/components/multi-select";
-import Typography from "@repo/ui/components/typography";
+import { MultiSelect, Typography } from "@repo/ui/components";
 
 const Page = () => {
   const frameworksList = [
@@ -95,12 +94,7 @@ const Page = () => {
         <Typography variant="label/md" className="mb-5">
           No Options
         </Typography>
-        <MultiSelect
-          id="1"
-          options={[]}
-          iconSide="left"
-          label="Multi Select"
-        />
+        <MultiSelect id="1" options={[]} iconSide="left" label="Multi Select" />
       </div>
     </div>
   );

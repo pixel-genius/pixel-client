@@ -1,18 +1,18 @@
 "use client";
 
-import { Button } from "@repo/ui/components/button";
-import { Input } from "@repo/ui/components/input";
-import { Label } from "@repo/ui/components/label";
-import { Textarea } from "@repo/ui/components/textarea";
+import { Button } from "@repo/ui/components";
+import { Input } from "@repo/ui/components";
+import { Label } from "@repo/ui/components";
+import { Textarea } from "@repo/ui/components";
 import Infocircleicon from "@repo/icons/info-circle";
-import { Switch } from "@repo/ui/components/switch";
+import { Switch } from "@repo/ui/components";
 
 import {
+  TabProvider,
   TabList,
   TabTrigger,
   TabContent,
-  TabProvider,
-} from "@repo/ui/components/tabs";
+} from "@repo/ui/components";
 
 const DashboardPage = () => {
   return (
@@ -129,8 +129,8 @@ const DashboardPage = () => {
           <TabProvider
             hiddenMode="unmount"
             defaultValue="General"
-            id="test"
-            onChange={(value) => console.log(value)}
+            id="productTab"
+            onChange={(value: string) => console.log(value)}
           >
             <TabList>
               <TabTrigger value="General">General</TabTrigger>

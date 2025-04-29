@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Skeleton } from "@repo/ui/components/skeleton";
+import { Skeleton } from "@repo/ui/components";
 
 export interface FileFormatFieldLoadingProps {
   count: number;

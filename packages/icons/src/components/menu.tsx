@@ -16,7 +16,7 @@ const MenuIcon = (props: IconProps) => {
         <path
           d="M4 6H20M0 12H16M4 18H20"
           stroke="white"
-          stroke-width="2"
+          strokeWidth="2"
           stroke-linecap="round"
           stroke-linejoin="round"
         />

@@ -9,13 +9,13 @@
     "type-check": "bun tsc --noEmit"
   },
   "peerDependencies": {
-    "react": "^18"
+    "react": "^19"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "@types/node": "^20",
-    "@types/react": "^18",
+    "@types/react": "^19",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "postcss-load-config": "^6.0.1",
@@ -62,7 +62,7 @@
     "lucide-react": "^0.483.0",
     "next": "14.2.4",
     "next-themes": "^0.3.0",
-    "nuqs": "^2.4.1",
+    "nuqs": "^2.4.3",
     "postcss-scss": "^4.0.9",
     "react-countdown": "^2.3.6",
     "react-day-picker": "8.10.1",
@@ -75,27 +75,16 @@
     "tailwind-scrollbar-hide": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.1",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zustand": "^5.0.3"
   },
   "exports": {
     "./globals.scss": "./src/styles/globals.scss",
     "./postcss.config": "./postcss.config.mjs",
     "./tailwind.config": "./tailwind.config.ts",
     "./lib/*": "./src/lib/*.ts",
-    "./components/*": [
-      "./src/components/organisms/*.tsx",
-      "./src/components/organisms/*.ts",
-      "./src/components/organisms/*/index.ts",
-      "./src/components/molecules/*.tsx",
-      "./src/components/molecules/*.ts",
-      "./src/components/molecules/*/index.ts",
-      "./src/components/atoms/*.tsx",
-      "./src/components/atoms/*.ts",
-      "./src/components/atoms/*/index.ts"
-    ],
-    "./hooks/*": [
-      "./src/hooks/*.ts"
-    ],
+    "./components": "./src/components/index.ts",
+    "./hooks": "./src/hooks/index.ts",
     "./constant/*": "./src/constant/*.ts"
   }
 }

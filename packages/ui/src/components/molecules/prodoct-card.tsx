@@ -1,6 +1,6 @@
 import { IconEye, IconHeart, IconShoppingBag } from "@tabler/icons-react";
 import * as React from "react";
-import Typography from "../atoms/typography";
+import { Typography } from "../atoms/typography";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import Image from "next/image";
 import { cn } from "@repo/ui/lib/utils";

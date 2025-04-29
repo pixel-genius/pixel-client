@@ -249,7 +249,7 @@ const Avatar = (props: IconProps) => {
         height="16.6494"
         rx="8.32469"
         stroke="#ECECEC"
-        stroke-width="0.0556835"
+        strokeWidth="0.0556835"
       />
       <defs>
         <pattern

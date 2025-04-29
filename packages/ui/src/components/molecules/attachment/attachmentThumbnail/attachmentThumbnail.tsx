@@ -1,3 +1,5 @@
+"use client";
+
 import AttachmentIcon2 from "@repo/icons/attachment2";
 import Avatar from "@repo/icons/avatar";
 import Refresh from "@repo/icons/refresh";
@@ -7,15 +9,16 @@ import Image from "next/image";
 import { AttachmentProps, useAttachment } from "../useAttachment";
 import { useState } from "react";
 import { Card } from "../../../atoms/card";
-import Typography from "@repo/ui/components/typography";
+import { Typography } from "@repo/ui/components";
 
-export interface AttachmentThumbnailProps extends AttachmentProps {
+export type AttachmentThumbnailProps = AttachmentProps & {
   avatar?: string;
   price: number;
   priceUnit?: string;
   productName: string;
   username: string;
-}
+};
+
 const AttachmentThumbnail = (
   props: Omit<AttachmentProps, "multiple" | "allowedTypes"> &
     AttachmentThumbnailProps,
@@ -171,4 +174,7 @@ const AttachmentThumbnail = (
     </Card>
   );
 };
+
+AttachmentThumbnail.displayName = "AttachmentThumbnail";
+
 export { AttachmentThumbnail };

@@ -1,17 +1,17 @@
 import { ApiProvider } from "@repo/apis/providers/api-provider";
-import { AttachmentAdmin } from "@repo/ui/components/attachment/attachmentAdmin/attachmentAdmin";
-import { AttachmentLanding } from "@repo/ui/components/attachment/attachmentLanding/attachmentLanding";
 import {
+  AttachmentAdmin,
+  AttachmentLanding,
   AttachmentThumbnail,
+  AttachmentProps,
   AttachmentThumbnailProps,
-} from "@repo/ui/components/attachment/attachmentThumbnail/attachmentThumbnail";
-import { AttachmentProps } from "@repo/ui/components/attachment/useAttachment";
+} from "@repo/ui/components";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<AttachmentProps & Partial<AttachmentThumbnailProps>> = {
   title: "Components/Attachment",
   tags: ["autodocs"],
-  
+
   argTypes: {
     title: { control: "text" },
     fileCategory: { control: "radio", options: ["request_author", "product"] },
@@ -69,6 +69,7 @@ export const Landing: Story = {
       console.log(filesId);
     },
     fileCategory: "request_author",
+    allowedTypes: ["jpg", "jpeg", "png"],
   },
   render: (args) => (
     <ApiProvider>
@@ -76,6 +77,7 @@ export const Landing: Story = {
         title={args.title}
         onChange={args.onChange}
         fileCategory={args.fileCategory}
+        allowedTypes={args.allowedTypes}
       />
     </ApiProvider>
   ),
@@ -93,6 +95,10 @@ export const Thumbnail: Story = {
       console.log(filesId);
     },
     fileCategory: "request_author",
+    allowedTypes: ["jpg", "jpeg", "png"],
+    price: 0,
+    productName: "",
+    username: "",
   },
   render: (args) => (
     <ApiProvider>
@@ -103,6 +109,7 @@ export const Thumbnail: Story = {
         title={args.title}
         onChange={args.onChange}
         fileCategory={args.fileCategory}
+        allowedTypes={args.allowedTypes}
       />
     </ApiProvider>
   ),

@@ -1,5 +1,7 @@
-import { Select } from "@repo/ui/components/select";
 import { Meta, StoryObj } from "@storybook/react";
+import {
+  Select,
+} from "@repo/ui/components";
 
 const meta: Meta = {
   title: "Components/Select",
