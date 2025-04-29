@@ -63,6 +63,7 @@ export * from "./molecules/attachment/attachmentThumbnail/attachmentThumbnail";
 export * from "./molecules/attachment/attachmentAdmin/attachmentAdmin";
 export * from "./molecules/attachment/attachmentLanding/attachmentLanding";
 export * from "./molecules/select";
+export * from "./molecules/multi-select";
 
 // Organisms
 export * from "./organisms/foundation-color";
