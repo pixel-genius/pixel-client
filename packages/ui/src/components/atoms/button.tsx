@@ -123,16 +123,23 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={props.disabled}
       >
         {IconLeft && (
-          <span className={cn(isLoading && "invisible")}>{IconLeft}</span>
+          <span className={cn(isLoading && "invisible", "leading-[0]")}>
+            {IconLeft}
+          </span>
         )}
-        <span className={cn(isLoading && "invisible")}>{children}</span>
+        <span className={cn(isLoading && "invisible", "leading-[0]")}>
+          {children}
+        </span>
         {isLoading && (
           <span className="absolute  ">
             <OrbitingDotsLoading />
           </span>
         )}
         {IconRight && (
-          <span className={cn(isLoading && "invisible")}> {IconRight}</span>
+          <span className={cn(isLoading && "invisible", "leading-[0]")}>
+            {" "}
+            {IconRight}
+          </span>
         )}
       </Comp>
     );

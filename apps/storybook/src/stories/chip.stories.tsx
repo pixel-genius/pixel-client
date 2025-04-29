@@ -84,7 +84,7 @@ export const Sizes: Story = {
       },
     },
   },
-  render: (args) => (
+  render: (args: typeof meta["args"]) => (
     <div className="flex gap-4">
       <Chip {...args} size="sm">
         Small

@@ -55,7 +55,7 @@ export const HiddenModeDemo: StoryObj<typeof TabProvider> = {
       },
     },
   },
-  render: (args) => (
+  render: (args: typeof meta["args"]) => (
     <TabProvider {...args}>
       <TabList>
         <TabTrigger value="General">General</TabTrigger>
@@ -106,7 +106,7 @@ export const FillVariant: StoryObj<typeof TabProvider> = {
       },
     },
   },
-  render: (args) => (
+  render: (args: typeof meta["args"]) => (
     <TabProvider {...args}>
       <TabList>
         <TabTrigger value="overview">Overview</TabTrigger>
@@ -153,7 +153,7 @@ export const OutlineVariant: StoryObj<typeof TabProvider> = {
       },
     },
   },
-  render: (args) => (
+  render: (args: typeof meta["args"]) => (
     <TabProvider {...args}>
       <TabList>
         <TabTrigger value="overview">Overview</TabTrigger>
