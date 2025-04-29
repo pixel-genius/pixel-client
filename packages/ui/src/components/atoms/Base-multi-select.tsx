@@ -116,7 +116,15 @@ export interface BaseMultiSelectProps
    */
   className?: string;
 
-  iconSide?: "left" | "right";
+  /**
+   * Left icon of the multi-select component.
+   */
+  iconLeft?: React.ReactNode;
+
+  /**
+   * Right icon of the multi-select component.
+   */
+  iconRight?: React.ReactNode;
 }
 const BaseMultiSelect = React.forwardRef<
   HTMLButtonElement,
@@ -138,7 +146,8 @@ const BaseMultiSelect = React.forwardRef<
       size = "sm",
       error,
       loading,
-      iconSide = "right",
+      iconLeft,
+      iconRight,
       ...props
     },
     ref,
@@ -204,9 +213,9 @@ const BaseMultiSelect = React.forwardRef<
         loading ? (
           <OrbitingDotsLoading />
         ) : noChevronIcon ? null : isPopoverOpen ? (
-          <ChevronUp className="h-4 w-4 cursor-pointer text-muted-foreground" />
+          <ChevronUp className="h-4 w-4 cursor-pointer text-muted-foreground ml-[5px]" />
         ) : (
-          <ChevronDown className="h-4 w-4 cursor-pointer text-muted-foreground" />
+          <ChevronDown className="h-4 w-4 cursor-pointer text-muted-foreground ml-[5px]" />
         ),
       [loading, noChevronIcon, isPopoverOpen],
     );
@@ -229,8 +238,8 @@ const BaseMultiSelect = React.forwardRef<
             className,
           )}
         >
-          <>
-            {iconSide === "left" && renderIconComponent}
+          <div className="hover:cursor-pointer">
+            {iconLeft}
             {selectedValues.length ? (
               <div className="flex justify-between items-center w-full">
                 <div className="flex flex-wrap items-center gap-2">
@@ -295,9 +304,10 @@ const BaseMultiSelect = React.forwardRef<
                   />
                 </div>
               ) : null}
-              {iconSide === "right" && renderIconComponent}
+              {iconRight}
+              {renderIconComponent}
             </span>
-          </>
+          </div>
         </PopoverTrigger>
         <PopoverContent
           className="w-[--radix-popover-trigger-width] p-0"

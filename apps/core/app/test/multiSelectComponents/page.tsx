@@ -1,6 +1,7 @@
 "use client";
 
 import { MultiSelect, Typography } from "@repo/ui/components";
+import { DollarSign } from "lucide-react";
 
 const Page = () => {
   const frameworksList = [
@@ -79,12 +80,25 @@ const Page = () => {
       <hr />
       <div>
         <Typography variant="label/md" className="mb-5">
-          left side Icon
+          Left side Icon
         </Typography>
         <MultiSelect
           id="1"
           options={frameworksList}
-          iconSide="left"
+          iconLeft={<DollarSign size={20} />}
+          label="Multi Select"
+          defaultValue={["next.js"]}
+        />
+      </div>
+      <hr />
+      <div>
+        <Typography variant="label/md" className="mb-5">
+          Right side Icon
+        </Typography>
+        <MultiSelect
+          id="1"
+          options={frameworksList}
+          iconRight={<DollarSign size={20} />}
           label="Multi Select"
           defaultValue={["next.js"]}
         />
@@ -94,7 +108,7 @@ const Page = () => {
         <Typography variant="label/md" className="mb-5">
           No Options
         </Typography>
-        <MultiSelect id="1" options={[]} iconSide="left" label="Multi Select" />
+        <MultiSelect id="1" options={[]} label="Multi Select" />
       </div>
     </div>
   );
