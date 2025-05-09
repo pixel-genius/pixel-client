@@ -11,7 +11,7 @@ const AfterEffectIcon = (props: IconProps) => {
       xmlns="http://www.w3.org/2000/svg"
       {...resProps}
     >
-      <g clip-path="url(#clip0_4283_5910)">
+      <g clipPath="url(#clip0_4283_5910)">
         <path
           d="M13.167 16H2.833C1.267 16 0 14.701 0 13.094V2.906C0 1.299 1.267 0 2.833 0H13.166C14.733 0 16 1.299 16 2.906V13.094C16 14.701 14.733 16 13.167 16Z"
           fill="#D8A1FF"
