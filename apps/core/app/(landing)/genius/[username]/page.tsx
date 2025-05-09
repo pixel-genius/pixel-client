@@ -1,10 +1,10 @@
-import { Avatar, AvatarImage } from '@repo/ui/components/avatar';
+import { Avatar, AvatarImage } from '@repo/ui/components';
 import Image from 'next/image';
-import Typography from '@repo/ui/components/typography';
-import { TabProvider, TabList, TabTrigger, TabContent } from '@repo/ui/components/tabs';
-import { ProductCard } from '@repo/ui/components/prodoct-card';
-import { ProductList } from '../_constant/mock-product-list';
-import { Chip } from '@repo/ui/components/chip';
+import {Typography} from '@repo/ui/components';
+import { TabProvider, TabList, TabTrigger, TabContent } from '@repo/ui/components';
+import { ProductCard } from '@repo/ui/components';
+import { ProductList } from '../../_constant/mock-product-list';
+import { Chip } from '@repo/ui/components';
 
 const ProfilePage = () => {
   return (

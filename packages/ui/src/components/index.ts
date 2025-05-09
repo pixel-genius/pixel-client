@@ -46,7 +46,7 @@ export * from "./atoms/table";
 export * from "./atoms/textarea";
 export * from "./atoms/tooltip";
 export * from "./atoms/typography";
-export * from "./atoms/typo-test";
+
 
 // Molecules
 export * from "./molecules/input";
