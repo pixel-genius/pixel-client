@@ -37,6 +37,7 @@ const Searchbar = forwardRef<RefSearchHandle, SearchBarProps>((props, ref) => {
       {/* Search Input */}
       <div className="relative w-full">
         <BaseInput
+          id="input-search-product"
           placeholder="Type anything to search..."
           className="w-full text-white border-none bg-transparent outline-none"
         />
@@ -50,6 +51,3 @@ const Searchbar = forwardRef<RefSearchHandle, SearchBarProps>((props, ref) => {
 Searchbar.displayName = "SearchBar";
 
 export default Searchbar;
-
-
-

@@ -60,7 +60,11 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
             </AnimatePresence>
 
             {/* Search Icon */}
-            <div onClick={handleOpenSearch} className="cursor-pointer">
+            <div
+              onClick={handleOpenSearch}
+              className="cursor-pointer"
+              id="search-product-btn"
+            >
               <SearchIcon size={20} />
             </div>
           </div>

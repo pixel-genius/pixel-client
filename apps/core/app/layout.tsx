@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import { ApiProvider } from "@repo/apis/providers/api-provider";
-import { Toaster } from "@repo/ui/components";
+import { Toaster, FloatingChatProvider } from "@repo/ui/components";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { ReactNode, Fragment } from "react";
 
@@ -25,7 +25,11 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <ApiProvider>
-      <html lang="en" className="h-full" suppressHydrationWarning>
+      <html
+        lang="en"
+        className="h-full overflow-x-hidden"
+        suppressHydrationWarning
+      >
         <body
           className={cn(inter.className, "h-full")}
           suppressHydrationWarning
@@ -37,7 +41,12 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <NuqsAdapter>
-              <Fragment>{children}</Fragment>
+              <FloatingChatProvider
+                initialEnabled={true}
+                supportName="Pixel Support"
+              >
+                <Fragment>{children}</Fragment>
+              </FloatingChatProvider>
             </NuqsAdapter>
           </ThemeProvider>
           <Toaster richColors />

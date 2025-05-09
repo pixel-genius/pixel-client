@@ -5,6 +5,7 @@ import YouTubeIcon from "@repo/icons/youtube";
 import Linkedinicon from "../../../../packages/icons/src/components/linkedin";
 import Link from "next/link";
 import Navbar from "./_components/desktop-navbar/navbar";
+import { MagicCursor } from "@repo/ui/components";
 
 function Layout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
@@ -14,6 +15,8 @@ function Layout({ children }: { children: React.ReactNode }): JSX.Element {
       <div className="relative z-10 bg-background pb-6 flex-1 mb-[532px] min-h-screen">
         {children}
       </div>
+
+      <MagicCursor />
 
       <footer className="w-full bg-card rounded-t-[48px] py-24 fixed bottom-0 left-0">
         <div className="container ">

@@ -7,6 +7,7 @@ import figma from "./_assets/figma.svg";
 import shadowBGLanding from "./_assets/shadow-bg.svg";
 import sketch from "./_assets/sketch.svg";
 import { LandingTabs } from "./_components/landing-tabs";
+import FloatingShapeExample from "./_components/example-floating-shape-usage";
 
 export default function Page() {
   return (
@@ -20,7 +21,6 @@ export default function Page() {
         height={1024}
         priority
       />
-
       <div className="-left-4 -top-5 hidden sm:block absolute -z-10">
         <DashedCircles
           count={4}
@@ -47,7 +47,6 @@ export default function Page() {
           />
         </DashedCircles>
       </div>
-
       <div className="left-10 top-72 sm:opacity-100 opacity-35 absolute -z-10">
         <DashedCircles
           count={4}
@@ -74,7 +73,6 @@ export default function Page() {
           />
         </DashedCircles>
       </div>
-
       <div className="right-10 top-5 sm:opacity-100 opacity-35 absolute -z-10 ">
         <DashedCircles
           count={4}
@@ -101,7 +99,6 @@ export default function Page() {
           />
         </DashedCircles>
       </div>
-
       <div className="right-36 top-80 sm:opacity-100 absolute">
         <DashedCircles
           count={4}
@@ -128,7 +125,6 @@ export default function Page() {
           />
         </DashedCircles>
       </div>
-
       {/* Header */}
       <div className="pb-56 pt-48">
         <Typography
@@ -154,11 +150,12 @@ export default function Page() {
           to supercharge your creativity.
         </Typography>
       </div>
-
       {/* Product Tabs */}
       <Suspense>
         <LandingTabs />
       </Suspense>
+
+      <FloatingShapeExample />
     </main>
   );
 }
