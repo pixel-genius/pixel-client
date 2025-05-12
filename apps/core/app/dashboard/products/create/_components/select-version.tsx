@@ -8,9 +8,14 @@ const SelectVersion = ({ productId }: { productId: string }) => {
     },
   });
 
+  const handleChange = (value: string) => {
+    console.log(value)
+  }
+
   return (
     <Select
       id="version-select"
+      onValueChange={handleChange}
       placeholder="Select a version"
       size="lg"
       options={data?.data?.data?.map((item) => ({
