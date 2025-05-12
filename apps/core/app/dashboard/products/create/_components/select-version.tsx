@@ -18,6 +18,7 @@ const SelectVersion = ({ productId }: { productId: string }) => {
       onValueChange={handleChange}
       placeholder="Select a version"
       size="lg"
+      loading={isLoading}
       options={data?.data?.data?.map((item) => ({
         label: item.version,
         value: item.id.toString()
