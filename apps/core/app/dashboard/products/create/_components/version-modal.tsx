@@ -1,22 +1,18 @@
 "use client";
 
 import Infosquareroundedicon from "@repo/icons/info-square-rounded";
-import { Button } from "@repo/ui/components/button";
+import { Button } from "@repo/ui/components";
 import {
   Dialog,
   DialogClose,
   DialogContent,
   DialogFooter,
   DialogHeader,
-} from "@repo/ui/components/dialog";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from "@repo/ui/components/input-otp";
-import { Switch } from "@repo/ui/components/switch";
-import { Textarea } from "@repo/ui/components/textarea";
-import Typography from "@repo/ui/components/typography";
+} from "@repo/ui/components";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@repo/ui/components";
+import { Switch } from "@repo/ui/components";
+import { Textarea } from "@repo/ui/components";
+import { Typography } from "@repo/ui/components";
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
 import { Dispatch, SetStateAction, useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -96,11 +92,11 @@ export const VersionModal = (props: VersionModalProps) => {
                   <RenderVersionInput label="Major Version" inputIndex={0} />
 
                   {/* <Typography variant="display/sm">.</Typography> */}
-                  <Dot strokeWidth={7} className="mt-5"/>
+                  <Dot strokeWidth={7} className="mt-5" />
 
                   <RenderVersionInput label="Minor Version" inputIndex={1} />
 
-                  <Dot strokeWidth={7} className="mt-5"/>
+                  <Dot strokeWidth={7} className="mt-5" />
 
                   <RenderVersionInput label="Patches" inputIndex={2} />
                 </InputOTPGroup>
