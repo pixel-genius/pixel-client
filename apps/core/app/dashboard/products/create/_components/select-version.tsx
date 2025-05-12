@@ -12,7 +12,6 @@ const SelectVersion = ({ productId }: { productId: string }) => {
     <Select
       id="version-select"
       placeholder="Select a version"
-      className=""
       size="lg"
       options={data?.data?.data?.map((item) => ({
         label: item.version,
