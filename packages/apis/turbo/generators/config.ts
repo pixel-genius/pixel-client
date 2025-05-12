@@ -58,11 +58,9 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         default: "core",
       },
       {
-        type: "list",
+        type: "input",
         name: "path",
-        message: "Select the API path from Swagger JSON:",
-        choices: swaggerPaths.length > 0 ? swaggerPaths : ["No paths available"],
-        when: () => swaggerPaths.length > 0,
+        message: "Enter the API path:"
       },
     ],
     actions(data) {
