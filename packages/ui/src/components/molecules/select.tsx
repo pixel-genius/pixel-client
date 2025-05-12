@@ -35,6 +35,7 @@ interface SelectProps extends RadixSelectProps {
   size?: "sm" | "md" | "lg";
   helperText?: string;
   options: Option[];
+  loading?: boolean;
 }
 
 const Select = ({
@@ -48,6 +49,7 @@ const Select = ({
   error,
   helperText,
   size,
+  loading,
   ...props
 }: SelectProps) => {
   const serializedOptions = React.useMemo(() => {
@@ -93,7 +95,12 @@ const Select = ({
       className={labelWraperClassName}
     >
       <BaseSelect value={value} {...props}>
-        <BaseSelectTrigger className={className} size={size} error={!!error}>
+        <BaseSelectTrigger
+          className={className}
+          size={size}
+          error={!!error}
+          loading={loading}
+        >
           <BaseSelectValue placeholder={placeholder} />
         </BaseSelectTrigger>
         {serializedOptionsKeyArr.length ? (
