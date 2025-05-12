@@ -18,16 +18,18 @@ export const requestHandler = async <T extends ZodTypeAny>(
   ...props: RequestHandlerProps<T>
 ) => {
   const [callback, schema, options = {}] = props;
-  const { isMock = false } = options;
+  const isMock =
+    (process.env.NEXT_PUBLIC_MOCK === "true" || options.isMock) ?? false;
 
-  const mockData = generateMockResponse<z.infer<typeof schema>>({
-    data: generateMock(schema),
-  });
+  if (isMock) {
+    const mockData = generateMockResponse<z.infer<typeof schema>>({
+      data: generateMock(schema),
+    });
 
-  if (isMock)
     return await delay<ApiResponse<z.infer<typeof schema>>>({
       data: mockData,
     });
+  }
 
   return await callback();
 };
