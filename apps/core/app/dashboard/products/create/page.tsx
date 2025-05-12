@@ -32,8 +32,8 @@ const CreateProductPage = () => {
             {/* Actions */}
             <div className="flex items-center gap-3 shrink-0">
               <div><SelectVersion productId="1" /></div>
-              <div><Button variant="secondary" size={"sm"}>Save as Draft</Button></div>
-              <div><Button type="submit" size={"sm"}>Submit to Review</Button></div>
+              <div><Button variant="secondary" size={"lg"}>Save as Draft</Button></div>
+              <div><Button type="submit" size={"lg"}>Submit to Review</Button></div>
             </div>
           </div>
           {/* Content */} 

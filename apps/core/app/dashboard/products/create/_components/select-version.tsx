@@ -1,5 +1,5 @@
 import { UseGetProductVersions } from "@repo/apis/core/shop/product-version/flat/get/use-get-product-versions";
-import { Select, SelectValue, SelectTrigger, SelectLabel, SelectContent, SelectGroup, SelectItem } from "@repo/ui/components";
+import { Select } from "@repo/ui/components";
 
 const SelectVersion = ({ productId }: { productId: string }) => {
   const { data, isLoading } = UseGetProductVersions({
@@ -9,22 +9,17 @@ const SelectVersion = ({ productId }: { productId: string }) => {
   });
 
   return (
-  <Select>
-    <SelectTrigger loading={isLoading}>
-      <SelectValue placeholder="Select an option" />
-    </SelectTrigger>
-    <SelectContent>
-        <SelectGroup>
-          {data?.data?.data?.map((item) => (   
-            <SelectItem key={item.id} value={item.id.toString()}>
-              {item.version}
-            </SelectItem>
-          ))}
-        </SelectGroup>
-      </SelectContent>
-    </Select>
-    )
-        
+    <Select
+      id="version-select"
+      placeholder="Select a version"
+      className=""
+      size="lg"
+      options={data?.data?.data?.map((item) => ({
+        label: item.version,
+        value: item.id.toString()
+      })) || []}
+    />
+  );
 };
 
 export { SelectVersion };
