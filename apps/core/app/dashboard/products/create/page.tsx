@@ -10,7 +10,7 @@ import {
 import { Button } from "@repo/ui/components";
 import { TabGeneral } from "./_components/tabGeneral";
 import Version from "./_components/version/version";
-
+import { SelectVersion } from "./_components/select-version";
 const CreateProductPage = () => {
   const methods = useForm<{ price: string; discount: number | null }>();
   const { handleSubmit } = methods;
@@ -31,9 +31,9 @@ const CreateProductPage = () => {
 
             {/* Actions */}
             <div className="flex items-center gap-3 shrink-0">
-              <div>select version</div>
-              <Button variant="secondary">Save as Draft</Button>
-              <Button type="submit">Submit to Review</Button>
+              <div><SelectVersion productId="1" /></div>
+              <div><Button variant="secondary" size={"lg"}>Save as Draft</Button></div>
+              <div><Button type="submit" size={"lg"}>Submit to Review</Button></div>
             </div>
           </div>
           {/* Content */} 

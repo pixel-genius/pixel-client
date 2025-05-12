@@ -37,7 +37,7 @@ const LabelWraper = React.forwardRef<
       <Label
         ref={ref}
         htmlFor={id}
-        className=" px-1 flex gap-1 text-muted-foreground  mb-2"
+        className=" px-1 flex gap-1 text-muted-foreground"
         {...props}
       >
         <Typography component="span" variant="label/sm">{label}</Typography>
