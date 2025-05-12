@@ -1,15 +1,6 @@
-import {
-  Button,
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-  Typography,
-} from "@repo/ui/components";
+import { Button, Select, Typography } from "@repo/ui/components";
+import { IconDownload } from "@tabler/icons-react";
 import Image from "next/image";
-import { IconDownload } from '@tabler/icons-react';
 
 interface PurchaseCardProps {
   title: string;
@@ -42,20 +33,13 @@ export const PurchaseCard = ({
           </Typography>
           <div className="flex gap-2 items-center">
             <div>
-              <Select>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select version" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    {versions.map((version) => (
-                      <SelectItem key={version.value} value={version.value}>
-                        {version.label}
-                      </SelectItem>
-                    ))}
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+              <Select
+                size="sm"
+                id="select-2"
+                label="select 2"
+                placeholder="Select version"
+                options={versions}
+              />
             </div>
             <div className="text-muted-foreground">|</div>
             <div>
@@ -71,7 +55,11 @@ export const PurchaseCard = ({
         </div>
       </div>
       <div>
-        <Button iconLeft={<IconDownload />} variant="primary" onClick={onDownload}>
+        <Button
+          iconLeft={<IconDownload />}
+          variant="primary"
+          onClick={onDownload}
+        >
           Download
         </Button>
       </div>
