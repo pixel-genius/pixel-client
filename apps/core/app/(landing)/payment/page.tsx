@@ -17,9 +17,9 @@ const PixelPayment = () => {
   return (
     <div className="pt-44">
       <div className="">
-        <div className="flex justify-around w-full ">
+        <div className="grid grid-cols-2 grid-rows-1 gap-12 p-10 ">
           {/* payment form */}
-          <div className=" flex flex-col gap-4   w-2/5 ">
+          <div className=" flex flex-col gap-4 ">
             <div className="flex flex-col gap-2">
               <Typography variant={"label/lg"} weight={"bold"}>
                 Payment
@@ -141,7 +141,7 @@ const PixelPayment = () => {
             </div>
           </div>
           {/* card details */}
-          <div className="flex flex-col gap-4 w-2/5">
+          <div className="flex flex-col gap-4 ">
             <div className="flex flex-col gap-2">
               <Typography variant={"label/lg"} weight={"bold"}>
                 Product Information & Review
