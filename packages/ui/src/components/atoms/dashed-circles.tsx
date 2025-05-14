@@ -155,7 +155,7 @@ export const DashedCircles = ({
         );
 
         // Create SVG URL for background with specific opacity
-        const svgUrl = `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='${size / 2}' ry='${size / 2}' stroke='${getUrlSafeColor(borderColor)}' stroke-width='${adjustedBorderWidth}' stroke-dasharray='${adjustedDashArray}' stroke-dashoffset='${adjustedDashOffset}' stroke-linecap='butt'/%3e%3c/svg%3e")`;
+        const svgUrl = `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='${size / 2}' ry='${size / 2}' stroke='${getUrlSafeColor(borderColor)}' stroke-width='${adjustedBorderWidth}' stroke-dasharray='${adjustedDashArray}' stroke-dashoffset='${adjustedDashOffset}' strokeLinecap='butt'/%3e%3c/svg%3e")`;
 
         // Calculate circle opacity based on index
         const circleOpacity = Math.max(0.3, 1 - index * 0.2);

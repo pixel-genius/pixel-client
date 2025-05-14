@@ -11,7 +11,7 @@ const Avatar = (props: IconProps) => {
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
     >
-      <g clip-path="url(#clip0_3287_10264)">
+      <g clipPath="url(#clip0_3287_10264)">
         <rect
           y="0.294922"
           width="16.7051"

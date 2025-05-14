@@ -9,10 +9,10 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }): JSX.Element {
   return (
-    <SidebarProvider className="flex min-h-full">
+    <SidebarProvider className="flex min-h-full ">
       <AppSidebar />
       <main className="flex-1 flex flex-col">
-        <NavbarDashboard />
+        <NavbarDashboard  />
         <div className="overflow-auto px-6 py-6">{children}</div>
       </main>
     </SidebarProvider>

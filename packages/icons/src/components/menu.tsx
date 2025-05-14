@@ -12,13 +12,13 @@ const MenuIcon = (props: IconProps) => {
       xmlns="http://www.w3.org/2000/svg"
       {...resProps}
     >
-      <g clip-path="url(#clip0_3569_11211)">
+      <g clipPath="url(#clip0_3569_11211)">
         <path
           d="M4 6H20M0 12H16M4 18H20"
           stroke="white"
           strokeWidth="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
       <defs>

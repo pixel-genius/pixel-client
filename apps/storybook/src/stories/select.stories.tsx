@@ -1,15 +1,5 @@
-import React from "react";
+import { Select } from "@repo/ui/components";
 import { Meta, StoryObj } from "@storybook/react";
-import {
-  Select,
-  SelectGroup,
-  SelectValue,
-  SelectTrigger,
-  SelectContent,
-  SelectLabel,
-  SelectItem,
-  SelectSeparator,
-} from "@repo/ui/components";
 
 const meta: Meta = {
   title: "Components/Select",
@@ -26,62 +16,64 @@ type Story = StoryObj<typeof Select>;
 
 export const Default: Story = {
   render: () => (
-    <Select>
-      <SelectTrigger>
-        <SelectValue placeholder="Select an option" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          <SelectLabel>Options</SelectLabel>
-          <SelectItem value="option-1">Option 1</SelectItem>
-          <SelectItem value="option-2">Option 2</SelectItem>
-          <SelectItem value="option-3">Option 3</SelectItem>
-        </SelectGroup>
-        <SelectSeparator />
-        <SelectGroup>
-          <SelectLabel>More Options</SelectLabel>
-          <SelectItem value="option-4">Option 4</SelectItem>
-          <SelectItem value="option-5">Option 5</SelectItem>
-        </SelectGroup>
-      </SelectContent>
-    </Select>
+    <Select
+      size="sm"
+      id="select-1"
+      label="select 1"
+      placeholder="Select an option"
+      options={[
+        { label: "Option 1", value: "option-1" },
+        { label: "Option 2", value: "option-2" },
+        { label: "Option 3", value: "option-3" },
+        { label: "Option 4", value: "option-4" },
+        { label: "Option 5", value: "option-5" },
+      ]}
+    />
   ),
 };
-
-export const WithLoading: Story = {
+export const SelectWithGroup: Story = {
   render: () => (
-    <Select>
-      <SelectTrigger loading>
-        <SelectValue placeholder="Select an option" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          <SelectLabel>Options</SelectLabel>
-          <SelectItem value="option-1">Option 1</SelectItem>
-          <SelectItem value="option-2">Option 2</SelectItem>
-          <SelectItem value="option-3">Option 3</SelectItem>
-        </SelectGroup>
-        <SelectSeparator />
-        <SelectGroup>
-          <SelectLabel>More Options</SelectLabel>
-          <SelectItem value="option-4">Option 4</SelectItem>
-          <SelectItem value="option-5">Option 5</SelectItem>
-        </SelectGroup>
-      </SelectContent>
-    </Select>
+    <Select
+      size="sm"
+      id="select-2"
+      label="select 2"
+      placeholder="Select an option"
+      options={[
+        { label: "Option 1", value: "option-1", group: "Options" },
+        { label: "Option 2", value: "option-2", group: "Options" },
+        { label: "Option 3", value: "option-3", group: "Options" },
+        { label: "Option 4", value: "option-4", group: "More Options" },
+        { label: "Option 5", value: "option-5", group: "More Options" },
+      ]}
+    />
   ),
 };
 
+export const SelectWithError: Story = {
+  render: () => (
+    <Select
+      size="sm"
+      id="select-2"
+      placeholder="Custom styling"
+      error="Error Message"
+      options={[
+        { label: "Custom Option 1", value: "custom-option-1" },
+        { label: "Custom Option 2", value: "custom-option-2" },
+      ]}
+    />
+  ),
+};
 export const WithCustomStyling: Story = {
   render: () => (
-    <Select>
-      <SelectTrigger className="bg-gray-100 border-gray-300 text-gray-700">
-        <SelectValue placeholder="Custom styling" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value="custom-1">Custom Option 1</SelectItem>
-        <SelectItem value="custom-2">Custom Option 2</SelectItem>
-      </SelectContent>
-    </Select>
+    <Select
+      id="select-2"
+      size="sm"
+      placeholder="Custom styling"
+      className="bg-gray-100 border-gray-300 text-gray-700"
+      options={[
+        { label: "Custom Option 1", value: "custom-option-1" },
+        { label: "Custom Option 2", value: "custom-option-2" },
+      ]}
+    />
   ),
 };

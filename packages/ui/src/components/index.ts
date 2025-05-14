@@ -36,7 +36,6 @@ export * from "./atoms/radio-group";
 export * from "./atoms/resizable";
 export * from "./atoms/retroGrid";
 export * from "./atoms/scroll-area";
-export * from "./atoms/select";
 export * from "./atoms/separator";
 export * from "./atoms/sheet";
 export * from "./atoms/skeleton";
@@ -47,7 +46,6 @@ export * from "./atoms/table";
 export * from "./atoms/textarea";
 export * from "./atoms/tooltip";
 export * from "./atoms/typography";
-export * from "./atoms/typo-test";
 
 // Molecules
 export * from "./molecules/input";
@@ -63,6 +61,8 @@ export * from "./molecules/attachment/useAttachment";
 export * from "./molecules/attachment/attachmentThumbnail/attachmentThumbnail";
 export * from "./molecules/attachment/attachmentAdmin/attachmentAdmin";
 export * from "./molecules/attachment/attachmentLanding/attachmentLanding";
+export * from "./molecules/select";
+export * from "./molecules/multi-select";
 
 // Organisms
 export * from "./organisms/foundation-color";

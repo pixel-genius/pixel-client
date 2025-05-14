@@ -22,8 +22,8 @@ export const postLogin = async (
     () => guestApi.post(URL, payloadParsed),
     schema.response._def.schema,
     {
-      isMock: true
-    }
+      isMock: false,
+    },
   );
 
   const dataParsed = schema.response.parse(response.data);

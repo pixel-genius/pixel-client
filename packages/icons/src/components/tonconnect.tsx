@@ -10,7 +10,7 @@ const Tonconnecticon = (props: IconProps) => {
       viewBox="0 0 34 33"
       fill="none"
     >
-      <g clip-path="url(#clip0_3381_24285)">
+      <g clipPath="url(#clip0_3381_24285)">
         <path
           d="M17 33C26.1127 33 33.5 25.6127 33.5 16.5C33.5 7.38729 26.1127 0 17 0C7.88729 0 0.5 7.38729 0.5 16.5C0.5 25.6127 7.88729 33 17 33Z"
           fill="#0098EA"
