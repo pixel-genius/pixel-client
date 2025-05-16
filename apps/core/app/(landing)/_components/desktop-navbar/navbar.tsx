@@ -34,7 +34,7 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
   const isMobile = false;
 
   return (
-    <div className="bg-background shadow-box rounded-xl fixed top-12 -left-1/2 -right-1/2 z-40 w-[95%] sm:w-[90%] lg:w-[962px] max-w-none mx-auto">
+    <div className="bg-background shadow-box rounded-xl fixed top-12 -left-1/2 -right-1/2 z-40 w-[95%] sm:w-[90%] lg:w-[962px] max-w-none mx-auto hidden md:block">
       <div className="flex  py-3 px-5 items-center h-full w-full justify-between ">
         <div className="flex items-center w-full">
           <div className="flex  items-center">
