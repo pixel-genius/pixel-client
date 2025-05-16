@@ -6,7 +6,7 @@ import type { PlopTypes } from "@turbo/gen";
 function loadSwaggerPaths(filePath: string): string[] {
   try {
     const swaggerData = JSON.parse(
-      fs.readFileSync(path.resolve(__dirname, filePath), "utf-8")
+      fs.readFileSync(path.resolve(__dirname, filePath), "utf-8"),
     );
     const paths = Object.keys(swaggerData.paths || {});
     return paths;
@@ -38,7 +38,8 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       {
         type: "list",
         name: "httpMethodChoice",
-        message: "Select the HTTP method or choose CRUD to generate all methods:",
+        message:
+          "Select the HTTP method or choose CRUD to generate all methods:",
         choices: [...methods, "CRUD"],
         default: "get",
       },
@@ -58,12 +59,17 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         default: "core",
       },
       {
-        type: "list",
+        type: "input",
         name: "path",
-        message: "Select the API path from Swagger JSON:",
-        choices: swaggerPaths.length > 0 ? swaggerPaths : ["No paths available"],
-        when: () => swaggerPaths.length > 0,
+        message: "Enter the API path:",
       },
+      // {
+      //   type: "list",
+      //   name: "path",
+      //   message: "Select the API path from Swagger JSON:",
+      //   choices: swaggerPaths.length > 0 ? swaggerPaths : ["No paths available"],
+      //   when: () => swaggerPaths.length > 0,
+      // },
     ],
     actions(data) {
       if (!data || typeof data !== "object") {
