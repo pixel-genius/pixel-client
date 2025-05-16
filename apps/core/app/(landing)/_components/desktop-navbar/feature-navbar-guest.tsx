@@ -4,7 +4,7 @@ import Link from "next/link";
 const FeatureNavbarGuest = () => {
   return (
     <div className="flex items-center gap-3 shrink-0 ">
-      <Link href="/auth/register" className="text-primary-500 flex-shrink-0">
+      <Link href="/auth/signup" className="text-primary-500 flex-shrink-0">
         <Typography variant="label/sm" weight="medium">
           Sign Up
         </Typography>

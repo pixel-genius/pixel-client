@@ -17,7 +17,7 @@ const NavbarLinks = () => {
       <Typography onClick={onClick} variant="label/xs">
         Browse
       </Typography>
-      <Link href="/browse">
+      <Link href="/become-auther">
         <Typography variant="label/xs">Become an author</Typography>
       </Link>
     </div>
