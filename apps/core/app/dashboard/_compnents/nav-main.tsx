@@ -22,7 +22,7 @@ export function NavMain({
       <SidebarMenu>
         {items.map((item) => (
           <SidebarMenuItem
-            className={`${pathname === item.url ? "bg-sidebar-accent text-secondary-100 rounded-md text-[#6751D6]" : ""}`}
+            className={`${pathname === item.url ? "bg-sidebar-accent text-secondary-100 rounded-md bg-background     " : ""}`}
             key={item.title}
           >
             <SidebarMenuButton asChild>
