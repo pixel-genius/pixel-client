@@ -56,7 +56,7 @@ const data = {
     },
     {
       title: "Sales",
-      url: "/sales",
+      url: "/dashboard/sales",
       icon: ChartBarPopular,
     },
     {
@@ -66,7 +66,7 @@ const data = {
     },
     {
       title: "Transactions",
-      url: "/payouts",
+      url: "/dashboard/transactions",
       icon: ReportMoney,
     },
     {
