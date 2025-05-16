@@ -3,7 +3,7 @@ import { AutherLayout } from "./auther-layout";
 const AutherResult = () => {
   return (
     <>
-      <AutherLayout bgSrc="/images/test2.webp">
+      <AutherLayout>
         <div className="pb-12 pt-12">
           <h1 className="text-4xl font-bold pb-5 ">
             Your Request Will Be Reviewed
