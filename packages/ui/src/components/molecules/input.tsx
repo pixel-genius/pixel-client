@@ -56,7 +56,7 @@ const Input = React.forwardRef<HTMLInputElement, textFieldProps>(
             (loading ? (
               <OrbitingDotsLoading />
             ) : (
-              <div className="absolute left-0  px-4">{iconRight}</div>
+              <div className="absolute right-0  px-4">{iconRight}</div>
             ))}
         </div>
       </LabelWraper>
