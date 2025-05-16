@@ -37,37 +37,6 @@ const Page = () => {
 
   return (
     <div className="flex flex-col gap-8 px-10 py-20">
-      <h1 className="text-3xl font-bold">TUS Upload Examples</h1>
-
-      {/* Single file upload using the component */}
-      <div className="border rounded-lg p-4">
-        <h2 className="text-xl font-semibold mb-4">
-          Single File Upload (Component)
-        </h2>
-        <AttachmentTus
-          onSuccess={(url, fileName) => {
-            console.log(`File ${fileName} uploaded to ${url}`);
-          }}
-        />
-      </div>
-
-      {/* Multiple file upload using the component */}
-      <div className="border rounded-lg p-4">
-        <h2 className="text-xl font-semibold mb-4">
-          Multiple File Upload (Component)
-        </h2>
-        <AttachmentTus
-          endpoint="http://pixel-core-jot2od-ba9dbe-185-204-171-18.traefik.me/large_upload"
-          multiple={true}
-          onSuccess={(url, fileName) => {
-            console.log(`File ${fileName} uploaded to ${url}`);
-          }}
-          onAllCompleted={(results) => {
-            console.log(`All files uploaded:`, results);
-          }}
-        />
-      </div>
-
       {/* Direct hook usage example */}
       <div className="border rounded-lg p-6 bg-card">
         <h2 className="text-xl font-semibold mb-4">
@@ -158,30 +127,6 @@ const Page = () => {
               Reset
             </button>
           </div>
-        </div>
-      </div>
-
-      <div className="border rounded-lg p-4">
-        <h2 className="text-xl font-semibold mb-4">
-          Other Attachment Components
-        </h2>
-        <div className="flex flex-col gap-4">
-          <AttachmentThumbnail
-            price={0}
-            productName={"test"}
-            username={"test"}
-            title={"test"}
-            onChange={() => {}}
-            fileCategory={"request_author"}
-            allowedTypes={["jpg", "jpeg", "png"]}
-          />
-
-          <AttachmentAdmin
-            title={"test"}
-            onChange={() => {}}
-            fileCategory={"request_author"}
-            allowedTypes={["jpg", "jpeg", "png"]}
-          />
         </div>
       </div>
     </div>
