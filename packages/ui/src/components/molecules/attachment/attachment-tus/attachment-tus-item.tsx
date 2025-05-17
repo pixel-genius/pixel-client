@@ -31,14 +31,25 @@ export const AttachmentTusItem = ({
   const [objectUrl, setObjectUrl] = useState<string | null>(null);
 
   // Split filename and extension
-  const getFileNameAndExtension = (filename: string) => {
-    const lastDotIndex = filename.lastIndexOf(".");
-    if (lastDotIndex === -1) return { name: filename, ext: "" };
+const getFileNameAndExtension = (filename: string) => {
+  const lastDotIndex = filename.lastIndexOf(".");
+  if (lastDotIndex === -1) return { name: filename, ext: "" };
+
+  // Handle special cases for common file types with multiple dots
+  const lowerFilename = filename.toLowerCase();
+  if (lowerFilename.endsWith('.tar.gz') || lowerFilename.endsWith('.tar.bz2')) {
+    const secondLastDotIndex = filename.lastIndexOf(".", lastDotIndex - 1);
     return {
-      name: filename.substring(0, lastDotIndex),
-      ext: filename.substring(lastDotIndex),
+      name: filename.substring(0, secondLastDotIndex),
+      ext: filename.substring(secondLastDotIndex),
     };
+  }
+
+  return {
+    name: filename.substring(0, lastDotIndex),
+    ext: filename.substring(lastDotIndex),
   };
+};
 
   const { name, ext } = getFileNameAndExtension(upload.file.name);
 
