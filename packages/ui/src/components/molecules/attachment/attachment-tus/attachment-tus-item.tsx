@@ -4,6 +4,7 @@ import { Typography } from "@repo/ui/components";
 import { motion } from "framer-motion";
 import { cn } from "@repo/ui/lib/utils";
 import { Trash2Icon } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export interface UploadItem {
   id: string;
@@ -27,6 +28,8 @@ export const AttachmentTusItem = ({
   onCancel,
   onDelete,
 }: AttachmentTusItemProps) => {
+  const [objectUrl, setObjectUrl] = useState<string | null>(null);
+
   // Split filename and extension
   const getFileNameAndExtension = (filename: string) => {
     const lastDotIndex = filename.lastIndexOf(".");
@@ -47,6 +50,19 @@ export const AttachmentTusItem = ({
   // is image
   const isImage = upload.file.type.startsWith("image/");
 
+  // Generate and cleanup object URL
+  useEffect(() => {
+    if (isImage) {
+      const url = URL.createObjectURL(upload.file);
+      setObjectUrl(url);
+
+      // Cleanup function to revoke the URL when component unmounts or file changes
+      return () => {
+        URL.revokeObjectURL(url);
+      };
+    }
+  }, [upload.file, isImage]);
+
   const handleDelete = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (onDelete) {
@@ -65,9 +81,9 @@ export const AttachmentTusItem = ({
     >
       <div className="w-20 h-12 bg-muted relative group rounded overflow-hidden">
         {/* if type of file is image show image */}
-        {isImage && (
+        {isImage && objectUrl && (
           <motion.img
-            src={URL.createObjectURL(upload.file)}
+            src={objectUrl}
             alt={upload.file.name}
             className="w-full h-full object-cover"
             initial={{ filter: "blur(10px)" }}

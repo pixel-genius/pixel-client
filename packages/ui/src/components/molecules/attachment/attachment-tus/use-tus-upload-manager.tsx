@@ -1,5 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import * as tus from "tus-js-client";
+import { DetailedError } from "tus-js-client";
+import { UploadOptions } from "tus-js-client";
 
 interface UploadItem {
   id: string;
@@ -20,7 +22,24 @@ interface UseTusUploadManagerOptions {
   metadata?: Record<string, string>;
   // eslint-disable-next-line no-unused-vars
   onChange?: (uploads: UploadItem[]) => void;
-  [key: string]: any; // For other tus options
+  chunkSize?: number;
+  retryDelays?: number[];
+  onBeforeRequest?: () => void;
+  uploadUrl?: string;
+  uploadSize?: number;
+  overridePatchMethod?: boolean;
+  headers?: Record<string, string>;
+  addRequestId?: boolean;
+  onShouldRetry?: (
+    // eslint-disable-next-line no-unused-vars
+    error: DetailedError,
+    // eslint-disable-next-line no-unused-vars
+    retryAttempt: number,
+    // eslint-disable-next-line no-unused-vars
+    options: UploadOptions,
+  ) => boolean;
+  // Allow additional options but with more specific type
+  [key: string]: any | undefined;
 }
 
 /**
@@ -197,6 +216,18 @@ export function useTusUploadManager(options: UseTusUploadManagerOptions) {
     });
 
     setUploads(fakeUploads);
+  }, []);
+
+  // Cleanup function to abort all uploads on unmount
+  useEffect(() => {
+    return () => {
+      // Abort all active uploads when component unmounts
+      uploadsRef.current.forEach((upload) => {
+        if (upload && typeof upload.abort === "function") {
+          upload.abort();
+        }
+      });
+    };
   }, []);
 
   return {
