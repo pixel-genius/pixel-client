@@ -34,5 +34,5 @@ export const TabContent = ({
 
   if (!isActive && hiddenMode === "unmount") return null;
 
-  return <div className={cn({ hidden: !isActive }, className)}>{children}</div>;
+  return <div className={cn({ hidden: !isActive }, "whitespace-nowrap", className)}>{children}</div>;
 };
