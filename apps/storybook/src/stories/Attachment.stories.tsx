@@ -52,12 +52,12 @@ export const Dashboard: Story = {
   },
   render: (args) => (
     <ApiProvider>
-      <AttachmentAdmin
-        title={args.title}
-        onChange={args.onChange}
-        fileCategory={args.fileCategory}
-        allowedTypes={args.allowedTypes}
-      />
+        <AttachmentAdmin
+          title={args.title}
+          onChange={args.onChange}
+          fileCategory={args.fileCategory}
+          allowedTypes={args.allowedTypes}
+        />
     </ApiProvider>
   ),
 };
@@ -98,7 +98,7 @@ export const Thumbnail: Story = {
     allowedTypes: ["jpg", "jpeg", "png"],
     price: 0,
     productName: "",
-    username: "",
+    username: "", 
   },
   render: (args) => (
     <ApiProvider>
