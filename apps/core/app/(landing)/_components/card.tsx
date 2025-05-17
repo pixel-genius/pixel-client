@@ -14,7 +14,7 @@ const Card: React.FC<CardProps> = (props) => {
 
   return (
     <div className="bg-card flex-shrink-0 rounded-lg overflow-hidden">
-      <div className="flex">
+      <div className="flex group">
         <div className="p-4 flex gap-2 flex-1">
           <div className="flex-shrink-0">
             <Image
@@ -23,21 +23,21 @@ const Card: React.FC<CardProps> = (props) => {
               }
               alt="card"
               width={100}
-              height={80}
-              className="rounded-2xl"
+              height={100}
+              className="rounded-2xl w-20 h-20"
             />
           </div>
-          <div className="flex flex-col gap-2">
-            <Typography variant="label/sm" component="p" weight="medium">
+          <div className="flex flex-col gap-2 self-center">
+            <Typography variant="label/lg" component="p" weight="medium">
               {title}
             </Typography>
-            <Typography variant="label/sm" component="p" weight="medium">
+            <Typography variant="label/lg" component="p" weight="medium">
               {price}
             </Typography>
           </div>
         </div>
         <div
-          className="w-9 flex items-center justify-center bg-error cursor-pointer"
+          className="w-9 flex items-center justify-center bg-error cursor-pointer opacity-0 translate-x-full group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
           onClick={() => onRemove(id)}
         >
           <Removeicon size={24} />
