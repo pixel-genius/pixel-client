@@ -1,18 +1,28 @@
 "use client";
 
-import { useTus } from "./useTus";
-
 import { PixelImgIcon } from "@repo/icons/pixel-img";
 
 import { Typography } from "@repo/ui/components";
-
+import { useRef, useEffect } from "react";
+import { useTusUploadManager, CompletedUpload } from "./use-tus-upload-manager";
+import { AttachmentTusItem } from "./attachment-tus-item";
+import { PixelZipIcon } from "@repo/icons/pixel-zip";
+import { cn } from "@repo/ui/lib/utils";
 interface AttachmentTusProps {
   endpoint?: string;
   // eslint-disable-next-line no-unused-vars
   onSuccess?: (url: string, fileName: string) => void;
+  type?: "img" | "zip";
   // eslint-disable-next-line no-unused-vars
-  onAllCompleted?: (results: { url: string; fileName: string }[]) => void;
+  onAllCompleted?: (results: CompletedUpload[]) => void;
   multiple?: boolean;
+  accept?: string[];
+  title?: string;
+  description?: string;
+  error?: string;
+  // eslint-disable-next-line no-unused-vars
+  onChange?: (uploads: any[]) => void;
+  defaultValue?: CompletedUpload[];
 }
 
 const AttachmentTus = ({
@@ -20,147 +30,159 @@ const AttachmentTus = ({
   onSuccess,
   onAllCompleted,
   multiple = false,
+  accept,
+  title,
+  description,
+  error,
+  onChange,
+  defaultValue = [],
+  type = "img",
 }: AttachmentTusProps) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const isInitializedRef = useRef(false);
+  const prevUploadsRef = useRef<any[]>([]);
+
   const {
-    files,
-    fileStatuses,
-    progress,
-    uploading,
-    uploadURLs,
-    error,
-    inputRef,
-    handleFileChange,
+    uploads,
     startUpload,
-    resetUpload,
-  } = useTus({
-    endpoint,
-    onSuccess,
-    onAllCompleted,
-    multiple,
+    startUploads,
+    removeUpload,
+    setInitialUploads,
+  } = useTusUploadManager({
+    endpoint: endpoint || "https://tusd.tusdemo.net/files/",
+    onChange,
   });
 
+  // Initialize with default values if provided
+  useEffect(() => {
+    if (!isInitializedRef.current && defaultValue.length > 0) {
+      setInitialUploads(defaultValue);
+      isInitializedRef.current = true;
+    }
+  }, [defaultValue, setInitialUploads]);
+
+  // Handle onSuccess and onAllCompleted callbacks
+  useEffect(() => {
+    // Find newly completed uploads
+    const completedUploads = uploads.filter(
+      (upload) =>
+        upload.uploadUrl &&
+        !upload.isUploading &&
+        !prevUploadsRef.current.some(
+          (prev) =>
+            prev.id === upload.id &&
+            prev.uploadUrl === upload.uploadUrl &&
+            !prev.isUploading,
+        ),
+    );
+
+    // Call onSuccess for each newly completed upload
+    if (completedUploads.length > 0 && onSuccess) {
+      completedUploads.forEach((upload) => {
+        if (upload.uploadUrl) {
+          onSuccess(upload.uploadUrl, upload.file.name);
+        }
+      });
+    }
+
+    // Call onAllCompleted if all uploads are completed
+    const allCompleted =
+      uploads.length > 0 &&
+      uploads.every((upload) => upload.uploadUrl && !upload.isUploading);
+    if (
+      allCompleted &&
+      onAllCompleted &&
+      uploads.length !== prevUploadsRef.current.length
+    ) {
+      const results: CompletedUpload[] = uploads.map((upload) => ({
+        url: upload.uploadUrl || "",
+        fileName: upload.file.name,
+      }));
+      onAllCompleted(results);
+    }
+
+    // Update the previous uploads reference
+    prevUploadsRef.current = [...uploads];
+  }, [uploads, onSuccess, onAllCompleted]);
+
+  const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files?.[0]) {
+      if (multiple) {
+        startUploads(e.target.files);
+      } else {
+        startUpload(e.target.files[0]);
+      }
+    }
+  };
+
+  const icon =
+    type === "img" ? <PixelImgIcon size={36} /> : <PixelZipIcon size={36} />;
+
   return (
-    <div className="bg-card rounded-lg p-4">
+    <div
+      className={cn("bg-card rounded-lg p-4", error && "ring-2 ring-error ")}
+    >
       <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
         {/* left */}
-        <div className="col-span-1 flex  items-center justify-center">
-          <div className="border w-full h-full">test</div>
-        </div>
+        <div className="col-span-1 flex flex-col gap-4 items-start justify-start">
+          {/* title and description */}
+          <div className="flex flex-col gap-2">
+            <Typography variant="heading/xs" weight="medium">
+              {title}
+            </Typography>
+            <Typography
+              variant="label/sm"
+              weight="light"
+              className="text-muted-foreground"
+            >
+              {description}
+            </Typography>
+          </div>
 
-        {/* ////// */}
-        <div className="col-span-1 hidden">
-          {files.length > 0 && (
-            <div className="text-sm mb-4">
-              <p>
-                <span className="font-medium">
-                  Selected file{files.length > 1 ? "s" : ""}:
-                </span>
-                {multiple ? (
-                  <ul className="list-disc pl-5 mt-1">
-                    {files.map((file, index) => (
-                      <li key={index}>
-                        {file.name} ({(file.size / 1024 / 1024).toFixed(2)} MB)
-                        {fileStatuses[index]?.completed && (
-                          <span className="text-green-600 ml-2">
-                            ✓ Completed
-                          </span>
-                        )}
-                        {fileStatuses[index]?.uploading && (
-                          <span className="text-blue-600 ml-2">
-                            {fileStatuses[index]?.progress.toFixed(0)}%
-                          </span>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  files[0] && (
-                    <>
-                      {" "}
-                      {files[0].name}
-                      <p>
-                        <span className="font-medium">Size:</span>{" "}
-                        {(files[0].size / 1024 / 1024).toFixed(2)} MB
-                      </p>
-                    </>
-                  )
-                )}
-              </p>
-            </div>
-          )}
-
-          {uploading && !multiple && (
-            <div className="space-y-2 mb-4">
-              <div className="w-full bg-gray-200 rounded-full h-2.5">
-                <div
-                  className="bg-blue-600 h-2.5 rounded-full"
-                  style={{ width: `${progress}%` }}
-                ></div>
+          {uploads.length > 0 && (
+            <div
+              className="w-full overflow-x-auto"
+              style={{
+                scrollbarWidth: "thin",
+                WebkitOverflowScrolling: "touch",
+                scrollBehavior: "smooth",
+                scrollSnapType: "x proximity",
+              }}
+            >
+              <div className="flex gap-4 pb-4 pr-4 transition-transform duration-300 ease-out">
+                {/* attachment items */}
+                {uploads.map((upload) => (
+                  <div
+                    key={upload.id}
+                    className="scroll-snap-align-start"
+                    style={{ scrollSnapAlign: "start" }}
+                  >
+                    <AttachmentTusItem
+                      upload={upload}
+                      onCancel={removeUpload}
+                      onDelete={removeUpload}
+                    />
+                  </div>
+                ))}
               </div>
-              <p className="text-center text-sm">
-                {progress.toFixed(0)}% Uploaded
-              </p>
-            </div>
-          )}
 
-          {uploading && multiple && (
-            <div className="space-y-2 mb-4">
-              <div className="w-full bg-gray-200 rounded-full h-2.5">
-                <div
-                  className="bg-blue-600 h-2.5 rounded-full"
-                  style={{ width: `${progress}%` }}
-                ></div>
-              </div>
-              <p className="text-center text-sm">
-                Overall progress: {progress.toFixed(0)}%
-              </p>
-            </div>
-          )}
-
-          {error && (
-            <div className="bg-red-50 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-              {error}
-            </div>
-          )}
-
-          {uploadURLs.length > 0 && (
-            <div className="bg-green-50 border border-green-400 text-green-700 px-4 py-3 rounded">
-              <p>Upload completed successfully!</p>
-              {multiple ? (
-                <ul className="list-disc pl-5 mt-1">
-                  {uploadURLs.map((url, index) => (
-                    <li key={index}>
-                      <a
-                        href={url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline"
-                      >
-                        {fileStatuses.find((status) => status.url === url)?.file
-                          .name || url}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <a
-                  href={uploadURLs[0]}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline"
+              {error && (
+                <Typography
+                  variant="paragraph/xs"
+                  className="text-destructive"
+                  weight="medium"
                 >
-                  {uploadURLs[0]}
-                </a>
+                  {error}
+                </Typography>
               )}
             </div>
           )}
         </div>
 
         {/* right */}
-
-        <div className="col-span-1 flex  items-center justify-center">
+        <div className="col-span-1 flex items-center justify-center">
           <div
-            className="border border-dashed rounded w-full h-40 cursor-pointer flex items-center justify-center"
+            className={`border border-muted-foreground border-dashed rounded-xl w-full h-40 cursor-pointer flex items-center justify-center`}
             onClick={() => inputRef.current?.click()}
           >
             <input
@@ -168,60 +190,29 @@ const AttachmentTus = ({
               ref={inputRef}
               className="hidden"
               multiple={multiple}
-              //   onChange={handleFileChange}
-              //   accept={
-              //     allowedTypes?.length
-              //       ? allowedTypes.map((type) => `.${type}`).join(",")
-              //       : ""
-              //   }
+              onChange={handleUpload}
+              accept={
+                accept?.length ? accept.map((type) => `.${type}`).join(",") : ""
+              }
             />
 
-            <div className="flex items-center justify-center flex-col gap-2">
+            <div className="flex items-center justify-center flex-col gap-4">
               <div className="flex items-center justify-center size-16 bg-primary rounded-lg ">
-                <PixelImgIcon size={36} />
+                {icon}
               </div>
-              <Typography variant="label/sm">Upload</Typography>
+              <div className="flex items-center justify-center gap-1">
+                <Typography variant="label/sm">
+                  Drag and drop to upload, or click to
+                </Typography>
+                <Typography
+                  variant="label/sm"
+                  weight="bold"
+                  className="text-primary"
+                >
+                  browse
+                </Typography>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div className="col-span-1 hidden">
-          <h2 className="text-lg font-medium mb-2">
-            Upload File{multiple ? "s" : ""}
-          </h2>
-          <input
-            type="file"
-            onChange={handleFileChange}
-            ref={inputRef}
-            multiple={multiple}
-            className="mt-1 block w-full text-sm text-gray-500
-                    file:mr-4 file:py-2 file:px-4
-                    file:rounded-md file:border-0
-                    file:text-sm file:font-semibold
-                    file:bg-blue-50 file:text-blue-700
-                    hover:file:bg-blue-100"
-            disabled={uploading}
-          />
-
-          <div className="flex space-x-4 mt-4">
-            <button
-              onClick={startUpload}
-              disabled={files.length === 0 || uploading}
-              className={`flex-1 py-2 px-4 rounded-md text-white font-medium ${
-                files.length === 0 || uploading
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-blue-600 hover:bg-blue-700"
-              }`}
-            >
-              {uploading ? "Uploading..." : "Start Upload"}
-            </button>
-
-            <button
-              onClick={resetUpload}
-              className="flex-1 py-2 px-4 border border-gray-300 rounded-md text-gray-700 font-medium hover:bg-gray-50"
-            >
-              Reset
-            </button>
           </div>
         </div>
       </div>
