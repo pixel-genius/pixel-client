@@ -12,7 +12,8 @@ import { useForm } from "react-hook-form";
 import { AutherLayout } from "./auther-layout";
 import AutherResult from "./auther-result";
 import Image from "next/image";
-import BecomeAnAuthorimage from "../../_assets/become-auther.svg";
+import BecomeAnAuthorimage from "../../_assets/be.svg";
+import Vector3d from "./vector3d";
 
 const AutherForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -41,19 +42,23 @@ const AutherForm = () => {
   return (
     <div>
       {isSubmitted ? (
-        <AutherResult /> // Show result form after submission
+        <div className="pt-36 h-full px-30 gap-10 pb-20 flex items-center justify-center">
+          <div className="self-center">
+            <AutherResult />
+          </div>
+        </div>
       ) : (
         <AutherLayout>
-          <div className="pt-40  grid grid-cols-1 md:grid-cols-2 gap-10 pb-20">
+          <div className="pt-40 px-30 gap-10 pb-20">
             <div>
               <div className="pb-6">
-                <Typography variant="heading/md" weight="bold">
+                <Typography className="pb-4" variant="heading/lg" weight="bold">
                   Become an Author
                 </Typography>
                 <Typography
                   variant="paragraph/md"
-                  weight="normal"
-                  className="text-muted-foreground"
+                  weight="light"
+                  className="text-muted-foreground  pb-6"
                 >
                   Join the talented community of designers at PixelGenius by
                   invitation or by submitting your application using the form
@@ -64,60 +69,60 @@ const AutherForm = () => {
                 onSubmit={handleSubmit(onSubmit)}
                 className="flex flex-col gap-4"
               >
-                <div>
-                  <Input
-                    placeholder="exm@gmail.com"
-                    type="email"
-                    label="Email"
-                    {...register("email")}
-                    error={errors.email?.message}
-                  />
-                </div>
                 <div className="flex gap-2 flex-col w-auto sm:flex-row">
                   <Input
-                    placeholder="Pixel"
-                    label="First Name"
+                    placeholder="First Name"
+                    size="md"
                     {...register("first_name")}
                     error={errors.first_name?.message}
                   />
                   <Input
-                    placeholder="Genius"
-                    label="Last Name"
+                    placeholder="Last Name"
+                    size="md"
                     {...register("last_name")}
                     error={errors.last_name?.message}
                   />
                 </div>
                 <div>
                   <Input
-                    placeholder="https://www.myportfolio.com"
-                    label="Portfolio Link"
+                    placeholder="Please enter your email"
+                    type="email"
+                    size="md"
+                    {...register("email")}
+                    error={errors.email?.message}
+                  />
+                </div>
+
+                <div>
+                  <Input
+                    placeholder="Please enter your portfolio link"
+                    size="md"
                     {...register("profile_link")}
                     error={errors.profile_link?.message}
                   />
                 </div>
                 <div>
-                  <Input
-                    placeholder="Choose your file"
-                    type="file"
-                    label="Upload Your CV and Portfolio"
+           
+                  <Textarea
+                    placeholder="Write a short message about yourself"
+                    className=" bg-card h-40 resize-none p-3"
+                    {...register("info")}
+                    // error={errors.profile_link?.message}
                   />
                 </div>
                 <div>
-                  <Label className="font-normal text-gray-400">
-                    Additional Information
-                  </Label>
-                  <Textarea
-                    placeholder="write a short message about yourself"
-                    className=" bg-card resize-none p-3"
-                    {...register("info")}
-                    // error={errors.profile_link?.message}
+                  <Input
+                    placeholder="Upload Your CV and Portfolio"
+                    size="md"
+                    type="file"
+                    label="Upload Your CV and Portfolio"
                   />
                 </div>
                 <div>
                   <Button
                     type="submit"
                     variant="primary"
-                    className="w-full"
+                    className="px-20"
                     isLoading={mutation.isPending}
                   >
                     Submit
@@ -125,15 +130,7 @@ const AutherForm = () => {
                 </div>
               </form>
             </div>
-            <div className="self-center">
-              <Image
-                className="w-[600px] h-[600px] object-cover hidden md:block"
-                width={500}
-                height={500}
-                src={BecomeAnAuthorimage}
-                alt="pixel-genius-logo"
-              />
-            </div>
+            <div className="self-center"></div>
           </div>
         </AutherLayout>
       )}
