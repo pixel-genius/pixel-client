@@ -1,3 +1,4 @@
+"use client";
 import {
   BaseInput,
   Button,
@@ -5,13 +6,10 @@ import {
   Switch,
   Typography,
 } from "@repo/ui/components";
-import {
-  IconCheck,
-  IconCoinBitcoin,
-  IconCreditCard,
-} from "@tabler/icons-react";
 import Cartitem from "./_components/cart-item";
 import Subtotal from "./_components/ordersummary";
+import PaymentOptionsList from "./_components/paymentOption";
+import PaymentSettings from "./_components/paymentSettings";
 
 const PixelPayment = () => {
   return (
@@ -40,105 +38,13 @@ const PixelPayment = () => {
                     Select Payment Method{" "}
                   </Typography>
                 </div>
-                <div className="flex gap-2 ">
-                  <div className="rounded-lg border border-primary bg-card px-4 py-2 flex items-center w-full">
-                    <div className="flex items-center justify-between w-full">
-                      <div className="flex flex-col gap-1">
-                        <IconCreditCard size={24} />
-                        <Typography variant={"label/xs"} weight={"light"}>
-                          Paypal
-                        </Typography>
-                      </div>
-                      <div>
-                        <IconCheck size={24} />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="rounded-lg border border-primary bg-card px-4 py-2 flex items-center w-full">
-                    <div className="flex items-center justify-between w-full ">
-                      <div className="flex flex-col gap-1">
-                        <IconCoinBitcoin size={24} />
-                        <Typography variant={"label/xs"} weight={"light"}>
-                          Paypal
-                        </Typography>
-                      </div>
-                      <div>
-                        <IconCheck size={24} />
-                      </div>
-                    </div>
-                  </div>
+                <div className="flex flex-col gap-2 ">
+                  <PaymentOptionsList />
                 </div>
               </div>
             </div>
             {/* wallet balance */}
-            <div className="flex justify-between items-center">
-              <div className="flex flex-col gap-2 ">
-                <Typography variant={"label/md"} weight={"medium"}>
-                  Use Wallet Balance{" "}
-                </Typography>
-                <Typography
-                  variant={"label/xs"}
-                  weight={"medium"}
-                  className="text-muted-foreground"
-                >
-                  $10.00
-                </Typography>
-              </div>
-              <div>
-                <Switch />
-              </div>
-            </div>
-            <div className="flex justify-between items-center">
-              <div className="flex flex-col gap-2 ">
-                <Typography variant={"label/md"} weight={"medium"}>
-                  Use Pixel Balance
-                </Typography>
-                <Typography
-                  variant={"label/xs"}
-                  weight={"medium"}
-                  className="text-muted-foreground"
-                >
-                  120 PIXEL (~ $5.00)
-                </Typography>
-              </div>
-              <div>
-                <Switch />
-              </div>
-            </div>
-            {/* Apply Discount Code */}
-            <div className="flex justify-between items-center">
-              <div className="flex flex-col gap-2 ">
-                <Typography variant={"label/md"} weight={"medium"}>
-                  Apply Discount Code
-                </Typography>
-              </div>
-              <div>
-                <Switch />
-              </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              <div className="flex gap-2 items-center justify-center">
-                <BaseInput size={"sm"} placeholder="Enter Discount Code" />
-                <Button variant="secondary" size="sm">
-                  Apply
-                </Button>
-              </div>
-              <div className="flex gap-2 items-center justify-center">
-                <BaseInput size={"sm"} placeholder="Enter Discount Code" />
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  className="bg-destructive"
-                >
-                  Apply
-                </Button>
-              </div>
-            </div>
-            <div className="w-full">
-              <Button variant="primary" size="md" className="w-full font-bold">
-                Go To Pay
-              </Button>
-            </div>
+            <PaymentSettings />
           </div>
           {/* card details */}
           <div className="flex flex-col gap-4 ">
