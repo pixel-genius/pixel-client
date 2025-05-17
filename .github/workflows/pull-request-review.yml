@@ -69,14 +69,16 @@ jobs:
                https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/requested_reviewers \
                -d '{"reviewers":["mrbadri"]}'
 
-      - name: Add PR Description Comment
+      - name: Update PR Description
         run: |
-          PR_COMMENT="This pull request is related to issue #${{ env.ISSUE_NUMBER }}\n\nCloses #${{ env.ISSUE_NUMBER }}"
+          PR_BODY="## Related Issue
+
+Closes #${{ env.ISSUE_NUMBER }}"
           
-          curl -X POST -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+          curl -X PATCH -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
                -H "Accept: application/vnd.github.v3+json" \
-               https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments \
-               -d "{\"body\": \"$PR_COMMENT\"}"
+               https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }} \
+               -d "{\"body\": \"$PR_BODY\"}"
 
   merge-pr:
     runs-on: ubuntu-latest
