@@ -14,10 +14,10 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         className={cn(
           "flex min-h-[80px] bg-card w-full rounded-md border px-3 py-2 text-sm transition-colors",
           "bg-background placeholder:text-muted-foreground",
-          "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+          "focus:outline-primary focus: focus:ring-primary focus:ring-offset-2",
           "disabled:cursor-not-allowed disabled:opacity-50",
           error
-            ? "border-destructive text-destructive focus:ring-destructive"
+            ? "border-primary text-primary focus:ring-primary"
             : "border-input text-foreground",
           className
         )}

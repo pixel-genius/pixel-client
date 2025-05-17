@@ -4,24 +4,28 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  Typography,
 } from "@repo/ui/components";
 import AutherForm from "./_components/auther-form";
+import { CardBody, CardContainer, CardItem } from "./_components/3d-card";
+import BecomeAnAuthorimage from "../_assets/be.svg";
+import logoBrand from "../_assets/logo-brand.svg";
+
+import Image from "next/image";
+import Vector3d from "./_components/vector3d";
 
 const BecomeAuther = () => {
   return (
     <div className="container mx-auto">
-      <div className="pb-[200px] ">
-      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 ">
+      <AutherForm />
+      <Vector3d />
+        
+
         {/* <AutherResult /> */}
-        <AutherForm />
       </div>
-      {/* iteam section */}
-      <div className="">
-        <div className="text-center pb-10">
-          <p className="text-4xl font-bold">Frequently asked Questions!</p>
-        </div>
-        {/* accordion item */}
-        <div className="flex flex-col gap-5 pb-11">
+ 
+        {/* <div className="flex flex-col gap-5 pb-11">
           <div className="">
             <Accordion
               collapsible
@@ -100,8 +104,8 @@ const BecomeAuther = () => {
               </AccordionItem>
             </Accordion>
           </div>
-        </div>
-      </div>
+        </div> */}
+      
     </div>
   );
 };
