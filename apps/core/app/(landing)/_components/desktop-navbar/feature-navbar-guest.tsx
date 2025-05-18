@@ -18,7 +18,7 @@ const FeatureNavbarGuest = () => {
   return (
     <div className="flex items-center gap-3 shrink-0 ">
       <Link href="/auth/signup" className="text-primary-500 flex-shrink-0">
-        <Typography variant="label/sm" weight="medium">
+        <Typography variant="label/sm" weight="light">
           Sign Up
         </Typography>
       </Link>
