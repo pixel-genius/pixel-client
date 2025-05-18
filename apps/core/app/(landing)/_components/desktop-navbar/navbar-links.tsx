@@ -18,7 +18,10 @@ const NavbarLinks = () => {
         Browse
       </Typography>
       <Link href="/become-auther">
+
         <Typography variant="label/sm">Become an author</Typography>
+        <Typography variant="label/sm">Become an author</Typography>
+
       </Link>
     </div>
   );

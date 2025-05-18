@@ -56,12 +56,13 @@ const Addtocard = () => {
       </div>
 
       {/* Pay Now Button */}
+
       <Button 
         size="lg" 
         className="w-full bg-primary text-white text-lg font-semibold rounded-xl mt-2"
         onClick={() => router.push("/payment")}
       >
-        Pay Now
+ Pay Now
       </Button>
 
       {/* Secure Payment Message */}
