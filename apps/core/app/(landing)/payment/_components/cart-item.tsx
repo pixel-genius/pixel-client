@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Typography } from "@repo/ui/components";
+import { Button, Typography } from "@repo/ui/components";
 import { IconTrash } from "@tabler/icons-react";
 import Hearticon from "@repo/icons/heart";
 
@@ -80,16 +80,9 @@ const CardActions = () => {
 const CardAction: React.FC<CardActionProps> = ({ icon, label }) => {
   return (
     <div className="flex items-center gap-2">
-      <div>{icon}</div>
-      <div>
-        <Typography
-          className="text-muted-foreground"
-          variant={"label/md"}
-          weight={"light"}
-        >
-          {label}
-        </Typography>
-      </div>
+      <Button iconLeft={icon} variant="secondary" size="sm">
+        {label}
+      </Button>
     </div>
   );
 };

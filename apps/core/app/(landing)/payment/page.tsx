@@ -1,11 +1,5 @@
 "use client";
-import {
-  BaseInput,
-  Button,
-  Input,
-  Switch,
-  Typography,
-} from "@repo/ui/components";
+import { Input, Typography } from "@repo/ui/components";
 import Cartitem from "./_components/cart-item";
 import Subtotal from "./_components/ordersummary";
 import PaymentOptionsList from "./_components/paymentOption";
@@ -68,19 +62,14 @@ const PixelPayment = () => {
                 </Typography>
               </div>
               <div className="flex flex-col gap-4">
-                <Subtotal label="Subtotal" amount="$35" />
-                <Subtotal label="Use Wallet " amount="$5" />
-                <Subtotal label="Use Pixel " amount="-$5" />
-                <Subtotal label="Discount" amount="$30" />
-                <div className="rounded-full bg-border h-1 w-full "></div>
-                <div className="flex justify-between items-center">
-                  <Typography variant={"heading/sm"} weight={"light"}>
-                    Total (2 items)
-                  </Typography>
-                  <Typography variant={"heading/sm"} weight={"bold"}>
-                    $35
-                  </Typography>
-                </div>
+                <Subtotal
+                  items={[
+                    { label: "Your Subtotal", amount: 30 },
+                    { label: "Use Wallet", amount: -5 },
+                    { label: "Use Pixel", amount: -3 },
+                    { label: "Discount", amount: -2 },
+                  ]}
+                />
               </div>
             </div>
           </div>
