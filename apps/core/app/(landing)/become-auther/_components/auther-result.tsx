@@ -2,12 +2,13 @@ import { Typography } from "@repo/ui/components";
 import { AutherLayout } from "./auther-layout";
 import Image from "next/image";
 import BecomeAnAuthorimage from "../../_assets/become-auther.svg";
+import Vector3d from "./vector3d";
 
 const AutherResult = () => {
   return (
     <>
       <AutherLayout>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-44">
+     
           <div className="self-center">
             <Typography className="py-2" variant="heading/lg" weight="bold">
               Your Request Will Be Reviewed
@@ -32,16 +33,8 @@ const AutherResult = () => {
               patience during this process.
             </Typography>
           </div>
-          <div>
-            <Image
-              className="w-[600px] h-[600px] object-cover hidden md:block"
-              width={500}
-              height={500}
-              src={BecomeAnAuthorimage}
-              alt="pixel-genius-logo"
-            />
-          </div>
-        </div>
+         
+     
       </AutherLayout>
     </>
   );

@@ -3,35 +3,31 @@ import { z } from "zod";
 // Request
 export const postRequestAuthorRequestSchemaTransformed = z
   .object({
-    // keyPayload: z.string(),
-    email : z.string(),
-    firstName: z.string(),
-    lastName : z.string(),
-    link : z.string(),
-    file : z.number(),
-    information : z.string(),
-    portfolioLink : z.string(),
+    email: z.string().email("Invalid email address"),
+    firstName: z.string().min(1, "First name is required"),
+    lastName: z.string().min(1, "Last name is required"),
+    portfolioLink: z.string().url("Invalid portfolio URL"),
+    file: z.any(), // Changed to any to handle File object
+    information: z.string().optional(),
   })
   .transform((data) => ({
     first_name: data.firstName,
-     last_name: data.lastName,
-      email: data.email,
-       link: data.link,
-        file: data.file,
-         information: data.information,
-         portfolioLink: data.portfolioLink
-        }));
+    last_name: data.lastName,
+    email: data.email,
+    link: data.portfolioLink,
+    file: data.file ? 1 : 0, // Convert file to number
+    information: data.information || "",
+  }));
 
 // Response
 export const postRequestAuthorResponseSchemaTransofrmed = z
   .object({
-    // keyBody: z.string(),
-    firstName : z.string(),
-    lastName : z.string(),
-    email : z.string(),
-    link : z.string(),
-    file : z.number(),
-    information : z.string(),
+    firstName: z.string(),
+    lastName: z.string(),
+    email: z.string(),
+    link: z.string(),
+    file: z.number(),
+    information: z.string(),
   })
   .transform((data) => data);
 
