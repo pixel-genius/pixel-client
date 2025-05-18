@@ -7,16 +7,18 @@ import { HighlightSection } from "./highlight-section";
 
 export const TabGeneral = () => {
   return (
-    <div className="grid grid-cols-2 gap-x-6 gap-y-6">
-      {/* Full-width header */}
-      <div className="col-span-full">
-        <Typography variant="label/lg" weight="bold">
+    <>
+      <div className="col-span-full pb-4">
+        <Typography variant="heading/lg" weight="bold">
           Product Details
         </Typography>
       </div>
+    <div className="grid px-4 py-6 rounded-lg bg-card grid-cols-2 gap-x-6 gap-y-6">
+      {/* Full-width header */}
+      
 
       {/* Product Name and Blurb */}
-      <div className="col-span-1">
+      <div className="col-span-1 ">
         <Input label="Product Name" />
       </div>
       <div className="col-span-1">
@@ -44,5 +46,8 @@ export const TabGeneral = () => {
         <Input label="Tags" placeholder="Multi Select Tags" />
       </div>
     </div>
+    
+    </>
+  
   );
 };

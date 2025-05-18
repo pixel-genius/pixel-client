@@ -13,7 +13,7 @@ const buttonVariants = cva(
         primary:
           "bg-primary text-white rounded-lg hover:bg-purple-600 disabled:text-gray-400 disabled:!bg-gray-200 ",
         secondary:
-          "bg-secondary rounded-lg text-secondary-foreground hover:bg-zinc-900 disabled:text-gray-400 disabled:bg-secondary  ",
+          "bg-secondary rounded-lg text-secondary-foreground hover:bg-zinc-700 disabled:text-gray-400 disabled:bg-secondary  ",
         tertiary:
           "bg-transparent text-white rounded-lg disabled:text-gray-700 ",
       },

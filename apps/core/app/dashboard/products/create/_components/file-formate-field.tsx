@@ -86,7 +86,7 @@ export const FileFormatField: React.FC<FileFormatFieldProps> = ({
         return (
           <Chip
             key={option.id}
-            size="sm"
+            size="lg"
             iconLeft={getFileFormatIcon(option.icon)}
             iconRight={isSelected ? <Circlxicon size={16} /> : null}
             variant={isSelected ? "primary" : "secondary"}
