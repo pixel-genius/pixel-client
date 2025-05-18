@@ -14,11 +14,11 @@ const NavbarLinks = () => {
 
   return (
     <div className="flex items-center gap-4">
-      <Typography onClick={onClick} variant="label/xs">
+      <Typography onClick={onClick} variant="label/sm">
         Browse
       </Typography>
       <Link href="/become-auther">
-        <Typography variant="label/xs">Become an author</Typography>
+        <Typography variant="label/sm">Become an author</Typography>
       </Link>
     </div>
   );

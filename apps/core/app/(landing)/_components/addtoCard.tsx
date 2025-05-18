@@ -7,9 +7,11 @@ import { useState } from "react";
 import CardSkeleton from "./card-cart-skeleton";
 import { useCartStore } from "../store/cart-store";
 import { Typography } from "@repo/ui/components";
+import { useRouter } from "next/navigation";
 
 const Addtocard = () => {
   const { closeAddToCart } = useCartStore();
+  const router = useRouter();
 
   const [cards, setCards] = useState([
     { id: 2, title: "Traveler - Travel Agency", price: 15, image: "/cart-1.png" },
@@ -54,7 +56,11 @@ const Addtocard = () => {
       </div>
 
       {/* Pay Now Button */}
-      <Button size="lg" className="w-full bg-primary text-white text-lg font-semibold rounded-xl mt-2">
+      <Button 
+        size="lg" 
+        className="w-full bg-primary text-white text-lg font-semibold rounded-xl mt-2"
+        onClick={() => router.push("/payment")}
+      >
         Pay Now
       </Button>
 

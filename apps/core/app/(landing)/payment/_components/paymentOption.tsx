@@ -43,11 +43,17 @@ const PaymentOption: React.FC<PaymentOptionProps> = ({
   );
 };
 
-const PaymentOptionsList: React.FC = () => {
-  const [activeOption, setActiveOption] = useState<string>("Paypal");
+type PaymentOptionsListProps = {
+  onOptionChange: (option: string) => void;
+  selectedOption: string;
+};
 
+const PaymentOptionsList: React.FC<PaymentOptionsListProps> = ({ 
+  onOptionChange,
+  selectedOption 
+}) => {
   const handleOptionClick = (option: string) => {
-    setActiveOption(option);
+    onOptionChange(option);
   };
 
   return (
@@ -55,14 +61,14 @@ const PaymentOptionsList: React.FC = () => {
       <PaymentOption
         icon={IconCreditCard}
         label="Paypal"
-        isActive={activeOption === "Paypal"}
+        isActive={selectedOption === "Paypal"}
         onClick={() => handleOptionClick("Paypal")}
       />
       <PaymentOption
         icon={IconCoinBitcoin}
-        label="Bitcoin"
-        isActive={activeOption === "Bitcoin"}
-        onClick={() => handleOptionClick("Bitcoin")}
+        label="USDT"
+        isActive={selectedOption === "USDT"}
+        onClick={() => handleOptionClick("USDT")}
       />
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Typography } from "@repo/ui/components";
+import { Button, Typography } from "@repo/ui/components";
 import { IconTrash } from "@tabler/icons-react";
 import Hearticon from "@repo/icons/heart";
 
@@ -15,16 +15,24 @@ interface CardActionProps {
 }
 
 interface CardPriceProps {
-  price: string;
+  price: number;
+  currency: string;
+}
+
+interface CartitemProps {
+  currency: string;
+  onRemove: () => void;
+  title: string;
+  price: number;
 }
 
 // Card Component
-const Cartitem = () => {
+const Cartitem: React.FC<CartitemProps> = ({ currency, onRemove, title, price }) => {
   return (
     <div className="bg-card p-4 rounded-lg flex gap-3 items-center">
       <CardImage />
-      <CardDetails />
-      <CardPrice price="$35" />
+      <CardDetails onRemove={onRemove} title={title} />
+      <CardPrice price={price} currency={currency} />
     </div>
   );
 };
@@ -45,11 +53,11 @@ const CardImage = () => {
 };
 
 // CardDetails Component
-const CardDetails = () => {
+const CardDetails = ({ onRemove, title }: { onRemove: () => void; title: string }) => {
   return (
     <div className="flex flex-col gap-2">
-      <CardTitle title="News App UI KIT" />
-      <CardActions />
+      <CardTitle title={title} />
+      <CardActions onRemove={onRemove} />
     </div>
   );
 };
@@ -66,10 +74,10 @@ const CardTitle: React.FC<CardTitleProps> = ({ title }) => {
 };
 
 // CardActions Component
-const CardActions = () => {
+const CardActions = ({ onRemove }: { onRemove: () => void }) => {
   return (
     <div className="flex items-center gap-2">
-      <CardAction icon={<IconTrash size={24} />} label="Remove" />
+      <CardAction icon={<IconTrash size={24} />} label="Remove" onClick={onRemove} />
       <div> | </div>
       <CardAction icon={<Hearticon size={24} />} label="Save For later" />
     </div>
@@ -77,29 +85,22 @@ const CardActions = () => {
 };
 
 // CardAction Component
-const CardAction: React.FC<CardActionProps> = ({ icon, label }) => {
+const CardAction: React.FC<CardActionProps & { onClick?: () => void }> = ({ icon, label, onClick }) => {
   return (
     <div className="flex items-center gap-2">
-      <div>{icon}</div>
-      <div>
-        <Typography
-          className="text-muted-foreground"
-          variant={"label/md"}
-          weight={"light"}
-        >
-          {label}
-        </Typography>
-      </div>
+      <Button iconLeft={icon} className="text-muted-foreground" variant="tertiary" size="sm" onClick={onClick}>
+        {label}
+      </Button>
     </div>
   );
 };
 
 // CardPrice Component
-const CardPrice: React.FC<CardPriceProps> = ({ price }) => {
+const CardPrice: React.FC<CardPriceProps> = ({ price, currency }) => {
   return (
     <div className="ml-auto">
       <Typography variant={"heading/sm"} weight={"medium"}>
-        {price}
+        {currency}{price}
       </Typography>
     </div>
   );
