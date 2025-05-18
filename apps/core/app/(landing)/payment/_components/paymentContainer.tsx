@@ -66,6 +66,7 @@ const PaymentContainer: React.FC = () => {
         walletBalance={walletBalance}
         pixelBalance={pixelBalance}
         discountAmount={discountAmount}
+        cartItemsCount={2}
       />
     </div>
   );
