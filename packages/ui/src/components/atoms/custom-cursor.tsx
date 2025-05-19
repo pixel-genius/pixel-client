@@ -60,15 +60,33 @@ const CustomCursor: React.FC<CustomCursorProps> = ({
           style={{
             x: cursorX,
             y: cursorY,
-            color: color,
           }}
         >
-          <CursorIcon size={size} color={color} />
-          <div
-            className="absolute left-7 text-xs text-foreground whitespace-nowrap font-bold p-1.5 px-2 rounded"
-            style={{ backgroundColor: color }}
-          >
-            {label}
+          <div className="relative flex items-center">
+            {/* SVG Arrow Cursor */}
+            <svg
+              width={size * 1.5}
+              height={size * 1.5}
+              viewBox="0 0 30 30"
+              fill="white"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ display: 'block' }}
+            >
+              <polygon
+                points="2,2 28,15 15,18 12,28"
+                fill="#6751D6"
+                stroke="#fff"
+                strokeWidth="2"
+                strokeLinejoin="round"
+              />
+            </svg>
+            {/* Label */}
+            <div
+              className="ml-3 mt-12 text-sm font-light text-white bg-primary whitespace-nowrap p-1.5 px-4 rounded"
+              
+            >
+              {label}
+            </div>
           </div>
         </motion.div>
       )}
