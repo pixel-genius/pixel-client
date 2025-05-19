@@ -1,5 +1,6 @@
 import { cn } from "@repo/ui/lib/utils";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import Image from "next/image";
 import { forwardRef } from "react";
 
 const ProductGallery = forwardRef<HTMLDivElement, { className?: string }>(
@@ -21,6 +22,20 @@ const ProductGallery = forwardRef<HTMLDivElement, { className?: string }>(
       ],
     );
 
+    // Array of 8 images - first 3 are actual images, rest are placeholders
+    const images = [
+      { src: "/images/product-placeholder.jpg", alt: "Placeholder image" },
+      { src: "/images/p1.webp", alt: "Product image 1" },
+      { src: "/images/p3.webp", alt: "Product image 3" },
+      { src: "/images/product-placeholder.jpg", alt: "Placeholder image" },
+      { src: "/images/p4.webp", alt: "Product image 3" },
+      { src: "/images/p5.webp", alt: "Product image 3" },
+      { src: "/images/p2.webp", alt: "Product image 2" },
+      { src: "/images/p1.webp", alt: "Product image 3" },
+      { src: "/images/product-placeholder.jpg", alt: "Placeholder image" },
+     
+    ];
+
     return (
       <div ref={ref} className={cn("w-full overflow-hidden", className)}>
         <motion.div
@@ -31,21 +46,20 @@ const ProductGallery = forwardRef<HTMLDivElement, { className?: string }>(
             perspective: "1000px",
           }}
         >
-          {/* NEW  */}
-          <div className="flex gap-8">
-            {[1, 2, 3].map((item) => (
+          <div className="grid grid-cols-3 gap-8">
+            {images.map((image, index) => (
               <div
-                key={item}
-                className="flex flex-col gap-4 justify-between mb-36 w-full grow"
+                key={index}
+                className="flex flex-col justify-between"
               >
                 <div>
-                  <img src="/images/product-placeholder.jpg" alt="" />
-                </div>
-                <div>
-                  <img src="/images/product-placeholder.jpg" alt="" />
-                </div>
-                <div>
-                  <img src="/images/product-placeholder.jpg" alt="" />
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={464}
+                    height={350}
+                    className="object-cover w-full rounded-xl"
+                  />
                 </div>
               </div>
             ))}
