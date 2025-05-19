@@ -46,7 +46,7 @@ const CardImage = () => {
         alt="pixel card"
         width={180}
         height={100}
-        className="rounded-xl w-[120px] md:w-[180px]"
+        className="rounded-xl w-20 h-20 object-cover"
       />
     </div>
   );
@@ -66,7 +66,7 @@ const CardDetails = ({ onRemove, title }: { onRemove: () => void; title: string 
 const CardTitle: React.FC<CardTitleProps> = ({ title }) => {
   return (
     <div>
-      <Typography variant={"heading/sm"} weight={"medium"}>
+      <Typography variant={"label/lg"} weight={"medium"}>
         {title}
       </Typography>
     </div>
@@ -77,9 +77,9 @@ const CardTitle: React.FC<CardTitleProps> = ({ title }) => {
 const CardActions = ({ onRemove }: { onRemove: () => void }) => {
   return (
     <div className="flex items-center gap-2">
-      <CardAction icon={<IconTrash size={24} />} label="Remove" onClick={onRemove} />
+      <CardAction icon={<IconTrash size={18} />} label="Remove" onClick={onRemove} />
       <div> | </div>
-      <CardAction icon={<Hearticon size={24} />} label="Save For later" />
+      <CardAction icon={<Hearticon size={18} />} label="Save For later" />
     </div>
   );
 };
@@ -87,10 +87,12 @@ const CardActions = ({ onRemove }: { onRemove: () => void }) => {
 // CardAction Component
 const CardAction: React.FC<CardActionProps & { onClick?: () => void }> = ({ icon, label, onClick }) => {
   return (
-    <div className="flex items-center gap-2">
-      <Button iconLeft={icon} className="text-muted-foreground" variant="tertiary" size="sm" onClick={onClick}>
-        {label}
-      </Button>
+    <div className="flex items-center text-muted-foreground gap-2 cursor-pointer py-2" onClick={onClick}>
+      
+        <div>{icon}</div>
+        <div><Typography variant="label/sm" weight="medium">{label}</Typography></div>
+     
+
     </div>
   );
 };
