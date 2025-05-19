@@ -34,16 +34,16 @@ const PixelPayment = () => {
   const subtotal = cartItems.reduce((sum, item) => sum + item.price, 0);
 
   return (
-    <div className="pt-44">
-      <div className="">
-        <div className="grid grid-cols-2 grid-rows-1 gap-12 p-10 ">
+    <div className="pt-20 md:pt-32 lg:pt-44">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
           {/* payment form */}
-          <div className=" flex flex-col gap-4 ">
+          <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2 pb-4">
-              <Typography variant={"heading/lg"} className="pb-1" weight={"bold"}>
+              <Typography variant={"heading/lg"} className="pb-1 text-2xl md:text-3xl lg:text-4xl" weight={"bold"}>
                 Payment
               </Typography>
-              <Typography variant={"paragraph/md"} weight={"light"}>
+              <Typography variant={"paragraph/md"} weight={"light"} className="text-sm md:text-base">
                 Complete your purchase by providing your payment details.
               </Typography>
             </div>
@@ -52,14 +52,15 @@ const PixelPayment = () => {
                 placeholder="info@pixel.com"
                 disabled={true}
                 size={"lg"}
+                className="w-full"
               />
               <div className="flex flex-col gap-4">
                 <div>
-                  <Typography variant={"label/md"} weight={"normal"}>
+                  <Typography variant={"label/md"} weight={"normal"} className="text-sm md:text-base">
                     Select Payment Method{" "}
                   </Typography>
                 </div>
-                <div className="flex flex-col gap-2 ">
+                <div className="flex flex-col gap-2">
                   <PaymentOptionsList 
                     selectedOption={selectedPaymentOption}
                     onOptionChange={setSelectedPaymentOption} 
@@ -79,12 +80,12 @@ const PixelPayment = () => {
             </div>
           </div>
           {/* card details */}
-          <div className="flex flex-col gap-4 ">
+          <div className="flex flex-col gap-4 mt-8 lg:mt-0">
             <div className="flex flex-col gap-2">
-              <Typography variant={"heading/lg"} className="pb-1 " weight={"bold"}>
+              <Typography variant={"heading/lg"} className="pb-1 text-2xl md:text-3xl lg:text-4xl" weight={"bold"}>
                 Product Information & Review
               </Typography>
-              <Typography variant={"label/sm"} className="pb-4" weight={"light"}>
+              <Typography variant={"label/sm"} className="pb-4 text-xs md:text-sm" weight={"light"}>
                 By Placing your order, you agree to storele ins trivacy and
                 policy.{" "}
               </Typography>
@@ -92,11 +93,11 @@ const PixelPayment = () => {
             {/* card section  */}
             <div className="flex flex-col gap-3">
               {cartItems.length === 0 ? (
-                <div className="bg-card p-8 rounded-lg flex flex-col items-center justify-center gap-4">
-                  <Typography variant={"heading/sm"} weight={"medium"}>
+                <div className="bg-card p-4 md:p-6 lg:p-8 rounded-lg flex flex-col items-center justify-center gap-4">
+                  <Typography variant={"heading/sm"} weight={"medium"} className="text-lg md:text-xl">
                     Your cart is empty
                   </Typography>
-                  <Typography variant={"label/md"} weight={"light"}>
+                  <Typography variant={"label/md"} weight={"light"} className="text-sm md:text-base text-center">
                     Add some items to your cart to proceed with payment
                   </Typography>
                 </div>
@@ -113,7 +114,7 @@ const PixelPayment = () => {
               )}
               {/* order summary */}
               <div>
-                <Typography variant={"label/lg"} weight={"medium"}>
+                <Typography variant={"label/lg"} weight={"medium"} className="text-base md:text-lg">
                   Order Summary
                 </Typography>
               </div>
