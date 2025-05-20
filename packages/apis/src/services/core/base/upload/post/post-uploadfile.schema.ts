@@ -4,7 +4,7 @@ import { z } from "zod";
 // Response
 export const postUploadfileRequestSchemaTransformed = z
   .object({
-    file: z.array(z.instanceof(File)),
+    file: z.array(typeof File !== "undefined" ? z.instanceof(File) : z.any()),
   })
   .transform((data) => {
     const form = new FormData();

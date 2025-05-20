@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useCallback, useRef, useEffect } from "react";
 import * as tus from "tus-js-client";
 import { DetailedError } from "tus-js-client";
@@ -198,10 +200,28 @@ export function useTusUploadManager(options: UseTusUploadManagerOptions) {
   // Function to set initial uploads from defaultValue
   const setInitialUploads = useCallback((initialUploads: CompletedUpload[]) => {
     const fakeUploads: UploadItem[] = initialUploads.map((item) => {
-      // Create a mock File object
-      const fakeFile = new File([""], item.fileName, {
-        type: "application/octet-stream",
-      });
+      // Create a mock File object only in browser environment
+      let fakeFile: File;
+
+      if (typeof window !== "undefined" && typeof File !== "undefined") {
+        // Browser environment
+        fakeFile = new File([""], item.fileName, {
+          type: "application/octet-stream",
+        });
+      } else {
+        // Server environment - create a placeholder object with same interface
+        fakeFile = {
+          name: item.fileName,
+          size: 0,
+          type: "application/octet-stream",
+          // Other File properties needed by the component
+          lastModified: Date.now(),
+          slice: () => new Blob(),
+          arrayBuffer: async () => new ArrayBuffer(0),
+          stream: () => new ReadableStream(),
+          text: async () => "",
+        } as File;
+      }
 
       const id = `${item.fileName}-${Date.now()}`;
 
