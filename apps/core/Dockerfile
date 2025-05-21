@@ -22,7 +22,12 @@ WORKDIR /app
 
 # First install the dependencies (as they change less often)
 COPY --from=builder /app/out/json/ .
-RUN yarn install
+# Configure DNS and use Cloudflare npm registry for better network reliability
+RUN echo "nameserver 1.1.1.1" > /etc/resolv.conf && \
+    echo "nameserver 8.8.8.8" >> /etc/resolv.conf && \
+    yarn config set registry https://registry.npmjs.cf/ && \
+    yarn config set network-timeout 300000 && \
+    yarn install --network-timeout 600000 --no-network-concurrency
 
 # Build the project
 COPY --from=builder /app/out/full/ .
