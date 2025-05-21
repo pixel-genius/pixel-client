@@ -82,6 +82,7 @@ const ProductFooter = () => {
                   className="justify-between"
                 >
                   Preview
+                  
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
@@ -98,3 +99,4 @@ const ProductFooter = () => {
 };
 
 export default ProductFooter;
+      
