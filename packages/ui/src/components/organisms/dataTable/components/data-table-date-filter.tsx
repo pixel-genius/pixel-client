@@ -175,8 +175,7 @@ export function DataTableDateFilter<TData>({
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="tertiary" size="sm" className="border-dashed">
-          {hasValue ? (
+        <Button variant="tertiary" size="sm" className="border-dashed" iconLeft={hasValue ? (
             <div
               role="button"
               aria-label={`Clear ${title} filter`}
@@ -188,7 +187,7 @@ export function DataTableDateFilter<TData>({
             </div>
           ) : (
             <CalendarIcon />
-          )}
+          )}>
           {label}
         </Button>
       </PopoverTrigger>

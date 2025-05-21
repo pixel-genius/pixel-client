@@ -36,7 +36,15 @@ import {
   BaseSelectTrigger as SelectTrigger,
   BaseSelectValue as SelectValue,
 } from "../../../atoms/base-select";
-import { ExtendedColumnFilter, FilterOperator, formatDate, getDefaultFilterOperator, getFilterOperators, getFiltersStateParser, useDebouncedCallback } from "@repo/dataTable";
+import {
+  ExtendedColumnFilter,
+  FilterOperator,
+  formatDate,
+  getDefaultFilterOperator,
+  getFilterOperators,
+  getFiltersStateParser,
+  useDebouncedCallback,
+} from "@repo/dataTable";
 import { generateId } from "@repo/utils/utils/id";
 import { cn } from "@repo/ui/lib/utils";
 
@@ -258,8 +266,9 @@ export function DataTableFilterMenu<TData>({
             className={cn(filters.length > 0 && "size-8", "h-8")}
             ref={triggerRef}
             onKeyDown={onTriggerKeyDown}
+            iconLeft={filters.length <= 0 ? <ListFilter /> : null}
           >
-            <ListFilter />
+            {filters.length > 0 ? <ListFilter /> : null}
             {filters.length > 0 ? null : "Filter"}
           </Button>
         </PopoverTrigger>
@@ -401,10 +410,12 @@ function DataTableFilterItem<TData>({
               variant="tertiary"
               size="sm"
               className="rounded-none rounded-l-md border border-r-0 font-normal dark:bg-input/30"
+              iconLeft={
+                columnMeta?.icon && (
+                  <columnMeta.icon className="text-muted-foreground" />
+                )
+              }
             >
-              {columnMeta?.icon && (
-                <columnMeta.icon className="text-muted-foreground" />
-              )}
               {columnMeta?.label ?? column.id}
             </Button>
           </PopoverTrigger>
@@ -820,8 +831,8 @@ function onFilterInputRender<TData>({
                 "h-full rounded-none border px-1.5 font-normal dark:bg-input/30",
                 !filter.value && "text-muted-foreground",
               )}
+              iconLeft={<CalendarIcon className="size-3.5" />}
             >
-              <CalendarIcon className="size-3.5" />
               <span className="truncate">{displayValue}</span>
             </Button>
           </PopoverTrigger>

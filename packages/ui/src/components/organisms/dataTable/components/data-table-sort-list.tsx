@@ -174,17 +174,23 @@ export function DataTableSortList<TData>({
     >
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
-          <Button variant="tertiary" size="sm" onKeyDown={onTriggerKeyDown}>
-            <ArrowDownUp />
+          <Button
+            variant="tertiary"
+            size="sm"
+            onKeyDown={onTriggerKeyDown}
+            iconLeft={<ArrowDownUp />}
+            iconRight={
+              sorting.length > 0 && (
+                <Badge
+                  variant="secondary"
+                  className="h-[18.24px] rounded-[3.2px] px-[5.12px] font-mono font-normal text-[10.4px]"
+                >
+                  {sorting.length}
+                </Badge>
+              )
+            }
+          >
             Sort
-            {sorting.length > 0 && (
-              <Badge
-                variant="secondary"
-                className="h-[18.24px] rounded-[3.2px] px-[5.12px] font-mono font-normal text-[10.4px]"
-              >
-                {sorting.length}
-              </Badge>
-            )}
           </Button>
         </PopoverTrigger>
         <PopoverContent
@@ -328,9 +334,9 @@ function DataTableSortItem({
               variant="tertiary"
               size="sm"
               className="w-44 justify-between rounded font-normal"
+              iconRight={<ChevronsUpDown className="opacity-50" />}
             >
               <span className="truncate">{columnLabels.get(sort.id)}</span>
-              <ChevronsUpDown className="opacity-50" />
             </Button>
           </PopoverTrigger>
           <PopoverContent

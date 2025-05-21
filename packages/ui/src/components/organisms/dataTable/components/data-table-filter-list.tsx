@@ -232,17 +232,23 @@ export function DataTableFilterList<TData>({
     >
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
-          <Button variant="tertiary" size="sm" onKeyDown={onTriggerKeyDown}>
-            <ListFilter />
+          <Button
+            variant="tertiary"
+            size="sm"
+            onKeyDown={onTriggerKeyDown}
+            iconLeft={<ListFilter />}
+            iconRight={
+              filters.length > 0 && (
+                <Badge
+                  variant="secondary"
+                  className="h-[18.24px] rounded-[3.2px] px-[5.12px] font-mono font-normal text-[10.4px]"
+                >
+                  {filters.length}
+                </Badge>
+              )
+            }
+          >
             Filter
-            {filters.length > 0 && (
-              <Badge
-                variant="secondary"
-                className="h-[18.24px] rounded-[3.2px] px-[5.12px] font-mono font-normal text-[10.4px]"
-              >
-                {filters.length}
-              </Badge>
-            )}
           </Button>
         </PopoverTrigger>
         <PopoverContent
@@ -441,12 +447,12 @@ function DataTableFilterItem<TData>({
               variant="tertiary"
               size="sm"
               className="w-32 justify-between rounded font-normal"
+              iconRight={<ChevronsUpDown className="opacity-50" />}
             >
               <span className="truncate">
                 {columns.find((column) => column.id === filter.id)?.columnDef
                   .meta?.label ?? "Select field"}
               </span>
-              <ChevronsUpDown className="opacity-50" />
             </Button>
           </PopoverTrigger>
           <PopoverContent
@@ -769,8 +775,8 @@ function onFilterInputRender<TData>({
                 "w-full justify-start rounded text-left font-normal",
                 !filter.value && "text-muted-foreground",
               )}
+              iconLeft={<CalendarIcon />}
             >
-              <CalendarIcon />
               <span className="truncate">{displayValue}</span>
             </Button>
           </PopoverTrigger>

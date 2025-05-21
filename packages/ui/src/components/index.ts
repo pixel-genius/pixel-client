@@ -68,3 +68,14 @@ export * from "./molecules/tabs/index";
 
 // Organisms
 export * from "./organisms/foundation-color";
+export * from "./organisms/dataTable/components/data-table";
+export * from "./organisms/dataTable/components/data-table-action-bar";
+export * from "./organisms/dataTable/components/data-table-advanced-toolbar";
+export * from "./organisms/dataTable/components/data-table-filter-list";
+export * from "./organisms/dataTable/components/data-table-sort-list";
+export * from "./organisms/dataTable/components/data-table-toolbar";
+export * from "./organisms/dataTable/components/data-table-view-options";
+export * from "./organisms/dataTable/components/data-table-sort-list";
+export * from "./organisms/dataTable/components/data-table-filter-menu";
+export * from "./organisms/dataTable/components/data-table-faceted-filter";
+export * from "./organisms/dataTable/components/data-table-pagination";

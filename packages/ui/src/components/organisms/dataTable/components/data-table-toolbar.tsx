@@ -54,8 +54,8 @@ export function DataTableToolbar<TData>({
             size="sm"
             className="border-dashed"
             onClick={onReset}
+            iconLeft={<X />}
           >
-            <X />
             Reset
           </Button>
         )}

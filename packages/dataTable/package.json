@@ -9,6 +9,7 @@
     "@repo/typescript-config": "*"
   },
   "dependencies": {
+    "@tanstack/react-table": "^8.21.3"
   },
   "exports": {
     ".": "./src/index.ts"

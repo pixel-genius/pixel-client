@@ -1,16 +1,13 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
+import { Button } from "@repo/ui/components";
+import { Separator } from "@repo/ui/components";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@repo/ui/components";
+import { cn } from "@repo/ui/lib/utils";
 import type { Table } from "@tanstack/react-table";
+import { AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Loader, X } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
@@ -21,14 +18,14 @@ interface DataTableActionBarProps<TData>
   container?: Element | DocumentFragment | null;
 }
 
-function DataTableActionBar<TData>({
+const DataTableActionBar = <TData,>({
   table,
   visible: visibleProp,
   container: containerProp,
   children,
   className,
   ...props
-}: DataTableActionBarProps<TData>) {
+}: DataTableActionBarProps<TData>): JSX.Element | null => {
   const [mounted, setMounted] = React.useState(false);
 
   React.useLayoutEffect(() => {
@@ -76,7 +73,7 @@ function DataTableActionBar<TData>({
     </AnimatePresence>,
     container,
   );
-}
+};
 
 interface DataTableActionBarActionProps
   extends React.ComponentProps<typeof Button> {
@@ -147,7 +144,7 @@ function DataTableActionBarSelection<TData>({
       <Tooltip>
         <TooltipTrigger asChild>
           <Button
-            variant="ghost"
+            variant="tertiary"
             size="icon"
             className="size-5"
             onClick={onClearSelection}

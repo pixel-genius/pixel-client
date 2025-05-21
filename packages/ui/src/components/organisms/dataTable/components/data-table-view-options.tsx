@@ -3,6 +3,8 @@
 import type { Table } from "@tanstack/react-table";
 import { Check, ChevronsUpDown, Settings2 } from "lucide-react";
 
+import { cn } from "@repo/ui/lib/utils";
+import * as React from "react";
 import { Button } from "../../../atoms/button";
 import {
   Command,
@@ -17,8 +19,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "../../../atoms/popover";
-import { cn } from "@repo/ui/lib/utils";
-import * as React from "react";
 
 interface DataTableViewOptionsProps<TData> {
   table: Table<TData>;
@@ -47,10 +47,10 @@ export function DataTableViewOptions<TData>({
           variant="tertiary"
           size="sm"
           className="ml-auto hidden h-8 lg:flex"
+          iconLeft={<Settings2 />}
+          iconRight={<ChevronsUpDown className="ml-auto opacity-50" />}
         >
-          <Settings2 />
           View
-          <ChevronsUpDown className="ml-auto opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent align="end" className="w-44 p-0">
