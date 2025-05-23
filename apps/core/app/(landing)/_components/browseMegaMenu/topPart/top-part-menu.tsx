@@ -16,7 +16,7 @@ interface CategoryItemProps {
 export const CategoryItem = (props: CategoryItemProps) => {
   const { title, icon, link } = props;
   return (
-    <div className="relative flex justify-center items-center">
+    <div className="relative flex justify-center items-center cursor-pointer">
       <PolygonIcon size={150} className="text-card" />
       <Link
         href={link}
@@ -37,7 +37,7 @@ const TopPartMenu = () => {
       <CategoryItem
         title="3D Assets"
         icon={<Asset3dIcon size={48} />}
-        link="#"
+        link="/product"
       />
       <CategoryItem
         title="Icon Sets"

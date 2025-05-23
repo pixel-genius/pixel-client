@@ -5,17 +5,20 @@ import YouTubeIcon from "@repo/icons/youtube";
 import Linkedinicon from "../../../../packages/icons/src/components/linkedin";
 import Link from "next/link";
 import Navbar from "./_components/desktop-navbar/navbar";
+import HamburgerMenu from "./_components/mobile-menu/hamburger-menu";
+import MenuNavigation from "./_components/mobile-menu/menu-navigation";
 
 function Layout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <div className="min-h-full flex flex-col">
       <Navbar islogin={false} />
+      <HamburgerMenu />
 
-      <div className="relative z-10 bg-background pb-6 flex-1 mb-[532px] min-h-screen">
+      <div className="relative z-10 bg-background pb-6 flex-1 md:mb-[532px] mb-[580px] min-h-screen">
         {children}
       </div>
 
-      <footer className="w-full bg-card rounded-t-[48px] py-24 fixed bottom-0 left-0">
+      <footer className="w-full bg-card rounded-t-[48px] py-24 fixed bottom-0 hidden md:block left-0">
         <div className="container ">
           <div className="flex flex-col sm:flex sm:flex-row gap-10 justify-between pb-28">
             {/* logo section */}
@@ -151,6 +154,7 @@ function Layout({ children }: { children: React.ReactNode }): JSX.Element {
           </div>
         </div>
       </footer>
+      <MenuNavigation />
     </div>
   );
 }

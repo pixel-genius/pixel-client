@@ -26,6 +26,8 @@ import Usericon from "@repo/icons/user";
 import Settingsicon from "@repo/icons/settings";
 import { LogoIconSwitcher } from "./logo-icon-switcher";
 import { NavMain } from "./nav-main";
+import { WalletBalanceCard } from "./wallet-balance-card";
+
 
 // This is items of dashboard.
 const data = {
@@ -54,22 +56,22 @@ const data = {
     },
     {
       title: "Sales",
-      url: "/sales",
+      url: "/dashboard/sales",
       icon: ChartBarPopular,
     },
     {
       title: "Profile",
-      url: "/profile",
+      url: "/dashboard/profile",
       icon: Usericon,
     },
     {
-      title: "Payouts",
-      url: "/payouts",
+      title: "Transactions",
+      url: "/dashboard/transactions",
       icon: ReportMoney,
     },
     {
       title: "Settings",
-      url: "/settings",
+      url: "/dashboard/setting",
       icon: Settingsicon,
     },
   ],
@@ -87,6 +89,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarRail />
+      <div className="p-4">
+        <WalletBalanceCard />
+      </div>
     </Sidebar>
   );
 }

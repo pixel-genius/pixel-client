@@ -22,7 +22,10 @@ WORKDIR /app
 
 # First install the dependencies (as they change less often)
 COPY --from=builder /app/out/json/ .
-RUN yarn install
+# Configure Yarn with better network settings and use Taobao registry
+RUN yarn config set registry https://registry.npmmirror.com/ && \
+    yarn config set network-timeout 600000 && \
+    yarn install --network-timeout 600000 --no-network-concurrency
 
 # Build the project
 COPY --from=builder /app/out/full/ .

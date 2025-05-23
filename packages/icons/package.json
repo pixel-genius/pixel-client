@@ -66,10 +66,13 @@
     "./Asset3dIcon": "./src/components/3dAsset.tsx,",
     "./curveX": "./src/components/curveX.tsx",
     "./Moonicon": "./src/components/moon.tsx",
+    "./Creditcardicon": "./src/components/creditcard.tsx",
     "./x": "./src/components/x.tsx",
     "./menu-2": "./src/components/menu-2.tsx",
     "./serach": "./src/components/serach.tsx",
-    "./types": "./src/types/types.ts"
+    "./types": "./src/types/types.ts",
+    "./pixel-img": "./src/components/pixel-img.tsx",
+    "./pixel-zip": "./src/components/pixel-zip.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
