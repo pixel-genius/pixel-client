@@ -61,7 +61,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       {
         type: "input",
         name: "path",
-        message: "Enter the API path:",
+        message: "Enter the API path:"
       },
       // {
       //   type: "list",
