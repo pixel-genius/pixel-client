@@ -4,45 +4,38 @@ import { cn } from "@repo/ui/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
 export interface BaseTextAreaProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,
+  extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "size">,
     VariantProps<typeof baseTextAreaVariants> {
   error?: boolean;
+  rows?: number;
 }
 
 export const baseTextAreaVariants = cva(
-  "flex h-10 w-full bg-card rounded-md border border-border ring-offset-background file:border-0 file:bg-transparent  transition-shadow duration-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 text-sm file:text-sm placeholder:text-muted-foreground font-normal file:font-medium focus:ring-2 focus:ring-primary focus:ring-offset-2",
+  "flex w-full bg-card rounded-md border border-border ring-offset-background file:border-0 file:bg-transparent transition-shadow duration-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 text-sm file:text-sm placeholder:text-muted-foreground font-normal file:font-medium focus:ring-2 focus:ring-primary focus:ring-offset-2 px-4 py-2.5",
   {
     variants: {
-      size: {
-        sm: "px-4 py-2.5 h-9",
-        md: "px-4 py-2.5 h-[52px]",
-        lg: "px-4 py-4 h-14",
-      },
       error: {
         true: "ring-2 ring-error focus-visible:ring-error focus-visible:ring-offset-2",
       },
     },
-    defaultVariants: {
-      size: "md",
-    },
   },
 );
 
-const BaseTaxtArea = React.forwardRef<HTMLInputElement, BaseTextAreaProps>(
+const BaseTextArea = React.forwardRef<HTMLTextAreaElement, BaseTextAreaProps>(
   (props, ref) => {
-    const { size, className, type, error, ...resProps } = props;
+    const { className, error, rows = 1, ...resProps } = props;
 
     return (
-      <input
-        type={type}
-        className={cn(baseTextAreaVariants({ size, error, className }))}
+      <textarea
+        className={cn(baseTextAreaVariants({ error, className }))}
         ref={ref}
+        rows={rows}
         {...resProps}
       />
     );
   },
 );
 
-BaseTaxtArea.displayName = "BaseTextArea";
+BaseTextArea.displayName = "BaseTextArea";
 
-export { BaseTaxtArea };
+export { BaseTextArea };

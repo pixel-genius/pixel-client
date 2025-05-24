@@ -46,6 +46,7 @@ export * from "./atoms/table";
 export * from "./atoms/textarea";
 export * from "./atoms/tooltip";
 export * from "./atoms/typography";
+export * from "./atoms/base-text-area"
 
 // Molecules
 export * from "./molecules/input";
@@ -63,6 +64,7 @@ export * from "./molecules/attachment/attachmentAdmin/attachmentAdmin";
 export * from "./molecules/attachment/attachmentLanding/attachmentLanding";
 export * from "./molecules/select";
 export * from "./molecules/multi-select";
+export * from "./molecules/text-area"
 
 // Organisms
 export * from "./organisms/foundation-color";

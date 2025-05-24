@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@repo/ui/components";
+import { Button, TextArea } from "@repo/ui/components";
 import { Input } from "@repo/ui/components";
 import { Label } from "@repo/ui/components";
 import { Textarea } from "@repo/ui/components";
@@ -427,6 +427,7 @@ const DashboardPage = () => {
                 Submit for review
               </Button>
             </div>
+            <TextArea rows={4} />
           </div>
         </div>
       </div>
