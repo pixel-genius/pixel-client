@@ -32,7 +32,7 @@ export const HighlightSection = () => {
       <Typography
         component="p"
         variant={"label/sm"}
-        className="text-muted-foreground"
+        className="text-muted-foreground whitespace-normal "
       >
         Enter key features and highlights of your product here (e.g., unique
         capabilities, special design)

@@ -133,7 +133,7 @@ const AttachmentTus = ({
             <Typography
               variant="label/sm"
               weight="light"
-              className="text-muted-foreground"
+              className="text-muted-foreground  whitespace-normal"
             >
               {description}
             </Typography>

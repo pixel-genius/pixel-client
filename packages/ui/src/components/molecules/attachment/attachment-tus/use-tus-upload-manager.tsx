@@ -104,6 +104,10 @@ export function useTusUploadManager(options: UseTusUploadManagerOptions) {
     return new tus.Upload(file, {
       endpoint,
       ...restOptions,
+      headers: {
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjo0OTAxNDYwMjQyLCJpYXQiOjE3NDc4NjAyNDIsImp0aSI6IjE0ZTZhNWUyMDNiZjQ1MmJiZjgyN2E0OGQzNzZlM2FlIiwidXNlcl9pZCI6MX0.t3P9SQl7e_xhlTOTcP_NJESnpe6-bDxIxDre8DG6aAM`,
+        ...(options.headers || {}),
+      },
       metadata: {
         filename: file.name,
         filetype: file.type,
