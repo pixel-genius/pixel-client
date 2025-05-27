@@ -233,7 +233,7 @@ export function DataTableFilterList<TData>({
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
-            variant="tertiary"
+            variant="secondary"
             size="sm"
             onKeyDown={onTriggerKeyDown}
             iconLeft={<ListFilter />}

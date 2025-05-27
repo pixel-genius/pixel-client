@@ -44,9 +44,9 @@ export function DataTableViewOptions<TData>({
         <Button
           aria-label="Toggle columns"
           role="combobox"
-          variant="tertiary"
+          variant="secondary"
           size="sm"
-          className="ml-auto hidden h-8 lg:flex"
+          className="ml-auto hidden lg:flex"
           iconLeft={<Settings2 />}
           iconRight={<ChevronsUpDown className="ml-auto opacity-50" />}
         >

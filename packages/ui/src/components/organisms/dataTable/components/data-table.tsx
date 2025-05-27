@@ -18,7 +18,7 @@ interface DataTableProps<TData> extends React.ComponentProps<"div"> {
   actionBar?: React.ReactNode;
 }
 
-export function DataTable<TData>({
+export function DataTableComponent<TData>({
   table,
   actionBar,
   children,
