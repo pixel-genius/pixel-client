@@ -9,7 +9,7 @@ import { DataTableFacetedFilter } from "./data-table-faceted-filter";
 import { DataTableSliderFilter } from "./data-table-slider-filter";
 import { DataTableViewOptions } from "./data-table-view-options";
 import { Button } from "../../../atoms/button";
-import { Input } from "../../../molecules/input";
+import { BaseInput as Input } from "../../../atoms/base-input";
 import { cn } from "@repo/ui/lib/utils";
 
 interface DataTableToolbarProps<TData> extends React.ComponentProps<"div"> {

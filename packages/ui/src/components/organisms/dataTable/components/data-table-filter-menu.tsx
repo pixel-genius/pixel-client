@@ -23,7 +23,7 @@ import {
   CommandItem,
   CommandList,
 } from "../../../atoms/command";
-import { Input } from "../../../molecules/input";
+import { BaseInput as Input } from "../../../atoms/base-input";
 import {
   Popover,
   PopoverContent,
@@ -261,7 +261,7 @@ export function DataTableFilterMenu<TData>({
         <PopoverTrigger asChild>
           <Button
             aria-label="Open filter command menu"
-            variant="tertiary"
+            variant="secondary"
             size={filters.length > 0 ? "icon" : "sm"}
             className={cn(filters.length > 0 && "size-8", "h-8")}
             ref={triggerRef}

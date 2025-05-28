@@ -3,7 +3,7 @@
 import type { Column } from "@tanstack/react-table";
 import * as React from "react";
 
-import { Input } from "../../../molecules/input";
+import { BaseInput as Input } from "../../../atoms/base-input";
 import { cn } from "@repo/ui/lib/utils";
 import type { ExtendedColumnFilter } from "@repo/dataTable";
 

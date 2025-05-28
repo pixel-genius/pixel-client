@@ -4,7 +4,7 @@ import type { Column } from "@tanstack/react-table";
 import * as React from "react";
 
 import { Button } from "../../../atoms/button";
-import { Input } from "../../../molecules/input";
+import { BaseInput as Input } from "../../../atoms/base-input";
 import { Label } from "../../../atoms/label";
 import {
   Popover,

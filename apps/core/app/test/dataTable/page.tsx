@@ -41,7 +41,7 @@ const DataTablePage = () => {
       options={{
         filterList: true,
         sortList: true,
-        advancedToolbar: true,
+        enableAdvancedFilter: true,
       }}
       pagination={{
         pageIndex: 1,
