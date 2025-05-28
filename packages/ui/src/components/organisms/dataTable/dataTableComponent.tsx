@@ -17,11 +17,12 @@ type DataTableOptionsProp = {
 type DataTableColumns<ColumnDefType> = ColumnDef<ColumnDefType>[];
 
 type DataTableData<ColumnDefType> = ColumnDefType[];
-
-type DataTablePagination = {
-  pageIndex: number | undefined;
-  pageCount: number | undefined;
+type DataTablePaginationState = {
+  pageIndex?: number;
+  pageCount?: number;
 };
+interface DataTablePagination extends DataTablePaginationState {
+}
 
 export type DataTableProps<ColumnDefType> = {
   columns: DataTableColumns<ColumnDefType>;
@@ -37,11 +38,12 @@ const DataTableFnComponent = <ColumnDefType,>({
   pagination,
 }: DataTableProps<ColumnDefType>) => {
   const { filterList, sortList, advancedToolbar } = options;
+  const { pageIndex = 1, pageCount = 10 } = pagination || {};
 
-  const { table } = useDataTable({
+  const { table } = useDataTable<ColumnDefType>({
     columns,
     data: data || [],
-    pageCount: pagination?.pageCount || 10,
+    pageCount,
   });
 
   return (

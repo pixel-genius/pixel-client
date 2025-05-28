@@ -34,7 +34,7 @@ import {
   FacetedList,
   FacetedTrigger,
 } from "../../../atoms/faceted";
-import { Input } from "../../../molecules/input";
+import { BaseInput as Input } from "../../../atoms/base-input";
 import {
   Popover,
   PopoverContent,
@@ -127,7 +127,7 @@ export function DataTableFilterList<TData>({
     const column = columns[0];
 
     if (!column) return;
-
+    
     debouncedSetFilters([
       ...filters,
       {

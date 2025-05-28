@@ -11,11 +11,23 @@ const DataTablePage = () => {
         id: "code",
         accessorKey: "code",
         header: "Code",
+        enableColumnFilter: true,
+        meta: {
+          label: "Title",
+          placeholder: "Search titles...",
+          variant: "text" as const,
+        },
       },
       {
         id: "name",
         accessorKey: "name",
         header: "Name",
+        enableColumnFilter: true,
+        meta: {
+          label: "Name",
+          placeholder: "Search names...",
+          variant: "text" as const,
+        },
       },
     ],
     [],
@@ -30,6 +42,10 @@ const DataTablePage = () => {
         filterList: true,
         sortList: true,
         advancedToolbar: true,
+      }}
+      pagination={{
+        pageIndex: 1,
+        pageCount: 10,
       }}
     />
   );
