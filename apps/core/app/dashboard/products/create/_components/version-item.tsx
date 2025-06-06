@@ -1,32 +1,38 @@
 import { useState } from "react";
 import { Typography, Switch } from "@repo/ui/components";
+import { cn } from "@repo/ui/lib/utils";
 
-export interface VersionInfoType {
+export interface VersionItemProps {
   title: string;
   description: string;
   version: string;
   checked: boolean;
+  isLastItem?: boolean;
 }
-const VersionInfo = (data: VersionInfoType) => {
+
+export const VersionItem = (props: VersionItemProps) => {
   const [checked, setChecked] = useState<{ checked: boolean }>({
-    checked: data.checked,
+    checked: props.checked,
   });
 
   return (
     <div
-      className="border-b border-solid border-border flex flex-row gap-12 py-6"
-      key={data.title}
+      className={cn(
+        "border-b border-solid border-border flex flex-row gap-12 py-6",
+        props.isLastItem && "border-b-0",
+      )}
+      key={props.title}
     >
       <div>
         <Typography variant={"label/lg"} className="font-bold">
-          {data.title}
+          {props.title}
         </Typography>
         <Typography
           variant={"label/lg"}
           weight="normal"
           className="text-foreground"
         >
-          {data.version}
+          {props.version}
         </Typography>
       </div>
       <div>
@@ -36,9 +42,9 @@ const VersionInfo = (data: VersionInfoType) => {
         <Typography
           variant="label/sm"
           weight="normal"
-          className="text-foreground"
+          className="text-foreground whitespace-normal"
         >
-          {data.description}
+          {props.description}
         </Typography>
       </div>
       <div className="flex flex-row gap-2 items-center">
@@ -58,5 +64,3 @@ const VersionInfo = (data: VersionInfoType) => {
     </div>
   );
 };
-
-export default VersionInfo;

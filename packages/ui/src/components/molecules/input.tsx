@@ -11,6 +11,7 @@ export interface textFieldProps extends Omit<BaseInputProps, "error"> {
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
   loading?: boolean;
+  classNameWrapper?: string;
 }
 
 const Input = React.forwardRef<HTMLInputElement, textFieldProps>(
@@ -24,6 +25,7 @@ const Input = React.forwardRef<HTMLInputElement, textFieldProps>(
       iconLeft,
       iconRight,
       loading,
+      classNameWrapper,
       ...resProps
     } = props;
 
@@ -33,7 +35,7 @@ const Input = React.forwardRef<HTMLInputElement, textFieldProps>(
         label={label}
         error={error}
         helperText={helperText}
-        className={cn(className)}
+        className={classNameWrapper}
       >
         <div className="flex justify-center items-center relative">
           {iconLeft &&
@@ -46,10 +48,13 @@ const Input = React.forwardRef<HTMLInputElement, textFieldProps>(
             ref={ref}
             id={id}
             error={!!error}
-            className={cn({
-              "pl-14": !!iconLeft,
-              "pr-14": !!iconRight,
-            })}
+            className={cn(
+              {
+                "pl-14": !!iconLeft,
+                "pr-14": !!iconRight,
+              },
+              className,
+            )}
             {...resProps}
           />
           {iconRight &&
