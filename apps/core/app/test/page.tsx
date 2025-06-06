@@ -19,7 +19,7 @@ const Page = () => {
         </h2>
         <AttachmentTus
           type="zip"
-          endpoint="http://pixel-core-jot2od-ba9dbe-185-204-171-18.traefik.me/large_upload"
+          endpoint="https://api.pixelgenius.ir/large_upload/"
           title="Thumbnail Image Upload"
           description="1208x840px size required in PNG or JPG format only."
           onSuccess={(url, fileName) => {

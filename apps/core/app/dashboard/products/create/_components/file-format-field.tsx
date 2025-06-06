@@ -7,7 +7,7 @@ import Circlxicon from "@repo/icons/circle-x";
 import Figmaicon from "@repo/icons/figma";
 import { Chip } from "@repo/ui/components";
 import { File } from "lucide-react";
-import { FileFormatFieldLoading } from "./file-formate-field-loading";
+import { FileFormatFieldLoading } from "./file-format-field-loading";
 
 export type FielFromatIcons = "figma" | "belender" | "afterEffect";
 

@@ -49,7 +49,7 @@ const AttachmentTus = ({
     removeUpload,
     setInitialUploads,
   } = useTusUploadManager({
-    endpoint: endpoint || "https://tusd.tusdemo.net/files/",
+    endpoint: endpoint || process.env.NEXT_PUBLIC_BASE_URL_ATTACHMENT || "",
     onChange,
   });
 
@@ -133,7 +133,7 @@ const AttachmentTus = ({
             <Typography
               variant="label/sm"
               weight="light"
-              className="text-muted-foreground"
+              className="text-muted-foreground  whitespace-normal"
             >
               {description}
             </Typography>
