@@ -31,8 +31,8 @@ const Htmlicon = (props: IconProps) => {
           y2="16"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#2D68FF" />
-          <stop offset="1" stop-color="#2450BF" />
+          <stop stopColor="#2D68FF" />
+          <stop offset="1" stopColor="#2450BF" />
         </linearGradient>
         <clipPath id="clip0_2009_2847">
           <rect width="16" height="16" fill="white" />

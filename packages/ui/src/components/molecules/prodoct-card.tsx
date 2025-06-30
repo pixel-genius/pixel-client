@@ -1,4 +1,4 @@
-import { IconEye, IconHeart, IconShoppingBag } from "@tabler/icons-react";
+import { IconHeart, IconShoppingBag } from "@tabler/icons-react";
 import * as React from "react";
 import { Typography } from "../atoms/typography";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
@@ -10,7 +10,6 @@ export interface ProductCardProps {
   price: string;
   image: string;
   username: string;
-  see: number;
   like: number;
   className?: string;
   avatar?: string;
@@ -19,8 +18,7 @@ export interface ProductCardProps {
 // TODO: Handle Free Products
 const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
   (props, ref) => {
-    const { image, title, price, username, see, like, avatar, className } =
-      props;
+    const { image, title, price, username, like, avatar, className } = props;
 
     return (
       <div
@@ -101,7 +99,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
             </div>
             <div className="flex gap-2">
               <div className="flex gap-1 items-center">
-                <IconEye className="text-primary-500" size={20} />
+                <IconHeart className="text-primary-500" size={20} />
 
                 <Typography
                   variant="label/sm"
@@ -109,16 +107,6 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
                   className="capitalize flex-shrink-0"
                 >
                   {like}
-                </Typography>
-              </div>
-              <div className="flex gap-1 items-center">
-                <IconHeart className="text-primary-500" size={20} />
-                <Typography
-                  variant="label/sm"
-                  weight="normal"
-                  className="capitalize flex-shrink-0"
-                >
-                  {see}
                 </Typography>
               </div>
             </div>
