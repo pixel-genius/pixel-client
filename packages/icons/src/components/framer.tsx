@@ -38,7 +38,7 @@ const Framericon = (props: IconProps) => {
           y2="2.328"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#8DE4FF" />
+          <stop stopColor="#8DE4FF" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_2009_2691"
@@ -48,8 +48,8 @@ const Framericon = (props: IconProps) => {
           y2="7.97602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#00C5FF" />
-          <stop offset="1" stop-color="#009AFF" />
+          <stop stopColor="#00C5FF" />
+          <stop offset="1" stopColor="#009AFF" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_2009_2691"
@@ -59,8 +59,8 @@ const Framericon = (props: IconProps) => {
           y2="16"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#005AFF" />
-          <stop offset="1" stop-color="#008DFF" />
+          <stop stopColor="#005AFF" />
+          <stop offset="1" stopColor="#008DFF" />
         </linearGradient>
       </defs>
     </svg>

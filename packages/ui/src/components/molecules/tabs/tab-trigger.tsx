@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { cva, VariantProps } from "class-variance-authority";
 import { Typography } from "../../atoms/typography";
@@ -62,6 +64,7 @@ export type TabTriggerProps = VariantProps<typeof tabTriggerVariants> & {
   onClick?: () => void;
   searchParams?: URLSearchParams;
   setSearchParams?: (params: URLSearchParams) => void;
+  href?: string;
 };
 
 export const TabTrigger = (props: TabTriggerProps) => {
@@ -77,6 +80,7 @@ export const TabTrigger = (props: TabTriggerProps) => {
     onClick,
     searchParams,
     setSearchParams,
+    href,
   } = props;
 
   const valueStore = useTabStore((s) => s.value);
@@ -103,11 +107,8 @@ export const TabTrigger = (props: TabTriggerProps) => {
     onClick?.();
   };
 
-  return (
-    <button
-      onClick={handleClick}
-      className={tabTriggerVariants({ variant, className, isActive })}
-    >
+  const content = (
+    <>
       {isActive && (
         <motion.div
           layoutId={tabId}
@@ -128,6 +129,27 @@ export const TabTrigger = (props: TabTriggerProps) => {
         </span>
         {iconRight && <span>{iconRight}</span>}
       </span>
+    </>
+  );
+
+  if (href) {
+    return (
+      <Link
+        href={href}
+        onClick={handleClick}
+        className={tabTriggerVariants({ variant, className, isActive })}
+      >
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <button
+      onClick={handleClick}
+      className={tabTriggerVariants({ variant, className, isActive })}
+    >
+      {content}
     </button>
   );
 };
