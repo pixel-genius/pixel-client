@@ -9,7 +9,7 @@ import {
   GetProductVersionListResponseTransformed,
 } from "./get-product-version-list.types";
 
-const getProductVersionListURL = () => path.join("/shop/product-version-list");
+const getProductVersionListURL = () => path.join("/shop/product-version/");
 
 export const getProductVersionList = async (
   props: GetProductVersionListRequest,

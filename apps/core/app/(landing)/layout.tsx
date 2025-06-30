@@ -14,7 +14,7 @@ function Layout({ children }: { children: React.ReactNode }): JSX.Element {
       <Navbar islogin={false} />
       <HamburgerMenu />
 
-      <div className="relative z-10 bg-background pb-6 flex-1 md:mb-[532px] mb-[580px] min-h-screen">
+      <div className="relative z-10 bg-background pb-6 flex-1 md:mb-[532px] mb-[580px] min-h-screen overflow-x-hidden">
         {children}
       </div>
 

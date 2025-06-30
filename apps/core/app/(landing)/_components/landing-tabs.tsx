@@ -10,23 +10,28 @@ import {
   ProductList3D,
   ProductListGraphic,
 } from "../_constant/mock-product-list";
-import { Suspense } from "react";
 import { LandingTabContents } from "./landing-tab-contents";
 
-export const LandingTabs = () => {
+export const LandingTabs = ({ defaultValue }: { defaultValue: string }) => {
   return (
     <div className="mb-44">
-      <TabProvider defaultValue="trend">
+      <TabProvider defaultValue={defaultValue}>
         <TabList>
-          <TabTrigger value="trend">Trends</TabTrigger>
-          <TabTrigger value="uiux">UIUX</TabTrigger>
-          <TabTrigger value="3d">3D Model</TabTrigger>
-          <TabTrigger value="graphic">Graphic Design</TabTrigger>
+          <TabTrigger value="/" href="/">
+            Trends
+          </TabTrigger>
+          <TabTrigger value="uiux" href="/uiux">
+            UIUX
+          </TabTrigger>
+          <TabTrigger value="3d" href="/3d">
+            3D Model
+          </TabTrigger>
+          <TabTrigger value="graphic" href="/graphic">
+            Graphic Design
+          </TabTrigger>
         </TabList>
-        <TabContent value="trend">
-          <Suspense fallback={"Loading ..."}>
-            <LandingTabContents />
-          </Suspense>
+        <TabContent value="/">
+          <LandingTabContents />
         </TabContent>
         <TabContent value="uiux">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-4">

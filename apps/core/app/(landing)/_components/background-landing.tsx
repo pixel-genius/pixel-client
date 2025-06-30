@@ -1,18 +1,14 @@
 import Image from "next/image";
-import { Suspense } from "react";
 import { DashedCircles } from "@repo/ui/components";
-import blender from "./_assets/blender.svg";
-import planet from "./_assets/planet.svg";
-import figma from "./_assets/figma.svg";
-import shadowBGLanding from "./_assets/shadow-bg.svg";
-import sketch from "./_assets/sketch.svg";
-import { LandingTabs } from "./_components/landing-tabs";
-import { TextGenerateEffect } from "./_components/TextGenerateEffect";
-const words = `Find thousands of meticulously crafted resources by pixel geniuses to supercharge your creativity.`;
+import blender from "../_assets/blender.svg";
+import planet from "../_assets/planet.svg";
+import figma from "../_assets/figma.svg";
+import shadowBGLanding from "../_assets/shadow-bg.svg";
+import sketch from "../_assets/sketch.svg";
 
-export default function Page() {
+export function BackgroundLanding() {
   return (
-    <main className="container">
+    <>
       {/* Background Shadow */}
       <Image
         src={shadowBGLanding}
@@ -130,16 +126,6 @@ export default function Page() {
           />
         </DashedCircles>
       </div>
-
-      {/* Header */}
-      <div className="md:pb-56  md:pt-48 pt-24">
-        <TextGenerateEffect words={words} />
-      </div>
-
-      {/* Product Tabs */}
-      <Suspense>
-        <LandingTabs />
-      </Suspense>
-    </main>
+    </>
   );
 }
