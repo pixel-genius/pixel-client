@@ -1,4 +1,4 @@
-import { COOKIES } from "@repo/ui/constant/cookie";
+import { COOKIES } from "./../constant/cookie";
 import Cookie from "js-cookie";
 
 type Tokens = { access: string; refresh: string };

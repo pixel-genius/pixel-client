@@ -1,12 +1,12 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { COOKIES } from "@repo/ui/constant/cookie";
+// import { COOKIES } from "@repo/ui/constant/cookie";
 
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  // const { pathname } = request.nextUrl;
 
-  const accessToken = request.cookies.get(COOKIES.ACCESS_TOKEN);
-  const refreshToken = request.cookies.get(COOKIES.REFRESH_TOKEN);
-  const isDashboard = pathname.startsWith("/dashboard");
+  // const accessToken = request.cookies.get(COOKIES.ACCESS_TOKEN);
+  // const refreshToken = request.cookies.get(COOKIES.REFRESH_TOKEN);
+  // const isDashboard = pathname.startsWith("/dashboard");
 
   // Redirect to login if unauthenticated
   // if (isDashboard) {

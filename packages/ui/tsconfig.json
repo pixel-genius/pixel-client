@@ -9,6 +9,6 @@
   "include": [
     "src",
     "../../apps/core/app/dashboard/_compnents/app-sidebar.tsx"
-  ],
+, "../apis/src/constant"  ],
   "exclude": ["node_modules"]
 }
