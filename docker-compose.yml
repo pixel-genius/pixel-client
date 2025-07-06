@@ -1,18 +1,14 @@
 version: "3.8"
 
 services:
-  core:
-    container_name: web
+  core-client:
+    container_name: core-client
     build:
       context: .
       dockerfile: ./apps/core/Dockerfile
     restart: always
     ports:
       - "3000:3000"
-    # networks:
-    #   - app-networkl
-# Define a network, which allows containers to communicate
-# with each other, by using their container name as a hostname
-# networks:
-#   app-network:
-#     external: true
+    environment:
+      NEXT_PUBLIC_BASE_URL: ${NEXT_PUBLIC_BASE_URL}
+      NEXT_PUBLIC_BASE_URL_ATTACHMENT: ${NEXT_PUBLIC_BASE_URL_ATTACHMENT}
