@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  core-client:
+    container_name: core-client
+    build:
+      context: .
+      dockerfile: ./apps/core/Dockerfile
+    restart: always
+    environment:
+      NEXT_PUBLIC_BASE_URL: ${NEXT_PUBLIC_BASE_URL}
+      NEXT_PUBLIC_BASE_URL_ATTACHMENT: ${NEXT_PUBLIC_BASE_URL_ATTACHMENT}
