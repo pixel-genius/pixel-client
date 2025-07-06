@@ -46,6 +46,10 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 USER nextjs
 
+# Environment variables
+ENV NEXT_PUBLIC_BASE_URL=${NEXT_PUBLIC_BASE_URL}
+ENV NEXT_PUBLIC_BASE_URL_ATTACHMENT=${NEXT_PUBLIC_BASE_URL_ATTACHMENT}
+
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=installer --chown=nextjs:nodejs /app/apps/core/.next/standalone ./
