@@ -7,7 +7,9 @@ let isRefreshing = false;
 let failedQueue: any[] = [];
 
 export const coreApi = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+  // TODO: change to process.env.NEXT_PUBLIC_BASE_URL
+  // baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+  baseURL: "https://api.pixelgenius.ir",
   headers: {
     "Content-Type": "application/json",
   },
