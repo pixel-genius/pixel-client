@@ -17,10 +17,14 @@ interface UseClipboardOtpReturn {
   extractedOtp: string;
   /** Check clipboard manually */
   checkClipboard: () => Promise<void>;
+  /** Request clipboard permission explicitly */
+  requestPermission: () => Promise<boolean>;
   /** Whether clipboard checking is available */
   isSupported: boolean;
   /** Whether clipboard permission is granted */
   hasPermission: boolean | null;
+  /** Whether permission request is in progress */
+  isRequestingPermission: boolean;
 }
 
 export const useClipboardOtp = (
@@ -35,6 +39,7 @@ export const useClipboardOtp = (
 
   const [extractedOtp, setExtractedOtp] = useState<string>("");
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
+  const [isRequestingPermission, setIsRequestingPermission] = useState(false);
 
   // Check if clipboard API is supported
   const isSupported =
@@ -92,12 +97,41 @@ export const useClipboardOtp = (
     }
   }, [isSupported]);
 
+  const requestPermission = useCallback(async (): Promise<boolean> => {
+    if (!isSupported) return false;
+
+    setIsRequestingPermission(true);
+
+    try {
+      // First check current permission state
+      const currentPermission = await checkPermissions();
+      if (currentPermission) {
+        setIsRequestingPermission(false);
+        return true;
+      }
+
+      // Request permission by attempting to read clipboard
+      // This will trigger browser permission prompt if needed
+      await navigator.clipboard.readText();
+
+      // If we get here, permission was granted
+      setHasPermission(true);
+      setIsRequestingPermission(false);
+      return true;
+    } catch (error) {
+      // Permission denied or error occurred
+      setHasPermission(false);
+      setIsRequestingPermission(false);
+      return false;
+    }
+  }, [isSupported, checkPermissions]);
+
   const checkClipboard = useCallback(async (): Promise<void> => {
     if (!isSupported) return;
 
     try {
-      // Check permissions first
-      const permitted = await checkPermissions();
+      // First ensure we have permission
+      const permitted = hasPermission ?? (await requestPermission());
       if (!permitted) {
         setExtractedOtp("");
         return;
@@ -111,7 +145,7 @@ export const useClipboardOtp = (
       setExtractedOtp("");
       setHasPermission(false);
     }
-  }, [isSupported, checkPermissions, extractOtpFromText]);
+  }, [isSupported, hasPermission, requestPermission, extractOtpFromText]);
 
   useEffect(() => {
     if (!isSupported || !autoCheck) return;
@@ -133,7 +167,9 @@ export const useClipboardOtp = (
   return {
     extractedOtp,
     checkClipboard,
+    requestPermission,
     isSupported,
     hasPermission,
+    isRequestingPermission,
   };
 };
