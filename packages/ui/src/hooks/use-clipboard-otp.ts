@@ -88,6 +88,7 @@ export const useClipboardOtp = (
         });
         const granted = permission.state === "granted";
         setHasPermission(granted);
+        console.log("permission", permission);
         return granted;
       }
       return true; // Assume granted if permissions API not available
@@ -146,6 +147,52 @@ export const useClipboardOtp = (
       setHasPermission(false);
     }
   }, [isSupported, hasPermission, requestPermission, extractOtpFromText]);
+
+  // Listen for permission changes and auto-check clipboard when granted
+  useEffect(() => {
+    if (!isSupported) return;
+
+    let permissionStatus: PermissionStatus | null = null;
+    let handlePermissionChange: (() => void) | null = null;
+
+    const setupPermissionListener = async () => {
+      try {
+        if (navigator.permissions && navigator.permissions.query) {
+          permissionStatus = await navigator.permissions.query({
+            name: "clipboard-read" as PermissionName,
+          });
+
+          handlePermissionChange = () => {
+            const granted = permissionStatus?.state === "granted";
+            setHasPermission(granted);
+            console.log("permission changed", permissionStatus);
+
+            // Auto-check clipboard when permission is granted
+            if (granted) {
+              checkClipboard();
+            }
+          };
+
+          // Listen for permission changes
+          permissionStatus.addEventListener("change", handlePermissionChange);
+
+          // Set initial permission state
+          handlePermissionChange();
+        }
+      } catch (error) {
+        console.error("Error setting up permission listener:", error);
+      }
+    };
+
+    setupPermissionListener();
+
+    return () => {
+      // Clean up permission listener
+      if (permissionStatus && handlePermissionChange) {
+        permissionStatus.removeEventListener("change", handlePermissionChange);
+      }
+    };
+  }, [isSupported, checkClipboard]);
 
   useEffect(() => {
     if (!isSupported || !autoCheck) return;
