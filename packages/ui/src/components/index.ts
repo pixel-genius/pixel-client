@@ -53,6 +53,7 @@ export * from "./molecules/label-wrapper";
 export * from "./molecules/magic-card";
 export * from "./molecules/parallax-scroll-effect";
 export * from "./molecules/particles";
+export * from "./molecules/paste-otp-button";
 export * from "./molecules/passwordInput";
 export * from "./molecules/prodoct-card";
 export * from "./molecules/sidebar";

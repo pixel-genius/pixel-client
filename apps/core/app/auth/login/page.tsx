@@ -17,35 +17,10 @@ const LoginPage = () => {
       </div>
 
       <LoginForm />
-      {/* line  */}
-      {/* <div className="flex items-center w-full gap-3">
-        <div className="w-full h-[1px] bg-gray-700 rounded-full" />
-        <p className="text-base font-medium">OR</p>
-        <div className="w-full h-[1px] bg-gray-700 rounded-full" />
-      </div> */}
-      {/* login with google and linkedin */}
-      {/* <div className="w-full flex flex-col items-center gap-3">
-        <Button
-          className="w-full text-lg bg-background"
-          variant="secondary"
-          size={"lg"}
-        >
-          <GoogleIcon size={24} className="mr-2" />
-          Log in with Google
-        </Button>
-        <Button
-          className="w-full text-lg bg-background"
-          variant="secondary"
-          size={"lg"}
-        >
-          <LinkedinIcon size={24} className="mr-2" />
-          Log in with linkedin
-        </Button>
-      </div> */}
-      {/* forgot password */}
+
       <div className=" flex gap-2 pb-4 text-sm">
         <p>Don’t have an account?</p>
-        <Link href={"/auth/signup"} prefetch={false}>
+        <Link href={"/auth/signup"}>
           <p className="underline cursor-pointer">Sign up</p>
         </Link>
       </div>

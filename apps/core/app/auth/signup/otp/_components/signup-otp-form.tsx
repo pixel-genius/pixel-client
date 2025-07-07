@@ -1,12 +1,14 @@
 // import components
 "use client";
-import { Button, Countdown, Input } from "@repo/ui/components";
 import {
+  Countdown,
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
+  PasteOtpButton,
 } from "@repo/ui/components";
-import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
+import { useClipboardOtp } from "@repo/ui/hooks";
+import { REGEXP_ONLY_DIGITS } from "input-otp";
 
 // import icons
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -14,9 +16,9 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-import { usePostVerifyOtp } from "@repo/apis/core/accounts/users/verify_otp/post/use-post-verify-otp";
 import { postVerifyOtpSchema } from "@repo/apis/core/accounts/users/verify_otp/post/post-verify-otp.schema";
 import type { PostVerifyOtpRequest } from "@repo/apis/core/accounts/users/verify_otp/post/post-verify-otp.types";
+import { usePostVerifyOtp } from "@repo/apis/core/accounts/users/verify_otp/post/use-post-verify-otp";
 import { setAuthTokens } from "@repo/apis/utils/cookies";
 
 export interface SignupOtpFormProps {
@@ -24,6 +26,12 @@ export interface SignupOtpFormProps {
 }
 export const SignupOtpForm = (props: SignupOtpFormProps) => {
   const { username } = props;
+
+  // Use reusable clipboard OTP hook
+  const { extractedOtp } = useClipboardOtp({
+    otpLength: 6,
+    pattern: REGEXP_ONLY_DIGITS,
+  });
 
   const form = useForm<PostVerifyOtpRequest>({
     resolver: zodResolver(postVerifyOtpSchema.request),
@@ -34,8 +42,11 @@ export const SignupOtpForm = (props: SignupOtpFormProps) => {
     handleSubmit,
     setValue,
     getValues,
+    watch,
     formState: { errors },
   } = form;
+
+  const otpValue = watch("otp");
 
   const router = useRouter();
 
@@ -56,6 +67,13 @@ export const SignupOtpForm = (props: SignupOtpFormProps) => {
     else toast.error("username is required");
   };
 
+  const handlePasteOtp = (otp: string) => {
+    setValue("otp", otp);
+    // Auto submit after pasting valid OTP
+    const data = getValues();
+    handleSubmitForm(data);
+  };
+
   const otpRegister = register("otp");
 
   return (
@@ -63,11 +81,12 @@ export const SignupOtpForm = (props: SignupOtpFormProps) => {
       className="w-full flex flex-col items-center gap-4"
       onSubmit={handleSubmit(handleSubmitForm)}
     >
-      <div>
+      <div className="w-full flex flex-col items-center gap-4">
         <InputOTP
           maxLength={6}
-          pattern={REGEXP_ONLY_DIGITS_AND_CHARS}
+          pattern={REGEXP_ONLY_DIGITS}
           name={otpRegister.name}
+          value={otpValue}
           onChange={(value: string) => {
             setValue("otp", value);
 
@@ -79,7 +98,6 @@ export const SignupOtpForm = (props: SignupOtpFormProps) => {
           autoFocus
         >
           <InputOTPGroup>
-          <Input></Input>
             <InputOTPSlot index={0} />
             <InputOTPSlot index={1} />
             <InputOTPSlot index={2} />
@@ -92,18 +110,19 @@ export const SignupOtpForm = (props: SignupOtpFormProps) => {
       </div>
 
       {/* button */}
-      <div className="pb-7 w-full">
-        <Button
-          className="w-full text-lg font-bold  bg-primary-600 hover:bg-primary-500"
-          variant="secondary"
+      <div className="pb-4 w-full flex justify-center">
+        <PasteOtpButton
+          extractedOtp={extractedOtp}
+          onPaste={handlePasteOtp}
           isLoading={mutation.isPending}
-        >
-          Verify
-        </Button>
+          variant="primary"
+          className="w-full"
+        />
       </div>
+
       <div className="pb-7">
         <p>
-          didnt recieveddqqdqdqdqdqdqdqdqdq code yet? <Countdown date={Date.now() + 120000} />
+          Didn't receive the code yet? <Countdown date={Date.now() + 120000} />
         </p>
       </div>
     </form>
