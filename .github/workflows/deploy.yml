@@ -27,14 +27,6 @@ jobs:
       - name: Push Docker Image to Docker Hub
         run: docker push mrbadri/pixel-client:latest
 
-    #   - name: Build Docker Image using Docker Compose
-    #     run: docker compose -f docker-compose.prod.yml build
-
-    #   - name: Push Docker Image to Docker Hub
-    #     run: |
-    #       docker login -u mrbadri -p ${{ secrets.DOCKER_TOKEN }}
-    #       docker push mrbadri/pixel-client:latest
-
   deploy:
     runs-on:
       group: Default
