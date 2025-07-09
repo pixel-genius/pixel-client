@@ -1,0 +1,48 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: [self-hosted, core]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: |
+          echo "NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}" >> .env
+          echo "NEXT_PUBLIC_BASE_URL_ATTACHMENT=${{ secrets.NEXT_PUBLIC_BASE_URL_ATTACHMENT }}" >> .env
+
+      - name: Build Docker Image using Docker Compose
+        run: docker compose -f docker-compose.prod.yml build
+
+      - name: Push Docker Image to Docker Hub
+        run: |
+          docker login -u mrbadri -p ${{ secrets.DOCKER_TOKEN }}
+          docker push mrbadri/pixel-client:latest
+
+  deploy:
+    runs-on:
+      group: Default
+    needs: build
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: |
+          echo "NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}" >> .env
+          echo "NEXT_PUBLIC_BASE_URL_ATTACHMENT=${{ secrets.NEXT_PUBLIC_BASE_URL_ATTACHMENT }}" >> .env
+
+      - name: Deploy using Docker Compose
+        run: |
+          docker compose -f docker-compose.prod.yml pull web
+          docker compose -f docker-compose.prod.yml down || true
+          docker compose -f docker-compose.prod.yml up -d 
+
+          # if container is not running, rullback to the previous version
