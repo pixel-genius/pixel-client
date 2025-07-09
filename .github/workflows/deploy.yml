@@ -6,6 +6,10 @@ on:
       - main
   pull_request:
 
+concurrency:
+  group: "CI-${{ github.ref_name }}"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: [self-hosted, core]
