@@ -18,13 +18,22 @@ jobs:
           echo "NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}" >> .env
           echo "NEXT_PUBLIC_BASE_URL_ATTACHMENT=${{ secrets.NEXT_PUBLIC_BASE_URL_ATTACHMENT }}" >> .env
 
+      - name: Login to Docker Hub
+        run: docker login -u mrbadri -p ${{ secrets.DOCKER_TOKEN }}
+  
       - name: Build Docker Image using Docker Compose
         run: docker compose -f docker-compose.prod.yml build
-
+  
       - name: Push Docker Image to Docker Hub
-        run: |
-          docker login -u mrbadri -p ${{ secrets.DOCKER_TOKEN }}
-          docker push mrbadri/pixel-client:latest
+        run: docker push mrbadri/pixel-client:latest   
+
+    #   - name: Build Docker Image using Docker Compose
+    #     run: docker compose -f docker-compose.prod.yml build
+
+    #   - name: Push Docker Image to Docker Hub
+    #     run: |
+    #       docker login -u mrbadri -p ${{ secrets.DOCKER_TOKEN }}
+    #       docker push mrbadri/pixel-client:latest
 
   deploy:
     runs-on:
