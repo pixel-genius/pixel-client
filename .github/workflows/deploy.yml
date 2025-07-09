@@ -50,7 +50,7 @@ jobs:
 
       - name: Deploy using Docker Compose
         run: |
-          docker compose -f docker-compose.prod.yml pull web
+          docker compose -f docker-compose.prod.yml pull client
           docker compose -f docker-compose.prod.yml down || true
           docker compose -f docker-compose.prod.yml up -d 
 
