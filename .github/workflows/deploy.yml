@@ -146,27 +146,18 @@ jobs:
           docker compose -f docker-compose.pr-$PR_NUMBER.yml up -d
 
       - name: Comment PR with preview link
-        uses: actions/github-script@v7
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
-          script: |
-            const prNumber = context.payload.number;
-            const port = ${{ needs.build.outputs.port }};
-            const previewUrl = `http://82.115.24.87:${port}`;
+          header: preview-deployment
+          message: |
+            ### 🚀 Preview Deployed Successfully!
 
-            const comment = `🚀 **Preview deployed!**
+            Your pull request preview is now available:
+            - 📍 **Preview URL**: http://82.115.24.87:${{ needs.build.outputs.port }}
+            - 🔗 **Container**: `client-preview-${{ github.event.number }}`
+            - 🐳 **Image**: `mrbadri/pixel-client:pr-${{ github.event.number }}`
 
-            📍 Preview URL: ${previewUrl}
-            🔗 Container: \`client-preview-${prNumber}\`
-            🐳 Image: \`mrbadri/pixel-client:pr-${prNumber}\`
-
-            This preview will be automatically cleaned up when the PR is closed.`;
-
-            github.rest.issues.createComment({
-              issue_number: prNumber,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: comment
-            });
+            This preview will be automatically cleaned up when the PR is closed.
 
   # Cleanup PR preview when closed
   cleanup-preview:
@@ -189,21 +180,17 @@ jobs:
           # Remove the Docker image
           docker rmi mrbadri/pixel-client:pr-$PR_NUMBER || true
 
-      - name: Comment PR cleanup
-        uses: actions/github-script@v7
+      - name: Post Cleanup Confirmation Comment
+        if: always()
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
-          script: |
-            const prNumber = context.payload.number;
+          header: preview-cleanup
+          message: |
+            ### 🧹 Preview Cleanup Complete
 
-            const comment = `🧹 **Preview cleaned up!**
+            All preview deployment resources for this pull request have been successfully removed:
+            - 🐳 Docker container `client-preview-${{ github.event.number }}` stopped and removed
+            - 📦 Docker image `mrbadri/pixel-client:pr-${{ github.event.number }}` cleaned up
+            - 📁 Docker compose file removed
 
-            The preview deployment for PR #${prNumber} has been removed.
-            - Container stopped and removed
-            - Docker image cleaned up`;
-
-            github.rest.issues.createComment({
-              issue_number: prNumber,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: comment
-            });
+            The cleanup process has finished for PR #${{ github.event.number }}.
