@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  client-dev:
+    image: mrbadri/pixel-client:dev
+    container_name: client-dev
+    build:
+      context: .
+      dockerfile: ./apps/core/Dockerfile
+    restart: always
+    ports:
+      - 3001:3000
+    environment:
+      NEXT_PUBLIC_BASE_URL: ${NEXT_PUBLIC_BASE_URL}
+      NEXT_PUBLIC_BASE_URL_ATTACHMENT: ${NEXT_PUBLIC_BASE_URL_ATTACHMENT}

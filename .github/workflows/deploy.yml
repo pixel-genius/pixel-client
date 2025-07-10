@@ -4,18 +4,45 @@ on:
   push:
     branches:
       - main
+      - dev
   pull_request:
+    types: [opened, synchronize, reopened, closed]
 
 concurrency:
-  group: "CI-${{ github.ref_name }}"
-  cancel-in-progress: false
+  group: "CI-${{ github.ref_name }}-${{ github.event.number || github.sha }}"
+  cancel-in-progress: true
 
 jobs:
+  # Build job for all scenarios
   build:
     runs-on: [self-hosted, core]
+    if: github.event.action != 'closed'
+    outputs:
+      image-tag: ${{ steps.image-tag.outputs.tag }}
+      port: ${{ steps.port.outputs.port }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Determine image tag and port
+        id: image-tag
+        run: |
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            echo "tag=latest" >> $GITHUB_OUTPUT
+          elif [ "${{ github.ref_name }}" = "dev" ]; then
+            echo "tag=dev" >> $GITHUB_OUTPUT
+          else
+            echo "tag=pr-${{ github.event.number }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Determine port for PR
+        id: port
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            # Calculate port: 3100 + PR number (ensures unique ports)
+            PORT=$((3100 + ${{ github.event.number }}))
+            echo "port=$PORT" >> $GITHUB_OUTPUT
+          fi
 
       - name: Create .env file
         run: |
@@ -25,15 +52,29 @@ jobs:
       - name: Login to Docker Hub
         run: docker login -u mrbadri -p ${{ secrets.DOCKER_TOKEN }}
 
-      - name: Build Docker Image using Docker Compose
-        run: docker compose -f docker-compose.prod.yml build
+      - name: Build Docker Image
+        run: |
+          TAG=${{ steps.image-tag.outputs.tag }}
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            docker compose -f docker-compose.prod.yml build
+          elif [ "${{ github.ref_name }}" = "dev" ]; then
+            docker compose -f docker-compose.dev.yml build
+            docker tag mrbadri/pixel-client:dev mrbadri/pixel-client:$TAG
+          else
+            # For PR - build and tag
+            docker build -t mrbadri/pixel-client:$TAG -f ./apps/core/Dockerfile .
+          fi
 
       - name: Push Docker Image to Docker Hub
-        run: docker push mrbadri/pixel-client:latest
+        run: |
+          TAG=${{ steps.image-tag.outputs.tag }}
+          docker push mrbadri/pixel-client:$TAG
 
-  deploy:
+  # Deploy to production (main branch)
+  deploy-production:
     runs-on: [self-hosted, core]
     needs: build
+    if: github.ref_name == 'main' && github.event_name == 'push'
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -43,10 +84,126 @@ jobs:
           echo "NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}" >> .env
           echo "NEXT_PUBLIC_BASE_URL_ATTACHMENT=${{ secrets.NEXT_PUBLIC_BASE_URL_ATTACHMENT }}" >> .env
 
-      - name: Deploy using Docker Compose
+      - name: Deploy Production
         run: |
           docker compose -f docker-compose.prod.yml pull client
           docker compose -f docker-compose.prod.yml down || true
-          docker compose -f docker-compose.prod.yml up -d 
+          docker compose -f docker-compose.prod.yml up -d
 
-          # if container is not running, rullback to the previous version
+  # Deploy to development (dev branch)
+  deploy-development:
+    runs-on: [self-hosted, core]
+    needs: build
+    if: github.ref_name == 'dev' && github.event_name == 'push'
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: |
+          echo "NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}" >> .env
+          echo "NEXT_PUBLIC_BASE_URL_ATTACHMENT=${{ secrets.NEXT_PUBLIC_BASE_URL_ATTACHMENT }}" >> .env
+
+      - name: Deploy Development
+        run: |
+          docker compose -f docker-compose.dev.yml pull client-dev
+          docker compose -f docker-compose.dev.yml down || true
+          docker compose -f docker-compose.dev.yml up -d
+
+  # Deploy PR preview
+  deploy-preview:
+    runs-on: [self-hosted, core]
+    needs: build
+    if: github.event_name == 'pull_request' && github.event.action != 'closed'
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: |
+          echo "NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}" >> .env
+          echo "NEXT_PUBLIC_BASE_URL_ATTACHMENT=${{ secrets.NEXT_PUBLIC_BASE_URL_ATTACHMENT }}" >> .env
+
+      - name: Create PR-specific compose file
+        run: |
+          PR_NUMBER=${{ github.event.number }}
+          PORT=${{ needs.build.outputs.port }}
+
+          # Create PR-specific docker-compose file
+          sed "s/PR_NUMBER/$PR_NUMBER/g; s/PORT_NUMBER/$PORT/g" docker-compose.preview.yml > docker-compose.pr-$PR_NUMBER.yml
+
+      - name: Deploy Preview
+        run: |
+          PR_NUMBER=${{ github.event.number }}
+
+          # Pull the image
+          docker pull mrbadri/pixel-client:pr-$PR_NUMBER
+
+          # Stop and remove existing preview if exists
+          docker compose -f docker-compose.pr-$PR_NUMBER.yml down || true
+
+          # Start the preview
+          docker compose -f docker-compose.pr-$PR_NUMBER.yml up -d
+
+      - name: Comment PR with preview link
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.payload.number;
+            const port = ${{ needs.build.outputs.port }};
+            const previewUrl = `http://82.115.24.87:${port}`;
+
+            const comment = `🚀 **Preview deployed!**
+
+            📍 Preview URL: ${previewUrl}
+            🔗 Container: \`client-preview-${prNumber}\`
+            🐳 Image: \`mrbadri/pixel-client:pr-${prNumber}\`
+
+            This preview will be automatically cleaned up when the PR is closed.`;
+
+            github.rest.issues.createComment({
+              issue_number: prNumber,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+  # Cleanup PR preview when closed
+  cleanup-preview:
+    runs-on: [self-hosted, core]
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Cleanup PR preview
+        run: |
+          PR_NUMBER=${{ github.event.number }}
+
+          # Stop and remove preview containers
+          docker compose -f docker-compose.pr-$PR_NUMBER.yml down || true
+
+          # Remove the compose file
+          rm -f docker-compose.pr-$PR_NUMBER.yml || true
+
+          # Remove the Docker image
+          docker rmi mrbadri/pixel-client:pr-$PR_NUMBER || true
+
+      - name: Comment PR cleanup
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.payload.number;
+
+            const comment = `🧹 **Preview cleaned up!**
+
+            The preview deployment for PR #${prNumber} has been removed.
+            - Container stopped and removed
+            - Docker image cleaned up`;
+
+            github.rest.issues.createComment({
+              issue_number: prNumber,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
