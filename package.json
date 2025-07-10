@@ -19,13 +19,14 @@
     "rebase:main": "git fetch origin main && git rebase main"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "bun": "^1.1.34",
     "husky": "^9.1.7",
     "prettier": "^3.3.2",
     "turbo": "2.0.6"
   },
-  "packageManager": "yarn@1.22.22",
+  "packageManager": "pnpm@9.15.0",
   "engines": {
     "node": ">=18"
   },

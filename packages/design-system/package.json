@@ -9,7 +9,8 @@
     "./tailwind": "./src/tailwind/config.ts"
   },
   "devDependencies": {
-    "@repo/typescript-config": "*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^20.0.0",
     "style-dictionary": "^4.3.2",
     "ts-node": "^10.9.2"
   }

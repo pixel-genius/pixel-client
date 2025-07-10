@@ -1,5 +1,14 @@
-import { 
-  IconDeviceMobile, IconUsersGroup, IconEye, IconCube, IconVector, IconBox, IconLayout, IconMessage, IconTypography, IconDiamond 
+import {
+  IconDeviceMobile,
+  IconUsersGroup,
+  IconEye,
+  IconCube,
+  IconVector,
+  IconBox,
+  IconLayout,
+  IconMessage,
+  IconTypography,
+  IconDiamond,
 } from "@tabler/icons-react";
 
 const categories = [
@@ -18,10 +27,15 @@ const categories = [
 const BrowseSheet = () => (
   <div className="flex flex-col items-center w-full">
     <div className="w-12 h-1.5 bg-[#fff]/20 rounded-full mt-1 mb-4" />
-    <h2 className="text-2xl font-bold text-white mb-6 w-full text-left">Browse</h2>
+    <h2 className="text-2xl font-bold text-white mb-6 w-full text-left">
+      Browse
+    </h2>
     <div className="grid grid-cols-2 gap-x-8 gap-y-5 w-full">
       {categories.map((cat) => (
-        <div key={cat.label} className="flex items-center gap-3 text-white/90 text-base font-medium">
+        <div
+          key={cat.label}
+          className="flex items-center gap-3 text-white/90 text-base font-medium"
+        >
           <span className="bg-[#232228] rounded-md p-2 flex items-center justify-center">
             {cat.icon}
           </span>
@@ -32,4 +46,4 @@ const BrowseSheet = () => (
   </div>
 );
 
-export default BrowseSheet; 
+export default BrowseSheet;

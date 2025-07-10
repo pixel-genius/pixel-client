@@ -4,13 +4,13 @@ const path = require("path");
 console.log("🚀 Preparing project...");
 
 const packageJsonPath = "./package.json";
-const newPackageManager = "yarn@1.22.22";
+const newPackageManager = "pnpm@9.15.0";
 
 try {
   // Read package.json
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
 
-  // Ensure packageManager is only set to Yarn
+  // Ensure packageManager is only set to pnpm
   packageJson.packageManager = newPackageManager;
 
   // Write back to package.json

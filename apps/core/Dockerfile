@@ -9,7 +9,7 @@ RUN apk update
 RUN apk add --no-cache libc6-compat
 # Set working directory
 WORKDIR /app
-RUN yarn global add turbo
+RUN npm install -g pnpm turbo
 COPY . .
 # RUN npm run prepare:ci
 RUN turbo prune core --docker
@@ -19,13 +19,12 @@ FROM base AS installer
 RUN apk update
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
+RUN npm install -g pnpm turbo
 
 # First install the dependencies (as they change less often)
 COPY --from=builder /app/out/json/ .
-# Configure Yarn with better network settings and use Taobao registry
-RUN yarn config set registry https://registry.npmmirror.com/ && \
-    yarn config set network-timeout 600000 && \
-    yarn install --network-timeout 600000 --no-network-concurrency
+# Configure pnpm with better network settings and use Taobao registry
+RUN pnpm install --frozen-lockfile
 
 # Build the project
 COPY --from=builder /app/out/full/ .
@@ -37,7 +36,7 @@ COPY --from=builder /app/out/full/ .
 # ARG TURBO_TOKEN
 # ENV TURBO_TOKEN=$TURBO_TOKEN
 
-RUN yarn turbo build --filter=core
+RUN pnpm turbo build 
 
 FROM base AS runner
 WORKDIR /app
@@ -46,6 +45,10 @@ WORKDIR /app
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 USER nextjs
+
+# Environment variables
+ENV NEXT_PUBLIC_BASE_URL=${NEXT_PUBLIC_BASE_URL}
+ENV NEXT_PUBLIC_BASE_URL_ATTACHMENT=${NEXT_PUBLIC_BASE_URL_ATTACHMENT}
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing

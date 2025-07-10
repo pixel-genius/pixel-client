@@ -8,6 +8,7 @@ import { Button, Input } from "@repo/ui/components";
 import { postForgetPasswordSchema } from "@repo/apis/core/accounts/users/forgot-password/post/post-forget-password.schema";
 import type { PostForgetPasswordRequest } from "@repo/apis/core/accounts/users/forgot-password/post/post-forget-password.types";
 import { UsePostForgetPassword } from "@repo/apis/core/accounts/users/forgot-password/post/use-post-forget-password";
+import { useEffect } from "react";
 
 const ForgetPasswordForm = () => {
   const router = useRouter();
@@ -15,17 +16,20 @@ const ForgetPasswordForm = () => {
   const form = useForm<PostForgetPasswordRequest>({
     resolver: zodResolver(postForgetPasswordSchema.request),
   });
-  
+
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = form;
-  
+
   const mutation = UsePostForgetPassword({
     onSuccess: (res, context) => {
       toast.info(res.data.message);
       router.replace(`/auth/set-password?username=${context.username}`);
+    },
+    onError: (err) => {
+      toast.error(err.response?.data.message ?? "Something went wrong");
     },
   });
 
@@ -33,12 +37,17 @@ const ForgetPasswordForm = () => {
     mutation.mutate(data);
   };
 
+  useEffect(() => {
+    router.prefetch("/auth/set-password");
+  }, [router]);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full pb-7">
       <Input
         label="Username"
         className="font-normal text-xs"
-        placeholder="genius@exanpel.com"
+        placeholder="Enter your username"
+        autoFocus
         {...register("username")}
         error={errors.username?.message}
       />
