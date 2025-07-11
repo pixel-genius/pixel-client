@@ -52,7 +52,7 @@ export const SignupOtpForm = (props: SignupOtpFormProps) => {
 
   const mutation = usePostVerifyOtp({
     onSuccess: (res) => {
-      toast.success("Registered successfully, Welcome to Pixel Genius!");
+      toast.success(`Hello @${res.data.data.username}! Welcome to Pixel 🎉`);
       setAuthTokens(res.data.data.token);
       router.push("/");
     },

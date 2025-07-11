@@ -30,11 +30,20 @@ const LoginForm = () => {
 
   const loginMutation = usePostLogin({
     onSuccess: (res) => {
-      toast.success(
-        `Hello @${res.data.data.username}! Welcome back to Pixel 🎉`,
-      );
-      setAuthTokens(res.data.data.token);
-      router.push("/");
+      if (res.data.data.is_email_verified) {
+        toast.success(
+          `Hello @${res.data.data.username}! Welcome back to Pixel 🎉`,
+        );
+        setAuthTokens(res.data.data.token);
+        router.push("/");
+      } else {
+        toast.warning(
+          "Please verify your email to continue. We've sent you a verification email.",
+        );
+        router.push(
+          `/auth/signup/otp?email=${res.data.data.email}&username=${res.data.data.username}`,
+        );
+      }
     },
     onError: (res) => {
       toast.error(res.response?.data.message ?? "Something went wrong");
@@ -50,6 +59,7 @@ const LoginForm = () => {
     router.prefetch("/");
     router.prefetch("/auth/forget-password");
     router.prefetch("/auth/signup");
+    router.prefetch("/auth/signup/otp");
   }, [router]);
 
   return (
@@ -57,9 +67,9 @@ const LoginForm = () => {
       <div className="mb-2 flex flex-wrap gap-4">
         {/* Username and Email */}
         <Input
-          label="User Name & Email"
+          label="Username or Email"
           className="font-normal text-xs w-full"
-          placeholder="example@pixel.design "
+          placeholder="Enter your username or email"
           autoFocus
           {...register("username")}
           error={errors.username?.message}

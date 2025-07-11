@@ -8,19 +8,29 @@ export const postLoginRequestSchemaTransformed = z
   })
   .transform((data) => data);
 
+const baseUserData = z.object({
+  id: z.number(),
+  username: z.string(),
+  email: z.string(),
+  is_active: z.boolean(),
+});
+
+const verifiedUserData = baseUserData.extend({
+  is_email_verified: z.literal(true),
+  token: z.object({
+    refresh: z.string(),
+    access: z.string(),
+  }),
+});
+
+const unverifiedUserData = baseUserData.extend({
+  is_email_verified: z.literal(false),
+  token: z.null(),
+});
+
 export const postLoginResponseSchemaTransofrmed = apiResponseSchema
   .extend({
-    data: z.object({
-      id: z.number(),
-      username: z.string(),
-      email: z.string(),
-      is_active: z.boolean(),
-      is_email_verified: z.boolean(),
-      token: z.object({
-        refresh: z.string(),
-        access: z.string(),
-      }),
-    }),
+    data: z.union([verifiedUserData, unverifiedUserData]),
   })
   .transform((data) => data);
 

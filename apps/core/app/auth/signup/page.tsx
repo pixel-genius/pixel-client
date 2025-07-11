@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import AuthCard from "../_components/auth-card";
 import { useQueryParams } from "@repo/ui/hooks";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import Link from "next/link";
 import type { PostRegisterRequest } from "@repo/apis/core/accounts/users/register/post/post-register.types";
 import { postRegisterSchema } from "@repo/apis/core/accounts/users/register/post/post-register.schema";
@@ -39,7 +39,7 @@ const SignUpPageComponent = () => {
       });
 
       router.push(`/auth/signup/otp?${usernameQuery}&${emailQuery}`);
-      toast.success("Send OTP");
+      toast.success("We've sent you a verification email.");
     },
     onError: (err) => {
       toast.error(err.response?.data.message ?? "Something went wrong");
@@ -49,6 +49,10 @@ const SignUpPageComponent = () => {
   const onSubmit = (data: PostRegisterRequest) => {
     mutation.mutate(data);
   };
+
+  useEffect(() => {
+    router.prefetch("/auth/signup/otp");
+  }, [router]);
 
   return (
     <AuthCard>
