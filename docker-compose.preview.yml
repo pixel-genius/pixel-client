@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  client-preview:
+    image: mrbadri/pixel-client:PR_NUMBER
+    container_name: client-preview-PR_NUMBER
+    build:
+      context: .
+      dockerfile: ./apps/core/Dockerfile
+    restart: always
+    ports:
+      - "PORT_NUMBER:3000"
+    environment:
+      NEXT_PUBLIC_BASE_URL: ${NEXT_PUBLIC_BASE_URL}
+      NEXT_PUBLIC_BASE_URL_ATTACHMENT: ${NEXT_PUBLIC_BASE_URL_ATTACHMENT}

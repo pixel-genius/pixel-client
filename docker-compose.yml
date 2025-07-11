@@ -1,17 +1,17 @@
+version: "3.8"
+
 services:
-  core:
-    container_name: web
+  client:
+    image: mrbadri/pixel-client:latest
+    container_name: client
     build:
       context: .
       dockerfile: ./apps/core/Dockerfile
     restart: always
     ports:
-      - "5000:3000"
-    networks:
-      - app-network
-
-# Define a network, which allows containers to communicate
-# with each other, by using their container name as a hostname
-networks:
-  app-network:
-    external: true
+      - 3000:3000
+    environment:
+      NEXT_PUBLIC_BASE_URL: ${NEXT_PUBLIC_BASE_URL}
+      NEXT_PUBLIC_BASE_URL_ATTACHMENT: ${NEXT_PUBLIC_BASE_URL_ATTACHMENT}
+    volumes:
+      - .:/app

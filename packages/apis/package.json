@@ -12,8 +12,8 @@
     "react": "^19"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -28,7 +28,6 @@
   "dependencies": {
     "@anatine/zod-mock": "^3.13.4",
     "@faker-js/faker": "^9.5.1",
-    "@repo/ui": "*",
     "@tanstack/react-query": "^5.62.2",
     "@tanstack/react-query-devtools": "^5.62.2",
     "@types/js-cookie": "^3.0.6",
@@ -38,7 +37,11 @@
     "zod": "^3.23.8"
   },
   "exports": {
-    "./core/*": "./src/services/core/*.ts",
+    "./core/*": [
+      "./src/services/core/*.ts",
+      "./src/services/core/*.tsx",
+      "./src/services/core/*"
+    ],
     "./providers/*": "./src/providers/*.tsx",
     "./utils/*": "./src/utils/*.ts",
     "./types/*": "./src/types/*.ts"

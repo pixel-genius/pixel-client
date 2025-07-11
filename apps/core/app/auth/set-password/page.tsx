@@ -1,19 +1,14 @@
 // import components
 "use client";
-import { Button } from "@repo/ui/components";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from "@repo/ui/components";
-import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
+import { Button, PasswordInput, PasteOtpButton } from "@repo/ui/components";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@repo/ui/components";
+import { useClipboardOtp } from "@repo/ui/hooks";
+import { REGEXP_ONLY_DIGITS } from "input-otp";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-// import icons
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "@repo/ui/components";
 import { Suspense, useEffect } from "react";
 import AuthCard from "../_components/auth-card";
 
@@ -28,6 +23,12 @@ const Setpasswordpage = () => {
 
   if (!username) router.replace("/auth/forget-password");
 
+  // Use reusable clipboard OTP hook
+  const { extractedOtp } = useClipboardOtp({
+    otpLength: 6,
+    pattern: REGEXP_ONLY_DIGITS,
+  });
+
   const form = useForm<PostResetPasswordRequest>({
     resolver: zodResolver(postResetPasswordSchema.request),
   });
@@ -36,8 +37,11 @@ const Setpasswordpage = () => {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors },
   } = form;
+
+  const otp = watch("otp");
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
@@ -57,6 +61,10 @@ const Setpasswordpage = () => {
 
   const handleSubmitForm = (data: PostResetPasswordRequest) => {
     mutation.mutate(data);
+  };
+
+  const handlePasteOtp = (otp: string) => {
+    setValue("otp", otp);
   };
 
   const otpRegister = register("otp");
@@ -79,14 +87,15 @@ const Setpasswordpage = () => {
         className="w-full flex flex-col items-center gap-4"
         onSubmit={handleSubmit(handleSubmitForm)}
       >
-        <div className="pb-4">
+        <div>
           <InputOTP
             maxLength={6}
-            pattern={REGEXP_ONLY_DIGITS_AND_CHARS}
+            pattern={REGEXP_ONLY_DIGITS}
             name={otpRegister.name}
             onChange={(value: string) => {
               setValue("otp", value);
             }}
+            value={otp}
           >
             <InputOTPGroup>
               <InputOTPSlot index={0} />
@@ -100,8 +109,16 @@ const Setpasswordpage = () => {
           <span className="text-xs text-error-400">{errors.otp?.message}</span>
         </div>
 
+        <PasteOtpButton
+          extractedOtp={extractedOtp}
+          onPaste={handlePasteOtp}
+          isLoading={mutation.isPending}
+          variant="secondary"
+          className="w-full mb-2"
+        />
+
         {/* input */}
-        <Input
+        <PasswordInput
           label="Password"
           type="password"
           className="font-normal text-xs text-muted-foreground"
@@ -109,9 +126,8 @@ const Setpasswordpage = () => {
           {...register("new_password")}
           error={errors.new_password?.message}
         />
-        <Input
+        <PasswordInput
           label="Confirm Password"
-          type="password"
           className="font-normal text-xs text-muted-foreground"
           placeholder="********"
           {...register("confirm_password")}
@@ -120,8 +136,8 @@ const Setpasswordpage = () => {
         {/* button reset */}
         <div className="pb-7 w-full">
           <Button
+            className="w-full"
             isLoading={mutation.isPending}
-            className="w-full text-lg font-bold"
             variant="primary"
           >
             Reset

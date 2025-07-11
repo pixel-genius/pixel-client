@@ -102,7 +102,6 @@ const AutherForm = () => {
                   />
                 </div>
                 <div>
-           
                   <Textarea
                     placeholder="Write a short message about yourself"
                     className=" bg-card h-40 resize-none p-3"

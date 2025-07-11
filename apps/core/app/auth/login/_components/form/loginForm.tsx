@@ -8,6 +8,7 @@ import { setAuthTokens } from "@repo/apis/utils/cookies";
 import { Button, PasswordInput, Input } from "@repo/ui/components";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -29,7 +30,9 @@ const LoginForm = () => {
 
   const loginMutation = usePostLogin({
     onSuccess: (res) => {
-      toast.success("Logged in successfully");
+      toast.success(
+        `Hello @${res.data.data.username}! Welcome back to Pixel 🎉`,
+      );
       setAuthTokens(res.data.data.token);
       router.push("/");
     },
@@ -43,6 +46,12 @@ const LoginForm = () => {
     loginMutation.mutate(values);
   });
 
+  useEffect(() => {
+    router.prefetch("/");
+    router.prefetch("/auth/forget-password");
+    router.prefetch("/auth/signup");
+  }, [router]);
+
   return (
     <form className="w-full" onSubmit={handleSubmitForm}>
       <div className="mb-2 flex flex-wrap gap-4">
@@ -51,6 +60,7 @@ const LoginForm = () => {
           label="User Name & Email"
           className="font-normal text-xs w-full"
           placeholder="example@pixel.design "
+          autoFocus
           {...register("username")}
           error={errors.username?.message}
         />
@@ -61,10 +71,7 @@ const LoginForm = () => {
           className="w-full font-normal text-md"
           placeholder="********"
           helperText={
-            <Link
-              href="/auth/forget-password"
-              className="block mb-3 text-sm font-light text-muted-foreground hover:text-muted cursor-pointer"
-            >
+            <Link href="/auth/forget-password" className="underline">
               Forgot password?
             </Link>
           }
@@ -72,6 +79,7 @@ const LoginForm = () => {
           error={errors.password?.message}
         />
       </div>
+
       {/* Button */}
       <Button
         size="md"
