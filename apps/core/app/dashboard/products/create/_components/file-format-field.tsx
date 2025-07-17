@@ -5,7 +5,7 @@ import AfterEffecticon from "@repo/icons/after-effects";
 import Belendericon from "@repo/icons/belender";
 import Circlxicon from "@repo/icons/circle-x";
 import Figmaicon from "@repo/icons/figma";
-import { Chip } from "@repo/ui/components";
+import { Chip } from "@repo/ui/components/atoms/chip";
 import { File } from "lucide-react";
 import { FileFormatFieldLoading } from "./file-format-field-loading";
 

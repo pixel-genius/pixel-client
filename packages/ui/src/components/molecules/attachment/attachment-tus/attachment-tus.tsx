@@ -2,7 +2,7 @@
 
 import { PixelImgIcon } from "@repo/icons/pixel-img";
 
-import { Typography } from "@repo/ui/components";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import { useRef, useEffect } from "react";
 import { useTusUploadManager, CompletedUpload } from "./use-tus-upload-manager";
 import { AttachmentTusItem } from "./attachment-tus-item";

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { DashedCircles } from "@repo/ui/components";
+import { DashedCircles } from "@repo/ui/components/atoms/dashed-circles";
 import blender from "../_assets/blender.svg";
 import planet from "../_assets/planet.svg";
 import figma from "../_assets/figma.svg";

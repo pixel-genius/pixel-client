@@ -1,4 +1,4 @@
-import { Chip } from "@repo/ui/components";
+import { Chip } from "@repo/ui/components/atoms/chip";
 
 const tags = [
   "Movie",
@@ -21,4 +21,4 @@ export const ProductTags = () => {
       ))}
     </div>
   );
-}; 
+};

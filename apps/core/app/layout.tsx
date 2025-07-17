@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
 import { ApiProvider } from "@repo/apis/providers/api-provider";
-import { Toaster } from "@repo/ui/components";
+import { Toaster } from "@repo/ui/components/atoms/sonner";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { ReactNode, Fragment } from "react";
 import { ReactScan } from "./_components/react-scan";

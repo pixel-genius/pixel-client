@@ -1,6 +1,6 @@
 "use client";
 
-import { Typography } from "@repo/ui/components";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import { motion } from "framer-motion";
 import { cn } from "@repo/ui/lib/utils";
 import { Trash2Icon } from "lucide-react";
@@ -31,25 +31,28 @@ export const AttachmentTusItem = ({
   const [objectUrl, setObjectUrl] = useState<string | null>(null);
 
   // Split filename and extension
-const getFileNameAndExtension = (filename: string) => {
-  const lastDotIndex = filename.lastIndexOf(".");
-  if (lastDotIndex === -1) return { name: filename, ext: "" };
+  const getFileNameAndExtension = (filename: string) => {
+    const lastDotIndex = filename.lastIndexOf(".");
+    if (lastDotIndex === -1) return { name: filename, ext: "" };
 
-  // Handle special cases for common file types with multiple dots
-  const lowerFilename = filename.toLowerCase();
-  if (lowerFilename.endsWith('.tar.gz') || lowerFilename.endsWith('.tar.bz2')) {
-    const secondLastDotIndex = filename.lastIndexOf(".", lastDotIndex - 1);
+    // Handle special cases for common file types with multiple dots
+    const lowerFilename = filename.toLowerCase();
+    if (
+      lowerFilename.endsWith(".tar.gz") ||
+      lowerFilename.endsWith(".tar.bz2")
+    ) {
+      const secondLastDotIndex = filename.lastIndexOf(".", lastDotIndex - 1);
+      return {
+        name: filename.substring(0, secondLastDotIndex),
+        ext: filename.substring(secondLastDotIndex),
+      };
+    }
+
     return {
-      name: filename.substring(0, secondLastDotIndex),
-      ext: filename.substring(secondLastDotIndex),
+      name: filename.substring(0, lastDotIndex),
+      ext: filename.substring(lastDotIndex),
     };
-  }
-
-  return {
-    name: filename.substring(0, lastDotIndex),
-    ext: filename.substring(lastDotIndex),
   };
-};
 
   const { name, ext } = getFileNameAndExtension(upload.file.name);
 

@@ -1,7 +1,13 @@
 // import components
 "use client";
-import { Button, PasswordInput, PasteOtpButton } from "@repo/ui/components";
-import { InputOTP, InputOTPGroup, InputOTPSlot } from "@repo/ui/components";
+import { Button } from "@repo/ui/components/atoms/button";
+import { PasswordInput } from "@repo/ui/components/molecules/passwordInput";
+import { PasteOtpButton } from "@repo/ui/components/molecules/paste-otp-button";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@repo/ui/components/atoms/input-otp";
 import { useClipboardOtp } from "@repo/ui/hooks";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 import { useRouter, useSearchParams } from "next/navigation";

@@ -1,21 +1,23 @@
 "use client";
-import { Button, Input, Typography } from "@repo/ui/components";
+import { Button } from "@repo/ui/components/atoms/button";
+import { Input } from "@repo/ui/components/molecules/input";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import Cartitem from "./_components/cart-item";
 import Subtotal from "./_components/ordersummary";
 import PaymentOptionsList from "./_components/paymentOption";
 import PaymentSettings from "./_components/paymentSettings";
 import PaymentForm from "./_components/payment-form";
-import { useState } from 'react';
+import { useState } from "react";
 
 const PixelPayment = () => {
   const [selectedPaymentOption, setSelectedPaymentOption] = useState("Paypal");
   const [walletBalance, setWalletBalance] = useState(0);
   const [pixelBalance, setPixelBalance] = useState(0);
   const [discountAmount, setDiscountAmount] = useState(0);
-  
+
   const [cartItems, setCartItems] = useState([
     { id: 1, title: "News App UI KIT", price: 35 },
-    { id: 2, title: "Dashboard UI KIT", price: 45 }
+    { id: 2, title: "Dashboard UI KIT", price: 45 },
   ]);
 
   // Format amount based on payment option
@@ -27,7 +29,7 @@ const PixelPayment = () => {
   };
 
   const handleRemoveItem = (id: number) => {
-    setCartItems(prevItems => prevItems.filter(item => item.id !== id));
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
   // Calculate subtotal
@@ -40,10 +42,18 @@ const PixelPayment = () => {
           {/* payment form */}
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2 pb-4">
-              <Typography variant={"heading/lg"} className="pb-1 text-2xl md:text-3xl lg:text-4xl" weight={"bold"}>
+              <Typography
+                variant={"heading/lg"}
+                className="pb-1 text-2xl md:text-3xl lg:text-4xl"
+                weight={"bold"}
+              >
                 Payment
               </Typography>
-              <Typography variant={"paragraph/md"} weight={"light"} className="text-sm md:text-base">
+              <Typography
+                variant={"paragraph/md"}
+                weight={"light"}
+                className="text-sm md:text-base"
+              >
                 Complete your purchase by providing your payment details.
               </Typography>
             </div>
@@ -56,20 +66,24 @@ const PixelPayment = () => {
               />
               <div className="flex flex-col gap-4">
                 <div>
-                  <Typography variant={"label/md"} weight={"normal"} className="text-sm md:text-base">
+                  <Typography
+                    variant={"label/md"}
+                    weight={"normal"}
+                    className="text-sm md:text-base"
+                  >
                     Select Payment Method{" "}
                   </Typography>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <PaymentOptionsList 
+                  <PaymentOptionsList
                     selectedOption={selectedPaymentOption}
-                    onOptionChange={setSelectedPaymentOption} 
+                    onOptionChange={setSelectedPaymentOption}
                   />
                 </div>
               </div>
             </div>
             {/* wallet balance */}
-            <PaymentSettings 
+            <PaymentSettings
               paymentOption={selectedPaymentOption}
               onWalletBalanceChange={setWalletBalance}
               onPixelBalanceChange={setPixelBalance}
@@ -82,10 +96,18 @@ const PixelPayment = () => {
           {/* card details */}
           <div className="flex flex-col gap-4 mt-8 lg:mt-0">
             <div className="flex flex-col gap-2">
-              <Typography variant={"heading/lg"} className="pb-1 text-2xl md:text-3xl lg:text-4xl" weight={"bold"}>
+              <Typography
+                variant={"heading/lg"}
+                className="pb-1 text-2xl md:text-3xl lg:text-4xl"
+                weight={"bold"}
+              >
                 Product Information & Review
               </Typography>
-              <Typography variant={"label/sm"} className="pb-4 text-xs md:text-sm" weight={"light"}>
+              <Typography
+                variant={"label/sm"}
+                className="pb-4 text-xs md:text-sm"
+                weight={"light"}
+              >
                 By Placing your order, you agree to storele ins trivacy and
                 policy.{" "}
               </Typography>
@@ -94,16 +116,24 @@ const PixelPayment = () => {
             <div className="flex flex-col gap-3">
               {cartItems.length === 0 ? (
                 <div className="bg-card p-4 md:p-6 lg:p-8 rounded-lg flex flex-col items-center justify-center gap-4">
-                  <Typography variant={"heading/sm"} weight={"medium"} className="text-lg md:text-xl">
+                  <Typography
+                    variant={"heading/sm"}
+                    weight={"medium"}
+                    className="text-lg md:text-xl"
+                  >
                     Your cart is empty
                   </Typography>
-                  <Typography variant={"label/md"} weight={"light"} className="text-sm md:text-base text-center">
+                  <Typography
+                    variant={"label/md"}
+                    weight={"light"}
+                    className="text-sm md:text-base text-center"
+                  >
                     Add some items to your cart to proceed with payment
                   </Typography>
                 </div>
               ) : (
                 cartItems.map((item) => (
-                  <Cartitem 
+                  <Cartitem
                     key={item.id}
                     currency={selectedPaymentOption === "USDT" ? "USDT " : "$"}
                     onRemove={() => handleRemoveItem(item.id)}
@@ -114,15 +144,17 @@ const PixelPayment = () => {
               )}
               {/* order summary */}
               <div>
-                <Typography variant={"label/lg"} weight={"medium"} className="text-base md:text-lg">
+                <Typography
+                  variant={"label/lg"}
+                  weight={"medium"}
+                  className="text-base md:text-lg"
+                >
                   Order Summary
                 </Typography>
               </div>
               <div className="flex flex-col gap-4">
                 <Subtotal
-                  items={[
-                    { label: "Your Subtotal", amount: subtotal }
-                  ]}
+                  items={[{ label: "Your Subtotal", amount: subtotal }]}
                   currency={selectedPaymentOption === "USDT" ? "USDT " : "$"}
                   walletBalance={walletBalance}
                   pixelBalance={pixelBalance}

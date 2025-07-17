@@ -1,9 +1,14 @@
 "use client";
 
-import { AvatarFallback, Avatar, Typography, Input, Textarea, Switch, Button } from "@repo/ui/components";
+import { AvatarFallback, Avatar } from "@repo/ui/components/atoms/avatar";
+import { Typography } from "@repo/ui/components/atoms/typography";
+import { Input } from "@repo/ui/components/molecules/input";
+import { Textarea } from "@repo/ui/components/atoms/textarea";
+import { Switch } from "@repo/ui/components/atoms/switch";
+import { Button } from "@repo/ui/components/atoms/button";
 import Link from "next/link";
-import { AvatarImage } from "@repo/ui/components";
-import { IconCamera, IconSparkles } from '@tabler/icons-react';
+import { AvatarImage } from "@repo/ui/components/atoms/avatar";
+import { IconCamera, IconSparkles } from "@tabler/icons-react";
 import { useState, useRef } from "react";
 
 const ProfilePage = () => {
@@ -15,7 +20,7 @@ const ProfilePage = () => {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        if (typeof e.target?.result === 'string') {
+        if (typeof e.target?.result === "string") {
           setAvatarSrc(e.target.result);
         }
       };
@@ -36,13 +41,10 @@ const ProfilePage = () => {
         <div className="flex items-center w-1/2 gap-2 pt-4">
           <div className="relative group ">
             <Avatar className="size-24 items-center flex cursor-pointer ">
-              <AvatarImage
-                src={avatarSrc}
-                alt="Profile avatar"
-              />
+              <AvatarImage src={avatarSrc} alt="Profile avatar" />
               <AvatarFallback>AK</AvatarFallback>
             </Avatar>
-            <div 
+            <div
               className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
               onClick={() => fileInputRef.current?.click()}
             >
@@ -58,7 +60,8 @@ const ProfilePage = () => {
           </div>
 
           <Typography variant="paragraph/sm" weight="light">
-            Update your avatar by clicking the image. 288x288 px size recommended in PNG or JPG format only.
+            Update your avatar by clicking the image. 288x288 px size
+            recommended in PNG or JPG format only.
           </Typography>
         </div>
         {/* End Avatar Section  */}
@@ -122,20 +125,24 @@ const ProfilePage = () => {
         </div>
         {/* End Details Section */}
         {/* Privacy Hire me */}
-      
+
         <div className="grid  gap-4 pt-4">
           <div className="flex items-center justify-between p-4 rounded-lg border border-border">
             <div>
               <Typography variant="heading/xs" className="py-2" weight="bold">
-               Hire me
+                Hire me
               </Typography>
-              <Typography variant="paragraph/sm" weight="light" className="text-muted-foreground">
-Enabling this feature will allow other users to contact you with work inquiries.
+              <Typography
+                variant="paragraph/sm"
+                weight="light"
+                className="text-muted-foreground"
+              >
+                Enabling this feature will allow other users to contact you with
+                work inquiries.
               </Typography>
             </div>
             <Switch defaultChecked={false} />
           </div>
-         
         </div>
         {/* End Privacy Hire me */}
         <div className="flex justify-end pt-6">
@@ -144,7 +151,6 @@ Enabling this feature will allow other users to contact you with work inquiries.
           </Button>
         </div>
       </div>
-      
     </>
   );
 };

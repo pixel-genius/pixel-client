@@ -11,7 +11,7 @@ import {
   SidebarMenuItem,
   SidebarProvider,
   useSidebar,
-} from "@repo/ui/components";
+} from "@repo/ui/components/molecules/sidebar";
 
 // Logo
 import PixelIcon from "@repo/icons/pxiel";

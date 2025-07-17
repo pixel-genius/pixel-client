@@ -2,7 +2,8 @@
 import PixelIcon from "@repo/icons/pxiel";
 import SearchIcon from "@repo/icons/serach";
 import XIcon from "@repo/icons/x";
-import { BaseInput, Chip } from "@repo/ui/components";
+import { BaseInput } from "@repo/ui/components/atoms/base-input";
+import { Chip } from "@repo/ui/components/atoms/chip";
 import { cn } from "@repo/ui/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";

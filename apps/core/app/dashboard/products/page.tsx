@@ -1,19 +1,23 @@
 "use client";
 
+import { Typography } from "@repo/ui/components/atoms/typography";
 import {
-  Typography,
   Table,
   TableHeader,
   TableBody,
   TableCell,
   TableHead,
   TableRow,
-  Chip,
+} from "@repo/ui/components/atoms/table";
+import { Chip } from "@repo/ui/components/atoms/chip";
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  Button,
+} from "@repo/ui/components/atoms/dropdown-menu";
+import { Button } from "@repo/ui/components/atoms/button";
+import {
   Pagination,
   PaginationContent,
   PaginationEllipsis,
@@ -21,14 +25,15 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-  Input,
+} from "@repo/ui/components/atoms/pagination";
+import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogDescription,
   DialogFooter,
-} from "@repo/ui/components";
+} from "@repo/ui/components/atoms/dialog";
 import Link from "next/link";
 import {
   IconDotsVertical,
@@ -45,18 +50,17 @@ import { useState } from "react";
 const EmptyState = () => {
   return (
     <div className="flex flex-col items-center justify-center py-12 px-4">
-      
       <Typography variant="heading/md" weight="bold" className="mb-2">
         No Products Found
       </Typography>
-      <Typography variant="paragraph/sm" className="text-muted-foreground text-center mb-6">
-        Get started by creating your first product. You can add details, images, and set up pricing.
-      </Typography>
-      <Button
-        iconRight={<IconPlus size={16} />}
-        variant="primary"
-        size="md"
+      <Typography
+        variant="paragraph/sm"
+        className="text-muted-foreground text-center mb-6"
       >
+        Get started by creating your first product. You can add details, images,
+        and set up pricing.
+      </Typography>
+      <Button iconRight={<IconPlus size={16} />} variant="primary" size="md">
         <Link href="/dashboard/products/create">Create Your First Product</Link>
       </Button>
     </div>
@@ -181,7 +185,9 @@ const ProductsPage = () => {
                     )}
                   </TableCell>
                   <TableCell>0(0.00$)</TableCell>
-                  <TableCell>{["1.5.4", "1.2.5", "0.0.2", "1.2.1"][idx]}</TableCell>
+                  <TableCell>
+                    {["1.5.4", "1.2.5", "0.0.2", "1.2.1"][idx]}
+                  </TableCell>
                   <TableCell>0.00$</TableCell>
                   <TableCell>
                     <DropdownMenu>
@@ -199,7 +205,7 @@ const ProductsPage = () => {
                           <IconEye size={16} className="mr-2" />
                           View Product
                         </DropdownMenuItem>
-                        <DropdownMenuItem 
+                        <DropdownMenuItem
                           className="text-destructive"
                           onClick={() => handleDeleteClick(id)}
                         >
@@ -218,24 +224,28 @@ const ProductsPage = () => {
             <Pagination>
               <PaginationContent>
                 <PaginationItem>
-                  <PaginationPrevious href="#" />
+                  <PaginationPrevious href="#" size="md" />
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink href="#" isActive>
+                  <PaginationLink href="#" size="md" isActive>
                     1
                   </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink href="#">2</PaginationLink>
+                  <PaginationLink href="#" size="md">
+                    2
+                  </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationLink href="#">3</PaginationLink>
+                  <PaginationLink href="#" size="md">
+                    3
+                  </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
                   <PaginationEllipsis />
                 </PaginationItem>
                 <PaginationItem>
-                  <PaginationNext href="#" />
+                  <PaginationNext href="#" size="md" />
                 </PaginationItem>
               </PaginationContent>
             </Pagination>
@@ -248,7 +258,8 @@ const ProductsPage = () => {
           <DialogHeader>
             <DialogTitle>Delete Product</DialogTitle>
             <DialogDescription>
-              Are you sure you want to delete this product? This action cannot be undone.
+              Are you sure you want to delete this product? This action cannot
+              be undone.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="flex gap-2 justify-end">

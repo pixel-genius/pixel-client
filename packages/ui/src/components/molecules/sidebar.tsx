@@ -26,7 +26,11 @@ import Settingsicon from "@repo/icons/settings";
 import Shoppingbagicon from "@repo/icons/shopping-bag";
 import Usercircleicon from "@repo/icons/user-circle";
 import Useractionpixelicon from "@repo/icons/useractionpixel";
-import { AvatarImage, AvatarFallback, Avatar } from "@repo/ui/components";
+import {
+  AvatarImage,
+  AvatarFallback,
+  Avatar,
+} from "@repo/ui/components/atoms/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -34,7 +38,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@repo/ui/components";
+} from "@repo/ui/components/atoms/dropdown-menu";
 import Link from "next/link";
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state";

@@ -1,4 +1,5 @@
-import { Input, Separator } from "@repo/ui/components";
+import { Input } from "@repo/ui/components/molecules/input";
+import { Separator } from "@repo/ui/components/atoms/separator";
 import { FileFormatSection } from "./file-format-section";
 import { HighlightSection } from "./highlight-section";
 import PriceSection from "./price-section";

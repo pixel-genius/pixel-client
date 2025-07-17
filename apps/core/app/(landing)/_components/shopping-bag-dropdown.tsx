@@ -1,6 +1,5 @@
 "use client";
 
-import { Typography } from "@repo/ui/components";
 import { useCartStore } from "../store/cart-store";
 import Addtocard from "./addtoCard";
 import { useRef, useEffect } from "react";
@@ -11,7 +10,10 @@ const ShoppingBagDropdown = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         if (isAddToCartOpen) {
           toggleAddToCart();
         }
@@ -26,9 +28,7 @@ const ShoppingBagDropdown = () => {
 
   return (
     <div className="fixed top-[120px] right-[335px] z-50" ref={dropdownRef}>
-      <div className="relative cursor-pointer" onClick={toggleAddToCart}>
-        
-      </div>
+      <div className="relative cursor-pointer" onClick={toggleAddToCart}></div>
       {isAddToCartOpen && (
         <div className="absolute right-0 mt-2">
           <Addtocard />
@@ -38,4 +38,4 @@ const ShoppingBagDropdown = () => {
   );
 };
 
-export default ShoppingBagDropdown; 
+export default ShoppingBagDropdown;

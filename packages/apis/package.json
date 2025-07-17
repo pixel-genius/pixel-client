@@ -23,16 +23,14 @@
     "postcss": "^8.4.38",
     "postcss-load-config": "^6.0.1",
     "tailwindcss": "^3.4.10",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "@anatine/zod-mock": "^3.13.4"
   },
   "dependencies": {
-    "@anatine/zod-mock": "^3.13.4",
-    "@faker-js/faker": "^9.5.1",
     "@tanstack/react-query": "^5.62.2",
     "@tanstack/react-query-devtools": "^5.62.2",
     "@types/js-cookie": "^3.0.6",
     "axios": "^1.7.7",
-    "axios-mock-adapter": "^2.0.0",
     "js-cookie": "^3.0.5",
     "zod": "^3.23.8"
   },

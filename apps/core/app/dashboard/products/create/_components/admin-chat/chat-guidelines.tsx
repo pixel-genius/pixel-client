@@ -1,4 +1,4 @@
-import { Typography } from "@repo/ui/components";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import { MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 

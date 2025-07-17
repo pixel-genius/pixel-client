@@ -1,4 +1,4 @@
-import { Button } from "@repo/ui/components";
+import { Button } from "@repo/ui/components/atoms/button";
 import Image from "next/image";
 import TronLinkIcon from "../../_assets/TronLink.svg";
 import TrustIcon from "../../_assets/Trus.svg";
@@ -10,7 +10,7 @@ type PaymentFormProps = {
 };
 
 const PaymentForm: React.FC<PaymentFormProps> = ({ paymentOption }) => {
-  console.log('PaymentForm received paymentOption:', paymentOption); // Debug log
+  console.log("PaymentForm received paymentOption:", paymentOption); // Debug log
 
   const renderPaymentForm = () => {
     switch (paymentOption) {
@@ -71,7 +71,13 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ paymentOption }) => {
               {/* Connect Wallet Buttons */}
               <div className="flex flex-col gap-3 w-full lg:w-auto lg:min-w-[200px]">
                 <div className="flex items-center gap-2 w-full justify-start bg-secondary hover:bg-secondary/80 text-white px-4 py-2 rounded-lg cursor-pointer transition-colors">
-                  <Image src={TronLinkIcon} alt="TronLink" width={38} height={41} className="w-8 h-9 sm:w-10 sm:h-11" />
+                  <Image
+                    src={TronLinkIcon}
+                    alt="TronLink"
+                    width={38}
+                    height={41}
+                    className="w-8 h-9 sm:w-10 sm:h-11"
+                  />
                   <div className="flex flex-col">
                     Connect Wallet
                     <span className="text-xs text-white/60">Tronlink</span>

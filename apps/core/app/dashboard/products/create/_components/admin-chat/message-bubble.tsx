@@ -1,4 +1,4 @@
-import { Typography } from "@repo/ui/components";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import { motion } from "framer-motion";
 import { Message } from "./types";
 import { AdminAvatar } from "./admin-avatar";

@@ -1,12 +1,12 @@
 "use client";
 
 import Card from "./card";
-import { Button } from "@repo/ui/components";
+import { Button } from "@repo/ui/components/atoms/button";
 import Securityicon from "@repo/icons/security";
 import { useState } from "react";
 import CardSkeleton from "./card-cart-skeleton";
 import { useCartStore } from "../store/cart-store";
-import { Typography } from "@repo/ui/components";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import { useRouter } from "next/navigation";
 
 const Addtocard = () => {
@@ -14,8 +14,18 @@ const Addtocard = () => {
   const router = useRouter();
 
   const [cards, setCards] = useState([
-    { id: 2, title: "Traveler - Travel Agency", price: 15, image: "/cart-1.png" },
-    { id: 3, title: "Traveler - Travel Agency", price: 15, image: "/cart-2.png" },
+    {
+      id: 2,
+      title: "Traveler - Travel Agency",
+      price: 15,
+      image: "/cart-1.png",
+    },
+    {
+      id: 3,
+      title: "Traveler - Travel Agency",
+      price: 15,
+      image: "/cart-2.png",
+    },
   ]);
 
   const temp = [1, 2, 3];
@@ -57,12 +67,12 @@ const Addtocard = () => {
 
       {/* Pay Now Button */}
 
-      <Button 
-        size="lg" 
+      <Button
+        size="lg"
         className="w-full bg-primary text-white text-lg font-semibold rounded-xl mt-2"
         onClick={() => router.push("/payment")}
       >
- Pay Now
+        Pay Now
       </Button>
 
       {/* Secure Payment Message */}

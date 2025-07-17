@@ -1,6 +1,9 @@
 "use client";
 
-import { BaseInput, Button, Switch, Typography } from "@repo/ui/components";
+import { BaseInput } from "@repo/ui/components/atoms/base-input";
+import { Button } from "@repo/ui/components/atoms/button";
+import { Switch } from "@repo/ui/components/atoms/switch";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import { useState } from "react";
 
 interface WalletBalanceProps {
@@ -8,7 +11,10 @@ interface WalletBalanceProps {
   currency: string;
 }
 
-export const WalletBalance = ({ onSwitchChange, currency }: WalletBalanceProps) => {
+export const WalletBalance = ({
+  onSwitchChange,
+  currency,
+}: WalletBalanceProps) => {
   return (
     <div className="flex justify-between items-center">
       <div className="flex flex-col gap-2">
@@ -33,7 +39,10 @@ interface PixelBalanceProps {
   currency: string;
 }
 
-export const PixelBalance = ({ onSwitchChange, currency }: PixelBalanceProps) => {
+export const PixelBalance = ({
+  onSwitchChange,
+  currency,
+}: PixelBalanceProps) => {
   return (
     <div className="flex justify-between items-center">
       <div className="flex flex-col gap-2">
@@ -74,9 +83,13 @@ export const DiscountCode = ({
   return (
     <div className="flex flex-col gap-4">
       <div className="flex gap-2 items-center">
-        <BaseInput 
-          size="sm" 
-          placeholder={isApplied ? `Discount 10% (~ ${currency}5.00)` : "Enter Discount Code"}
+        <BaseInput
+          size="sm"
+          placeholder={
+            isApplied
+              ? `Discount 10% (~ ${currency}5.00)`
+              : "Enter Discount Code"
+          }
           value={isApplied ? `Discount 10% (~ ${currency}5.00)` : discountCode}
           onChange={(e) => setDiscountCode(e.target.value)}
           disabled={isApplied}
@@ -118,11 +131,11 @@ interface PaymentSettingsProps {
   onDiscountChange: (amount: number) => void;
 }
 
-const PaymentSettings: React.FC<PaymentSettingsProps> = ({ 
+const PaymentSettings: React.FC<PaymentSettingsProps> = ({
   paymentOption,
   onWalletBalanceChange,
   onPixelBalanceChange,
-  onDiscountChange
+  onDiscountChange,
 }) => {
   const [showWalletBalance, setShowWalletBalance] = useState(false);
   const [showPixelBalance, setShowPixelBalance] = useState(false);
@@ -133,13 +146,13 @@ const PaymentSettings: React.FC<PaymentSettingsProps> = ({
   // Handle wallet balance switch
   const handleWalletSwitch = (checked: boolean) => {
     setShowWalletBalance(checked);
-    onWalletBalanceChange(checked ? 10.00 : 0);
+    onWalletBalanceChange(checked ? 10.0 : 0);
   };
 
   // Handle pixel balance switch
   const handlePixelSwitch = (checked: boolean) => {
     setShowPixelBalance(checked);
-    onPixelBalanceChange(checked ? 5.00 : 0);
+    onPixelBalanceChange(checked ? 5.0 : 0);
   };
 
   // Handle discount code switch
@@ -153,16 +166,10 @@ const PaymentSettings: React.FC<PaymentSettingsProps> = ({
   return (
     <div className="flex flex-col gap-6">
       {/* Wallet Balance */}
-      <WalletBalance 
-        onSwitchChange={handleWalletSwitch} 
-        currency={currency}
-      />
+      <WalletBalance onSwitchChange={handleWalletSwitch} currency={currency} />
 
       {/* Pixel Balance */}
-      <PixelBalance 
-        onSwitchChange={handlePixelSwitch} 
-        currency={currency}
-      />
+      <PixelBalance onSwitchChange={handlePixelSwitch} currency={currency} />
 
       {/* Discount Code Switch */}
       <div className="flex justify-between items-center">
@@ -176,7 +183,7 @@ const PaymentSettings: React.FC<PaymentSettingsProps> = ({
       <DiscountCode
         isVisible={showDiscountCode}
         onApply={() => {
-          onDiscountChange(5.00);
+          onDiscountChange(5.0);
         }}
         onRemove={() => {
           onDiscountChange(0);

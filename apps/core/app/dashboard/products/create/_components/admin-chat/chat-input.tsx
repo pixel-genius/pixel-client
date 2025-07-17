@@ -1,4 +1,5 @@
-import { Button, Input } from "@repo/ui/components";
+import { Button } from "@repo/ui/components/atoms/button";
+import { Input } from "@repo/ui/components/molecules/input";
 import { Send } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@repo/ui/lib/utils";

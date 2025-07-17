@@ -9,7 +9,7 @@ import Image from "next/image";
 import { AttachmentProps, useAttachment } from "../useAttachment";
 import { useState } from "react";
 import { Card } from "../../../atoms/card";
-import { Typography } from "@repo/ui/components";
+import { Typography } from "@repo/ui/components/atoms/typography";
 
 export type AttachmentThumbnailProps = AttachmentProps & {
   avatar?: string;

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Typography, Switch } from "@repo/ui/components";
+import { Typography } from "@repo/ui/components/atoms/typography";
+import { Switch } from "@repo/ui/components/atoms/switch";
 import { cn } from "@repo/ui/lib/utils";
 
 export interface VersionItemProps {

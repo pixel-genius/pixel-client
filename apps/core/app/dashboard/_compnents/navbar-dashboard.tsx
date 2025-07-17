@@ -1,4 +1,4 @@
-import { SidebarTrigger } from "@repo/ui/components";
+import { SidebarTrigger } from "@repo/ui/components/molecules/sidebar";
 
 const NavbarDashboard = () => {
   return (

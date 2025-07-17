@@ -1,10 +1,5 @@
 "use client";
 
-import {
-  AttachmentAdmin,
-  AttachmentThumbnail,
-  AttachmentTus,
-} from "@repo/ui/components";
 import React from "react";
 
 const Page = () => {
@@ -17,7 +12,7 @@ const Page = () => {
         <h2 className="text-xl font-semibold mb-4">
           Single File Upload (Component) backend Endpoint
         </h2>
-        <AttachmentTus
+        {/* <AttachmentTus
           type="zip"
           endpoint="https://api.pixelgenius.ir/large_upload/"
           title="Thumbnail Image Upload"
@@ -39,7 +34,7 @@ const Page = () => {
               fileName: "sample.jpg",
             },
           ]}
-        />
+        /> */}
       </div>
 
       {/* Multiple file upload using the component */}
@@ -47,7 +42,7 @@ const Page = () => {
         <h2 className="text-xl font-semibold mb-4">
           Multiple File Upload (Component)
         </h2>
-        <AttachmentTus
+        {/* <AttachmentTus
           title="Multiple Image Upload"
           multiple
           description="Create image at 1800 × 1360 px. Keep images under 4MB and JPEG if possible."
@@ -57,7 +52,7 @@ const Page = () => {
           onAllCompleted={(results) => {
             console.log(`All files uploaded:`, results);
           }}
-        />
+        /> */}
       </div>
     </div>
   );

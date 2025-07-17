@@ -2,8 +2,8 @@ import {
   SidebarGroup,
   SidebarMenu,
   SidebarMenuButton,
-  SidebarMenuItem
-} from "@repo/ui/components";
+  SidebarMenuItem,
+} from "@repo/ui/components/molecules/sidebar";
 import { usePathname } from "next/navigation";
 
 export function NavMain({
