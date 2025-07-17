@@ -10,7 +10,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "../ui/tooltip";
+} from "../atoms/tooltip";
 import { cn } from "@repo/ui/lib/utils";
 import { useIsMobile } from "../../hooks/use-mobile";
 import { Button } from "../atoms/button";
@@ -26,11 +26,7 @@ import Settingsicon from "@repo/icons/settings";
 import Shoppingbagicon from "@repo/icons/shopping-bag";
 import Usercircleicon from "@repo/icons/user-circle";
 import Useractionpixelicon from "@repo/icons/useractionpixel";
-import {
-  AvatarImage,
-  AvatarFallback,
-  Avatar,
-} from "@repo/ui/components";
+import { AvatarImage, AvatarFallback, Avatar } from "@repo/ui/components";
 import {
   DropdownMenu,
   DropdownMenuContent,
