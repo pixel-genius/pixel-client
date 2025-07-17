@@ -1,23 +1,30 @@
 "use client";
 
+import { Typography } from "@repo/ui/components/atoms/typography";
 import {
-  Typography,
   Card,
   CardHeader,
   CardTitle,
   CardContent,
+} from "@repo/ui/components/atoms/card";
+import {
   Table,
   TableHeader,
   TableRow,
   TableHead,
   TableBody,
   TableCell,
-  Chip,
-  Input,
-  Button,
-} from "@repo/ui/components";
+} from "@repo/ui/components/atoms/table";
+import { Chip } from "@repo/ui/components/atoms/chip";
+import { Input } from "@repo/ui/components/molecules/input";
+import { Button } from "@repo/ui/components/atoms/button";
 import { useState } from "react";
-import { IconChevronRight, IconCornerLeftDown, IconCornerLeftUp, IconSearch } from "@tabler/icons-react";
+import {
+  IconChevronRight,
+  IconCornerLeftDown,
+  IconCornerLeftUp,
+  IconSearch,
+} from "@tabler/icons-react";
 
 const summary = [
   {
@@ -83,7 +90,7 @@ const TransactionsPage = () => {
   return (
     <div className="min-h-screen bg-black text-white p-8">
       <Typography variant="heading/lg" weight="bold" className="mb-6">
-      Transactions
+        Transactions
       </Typography>
       <div className="flex flex-col md:flex-row gap-4 mb-8">
         <Card className="flex-[2] bg-zinc-900 border-none">
@@ -104,16 +111,13 @@ const TransactionsPage = () => {
                 variant="secondary"
                 iconRight={<IconCornerLeftUp />}
                 size="sm"
-               
-
               >
                 Deposit
               </Button>
               <Button
                 variant="secondary"
                 iconRight={<IconCornerLeftDown />}
-                   size="sm"
-               
+                size="sm"
               >
                 Withdraw
               </Button>

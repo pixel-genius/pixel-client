@@ -1,10 +1,19 @@
 "use client";
 
-import { IconMenuDeep, IconX, IconCrown, IconUserPlus, IconFileText, IconHelpCircle, IconShieldLock, IconFileDescription } from "@tabler/icons-react";
+import {
+  IconMenuDeep,
+  IconX,
+  IconCrown,
+  IconUserPlus,
+  IconFileText,
+  IconHelpCircle,
+  IconShieldLock,
+  IconFileDescription,
+} from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
-import { Typography } from "@repo/ui/components";
+import { Typography } from "@repo/ui/components/atoms/typography";
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +52,7 @@ const HamburgerMenu = () => {
               className="fixed top-0 right-0 h-full w-[250px] bg-card shadow-lg z-40"
             >
               <div className="p-6 pt-20">
-                <nav >
+                <nav>
                   <div>
                     <Typography
                       variant="heading/xs"
@@ -54,7 +63,10 @@ const HamburgerMenu = () => {
                     </Typography>
                     <ul className="space-y-4 mb-6">
                       <li>
-                        <Link href="#" className="flex items-center gap-2 py-3 px-4 rounded-lg hover:bg-accent/20 focus:bg-accent/30 active:bg-accent/40 transition w-full">
+                        <Link
+                          href="#"
+                          className="flex items-center gap-2 py-3 px-4 rounded-lg hover:bg-accent/20 focus:bg-accent/30 active:bg-accent/40 transition w-full"
+                        >
                           <IconCrown size={24} className="text-primary" />
                           <Typography
                             variant="label/xs"
@@ -65,7 +77,10 @@ const HamburgerMenu = () => {
                         </Link>
                       </li>
                       <li>
-                        <Link href="#" className="flex items-center gap-2 py-3 px-4 rounded-lg hover:bg-accent/20 focus:bg-accent/30 active:bg-accent/40 transition w-full">
+                        <Link
+                          href="#"
+                          className="flex items-center gap-2 py-3 px-4 rounded-lg hover:bg-accent/20 focus:bg-accent/30 active:bg-accent/40 transition w-full"
+                        >
                           <IconUserPlus size={24} className="text-primary" />
                           <Typography
                             variant="label/xs"
@@ -76,7 +91,10 @@ const HamburgerMenu = () => {
                         </Link>
                       </li>
                       <li>
-                        <Link href="#" className="flex items-center gap-2 py-3 px-4 rounded-lg hover:bg-accent/20 focus:bg-accent/30 active:bg-accent/40 transition w-full">
+                        <Link
+                          href="#"
+                          className="flex items-center gap-2 py-3 px-4 rounded-lg hover:bg-accent/20 focus:bg-accent/30 active:bg-accent/40 transition w-full"
+                        >
                           <IconFileText size={24} className="text-primary" />
                           <Typography
                             variant="label/xs"
@@ -87,7 +105,10 @@ const HamburgerMenu = () => {
                         </Link>
                       </li>
                       <li>
-                        <Link href="#" className="flex items-center gap-2 py-3 px-4 rounded-lg hover:bg-accent/20 focus:bg-accent/30 active:bg-accent/40 transition w-full">
+                        <Link
+                          href="#"
+                          className="flex items-center gap-2 py-3 px-4 rounded-lg hover:bg-accent/20 focus:bg-accent/30 active:bg-accent/40 transition w-full"
+                        >
                           <IconHelpCircle size={24} className="text-primary" />
                           <Typography
                             variant="label/xs"
@@ -108,7 +129,10 @@ const HamburgerMenu = () => {
                     </Typography>
                     <ul className="space-y-4">
                       <li>
-                        <Link href="#" className="flex items-center gap-2 py-3 px-4 rounded-lg hover:bg-accent/20 focus:bg-accent/30 active:bg-accent/40 transition w-full">
+                        <Link
+                          href="#"
+                          className="flex items-center gap-2 py-3 px-4 rounded-lg hover:bg-accent/20 focus:bg-accent/30 active:bg-accent/40 transition w-full"
+                        >
                           <IconShieldLock size={24} className="text-primary" />
                           <Typography
                             variant="label/xs"
@@ -119,8 +143,14 @@ const HamburgerMenu = () => {
                         </Link>
                       </li>
                       <li>
-                        <Link href="#" className="flex items-center gap-2 py-3 px-4 rounded-lg hover:bg-accent/20 focus:bg-accent/30 active:bg-accent/40 transition w-full">
-                          <IconFileDescription size={24} className="text-primary" />
+                        <Link
+                          href="#"
+                          className="flex items-center gap-2 py-3 px-4 rounded-lg hover:bg-accent/20 focus:bg-accent/30 active:bg-accent/40 transition w-full"
+                        >
+                          <IconFileDescription
+                            size={24}
+                            className="text-primary"
+                          />
                           <Typography
                             variant="label/xs"
                             className="hover:underline"

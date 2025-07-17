@@ -1,12 +1,10 @@
 "use client";
 
-import {
-  Button,
-  TabContent,
-  TabList,
-  TabProvider,
-  TabTrigger,
-} from "@repo/ui/components";
+import { Button } from "@repo/ui/components/atoms/button";
+import { TabContent } from "@repo/ui/components/molecules/tabs/tab-content";
+import { TabList } from "@repo/ui/components/molecules/tabs/tab-list";
+import { TabProvider } from "@repo/ui/components/molecules/tabs/tab-provider";
+import { TabTrigger } from "@repo/ui/components/molecules/tabs/tab-trigger";
 import { FormProvider, useForm } from "react-hook-form";
 import { AdminChatTab } from "./_components/admin-chat/admin-chat-tab";
 import { FilesTab } from "./_components/files-tab";

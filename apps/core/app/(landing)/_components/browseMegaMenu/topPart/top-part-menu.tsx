@@ -4,7 +4,7 @@ import IllustrationIcon from "@repo/icons/illustration";
 import MockUpsIcon from "@repo/icons/mockups";
 import PolygonIcon from "@repo/icons/polygon";
 import WireFrameIcon from "@repo/icons/wire-frame";
-import { Typography } from "@repo/ui/components";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import Link from "next/link";
 
 interface CategoryItemProps {

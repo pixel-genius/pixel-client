@@ -4,7 +4,7 @@ import {
   IconCoinBitcoin,
   IconCheck,
 } from "@tabler/icons-react"; // Replace with your actual icon library
-import { Typography } from "@repo/ui/components"; // Replace with your actual typography component
+import { Typography } from "@repo/ui/components/atoms/typography";
 
 type PaymentOptionProps = {
   icon: React.FC<{ size: number }>; // Icon type with size prop
@@ -48,9 +48,9 @@ type PaymentOptionsListProps = {
   selectedOption: string;
 };
 
-const PaymentOptionsList: React.FC<PaymentOptionsListProps> = ({ 
+const PaymentOptionsList: React.FC<PaymentOptionsListProps> = ({
   onOptionChange,
-  selectedOption 
+  selectedOption,
 }) => {
   const handleOptionClick = (option: string) => {
     onOptionChange(option);

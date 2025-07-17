@@ -9,7 +9,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@repo/ui/components";
+} from "@repo/ui/components/atoms/dropdown-menu";
 import Image from "next/image";
 import Link from "next/link";
 import Useractionpixelicon from "@repo/icons/useractionpixel";
@@ -17,7 +17,7 @@ import {
   AvatarImage,
   AvatarFallback,
   Avatar,
-} from "@repo/ui/components";
+} from "@repo/ui/components/atoms/avatar";
 import { useMegaMenuStore } from "./../../store/mega-menu";
 
 const FeatureNavbarAuthenticated = () => {

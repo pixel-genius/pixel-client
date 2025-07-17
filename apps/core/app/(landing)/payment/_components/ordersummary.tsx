@@ -1,5 +1,5 @@
 "use client";
-import { Typography } from "@repo/ui/components";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import React, { useEffect, useState } from "react";
 
 // Props Types
@@ -18,27 +18,27 @@ interface SubtotalProps {
 }
 
 // Subtotal Component
-const Subtotal: React.FC<SubtotalProps> = ({ 
-  items, 
+const Subtotal: React.FC<SubtotalProps> = ({
+  items,
   currency = "$",
   walletBalance,
   pixelBalance,
   discountAmount,
-  cartItemsCount
+  cartItemsCount,
 }) => {
   const [allItems, setAllItems] = useState<Item[]>(items);
 
   useEffect(() => {
     const newItems = [...items];
-    
+
     if (walletBalance > 0) {
       newItems.push({ label: "Use Wallet", amount: -walletBalance });
     }
-    
+
     if (pixelBalance > 0) {
       newItems.push({ label: "Use Pixel Balance", amount: -pixelBalance });
     }
-    
+
     if (discountAmount > 0) {
       newItems.push({ label: "Discount", amount: -discountAmount });
     }
@@ -72,7 +72,7 @@ const Subtotal: React.FC<SubtotalProps> = ({
       {/* Total */}
       <div className="flex justify-between items-center">
         <Typography variant={"heading/sm"} weight={"light"}>
-          Total ({cartItemsCount} {cartItemsCount === 1 ? 'item' : 'items'})
+          Total ({cartItemsCount} {cartItemsCount === 1 ? "item" : "items"})
         </Typography>
         <Typography variant={"heading/sm"} weight={"bold"}>
           {formatAmount(total)}

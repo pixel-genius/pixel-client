@@ -1,4 +1,4 @@
-import { Typography } from "@repo/ui/components";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import Instagram from "@repo/icons/instagram";
 import Chevronrighticon from "@repo/icons/chevron-right";
 import { DesignToolIcons } from "./design-tool-icons";
@@ -38,4 +38,4 @@ export const ProductHeader = () => {
       <ProductActions />
     </div>
   );
-}; 
+};

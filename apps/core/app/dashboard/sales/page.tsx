@@ -1,4 +1,4 @@
-import { Typography } from "@repo/ui/components";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import {
   Table,
   TableHeader,
@@ -6,9 +6,9 @@ import {
   TableRow,
   TableHead,
   TableCell,
-} from "@repo/ui/components";
-import { Input } from "@repo/ui/components";
-import { Chip } from "@repo/ui/components";
+} from "@repo/ui/components/atoms/table";
+import { Input } from "@repo/ui/components/molecules/input";
+import { Chip } from "@repo/ui/components/atoms/chip";
 import {
   Pagination,
   PaginationContent,
@@ -16,7 +16,7 @@ import {
   PaginationLink,
   PaginationPrevious,
   PaginationNext,
-} from "@repo/ui/components";
+} from "@repo/ui/components/atoms/pagination";
 import { Search } from "lucide-react"; // Or your icon library
 
 const salesData = [
@@ -66,7 +66,11 @@ const SalesPage = () => {
             {salesData.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={5} className="text-center py-12">
-                  <Typography variant="heading/lg" weight="medium" className="text-muted-foreground">
+                  <Typography
+                    variant="heading/lg"
+                    weight="medium"
+                    className="text-muted-foreground"
+                  >
                     No sales found.
                   </Typography>
                 </TableCell>

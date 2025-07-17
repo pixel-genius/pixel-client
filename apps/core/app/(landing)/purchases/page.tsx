@@ -1,4 +1,4 @@
-import { Typography } from "@repo/ui/components";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import { PurchaseCard } from "../_components/PurchaseCard";
 import Image from "next/image";
 
@@ -16,7 +16,7 @@ const Purchases = () => {
         { value: "0.0.3", label: "Version: 0.0.3" },
       ],
     },
-   
+
     {
       id: 3,
       title: "Dashboard UI Kit",
@@ -60,10 +60,11 @@ const Purchases = () => {
                 className="mb-6"
               />
               <Typography className="text-center text-xl font-medium mb-2">
-              No purchases yet.
+                No purchases yet.
               </Typography>
               <Typography className="text-center text-muted-foreground">
-                You haven't made any purchases yet. Browse our marketplace to find amazing products!
+                You haven't made any purchases yet. Browse our marketplace to
+                find amazing products!
               </Typography>
             </div>
           )}

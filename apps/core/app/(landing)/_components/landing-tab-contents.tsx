@@ -1,4 +1,4 @@
-import { ProductCard } from "@repo/ui/components";
+import { ProductCard } from "@repo/ui/components/molecules/prodoct-card";
 import { use } from "react";
 import { getProductVersionList } from "@repo/apis/core/shop/product-version/get/get-product-version-list";
 

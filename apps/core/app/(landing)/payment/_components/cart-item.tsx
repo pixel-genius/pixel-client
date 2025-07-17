@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import { Button, Typography } from "@repo/ui/components";
+import { Button } from "@repo/ui/components/atoms/button";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import { IconTrash } from "@tabler/icons-react";
 import Hearticon from "@repo/icons/heart";
 
@@ -27,7 +28,12 @@ interface CartitemProps {
 }
 
 // Card Component
-const Cartitem: React.FC<CartitemProps> = ({ currency, onRemove, title, price }) => {
+const Cartitem: React.FC<CartitemProps> = ({
+  currency,
+  onRemove,
+  title,
+  price,
+}) => {
   return (
     <div className="bg-card p-4 rounded-lg flex flex-wrap md:flex-nowrap gap-3 items-center">
       <CardImage />
@@ -53,7 +59,13 @@ const CardImage = () => {
 };
 
 // CardDetails Component
-const CardDetails = ({ onRemove, title }: { onRemove: () => void; title: string }) => {
+const CardDetails = ({
+  onRemove,
+  title,
+}: {
+  onRemove: () => void;
+  title: string;
+}) => {
   return (
     <div className="flex flex-col gap-2 flex-grow min-w-[200px]">
       <CardTitle title={title} />
@@ -77,7 +89,11 @@ const CardTitle: React.FC<CardTitleProps> = ({ title }) => {
 const CardActions = ({ onRemove }: { onRemove: () => void }) => {
   return (
     <div className="flex items-center gap-2">
-      <CardAction icon={<IconTrash size={18} />} label="Remove" onClick={onRemove} />
+      <CardAction
+        icon={<IconTrash size={18} />}
+        label="Remove"
+        onClick={onRemove}
+      />
       <div> | </div>
       <CardAction icon={<Hearticon size={18} />} label="Save For later" />
     </div>
@@ -85,14 +101,22 @@ const CardActions = ({ onRemove }: { onRemove: () => void }) => {
 };
 
 // CardAction Component
-const CardAction: React.FC<CardActionProps & { onClick?: () => void }> = ({ icon, label, onClick }) => {
+const CardAction: React.FC<CardActionProps & { onClick?: () => void }> = ({
+  icon,
+  label,
+  onClick,
+}) => {
   return (
-    <div className="flex items-center text-muted-foreground gap-2 cursor-pointer py-2" onClick={onClick}>
-      
-        <div>{icon}</div>
-        <div><Typography variant="label/sm" weight="medium">{label}</Typography></div>
-     
-
+    <div
+      className="flex items-center text-muted-foreground gap-2 cursor-pointer py-2"
+      onClick={onClick}
+    >
+      <div>{icon}</div>
+      <div>
+        <Typography variant="label/sm" weight="medium">
+          {label}
+        </Typography>
+      </div>
     </div>
   );
 };
@@ -102,7 +126,8 @@ const CardPrice: React.FC<CardPriceProps> = ({ price, currency }) => {
   return (
     <div className="flex-shrink-0">
       <Typography variant={"heading/sm"} weight={"medium"}>
-        {currency}{price}
+        {currency}
+        {price}
       </Typography>
     </div>
   );

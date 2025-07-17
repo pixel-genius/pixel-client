@@ -1,4 +1,3 @@
-import { generateMock } from "@anatine/zod-mock";
 import { z, ZodTypeAny } from "zod";
 import { ApiResponse } from "../types/api.types";
 import delay from "./delay";
@@ -21,7 +20,8 @@ export const requestHandler = async <T extends ZodTypeAny>(
   const isMock =
     (process.env.NEXT_PUBLIC_MOCK === "true" || options.isMock) ?? false;
 
-  if (isMock) {
+  if (isMock && process.env.NODE_ENV === "development") {
+    const { generateMock } = await import("@anatine/zod-mock");
     const mockData = generateMockResponse<z.infer<typeof schema>>({
       data: generateMock(schema),
     });

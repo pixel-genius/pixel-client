@@ -1,4 +1,4 @@
-import { Button } from "@repo/ui/components";
+import { Button } from "@repo/ui/components/atoms/button";
 
 // isLogin
 const CommentSection = () => {

@@ -1,6 +1,7 @@
 "use client";
 
-import { MultiSelect, Typography } from "@repo/ui/components";
+import { MultiSelect } from "@repo/ui/components/molecules/multi-select";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import { DollarSign } from "lucide-react";
 
 const Page = () => {

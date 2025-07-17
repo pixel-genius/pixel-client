@@ -1,7 +1,8 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Input } from "@repo/ui/components";
+import { Button } from "@repo/ui/components/atoms/button";
+import { Input } from "@repo/ui/components/molecules/input";
 
 // import icons
 import { useRouter } from "next/navigation";

@@ -1,4 +1,4 @@
-import { AttachmentTus } from "@repo/ui/components";
+import { AttachmentTus } from "@repo/ui/components/molecules/attachment/attachment-tus/attachment-tus";
 import { ProductTabContentLayout } from "./product-tab-content-layout";
 
 export const ImagesTab = () => {
@@ -6,8 +6,10 @@ export const ImagesTab = () => {
     <ProductTabContentLayout title="Images">
       <div className="flex flex-col gap-6">
         <AttachmentTus
+          multiple
           title="Thumbnail Image Upload"
           description="1208x840px size required in PNG or JPG format only."
+          endpoint="https://tusd.tusdemo.net/files/"
         />
 
         <AttachmentTus

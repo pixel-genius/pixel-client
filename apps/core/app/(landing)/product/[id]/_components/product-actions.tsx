@@ -1,12 +1,17 @@
-import { Button, Typography } from "@repo/ui/components";
+import { Button } from "@repo/ui/components/atoms/button";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import Shopingcartplusicon from "@repo/icons/shopping-cart-plus";
-import { IconChevronDown, IconHeartFilled, IconMessage } from "@tabler/icons-react";
+import {
+  IconChevronDown,
+  IconHeartFilled,
+  IconMessage,
+} from "@tabler/icons-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@repo/ui/components";
+} from "@repo/ui/components/atoms/dropdown-menu";
 
 export const ProductActions = () => {
   return (
@@ -40,10 +45,7 @@ export const ProductActions = () => {
 
       <div className="flex flex-row gap-4 self-center">
         <div className="flex gap-1">
-          <IconHeartFilled
-            size={24}
-            className="cursor-pointer text-red-500"
-          />
+          <IconHeartFilled size={24} className="cursor-pointer text-red-500" />
           <Typography variant="label/lg" weight="medium">
             15
           </Typography>
@@ -57,4 +59,4 @@ export const ProductActions = () => {
       </div>
     </div>
   );
-}; 
+};

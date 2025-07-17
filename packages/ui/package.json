@@ -80,6 +80,7 @@
     "zustand": "^5.0.3"
   },
   "exports": {
+    "./*": "./src/*.tsx",
     "./globals.scss": "./src/styles/globals.scss",
     "./postcss.config": "./postcss.config.mjs",
     "./tailwind.config": "./tailwind.config.ts",

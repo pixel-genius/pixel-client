@@ -13,7 +13,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from "@repo/ui/components";
+} from "@repo/ui/components/molecules/sidebar";
 
 //icons
 import BoxPackage from "@repo/icons/box-package";
@@ -27,7 +27,6 @@ import Settingsicon from "@repo/icons/settings";
 import { LogoIconSwitcher } from "./logo-icon-switcher";
 import { NavMain } from "./nav-main";
 import { WalletBalanceCard } from "./wallet-balance-card";
-
 
 // This is items of dashboard.
 const data = {

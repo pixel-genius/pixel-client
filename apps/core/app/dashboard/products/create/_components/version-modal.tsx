@@ -1,18 +1,22 @@
 "use client";
 
 import Infosquareroundedicon from "@repo/icons/info-square-rounded";
-import { Button } from "@repo/ui/components";
+import { Button } from "@repo/ui/components/atoms/button";
 import {
   Dialog,
   DialogClose,
   DialogContent,
   DialogFooter,
   DialogHeader,
-} from "@repo/ui/components";
-import { InputOTP, InputOTPGroup, InputOTPSlot } from "@repo/ui/components";
-import { Switch } from "@repo/ui/components";
-import { Textarea } from "@repo/ui/components";
-import { Typography } from "@repo/ui/components";
+} from "@repo/ui/components/atoms/dialog";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@repo/ui/components/atoms/input-otp";
+import { Switch } from "@repo/ui/components/atoms/switch";
+import { Textarea } from "@repo/ui/components/atoms/textarea";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
 import { Dispatch, SetStateAction, useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";

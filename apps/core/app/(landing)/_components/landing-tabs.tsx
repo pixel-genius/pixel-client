@@ -1,10 +1,8 @@
-import {
-  TabContent,
-  TabList,
-  TabProvider,
-  TabTrigger,
-  ProductCard,
-} from "@repo/ui/components";
+import { TabContent } from "@repo/ui/components/molecules/tabs/tab-content";
+import { TabList } from "@repo/ui/components/molecules/tabs/tab-list";
+import { TabProvider } from "@repo/ui/components/molecules/tabs/tab-provider";
+import { TabTrigger } from "@repo/ui/components/molecules/tabs/tab-trigger";
+import { ProductCard } from "@repo/ui/components/molecules/prodoct-card";
 import {
   ProductListUiUx,
   ProductList3D,

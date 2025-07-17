@@ -10,7 +10,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "../ui/tooltip";
+} from "../atoms/tooltip";
 import { cn } from "@repo/ui/lib/utils";
 import { useIsMobile } from "../../hooks/use-mobile";
 import { Button } from "../atoms/button";
@@ -30,7 +30,7 @@ import {
   AvatarImage,
   AvatarFallback,
   Avatar,
-} from "@repo/ui/components";
+} from "@repo/ui/components/atoms/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -38,7 +38,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@repo/ui/components";
+} from "@repo/ui/components/atoms/dropdown-menu";
 import Link from "next/link";
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state";

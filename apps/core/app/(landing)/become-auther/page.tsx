@@ -1,11 +1,5 @@
 // accordion imports
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-  Typography,
-} from "@repo/ui/components";
+
 import AutherForm from "./_components/auther-form";
 import { CardBody, CardContainer, CardItem } from "./_components/3d-card";
 import BecomeAnAuthorimage from "../_assets/be.svg";
@@ -18,14 +12,13 @@ const BecomeAuther = () => {
   return (
     <div className="container mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 ">
-      <AutherForm />
-      <Vector3d />
-        
+        <AutherForm />
+        <Vector3d />
 
         {/* <AutherResult /> */}
       </div>
- 
-        {/* <div className="flex flex-col gap-5 pb-11">
+
+      {/* <div className="flex flex-col gap-5 pb-11">
           <div className="">
             <Accordion
               collapsible
@@ -105,7 +98,6 @@ const BecomeAuther = () => {
             </Accordion>
           </div>
         </div> */}
-      
     </div>
   );
 };

@@ -1,12 +1,12 @@
 // import components
 "use client";
+import { Countdown } from "@repo/ui/components/atoms/countdown";
 import {
-  Countdown,
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-  PasteOtpButton,
-} from "@repo/ui/components";
+} from "@repo/ui/components/atoms/input-otp";
+import { PasteOtpButton } from "@repo/ui/components/molecules/paste-otp-button";
 import { useClipboardOtp } from "@repo/ui/hooks";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 

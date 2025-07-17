@@ -1,19 +1,14 @@
 import IconShoppingBag from "@repo/icons/shopping-bag";
-import { Typography } from "@repo/ui/components";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import Link from "next/link";
 import { useCartStore } from "./../../store/cart-store";
 
-
-
 const FeatureNavbarGuest = () => {
-
-
   const { toggleAddToCart } = useCartStore();
 
   const onClick = () => {
-
     toggleAddToCart();
-  };  
+  };
 
   return (
     <div className="flex items-center gap-3 shrink-0 ">

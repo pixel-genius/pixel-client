@@ -1,4 +1,6 @@
-import { Button, Select, Typography } from "@repo/ui/components";
+import { Button } from "@repo/ui/components/atoms/button";
+import { Select } from "@repo/ui/components/molecules/select";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import { IconDownload } from "@tabler/icons-react";
 import Image from "next/image";
 

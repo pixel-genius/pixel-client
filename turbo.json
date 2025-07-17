@@ -17,6 +17,12 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "analyze": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": [".next/analyze/**"],
+      "cache": false
     }
   }
 }

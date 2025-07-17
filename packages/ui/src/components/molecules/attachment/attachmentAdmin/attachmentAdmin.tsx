@@ -4,7 +4,7 @@ import { Card } from "../../../atoms/card";
 import { ScrollArea } from "../../../atoms/scroll-area";
 import { AttachmentProps, useAttachment } from "../useAttachment";
 import { AttachmentItem } from "./attachmentItem/attachmentItem";
-import { Typography } from "@repo/ui/components";
+import { Typography } from "@repo/ui/components/atoms/typography";
 
 const AttachmentAdmin = (props: AttachmentProps) => {
   const { title, multiple = false, maxSize = 10, allowedTypes } = props;

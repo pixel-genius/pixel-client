@@ -1,10 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { Avatar, AvatarImage, AvatarFallback } from "@repo/ui/components";
-import { IconShoppingCart, IconSearch, IconGridDots, IconUser } from "@tabler/icons-react";
+import {
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
+} from "@repo/ui/components/atoms/avatar";
+import {
+  IconShoppingCart,
+  IconSearch,
+  IconGridDots,
+  IconUser,
+} from "@tabler/icons-react";
 import Image from "next/image";
-import { Sheet, SheetContent, SheetTrigger } from "@repo/ui/components";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@repo/ui/components/atoms/sheet";
 import BrowseSheet from "./BrowseSheet";
 
 const navItems = [
@@ -18,7 +31,6 @@ const navItems = [
     //   </Avatar>
     // ),
     icon: <IconUser stroke={1.5} size={28} />,
-    
   },
   {
     label: "Cart",
@@ -39,9 +51,7 @@ const navItems = [
   {
     label: "Home",
     href: "/",
-    icon: (
-      <Image src="/images/logo.svg" alt="Logo" width={28} height={28} />
-    ),
+    icon: <Image src="/images/logo.svg" alt="Logo" width={28} height={28} />,
   },
 ];
 
@@ -55,10 +65,18 @@ const MenuNavigation = () => {
               <SheetTrigger asChild>
                 <button className="flex flex-col items-center text-xs text-[#E6E1E5] hover:text-primary transition-colors">
                   {item.icon}
-                  <span className="mt-1 font-medium" style={{ fontFamily: 'inherit' }}>{item.label}</span>
+                  <span
+                    className="mt-1 font-medium"
+                    style={{ fontFamily: "inherit" }}
+                  >
+                    {item.label}
+                  </span>
                 </button>
               </SheetTrigger>
-              <SheetContent side="bottom" className="pb-12 bg-background border-t border-[#232228]">
+              <SheetContent
+                side="bottom"
+                className="pb-12 bg-background border-t border-[#232228]"
+              >
                 <BrowseSheet />
               </SheetContent>
             </Sheet>
@@ -72,7 +90,12 @@ const MenuNavigation = () => {
             className="flex flex-col items-center text-xs text-[#E6E1E5] hover:text-primary transition-colors"
           >
             {item.icon}
-            <span className="mt-1 font-medium" style={{ fontFamily: 'inherit' }}>{item.label}</span>
+            <span
+              className="mt-1 font-medium"
+              style={{ fontFamily: "inherit" }}
+            >
+              {item.label}
+            </span>
           </Link>
         );
       })}
@@ -80,4 +103,4 @@ const MenuNavigation = () => {
   );
 };
 
-export default MenuNavigation; 
+export default MenuNavigation;
