@@ -88,6 +88,7 @@ const MenuNavigation = () => {
             key={item.label}
             href={item.href}
             className="flex flex-col items-center text-xs text-[#E6E1E5] hover:text-primary transition-colors"
+            aria-label={item.label}
           >
             {item.icon}
             <span

@@ -86,7 +86,7 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
                 <div className="flex items-center">
                   <div className="flex items-center w-full overflow-hidden whitespace-nowrap">
                     <div className="pr-5">
-                      <Link href="/">
+                      <Link href="/" aria-label="Pixel Genius">
                         <PixelIcon size={45} />
                       </Link>
                     </div>

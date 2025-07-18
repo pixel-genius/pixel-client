@@ -66,6 +66,7 @@ const HamburgerMenu = () => {
                         <Link
                           href="#"
                           className="flex items-center gap-2 py-3 px-4 rounded-lg hover:bg-accent/20 focus:bg-accent/30 active:bg-accent/40 transition w-full"
+                          aria-label="all-access pass"
                         >
                           <IconCrown size={24} className="text-primary" />
                           <Typography
@@ -80,6 +81,7 @@ const HamburgerMenu = () => {
                         <Link
                           href="#"
                           className="flex items-center gap-2 py-3 px-4 rounded-lg hover:bg-accent/20 focus:bg-accent/30 active:bg-accent/40 transition w-full"
+                          aria-label="become an author"
                         >
                           <IconUserPlus size={24} className="text-primary" />
                           <Typography
@@ -94,6 +96,7 @@ const HamburgerMenu = () => {
                         <Link
                           href="#"
                           className="flex items-center gap-2 py-3 px-4 rounded-lg hover:bg-accent/20 focus:bg-accent/30 active:bg-accent/40 transition w-full"
+                          aria-label="terms & licensing"
                         >
                           <IconFileText size={24} className="text-primary" />
                           <Typography
@@ -108,6 +111,7 @@ const HamburgerMenu = () => {
                         <Link
                           href="#"
                           className="flex items-center gap-2 py-3 px-4 rounded-lg hover:bg-accent/20 focus:bg-accent/30 active:bg-accent/40 transition w-full"
+                          aria-label="help center"
                         >
                           <IconHelpCircle size={24} className="text-primary" />
                           <Typography
@@ -132,6 +136,7 @@ const HamburgerMenu = () => {
                         <Link
                           href="#"
                           className="flex items-center gap-2 py-3 px-4 rounded-lg hover:bg-accent/20 focus:bg-accent/30 active:bg-accent/40 transition w-full"
+                          aria-label="privacy policy"
                         >
                           <IconShieldLock size={24} className="text-primary" />
                           <Typography
@@ -146,6 +151,7 @@ const HamburgerMenu = () => {
                         <Link
                           href="#"
                           className="flex items-center gap-2 py-3 px-4 rounded-lg hover:bg-accent/20 focus:bg-accent/30 active:bg-accent/40 transition w-full"
+                          aria-label="terms & conditions"
                         >
                           <IconFileDescription
                             size={24}

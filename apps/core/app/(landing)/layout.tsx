@@ -46,16 +46,29 @@ function Layout({ children }: { children: React.ReactNode }): JSX.Element {
                       href="/landing/product/id/page"
                       className="hover:text-"
                       prefetch={false}
+                      aria-label="ui kits"
                     >
                       <li className="text-xs sm:text-sm">UI Kits</li>
                     </Link>
-                    <Link href="/landing/product/id/page" prefetch={false}>
+                    <Link
+                      href="/landing/product/id/page"
+                      prefetch={false}
+                      aria-label="featured products"
+                    >
                       <li className="text-xs sm:text-sm">Featured products</li>
                     </Link>
-                    <Link href="/landing/product/id/page" prefetch={false}>
+                    <Link
+                      href="/landing/product/id/page"
+                      prefetch={false}
+                      aria-label="coded templates"
+                    >
                       <li className="text-xs sm:text-sm">Coded Templates</li>
                     </Link>
-                    <Link href="/landing/product/id/page" prefetch={false}>
+                    <Link
+                      href="/landing/product/id/page"
+                      prefetch={false}
+                      aria-label="wireframe kits"
+                    >
                       <li className="text-xs sm:text-sm">Wireframe kits</li>
                     </Link>
                     <Link href="/landing/product/id/page" prefetch={false}>
@@ -65,38 +78,78 @@ function Layout({ children }: { children: React.ReactNode }): JSX.Element {
                 </div>
                 <div>
                   <ul className="flex flex-col gap-4 font-normal">
-                    <Link href="/landing/product/id/page" prefetch={false}>
+                    <Link
+                      href="/landing/product/id/page"
+                      prefetch={false}
+                      aria-label="ui kits"
+                    >
                       <li className="text-xs sm:text-sm">UI Kits</li>
                     </Link>
-                    <Link href="/landing/product/id/page" prefetch={false}>
+                    <Link
+                      href="/landing/product/id/page"
+                      prefetch={false}
+                      aria-label="featured products"
+                    >
                       <li className="text-xs sm:text-sm">Featured products</li>
                     </Link>
-                    <Link href="/landing/product/id/page" prefetch={false}>
+                    <Link
+                      href="/landing/product/id/page"
+                      prefetch={false}
+                      aria-label="coded templates"
+                    >
                       <li className="text-xs sm:text-sm">Coded Templates</li>
                     </Link>
-                    <Link href="/landing/product/id/page" prefetch={false}>
+                    <Link
+                      href="/landing/product/id/page"
+                      prefetch={false}
+                      aria-label="wireframe kits"
+                    >
                       <li className="text-xs sm:text-sm">Wireframe kits</li>
                     </Link>
-                    <Link href="/landing/product/id/page" prefetch={false}>
+                    <Link
+                      href="/landing/product/id/page"
+                      prefetch={false}
+                      aria-label="illustrations"
+                    >
                       <li className="text-xs sm:text-sm">Illustrations</li>
                     </Link>
                   </ul>
                 </div>
                 <div>
                   <ul className="flex flex-col gap-4 font-normal">
-                    <Link href="/landing/product/id/page" prefetch={false}>
+                    <Link
+                      href="/landing/product/id/page"
+                      prefetch={false}
+                      aria-label="ui kits"
+                    >
                       <li className="text-xs sm:text-sm">UI Kits</li>
                     </Link>
-                    <Link href="/landing/product/id/page" prefetch={false}>
+                    <Link
+                      href="/landing/product/id/page"
+                      prefetch={false}
+                      aria-label="featured products"
+                    >
                       <li className="text-xs sm:text-sm">Featured products</li>
                     </Link>
-                    <Link href="/landing/product/id/page" prefetch={false}>
+                    <Link
+                      href="/landing/product/id/page"
+                      prefetch={false}
+                      aria-label="coded templates"
+                    >
                       <li className="text-xs sm:text-sm">Coded Templates</li>
                     </Link>
-                    <Link href="/landing/product/id/page" prefetch={false}>
+                    <Link
+                      href="/landing/product/id/page"
+                      prefetch={false}
+                      aria-label="wireframe kits"
+                    >
                       <li className="text-xs sm:text-sm">Wireframe kits</li>
                     </Link>
-                    <Link href="/landing/product/id/page" prefetch={false}>
+                    <Link
+                      href="/landing/product/id/page"
+                      prefetch={false}
+                      aria-label="illustrations"
+                    >
                       <li className="text-xs sm:text-sm">Illustrations</li>
                     </Link>
                   </ul>
@@ -109,19 +162,39 @@ function Layout({ children }: { children: React.ReactNode }): JSX.Element {
               <h2 className="pb-4 text-base font-bold">Platform</h2>
               <div>
                 <ul className="flex flex-col gap-4 font-normal">
-                  <Link href="/landing/product/id/page" prefetch={false}>
+                  <Link
+                    href="/landing/product/id/page"
+                    prefetch={false}
+                    aria-label="ui kits"
+                  >
                     <li className="text-xs sm:text-sm">UI Kits</li>
                   </Link>
-                  <Link href="/landing/product/id/page" prefetch={false}>
+                  <Link
+                    href="/landing/product/id/page"
+                    prefetch={false}
+                    aria-label="featured products"
+                  >
                     <li className="text-xs sm:text-sm">Featured products</li>
                   </Link>
-                  <Link href="/landing/product/id/page" prefetch={false}>
+                  <Link
+                    href="/landing/product/id/page"
+                    prefetch={false}
+                    aria-label="coded templates"
+                  >
                     <li className="text-xs sm:text-sm">Coded Templates</li>
                   </Link>
-                  <Link href="/landing/product/id/page" prefetch={false}>
+                  <Link
+                    href="/landing/product/id/page"
+                    prefetch={false}
+                    aria-label="wireframe kits"
+                  >
                     <li className="text-xs sm:text-sm">Wireframe kits</li>
                   </Link>
-                  <Link href="/landing/product/id/page" prefetch={false}>
+                  <Link
+                    href="/landing/product/id/page"
+                    prefetch={false}
+                    aria-label="illustrations"
+                  >
                     <li className="text-xs sm:text-sm">Illustrations</li>
                   </Link>
                 </ul>
@@ -133,10 +206,18 @@ function Layout({ children }: { children: React.ReactNode }): JSX.Element {
               <h2 className="pb-4 text-base font-bold">Legal</h2>
               <div>
                 <ul className="flex flex-col gap-4 font-normal">
-                  <Link href="/landing/product/id/page" prefetch={false}>
+                  <Link
+                    href="/landing/product/id/page"
+                    prefetch={false}
+                    aria-label="ui kits"
+                  >
                     <li className="text-xs sm:text-sm">UI Kits</li>
                   </Link>
-                  <Link href="/landing/product/id/page" prefetch={false}>
+                  <Link
+                    href="/landing/product/id/page"
+                    prefetch={false}
+                    aria-label="featured products"
+                  >
                     <li className="text-xs sm:text-sm">Featured products</li>
                   </Link>
                 </ul>

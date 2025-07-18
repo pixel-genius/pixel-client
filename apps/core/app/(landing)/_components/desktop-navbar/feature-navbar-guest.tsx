@@ -12,13 +12,21 @@ const FeatureNavbarGuest = () => {
 
   return (
     <div className="flex items-center gap-3 shrink-0 ">
-      <Link href="/auth/signup" className="text-primary-500 flex-shrink-0">
+      <Link
+        href="/auth/signup"
+        className="text-primary-500 flex-shrink-0"
+        aria-label="sign up"
+      >
         <Typography variant="label/sm" weight="light">
           Sign Up
         </Typography>
       </Link>
 
-      <Link href="/auth/login" className="text-primary-500 flex-shrink-0">
+      <Link
+        href="/auth/login"
+        className="text-primary-500 flex-shrink-0"
+        aria-label="log in"
+      >
         <Typography variant="label/sm" weight="light">
           Log in
         </Typography>
