@@ -8,11 +8,12 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@repo/ui/components/atoms/input-otp";
-import { useClipboardOtp } from "@repo/ui/hooks";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+
+import { useClipboardOtp } from "@repo/ui/hooks/use-clipboard-otp";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Suspense, useEffect } from "react";
@@ -22,7 +23,7 @@ import { postResetPasswordSchema } from "@repo/apis/core/accounts/users/reset-pa
 import { usePostResetPassword } from "@repo/apis/core/accounts/users/reset-password/post/use-post-reset-password";
 import type { PostResetPasswordRequest } from "@repo/apis/core/accounts/users/reset-password/post/post-reset-password.types";
 
-const Setpasswordpage = () => {
+const SetPasswordPage = () => {
   const router = useRouter();
   const params = useSearchParams();
   const username = params.get("username");
@@ -157,7 +158,7 @@ const Setpasswordpage = () => {
 const Page = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <Setpasswordpage />
+      <SetPasswordPage />
     </Suspense>
   );
 };

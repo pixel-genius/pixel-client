@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import AuthCard from "../_components/auth-card";
-import { useQueryParams } from "@repo/ui/hooks";
+import { useQueryParams } from "@repo/ui/hooks/use-query-params";
 import { Suspense, useEffect } from "react";
 import Link from "next/link";
 import type { PostRegisterRequest } from "@repo/apis/core/accounts/users/register/post/post-register.types";

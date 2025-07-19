@@ -7,7 +7,7 @@ import {
   InputOTPSlot,
 } from "@repo/ui/components/atoms/input-otp";
 import { PasteOtpButton } from "@repo/ui/components/molecules/paste-otp-button";
-import { useClipboardOtp } from "@repo/ui/hooks";
+import { useClipboardOtp } from "@repo/ui/hooks/use-clipboard-otp";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 
 // import icons
