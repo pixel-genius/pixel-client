@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 
 import { useCartStore } from "../store/cart-store";
-import Addtocard from "./addtoCard";
+import AddToCard from "./add-to-cart";
 
 const ShoppingBagDropdown = () => {
   const { isAddToCartOpen, toggleAddToCart } = useCartStore();
@@ -32,7 +32,7 @@ const ShoppingBagDropdown = () => {
       <div className="relative cursor-pointer" onClick={toggleAddToCart}></div>
       {isAddToCartOpen && (
         <div className="absolute right-0 mt-2">
-          <Addtocard />
+          <AddToCard />
         </div>
       )}
     </div>

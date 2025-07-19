@@ -1,4 +1,4 @@
-import { LandingPage } from "../../_components/landing-page";
+import { LandingTabs } from "../_components/landing-tabs";
 
 export const revalidate = 60;
 
@@ -14,6 +14,5 @@ export default async function Page({
 }) {
   const { tab } = await params;
 
-  console.log(tab);
-  return <LandingPage tab={tab} />;
+  return <LandingTabs defaultValue={tab} />;
 }

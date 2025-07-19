@@ -1,20 +1,20 @@
-import { TextGenerateEffect } from "../_components/TextGenerateEffect";
-import { BackgroundLanding } from "../_components/background-landing";
-
-const words = `Find thousands of meticulously crafted resources by pixel geniuses to supercharge your creativity.`;
+import { LandingHeroSection } from "./_components/landing-hero-section";
+import { LandingBackground } from "./_components/landing-background";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <main className="container">
-      {/* Background */}
-      <BackgroundLanding />
-      {/* Header */}
-      <div className="md:pb-56  md:pt-48 pt-24">
-        <TextGenerateEffect words={words} />
+    <div className="container">
+      {/* Landing Background */}
+      <LandingBackground />
+
+      {/* Landing Hero Section - Header */}
+      <div className="md:mb-24 mb-16  md:mt-48 mt-24">
+        <LandingHeroSection />
       </div>
 
+      {/* Landing Tabs */}
       {children}
-    </main>
+    </div>
   );
 };
 

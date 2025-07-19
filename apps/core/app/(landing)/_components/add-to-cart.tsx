@@ -6,13 +6,13 @@ import { useRouter } from "next/navigation";
 
 import { Typography } from "@repo/ui/components/atoms/typography";
 import { Button } from "@repo/ui/components/atoms/button";
-import Securityicon from "@repo/icons/security";
+import SecurityIcon from "@repo/icons/security";
 
+import { CartItemSkeleton } from "./cart-item-skeleton";
 import { useCartStore } from "../store/cart-store";
-import CardSkeleton from "./card-cart-skeleton";
-import Card from "./card";
+import { CartItem } from "./cart-item";
 
-const Addtocard = () => {
+const AddToCard = () => {
   const { closeAddToCart } = useCartStore();
   const router = useRouter();
 
@@ -45,7 +45,7 @@ const Addtocard = () => {
       {/* Cart Items */}
       <div className="flex flex-col gap-3">
         {cards.map((card) => (
-          <Card
+          <CartItem
             key={card.id}
             id={card.id}
             title={card.title}
@@ -54,7 +54,7 @@ const Addtocard = () => {
           />
         ))}
         {activeTemp.map((_, idx) => (
-          <CardSkeleton key={idx} />
+          <CartItemSkeleton key={idx} />
         ))}
       </div>
 
@@ -80,7 +80,7 @@ const Addtocard = () => {
 
       {/* Secure Payment Message */}
       <div className="flex justify-center items-center gap-2 mt-2">
-        <Securityicon className="text-white" size={20} />
+        <SecurityIcon className="text-white" size={20} />
         <Typography variant="label/sm" className="text-white opacity-80">
           Your payment is secured
         </Typography>
@@ -89,4 +89,4 @@ const Addtocard = () => {
   );
 };
 
-export default Addtocard;
+export default AddToCard;

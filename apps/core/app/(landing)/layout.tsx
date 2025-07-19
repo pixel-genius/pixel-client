@@ -3,9 +3,9 @@ import Link from "next/link";
 import Instagram from "@repo/icons/instagram";
 import YouTubeIcon from "@repo/icons/youtube";
 import Twitter from "@repo/icons/twitter";
-import PixelIcon from "@repo/icons/pxiel";
+import PixelIcon from "@repo/icons/pixel";
 
-import Linkedinicon from "../../../../packages/icons/src/components/linkedin";
+import LinkedinIcon from "../../../../packages/icons/src/components/linkedin";
 import MenuNavigation from "./_components/mobile-menu/menu-navigation";
 import HamburgerMenu from "./_components/mobile-menu/hamburger-menu";
 import Navbar from "./_components/desktop-navbar/navbar";
@@ -13,7 +13,7 @@ import Navbar from "./_components/desktop-navbar/navbar";
 function Layout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <div className="min-h-full flex flex-col">
-      <Navbar islogin={false} />
+      <Navbar isLogin={false} />
       <HamburgerMenu />
 
       <div className="relative z-10 bg-background pb-6 flex-1 md:mb-[532px] mb-[580px] min-h-screen overflow-x-hidden">
@@ -31,7 +31,7 @@ function Layout({ children }: { children: React.ReactNode }): JSX.Element {
                 <p>Lorem ipsum dolor sit amet.</p>
               </div>
               <div className="flex items-center gap-8">
-                <Linkedinicon size={18} />
+                <LinkedinIcon size={18} />
                 <YouTubeIcon size={18} />
                 <Twitter size={18} />
                 <Instagram size={39} />

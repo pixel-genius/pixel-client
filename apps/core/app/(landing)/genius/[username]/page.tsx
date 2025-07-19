@@ -3,7 +3,7 @@ import Image from "next/image";
 import { TabProvider } from "@repo/ui/components/molecules/tabs/tab-provider";
 import { TabTrigger } from "@repo/ui/components/molecules/tabs/tab-trigger";
 import { TabContent } from "@repo/ui/components/molecules/tabs/tab-content";
-import { ProductCard } from "@repo/ui/components/molecules/prodoct-card";
+import { ProductCard } from "@repo/ui/components/molecules/product-card";
 import { Avatar, AvatarImage } from "@repo/ui/components/atoms/avatar";
 import { TabList } from "@repo/ui/components/molecules/tabs/tab-list";
 import { Typography } from "@repo/ui/components/atoms/typography";

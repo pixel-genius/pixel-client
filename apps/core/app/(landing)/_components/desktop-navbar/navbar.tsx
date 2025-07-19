@@ -1,47 +1,60 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-
-import { useState } from "react";
+import { useEffect } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
 
-import { BaseInput } from "@repo/ui/components/atoms/base-input";
 import { Chip } from "@repo/ui/components/atoms/chip";
-import SearchIcon from "@repo/icons/serach";
-import PixelIcon from "@repo/icons/pxiel";
+import SearchIcon from "@repo/icons/search";
+import PixelIcon from "@repo/icons/pixel";
 import { cn } from "@repo/ui/lib/utils";
 import XIcon from "@repo/icons/x";
 
 import { BrowseMegaMenu } from "../browseMegaMenu/browse-mega-menu";
+import { useSearchStore } from "../../_store/search-store";
 import ShoppingBagDropdown from "../shopping-bag-dropdown";
 import { useMegaMenuStore } from "../../store/mega-menu";
 import FeaturesNavbar from "./features-navbar";
 import earth from "../../_assets/earth.svg";
+import { SearchBox } from "../search-box";
 import NavbarLinks from "./navbar-links";
 
-const Navbar = ({ islogin }: { islogin: boolean }) => {
+const Navbar = ({ isLogin }: { isLogin: boolean }) => {
   const { isOpenMegaMenu } = useMegaMenuStore();
+  const { isSearchMode, setIsSearchMode } = useSearchStore();
 
-  const [isSearchActive, setIsSearchActive] = useState(false);
+  // Disable scroll when search mode is active
+  useEffect(() => {
+    if (isSearchMode) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    // Cleanup function to restore scroll when component unmounts
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isSearchMode]);
 
   const handleOpenSearch = () => {
-    setIsSearchActive(true);
+    setIsSearchMode(true);
   };
 
   const handleCloseSearch = () => {
-    setIsSearchActive(false);
+    setIsSearchMode(false);
   };
 
   return (
     <>
-      <motion.div
+      <motion.header
         layoutId="bg-navbar"
         id="navbar"
         className={cn(
           "bg-background shadow-box rounded-xl fixed top-12 -left-1/2 -right-1/2 z-40 w-[95%] sm:w-[90%] lg:w-[962px] max-w-none mx-auto hidden md:block",
-          isSearchActive && "rounded-none",
+          isSearchMode && "rounded-none",
         )}
         initial={{
           scale: 1,
@@ -52,7 +65,7 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
           top: "48px",
         }}
         animate={
-          !isSearchActive
+          !isSearchMode
             ? {
                 scale: 1,
                 opacity: 1,
@@ -85,7 +98,7 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
         }}
       >
         <AnimatePresence mode="wait">
-          {!isSearchActive && (
+          {!isSearchMode && (
             <div className="flex py-3 px-5 items-center h-full w-full justify-between">
               <div className="flex items-center w-full">
                 <div className="flex items-center">
@@ -101,16 +114,19 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
                   </div>
 
                   {/* Search Icon */}
-                  <motion.div className="cursor-pointer" layoutId="search-icon">
+                  <motion.div
+                    className="cursor-pointer"
+                    // layoutId="search-icon"
+                  >
                     <SearchIcon size={20} onClick={() => handleOpenSearch()} />
                   </motion.div>
                 </div>
               </div>
 
               {/* login and sign up and cart */}
-              {!isSearchActive && (
+              {!isSearchMode && (
                 <div className="flex items-center">
-                  <FeaturesNavbar islogin={islogin} />
+                  <FeaturesNavbar isLogin={isLogin} />
                 </div>
               )}
             </div>
@@ -122,7 +138,7 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
             </div>
           )}
 
-          {isSearchActive && (
+          {isSearchMode && (
             <div className="relative size-full overflow-hidden">
               <div className="absolute top-5 right-5 cursor-pointer">
                 {/* Close Search Icon */}
@@ -132,26 +148,15 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
               {/* Main Search Bar */}
               <div className="size-full flex items-center justify-center  max-w-screen-md md:max-w-screen-sm px-4 py-8 mx-auto">
                 <div className="w-full flex flex-col gap-4">
-                  <div className="relative">
-                    <motion.div
-                      layoutId="search-bar"
-                      className="w-full"
-                      // initial={{ opacity: 0.25 }}
-                      // animate={{ opacity: 1 }}
-                      // exit={{ opacity: 0.25 }}
-                      // transition={{
-                      //   duration: 0.35,
-                      //   delay: 0.5,
-                      //   ease: "easeInOut",
-                      // }}
-                    >
+                  {/* <div className="relative">
+                    <motion.div layoutId="search-bar" className="w-full">
                       <BaseInput
                         placeholder="Type anything to search..."
                         className="w-full"
                       />
                     </motion.div>
                     <motion.div
-                      layoutId="search-icon"
+                      // layoutId="search-icon"
                       transition={{
                         layout: {
                           duration: 1,
@@ -163,7 +168,8 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
                     >
                       <SearchIcon size={20} />
                     </motion.div>
-                  </div>
+                  </div> */}
+                  <SearchBox />
 
                   <motion.div className="flex gap-2">
                     {["Mobile", "Web", "Travel", "Food", "Dashboard"].map(
@@ -246,32 +252,7 @@ const Navbar = ({ islogin }: { islogin: boolean }) => {
             </div>
           )}
         </AnimatePresence>
-      </motion.div>
-
-      <AnimatePresence>
-        {false && (
-          <motion.div
-            layoutId="bg-navbar"
-            className="bg-background fixed inset-0  z-20 "
-            initial={{
-              scale: 1.1,
-              opacity: 0,
-            }}
-            animate={{
-              scale: 1,
-              opacity: 1,
-            }}
-            exit={{
-              scale: 1.1,
-              opacity: 0,
-            }}
-            transition={{
-              duration: 0.4,
-              ease: "easeOut",
-            }}
-          ></motion.div>
-        )}
-      </AnimatePresence>
+      </motion.header>
 
       <ShoppingBagDropdown />
     </>

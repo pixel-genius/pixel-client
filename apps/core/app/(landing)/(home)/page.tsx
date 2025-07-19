@@ -1,8 +1,7 @@
-import { LandingPage } from "../_components/landing-page";
+import { LandingTabs } from "./_components/landing-tabs";
 
-// ISR 60s
 export const revalidate = 60;
 
 export default function Page() {
-  return <LandingPage tab="/" />;
+  return <LandingTabs defaultValue="/" />;
 }

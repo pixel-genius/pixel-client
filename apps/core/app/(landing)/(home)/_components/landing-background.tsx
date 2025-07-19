@@ -2,13 +2,13 @@ import Image from "next/image";
 
 import { DashedCircles } from "@repo/ui/components/atoms/dashed-circles";
 
-import shadowBGLanding from "../_assets/shadow-bg.svg";
-import blender from "../_assets/blender.svg";
-import sketch from "../_assets/sketch.svg";
-import planet from "../_assets/planet.svg";
-import figma from "../_assets/figma.svg";
+import shadowBGLanding from "../../_assets/shadow-bg.svg";
+import blender from "../../_assets/blender.svg";
+import sketch from "../../_assets/sketch.svg";
+import planet from "../../_assets/planet.svg";
+import figma from "../../_assets/figma.svg";
 
-export function BackgroundLanding() {
+export const LandingBackground = () => {
   return (
     <>
       {/* Background Shadow */}
@@ -130,4 +130,4 @@ export function BackgroundLanding() {
       </div>
     </>
   );
-}
+};

@@ -1,16 +1,17 @@
 import Image from "next/image";
 
 import { Typography } from "@repo/ui/components/atoms/typography";
-import Removeicon from "@repo/icons/remove";
+import RemoveIcon from "@repo/icons/remove";
 
-interface CardProps {
+interface CartItemProps {
   id: number;
+  // eslint-disable-next-line no-unused-vars
   onRemove: (id: number) => void;
   title: string;
   price: string;
 }
 
-const Card: React.FC<CardProps> = (props) => {
+export const CartItem = (props: CartItemProps) => {
   const { id, onRemove, title, price } = props;
 
   return (
@@ -41,11 +42,9 @@ const Card: React.FC<CardProps> = (props) => {
           className="w-9 flex items-center justify-center bg-error cursor-pointer opacity-0 translate-x-full group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
           onClick={() => onRemove(id)}
         >
-          <Removeicon size={24} />
+          <RemoveIcon size={24} />
         </div>
       </div>
     </div>
   );
 };
-
-export default Card;

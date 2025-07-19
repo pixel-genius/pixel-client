@@ -1,7 +1,7 @@
 import { use } from "react";
 
 import { getProductVersionList } from "@repo/apis/core/shop/product-version/get/get-product-version-list";
-import { ProductCard } from "@repo/ui/components/molecules/prodoct-card";
+import { ProductCard } from "@repo/ui/components/molecules/product-card";
 
 export const LandingTabContents = () => {
   const data = use(getProductVersionList({ page: 1, pageSize: 9 }));

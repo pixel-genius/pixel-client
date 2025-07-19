@@ -1,14 +1,14 @@
 import { TabProvider } from "@repo/ui/components/molecules/tabs/tab-provider";
 import { TabTrigger } from "@repo/ui/components/molecules/tabs/tab-trigger";
 import { TabContent } from "@repo/ui/components/molecules/tabs/tab-content";
-import { ProductCard } from "@repo/ui/components/molecules/prodoct-card";
+import { ProductCard } from "@repo/ui/components/molecules/product-card";
 import { TabList } from "@repo/ui/components/molecules/tabs/tab-list";
 
 import {
   ProductList3D,
   ProductListGraphic,
   ProductListUiUx,
-} from "../_constant/mock-product-list";
+} from "../../_constant/mock-product-list";
 import { LandingTabContents } from "./landing-tab-contents";
 
 export const LandingTabs = ({ defaultValue }: { defaultValue: string }) => {

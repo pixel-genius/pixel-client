@@ -21,7 +21,7 @@ import {
   SheetTrigger,
 } from "@repo/ui/components/atoms/sheet";
 
-import BrowseSheet from "./BrowseSheet";
+import BrowseSheet from "./browse-sheet";
 
 const navItems = [
   {
