@@ -1,7 +1,9 @@
-import { Typography } from "@repo/ui/components/atoms/typography";
 import { motion } from "framer-motion";
-import { Message } from "./types";
+
+import { Typography } from "@repo/ui/components/atoms/typography";
+
 import { AdminAvatar } from "./admin-avatar";
+import { Message } from "./types";
 import { UserAvatar } from "./user-avatar";
 
 interface MessageBubbleProps {

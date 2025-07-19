@@ -1,11 +1,13 @@
+import { useMutation } from "@tanstack/react-query";
+
 import {
   ApiError,
   ApiResponse,
   UseMutationProps,
 } from "@repo/apis/types/api.types";
-import { useMutation } from "@tanstack/react-query";
+
 import { postBecomeAuther } from "./post-become-auther";
-import {} from "./post-become-auther.schema";
+import "./post-become-auther.schema";
 import {
   PostBecomeAutherRequest,
   PostBecomeAutherResponseTransformed,

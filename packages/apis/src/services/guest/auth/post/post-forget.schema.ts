@@ -5,7 +5,7 @@ export const postForgetRequestSchemaTransformed = z
   .object({
     firstName: z.string(),
   })
-  .transform((data) => ({first_name: data.firstName}));
+  .transform((data) => ({ first_name: data.firstName }));
 
 // Response
 export const postForgetResponseSchemaTransofrmed = z

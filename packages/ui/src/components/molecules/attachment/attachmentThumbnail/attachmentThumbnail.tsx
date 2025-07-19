@@ -1,15 +1,19 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
+import { Eye, Heart, Loader } from "lucide-react";
+
+import { useState } from "react";
+
+import Image from "next/image";
+
 import AttachmentIcon2 from "@repo/icons/attachment2";
 import Avatar from "@repo/icons/avatar";
 import Refresh from "@repo/icons/refresh";
-import { AnimatePresence, motion } from "framer-motion";
-import { Eye, Heart, Loader } from "lucide-react";
-import Image from "next/image";
-import { AttachmentProps, useAttachment } from "../useAttachment";
-import { useState } from "react";
-import { Card } from "../../../atoms/card";
 import { Typography } from "@repo/ui/components/atoms/typography";
+
+import { Card } from "../../../atoms/card";
+import { AttachmentProps, useAttachment } from "../useAttachment";
 
 export type AttachmentThumbnailProps = AttachmentProps & {
   avatar?: string;

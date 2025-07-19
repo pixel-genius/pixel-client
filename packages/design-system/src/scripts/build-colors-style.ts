@@ -5,7 +5,10 @@ import * as path from "path";
 const tokensDir = path.join(__dirname, "../tokens");
 const stylesDir = path.join(__dirname, "../styles/base");
 const resolveTokenReference = (value: string): string => {
-  return value.replace(/{(.+?)}/g, (_, match) => `var(--${match.replace(".", "-")})`);
+  return value.replace(
+    /{(.+?)}/g,
+    (_, match) => `var(--${match.replace(".", "-")})`,
+  );
 };
 
 // Generate SCSS content for a given theme

@@ -1,6 +1,6 @@
+import type { PlopTypes } from "@turbo/gen";
 import fs from "fs";
 import path from "path";
-import type { PlopTypes } from "@turbo/gen";
 
 // خواندن فایل Swagger JSON
 function loadSwaggerPaths(filePath: string): string[] {

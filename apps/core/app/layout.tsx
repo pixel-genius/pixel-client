@@ -1,12 +1,16 @@
-import "@repo/ui/globals.scss";
-import { cn } from "@repo/ui/lib/utils";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
+
+import { Fragment, ReactNode } from "react";
+
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
+
 import { ApiProvider } from "@repo/apis/providers/api-provider";
 import { Toaster } from "@repo/ui/components/atoms/sonner";
-import { NuqsAdapter } from "nuqs/adapters/next/app";
-import { ReactNode, Fragment } from "react";
+import "@repo/ui/globals.scss";
+import { cn } from "@repo/ui/lib/utils";
+
 import { ReactScan } from "./_components/react-scan";
 
 const inter = Inter({ subsets: ["latin"] });

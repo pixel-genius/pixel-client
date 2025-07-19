@@ -1,4 +1,5 @@
-import { z, ZodTypeAny } from "zod";
+import { ZodTypeAny, z } from "zod";
+
 import { ApiResponse } from "../types/api.types";
 import delay from "./delay";
 import { generateMockResponse } from "./mock";

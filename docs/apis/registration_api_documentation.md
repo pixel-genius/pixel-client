@@ -1,4 +1,3 @@
-
 # Pixel Genius Registration API Documentation
 
 ## Overview
@@ -27,6 +26,7 @@ The registration process involves two steps:
 - **Description:** Begins the registration process by generating an OTP and sending it to the user's email.
 
 #### Request Payload
+
 ```json
 {
   "email": "user@example.com",
@@ -35,6 +35,7 @@ The registration process involves two steps:
 ```
 
 #### Response
+
 - **Success (200):** OTP is successfully sent to the provided email.
   ```json
   {
@@ -57,6 +58,7 @@ The registration process involves two steps:
 - **Description:** Completes the registration by verifying the OTP. Creates the user account if OTP is valid.
 
 #### Request Payload
+
 ```json
 {
   "email": "user@example.com",
@@ -66,6 +68,7 @@ The registration process involves two steps:
 ```
 
 #### Response
+
 - **Success (201):** User is successfully registered and can now log in.
   ```json
   {

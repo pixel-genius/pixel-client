@@ -1,9 +1,11 @@
+import { motion } from "framer-motion";
+import { Send } from "lucide-react";
+
+import { useEffect, useRef } from "react";
+
 import { Button } from "@repo/ui/components/atoms/button";
 import { Input } from "@repo/ui/components/molecules/input";
-import { Send } from "lucide-react";
-import { motion } from "framer-motion";
 import { cn } from "@repo/ui/lib/utils";
-import { useRef, useEffect } from "react";
 
 interface ChatInputProps {
   value: string;

@@ -1,13 +1,15 @@
-import { Avatar, AvatarImage } from "@repo/ui/components/atoms/avatar";
 import Image from "next/image";
-import { Typography } from "@repo/ui/components/atoms/typography";
-import { TabProvider } from "@repo/ui/components/molecules/tabs/tab-provider";
-import { TabList } from "@repo/ui/components/molecules/tabs/tab-list";
-import { TabTrigger } from "@repo/ui/components/molecules/tabs/tab-trigger";
-import { TabContent } from "@repo/ui/components/molecules/tabs/tab-content";
-import { ProductCard } from "@repo/ui/components/molecules/prodoct-card";
-import { ProductList } from "../../_constant/mock-product-list";
+
+import { Avatar, AvatarImage } from "@repo/ui/components/atoms/avatar";
 import { Chip } from "@repo/ui/components/atoms/chip";
+import { Typography } from "@repo/ui/components/atoms/typography";
+import { ProductCard } from "@repo/ui/components/molecules/prodoct-card";
+import { TabContent } from "@repo/ui/components/molecules/tabs/tab-content";
+import { TabList } from "@repo/ui/components/molecules/tabs/tab-list";
+import { TabProvider } from "@repo/ui/components/molecules/tabs/tab-provider";
+import { TabTrigger } from "@repo/ui/components/molecules/tabs/tab-trigger";
+
+import { ProductList } from "../../_constant/mock-product-list";
 
 const ProfilePage = () => {
   return (

@@ -10,7 +10,8 @@
     "dev:mock": "NEXT_PUBLIC_MOCK=true turbo dev",
     "dev:core": "turbo dev --filter=core",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md,mdx}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,scss,md,mdx}\"",
     "ui:add": "bun --filter @repo/ui ui:add",
     "gen:api": "turbo gen api",
     "prepare": "husky",
@@ -22,6 +23,7 @@
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "bun": "^1.1.34",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
@@ -44,7 +46,7 @@
       "eslint --fix",
       "prettier --write"
     ],
-    "*.{json,md,yml,yaml}": [
+    "*.{json,md,mdx,css,scss,yml,yaml}": [
       "prettier --write"
     ]
   }

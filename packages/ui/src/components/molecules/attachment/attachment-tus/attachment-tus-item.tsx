@@ -1,10 +1,12 @@
 "use client";
 
-import { Typography } from "@repo/ui/components/atoms/typography";
 import { motion } from "framer-motion";
-import { cn } from "@repo/ui/lib/utils";
 import { Trash2Icon } from "lucide-react";
-import { useState, useEffect } from "react";
+
+import { useEffect, useState } from "react";
+
+import { Typography } from "@repo/ui/components/atoms/typography";
+import { cn } from "@repo/ui/lib/utils";
 
 export interface UploadItem {
   id: string;

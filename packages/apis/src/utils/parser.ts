@@ -1,4 +1,4 @@
-import { z, ZodTypeAny } from "zod";
+import { ZodTypeAny, z } from "zod";
 
 export const payloadParser = <T extends ZodTypeAny = ZodTypeAny>(
   schema: T,

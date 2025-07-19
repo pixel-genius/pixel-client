@@ -27,28 +27,28 @@ Returns a paginated list of all available skills.
 
 ```json
 {
-    "total_items": 150,
-    "total_pages": 15,
-    "current_page": 1,
-    "page_size": 10,
-    "next": "http://example.com/api/skills/?page=2",
-    "previous": null,
-    "results": [
-        {
-            "id": 1,
-            "name": "Skill 1",
-            "author": 1,
-            "created_at": "2024-10-09T12:00:00Z",
-            "updated_at": "2024-10-09T12:00:00Z"
-        },
-        {
-            "id": 2,
-            "name": "Skill 2",
-            "author": 2,
-            "created_at": "2024-10-09T12:00:00Z",
-            "updated_at": "2024-10-09T12:00:00Z"
-        }
-    ]
+  "total_items": 150,
+  "total_pages": 15,
+  "current_page": 1,
+  "page_size": 10,
+  "next": "http://example.com/api/skills/?page=2",
+  "previous": null,
+  "results": [
+    {
+      "id": 1,
+      "name": "Skill 1",
+      "author": 1,
+      "created_at": "2024-10-09T12:00:00Z",
+      "updated_at": "2024-10-09T12:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Skill 2",
+      "author": 2,
+      "created_at": "2024-10-09T12:00:00Z",
+      "updated_at": "2024-10-09T12:00:00Z"
+    }
+  ]
 }
 ```
 
@@ -62,11 +62,11 @@ Retrieve details of a specific skill by its `id`.
 
 ```json
 {
-    "id": 1,
-    "name": "Skill 1",
-    "author": 1,
-    "created_at": "2024-10-09T12:00:00Z",
-    "updated_at": "2024-10-09T12:00:00Z"
+  "id": 1,
+  "name": "Skill 1",
+  "author": 1,
+  "created_at": "2024-10-09T12:00:00Z",
+  "updated_at": "2024-10-09T12:00:00Z"
 }
 ```
 
@@ -80,7 +80,7 @@ Create a new skill by providing the following details:
 
 ```json
 {
-    "name": "Skill 3"
+  "name": "Skill 3"
 }
 ```
 
@@ -88,11 +88,11 @@ Create a new skill by providing the following details:
 
 ```json
 {
-    "id": 3,
-    "name": "Skill 3",
-    "author": 1,
-    "created_at": "2024-10-09T12:10:00Z",
-    "updated_at": "2024-10-09T12:10:00Z"
+  "id": 3,
+  "name": "Skill 3",
+  "author": 1,
+  "created_at": "2024-10-09T12:10:00Z",
+  "updated_at": "2024-10-09T12:10:00Z"
 }
 ```
 
@@ -106,7 +106,7 @@ Update an existing skill by providing new data.
 
 ```json
 {
-    "name": "Updated Skill Name"
+  "name": "Updated Skill Name"
 }
 ```
 
@@ -114,11 +114,11 @@ Update an existing skill by providing new data.
 
 ```json
 {
-    "id": 1,
-    "name": "Updated Skill Name",
-    "author": 1,
-    "created_at": "2024-10-09T12:00:00Z",
-    "updated_at": "2024-10-09T13:00:00Z"
+  "id": 1,
+  "name": "Updated Skill Name",
+  "author": 1,
+  "created_at": "2024-10-09T12:00:00Z",
+  "updated_at": "2024-10-09T13:00:00Z"
 }
 ```
 
@@ -132,7 +132,7 @@ Partially update a skill by providing some new data.
 
 ```json
 {
-    "name": "Partially Updated Skill Name"
+  "name": "Partially Updated Skill Name"
 }
 ```
 
@@ -140,11 +140,11 @@ Partially update a skill by providing some new data.
 
 ```json
 {
-    "id": 1,
-    "name": "Partially Updated Skill Name",
-    "author": 1,
-    "created_at": "2024-10-09T12:00:00Z",
-    "updated_at": "2024-10-09T13:10:00Z"
+  "id": 1,
+  "name": "Partially Updated Skill Name",
+  "author": 1,
+  "created_at": "2024-10-09T12:00:00Z",
+  "updated_at": "2024-10-09T13:10:00Z"
 }
 ```
 
@@ -158,7 +158,7 @@ Delete an existing skill.
 
 ```json
 {
-    "detail": "Skill successfully deleted."
+  "detail": "Skill successfully deleted."
 }
 ```
 
@@ -176,7 +176,7 @@ In case of errors, the API will return an appropriate HTTP status code and an er
 
 ```json
 {
-    "detail": "Skill not found."
+  "detail": "Skill not found."
 }
 ```
 

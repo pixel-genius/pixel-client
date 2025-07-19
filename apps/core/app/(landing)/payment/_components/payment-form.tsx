@@ -1,9 +1,12 @@
-import { Button } from "@repo/ui/components/atoms/button";
+import { IconCopy } from "@tabler/icons-react";
+
 import Image from "next/image";
+
+import { Button } from "@repo/ui/components/atoms/button";
+
+import QRCode from "../../_assets/QRcod.svg";
 import TronLinkIcon from "../../_assets/TronLink.svg";
 import TrustIcon from "../../_assets/Trus.svg";
-import QRCode from "../../_assets/QRcod.svg";
-import { IconCopy } from "@tabler/icons-react";
 
 type PaymentFormProps = {
   paymentOption: string;

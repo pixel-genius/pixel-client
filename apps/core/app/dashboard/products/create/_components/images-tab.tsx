@@ -1,4 +1,5 @@
 import { AttachmentTus } from "@repo/ui/components/molecules/attachment/attachment-tus/attachment-tus";
+
 import { ProductTabContentLayout } from "./product-tab-content-layout";
 
 export const ImagesTab = () => {

@@ -1,9 +1,12 @@
-import { Button } from "@repo/ui/components/atoms/button";
-import { Input } from "@repo/ui/components/molecules/input";
-import { Typography } from "@repo/ui/components/atoms/typography";
-import Image from "next/image";
-import { useFieldArray, useFormContext } from "react-hook-form";
 import { Trash2Icon } from "lucide-react";
+
+import { useFieldArray, useFormContext } from "react-hook-form";
+
+import Image from "next/image";
+
+import { Button } from "@repo/ui/components/atoms/button";
+import { Typography } from "@repo/ui/components/atoms/typography";
+import { Input } from "@repo/ui/components/molecules/input";
 
 export const HighlightSection = () => {
   const { control, register } = useFormContext();

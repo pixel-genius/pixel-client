@@ -27,28 +27,28 @@ Returns a list of all users in the system.
 
 ```json
 [
-    {
-        "id": 1,
-        "username": "john_doe",
-        "email": "john@example.com",
-        "first_name": "John",
-        "last_name": "Doe",
-        "skills": [1, 2],
-        "biography": "Experienced developer.",
-        "is_staff": false,
-        "is_active": true
-    },
-    {
-        "id": 2,
-        "username": "jane_doe",
-        "email": "jane@example.com",
-        "first_name": "Jane",
-        "last_name": "Doe",
-        "skills": [2, 3],
-        "biography": "Full-stack developer.",
-        "is_staff": true,
-        "is_active": true
-    }
+  {
+    "id": 1,
+    "username": "john_doe",
+    "email": "john@example.com",
+    "first_name": "John",
+    "last_name": "Doe",
+    "skills": [1, 2],
+    "biography": "Experienced developer.",
+    "is_staff": false,
+    "is_active": true
+  },
+  {
+    "id": 2,
+    "username": "jane_doe",
+    "email": "jane@example.com",
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "skills": [2, 3],
+    "biography": "Full-stack developer.",
+    "is_staff": true,
+    "is_active": true
+  }
 ]
 ```
 
@@ -64,15 +64,15 @@ Retrieve details of a specific user by their `id`.
 
 ```json
 {
-    "id": 1,
-    "username": "john_doe",
-    "email": "john@example.com",
-    "first_name": "John",
-    "last_name": "Doe",
-    "skills": [1, 2],
-    "biography": "Experienced developer.",
-    "is_staff": false,
-    "is_active": true
+  "id": 1,
+  "username": "john_doe",
+  "email": "john@example.com",
+  "first_name": "John",
+  "last_name": "Doe",
+  "skills": [1, 2],
+  "biography": "Experienced developer.",
+  "is_staff": false,
+  "is_active": true
 }
 ```
 
@@ -88,15 +88,15 @@ Admin users can create new users. Password is required for creating a new user.
 
 ```json
 {
-    "username": "john_doe",
-    "email": "john@example.com",
-    "password": "my_secure_password",
-    "first_name": "John",
-    "last_name": "Doe",
-    "skills": [1, 2],
-    "biography": "Experienced developer.",
-    "is_staff": false,
-    "is_active": true
+  "username": "john_doe",
+  "email": "john@example.com",
+  "password": "my_secure_password",
+  "first_name": "John",
+  "last_name": "Doe",
+  "skills": [1, 2],
+  "biography": "Experienced developer.",
+  "is_staff": false,
+  "is_active": true
 }
 ```
 
@@ -104,15 +104,15 @@ Admin users can create new users. Password is required for creating a new user.
 
 ```json
 {
-    "id": 1,
-    "username": "john_doe",
-    "email": "john@example.com",
-    "first_name": "John",
-    "last_name": "Doe",
-    "skills": [1, 2],
-    "biography": "Experienced developer.",
-    "is_staff": false,
-    "is_active": true
+  "id": 1,
+  "username": "john_doe",
+  "email": "john@example.com",
+  "first_name": "John",
+  "last_name": "Doe",
+  "skills": [1, 2],
+  "biography": "Experienced developer.",
+  "is_staff": false,
+  "is_active": true
 }
 ```
 
@@ -128,10 +128,10 @@ Admin users can update user details. The password is **optional** for updates. I
 
 ```json
 {
-    "first_name": "John",
-    "last_name": "Smith",
-    "skills": [1, 3],
-    "biography": "Updated biography."
+  "first_name": "John",
+  "last_name": "Smith",
+  "skills": [1, 3],
+  "biography": "Updated biography."
 }
 ```
 
@@ -139,15 +139,15 @@ Admin users can update user details. The password is **optional** for updates. I
 
 ```json
 {
-    "id": 1,
-    "username": "john_doe",
-    "email": "john@example.com",
-    "first_name": "John",
-    "last_name": "Smith",
-    "skills": [1, 3],
-    "biography": "Updated biography.",
-    "is_staff": false,
-    "is_active": true
+  "id": 1,
+  "username": "john_doe",
+  "email": "john@example.com",
+  "first_name": "John",
+  "last_name": "Smith",
+  "skills": [1, 3],
+  "biography": "Updated biography.",
+  "is_staff": false,
+  "is_active": true
 }
 ```
 
@@ -163,7 +163,7 @@ Admin users can delete a user by their `id`.
 
 ```json
 {
-    "detail": "User deleted successfully."
+  "detail": "User deleted successfully."
 }
 ```
 
@@ -179,10 +179,10 @@ Authenticated users can update their own profile (fields: `first_name`, `last_na
 
 ```json
 {
-    "first_name": "Jane",
-    "last_name": "Smith",
-    "skills": [2, 3],
-    "biography": "Updated biography."
+  "first_name": "Jane",
+  "last_name": "Smith",
+  "skills": [2, 3],
+  "biography": "Updated biography."
 }
 ```
 
@@ -190,11 +190,11 @@ Authenticated users can update their own profile (fields: `first_name`, `last_na
 
 ```json
 {
-    "user_id": 2,
-    "first_name": "John",
-    "last_name": "Doe",
-    "skills": [1, 3],
-    "biography": "Updated biography by admin."
+  "user_id": 2,
+  "first_name": "John",
+  "last_name": "Doe",
+  "skills": [1, 3],
+  "biography": "Updated biography by admin."
 }
 ```
 
@@ -202,15 +202,15 @@ Authenticated users can update their own profile (fields: `first_name`, `last_na
 
 ```json
 {
-    "id": 1,
-    "username": "jane_doe",
-    "email": "jane@example.com",
-    "first_name": "Jane",
-    "last_name": "Smith",
-    "skills": [2, 3],
-    "biography": "Updated biography.",
-    "is_staff": true,
-    "is_active": true
+  "id": 1,
+  "username": "jane_doe",
+  "email": "jane@example.com",
+  "first_name": "Jane",
+  "last_name": "Smith",
+  "skills": [2, 3],
+  "biography": "Updated biography.",
+  "is_staff": true,
+  "is_active": true
 }
 ```
 
@@ -228,7 +228,7 @@ In case of errors, the API will return appropriate HTTP status codes and error m
 
 ```json
 {
-    "detail": "User not found."
+  "detail": "User not found."
 }
 ```
 

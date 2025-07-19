@@ -1,5 +1,7 @@
 import React from "react";
+
 import { SidebarProvider } from "@repo/ui/components/molecules/sidebar";
+
 import { AppSidebar } from "./_compnents/app-sidebar";
 import NavbarDashboard from "./_compnents/navbar-dashboard";
 

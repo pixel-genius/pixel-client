@@ -1,4 +1,5 @@
 import { IconProps } from "../types/types";
+
 const Clouddownloadicon = (props: IconProps) => {
   const { size = 24, color = "currentColor", ...resProps } = props;
 

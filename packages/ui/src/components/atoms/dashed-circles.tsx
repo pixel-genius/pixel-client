@@ -1,7 +1,9 @@
 "use client";
 
-import React, { ReactNode } from "react";
 import { motion } from "framer-motion";
+
+import React, { ReactNode } from "react";
+
 import { cn } from "@repo/ui/lib/utils";
 
 export interface DashedCirclesProps {

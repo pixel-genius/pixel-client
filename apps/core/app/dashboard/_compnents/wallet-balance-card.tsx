@@ -1,12 +1,14 @@
-import React from "react";
 import { IconWallet } from "@tabler/icons-react";
-import { useSidebar } from "@repo/ui/components/molecules/sidebar";
+
+import React from "react";
+
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@repo/ui/components/atoms/tooltip";
+import { useSidebar } from "@repo/ui/components/molecules/sidebar";
 
 export function WalletBalanceCard() {
   const { open } = useSidebar();

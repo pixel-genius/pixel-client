@@ -1,11 +1,13 @@
+import { useMutation } from "@tanstack/react-query";
+
 import type {
   ApiError,
   ApiResponse,
   UseMutationProps,
 } from "@repo/apis/types/api.types";
-import { useMutation } from "@tanstack/react-query";
+
 import { postResetPassword } from "./post-reset-password";
-import {} from "./post-reset-password.schema";
+import "./post-reset-password.schema";
 import type {
   PostResetPasswordRequest,
   PostResetPasswordResponseTransformed,

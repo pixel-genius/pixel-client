@@ -1,6 +1,8 @@
+import Link from "next/link";
+
 import IconShoppingBag from "@repo/icons/shopping-bag";
 import { Typography } from "@repo/ui/components/atoms/typography";
-import Link from "next/link";
+
 import { useCartStore } from "./../../store/cart-store";
 
 const FeatureNavbarGuest = () => {

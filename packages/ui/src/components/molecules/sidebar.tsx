@@ -1,22 +1,11 @@
 "use client";
 
-import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { VariantProps, cva } from "class-variance-authority";
 
-import { Skeleton } from "../atoms/skeleton";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "../atoms/tooltip";
-import { cn } from "@repo/ui/lib/utils";
-import { useIsMobile } from "../../hooks/use-mobile";
-import { Button } from "../atoms/button";
-import { Input } from "./input";
-import { Separator } from "../atoms/separator";
-import { Sheet, SheetContent } from "../atoms/sheet";
+import * as React from "react";
+
+import Link from "next/link";
 
 import Bellicon from "@repo/icons/bell";
 import Doorexiticon from "@repo/icons/door-exit";
@@ -27,9 +16,9 @@ import Shoppingbagicon from "@repo/icons/shopping-bag";
 import Usercircleicon from "@repo/icons/user-circle";
 import Useractionpixelicon from "@repo/icons/useractionpixel";
 import {
-  AvatarImage,
-  AvatarFallback,
   Avatar,
+  AvatarFallback,
+  AvatarImage,
 } from "@repo/ui/components/atoms/avatar";
 import {
   DropdownMenu,
@@ -39,7 +28,20 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@repo/ui/components/atoms/dropdown-menu";
-import Link from "next/link";
+import { cn } from "@repo/ui/lib/utils";
+
+import { useIsMobile } from "../../hooks/use-mobile";
+import { Button } from "../atoms/button";
+import { Separator } from "../atoms/separator";
+import { Sheet, SheetContent } from "../atoms/sheet";
+import { Skeleton } from "../atoms/skeleton";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../atoms/tooltip";
+import { Input } from "./input";
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;

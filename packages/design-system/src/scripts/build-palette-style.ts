@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+
 import { hexToHsl } from "./utills";
 
 // Paths for input and output files

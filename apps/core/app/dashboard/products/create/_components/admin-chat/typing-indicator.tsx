@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+
 import { AdminAvatar } from "./admin-avatar";
 
 export const TypingIndicator = () => {

@@ -1,5 +1,6 @@
-import { IconProps } from "../types/types";
 import { IconEye as IconEyeTabler } from "@tabler/icons-react";
+
+import { IconProps } from "../types/types";
 
 const IconEye = (props: IconProps) => {
   const { size = 24, color, ...resProps } = props;

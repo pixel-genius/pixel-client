@@ -1,23 +1,26 @@
 "use client";
 
-import Link from "next/link";
 import {
-  Avatar,
-  AvatarImage,
-  AvatarFallback,
-} from "@repo/ui/components/atoms/avatar";
-import {
-  IconShoppingCart,
-  IconSearch,
   IconGridDots,
+  IconSearch,
+  IconShoppingCart,
   IconUser,
 } from "@tabler/icons-react";
+
 import Image from "next/image";
+import Link from "next/link";
+
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@repo/ui/components/atoms/avatar";
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
 } from "@repo/ui/components/atoms/sheet";
+
 import BrowseSheet from "./BrowseSheet";
 
 const navItems = [

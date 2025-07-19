@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
+
 import {
-  ChatHeader,
-  ChatMessages,
-  ChatInput,
   ChatGuidelines,
+  ChatHeader,
+  ChatInput,
+  ChatMessages,
   useChat,
 } from "./index";
 

@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
+
 import { tailwindConfig } from "@repo/design-system/tailwind";
 
 const config = {

@@ -1,10 +1,11 @@
 "use client";
 
+import { useState } from "react";
+
 import { BaseInput } from "@repo/ui/components/atoms/base-input";
 import { Button } from "@repo/ui/components/atoms/button";
 import { Switch } from "@repo/ui/components/atoms/switch";
 import { Typography } from "@repo/ui/components/atoms/typography";
-import { useState } from "react";
 
 interface WalletBalanceProps {
   onSwitchChange: (checked: boolean) => void;

@@ -1,5 +1,6 @@
-import { COOKIES } from "./../constant/cookie";
 import Cookie from "js-cookie";
+
+import { COOKIES } from "./../constant/cookie";
 
 type Tokens = { access: string; refresh: string };
 

@@ -1,4 +1,5 @@
 import { IconProps } from "../types/types";
+
 const AfterEffectIcon = (props: IconProps) => {
   const { size = 16, color = "currentColor", ...resProps } = props;
 

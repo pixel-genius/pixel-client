@@ -1,5 +1,4 @@
 // import components
-
 // import icons
 import AuthCard from "../_components/auth-card";
 import ForgetPasswordForm from "./_components/form/forgetPasswordForm";

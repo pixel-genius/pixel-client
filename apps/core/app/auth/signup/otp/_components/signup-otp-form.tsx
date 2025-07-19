@@ -1,5 +1,19 @@
 // import components
 "use client";
+
+// import icons
+import { zodResolver } from "@hookform/resolvers/zod";
+import { REGEXP_ONLY_DIGITS } from "input-otp";
+import { toast } from "sonner";
+
+import { useForm } from "react-hook-form";
+
+import { useRouter } from "next/navigation";
+
+import { postVerifyOtpSchema } from "@repo/apis/core/accounts/users/verify_otp/post/post-verify-otp.schema";
+import type { PostVerifyOtpRequest } from "@repo/apis/core/accounts/users/verify_otp/post/post-verify-otp.types";
+import { usePostVerifyOtp } from "@repo/apis/core/accounts/users/verify_otp/post/use-post-verify-otp";
+import { setAuthTokens } from "@repo/apis/utils/cookies";
 import { Countdown } from "@repo/ui/components/atoms/countdown";
 import {
   InputOTP,
@@ -8,18 +22,22 @@ import {
 } from "@repo/ui/components/atoms/input-otp";
 import { PasteOtpButton } from "@repo/ui/components/molecules/paste-otp-button";
 import { useClipboardOtp } from "@repo/ui/hooks/use-clipboard-otp";
-import { REGEXP_ONLY_DIGITS } from "input-otp";
 
-// import icons
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
+// import components
 
-import { postVerifyOtpSchema } from "@repo/apis/core/accounts/users/verify_otp/post/post-verify-otp.schema";
-import type { PostVerifyOtpRequest } from "@repo/apis/core/accounts/users/verify_otp/post/post-verify-otp.types";
-import { usePostVerifyOtp } from "@repo/apis/core/accounts/users/verify_otp/post/use-post-verify-otp";
-import { setAuthTokens } from "@repo/apis/utils/cookies";
+// import components
+
+// import components
+
+// import components
+
+// import components
+
+// import components
+
+// import components
+
+// import components
 
 export interface SignupOtpFormProps {
   username: string | undefined;

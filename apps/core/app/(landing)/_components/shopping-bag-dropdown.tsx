@@ -1,8 +1,9 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+
 import { useCartStore } from "../store/cart-store";
 import Addtocard from "./addtoCard";
-import { useRef, useEffect } from "react";
 
 const ShoppingBagDropdown = () => {
   const { isAddToCartOpen, toggleAddToCart } = useCartStore();

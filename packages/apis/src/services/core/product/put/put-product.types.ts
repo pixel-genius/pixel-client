@@ -1,4 +1,5 @@
 import { z } from "zod";
+
 import { putProductSchema } from "./put-product.schema";
 
 // Response

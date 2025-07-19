@@ -1,13 +1,15 @@
 "use client";
 
-import { PixelImgIcon } from "@repo/icons/pixel-img";
+import { useEffect, useRef } from "react";
 
-import { Typography } from "@repo/ui/components/atoms/typography";
-import { useRef, useEffect } from "react";
-import { useTusUploadManager, CompletedUpload } from "./use-tus-upload-manager";
-import { AttachmentTusItem } from "./attachment-tus-item";
+import { PixelImgIcon } from "@repo/icons/pixel-img";
 import { PixelZipIcon } from "@repo/icons/pixel-zip";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import { cn } from "@repo/ui/lib/utils";
+
+import { AttachmentTusItem } from "./attachment-tus-item";
+import { CompletedUpload, useTusUploadManager } from "./use-tus-upload-manager";
+
 interface AttachmentTusProps {
   endpoint?: string;
   // eslint-disable-next-line no-unused-vars

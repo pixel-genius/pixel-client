@@ -1,9 +1,12 @@
+import { IconTrash } from "@tabler/icons-react";
+
 import React from "react";
+
 import Image from "next/image";
+
+import Hearticon from "@repo/icons/heart";
 import { Button } from "@repo/ui/components/atoms/button";
 import { Typography } from "@repo/ui/components/atoms/typography";
-import { IconTrash } from "@tabler/icons-react";
-import Hearticon from "@repo/icons/heart";
 
 // Props Types
 interface CardTitleProps {

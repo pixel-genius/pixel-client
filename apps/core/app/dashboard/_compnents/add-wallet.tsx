@@ -1,27 +1,30 @@
 "use client";
-import { Button } from "@repo/ui/components/atoms/button";
-import { Typography } from "@repo/ui/components/atoms/typography";
-import { Chip } from "@repo/ui/components/atoms/chip";
-import { Select } from "@repo/ui/components/molecules/select";
-import { Input } from "@repo/ui/components/molecules/input";
+
+import { IconBrandTether } from "@tabler/icons-react";
 import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
-  DialogClose,
-} from "@repo/ui/components/atoms/dialog";
-import {
+  PlusIcon,
+  ShieldAlert,
+  ShieldCheck,
   Trash2Icon,
   WalletIcon,
-  ShieldCheck,
-  ShieldAlert,
-  PlusIcon,
 } from "lucide-react";
-import { IconBrandTether } from "@tabler/icons-react";
+
 import { useState } from "react";
+
+import { Button } from "@repo/ui/components/atoms/button";
+import { Chip } from "@repo/ui/components/atoms/chip";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@repo/ui/components/atoms/dialog";
+import { Typography } from "@repo/ui/components/atoms/typography";
+import { Input } from "@repo/ui/components/molecules/input";
+import { Select } from "@repo/ui/components/molecules/select";
 
 function getCurrencyIcon(currency: string) {
   if (currency === "tether") return IconBrandTether;

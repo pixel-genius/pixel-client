@@ -1,9 +1,12 @@
-import React, { useState } from "react";
 import {
-  IconCreditCard,
-  IconCoinBitcoin,
   IconCheck,
-} from "@tabler/icons-react"; // Replace with your actual icon library
+  IconCoinBitcoin,
+  IconCreditCard,
+} from "@tabler/icons-react";
+
+import React, { useState } from "react";
+
+// Replace with your actual icon library
 import { Typography } from "@repo/ui/components/atoms/typography";
 
 type PaymentOptionProps = {

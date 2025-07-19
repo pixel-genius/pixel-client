@@ -1,6 +1,8 @@
 "use client";
-import { Typography } from "@repo/ui/components/atoms/typography";
+
 import React, { useEffect, useState } from "react";
+
+import { Typography } from "@repo/ui/components/atoms/typography";
 
 // Props Types
 interface Item {

@@ -1,8 +1,10 @@
 "use client";
-import CursorIcon from "@repo/icons/cursor";
 
 import { motion, useMotionValue } from "framer-motion";
+
 import React, { useEffect, useState } from "react";
+
+import CursorIcon from "@repo/icons/cursor";
 
 interface CustomCursorProps {
   color?: string;
@@ -70,7 +72,7 @@ const CustomCursor: React.FC<CustomCursorProps> = ({
               viewBox="0 0 30 30"
               fill="white"
               xmlns="http://www.w3.org/2000/svg"
-              style={{ display: 'block' }}
+              style={{ display: "block" }}
             >
               <polygon
                 points="2,2 28,15 15,18 12,28"
@@ -81,10 +83,7 @@ const CustomCursor: React.FC<CustomCursorProps> = ({
               />
             </svg>
             {/* Label */}
-            <div
-              className="ml-3 mt-12 text-sm font-light text-white bg-primary whitespace-nowrap p-1.5 px-4 rounded"
-              
-            >
+            <div className="ml-3 mt-12 text-sm font-light text-white bg-primary whitespace-nowrap p-1.5 px-4 rounded">
               {label}
             </div>
           </div>

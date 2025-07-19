@@ -1,7 +1,9 @@
-import { guestApi } from "#instance/guest-api"; 
+import { guestApi } from "#instance/guest-api";
+import path from "path";
+
 import { ApiResponse } from "@repo/apis/types/api.types";
 import { requestHandler } from "@repo/apis/utils/request-handler";
-import path from "path";
+
 import { postForgetSchema as schema } from "./post-forget.schema";
 import {
   PostForgetRequest,

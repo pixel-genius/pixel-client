@@ -1,10 +1,12 @@
 "use client";
+
+import React from "react";
+
 import {
   usePathname,
   useRouter,
   useSearchParams,
 } from "next/dist/client/components/navigation";
-import React from "react";
 
 export const useQueryParams = () => {
   const searchParams = useSearchParams();

@@ -1,4 +1,5 @@
 import { IconProps } from "../types/types";
+
 const SearchIcon = (props: IconProps) => {
   const { size = 24, color = "currentColor", ...resProps } = props;
 
@@ -22,4 +23,4 @@ const SearchIcon = (props: IconProps) => {
   );
 };
 
-export default SearchIcon ;
+export default SearchIcon;

@@ -1,11 +1,13 @@
+import { useMutation } from "@tanstack/react-query";
+
 import {
   ApiError,
   ApiResponse,
   UseMutationProps,
 } from "@repo/apis/types/api.types";
-import { useMutation } from "@tanstack/react-query";
+
 import { postFileUpload } from "./post-file-upload";
-import {} from "./post-file-upload.schema";
+import "./post-file-upload.schema";
 import {
   PostFileUploadRequest,
   PostFileUploadResponseTransformed,

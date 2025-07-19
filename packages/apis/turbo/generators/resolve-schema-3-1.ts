@@ -14,14 +14,18 @@ export const resolveSchema_3_1 = (
     return resolveSchema(swagger.definitions[refKey], swagger);
   } else if (schema.allOf) {
     // Handle allOf by combining all schemas
-    if(schema.allOf.length === 1) {
+    if (schema.allOf.length === 1) {
       return resolveSchema(schema.allOf[0], swagger);
     }
-    const allOfSchemas = schema.allOf.map((subSchema) => resolveSchema(subSchema, swagger));
+    const allOfSchemas = schema.allOf.map((subSchema) =>
+      resolveSchema(subSchema, swagger),
+    );
     return `z.intersection(${allOfSchemas.join(", ")})`;
   } else if (schema.oneOf) {
     // Handle oneOf by creating a union of schemas
-    const oneOfSchemas = schema.oneOf.map((subSchema) => resolveSchema(subSchema, swagger));
+    const oneOfSchemas = schema.oneOf.map((subSchema) =>
+      resolveSchema(subSchema, swagger),
+    );
     return `z.union([${oneOfSchemas.join(", ")}])`;
   } else if (schema.type === "object") {
     const properties = schema.properties || {};

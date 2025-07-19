@@ -1,18 +1,21 @@
 "use client";
 
 import {
-  IconMenuDeep,
-  IconX,
   IconCrown,
-  IconUserPlus,
+  IconFileDescription,
   IconFileText,
   IconHelpCircle,
+  IconMenuDeep,
   IconShieldLock,
-  IconFileDescription,
+  IconUserPlus,
+  IconX,
 } from "@tabler/icons-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+
 import { useState } from "react";
+
 import Link from "next/link";
+
 import { Typography } from "@repo/ui/components/atoms/typography";
 
 const HamburgerMenu = () => {

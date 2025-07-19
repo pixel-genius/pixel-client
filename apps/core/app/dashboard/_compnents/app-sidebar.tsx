@@ -2,28 +2,27 @@
 
 import * as React from "react";
 
-//components ui
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarHeader,
-  SidebarRail,
-  useSidebar,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
-} from "@repo/ui/components/molecules/sidebar";
-
 //icons
 import BoxPackage from "@repo/icons/box-package";
 import ChartBarPopular from "@repo/icons/chart-bar-popular";
 import LayoutDashboard from "@repo/icons/layout-dashboard";
 import ReportMoney from "@repo/icons/report-money";
-import Usericon from "@repo/icons/user";
-
 //components sidebar
 import Settingsicon from "@repo/icons/settings";
+import Usericon from "@repo/icons/user";
+//components ui
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
+  SidebarRail,
+  useSidebar,
+} from "@repo/ui/components/molecules/sidebar";
+
 import { LogoIconSwitcher } from "./logo-icon-switcher";
 import { NavMain } from "./nav-main";
 import { WalletBalanceCard } from "./wallet-balance-card";

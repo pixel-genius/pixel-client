@@ -1,19 +1,22 @@
-import { TabProvider } from "@repo/ui/components/molecules/tabs/tab-provider";
-import { TabList } from "@repo/ui/components/molecules/tabs/tab-list";
-import { TabTrigger } from "@repo/ui/components/molecules/tabs/tab-trigger";
-import { TabContent } from "@repo/ui/components/molecules/tabs/tab-content";
-import { Typography } from "@repo/ui/components/atoms/typography";
-import { ProductCard } from "@repo/ui/components/molecules/prodoct-card";
+import { IconArrowsSort, IconChevronDown } from "@tabler/icons-react";
+
 import Image from "next/image";
-import { ProductList } from "../_constant/mock-product-list";
-import { FileFormatSection } from "./_components/file-formate-section";
+
 import { Button } from "@repo/ui/components/atoms/button";
 import {
   DropdownMenu,
-  DropdownMenuTrigger,
   DropdownMenuContent,
+  DropdownMenuTrigger,
 } from "@repo/ui/components/atoms/dropdown-menu";
-import { IconArrowsSort, IconChevronDown } from "@tabler/icons-react";
+import { Typography } from "@repo/ui/components/atoms/typography";
+import { ProductCard } from "@repo/ui/components/molecules/prodoct-card";
+import { TabContent } from "@repo/ui/components/molecules/tabs/tab-content";
+import { TabList } from "@repo/ui/components/molecules/tabs/tab-list";
+import { TabProvider } from "@repo/ui/components/molecules/tabs/tab-provider";
+import { TabTrigger } from "@repo/ui/components/molecules/tabs/tab-trigger";
+
+import { ProductList } from "../_constant/mock-product-list";
+import { FileFormatSection } from "./_components/file-formate-section";
 
 const products = ProductList;
 

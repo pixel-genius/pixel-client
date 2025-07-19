@@ -1,7 +1,10 @@
-import { cn } from "@repo/ui/lib/utils";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import Image from "next/image";
+
 import { forwardRef } from "react";
+
+import Image from "next/image";
+
+import { cn } from "@repo/ui/lib/utils";
 
 const ProductGallery = forwardRef<HTMLDivElement, { className?: string }>(
   ({ className }, ref) => {
@@ -33,7 +36,6 @@ const ProductGallery = forwardRef<HTMLDivElement, { className?: string }>(
       { src: "/images/p2.webp", alt: "Product image 2" },
       { src: "/images/p1.webp", alt: "Product image 3" },
       { src: "/images/product-placeholder.jpg", alt: "Placeholder image" },
-     
     ];
 
     return (
@@ -48,10 +50,7 @@ const ProductGallery = forwardRef<HTMLDivElement, { className?: string }>(
         >
           <div className="grid grid-cols-3 gap-8">
             {images.map((image, index) => (
-              <div
-                key={index}
-                className="flex flex-col justify-between"
-              >
+              <div key={index} className="flex flex-col justify-between">
                 <div>
                   <Image
                     src={image.src}

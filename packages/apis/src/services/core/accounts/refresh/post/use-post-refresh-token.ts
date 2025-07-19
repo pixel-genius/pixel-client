@@ -1,11 +1,13 @@
+import { useMutation } from "@tanstack/react-query";
+
 import {
   ApiError,
   ApiResponse,
   UseMutationProps,
 } from "@repo/apis/types/api.types";
-import { useMutation } from "@tanstack/react-query";
+
 import { postRefreshToken } from "./post-refresh-token";
-import {} from "./post-refresh-token.schema";
+import "./post-refresh-token.schema";
 import {
   PostRefreshTokenRequest,
   PostRefreshTokenResponseTransformed,

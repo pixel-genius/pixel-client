@@ -1,7 +1,9 @@
-import { Typography } from "@repo/ui/components/atoms/typography";
-import { AutherLayout } from "./auther-layout";
 import Image from "next/image";
+
+import { Typography } from "@repo/ui/components/atoms/typography";
+
 import BecomeAnAuthorimage from "../../_assets/become-auther.svg";
+import { AutherLayout } from "./auther-layout";
 import Vector3d from "./vector3d";
 
 const AutherResult = () => {

@@ -1,12 +1,21 @@
 /* eslint-disable no-unused-vars */
 "use client";
 
-import React from "react";
-import Link from "next/link";
+import { VariantProps, cva } from "class-variance-authority";
 import { motion } from "framer-motion";
-import { cva, VariantProps } from "class-variance-authority";
+
+import React from "react";
+
+import Link from "next/link";
+
 import { Typography } from "../../atoms/typography";
 import { useTabStore } from "./tab-provider";
+
+/* eslint-disable no-unused-vars */
+
+/* eslint-disable no-unused-vars */
+
+/* eslint-disable no-unused-vars */
 
 export const DEFAULT_TAB_ID = "tab";
 

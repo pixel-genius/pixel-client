@@ -1,6 +1,5 @@
-// path/to/ReactScanComponent
-
 "use client";
+
 import { JSX, useEffect } from "react";
 
 export function ReactScan(): JSX.Element {

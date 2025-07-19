@@ -1,4 +1,5 @@
 import { IconProps } from "../types/types";
+
 const DotsVerticalIcon = (props: IconProps) => {
   const { size = 25, color = "currentColor", ...resProps } = props;
 

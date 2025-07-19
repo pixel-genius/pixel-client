@@ -2,7 +2,10 @@ import * as fs from "fs";
 import * as path from "path";
 
 // Paths for input and output files
-const inputFilePath = path.join(__dirname, "../tokens/token_palette_primitive.json");
+const inputFilePath = path.join(
+  __dirname,
+  "../tokens/token_palette_primitive.json",
+);
 const outputFilePath = path.join(__dirname, "../tailwind/palette.ts");
 
 // Generate TypeScript content with groups of palette colors

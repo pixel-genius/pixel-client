@@ -1,17 +1,18 @@
-import { Button } from "@repo/ui/components/atoms/button";
-import { Typography } from "@repo/ui/components/atoms/typography";
-import Shopingcartplusicon from "@repo/icons/shopping-cart-plus";
 import {
   IconChevronDown,
   IconHeartFilled,
   IconMessage,
 } from "@tabler/icons-react";
+
+import Shopingcartplusicon from "@repo/icons/shopping-cart-plus";
+import { Button } from "@repo/ui/components/atoms/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@repo/ui/components/atoms/dropdown-menu";
+import { Typography } from "@repo/ui/components/atoms/typography";
 
 export const ProductActions = () => {
   return (

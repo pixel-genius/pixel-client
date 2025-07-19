@@ -1,4 +1,5 @@
 import { IconProps } from "../types/types";
+
 const WireFrameIcon = (props: IconProps) => {
   const { size = 53, color = "currentColor", ...resProps } = props;
 

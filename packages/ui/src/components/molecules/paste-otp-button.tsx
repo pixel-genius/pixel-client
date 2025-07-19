@@ -1,9 +1,10 @@
 "use client";
 
-import { Button } from "../atoms/button";
 import { Clipboard } from "lucide-react";
 import { toast } from "sonner";
+
 import { cn } from "../../lib/utils";
+import { Button } from "../atoms/button";
 
 interface PasteOtpButtonProps {
   /** The extracted OTP from clipboard hook */

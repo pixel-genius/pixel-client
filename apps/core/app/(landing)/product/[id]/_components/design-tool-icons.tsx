@@ -1,5 +1,5 @@
-import Figmaicon from "@repo/icons/figma";
 import Adobexdicon from "@repo/icons/adobexd";
+import Figmaicon from "@repo/icons/figma";
 import Sketchicon from "@repo/icons/sketch";
 
 const DesignToolIcon = ({
@@ -28,4 +28,4 @@ export const DesignToolIcons = () => {
       </div>
     </div>
   );
-}; 
+};

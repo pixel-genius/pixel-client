@@ -1,8 +1,10 @@
 "use client";
 
 import React from "react";
-import { FileFormatField } from "./file-format-field";
+
 import { Typography } from "@repo/ui/components/atoms/typography";
+
+import { FileFormatField } from "./file-format-field";
 
 export const FileFormatSection: React.FC = ({}) => {
   return (

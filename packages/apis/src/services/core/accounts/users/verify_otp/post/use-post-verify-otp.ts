@@ -1,11 +1,13 @@
+import { useMutation } from "@tanstack/react-query";
+
 import type {
   ApiError,
   ApiResponse,
   UseMutationProps,
 } from "@repo/apis/types/api.types";
-import { useMutation } from "@tanstack/react-query";
+
 import { postVerifyOtp } from "./post-verify-otp";
-import {} from "./post-verify-otp.schema";
+import "./post-verify-otp.schema";
 import type {
   PostVerifyOtpRequest,
   PostVerifyOtpResponseTransformed,

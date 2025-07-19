@@ -5,8 +5,9 @@ import {
   useMotionValue,
   useScroll,
   useSpring,
-  useTransform
+  useTransform,
 } from "framer-motion";
+
 import { ReactNode, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 export interface ParallaxScrollEffectProps {

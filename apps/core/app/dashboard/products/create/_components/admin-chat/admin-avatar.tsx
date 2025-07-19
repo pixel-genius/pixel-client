@@ -1,5 +1,5 @@
-import { Bot } from "lucide-react";
 import { motion } from "framer-motion";
+import { Bot } from "lucide-react";
 
 interface AdminAvatarProps {
   className?: string;

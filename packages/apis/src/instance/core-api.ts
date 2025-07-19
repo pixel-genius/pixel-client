@@ -1,7 +1,8 @@
-import { COOKIES } from "./../constant/cookie";
-import { postRefreshToken } from "../services/core/accounts/refresh/post/post-refresh-token";
 import axios, { type AxiosError } from "axios";
 import Cookie from "js-cookie";
+
+import { postRefreshToken } from "../services/core/accounts/refresh/post/post-refresh-token";
+import { COOKIES } from "./../constant/cookie";
 
 let isRefreshing = false;
 let failedQueue: any[] = [];

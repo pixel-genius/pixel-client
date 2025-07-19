@@ -1,14 +1,14 @@
 "use client";
 
-import { cn } from "@repo/ui/lib/utils";
-
 import React, {
   createContext,
-  useState,
   useContext,
-  useRef,
   useEffect,
+  useRef,
+  useState,
 } from "react";
+
+import { cn } from "@repo/ui/lib/utils";
 
 const MouseEnterContext = createContext<
   [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined
@@ -50,7 +50,7 @@ export const CardContainer = ({
       <div
         className={cn(
           "w-full flex items-center justify-center",
-          containerClassName
+          containerClassName,
         )}
         style={{
           perspective: "1000px",
@@ -63,7 +63,7 @@ export const CardContainer = ({
           onMouseLeave={handleMouseLeave}
           className={cn(
             "flex w-full  items-center justify-center relative transition-all duration-200 ease-linear",
-            className
+            className,
           )}
           style={{
             transformStyle: "preserve-3d",
@@ -87,7 +87,7 @@ export const CardBody = ({
     <div
       className={cn(
         "[transform-style:preserve-3d]  [&>*]:[transform-style:preserve-3d]",
-        className
+        className,
       )}
     >
       {children}

@@ -1,5 +1,5 @@
 export const palette = {
-  "amber": {
+  amber: {
     "50": "hsl(var(--amber-50))",
     "100": "hsl(var(--amber-100))",
     "200": "hsl(var(--amber-200))",
@@ -12,7 +12,7 @@ export const palette = {
     "900": "hsl(var(--amber-900))",
     "950": "hsl(var(--amber-950))",
   },
-  "blue": {
+  blue: {
     "50": "hsl(var(--blue-50))",
     "100": "hsl(var(--blue-100))",
     "200": "hsl(var(--blue-200))",
@@ -25,7 +25,7 @@ export const palette = {
     "900": "hsl(var(--blue-900))",
     "950": "hsl(var(--blue-950))",
   },
-  "cyan": {
+  cyan: {
     "50": "hsl(var(--cyan-50))",
     "100": "hsl(var(--cyan-100))",
     "200": "hsl(var(--cyan-200))",
@@ -38,7 +38,7 @@ export const palette = {
     "900": "hsl(var(--cyan-900))",
     "950": "hsl(var(--cyan-950))",
   },
-  "emerald": {
+  emerald: {
     "50": "hsl(var(--emerald-50))",
     "100": "hsl(var(--emerald-100))",
     "200": "hsl(var(--emerald-200))",
@@ -51,7 +51,7 @@ export const palette = {
     "900": "hsl(var(--emerald-900))",
     "950": "hsl(var(--emerald-950))",
   },
-  "fuchsia": {
+  fuchsia: {
     "50": "hsl(var(--fuchsia-50))",
     "100": "hsl(var(--fuchsia-100))",
     "200": "hsl(var(--fuchsia-200))",
@@ -64,11 +64,11 @@ export const palette = {
     "900": "hsl(var(--fuchsia-900))",
     "950": "hsl(var(--fuchsia-950))",
   },
-  "general": {
-    "black": "hsl(var(--general-black))",
-    "white": "hsl(var(--general-white))",
+  general: {
+    black: "hsl(var(--general-black))",
+    white: "hsl(var(--general-white))",
   },
-  "gray": {
+  gray: {
     "50": "hsl(var(--gray-50))",
     "100": "hsl(var(--gray-100))",
     "200": "hsl(var(--gray-200))",
@@ -81,7 +81,7 @@ export const palette = {
     "900": "hsl(var(--gray-900))",
     "950": "hsl(var(--gray-950))",
   },
-  "green": {
+  green: {
     "50": "hsl(var(--green-50))",
     "100": "hsl(var(--green-100))",
     "200": "hsl(var(--green-200))",
@@ -94,7 +94,7 @@ export const palette = {
     "900": "hsl(var(--green-900))",
     "950": "hsl(var(--green-950))",
   },
-  "indigo": {
+  indigo: {
     "50": "hsl(var(--indigo-50))",
     "100": "hsl(var(--indigo-100))",
     "200": "hsl(var(--indigo-200))",
@@ -107,7 +107,7 @@ export const palette = {
     "900": "hsl(var(--indigo-900))",
     "950": "hsl(var(--indigo-950))",
   },
-  "lime": {
+  lime: {
     "50": "hsl(var(--lime-50))",
     "100": "hsl(var(--lime-100))",
     "200": "hsl(var(--lime-200))",
@@ -120,7 +120,7 @@ export const palette = {
     "900": "hsl(var(--lime-900))",
     "950": "hsl(var(--lime-950))",
   },
-  "neutral": {
+  neutral: {
     "50": "hsl(var(--neutral-50))",
     "100": "hsl(var(--neutral-100))",
     "200": "hsl(var(--neutral-200))",
@@ -133,7 +133,7 @@ export const palette = {
     "900": "hsl(var(--neutral-900))",
     "950": "hsl(var(--neutral-950))",
   },
-  "orange": {
+  orange: {
     "50": "hsl(var(--orange-50))",
     "100": "hsl(var(--orange-100))",
     "200": "hsl(var(--orange-200))",
@@ -146,7 +146,7 @@ export const palette = {
     "900": "hsl(var(--orange-900))",
     "950": "hsl(var(--orange-950))",
   },
-  "pink": {
+  pink: {
     "50": "hsl(var(--pink-50))",
     "100": "hsl(var(--pink-100))",
     "200": "hsl(var(--pink-200))",
@@ -159,7 +159,7 @@ export const palette = {
     "900": "hsl(var(--pink-900))",
     "950": "hsl(var(--pink-950))",
   },
-  "purple": {
+  purple: {
     "50": "hsl(var(--purple-50))",
     "100": "hsl(var(--purple-100))",
     "200": "hsl(var(--purple-200))",
@@ -171,7 +171,7 @@ export const palette = {
     "800": "hsl(var(--purple-800))",
     "900": "hsl(var(--purple-900))",
   },
-  "red": {
+  red: {
     "50": "hsl(var(--red-50))",
     "100": "hsl(var(--red-100))",
     "200": "hsl(var(--red-200))",
@@ -184,7 +184,7 @@ export const palette = {
     "900": "hsl(var(--red-900))",
     "950": "hsl(var(--red-950))",
   },
-  "rose": {
+  rose: {
     "50": "hsl(var(--rose-50))",
     "100": "hsl(var(--rose-100))",
     "200": "hsl(var(--rose-200))",
@@ -197,7 +197,7 @@ export const palette = {
     "900": "hsl(var(--rose-900))",
     "950": "hsl(var(--rose-950))",
   },
-  "sky": {
+  sky: {
     "50": "hsl(var(--sky-50))",
     "100": "hsl(var(--sky-100))",
     "200": "hsl(var(--sky-200))",
@@ -210,7 +210,7 @@ export const palette = {
     "900": "hsl(var(--sky-900))",
     "950": "hsl(var(--sky-950))",
   },
-  "slate": {
+  slate: {
     "50": "hsl(var(--slate-50))",
     "100": "hsl(var(--slate-100))",
     "200": "hsl(var(--slate-200))",
@@ -223,7 +223,7 @@ export const palette = {
     "900": "hsl(var(--slate-900))",
     "950": "hsl(var(--slate-950))",
   },
-  "stone": {
+  stone: {
     "50": "hsl(var(--stone-50))",
     "100": "hsl(var(--stone-100))",
     "200": "hsl(var(--stone-200))",
@@ -236,7 +236,7 @@ export const palette = {
     "900": "hsl(var(--stone-900))",
     "950": "hsl(var(--stone-950))",
   },
-  "teal": {
+  teal: {
     "50": "hsl(var(--teal-50))",
     "100": "hsl(var(--teal-100))",
     "200": "hsl(var(--teal-200))",
@@ -249,7 +249,7 @@ export const palette = {
     "900": "hsl(var(--teal-900))",
     "950": "hsl(var(--teal-950))",
   },
-  "violet": {
+  violet: {
     "50": "hsl(var(--violet-50))",
     "100": "hsl(var(--violet-100))",
     "200": "hsl(var(--violet-200))",
@@ -262,7 +262,7 @@ export const palette = {
     "900": "hsl(var(--violet-900))",
     "950": "hsl(var(--violet-950))",
   },
-  "yellow": {
+  yellow: {
     "50": "hsl(var(--yellow-50))",
     "100": "hsl(var(--yellow-100))",
     "200": "hsl(var(--yellow-200))",
@@ -275,7 +275,7 @@ export const palette = {
     "900": "hsl(var(--yellow-900))",
     "950": "hsl(var(--yellow-950))",
   },
-  "zinc": {
+  zinc: {
     "50": "hsl(var(--zinc-50))",
     "100": "hsl(var(--zinc-100))",
     "200": "hsl(var(--zinc-200))",

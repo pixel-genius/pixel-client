@@ -1,30 +1,32 @@
 "use client";
 
-import { Typography } from "@repo/ui/components/atoms/typography";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-} from "@repo/ui/components/atoms/card";
-import {
-  Table,
-  TableHeader,
-  TableRow,
-  TableHead,
-  TableBody,
-  TableCell,
-} from "@repo/ui/components/atoms/table";
-import { Chip } from "@repo/ui/components/atoms/chip";
-import { Input } from "@repo/ui/components/molecules/input";
-import { Button } from "@repo/ui/components/atoms/button";
-import { useState } from "react";
 import {
   IconChevronRight,
   IconCornerLeftDown,
   IconCornerLeftUp,
   IconSearch,
 } from "@tabler/icons-react";
+
+import { useState } from "react";
+
+import { Button } from "@repo/ui/components/atoms/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@repo/ui/components/atoms/card";
+import { Chip } from "@repo/ui/components/atoms/chip";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@repo/ui/components/atoms/table";
+import { Typography } from "@repo/ui/components/atoms/typography";
+import { Input } from "@repo/ui/components/molecules/input";
 
 const summary = [
   {

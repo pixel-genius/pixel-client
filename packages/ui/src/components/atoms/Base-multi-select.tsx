@@ -9,9 +9,11 @@ import {
   XCircle,
   XIcon,
 } from "lucide-react";
+
 import * as React from "react";
 
 import { cn } from "@repo/ui/lib/utils";
+
 import { baseInputVariants } from "./base-input";
 import { Button } from "./button";
 import { Chip } from "./chip";
@@ -25,9 +27,9 @@ import {
   CommandList,
   CommandSeparator,
 } from "./command";
+import OrbitingDotsLoading from "./orbitingDotsLoading";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { Separator } from "./separator";
-import OrbitingDotsLoading from "./orbitingDotsLoading";
 
 /**
  * Props for MultiSelect component

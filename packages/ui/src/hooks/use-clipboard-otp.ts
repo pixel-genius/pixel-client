@@ -1,5 +1,6 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+
+import { useCallback, useEffect, useState } from "react";
 
 interface UseClipboardOtpOptions {
   /** Length of OTP code (default: 6) */

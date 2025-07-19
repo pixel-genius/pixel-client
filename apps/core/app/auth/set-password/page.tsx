@@ -1,27 +1,46 @@
 // import components
 "use client";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { REGEXP_ONLY_DIGITS } from "input-otp";
+import { toast } from "sonner";
+
+import { Suspense, useEffect } from "react";
+
+import { useForm } from "react-hook-form";
+
+import { useRouter, useSearchParams } from "next/navigation";
+
+import { postResetPasswordSchema } from "@repo/apis/core/accounts/users/reset-password/post/post-reset-password.schema";
+import type { PostResetPasswordRequest } from "@repo/apis/core/accounts/users/reset-password/post/post-reset-password.types";
+import { usePostResetPassword } from "@repo/apis/core/accounts/users/reset-password/post/use-post-reset-password";
 import { Button } from "@repo/ui/components/atoms/button";
-import { PasswordInput } from "@repo/ui/components/molecules/passwordInput";
-import { PasteOtpButton } from "@repo/ui/components/molecules/paste-otp-button";
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
 } from "@repo/ui/components/atoms/input-otp";
-import { REGEXP_ONLY_DIGITS } from "input-otp";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-
+import { PasswordInput } from "@repo/ui/components/molecules/passwordInput";
+import { PasteOtpButton } from "@repo/ui/components/molecules/paste-otp-button";
 import { useClipboardOtp } from "@repo/ui/hooks/use-clipboard-otp";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Suspense, useEffect } from "react";
 import AuthCard from "../_components/auth-card";
 
-import { postResetPasswordSchema } from "@repo/apis/core/accounts/users/reset-password/post/post-reset-password.schema";
-import { usePostResetPassword } from "@repo/apis/core/accounts/users/reset-password/post/use-post-reset-password";
-import type { PostResetPasswordRequest } from "@repo/apis/core/accounts/users/reset-password/post/post-reset-password.types";
+// import components
+
+// import components
+
+// import components
+
+// import components
+
+// import components
+
+// import components
+
+// import components
+
+// import components
 
 const SetPasswordPage = () => {
   const router = useRouter();

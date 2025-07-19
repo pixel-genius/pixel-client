@@ -1,7 +1,9 @@
 import { coreApi } from "#instance/core-api";
+import path from "path";
+
 import { ApiResponse } from "@repo/apis/types/api.types";
 import { requestHandler } from "@repo/apis/utils/request-handler";
-import path from "path";
+
 import { postUploadfileSchema as schema } from "./post-uploadfile.schema";
 import {
   PostUploadfileRequest,

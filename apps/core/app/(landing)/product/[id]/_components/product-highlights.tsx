@@ -1,5 +1,6 @@
-import { Typography } from "@repo/ui/components/atoms/typography";
 import { IconCheck } from "@tabler/icons-react";
+
+import { Typography } from "@repo/ui/components/atoms/typography";
 
 const HighlightItem = ({ text }: { text: string }) => (
   <div className="bg-gray-800 rounded-2xl p-4">

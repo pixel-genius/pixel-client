@@ -1,21 +1,22 @@
-import Heart1icon from "@repo/icons/heart";
-import Messagecircleicon from "@repo/icons/message-circle";
-import Shopingcartplusicon from "@repo/icons/shopping-cart-plus";
-import { SCROLL_TOP_RANGE } from "@repo/ui/components/molecules/parallax-scroll-effect";
-import { Button } from "@repo/ui/components/atoms/button";
-import { Typography } from "@repo/ui/components/atoms/typography";
-import { useScroll, useSpring, useTransform, motion } from "framer-motion";
 import {
   IconChevronDown,
   IconHeartFilled,
   IconMessage,
 } from "@tabler/icons-react";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+
+import Heart1icon from "@repo/icons/heart";
+import Messagecircleicon from "@repo/icons/message-circle";
+import Shopingcartplusicon from "@repo/icons/shopping-cart-plus";
+import { Button } from "@repo/ui/components/atoms/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@repo/ui/components/atoms/dropdown-menu";
+import { Typography } from "@repo/ui/components/atoms/typography";
+import { SCROLL_TOP_RANGE } from "@repo/ui/components/molecules/parallax-scroll-effect";
 
 const ProductFooter = () => {
   const { scrollYProgress } = useScroll();

@@ -1,11 +1,13 @@
+import { useMutation } from "@tanstack/react-query";
+
 import {
   ApiError,
   ApiResponse,
   UseMutationProps,
 } from "@repo/apis/types/api.types";
-import { useMutation } from "@tanstack/react-query";
+
 import { putProduct } from "./put-product";
-import {} from "./put-product.schema";
+import "./put-product.schema";
 import {
   PutProductRequest,
   PutProductResponseTransformed,

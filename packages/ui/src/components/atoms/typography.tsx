@@ -1,5 +1,7 @@
+import { VariantProps, cva } from "class-variance-authority";
+
 import React, { ElementType, PropsWithChildren, useMemo } from "react";
-import { cva, VariantProps } from "class-variance-authority";
+
 import { cn } from "./../../lib/utils";
 
 /**
@@ -133,5 +135,4 @@ const Typography: React.FC<TypographyProps> = ({
   );
 };
 
-
-export { Typography , typographyVariants };
+export { Typography, typographyVariants };

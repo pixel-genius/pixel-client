@@ -1,7 +1,9 @@
 "use client";
 
 import React from "react";
+
 import { cn } from "@repo/ui/lib/utils";
+
 import { HiddenModeTab, useTabStore } from "./tab-provider";
 
 type TabContentProps = {
@@ -34,5 +36,9 @@ export const TabContent = ({
 
   if (!isActive && hiddenMode === "unmount") return null;
 
-  return <div className={cn({ hidden: !isActive }, "whitespace-nowrap", className)}>{children}</div>;
+  return (
+    <div className={cn({ hidden: !isActive }, "whitespace-nowrap", className)}>
+      {children}
+    </div>
+  );
 };

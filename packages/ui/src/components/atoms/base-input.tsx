@@ -1,7 +1,8 @@
+import { type VariantProps, cva } from "class-variance-authority";
+
 import * as React from "react";
 
 import { cn } from "@repo/ui/lib/utils";
-import { cva, type VariantProps } from "class-variance-authority";
 
 export interface BaseInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,

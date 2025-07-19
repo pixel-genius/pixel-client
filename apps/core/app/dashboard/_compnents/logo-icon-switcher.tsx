@@ -1,6 +1,9 @@
-import * as React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
+import * as React from "react";
+
+// Logo
+import PixelIcon from "@repo/icons/pxiel";
 // UI components
 import {
   Sidebar,
@@ -12,9 +15,6 @@ import {
   SidebarProvider,
   useSidebar,
 } from "@repo/ui/components/molecules/sidebar";
-
-// Logo
-import PixelIcon from "@repo/icons/pxiel";
 import { cn } from "@repo/ui/lib/utils";
 
 export function LogoIconSwitcher() {

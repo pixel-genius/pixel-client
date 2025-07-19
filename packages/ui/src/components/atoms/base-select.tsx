@@ -1,10 +1,12 @@
 "use client";
 
-import * as React from "react";
 import * as BaseSelectPrimitive from "@radix-ui/react-select";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
 
+import * as React from "react";
+
 import { cn } from "@repo/ui/lib/utils";
+
 import { baseInputVariants } from "./base-input";
 import OrbitingDotsLoading from "./orbitingDotsLoading";
 

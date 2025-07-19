@@ -1,6 +1,8 @@
-import { Typography } from "@repo/ui/components/atoms/typography";
-import { PurchaseCard } from "../_components/PurchaseCard";
 import Image from "next/image";
+
+import { Typography } from "@repo/ui/components/atoms/typography";
+
+import { PurchaseCard } from "../_components/PurchaseCard";
 
 const Purchases = () => {
   // Sample purchase data

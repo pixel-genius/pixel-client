@@ -1,6 +1,7 @@
-import "@repo/ui/globals.scss";
 import type { Metadata } from "next";
 import Image from "next/image";
+
+import "@repo/ui/globals.scss";
 
 export const metadata: Metadata = {
   title: "Docs",

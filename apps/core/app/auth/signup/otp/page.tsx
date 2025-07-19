@@ -1,7 +1,8 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
+
 import AuthCard from "../../_components/auth-card";
 import { SignupOtpForm } from "./_components/signup-otp-form";
-import { redirect } from "next/navigation";
 
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;

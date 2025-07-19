@@ -1,13 +1,16 @@
 "use client";
 
-import Card from "./card";
-import { Button } from "@repo/ui/components/atoms/button";
-import Securityicon from "@repo/icons/security";
 import { useState } from "react";
-import CardSkeleton from "./card-cart-skeleton";
-import { useCartStore } from "../store/cart-store";
-import { Typography } from "@repo/ui/components/atoms/typography";
+
 import { useRouter } from "next/navigation";
+
+import Securityicon from "@repo/icons/security";
+import { Button } from "@repo/ui/components/atoms/button";
+import { Typography } from "@repo/ui/components/atoms/typography";
+
+import { useCartStore } from "../store/cart-store";
+import Card from "./card";
+import CardSkeleton from "./card-cart-skeleton";
 
 const Addtocard = () => {
   const { closeAddToCart } = useCartStore();

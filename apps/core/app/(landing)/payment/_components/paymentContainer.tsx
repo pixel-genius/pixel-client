@@ -1,14 +1,15 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
+import Subtotal from "./ordersummary";
 import PaymentOptionsList from "./paymentOption";
 import PaymentSettings from "./paymentSettings";
-import Subtotal from "./ordersummary";
 
 const PaymentContainer: React.FC = () => {
   // Payment option state
   const [selectedOption, setSelectedOption] = useState("Paypal");
-  
+
   // Payment settings state
   const [walletBalance, setWalletBalance] = useState(0);
   const [pixelBalance, setPixelBalance] = useState(0);
@@ -16,8 +17,8 @@ const PaymentContainer: React.FC = () => {
 
   // Initial items for the order summary
   const initialItems = [
-    { label: "Subtotal", amount: 100.00 },
-    { label: "Tax", amount: 10.00 }
+    { label: "Subtotal", amount: 100.0 },
+    { label: "Tax", amount: 10.0 },
   ];
 
   // Reset all payment settings when payment option changes
@@ -72,4 +73,4 @@ const PaymentContainer: React.FC = () => {
   );
 };
 
-export default PaymentContainer; 
+export default PaymentContainer;

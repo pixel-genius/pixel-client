@@ -1,7 +1,8 @@
-import { z } from "zod";
 import fs from "fs";
-import { resolveSchema } from "./resolve-schema";
+import { z } from "zod";
+
 import { resolveParameters } from "./resolve-parameters";
+import { resolveSchema } from "./resolve-schema";
 
 interface SwaggerSpec {
   paths: Record<string, any>;

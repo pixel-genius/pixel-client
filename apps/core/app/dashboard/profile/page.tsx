@@ -1,15 +1,18 @@
 "use client";
 
-import { AvatarFallback, Avatar } from "@repo/ui/components/atoms/avatar";
+import { IconCamera, IconSparkles } from "@tabler/icons-react";
+
+import { useRef, useState } from "react";
+
+import Link from "next/link";
+
+import { Avatar, AvatarFallback } from "@repo/ui/components/atoms/avatar";
+import { AvatarImage } from "@repo/ui/components/atoms/avatar";
+import { Button } from "@repo/ui/components/atoms/button";
+import { Switch } from "@repo/ui/components/atoms/switch";
+import { Textarea } from "@repo/ui/components/atoms/textarea";
 import { Typography } from "@repo/ui/components/atoms/typography";
 import { Input } from "@repo/ui/components/molecules/input";
-import { Textarea } from "@repo/ui/components/atoms/textarea";
-import { Switch } from "@repo/ui/components/atoms/switch";
-import { Button } from "@repo/ui/components/atoms/button";
-import Link from "next/link";
-import { AvatarImage } from "@repo/ui/components/atoms/avatar";
-import { IconCamera, IconSparkles } from "@tabler/icons-react";
-import { useState, useRef } from "react";
 
 const ProfilePage = () => {
   const [avatarSrc, setAvatarSrc] = useState("https://github.com/shadcn.png");

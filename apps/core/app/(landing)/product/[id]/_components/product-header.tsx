@@ -1,6 +1,7 @@
-import { Typography } from "@repo/ui/components/atoms/typography";
-import Instagram from "@repo/icons/instagram";
 import Chevronrighticon from "@repo/icons/chevron-right";
+import Instagram from "@repo/icons/instagram";
+import { Typography } from "@repo/ui/components/atoms/typography";
+
 import { DesignToolIcons } from "./design-tool-icons";
 import { ProductActions } from "./product-actions";
 

@@ -1,10 +1,12 @@
+import { useQuery } from "@tanstack/react-query";
+
 import {
   ApiError,
   ApiResponse,
   UseQueryProps,
   WithParams,
 } from "@repo/apis/types/api.types";
-import { useQuery } from "@tanstack/react-query";
+
 import { getShopProductList } from "./get-shop-product-list";
 import {
   GetShopProductListRequest,
@@ -21,9 +23,12 @@ export const getShopProductListQueryKey = () => ["getShopProductList"];
 export const UseGetShopProductList = (props: UseGetShopProductListProps) => {
   const { params, ...resProps } = props;
 
-  const query = useQuery<ApiResponse<GetShopProductListResponseTransformed>, ApiError>({
-  queryKey: getShopProductListQueryKey(),
-  queryFn: () => getShopProductList(params),
+  const query = useQuery<
+    ApiResponse<GetShopProductListResponseTransformed>,
+    ApiError
+  >({
+    queryKey: getShopProductListQueryKey(),
+    queryFn: () => getShopProductList(params),
     ...resProps,
   });
 

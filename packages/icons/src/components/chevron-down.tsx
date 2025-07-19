@@ -1,4 +1,5 @@
 import { IconProps } from "../types/types";
+
 const Chevrondownicon = (props: IconProps) => {
   const { size = 24, color = "currentColor", ...resProps } = props;
 

@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
-import AttachmentIcon from "@repo/icons/attachment";
-import { Button } from "../../../atoms/button";
 import { AnimatePresence } from "framer-motion";
+
+import AttachmentIcon from "@repo/icons/attachment";
+import { Typography } from "@repo/ui/components/atoms/typography";
+
+import { Button } from "../../../atoms/button";
 import { Card } from "../../../atoms/card";
 import { ScrollArea } from "../../../atoms/scroll-area";
 import { AttachmentProps, useAttachment } from "../useAttachment";
 import { AttachmentItem } from "./attachmentItem/attachmentItem";
-import { Typography } from "@repo/ui/components/atoms/typography";
 
 const AttachmentLanding = (props: AttachmentProps) => {
   const {

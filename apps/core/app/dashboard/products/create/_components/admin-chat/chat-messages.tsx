@@ -1,7 +1,9 @@
-import { useRef, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
-import { Message } from "./types";
+
+import { useEffect, useRef } from "react";
+
 import { MessageBubble } from "./message-bubble";
+import { Message } from "./types";
 import { TypingIndicator } from "./typing-indicator";
 
 interface ChatMessagesProps {

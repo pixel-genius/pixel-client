@@ -1,6 +1,7 @@
-import { cva, type VariantProps } from "class-variance-authority";
-import React from "react";
 import { Slot } from "@radix-ui/react-slot";
+import { type VariantProps, cva } from "class-variance-authority";
+
+import React from "react";
 
 const chipVariants = cva(
   "inline-flex gap-2 items-center justify-center disabled:bg-ring disabled:text-gray-400 whitespace-nowrap text-foreground rounded-lg bg-primary px-3 py-2 text-sm font-medium transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-50",

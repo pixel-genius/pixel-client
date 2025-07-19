@@ -1,22 +1,36 @@
 "use client";
 
-import { Typography } from "@repo/ui/components/atoms/typography";
 import {
-  Table,
-  TableHeader,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from "@repo/ui/components/atoms/table";
+  IconDotsVertical,
+  IconEdit,
+  IconEye,
+  IconHeart,
+  IconMessage,
+  IconPlus,
+  IconTrash,
+} from "@tabler/icons-react";
+
+import { useState } from "react";
+
+import Image from "next/image";
+import Link from "next/link";
+
+import { Button } from "@repo/ui/components/atoms/button";
 import { Chip } from "@repo/ui/components/atoms/chip";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@repo/ui/components/atoms/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@repo/ui/components/atoms/dropdown-menu";
-import { Button } from "@repo/ui/components/atoms/button";
 import {
   Pagination,
   PaginationContent,
@@ -27,25 +41,14 @@ import {
   PaginationPrevious,
 } from "@repo/ui/components/atoms/pagination";
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-} from "@repo/ui/components/atoms/dialog";
-import Link from "next/link";
-import {
-  IconDotsVertical,
-  IconHeart,
-  IconMessage,
-  IconEdit,
-  IconEye,
-  IconTrash,
-  IconPlus,
-} from "@tabler/icons-react";
-import Image from "next/image";
-import { useState } from "react";
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@repo/ui/components/atoms/table";
+import { Typography } from "@repo/ui/components/atoms/typography";
 
 const EmptyState = () => {
   return (

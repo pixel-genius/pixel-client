@@ -2,7 +2,6 @@ import Link from "next/link";
 
 // import components
 import AuthCard from "../_components/auth-card";
-
 // import icons
 import { LoginForm } from "./_components/form/loginForm";
 

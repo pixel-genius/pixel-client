@@ -1,5 +1,5 @@
-import { BackgroundLanding } from "../_components/background-landing";
 import { TextGenerateEffect } from "../_components/TextGenerateEffect";
+import { BackgroundLanding } from "../_components/background-landing";
 
 const words = `Find thousands of meticulously crafted resources by pixel geniuses to supercharge your creativity.`;
 

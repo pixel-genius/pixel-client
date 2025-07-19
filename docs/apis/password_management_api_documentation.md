@@ -1,9 +1,6 @@
-
-
 # Password Management API
 
-This document outlines the available endpoints for managing passwords, including **Forgot Password** (using OTP) and **Reset Password** APIs. 
-
+This document outlines the available endpoints for managing passwords, including **Forgot Password** (using OTP) and **Reset Password** APIs.
 
 ## Authentication
 
@@ -37,7 +34,7 @@ This endpoint handles the process of requesting and validating OTPs for resettin
 
 ```json
 {
-    "username": "john_doe"
+  "username": "john_doe"
 }
 ```
 
@@ -45,7 +42,7 @@ This endpoint handles the process of requesting and validating OTPs for resettin
 
 ```json
 {
-    "message": "OTP sent to your phone number."
+  "message": "OTP sent to your phone number."
 }
 ```
 
@@ -55,9 +52,9 @@ This endpoint handles the process of requesting and validating OTPs for resettin
 
 ```json
 {
-    "username": "john_doe",
-    "otp": "123456",
-    "new_password": "newpassword123"
+  "username": "john_doe",
+  "otp": "123456",
+  "new_password": "newpassword123"
 }
 ```
 
@@ -65,7 +62,7 @@ This endpoint handles the process of requesting and validating OTPs for resettin
 
 ```json
 {
-    "message": "Password updated successfully."
+  "message": "Password updated successfully."
 }
 ```
 
@@ -74,12 +71,12 @@ This endpoint handles the process of requesting and validating OTPs for resettin
 #### Error Responses:
 
 - **400 Bad Request**: If required parameters are missing or invalid, such as an incorrect OTP or invalid new password.
-  
+
   Example:
 
   ```json
   {
-      "message": "Invalid OTP."
+    "message": "Invalid OTP."
   }
   ```
 
@@ -89,7 +86,7 @@ This endpoint handles the process of requesting and validating OTPs for resettin
 
   ```json
   {
-      "message": "User not found."
+    "message": "User not found."
   }
   ```
 
@@ -99,7 +96,7 @@ This endpoint handles the process of requesting and validating OTPs for resettin
 
   ```json
   {
-      "message": "Wait 60 seconds before requesting a new OTP."
+    "message": "Wait 60 seconds before requesting a new OTP."
   }
   ```
 
@@ -120,8 +117,8 @@ This endpoint allows an authenticated user to reset their password by providing 
 
 ```json
 {
-    "current_password": "oldpassword123",
-    "new_password": "newpassword123"
+  "current_password": "oldpassword123",
+  "new_password": "newpassword123"
 }
 ```
 
@@ -129,7 +126,7 @@ This endpoint allows an authenticated user to reset their password by providing 
 
 ```json
 {
-    "message": "Password updated successfully."
+  "message": "Password updated successfully."
 }
 ```
 
@@ -138,12 +135,12 @@ This endpoint allows an authenticated user to reset their password by providing 
 #### Error Responses:
 
 - **400 Bad Request**: If the current password is incorrect or the new password does not meet validation requirements.
-  
+
   Example:
 
   ```json
   {
-      "message": "Invalid current password."
+    "message": "Invalid current password."
   }
   ```
 
@@ -153,7 +150,7 @@ This endpoint allows an authenticated user to reset their password by providing 
 
   ```json
   {
-      "message": "You do not have permission to perform this action."
+    "message": "You do not have permission to perform this action."
   }
   ```
 
@@ -161,8 +158,7 @@ This endpoint allows an authenticated user to reset their password by providing 
 
 ### URL Structure
 
-| Method | Endpoint               | Description                                  |
-|--------|------------------------|----------------------------------------------|
-| POST   | `/api/forgot-password/` | Request OTP and reset password via OTP       |
-| POST   | `/api/reset-password/`  | Reset password for authenticated users       |
-
+| Method | Endpoint                | Description                            |
+| ------ | ----------------------- | -------------------------------------- |
+| POST   | `/api/forgot-password/` | Request OTP and reset password via OTP |
+| POST   | `/api/reset-password/`  | Reset password for authenticated users |

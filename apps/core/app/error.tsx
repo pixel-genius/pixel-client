@@ -1,19 +1,20 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { useEffect } from "react"
+import { useEffect } from "react";
+
+import Link from "next/link";
 
 export default function Error({
   error,
   reset,
 }: {
-  error: Error & { digest?: string }
-  reset: () => void
+  error: Error & { digest?: string };
+  reset: () => void;
 }) {
   useEffect(() => {
     // Log the error to an error reporting service
-    console.error(error)
-  }, [error])
+    console.error(error);
+  }, [error]);
 
   return (
     <div className="container flex flex-col items-center justify-center min-h-screen gap-8">
@@ -27,16 +28,19 @@ export default function Error({
         </p>
       </div>
       <div className="flex gap-4">
-        <button 
-          onClick={() => reset()} 
+        <button
+          onClick={() => reset()}
           className="bg-primary text-primary-foreground px-4 py-2 rounded-md"
         >
           Try again
         </button>
-        <Link href="/" className="bg-secondary text-secondary-foreground px-4 py-2 rounded-md">
+        <Link
+          href="/"
+          className="bg-secondary text-secondary-foreground px-4 py-2 rounded-md"
+        >
           Go Home
         </Link>
       </div>
     </div>
-  )
-} 
+  );
+}

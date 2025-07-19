@@ -1,14 +1,14 @@
 import {
-  IconDeviceMobile,
-  IconUsersGroup,
-  IconEye,
-  IconCube,
-  IconVector,
   IconBox,
+  IconCube,
+  IconDeviceMobile,
+  IconDiamond,
+  IconEye,
   IconLayout,
   IconMessage,
   IconTypography,
-  IconDiamond,
+  IconUsersGroup,
+  IconVector,
 } from "@tabler/icons-react";
 
 const categories = [

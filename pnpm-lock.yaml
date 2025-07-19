@@ -17,6 +17,9 @@ importers:
       "@repo/typescript-config":
         specifier: workspace:*
         version: link:packages/typescript-config
+      "@trivago/prettier-plugin-sort-imports":
+        specifier: ^5.2.2
+        version: 5.2.2(prettier@3.6.2)
       bun:
         specifier: ^1.1.34
         version: 1.2.18
@@ -3102,6 +3105,25 @@ packages:
         integrity: sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==,
       }
 
+  "@trivago/prettier-plugin-sort-imports@5.2.2":
+    resolution:
+      {
+        integrity: sha512-fYDQA9e6yTNmA13TLVSA+WMQRc5Bn/c0EUBditUHNfMMxN7M82c38b1kEggVE3pLpZ0FwkwJkUEKMiOi52JXFA==,
+      }
+    engines: { node: ">18.12" }
+    peerDependencies:
+      "@vue/compiler-sfc": 3.x
+      prettier: 2.x - 3.x
+      prettier-plugin-svelte: 3.x
+      svelte: 4.x || 5.x
+    peerDependenciesMeta:
+      "@vue/compiler-sfc":
+        optional: true
+      prettier-plugin-svelte:
+        optional: true
+      svelte:
+        optional: true
+
   "@tsconfig/node10@1.0.11":
     resolution:
       {
@@ -4055,6 +4077,7 @@ packages:
       {
         integrity: sha512-OR+EpNckoJN4tHMVZPaTPxDj2RgpJgJwLruTIFYbO3bQMguLd0YrmkWKYqsiihcLgm2ehIjF/H1RLfZiRa7+qQ==,
       }
+    cpu: [arm64, x64, aarch64]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -6275,6 +6298,12 @@ packages:
     resolution:
       {
         integrity: sha512-OGlZQpz2yfahA/Rd1Y8Cd9SIEsqvXkLVoSw/cgwhnhFMDbsQFeZYoJJ7bIZBS9BcamUW96asq/npPWugM+RQBw==,
+      }
+
+  javascript-natural-sort@0.7.1:
+    resolution:
+      {
+        integrity: sha512-nO6jcEfZWQXDhOiBtG2KvKyEptz7RVbpGP4vTD2hLBdmNQSsCiicO2Ioinv6UI4y9ukqnBpy+XZ9H6uLNgJTlw==,
       }
 
   jiti@1.21.7:
@@ -10811,6 +10840,18 @@ snapshots:
 
   "@tootallnate/quickjs-emscripten@0.23.0": {}
 
+  "@trivago/prettier-plugin-sort-imports@5.2.2(prettier@3.6.2)":
+    dependencies:
+      "@babel/generator": 7.28.0
+      "@babel/parser": 7.28.0
+      "@babel/traverse": 7.28.0
+      "@babel/types": 7.28.0
+      javascript-natural-sort: 0.7.1
+      lodash: 4.17.21
+      prettier: 3.6.2
+    transitivePeerDependencies:
+      - supports-color
+
   "@tsconfig/node10@1.0.11": {}
 
   "@tsconfig/node12@1.0.11": {}
@@ -12915,6 +12956,8 @@ snapshots:
       "@isaacs/cliui": 8.0.2
     optionalDependencies:
       "@pkgjs/parseargs": 0.11.0
+
+  javascript-natural-sort@0.7.1: {}
 
   jiti@1.21.7: {}
 

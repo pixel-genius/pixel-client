@@ -1,8 +1,11 @@
+import { EyeClosed, EyeIcon } from "lucide-react";
+
 import * as React from "react";
-import { EyeIcon, EyeClosed } from "lucide-react";
+
 import { cn } from "@repo/ui/lib/utils";
-import { Input } from "./input";
+
 import { Button } from "../atoms/button";
+import { Input } from "./input";
 import { textFieldProps } from "./input";
 
 const PasswordInput = React.forwardRef<HTMLInputElement, textFieldProps>(

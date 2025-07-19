@@ -1,19 +1,25 @@
 "use client";
+
 import { zodResolver } from "@hookform/resolvers/zod";
+
+import { useState } from "react";
+
+import { useForm } from "react-hook-form";
+
+import Image from "next/image";
+
 import { postBecomeAutherSchema } from "@repo/apis/core/accounts/request-author/post/post-become-auther.schema";
 import { PostBecomeAutherRequest } from "@repo/apis/core/accounts/request-author/post/post-become-auther.types";
 import { usePostBecomeAuther } from "@repo/apis/core/accounts/request-author/post/use-post-become-auther";
 import { Button } from "@repo/ui/components/atoms/button";
-import { Typography } from "@repo/ui/components/atoms/typography";
-import { Input } from "@repo/ui/components/molecules/input";
 import { Label } from "@repo/ui/components/atoms/label";
 import { Textarea } from "@repo/ui/components/atoms/textarea";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { Typography } from "@repo/ui/components/atoms/typography";
+import { Input } from "@repo/ui/components/molecules/input";
+
+import BecomeAnAuthorimage from "../../_assets/be.svg";
 import { AutherLayout } from "./auther-layout";
 import AutherResult from "./auther-result";
-import Image from "next/image";
-import BecomeAnAuthorimage from "../../_assets/be.svg";
 import Vector3d from "./vector3d";
 
 const AutherForm = () => {

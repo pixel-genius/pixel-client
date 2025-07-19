@@ -1,24 +1,26 @@
 "use client";
 
-import { Typography } from "@repo/ui/components/atoms/typography";
+import {
+  Bar,
+  BarChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+
+import React from "react";
+
 import Infocircleicon from "@repo/icons/info-circle";
 import {
   Card,
+  CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardContent,
 } from "@repo/ui/components/atoms/card";
 import { ChartContainer } from "@repo/ui/components/atoms/chart";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
-import React from "react";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import { Select } from "@repo/ui/components/molecules/select";
 
 const earningsDataYear = [

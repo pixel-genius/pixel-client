@@ -1,10 +1,11 @@
-import PixelIcon from "@repo/icons/pxiel";
 import Image from "next/image";
 
-// icons
-import LayoutDashboard from "../../../../../packages/icons/src/components/layout-dashboard";
+import PixelIcon from "@repo/icons/pxiel";
+
 import BoxPackage from "../../../../../packages/icons/src/components/box-package";
 import ChartBarPopular from "../../../../../packages/icons/src/components/chart-bar-popular";
+// icons
+import LayoutDashboard from "../../../../../packages/icons/src/components/layout-dashboard";
 import ReportMoney from "../../../../../packages/icons/src/components/report-money";
 
 const DASHBOARD_SIDEBAR_ITEMS = [

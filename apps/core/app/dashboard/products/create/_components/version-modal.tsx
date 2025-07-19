@@ -1,5 +1,12 @@
 "use client";
 
+import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
+import { Dot } from "lucide-react";
+
+import { Dispatch, SetStateAction, useCallback, useEffect } from "react";
+
+import { useForm } from "react-hook-form";
+
 import Infosquareroundedicon from "@repo/icons/info-square-rounded";
 import { Button } from "@repo/ui/components/atoms/button";
 import {
@@ -17,10 +24,6 @@ import {
 import { Switch } from "@repo/ui/components/atoms/switch";
 import { Textarea } from "@repo/ui/components/atoms/textarea";
 import { Typography } from "@repo/ui/components/atoms/typography";
-import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
-import { Dispatch, SetStateAction, useCallback, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { Dot } from "lucide-react";
 
 interface VersionModalProps {
   open: boolean;

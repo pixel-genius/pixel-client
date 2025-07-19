@@ -1,4 +1,4 @@
-*Pixel Genius Authentication API Documentation*
+_Pixel Genius Authentication API Documentation_
 
 ---
 
@@ -11,6 +11,7 @@
 This API allows users to authenticate using their username and password. Optionally, if OTP verification is enabled, the user must also provide a valid OTP to complete the login process. If no OTP is provided and OTP verification is enabled, the system will generate an OTP and send it to the user’s registered phone number.
 
 **Request Body:**
+
 ```json
 {
   "username": "string",
@@ -22,8 +23,9 @@ This API allows users to authenticate using their username and password. Optiona
 **Response Scenarios:**
 
 - **Success with OTP Verification Disabled**:  
-  *Status*: `200 OK`  
-  *Response*:
+  _Status_: `200 OK`  
+  _Response_:
+
   ```json
   {
     "refresh": "refresh_token_here",
@@ -32,8 +34,9 @@ This API allows users to authenticate using their username and password. Optiona
   ```
 
 - **Invalid Credentials**:  
-  *Status*: `401 Unauthorized`  
-  *Response*:
+  _Status_: `401 Unauthorized`  
+  _Response_:
+
   ```json
   {
     "message": "Invalid credentials."
@@ -41,8 +44,9 @@ This API allows users to authenticate using their username and password. Optiona
   ```
 
 - **OTP Required (when OTP is enabled)**:  
-  *Status*: `200 OK`  
-  *Response*:
+  _Status_: `200 OK`  
+  _Response_:
+
   ```json
   {
     "message": "OTP sent to your phone number."
@@ -50,8 +54,9 @@ This API allows users to authenticate using their username and password. Optiona
   ```
 
 - **Invalid OTP**:  
-  *Status*: `400 Bad Request`  
-  *Response*:
+  _Status_: `400 Bad Request`  
+  _Response_:
+
   ```json
   {
     "message": "Invalid OTP."
@@ -59,8 +64,8 @@ This API allows users to authenticate using their username and password. Optiona
   ```
 
 - **OTP Resend Too Soon**:  
-  *Status*: `429 Too Many Requests`  
-  *Response*:
+  _Status_: `429 Too Many Requests`  
+  _Response_:
   ```json
   {
     "message": "Wait X seconds before requesting a new OTP."
@@ -69,8 +74,8 @@ This API allows users to authenticate using their username and password. Optiona
 
 **Usage:**
 
-- *First Login Attempt*: Submit `username` and `password`. If OTP is required, you’ll get a response telling you the OTP has been sent. You should prompt the user to enter the OTP.
-- *OTP Verification*: On receiving the OTP, call the API again with the same `username`, `password`, and the `otp` field filled.
+- _First Login Attempt_: Submit `username` and `password`. If OTP is required, you’ll get a response telling you the OTP has been sent. You should prompt the user to enter the OTP.
+- _OTP Verification_: On receiving the OTP, call the API again with the same `username`, `password`, and the `otp` field filled.
 
 ---
 
@@ -83,6 +88,7 @@ This API allows users to authenticate using their username and password. Optiona
 Logs out the user by blacklisting the provided refresh token.
 
 **Request Body:**
+
 ```json
 {
   "refresh": "refresh_token_here"
@@ -92,7 +98,7 @@ Logs out the user by blacklisting the provided refresh token.
 **Response:**
 
 - **Success**:  
-  *Status*: `205 Reset Content`  
+  _Status_: `205 Reset Content`  
   No content.
 
 ---
@@ -106,6 +112,7 @@ Logs out the user by blacklisting the provided refresh token.
 Generates a new access token using a valid refresh token.
 
 **Request Body:**
+
 ```json
 {
   "refresh": "refresh_token_here"
@@ -115,8 +122,8 @@ Generates a new access token using a valid refresh token.
 **Response:**
 
 - **Success**:  
-  *Status*: `200 OK`  
-  *Response*:
+  _Status_: `200 OK`  
+  _Response_:
   ```json
   {
     "access": "new_access_token_here"
@@ -133,7 +140,7 @@ Send this request when the access token has expired and a new one is required wi
 - **Access Token**: Expires in 5 minutes.
 - **Refresh Token**: Expires in 1 day.
 
-*Note*: These values may change in the future.
+_Note_: These values may change in the future.
 
 ---
 
@@ -142,4 +149,3 @@ Send this request when the access token has expired and a new one is required wi
 - **Token Storage**: Store the `access` and `refresh` tokens securely (e.g., `localStorage`, `sessionStorage`, or a secure cookie).
 - **Token Usage**: Attach the `access` token to the `Authorization` header (e.g., `Bearer access_token_here`) when making authenticated requests to other endpoints.
 - **Token Refresh**: Use the `/accounts/refresh/` API to get a new access token before the current one expires.
-

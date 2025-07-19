@@ -1,23 +1,26 @@
-import { Typography } from "@repo/ui/components/atoms/typography";
-import {
-  Table,
-  TableHeader,
-  TableBody,
-  TableRow,
-  TableHead,
-  TableCell,
-} from "@repo/ui/components/atoms/table";
-import { Input } from "@repo/ui/components/molecules/input";
+import { Search } from "lucide-react";
+
 import { Chip } from "@repo/ui/components/atoms/chip";
 import {
   Pagination,
   PaginationContent,
   PaginationItem,
   PaginationLink,
-  PaginationPrevious,
   PaginationNext,
+  PaginationPrevious,
 } from "@repo/ui/components/atoms/pagination";
-import { Search } from "lucide-react"; // Or your icon library
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@repo/ui/components/atoms/table";
+import { Typography } from "@repo/ui/components/atoms/typography";
+import { Input } from "@repo/ui/components/molecules/input";
+
+// Or your icon library
 
 const salesData = [
   {

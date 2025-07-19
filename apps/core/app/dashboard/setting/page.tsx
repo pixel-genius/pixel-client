@@ -1,12 +1,14 @@
 "use client";
 
+import { FormProvider, useForm } from "react-hook-form";
+
 import { Button } from "@repo/ui/components/atoms/button";
-import { Input } from "@repo/ui/components/molecules/input";
 import { Separator } from "@repo/ui/components/atoms/separator";
 import { Switch } from "@repo/ui/components/atoms/switch";
 import { Typography } from "@repo/ui/components/atoms/typography";
+import { Input } from "@repo/ui/components/molecules/input";
+
 import { AddWallet } from "../_compnents/add-wallet";
-import { FormProvider, useForm } from "react-hook-form";
 
 const SettingPage = () => {
   const methods = useForm({

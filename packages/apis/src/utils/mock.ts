@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { ApiResponse } from "../types/api.types";
 
 interface GenerateMockResponseProps<T>

@@ -1,9 +1,11 @@
+import Link from "next/link";
+
 import Instagram from "@repo/icons/instagram";
 import PixelIcon from "@repo/icons/pxiel";
 import Twitter from "@repo/icons/twitter";
 import YouTubeIcon from "@repo/icons/youtube";
+
 import Linkedinicon from "../../../../packages/icons/src/components/linkedin";
-import Link from "next/link";
 import Navbar from "./_components/desktop-navbar/navbar";
 import HamburgerMenu from "./_components/mobile-menu/hamburger-menu";
 import MenuNavigation from "./_components/mobile-menu/menu-navigation";
