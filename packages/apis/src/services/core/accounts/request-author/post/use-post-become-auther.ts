@@ -6,12 +6,12 @@ import {
   UseMutationProps,
 } from "@repo/apis/types/api.types";
 
-import { postBecomeAuther } from "./post-become-auther";
-import "./post-become-auther.schema";
 import {
   PostBecomeAutherRequest,
   PostBecomeAutherResponseTransformed,
 } from "./post-become-auther.types";
+import { postBecomeAuther } from "./post-become-auther";
+import "./post-become-auther.schema";
 
 export type UsePostBecomeAutherProps = UseMutationProps<
   ApiResponse<PostBecomeAutherResponseTransformed>,

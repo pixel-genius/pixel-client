@@ -1,14 +1,14 @@
 import { coreApi } from "#instance/core-api";
 import path from "path";
 
-import { ApiResponse } from "@repo/apis/types/api.types";
 import { requestHandler } from "@repo/apis/utils/request-handler";
+import { ApiResponse } from "@repo/apis/types/api.types";
 
-import { postUploadfileSchema as schema } from "./post-uploadfile.schema";
 import {
   PostUploadfileRequest,
   PostUploadfileResponseTransformed,
 } from "./post-uploadfile.types";
+import { postUploadfileSchema as schema } from "./post-uploadfile.schema";
 
 export const postUploadfileURL = () => path.join("/base/upload/");
 

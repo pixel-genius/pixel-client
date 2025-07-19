@@ -1,25 +1,12 @@
 "use client";
 
-import { Slot } from "@radix-ui/react-slot";
 import { VariantProps, cva } from "class-variance-authority";
+import { Slot } from "@radix-ui/react-slot";
 
 import * as React from "react";
 
 import Link from "next/link";
 
-import Bellicon from "@repo/icons/bell";
-import Doorexiticon from "@repo/icons/door-exit";
-import MenuIcon from "@repo/icons/menu";
-import Moonicon from "@repo/icons/moon";
-import Settingsicon from "@repo/icons/settings";
-import Shoppingbagicon from "@repo/icons/shopping-bag";
-import Usercircleicon from "@repo/icons/user-circle";
-import Useractionpixelicon from "@repo/icons/useractionpixel";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@repo/ui/components/atoms/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,19 +15,32 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@repo/ui/components/atoms/dropdown-menu";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@repo/ui/components/atoms/avatar";
+import Useractionpixelicon from "@repo/icons/useractionpixel";
+import Shoppingbagicon from "@repo/icons/shopping-bag";
+import Usercircleicon from "@repo/icons/user-circle";
+import Doorexiticon from "@repo/icons/door-exit";
+import Settingsicon from "@repo/icons/settings";
 import { cn } from "@repo/ui/lib/utils";
+import Moonicon from "@repo/icons/moon";
+import MenuIcon from "@repo/icons/menu";
+import Bellicon from "@repo/icons/bell";
 
-import { useIsMobile } from "../../hooks/use-mobile";
-import { Button } from "../atoms/button";
-import { Separator } from "../atoms/separator";
-import { Sheet, SheetContent } from "../atoms/sheet";
-import { Skeleton } from "../atoms/skeleton";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "../atoms/tooltip";
+import { useIsMobile } from "../../hooks/use-mobile";
+import { Sheet, SheetContent } from "../atoms/sheet";
+import { Separator } from "../atoms/separator";
+import { Skeleton } from "../atoms/skeleton";
+import { Button } from "../atoms/button";
 import { Input } from "./input";
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state";

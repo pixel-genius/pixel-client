@@ -2,20 +2,20 @@
 
 import { useRef } from "react";
 
+import { ParallaxScrollEffect } from "@repo/ui/components/molecules/parallax-scroll-effect";
 import { CustomCursor } from "@repo/ui/components/atoms/custom-cursor";
 import { Typography } from "@repo/ui/components/atoms/typography";
-import { ParallaxScrollEffect } from "@repo/ui/components/molecules/parallax-scroll-effect";
 
-import CommentSection from "./_components/comment-section";
-import { DesignToolIcons } from "./_components/design-tool-icons";
-import InfiniteLoop from "./_components/infinite-loop";
-import ProductFooter from "./_components/product-footer";
-import ProductGallery from "./_components/product-gallery";
-import { ProductHeader } from "./_components/product-header";
 import { ProductHighlights } from "./_components/product-highlights";
-import { ProductPreview } from "./_components/product-preview";
+import { DesignToolIcons } from "./_components/design-tool-icons";
 import { ProductSummary } from "./_components/product-summary";
+import { ProductPreview } from "./_components/product-preview";
+import { ProductHeader } from "./_components/product-header";
+import ProductGallery from "./_components/product-gallery";
+import CommentSection from "./_components/comment-section";
+import ProductFooter from "./_components/product-footer";
 import { ProductTags } from "./_components/product-tags";
+import InfiniteLoop from "./_components/infinite-loop";
 
 export default function Example() {
   const targetRef = useRef<HTMLDivElement>(null!);

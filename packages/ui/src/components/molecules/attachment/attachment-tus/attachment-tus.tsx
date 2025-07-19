@@ -2,13 +2,13 @@
 
 import { useEffect, useRef } from "react";
 
-import { PixelImgIcon } from "@repo/icons/pixel-img";
-import { PixelZipIcon } from "@repo/icons/pixel-zip";
 import { Typography } from "@repo/ui/components/atoms/typography";
+import { PixelZipIcon } from "@repo/icons/pixel-zip";
+import { PixelImgIcon } from "@repo/icons/pixel-img";
 import { cn } from "@repo/ui/lib/utils";
 
-import { AttachmentTusItem } from "./attachment-tus-item";
 import { CompletedUpload, useTusUploadManager } from "./use-tus-upload-manager";
+import { AttachmentTusItem } from "./attachment-tus-item";
 
 interface AttachmentTusProps {
   endpoint?: string;

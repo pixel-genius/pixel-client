@@ -11,7 +11,6 @@ import {
 
 import React from "react";
 
-import Infocircleicon from "@repo/icons/info-circle";
 import {
   Card,
   CardContent,
@@ -19,9 +18,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@repo/ui/components/atoms/card";
-import { ChartContainer } from "@repo/ui/components/atoms/chart";
 import { Typography } from "@repo/ui/components/atoms/typography";
+import { ChartContainer } from "@repo/ui/components/atoms/chart";
 import { Select } from "@repo/ui/components/molecules/select";
+import Infocircleicon from "@repo/icons/info-circle";
 
 const earningsDataYear = [
   { name: "Jan", earnings: 10 },

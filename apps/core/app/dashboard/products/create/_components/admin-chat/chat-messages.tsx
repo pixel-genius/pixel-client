@@ -2,9 +2,9 @@ import { AnimatePresence } from "framer-motion";
 
 import { useEffect, useRef } from "react";
 
+import { TypingIndicator } from "./typing-indicator";
 import { MessageBubble } from "./message-bubble";
 import { Message } from "./types";
-import { TypingIndicator } from "./typing-indicator";
 
 interface ChatMessagesProps {
   messages: Message[];

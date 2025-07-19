@@ -7,18 +7,18 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import PixelIcon from "@repo/icons/pxiel";
-import SearchIcon from "@repo/icons/serach";
-import XIcon from "@repo/icons/x";
 import { BaseInput } from "@repo/ui/components/atoms/base-input";
 import { Chip } from "@repo/ui/components/atoms/chip";
+import SearchIcon from "@repo/icons/serach";
+import PixelIcon from "@repo/icons/pxiel";
 import { cn } from "@repo/ui/lib/utils";
+import XIcon from "@repo/icons/x";
 
-import earth from "../../_assets/earth.svg";
-import { useMegaMenuStore } from "../../store/mega-menu";
 import { BrowseMegaMenu } from "../browseMegaMenu/browse-mega-menu";
 import ShoppingBagDropdown from "../shopping-bag-dropdown";
+import { useMegaMenuStore } from "../../store/mega-menu";
 import FeaturesNavbar from "./features-navbar";
+import earth from "../../_assets/earth.svg";
 import NavbarLinks from "./navbar-links";
 
 const Navbar = ({ islogin }: { islogin: boolean }) => {

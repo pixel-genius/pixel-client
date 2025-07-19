@@ -6,12 +6,12 @@ import type {
   UseMutationProps,
 } from "@repo/apis/types/api.types";
 
-import { postForgetPassword } from "./post-forget-password";
-import "./post-forget-password.schema";
 import type {
   PostForgetPasswordRequest,
   PostForgetPasswordResponseTransformed,
 } from "./post-forget-password.types";
+import { postForgetPassword } from "./post-forget-password";
+import "./post-forget-password.schema";
 
 export type UsePostForgetPasswordProps = UseMutationProps<
   ApiResponse<PostForgetPasswordResponseTransformed>,

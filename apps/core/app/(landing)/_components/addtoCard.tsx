@@ -4,13 +4,13 @@ import { useState } from "react";
 
 import { useRouter } from "next/navigation";
 
-import Securityicon from "@repo/icons/security";
-import { Button } from "@repo/ui/components/atoms/button";
 import { Typography } from "@repo/ui/components/atoms/typography";
+import { Button } from "@repo/ui/components/atoms/button";
+import Securityicon from "@repo/icons/security";
 
 import { useCartStore } from "../store/cart-store";
-import Card from "./card";
 import CardSkeleton from "./card-cart-skeleton";
+import Card from "./card";
 
 const Addtocard = () => {
   const { closeAddToCart } = useCartStore();

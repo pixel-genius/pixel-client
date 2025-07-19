@@ -6,11 +6,11 @@ import type {
   UseMutationProps,
 } from "@repo/apis/types/api.types";
 
-import { postLogin } from "./post-login";
 import type {
   PostLoginRequest,
   PostLoginResponseTransformed,
 } from "./post-login.types";
+import { postLogin } from "./post-login";
 
 export type UsePostLoginProps = UseMutationProps<
   ApiResponse<PostLoginResponseTransformed>,

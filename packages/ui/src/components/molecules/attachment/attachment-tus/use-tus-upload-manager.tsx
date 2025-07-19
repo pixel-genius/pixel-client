@@ -1,8 +1,8 @@
 "use client";
 
-import * as tus from "tus-js-client";
 import { DetailedError } from "tus-js-client";
 import { UploadOptions } from "tus-js-client";
+import * as tus from "tus-js-client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
 

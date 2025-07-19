@@ -6,12 +6,12 @@ import type {
   UseMutationProps,
 } from "@repo/apis/types/api.types";
 
-import { postVerifyOtp } from "./post-verify-otp";
-import "./post-verify-otp.schema";
 import type {
   PostVerifyOtpRequest,
   PostVerifyOtpResponseTransformed,
 } from "./post-verify-otp.types";
+import { postVerifyOtp } from "./post-verify-otp";
+import "./post-verify-otp.schema";
 
 export type UsePostVerifyOtpProps = UseMutationProps<
   ApiResponse<PostVerifyOtpResponseTransformed>,

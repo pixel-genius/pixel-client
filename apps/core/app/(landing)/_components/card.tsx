@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import Removeicon from "@repo/icons/remove";
 import { Typography } from "@repo/ui/components/atoms/typography";
+import Removeicon from "@repo/icons/remove";
 
 interface CardProps {
   id: number;

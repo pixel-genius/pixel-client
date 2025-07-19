@@ -1,12 +1,12 @@
 import { AnimatePresence, motion } from "framer-motion";
 
-import AttachmentIcon2 from "@repo/icons/attachment2";
 import { Typography } from "@repo/ui/components/atoms/typography";
+import AttachmentIcon2 from "@repo/icons/attachment2";
 
-import { Card } from "../../../atoms/card";
-import { ScrollArea } from "../../../atoms/scroll-area";
 import { AttachmentProps, useAttachment } from "../useAttachment";
 import { AttachmentItem } from "./attachmentItem/attachmentItem";
+import { ScrollArea } from "../../../atoms/scroll-area";
+import { Card } from "../../../atoms/card";
 
 const AttachmentAdmin = (props: AttachmentProps) => {
   const { title, multiple = false, maxSize = 10, allowedTypes } = props;

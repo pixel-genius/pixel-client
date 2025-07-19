@@ -11,18 +11,18 @@ import { useForm } from "react-hook-form";
 
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { postResetPasswordSchema } from "@repo/apis/core/accounts/users/reset-password/post/post-reset-password.schema";
 import type { PostResetPasswordRequest } from "@repo/apis/core/accounts/users/reset-password/post/post-reset-password.types";
+import { postResetPasswordSchema } from "@repo/apis/core/accounts/users/reset-password/post/post-reset-password.schema";
 import { usePostResetPassword } from "@repo/apis/core/accounts/users/reset-password/post/use-post-reset-password";
-import { Button } from "@repo/ui/components/atoms/button";
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
 } from "@repo/ui/components/atoms/input-otp";
-import { PasswordInput } from "@repo/ui/components/molecules/passwordInput";
 import { PasteOtpButton } from "@repo/ui/components/molecules/paste-otp-button";
+import { PasswordInput } from "@repo/ui/components/molecules/passwordInput";
 import { useClipboardOtp } from "@repo/ui/hooks/use-clipboard-otp";
+import { Button } from "@repo/ui/components/atoms/button";
 
 import AuthCard from "../_components/auth-card";
 

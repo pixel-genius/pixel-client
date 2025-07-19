@@ -2,8 +2,8 @@ import Link from "next/link";
 
 import { Typography } from "@repo/ui/components/atoms/typography";
 
-import { useCartStore } from "./../../store/cart-store";
 import { useMegaMenuStore } from "./../../store/mega-menu";
+import { useCartStore } from "./../../store/cart-store";
 
 const NavbarLinks = () => {
   const { toggleOpenMegaMenu } = useMegaMenuStore();

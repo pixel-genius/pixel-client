@@ -1,5 +1,5 @@
-import * as fs from "fs";
 import * as path from "path";
+import * as fs from "fs";
 
 // Paths for token files
 const tokensDir = path.join(__dirname, "../tokens");

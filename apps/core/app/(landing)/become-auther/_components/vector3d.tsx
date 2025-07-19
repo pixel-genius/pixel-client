@@ -1,8 +1,8 @@
 import Image from "next/image";
 
+import { CardBody, CardContainer, CardItem } from "./3d-card";
 import BecomeAnAuthorimage from "../../_assets/be.svg";
 import logoBrand from "../../_assets/logo-brand.svg";
-import { CardBody, CardContainer, CardItem } from "./3d-card";
 
 const Vector3d = () => {
   return (

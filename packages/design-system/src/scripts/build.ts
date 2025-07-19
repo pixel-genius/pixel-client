@@ -1,9 +1,9 @@
-import { buildColorsScss } from "./build-colors-style";
-import { buildColorsTailwind } from "./build-colors-tailwind";
-import { buildTailwindConfig } from "./build-config-tailwind";
-import { buildMainScss } from "./build-main-style";
-import { buildPaletteScss } from "./build-palette-style";
 import { buildPaletteTailwind } from "./build-palette-tailwind";
+import { buildTailwindConfig } from "./build-config-tailwind";
+import { buildColorsTailwind } from "./build-colors-tailwind";
+import { buildPaletteScss } from "./build-palette-style";
+import { buildColorsScss } from "./build-colors-style";
+import { buildMainScss } from "./build-main-style";
 
 const main = () => {
   try {

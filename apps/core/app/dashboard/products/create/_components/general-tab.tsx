@@ -1,10 +1,10 @@
 import { Separator } from "@repo/ui/components/atoms/separator";
 import { Input } from "@repo/ui/components/molecules/input";
 
+import { ProductTabContentLayout } from "./product-tab-content-layout";
 import { FileFormatSection } from "./file-format-section";
 import { HighlightSection } from "./highlight-section";
 import PriceSection from "./price-section";
-import { ProductTabContentLayout } from "./product-tab-content-layout";
 
 export const GeneralTab = () => {
   return (

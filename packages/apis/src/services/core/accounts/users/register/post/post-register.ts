@@ -1,14 +1,14 @@
 import { coreApi } from "#instance/core-api";
 import path from "path";
 
-import type { ApiResponse } from "@repo/apis/types/api.types";
 import { requestHandler } from "@repo/apis/utils/request-handler";
+import type { ApiResponse } from "@repo/apis/types/api.types";
 
-import { postRegisterSchema as schema } from "./post-register.schema";
 import type {
   PostRegisterRequest,
   PostRegisterResponseTransformed,
 } from "./post-register.types";
+import { postRegisterSchema as schema } from "./post-register.schema";
 
 export const postRegisterURL = () => path.join("/accounts/users/");
 

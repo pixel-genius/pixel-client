@@ -1,14 +1,14 @@
 import { coreApi } from "#instance/core-api";
 import path from "path";
 
-import { ApiResponse } from "@repo/apis/types/api.types";
 import { requestHandler } from "@repo/apis/utils/request-handler";
+import { ApiResponse } from "@repo/apis/types/api.types";
 
-import { postRefreshTokenSchema as schema } from "./post-refresh-token.schema";
 import {
   PostRefreshTokenRequest,
   PostRefreshTokenResponseTransformed,
 } from "./post-refresh-token.types";
+import { postRefreshTokenSchema as schema } from "./post-refresh-token.schema";
 
 export const postRefreshTokenURL = () => path.join("/accounts/refresh");
 

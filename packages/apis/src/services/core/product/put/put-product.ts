@@ -1,14 +1,14 @@
 import { coreApi } from "#instance/core-api";
 import path from "path";
 
-import { ApiResponse } from "@repo/apis/types/api.types";
 import { requestHandler } from "@repo/apis/utils/request-handler";
+import { ApiResponse } from "@repo/apis/types/api.types";
 
-import { putProductSchema as schema } from "./put-product.schema";
 import {
   PutProductRequest,
   PutProductResponseTransformed,
 } from "./put-product.types";
+import { putProductSchema as schema } from "./put-product.schema";
 
 export const putProductURL = () => path.join("/api/product");
 

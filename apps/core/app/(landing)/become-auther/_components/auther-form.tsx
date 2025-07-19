@@ -11,11 +11,11 @@ import Image from "next/image";
 import { postBecomeAutherSchema } from "@repo/apis/core/accounts/request-author/post/post-become-auther.schema";
 import { PostBecomeAutherRequest } from "@repo/apis/core/accounts/request-author/post/post-become-auther.types";
 import { usePostBecomeAuther } from "@repo/apis/core/accounts/request-author/post/use-post-become-auther";
+import { Typography } from "@repo/ui/components/atoms/typography";
+import { Textarea } from "@repo/ui/components/atoms/textarea";
+import { Input } from "@repo/ui/components/molecules/input";
 import { Button } from "@repo/ui/components/atoms/button";
 import { Label } from "@repo/ui/components/atoms/label";
-import { Textarea } from "@repo/ui/components/atoms/textarea";
-import { Typography } from "@repo/ui/components/atoms/typography";
-import { Input } from "@repo/ui/components/molecules/input";
 
 import BecomeAnAuthorimage from "../../_assets/be.svg";
 import { AutherLayout } from "./auther-layout";

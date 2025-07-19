@@ -5,8 +5,8 @@ import * as React from "react";
 import { cn } from "@repo/ui/lib/utils";
 
 import { Button } from "../atoms/button";
-import { Input } from "./input";
 import { textFieldProps } from "./input";
+import { Input } from "./input";
 
 const PasswordInput = React.forwardRef<HTMLInputElement, textFieldProps>(
   ({ className, id, label, error, helperText, ...props }, ref) => {

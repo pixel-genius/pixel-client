@@ -4,9 +4,9 @@ import Image from "next/image";
 
 import { Button } from "@repo/ui/components/atoms/button";
 
-import QRCode from "../../_assets/QRcod.svg";
 import TronLinkIcon from "../../_assets/TronLink.svg";
 import TrustIcon from "../../_assets/Trus.svg";
+import QRCode from "../../_assets/QRcod.svg";
 
 type PaymentFormProps = {
   paymentOption: string;

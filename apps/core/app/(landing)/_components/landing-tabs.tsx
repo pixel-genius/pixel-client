@@ -1,8 +1,8 @@
-import { ProductCard } from "@repo/ui/components/molecules/prodoct-card";
-import { TabContent } from "@repo/ui/components/molecules/tabs/tab-content";
-import { TabList } from "@repo/ui/components/molecules/tabs/tab-list";
 import { TabProvider } from "@repo/ui/components/molecules/tabs/tab-provider";
 import { TabTrigger } from "@repo/ui/components/molecules/tabs/tab-trigger";
+import { TabContent } from "@repo/ui/components/molecules/tabs/tab-content";
+import { ProductCard } from "@repo/ui/components/molecules/prodoct-card";
+import { TabList } from "@repo/ui/components/molecules/tabs/tab-list";
 
 import {
   ProductList3D,

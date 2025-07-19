@@ -1,10 +1,10 @@
-import { motion } from "framer-motion";
 import { Loader, Trash2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 import Image from "next/image";
 
-import { Button } from "../../../../atoms/button";
 import { Typography } from "../../../../atoms/typography";
+import { Button } from "../../../../atoms/button";
 import { FileState } from "../../useAttachment";
 
 interface AttachmentItemProps {

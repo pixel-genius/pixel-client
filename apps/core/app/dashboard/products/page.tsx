@@ -15,8 +15,15 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Button } from "@repo/ui/components/atoms/button";
-import { Chip } from "@repo/ui/components/atoms/chip";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@repo/ui/components/atoms/pagination";
 import {
   Dialog,
   DialogContent,
@@ -32,15 +39,6 @@ import {
   DropdownMenuTrigger,
 } from "@repo/ui/components/atoms/dropdown-menu";
 import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@repo/ui/components/atoms/pagination";
-import {
   Table,
   TableBody,
   TableCell,
@@ -49,6 +47,8 @@ import {
   TableRow,
 } from "@repo/ui/components/atoms/table";
 import { Typography } from "@repo/ui/components/atoms/typography";
+import { Button } from "@repo/ui/components/atoms/button";
+import { Chip } from "@repo/ui/components/atoms/chip";
 
 const EmptyState = () => {
   return (

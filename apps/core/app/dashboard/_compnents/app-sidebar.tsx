@@ -3,13 +3,6 @@
 import * as React from "react";
 
 //icons
-import BoxPackage from "@repo/icons/box-package";
-import ChartBarPopular from "@repo/icons/chart-bar-popular";
-import LayoutDashboard from "@repo/icons/layout-dashboard";
-import ReportMoney from "@repo/icons/report-money";
-//components sidebar
-import Settingsicon from "@repo/icons/settings";
-import Usericon from "@repo/icons/user";
 //components ui
 import {
   Sidebar,
@@ -22,10 +15,17 @@ import {
   SidebarRail,
   useSidebar,
 } from "@repo/ui/components/molecules/sidebar";
+import ChartBarPopular from "@repo/icons/chart-bar-popular";
+import LayoutDashboard from "@repo/icons/layout-dashboard";
+import ReportMoney from "@repo/icons/report-money";
+import BoxPackage from "@repo/icons/box-package";
+//components sidebar
+import Settingsicon from "@repo/icons/settings";
+import Usericon from "@repo/icons/user";
 
+import { WalletBalanceCard } from "./wallet-balance-card";
 import { LogoIconSwitcher } from "./logo-icon-switcher";
 import { NavMain } from "./nav-main";
-import { WalletBalanceCard } from "./wallet-balance-card";
 
 // This is items of dashboard.
 const data = {

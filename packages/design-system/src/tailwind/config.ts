@@ -1,5 +1,5 @@
-import { colors } from "./colors";
 import { palette } from "./palette";
+import { colors } from "./colors";
 
 export const tailwindConfig = {
   theme: {

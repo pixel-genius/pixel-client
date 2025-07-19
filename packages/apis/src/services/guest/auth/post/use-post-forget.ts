@@ -6,12 +6,12 @@ import {
   UseMutationProps,
 } from "@repo/apis/types/api.types";
 
-import { postForget } from "./post-forget";
-import "./post-forget.schema";
 import {
   PostForgetRequest,
   PostForgetResponseTransformed,
 } from "./post-forget.types";
+import { postForget } from "./post-forget";
+import "./post-forget.schema";
 
 export type UsePostForgetProps = UseMutationProps<
   ApiResponse<PostForgetResponseTransformed>,

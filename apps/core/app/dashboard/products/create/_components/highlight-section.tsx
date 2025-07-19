@@ -4,9 +4,9 @@ import { useFieldArray, useFormContext } from "react-hook-form";
 
 import Image from "next/image";
 
-import { Button } from "@repo/ui/components/atoms/button";
 import { Typography } from "@repo/ui/components/atoms/typography";
 import { Input } from "@repo/ui/components/molecules/input";
+import { Button } from "@repo/ui/components/atoms/button";
 
 export const HighlightSection = () => {
   const { control, register } = useFormContext();

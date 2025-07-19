@@ -2,9 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 
-import Subtotal from "./ordersummary";
 import PaymentOptionsList from "./paymentOption";
 import PaymentSettings from "./paymentSettings";
+import Subtotal from "./ordersummary";
 
 const PaymentContainer: React.FC = () => {
   // Payment option state

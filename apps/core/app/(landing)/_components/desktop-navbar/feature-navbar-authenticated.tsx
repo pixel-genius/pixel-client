@@ -1,16 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import Doorexiticon from "@repo/icons/Doorexiticon";
-import Settingsicon from "@repo/icons/Settingsicon";
-import Usercircleicon from "@repo/icons/Usercircleicon";
-import Heart1icon from "@repo/icons/heart";
-import Useractionpixelicon from "@repo/icons/useractionpixel";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@repo/ui/components/atoms/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,6 +9,16 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@repo/ui/components/atoms/dropdown-menu";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@repo/ui/components/atoms/avatar";
+import Useractionpixelicon from "@repo/icons/useractionpixel";
+import Usercircleicon from "@repo/icons/Usercircleicon";
+import Settingsicon from "@repo/icons/Settingsicon";
+import Doorexiticon from "@repo/icons/Doorexiticon";
+import Heart1icon from "@repo/icons/heart";
 
 import { useMegaMenuStore } from "./../../store/mega-menu";
 

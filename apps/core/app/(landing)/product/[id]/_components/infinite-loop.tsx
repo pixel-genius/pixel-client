@@ -5,8 +5,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 import Adobexdicon from "@repo/icons/adobexd";
-import Figmaicon from "@repo/icons/figma";
 import Sketchicon from "@repo/icons/sketch";
+import Figmaicon from "@repo/icons/figma";
 
 const DesignToolIcon = ({
   icon: Icon,

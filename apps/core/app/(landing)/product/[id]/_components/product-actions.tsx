@@ -4,8 +4,6 @@ import {
   IconMessage,
 } from "@tabler/icons-react";
 
-import Shopingcartplusicon from "@repo/icons/shopping-cart-plus";
-import { Button } from "@repo/ui/components/atoms/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,6 +11,8 @@ import {
   DropdownMenuTrigger,
 } from "@repo/ui/components/atoms/dropdown-menu";
 import { Typography } from "@repo/ui/components/atoms/typography";
+import Shopingcartplusicon from "@repo/icons/shopping-cart-plus";
+import { Button } from "@repo/ui/components/atoms/button";
 
 export const ProductActions = () => {
   return (

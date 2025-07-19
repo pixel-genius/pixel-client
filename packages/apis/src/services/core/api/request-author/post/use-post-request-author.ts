@@ -6,12 +6,12 @@ import {
   UseMutationProps,
 } from "@repo/apis/types/api.types";
 
-import { postRequestAuthor } from "./post-request-author";
-import "./post-request-author.schema";
 import {
   PostRequestAuthorRequest,
   PostRequestAuthorResponseTransformed,
 } from "./post-request-author.types";
+import { postRequestAuthor } from "./post-request-author";
+import "./post-request-author.schema";
 
 export type UsePostRequestAuthorProps = UseMutationProps<
   ApiResponse<PostRequestAuthorResponseTransformed>,

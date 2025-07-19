@@ -2,9 +2,9 @@ import { IconDownload } from "@tabler/icons-react";
 
 import Image from "next/image";
 
-import { Button } from "@repo/ui/components/atoms/button";
 import { Typography } from "@repo/ui/components/atoms/typography";
 import { Select } from "@repo/ui/components/molecules/select";
+import { Button } from "@repo/ui/components/atoms/button";
 
 interface PurchaseCardProps {
   title: string;

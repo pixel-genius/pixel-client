@@ -3,8 +3,8 @@ import { Send } from "lucide-react";
 
 import { useEffect, useRef } from "react";
 
-import { Button } from "@repo/ui/components/atoms/button";
 import { Input } from "@repo/ui/components/molecules/input";
+import { Button } from "@repo/ui/components/atoms/button";
 import { cn } from "@repo/ui/lib/utils";
 
 interface ChatInputProps {

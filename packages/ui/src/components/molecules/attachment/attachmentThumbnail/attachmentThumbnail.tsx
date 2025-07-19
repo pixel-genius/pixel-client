@@ -7,13 +7,13 @@ import { useState } from "react";
 
 import Image from "next/image";
 
-import AttachmentIcon2 from "@repo/icons/attachment2";
-import Avatar from "@repo/icons/avatar";
-import Refresh from "@repo/icons/refresh";
 import { Typography } from "@repo/ui/components/atoms/typography";
+import AttachmentIcon2 from "@repo/icons/attachment2";
+import Refresh from "@repo/icons/refresh";
+import Avatar from "@repo/icons/avatar";
 
-import { Card } from "../../../atoms/card";
 import { AttachmentProps, useAttachment } from "../useAttachment";
+import { Card } from "../../../atoms/card";
 
 export type AttachmentThumbnailProps = AttachmentProps & {
   avatar?: string;

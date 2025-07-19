@@ -2,14 +2,14 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 import { Fragment, ReactNode } from "react";
 
-import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Inter } from "next/font/google";
+import type { Metadata } from "next";
 
 import { ApiProvider } from "@repo/apis/providers/api-provider";
 import { Toaster } from "@repo/ui/components/atoms/sonner";
-import "@repo/ui/globals.scss";
 import { cn } from "@repo/ui/lib/utils";
+import "@repo/ui/globals.scss";
 
 import { ReactScan } from "./_components/react-scan";
 

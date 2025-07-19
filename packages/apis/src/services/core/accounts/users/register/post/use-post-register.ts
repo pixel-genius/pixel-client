@@ -6,11 +6,11 @@ import type {
   UseMutationProps,
 } from "@repo/apis/types/api.types";
 
-import { postRegister } from "./post-register";
 import type {
   PostRegisterRequest,
   PostRegisterResponseTransformed,
 } from "./post-register.types";
+import { postRegister } from "./post-register";
 
 export type UsePostRegisterProps = UseMutationProps<
   ApiResponse<PostRegisterResponseTransformed>,

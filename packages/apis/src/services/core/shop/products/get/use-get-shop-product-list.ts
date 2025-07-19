@@ -7,11 +7,11 @@ import {
   WithParams,
 } from "@repo/apis/types/api.types";
 
-import { getShopProductList } from "./get-shop-product-list";
 import {
   GetShopProductListRequest,
   GetShopProductListResponseTransformed,
 } from "./get-shop-product-list.types";
+import { getShopProductList } from "./get-shop-product-list";
 
 export type UseGetShopProductListProps = UseQueryProps<
   ApiResponse<GetShopProductListResponseTransformed>,

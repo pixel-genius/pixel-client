@@ -7,8 +7,6 @@ import { Dispatch, SetStateAction, useCallback, useEffect } from "react";
 
 import { useForm } from "react-hook-form";
 
-import Infosquareroundedicon from "@repo/icons/info-square-rounded";
-import { Button } from "@repo/ui/components/atoms/button";
 import {
   Dialog,
   DialogClose,
@@ -21,9 +19,11 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@repo/ui/components/atoms/input-otp";
-import { Switch } from "@repo/ui/components/atoms/switch";
-import { Textarea } from "@repo/ui/components/atoms/textarea";
+import Infosquareroundedicon from "@repo/icons/info-square-rounded";
 import { Typography } from "@repo/ui/components/atoms/typography";
+import { Textarea } from "@repo/ui/components/atoms/textarea";
+import { Switch } from "@repo/ui/components/atoms/switch";
+import { Button } from "@repo/ui/components/atoms/button";
 
 interface VersionModalProps {
   open: boolean;

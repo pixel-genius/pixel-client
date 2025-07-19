@@ -1,14 +1,14 @@
 import { guestApi } from "#instance/guest-api";
 import path from "path";
 
-import { ApiResponse } from "@repo/apis/types/api.types";
 import { requestHandler } from "@repo/apis/utils/request-handler";
+import { ApiResponse } from "@repo/apis/types/api.types";
 
-import { postForgetSchema as schema } from "./post-forget.schema";
 import {
   PostForgetRequest,
   PostForgetResponseTransformed,
 } from "./post-forget.types";
+import { postForgetSchema as schema } from "./post-forget.schema";
 
 export const postForgetURL = () => path.join("/api/auth");
 

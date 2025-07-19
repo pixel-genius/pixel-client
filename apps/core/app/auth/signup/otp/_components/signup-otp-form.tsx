@@ -10,11 +10,9 @@ import { useForm } from "react-hook-form";
 
 import { useRouter } from "next/navigation";
 
-import { postVerifyOtpSchema } from "@repo/apis/core/accounts/users/verify_otp/post/post-verify-otp.schema";
 import type { PostVerifyOtpRequest } from "@repo/apis/core/accounts/users/verify_otp/post/post-verify-otp.types";
+import { postVerifyOtpSchema } from "@repo/apis/core/accounts/users/verify_otp/post/post-verify-otp.schema";
 import { usePostVerifyOtp } from "@repo/apis/core/accounts/users/verify_otp/post/use-post-verify-otp";
-import { setAuthTokens } from "@repo/apis/utils/cookies";
-import { Countdown } from "@repo/ui/components/atoms/countdown";
 import {
   InputOTP,
   InputOTPGroup,
@@ -22,6 +20,8 @@ import {
 } from "@repo/ui/components/atoms/input-otp";
 import { PasteOtpButton } from "@repo/ui/components/molecules/paste-otp-button";
 import { useClipboardOtp } from "@repo/ui/hooks/use-clipboard-otp";
+import { Countdown } from "@repo/ui/components/atoms/countdown";
+import { setAuthTokens } from "@repo/apis/utils/cookies";
 
 // import components
 

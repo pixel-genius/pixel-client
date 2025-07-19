@@ -6,12 +6,12 @@ import type {
   UseMutationProps,
 } from "@repo/apis/types/api.types";
 
-import { postResetPassword } from "./post-reset-password";
-import "./post-reset-password.schema";
 import type {
   PostResetPasswordRequest,
   PostResetPasswordResponseTransformed,
 } from "./post-reset-password.types";
+import { postResetPassword } from "./post-reset-password";
+import "./post-reset-password.schema";
 
 export type UsePostResetPasswordProps = UseMutationProps<
   ApiResponse<PostResetPasswordResponseTransformed>,

@@ -7,16 +7,16 @@ import { Suspense, useEffect } from "react";
 
 import { useForm } from "react-hook-form";
 
-import Link from "next/link";
 // import icons
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-import { postRegisterSchema } from "@repo/apis/core/accounts/users/register/post/post-register.schema";
 import type { PostRegisterRequest } from "@repo/apis/core/accounts/users/register/post/post-register.types";
+import { postRegisterSchema } from "@repo/apis/core/accounts/users/register/post/post-register.schema";
 import { usePostRegister } from "@repo/apis/core/accounts/users/register/post/use-post-register";
-import { Button } from "@repo/ui/components/atoms/button";
-import { Input } from "@repo/ui/components/molecules/input";
 import { useQueryParams } from "@repo/ui/hooks/use-query-params";
+import { Input } from "@repo/ui/components/molecules/input";
+import { Button } from "@repo/ui/components/atoms/button";
 
 import AuthCard from "../_components/auth-card";
 

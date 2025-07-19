@@ -1,6 +1,5 @@
 import { Search } from "lucide-react";
 
-import { Chip } from "@repo/ui/components/atoms/chip";
 import {
   Pagination,
   PaginationContent,
@@ -19,6 +18,7 @@ import {
 } from "@repo/ui/components/atoms/table";
 import { Typography } from "@repo/ui/components/atoms/typography";
 import { Input } from "@repo/ui/components/molecules/input";
+import { Chip } from "@repo/ui/components/atoms/chip";
 
 // Or your icon library
 

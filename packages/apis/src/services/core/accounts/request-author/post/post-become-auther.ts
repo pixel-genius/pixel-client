@@ -1,14 +1,14 @@
 import { coreApi } from "#instance/core-api";
 import path from "path";
 
-import { ApiResponse } from "@repo/apis/types/api.types";
 import { requestHandler } from "@repo/apis/utils/request-handler";
+import { ApiResponse } from "@repo/apis/types/api.types";
 
-import { postBecomeAutherSchema as schema } from "./post-become-auther.schema";
 import {
   PostBecomeAutherRequest,
   PostBecomeAutherResponseTransformed,
 } from "./post-become-auther.types";
+import { postBecomeAutherSchema as schema } from "./post-become-auther.schema";
 
 export const postBecomeAutherURL = () =>
   path.join("/api//accounts/request-author/");

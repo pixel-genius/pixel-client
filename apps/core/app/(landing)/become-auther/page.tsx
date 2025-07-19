@@ -1,10 +1,10 @@
 // accordion imports
 import Image from "next/image";
 
-import BecomeAnAuthorimage from "../_assets/be.svg";
-import logoBrand from "../_assets/logo-brand.svg";
 import { CardBody, CardContainer, CardItem } from "./_components/3d-card";
+import BecomeAnAuthorimage from "../_assets/be.svg";
 import AutherForm from "./_components/auther-form";
+import logoBrand from "../_assets/logo-brand.svg";
 import Vector3d from "./_components/vector3d";
 
 const BecomeAuther = () => {

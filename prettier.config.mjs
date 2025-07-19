@@ -3,17 +3,23 @@
  * @type {import("prettier").Config}
  */
 const config = {
-  plugins: ["@trivago/prettier-plugin-sort-imports"],
+  plugins: ["prettier-plugin-sort-imports"],
   importOrder: [
     "^react$",
     "^react-(.*)$",
     "^next(.*)$",
-    "^@/(.*)$",
+    "^@repo/ui(.*)$",
+    "^@repo/icons(.*)$",
     "^@repo/(.*)$",
+    "^@/(.*)$",
     "^[./]",
   ],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
+  importOrderBuiltinModulesToTop: true,
+  importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
+  importOrderMergeDuplicateImports: true,
+  importOrderCombineTypeAndValueImports: true,
   overrides: [
     {
       files: "*.hbs",

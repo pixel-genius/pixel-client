@@ -1,6 +1,5 @@
 "use client";
 
-import type { VariantProps } from "class-variance-authority";
 import {
   CheckIcon,
   ChevronDown,
@@ -9,15 +8,12 @@ import {
   XCircle,
   XIcon,
 } from "lucide-react";
+import type { VariantProps } from "class-variance-authority";
 
 import * as React from "react";
 
 import { cn } from "@repo/ui/lib/utils";
 
-import { baseInputVariants } from "./base-input";
-import { Button } from "./button";
-import { Chip } from "./chip";
-import type { chipVariants } from "./chip";
 import {
   Command,
   CommandEmpty,
@@ -27,9 +23,13 @@ import {
   CommandList,
   CommandSeparator,
 } from "./command";
-import OrbitingDotsLoading from "./orbitingDotsLoading";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
+import OrbitingDotsLoading from "./orbitingDotsLoading";
+import { baseInputVariants } from "./base-input";
+import type { chipVariants } from "./chip";
 import { Separator } from "./separator";
+import { Button } from "./button";
+import { Chip } from "./chip";
 
 /**
  * Props for MultiSelect component

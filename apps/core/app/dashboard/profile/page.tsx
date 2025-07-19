@@ -7,12 +7,12 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 
 import { Avatar, AvatarFallback } from "@repo/ui/components/atoms/avatar";
-import { AvatarImage } from "@repo/ui/components/atoms/avatar";
-import { Button } from "@repo/ui/components/atoms/button";
-import { Switch } from "@repo/ui/components/atoms/switch";
-import { Textarea } from "@repo/ui/components/atoms/textarea";
 import { Typography } from "@repo/ui/components/atoms/typography";
+import { AvatarImage } from "@repo/ui/components/atoms/avatar";
+import { Textarea } from "@repo/ui/components/atoms/textarea";
 import { Input } from "@repo/ui/components/molecules/input";
+import { Switch } from "@repo/ui/components/atoms/switch";
+import { Button } from "@repo/ui/components/atoms/button";
 
 const ProfilePage = () => {
   const [avatarSrc, setAvatarSrc] = useState("https://github.com/shadcn.png");

@@ -6,12 +6,12 @@ import {
   UseMutationProps,
 } from "@repo/apis/types/api.types";
 
-import { putProduct } from "./put-product";
-import "./put-product.schema";
 import {
   PutProductRequest,
   PutProductResponseTransformed,
 } from "./put-product.types";
+import { putProduct } from "./put-product";
+import "./put-product.schema";
 
 export type UsePutProductProps = UseMutationProps<
   ApiResponse<PutProductResponseTransformed>,

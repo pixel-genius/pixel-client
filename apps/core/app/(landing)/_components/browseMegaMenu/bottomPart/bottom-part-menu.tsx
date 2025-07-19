@@ -1,13 +1,13 @@
-import IllustratorIcon from "@repo/icons/Illustrator";
-import Adobexdicon from "@repo/icons/adobexd";
+import { Typography } from "@repo/ui/components/atoms/typography";
 import AfterEffecticon from "@repo/icons/after-effects";
-import Belendericon from "@repo/icons/belender";
+import IllustratorIcon from "@repo/icons/Illustrator";
+import Photoshopicon from "@repo/icons/photoshop";
 import Cinema4DIcon from "@repo/icons/cinema4D";
+import Belendericon from "@repo/icons/belender";
+import Adobexdicon from "@repo/icons/adobexd";
+import Sketchicon from "@repo/icons/sketch";
 import Framericon from "@repo/icons/framer";
 import Htmlicon from "@repo/icons/html";
-import Photoshopicon from "@repo/icons/photoshop";
-import Sketchicon from "@repo/icons/sketch";
-import { Typography } from "@repo/ui/components/atoms/typography";
 
 const BottomPartMenu = () => {
   return (

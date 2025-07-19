@@ -6,8 +6,8 @@ import * as React from "react";
 
 import { cn } from "@repo/ui/lib/utils";
 
-import { Label } from "../atoms/label";
 import { Typography } from "../atoms/typography";
+import { Label } from "../atoms/label";
 
 export interface LabelWraperProps
   extends React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> {

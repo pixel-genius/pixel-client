@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 
-import { Button } from "@repo/ui/components/atoms/button";
 import { Typography } from "@repo/ui/components/atoms/typography";
 import { Input } from "@repo/ui/components/molecules/input";
+import { Button } from "@repo/ui/components/atoms/button";
 
-import Cartitem from "./_components/cart-item";
-import Subtotal from "./_components/ordersummary";
-import PaymentForm from "./_components/payment-form";
 import PaymentOptionsList from "./_components/paymentOption";
 import PaymentSettings from "./_components/paymentSettings";
+import PaymentForm from "./_components/payment-form";
+import Subtotal from "./_components/ordersummary";
+import Cartitem from "./_components/cart-item";
 
 const PixelPayment = () => {
   const [selectedPaymentOption, setSelectedPaymentOption] = useState("Paypal");

@@ -7,11 +7,11 @@ import {
   WithParams,
 } from "@repo/apis/types/api.types";
 
-import { getProductVersionList } from "./get-product-version-list";
 import {
   GetProductVersionListRequest,
   GetProductVersionListResponseTransformed,
 } from "./get-product-version-list.types";
+import { getProductVersionList } from "./get-product-version-list";
 
 export type UseGetProductVersionListProps = UseQueryProps<
   ApiResponse<GetProductVersionListResponseTransformed>,

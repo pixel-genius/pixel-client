@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { Typography } from "@repo/ui/components/atoms/typography";
 
 import { AdminAvatar } from "./admin-avatar";
-import { Message } from "./types";
 import { UserAvatar } from "./user-avatar";
+import { Message } from "./types";
 
 interface MessageBubbleProps {
   message: Message;

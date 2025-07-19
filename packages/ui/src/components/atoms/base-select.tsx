@@ -7,8 +7,8 @@ import * as React from "react";
 
 import { cn } from "@repo/ui/lib/utils";
 
-import { baseInputVariants } from "./base-input";
 import OrbitingDotsLoading from "./orbitingDotsLoading";
+import { baseInputVariants } from "./base-input";
 
 const BaseSelect = BaseSelectPrimitive.Root;
 

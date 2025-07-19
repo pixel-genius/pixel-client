@@ -1,15 +1,15 @@
 import { coreApi } from "#instance/core-api";
 import path from "path";
 
-import { ApiResponse } from "@repo/apis/types/api.types";
 import { requestHandler } from "@repo/apis/utils/request-handler";
+import { ApiResponse } from "@repo/apis/types/api.types";
 
-import { getShopProductListSchema as schema } from "./get-shop-product-list.schema";
 import {
   GetShopProductListRequest,
   GetShopProductListResponse,
   GetShopProductListResponseTransformed,
 } from "./get-shop-product-list.types";
+import { getShopProductListSchema as schema } from "./get-shop-product-list.schema";
 
 const getShopProductListURL = () => path.join("/shop/products/");
 

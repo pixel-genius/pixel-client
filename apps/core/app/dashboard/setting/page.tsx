@@ -2,11 +2,11 @@
 
 import { FormProvider, useForm } from "react-hook-form";
 
-import { Button } from "@repo/ui/components/atoms/button";
-import { Separator } from "@repo/ui/components/atoms/separator";
-import { Switch } from "@repo/ui/components/atoms/switch";
 import { Typography } from "@repo/ui/components/atoms/typography";
+import { Separator } from "@repo/ui/components/atoms/separator";
 import { Input } from "@repo/ui/components/molecules/input";
+import { Switch } from "@repo/ui/components/atoms/switch";
+import { Button } from "@repo/ui/components/atoms/button";
 
 import { AddWallet } from "../_compnents/add-wallet";
 

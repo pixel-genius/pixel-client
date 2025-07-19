@@ -2,8 +2,8 @@
 
 import { DollarSign } from "lucide-react";
 
-import { Typography } from "@repo/ui/components/atoms/typography";
 import { MultiSelect } from "@repo/ui/components/molecules/multi-select";
+import { Typography } from "@repo/ui/components/atoms/typography";
 
 const Page = () => {
   const frameworksList = [

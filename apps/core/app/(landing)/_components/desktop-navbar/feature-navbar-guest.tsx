@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import IconShoppingBag from "@repo/icons/shopping-bag";
 import { Typography } from "@repo/ui/components/atoms/typography";
+import IconShoppingBag from "@repo/icons/shopping-bag";
 
 import { useCartStore } from "./../../store/cart-store";
 

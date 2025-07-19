@@ -1,8 +1,8 @@
 import { ZodTypeAny, z } from "zod";
 
 import { ApiResponse } from "../types/api.types";
-import delay from "./delay";
 import { generateMockResponse } from "./mock";
+import delay from "./delay";
 
 export type RequestHandlerOptions = {
   isMock?: boolean;

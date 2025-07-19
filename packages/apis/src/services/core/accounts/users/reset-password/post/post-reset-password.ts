@@ -1,14 +1,14 @@
 import { coreApi } from "#instance/core-api";
 import path from "path";
 
-import type { ApiResponse } from "@repo/apis/types/api.types";
 import { requestHandler } from "@repo/apis/utils/request-handler";
+import type { ApiResponse } from "@repo/apis/types/api.types";
 
-import { postResetPasswordSchema as schema } from "./post-reset-password.schema";
 import type {
   PostResetPasswordRequest,
   PostResetPasswordResponseTransformed,
 } from "./post-reset-password.types";
+import { postResetPasswordSchema as schema } from "./post-reset-password.schema";
 
 export const postResetPasswordURL = () =>
   path.join("accounts/users/reset-password/");

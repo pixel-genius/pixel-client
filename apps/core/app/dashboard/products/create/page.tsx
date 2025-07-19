@@ -2,17 +2,17 @@
 
 import { FormProvider, useForm } from "react-hook-form";
 
-import { Button } from "@repo/ui/components/atoms/button";
-import { TabContent } from "@repo/ui/components/molecules/tabs/tab-content";
-import { TabList } from "@repo/ui/components/molecules/tabs/tab-list";
 import { TabProvider } from "@repo/ui/components/molecules/tabs/tab-provider";
 import { TabTrigger } from "@repo/ui/components/molecules/tabs/tab-trigger";
+import { TabContent } from "@repo/ui/components/molecules/tabs/tab-content";
+import { TabList } from "@repo/ui/components/molecules/tabs/tab-list";
+import { Button } from "@repo/ui/components/atoms/button";
 
 import { AdminChatTab } from "./_components/admin-chat/admin-chat-tab";
-import { FilesTab } from "./_components/files-tab";
+import { VersionTab } from "./_components/version-tab";
 import { GeneralTab } from "./_components/general-tab";
 import { ImagesTab } from "./_components/images-tab";
-import { VersionTab } from "./_components/version-tab";
+import { FilesTab } from "./_components/files-tab";
 
 const CreateProductPage = () => {
   const methods = useForm<{ price: string; discount: number | null }>();

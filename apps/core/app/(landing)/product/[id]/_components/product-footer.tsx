@@ -5,18 +5,18 @@ import {
 } from "@tabler/icons-react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
-import Heart1icon from "@repo/icons/heart";
-import Messagecircleicon from "@repo/icons/message-circle";
-import Shopingcartplusicon from "@repo/icons/shopping-cart-plus";
-import { Button } from "@repo/ui/components/atoms/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@repo/ui/components/atoms/dropdown-menu";
-import { Typography } from "@repo/ui/components/atoms/typography";
 import { SCROLL_TOP_RANGE } from "@repo/ui/components/molecules/parallax-scroll-effect";
+import { Typography } from "@repo/ui/components/atoms/typography";
+import Shopingcartplusicon from "@repo/icons/shopping-cart-plus";
+import Messagecircleicon from "@repo/icons/message-circle";
+import { Button } from "@repo/ui/components/atoms/button";
+import Heart1icon from "@repo/icons/heart";
 
 const ProductFooter = () => {
   const { scrollYProgress } = useScroll();
