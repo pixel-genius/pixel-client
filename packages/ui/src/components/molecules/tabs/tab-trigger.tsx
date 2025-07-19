@@ -13,16 +13,6 @@ import { useTabStore } from "./tab-provider";
 
 /* eslint-disable no-unused-vars */
 
-/* eslint-disable no-unused-vars */
-
-/* eslint-disable no-unused-vars */
-
-/* eslint-disable no-unused-vars */
-
-/* eslint-disable no-unused-vars */
-
-/* eslint-disable no-unused-vars */
-
 export const DEFAULT_TAB_ID = "tab";
 
 export const tabTriggerVariants = cva(

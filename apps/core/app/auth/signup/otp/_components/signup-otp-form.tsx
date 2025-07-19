@@ -27,24 +27,6 @@ import { useClipboardOtp } from "@repo/ui/hooks/use-clipboard-otp";
 
 // import components
 
-// import components
-
-// import components
-
-// import components
-
-// import components
-
-// import components
-
-// import components
-
-// import components
-
-// import components
-
-// import components
-
 export interface SignupOtpFormProps {
   username: string | undefined;
 }

@@ -2,7 +2,8 @@
   "name": "@repo/design-system",
   "version": "1.0.0",
   "scripts": {
-    "build": "ts-node src/scripts/build.ts"
+    "build": "ts-node src/scripts/build.ts && cd ../.. && pnpm format",
+    "build:no-format": "ts-node src/scripts/build.ts"
   },
   "exports": {
     "./styles": "./src/styles/main.scss",

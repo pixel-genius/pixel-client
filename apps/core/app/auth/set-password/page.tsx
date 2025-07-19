@@ -28,26 +28,6 @@ import AuthCard from "../_components/auth-card";
 
 // import components
 
-// import components
-
-// import components
-
-// import components
-
-// import components
-
-// import components
-
-// import components
-
-// import components
-
-// import components
-
-// import components
-
-// import components
-
 const SetPasswordPage = () => {
   const router = useRouter();
   const params = useSearchParams();
