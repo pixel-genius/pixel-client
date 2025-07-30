@@ -33,8 +33,15 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
         )}
       >
         {/* header - image */}
-        <div className="relative flex justify-center items-center rounded-xl h-full overflow-hidden mb-1">
-          <Image width={294} height={204} src={image} alt="image" />
+        <div className="relative w-full aspect-[604/420] rounded-xl overflow-hidden mb-1 group">
+          <Image
+            src={image}
+            alt="Product image"
+            fill
+            className="object-cover"
+            sizes="(min-width: 768px) 294px, 100vw"
+            priority
+          />
           {/* background overlay and shopping bag */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black/80 opacity-0 hover:opacity-100 transition-opacity duration-500 delay-300 rounded-xl flex flex-col justify-end group">
             <div className="gap-2 flex justify-end p-2">

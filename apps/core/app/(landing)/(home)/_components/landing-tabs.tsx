@@ -5,6 +5,7 @@ import { ProductCard } from "@repo/ui/components/molecules/product-card";
 import { TabList } from "@repo/ui/components/molecules/tabs/tab-list";
 
 import {
+  ProductList,
   ProductList3D,
   ProductListGraphic,
   ProductListUiUx,
@@ -15,7 +16,7 @@ export const LandingTabs = ({ defaultValue }: { defaultValue: string }) => {
   return (
     <div className="mb-44">
       <TabProvider defaultValue={defaultValue}>
-        <TabList>
+        <TabList className="justify-center">
           <TabTrigger value="/" href="/">
             Trends
           </TabTrigger>
@@ -30,7 +31,20 @@ export const LandingTabs = ({ defaultValue }: { defaultValue: string }) => {
           </TabTrigger>
         </TabList>
         <TabContent value="/">
-          <LandingTabContents />
+          {/* <LandingTabContents /> */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-4">
+            {ProductList.map((product) => (
+              <ProductCard
+                key={product.title}
+                title={product.title}
+                price={product.price}
+                image={product.image}
+                avatar={product.avatar}
+                username={product.username}
+                like={product.like}
+              />
+            ))}
+          </div>
         </TabContent>
         <TabContent value="uiux">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-4">

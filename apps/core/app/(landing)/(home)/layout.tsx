@@ -8,9 +8,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <LandingBackground />
 
       {/* Landing Hero Section - Header */}
-      <div className="md:mb-24 mb-16  md:mt-48 mt-24">
-        <LandingHeroSection />
-      </div>
+      <LandingHeroSection />
 
       {/* Landing Tabs */}
       {children}
