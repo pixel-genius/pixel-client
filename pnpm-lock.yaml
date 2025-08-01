@@ -74,6 +74,9 @@ importers:
       next:
         specifier: 15.3.0
         version: 15.3.0(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2)
+      next-auth:
+        specifier: 5.0.0-beta.29
+        version: 5.0.0-beta.29(next@15.3.0(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2))(react@19.1.0)
       next-themes:
         specifier: ^0.3.0
         version: 0.3.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -531,6 +534,23 @@ packages:
     peerDependencies:
       "@faker-js/faker": ^7.0.0 || ^8.0.0 || ^9.0.0
       zod: ^3.21.4
+
+  "@auth/core@0.40.0":
+    resolution:
+      {
+        integrity: sha512-n53uJE0RH5SqZ7N1xZoMKekbHfQgjd0sAEyUbE+IYJnmuQkbvuZnXItCU7d+i7Fj8VGOgqvNO7Mw4YfBTlZeQw==,
+      }
+    peerDependencies:
+      "@simplewebauthn/browser": ^9.0.1
+      "@simplewebauthn/server": ^9.0.2
+      nodemailer: ^6.8.0
+    peerDependenciesMeta:
+      "@simplewebauthn/browser":
+        optional: true
+      "@simplewebauthn/server":
+        optional: true
+      nodemailer:
+        optional: true
 
   "@babel/code-frame@7.27.1":
     resolution:
@@ -1612,6 +1632,12 @@ packages:
       }
     cpu: [x64]
     os: [win32]
+
+  "@panva/hkdf@1.2.1":
+    resolution:
+      {
+        integrity: sha512-6oclG6Y3PiDFcoyk8srjLfVKyMfVCKJ27JwNPViuXziFpmdz+MZnZN/aKY0JGXgYuO/VghU0jcOAZgWXZ1Dmrw==,
+      }
 
   "@parcel/watcher-android-arm64@2.5.1":
     resolution:
@@ -4058,6 +4084,7 @@ packages:
       {
         integrity: sha512-OR+EpNckoJN4tHMVZPaTPxDj2RgpJgJwLruTIFYbO3bQMguLd0YrmkWKYqsiihcLgm2ehIjF/H1RLfZiRa7+qQ==,
       }
+    cpu: [arm64, x64, aarch64]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -6293,6 +6320,12 @@ packages:
         integrity: sha512-8wb9Yw966OSxApiCt0K3yNJL8pnNeIv+OEq2YMidz4FKP6nonSRoOXc80iXY4JaN2FC11B9qsNmDsm+ZOfMROA==,
       }
 
+  jose@6.0.12:
+    resolution:
+      {
+        integrity: sha512-T8xypXs8CpmiIi78k0E+Lk7T2zlK4zDyg+o1CZ4AkOHgDg98ogdP2BeZ61lTFKFyoEwJ9RgAgN+SdM3iPgNonQ==,
+      }
+
   js-base64@3.7.7:
     resolution:
       {
@@ -6820,6 +6853,25 @@ packages:
       }
     engines: { node: ">= 0.4.0" }
 
+  next-auth@5.0.0-beta.29:
+    resolution:
+      {
+        integrity: sha512-Ukpnuk3NMc/LiOl32njZPySk7pABEzbjhMUFd5/n10I0ZNC7NCuVv8IY2JgbDek2t/PUOifQEoUiOOTLy4os5A==,
+      }
+    peerDependencies:
+      "@simplewebauthn/browser": ^9.0.1
+      "@simplewebauthn/server": ^9.0.2
+      next: ^14.0.0-0 || ^15.0.0-0
+      nodemailer: ^6.6.5
+      react: ^18.2.0 || ^19.0.0-0
+    peerDependenciesMeta:
+      "@simplewebauthn/browser":
+        optional: true
+      "@simplewebauthn/server":
+        optional: true
+      nodemailer:
+        optional: true
+
   next-themes@0.3.0:
     resolution:
       {
@@ -6966,6 +7018,12 @@ packages:
         optional: true
       react-router-dom:
         optional: true
+
+  oauth4webapi@3.6.1:
+    resolution:
+      {
+        integrity: sha512-b39+drVyA4aNUptFOhkkmGWnG/BE7dT29SW/8PVYElqp7j/DBqzm5SS1G+MUD07XlTcBOAG+6Cb/35Cx2kHIuQ==,
+      }
 
   object-assign@4.1.1:
     resolution:
@@ -7452,6 +7510,20 @@ packages:
         integrity: sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==,
       }
     engines: { node: ^10 || ^12 || >=14 }
+
+  preact-render-to-string@6.5.11:
+    resolution:
+      {
+        integrity: sha512-ubnauqoGczeGISiOh6RjX0/cdaF8v/oDXIjO85XALCQjwQP+SB4RDXXtvZ6yTYSjG+PC1QRP2AhPgCEsM2EvUw==,
+      }
+    peerDependencies:
+      preact: ">=10"
+
+  preact@10.24.3:
+    resolution:
+      {
+        integrity: sha512-Z2dPnBnMUfyQfSQ+GBdsGa16hz35YmLmtTLhM169uW944hYL6xzTYkJjC07j+Wosz733pMWx0fgON3JNw1jJQA==,
+      }
 
   preact@10.26.9:
     resolution:
@@ -9235,6 +9307,14 @@ snapshots:
       randexp: 0.5.3
       zod: 3.25.74
 
+  "@auth/core@0.40.0":
+    dependencies:
+      "@panva/hkdf": 1.2.1
+      jose: 6.0.12
+      oauth4webapi: 3.6.1
+      preact: 10.24.3
+      preact-render-to-string: 6.5.11(preact@10.24.3)
+
   "@babel/code-frame@7.27.1":
     dependencies:
       "@babel/helper-validator-identifier": 7.27.1
@@ -9797,6 +9877,8 @@ snapshots:
 
   "@oven/bun-windows-x64@1.2.18":
     optional: true
+
+  "@panva/hkdf@1.2.1": {}
 
   "@parcel/watcher-android-arm64@2.5.1":
     optional: true
@@ -12931,6 +13013,8 @@ snapshots:
 
   jju@1.4.0: {}
 
+  jose@6.0.12: {}
+
   js-base64@3.7.7: {}
 
   js-cookie@3.0.5: {}
@@ -13194,6 +13278,12 @@ snapshots:
 
   netmask@2.0.2: {}
 
+  next-auth@5.0.0-beta.29(next@15.3.0(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2))(react@19.1.0):
+    dependencies:
+      "@auth/core": 0.40.0
+      next: 15.3.0(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2)
+      react: 19.1.0
+
   next-themes@0.3.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       react: 19.1.0
@@ -13308,6 +13398,8 @@ snapshots:
       react: 19.1.0
     optionalDependencies:
       next: 15.3.0(@babel/core@7.28.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.89.2)
+
+  oauth4webapi@3.6.1: {}
 
   object-assign@4.1.1: {}
 
@@ -13620,6 +13712,12 @@ snapshots:
       nanoid: 3.3.11
       picocolors: 1.1.1
       source-map-js: 1.2.1
+
+  preact-render-to-string@6.5.11(preact@10.24.3):
+    dependencies:
+      preact: 10.24.3
+
+  preact@10.24.3: {}
 
   preact@10.26.9: {}
 

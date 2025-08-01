@@ -17,6 +17,7 @@ import { PasswordInput } from "@repo/ui/components/molecules/passwordInput";
 import { Input } from "@repo/ui/components/molecules/input";
 import { Button } from "@repo/ui/components/atoms/button";
 import { setAuthTokens } from "@repo/apis/utils/cookies";
+import { signIn } from "next-auth/react";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -56,9 +57,28 @@ const LoginForm = () => {
     },
   });
 
-  const handleSubmitForm = handleSubmit(() => {
-    const values = form.getValues();
-    loginMutation.mutate(values);
+  const data = loginMutation.data?.data;
+  console.log("data", data);
+  const handleSubmitForm = handleSubmit(async (values) => {
+    console.log("values", values);
+    try {
+      const res = await signIn("credentials", {
+        email: values.username,
+        password: values.password,
+        redirect: false,
+      });
+
+      if (res?.error) {
+        toast.error(res.error);
+        return;
+      }
+
+      toast.success("Login successful!");
+      router.push("/");
+    } catch (error) {
+      console.log("error", error);
+      toast.error("Something went wrong during login");
+    }
   });
 
   useEffect(() => {
