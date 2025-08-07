@@ -35,7 +35,7 @@ import { Chip } from "./chip";
  * Props for MultiSelect component
  */
 export interface BaseMultiSelectProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onChange"> {
   /**
    * An array of option objects to be displayed in the multi-select component.
    * Each option object has a label, value, and an optional icon.
