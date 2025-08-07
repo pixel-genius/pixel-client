@@ -8,13 +8,13 @@ export const postForgetRequestSchemaTransformed = z
   .transform((data) => ({ first_name: data.firstName }));
 
 // Response
-export const postForgetResponseSchemaTransofrmed = z
+export const postForgetResponseSchemaTransformed = z
   .object({
     keyBody: z.string(),
   })
   .transform((data) => data);
 
 export const postForgetSchema = {
-  response: postForgetResponseSchemaTransofrmed,
+  response: postForgetResponseSchemaTransformed,
   request: postForgetRequestSchemaTransformed,
 };

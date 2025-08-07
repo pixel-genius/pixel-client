@@ -7,7 +7,7 @@ export type PostRequestAuthorRequest = z.input<
   typeof postRequestAuthorSchema.request
 >;
 
-export type PostRequestAuthorRequestTransofrmed = z.infer<
+export type PostRequestAuthorRequestTransformed = z.infer<
   typeof postRequestAuthorSchema.request
 >;
 

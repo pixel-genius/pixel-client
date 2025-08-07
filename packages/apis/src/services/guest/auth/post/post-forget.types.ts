@@ -5,7 +5,7 @@ import { postForgetSchema } from "./post-forget.schema";
 // Response
 export type PostForgetRequest = z.input<typeof postForgetSchema.request>;
 
-export type PostForgetRequestTransofrmed = z.infer<
+export type PostForgetRequestTransformed = z.infer<
   typeof postForgetSchema.request
 >;
 

@@ -3,6 +3,8 @@ import { Slot } from "@radix-ui/react-slot";
 
 import React from "react";
 
+import { Skeleton } from "./skeleton";
+
 const chipVariants = cva(
   "inline-flex gap-2 items-center justify-center disabled:bg-ring disabled:text-gray-400 whitespace-nowrap text-foreground rounded-lg bg-primary px-3 py-2 text-sm font-medium transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-50",
   {
@@ -33,6 +35,7 @@ export interface ChipProps
   asChild?: boolean;
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
+  isLoading?: boolean;
 }
 
 const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(
@@ -45,11 +48,24 @@ const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(
       iconLeft: IconLeft,
       iconRight: IconRight,
       children,
+      isLoading,
       ...props
     },
     ref,
   ) => {
     const Comp = asChild ? Slot : "button";
+
+    // Render skeleton state when loading
+    if (isLoading) {
+      return (
+        <div className={chipVariants({ variant, size, className })}>
+          {IconLeft && <Skeleton className="w-4 h-4 rounded-sm" />}
+          <Skeleton className="w-12 h-3 rounded-sm" />
+          {IconRight && <Skeleton className="w-4 h-4 rounded-sm" />}
+        </div>
+      );
+    }
+
     return (
       <Comp
         className={chipVariants({ variant, size, className })}

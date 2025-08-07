@@ -33,7 +33,7 @@ export const postRegisterRequestSchemaTransformed = z.union([
 ]);
 
 // Response
-export const postRegisterResponseSchemaTransofrmed = apiResponseSchema
+export const postRegisterResponseSchemaTransformed = apiResponseSchema
   .extend({
     data: z.object({
       user: z.object({
@@ -45,6 +45,6 @@ export const postRegisterResponseSchemaTransofrmed = apiResponseSchema
   .transform((data) => data);
 
 export const postRegisterSchema = {
-  response: postRegisterResponseSchemaTransofrmed,
+  response: postRegisterResponseSchemaTransformed,
   request: postRegisterRequestSchemaTransformed,
 };

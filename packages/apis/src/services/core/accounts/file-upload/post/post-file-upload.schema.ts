@@ -16,7 +16,7 @@ export const postFileUploadRequestSchemaTransformed = z
   });
 
 // Request
-export const postFileUploadResponseSchemaTransofrmed = z
+export const postFileUploadResponseSchemaTransformed = z
   .object({
     message: z.string().optional(),
     error: z.string().optional(),
@@ -25,6 +25,6 @@ export const postFileUploadResponseSchemaTransofrmed = z
   .transform((data) => data);
 
 export const postFileUploadSchema = {
-  response: postFileUploadResponseSchemaTransofrmed,
+  response: postFileUploadResponseSchemaTransformed,
   request: postFileUploadRequestSchemaTransformed,
 };

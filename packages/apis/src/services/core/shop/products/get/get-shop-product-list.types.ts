@@ -7,7 +7,7 @@ export type GetShopProductListRequest = z.input<
   typeof getShopProductListSchema.request
 >;
 
-export type GetShopProductListRequestTransofrmed = z.infer<
+export type GetShopProductListRequestTransformed = z.infer<
   typeof getShopProductListSchema.request
 >;
 

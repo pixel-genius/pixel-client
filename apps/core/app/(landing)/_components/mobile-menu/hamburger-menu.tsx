@@ -24,7 +24,7 @@ const HamburgerMenu = () => {
   return (
     <>
       <div
-        className="z-50 fixed bg-primary p-4 rounded-full top-4 right-4 md:hidden cursor-pointer"
+        className="z-50 fixed bg-primary p-4 rounded-full top-4 right-4 lg:hidden cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? (

@@ -8,6 +8,8 @@ import { TabContent } from "@repo/ui/components/molecules/tabs/tab-content";
 import { TabList } from "@repo/ui/components/molecules/tabs/tab-list";
 import { Button } from "@repo/ui/components/atoms/button";
 
+import { PostProductsRequest } from "@repo/apis/core/shop/products/post/post-products.types";
+import { usePostProducts } from "@repo/apis/core/shop/products/post/use-post-products";
 import { AdminChatTab } from "./_components/admin-chat/admin-chat-tab";
 import { VersionTab } from "./_components/version-tab";
 import { GeneralTab } from "./_components/general-tab";
@@ -15,14 +17,37 @@ import { ImagesTab } from "./_components/images-tab";
 import { FilesTab } from "./_components/files-tab";
 
 const CreateProductPage = () => {
-  const methods = useForm<{ price: string; discount: number | null }>();
+  const methods = useForm<PostProductsRequest>({
+    defaultValues: {
+      versions: [
+        {
+          thumbnail: undefined,
+          previews: undefined,
+          images: undefined,
+        },
+      ],
+      category: "",
+      is_published: true,
+    },
+  });
   const { handleSubmit } = methods;
-  const onSubmit = (data: any) => console.log(data);
+
+  const { mutate: postProducts, isPending } = usePostProducts();
+
+  const onSubmit = (data: PostProductsRequest) => {
+    console.log("data =>>", data);
+    postProducts(data);
+  };
 
   return (
     <FormProvider {...methods}>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
+      <div
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+          }
+        }}
+        // onSubmit={handleSubmit(onSubmit)}
         className="h-full flex flex-col flex-1 "
       >
         <div className="flex-1 flex flex-col min-h-0">
@@ -39,8 +64,20 @@ const CreateProductPage = () => {
               {/* Actions */}
               <div className="flex items-center gap-3 shrink-0">
                 <div>select version</div>
-                <Button variant="secondary">Save as Draft</Button>
-                <Button type="submit">Submit to Review</Button>
+                <Button
+                  variant="secondary"
+                  onClick={handleSubmit(onSubmit)}
+                  disabled={isPending}
+                >
+                  Save as Draft
+                </Button>
+                <Button
+                  type="submit"
+                  onClick={handleSubmit(onSubmit)}
+                  isLoading={isPending}
+                >
+                  Submit to Review
+                </Button>
               </div>
             </div>
             {/* Content */}
@@ -65,7 +102,7 @@ const CreateProductPage = () => {
             </div>
           </TabProvider>
         </div>
-      </form>
+      </div>
     </FormProvider>
   );
 };

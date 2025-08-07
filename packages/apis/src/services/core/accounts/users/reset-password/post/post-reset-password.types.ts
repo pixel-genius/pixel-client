@@ -7,7 +7,7 @@ export type PostResetPasswordRequest = z.input<
   typeof postResetPasswordSchema.request
 >;
 
-export type PostResetPasswordRequestTransofrmed = z.infer<
+export type PostResetPasswordRequestTransformed = z.infer<
   typeof postResetPasswordSchema.request
 >;
 

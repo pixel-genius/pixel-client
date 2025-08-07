@@ -4,7 +4,7 @@ import { cn } from "@repo/ui/lib/utils";
 
 import { BaseInput, type BaseInputProps } from "../atoms/base-input";
 import OrbitingDotsLoading from "../atoms/orbitingDotsLoading";
-import { LabelWraper } from "./label-wrapper";
+import { LabelWrapper } from "./label-wrapper";
 
 export interface textFieldProps extends Omit<BaseInputProps, "error"> {
   label?: React.ReactNode;
@@ -32,7 +32,7 @@ const Input = React.forwardRef<HTMLInputElement, textFieldProps>(
     } = props;
 
     return (
-      <LabelWraper
+      <LabelWrapper
         id={id}
         label={label}
         error={error}
@@ -66,7 +66,7 @@ const Input = React.forwardRef<HTMLInputElement, textFieldProps>(
               <div className="absolute right-0  px-4">{iconRight}</div>
             ))}
         </div>
-      </LabelWraper>
+      </LabelWrapper>
     );
   },
 );

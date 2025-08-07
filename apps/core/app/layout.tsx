@@ -11,6 +11,7 @@ import { Toaster } from "@repo/ui/components/atoms/sonner";
 import { cn } from "@repo/ui/lib/utils";
 import "@repo/ui/globals.scss";
 
+import { BreakpointIndicator } from "@repo/ui/components/atoms/breakpoint-indicator";
 import { ReactScan } from "./_components/react-scan";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -32,7 +33,7 @@ export default function RootLayout({
     <ApiProvider>
       <html lang="en" className="h-full" suppressHydrationWarning>
         <body
-          className={cn(inter.className, "h-full")}
+          className={cn(inter.className, "h-full debug-screens")}
           suppressHydrationWarning
         >
           <ThemeProvider
@@ -42,8 +43,9 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <NuqsAdapter>
-              <ReactScan />
               <Fragment>{children}</Fragment>
+              <ReactScan />
+              <BreakpointIndicator />
             </NuqsAdapter>
           </ThemeProvider>
           <Toaster richColors />

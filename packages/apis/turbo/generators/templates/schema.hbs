@@ -9,13 +9,13 @@ export const {{method}}{{pascalCase name}}RequestSchemaTransformed = z
   .transform((data) => data);
 
 // Response
-export const {{method}}{{pascalCase name}}ResponseSchemaTransofrmed = apiResponseSchema.extend({
+export const {{method}}{{pascalCase name}}ResponseSchemaTransformed = apiResponseSchema.extend({
   data: z.object({
     keyBody: z.string(),
   }),
 }).transform((data) => data);;
 
 export const {{method}}{{pascalCase name}}Schema = {
-  response: {{method}}{{pascalCase name}}ResponseSchemaTransofrmed,
+  response: {{method}}{{pascalCase name}}ResponseSchemaTransformed,
   request: {{method}}{{pascalCase name}}RequestSchemaTransformed,
 };

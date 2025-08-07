@@ -54,7 +54,7 @@ export interface BaseMultiSelectProps
    * Callback function triggered when the selected values change.
    * Receives an array of the new selected values.
    */
-  onValueChange?: (value: string[]) => void;
+  onChange?: (value: string[]) => void;
 
   /**
    * Size of the multi-select component
@@ -135,7 +135,7 @@ const BaseMultiSelect = React.forwardRef<
   (
     {
       options,
-      onValueChange,
+      onChange,
       chipVariant = "secondary",
       defaultValue = [],
       placeholder = "Select options",
@@ -174,7 +174,7 @@ const BaseMultiSelect = React.forwardRef<
         const newSelectedValues = [...selectedValues];
         newSelectedValues.pop();
         setSelectedValues(newSelectedValues);
-        onValueChange?.(newSelectedValues);
+        onChange?.(newSelectedValues);
       }
     };
 
@@ -183,12 +183,12 @@ const BaseMultiSelect = React.forwardRef<
         ? selectedValues.filter((value) => value !== option)
         : [...selectedValues, option];
       setSelectedValues(newSelectedValues);
-      onValueChange?.(newSelectedValues);
+      onChange?.(newSelectedValues);
     };
 
     const handleClear = () => {
       setSelectedValues([]);
-      onValueChange?.([]);
+      onChange?.([]);
     };
 
     const handleTogglePopover = () => {
@@ -198,7 +198,7 @@ const BaseMultiSelect = React.forwardRef<
     const clearExtraOptions = () => {
       const newSelectedValues = selectedValues.slice(0, maxCount);
       setSelectedValues(newSelectedValues);
-      onValueChange?.(newSelectedValues);
+      onChange?.(newSelectedValues);
     };
 
     const toggleAll = () => {
@@ -207,7 +207,7 @@ const BaseMultiSelect = React.forwardRef<
       } else {
         const allValues = optionsState.map((option) => option.value);
         setSelectedValues(allValues);
-        onValueChange?.(allValues);
+        onChange?.(allValues);
       }
     };
     const renderIconComponent = React.useMemo(

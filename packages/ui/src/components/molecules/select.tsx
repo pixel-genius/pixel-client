@@ -11,7 +11,7 @@ import {
   BaseSelectTrigger,
   BaseSelectValue,
 } from "../atoms/base-select";
-import { LabelWraper } from "./label-wrapper";
+import { LabelWrapper } from "./label-wrapper";
 
 interface Option {
   label: string;
@@ -30,7 +30,7 @@ interface SelectProps extends RadixSelectProps {
   id: string;
   label?: string;
   className?: string;
-  labelWraperClassName?: string;
+  labelWrapperClassName?: string;
   error?: string;
   placeholder: string;
   value?: string;
@@ -47,7 +47,7 @@ const Select = ({
   className,
   value,
   placeholder,
-  labelWraperClassName,
+  labelWrapperClassName,
   error,
   helperText,
   size,
@@ -89,12 +89,12 @@ const Select = ({
   );
 
   return (
-    <LabelWraper
+    <LabelWrapper
       id={id}
       label={label}
       error={error}
       helperText={helperText}
-      className={labelWraperClassName}
+      className={labelWrapperClassName}
     >
       <BaseSelect value={value} {...props}>
         <BaseSelectTrigger
@@ -120,7 +120,7 @@ const Select = ({
           </BaseSelectContent>
         ) : null}
       </BaseSelect>
-    </LabelWraper>
+    </LabelWrapper>
   );
 };
 

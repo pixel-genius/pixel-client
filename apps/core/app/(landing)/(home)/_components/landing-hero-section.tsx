@@ -36,7 +36,7 @@ export const LandingHeroSection = () => {
     <main>
       <article className="flex gap-4 items-center">
         {/* Left Section */}
-        <section className="flex flex-col gap-4 pt-32">
+        <section className="flex grow-[2] flex-col gap-4 pt-32 mb-10 md:mb-0 ">
           <div>
             <Typography
               variant="display/sm"
@@ -61,10 +61,10 @@ export const LandingHeroSection = () => {
             your own work with a creative global audience
           </Typography>
 
-          <SearchBox className="w-full" />
+          <SearchBox className="w-full" enableTypewriter />
         </section>
         {/* Right Section */}
-        <div className="w-full flex items-center justify-center ">
+        <div className="w-full  grow-[1] items-center justify-center -z-20 relative hidden lg:flex">
           <div
             className="overflow-hidden relative max-h-[600px] "
             suppressHydrationWarning
@@ -73,12 +73,12 @@ export const LandingHeroSection = () => {
                 "perspective(1500px) rotateX(20deg) rotateY(333deg) rotateZ(10deg)",
             }}
           >
-            <div className="absolute z-10 inset-0 bg-gradient-to-b from-0% from-background to-25% to-transparent" />
-            <div className="absolute z-10 inset-0 bg-gradient-to-t from-0% from-background to-25% to-transparent" />
+            <div className="absolute z-10 inset-0 bg-gradient-to-b from-0% from-background to-50% to-background/25" />
+            <div className="absolute z-10 inset-0 bg-gradient-to-t from-0% from-background to-50% to-background/25" />
 
             <div className="flex gap-4">
               <motion.div
-                className="flex flex-col w-72 gap-4 opacity-50 flex-shrink-0 flex-grow-0 "
+                className="flex flex-col w-72 gap-4  flex-shrink-0 flex-grow-0 "
                 style={{
                   transform,
                 }}
@@ -97,7 +97,7 @@ export const LandingHeroSection = () => {
               </motion.div>
 
               <motion.div
-                className="flex flex-col w-72 gap-4 opacity-50  flex-shrink-0 flex-grow-0"
+                className=" flex-col w-72 gap-4   flex-shrink-0 flex-grow-0  hidden xl:flex"
                 style={{
                   transform: transform2,
                 }}

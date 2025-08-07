@@ -53,7 +53,7 @@ const Navbar = ({ isLogin }: { isLogin: boolean }) => {
         layoutId="bg-navbar"
         id="navbar"
         className={cn(
-          "bg-background shadow-box rounded-xl fixed top-12 -left-1/2 -right-1/2 z-40 w-[95%] sm:w-[90%] lg:w-[962px] max-w-none mx-auto hidden md:block",
+          "bg-background shadow-box rounded-xl fixed top-12 -left-1/2 -right-1/2 z-40 w-[95%] sm:w-[90%] lg:w-[962px] max-w-none mx-auto hidden lg:block",
           isSearchMode && "rounded-none",
         )}
         initial={{

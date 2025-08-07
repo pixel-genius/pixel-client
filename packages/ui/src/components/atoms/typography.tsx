@@ -1,6 +1,6 @@
 import { VariantProps, cva } from "class-variance-authority";
 
-import React, { ElementType, PropsWithChildren, useMemo } from "react";
+import React, { ElementType, PropsWithChildren } from "react";
 
 import { cn } from "./../../lib/utils";
 
@@ -111,10 +111,9 @@ const Typography: React.FC<TypographyProps> = ({
   children,
   ...restProps
 }) => {
-  // Optimize class computation
-  const styles = useMemo(
-    () =>
-      cn(
+  return (
+    <Component
+      className={cn(
         typographyVariants({
           variant,
           weight,
@@ -124,12 +123,10 @@ const Typography: React.FC<TypographyProps> = ({
           truncate,
         }),
         className,
-      ),
-    [variant, weight, align, transform, decoration, truncate, className],
-  );
-
-  return (
-    <Component className={styles} onClick={onClick} {...restProps}>
+      )}
+      onClick={onClick}
+      {...restProps}
+    >
       {children}
     </Component>
   );

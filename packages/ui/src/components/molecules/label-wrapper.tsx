@@ -9,7 +9,7 @@ import { cn } from "@repo/ui/lib/utils";
 import { Typography } from "../atoms/typography";
 import { Label } from "../atoms/label";
 
-export interface LabelWraperProps
+export interface LabelWrapperProps
   extends React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> {
   label?: React.ReactNode;
   error?: string;
@@ -17,9 +17,9 @@ export interface LabelWraperProps
   required?: boolean;
 }
 
-const LabelWraper = React.forwardRef<
+const LabelWrapper = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
-  LabelWraperProps
+  LabelWrapperProps
 >(
   (
     {
@@ -72,6 +72,6 @@ const LabelWraper = React.forwardRef<
   ),
 );
 
-LabelWraper.displayName = "LabelWraper";
+LabelWrapper.displayName = "LabelWrapper";
 
-export { LabelWraper };
+export { LabelWrapper };

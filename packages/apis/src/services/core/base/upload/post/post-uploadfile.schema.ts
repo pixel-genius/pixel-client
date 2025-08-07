@@ -15,7 +15,7 @@ export const postUploadfileRequestSchemaTransformed = z
   });
 
 // Request
-export const postUploadfileResponseSchemaTransofrmed = apiResponseSchema
+export const postUploadfileResponseSchemaTransformed = apiResponseSchema
   .extend({
     data: z.array(
       z.object({
@@ -30,6 +30,6 @@ export const postUploadfileResponseSchemaTransofrmed = apiResponseSchema
   .transform((data) => data);
 
 export const postUploadfileSchema = {
-  response: postUploadfileResponseSchemaTransofrmed,
+  response: postUploadfileResponseSchemaTransformed,
   request: postUploadfileRequestSchemaTransformed,
 };

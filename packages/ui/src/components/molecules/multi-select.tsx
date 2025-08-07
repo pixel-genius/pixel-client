@@ -3,7 +3,7 @@ import React from "react";
 import BaseMultiSelect, {
   BaseMultiSelectProps,
 } from "../atoms/Base-multi-select";
-import { LabelWraper } from "./label-wrapper";
+import { LabelWrapper } from "./label-wrapper";
 
 interface MultiSelectProps extends Omit<BaseMultiSelectProps, "error"> {
   id: string;
@@ -14,9 +14,9 @@ interface MultiSelectProps extends Omit<BaseMultiSelectProps, "error"> {
   /**
    * ClassName of the LabelWrapper component
    */
-  labelWraperClassName?: string;
+  labelWrapperClassName?: string;
   /**
-   * Error Messege of the multi-select component
+   * Error Message of the multi-select component
    */
   error?: string;
   /**
@@ -26,17 +26,17 @@ interface MultiSelectProps extends Omit<BaseMultiSelectProps, "error"> {
 }
 
 const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
-  ({ id, label, error, helperText, labelWraperClassName, ...props }, ref) => {
+  ({ id, label, error, helperText, labelWrapperClassName, ...props }, ref) => {
     return (
-      <LabelWraper
+      <LabelWrapper
         id={id}
         label={label}
         error={error}
         helperText={helperText}
-        className={labelWraperClassName}
+        className={labelWrapperClassName}
       >
         <BaseMultiSelect ref={ref} error={!!error} {...props} />
-      </LabelWraper>
+      </LabelWrapper>
     );
   },
 );

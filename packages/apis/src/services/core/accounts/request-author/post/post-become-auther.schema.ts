@@ -15,7 +15,7 @@ export const postBecomeAutherRequestSchemaTransformed = z
   .transform((data) => data);
 
 // Response
-export const postBecomeAutherResponseSchemaTransofrmed = apiResponseSchema
+export const postBecomeAutherResponseSchemaTransformed = apiResponseSchema
   .extend({
     data: z.object({
       keyPayload: z.string(),
@@ -30,6 +30,6 @@ export const postBecomeAutherResponseSchemaTransofrmed = apiResponseSchema
   .transform((data) => data);
 
 export const postBecomeAutherSchema = {
-  response: postBecomeAutherResponseSchemaTransofrmed,
+  response: postBecomeAutherResponseSchemaTransformed,
   request: postBecomeAutherRequestSchemaTransformed,
 };

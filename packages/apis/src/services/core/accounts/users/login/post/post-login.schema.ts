@@ -28,13 +28,13 @@ const unverifiedUserData = baseUserData.extend({
   token: z.null(),
 });
 
-export const postLoginResponseSchemaTransofrmed = apiResponseSchema
+export const postLoginResponseSchemaTransformed = apiResponseSchema
   .extend({
     data: z.union([verifiedUserData, unverifiedUserData]),
   })
   .transform((data) => data);
 
 export const postLoginSchema = {
-  response: postLoginResponseSchemaTransofrmed,
+  response: postLoginResponseSchemaTransformed,
   request: postLoginRequestSchemaTransformed,
 };

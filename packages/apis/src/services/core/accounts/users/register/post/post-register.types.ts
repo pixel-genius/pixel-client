@@ -5,7 +5,7 @@ import type { postRegisterSchema } from "./post-register.schema";
 // Response
 export type PostRegisterRequest = z.input<typeof postRegisterSchema.request>;
 
-export type PostRegisterRequestTransofrmed = z.infer<
+export type PostRegisterRequestTransformed = z.infer<
   typeof postRegisterSchema.request
 >;
 

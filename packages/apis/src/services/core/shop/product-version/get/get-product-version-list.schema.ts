@@ -10,7 +10,7 @@ export const getProductVersionListRequestSchemaTransformed = z
   .transform((data) => data);
 
 // Response
-export const getProductVersionListResponseSchemaTransofrmed = apiResponseSchema
+export const getProductVersionListResponseSchemaTransformed = apiResponseSchema
   .extend({
     data: z.union([
       z.array(
@@ -86,6 +86,6 @@ export const getProductVersionListResponseSchemaTransofrmed = apiResponseSchema
   }));
 
 export const getProductVersionListSchema = {
-  response: getProductVersionListResponseSchemaTransofrmed,
+  response: getProductVersionListResponseSchemaTransformed,
   request: getProductVersionListRequestSchemaTransformed,
 };

@@ -12,13 +12,13 @@ export const postResetPasswordRequestSchemaTransformed = z
   .transform((data) => data);
 
 // Response
-export const postResetPasswordResponseSchemaTransofrmed = apiResponseSchema
+export const postResetPasswordResponseSchemaTransformed = apiResponseSchema
   .extend({
     data: z.null(),
   })
   .transform((data) => data);
 
 export const postResetPasswordSchema = {
-  response: postResetPasswordResponseSchemaTransofrmed,
+  response: postResetPasswordResponseSchemaTransformed,
   request: postResetPasswordRequestSchemaTransformed,
 };

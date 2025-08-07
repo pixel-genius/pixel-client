@@ -10,7 +10,7 @@ export const postVerifyOtpRequestSchemaTransformed = z
   .transform((data) => data);
 
 // Response
-export const postVerifyOtpResponseSchemaTransofrmed = apiResponseSchema
+export const postVerifyOtpResponseSchemaTransformed = apiResponseSchema
   .extend({
     data: z.object({
       id: z.number(),
@@ -27,6 +27,6 @@ export const postVerifyOtpResponseSchemaTransofrmed = apiResponseSchema
   .transform((data) => data);
 
 export const postVerifyOtpSchema = {
-  response: postVerifyOtpResponseSchemaTransofrmed,
+  response: postVerifyOtpResponseSchemaTransformed,
   request: postVerifyOtpRequestSchemaTransformed,
 };

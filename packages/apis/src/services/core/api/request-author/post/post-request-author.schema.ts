@@ -23,7 +23,7 @@ export const postRequestAuthorRequestSchemaTransformed = z
   }));
 
 // Response
-export const postRequestAuthorResponseSchemaTransofrmed = z
+export const postRequestAuthorResponseSchemaTransformed = z
   .object({
     // keyBody: z.string(),
     firstName: z.string(),
@@ -36,6 +36,6 @@ export const postRequestAuthorResponseSchemaTransofrmed = z
   .transform((data) => data);
 
 export const postRequestAuthorSchema = {
-  response: postRequestAuthorResponseSchemaTransofrmed,
+  response: postRequestAuthorResponseSchemaTransformed,
   request: postRequestAuthorRequestSchemaTransformed,
 };

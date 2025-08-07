@@ -2,8 +2,9 @@ import { ArrowRight, DollarSign, Percent } from "lucide-react";
 
 import { type FC, useEffect, useState } from "react";
 
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 
+import { PostProductsRequest } from "@repo/apis/core/shop/products/post/post-products.types";
 import { Typography } from "@repo/ui/components/atoms/typography";
 import { Input } from "@repo/ui/components/molecules/input";
 import { Switch } from "@repo/ui/components/atoms/switch";
@@ -22,13 +23,15 @@ const DISCOUNT_OPTIONS = [
 ];
 
 const PriceSection = () => {
-  const { register, formState, setValue, watch } = useFormContext<{
-    price: number | null;
-    discount: number | null;
-  }>();
+  const { register, control, formState, setValue } =
+    useFormContext<PostProductsRequest>();
 
-  const discount = watch("discount");
-  const price = watch("price");
+  const [price, discount] = useWatch({
+    control,
+    name: ["versions.0.price", "versions.0.discount"],
+  });
+
+  console.log("price", price, typeof price);
 
   const [isFree, setIsFree] = useState(false);
   const [isCustomDiscount, setIsCustomDiscount] = useState(false);
@@ -38,7 +41,7 @@ const PriceSection = () => {
     console.log("value", value);
 
     setIsCustomDiscount(value === CUSTOM_VALUE);
-    setValue("discount", value);
+    setValue("versions.0.discount", value);
   };
 
   const getDiscountedValue = (value: number, discount: number) => {
@@ -49,8 +52,8 @@ const PriceSection = () => {
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (isFree) {
-      setValue("price", null);
-      setValue("discount", null);
+      setValue("versions.0.price", 0);
+      setValue("versions.0.discount", null);
       setIsCustomDiscount(false);
       setHasDiscount(false);
     }
@@ -92,13 +95,14 @@ const PriceSection = () => {
           label="Price"
           type="number"
           className="appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-moz-appearance:textfield]"
-          {...register("price")}
+          // {...register("versions.0.price")}
           onChange={(e) => {
             let value = +e.target.value;
             if (value < 0) value = 0;
-            setValue("price", value);
+            console.log("value", value, typeof value);
+            setValue("versions.0.price", value);
           }}
-          error={formState.errors.price?.message}
+          error={formState.errors.versions?.[0]?.price?.message}
           iconRight={<DollarSign size={20} />}
           disabled={isFree}
           value={isFree ? 0 : price?.toString()}
@@ -126,16 +130,16 @@ const PriceSection = () => {
             {isCustomDiscount ? (
               <Input
                 placeholder="custom"
-                {...register("discount")}
+                {...register("versions.0.discount")}
                 onChange={(e) => {
                   let value = +e.target.value;
                   if (value > 100) value = 100;
                   if (value < 0) value = 0;
 
-                  setValue("discount", value);
+                  setValue("versions.0.discount", value);
                 }}
                 type="number"
-                error={formState.errors.price?.message}
+                error={formState.errors.versions?.[0]?.discount?.message}
                 className="-mt-2"
                 iconRight={<Percent size={20} />}
               />

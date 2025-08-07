@@ -7,7 +7,7 @@ export type PostBecomeAutherRequest = z.input<
   typeof postBecomeAutherSchema.request
 >;
 
-export type PostBecomeAutherRequestTransofrmed = z.infer<
+export type PostBecomeAutherRequestTransformed = z.infer<
   typeof postBecomeAutherSchema.request
 >;
 

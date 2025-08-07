@@ -4,13 +4,13 @@ import { File } from "lucide-react";
 
 import React, { useEffect, useState } from "react";
 
-import AfterEffecticon from "@repo/icons/after-effects";
+import AfterEffectIcon from "@repo/icons/after-effects";
 import { Chip } from "@repo/ui/components/atoms/chip";
-import Belendericon from "@repo/icons/belender";
-import Circlxicon from "@repo/icons/circle-x";
-import Figmaicon from "@repo/icons/figma";
+import CircleXIcon from "@repo/icons/circle-x";
+import BlenderIcon from "@repo/icons/belender";
+import FigmaIcon from "@repo/icons/figma";
 
-import { FileFormatFieldLoading } from "./file-format-field-loading";
+import { UseGetFileFormats } from "@repo/apis/core/shop/file-formats/get/use-get-file-formats";
 
 export type FielFromatIcons = "figma" | "belender" | "afterEffect";
 
@@ -21,8 +21,8 @@ export interface FileFormatFieldOption {
 }
 
 export interface FileFormatFieldProps {
-  options: FileFormatFieldOption[];
   isLoading?: boolean;
+  // eslint-disable-next-line no-unused-vars
   onChange: (value: FileFormatFieldOption[]) => void;
   defaultValue?: FileFormatFieldOption[];
   value?: FileFormatFieldOption[]; // Controlled
@@ -30,21 +30,23 @@ export interface FileFormatFieldProps {
 
 const getFileFormatIcon = (iconName: FielFromatIcons) => {
   const MAP_ICON = {
-    figma: <Figmaicon size={16} />,
-    belender: <Belendericon size={16} />,
-    afterEffect: <AfterEffecticon size={16} />,
+    figma: <FigmaIcon size={16} />,
+    belender: <BlenderIcon size={16} />,
+    afterEffect: <AfterEffectIcon size={16} />,
   };
 
   return MAP_ICON[iconName] ?? <File size={16} />;
 };
 
 export const FileFormatField: React.FC<FileFormatFieldProps> = ({
-  options,
-  isLoading,
   onChange,
   defaultValue = [],
   value,
 }) => {
+  const { data: fileFormats, isPending } = UseGetFileFormats();
+
+  console.log("fileFormats", fileFormats);
+
   const isControlled = value !== undefined;
 
   const [selected, setSelected] =
@@ -75,13 +77,19 @@ export const FileFormatField: React.FC<FileFormatFieldProps> = ({
     onChange(newSelected);
   };
 
-  if (isLoading) {
-    return <FileFormatFieldLoading count={5} />;
+  if (isPending) {
+    return (
+      <div className="flex gap-2">
+        {Array.from({ length: 5 }).map((_, index) => (
+          <Chip key={index} size="sm" variant="secondary" isLoading={true} />
+        ))}
+      </div>
+    );
   }
 
   return (
     <div className="flex gap-2">
-      {options.map((option) => {
+      {fileFormats?.data?.data?.map((option) => {
         const isSelected = currentSelected.some(
           (item) => item.id === option.id,
         );
@@ -90,11 +98,17 @@ export const FileFormatField: React.FC<FileFormatFieldProps> = ({
           <Chip
             key={option.id}
             size="sm"
-            iconLeft={getFileFormatIcon(option.icon)}
-            iconRight={isSelected ? <Circlxicon size={16} /> : null}
+            iconLeft={getFileFormatIcon(option.icon as FielFromatIcons)}
+            iconRight={isSelected ? <CircleXIcon size={16} /> : null}
             variant={isSelected ? "primary" : "secondary"}
             className="cursor-pointer"
-            onClick={() => toggleOption(option)}
+            onClick={() =>
+              toggleOption({
+                id: option.id,
+                name: option.name,
+                icon: option.icon as FielFromatIcons,
+              })
+            }
           >
             {option.name}
           </Chip>

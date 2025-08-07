@@ -10,7 +10,7 @@ import {
   ProductListGraphic,
   ProductListUiUx,
 } from "../../_constant/mock-product-list";
-import { LandingTabContents } from "./landing-tab-contents";
+// import { LandingTabContents } from "./landing-tab-contents";
 
 export const LandingTabs = ({ defaultValue }: { defaultValue: string }) => {
   return (

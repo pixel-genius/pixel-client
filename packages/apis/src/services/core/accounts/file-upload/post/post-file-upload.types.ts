@@ -7,7 +7,7 @@ export type PostFileUploadRequest = z.input<
   typeof postFileUploadSchema.request
 >;
 
-export type PostFileUploadRequestTransofrmed = z.infer<
+export type PostFileUploadRequestTransformed = z.infer<
   typeof postFileUploadSchema.request
 >;
 

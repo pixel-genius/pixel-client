@@ -7,7 +7,7 @@ export type GetProductVersionListRequest = z.input<
   typeof getProductVersionListSchema.request
 >;
 
-export type GetProductVersionListRequestTransofrmed = z.infer<
+export type GetProductVersionListRequestTransformed = z.infer<
   typeof getProductVersionListSchema.request
 >;
 

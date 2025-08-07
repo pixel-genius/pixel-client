@@ -5,7 +5,7 @@ import type { postLoginSchema } from "./post-login.schema";
 // Request
 export type PostLoginRequest = z.input<typeof postLoginSchema.request>;
 
-export type PostLoginRequestTransofrmed = z.infer<
+export type PostLoginRequestTransformed = z.infer<
   typeof postLoginSchema.request
 >;
 

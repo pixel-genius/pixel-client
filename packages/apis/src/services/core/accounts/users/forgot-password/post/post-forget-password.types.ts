@@ -7,7 +7,7 @@ export type PostForgetPasswordRequest = z.input<
   typeof postForgetPasswordSchema.request
 >;
 
-export type PostForgetPasswordRequestTransofrmed = z.infer<
+export type PostForgetPasswordRequestTransformed = z.infer<
   typeof postForgetPasswordSchema.request
 >;
 

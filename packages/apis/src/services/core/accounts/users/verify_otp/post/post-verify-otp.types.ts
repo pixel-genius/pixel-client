@@ -5,7 +5,7 @@ import type { postVerifyOtpSchema } from "./post-verify-otp.schema";
 // Response
 export type PostVerifyOtpRequest = z.input<typeof postVerifyOtpSchema.request>;
 
-export type PostVerifyOtpRequestTransofrmed = z.infer<
+export type PostVerifyOtpRequestTransformed = z.infer<
   typeof postVerifyOtpSchema.request
 >;
 

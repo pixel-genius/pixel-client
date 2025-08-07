@@ -6,13 +6,13 @@ export const postForgetPasswordRequestSchemaTransformed = z.object({
 });
 
 // Request
-export const postForgetPasswordResponseSchemaTransofrmed = z
+export const postForgetPasswordResponseSchemaTransformed = z
   .object({
     message: z.string(),
   })
   .transform((data) => data);
 
 export const postForgetPasswordSchema = {
-  response: postForgetPasswordResponseSchemaTransofrmed,
+  response: postForgetPasswordResponseSchemaTransformed,
   request: postForgetPasswordRequestSchemaTransformed,
 };

@@ -21,7 +21,8 @@ export const LandingBackground = () => {
         priority
       />
 
-      <div className="-left-4 -top-5 hidden md:block absolute -z-10">
+      {/* Left Top */}
+      <div className="-left-4 -top-5 hidden lg:block absolute -z-10">
         <DashedCircles
           count={4}
           baseSize={250}
@@ -42,13 +43,14 @@ export const LandingBackground = () => {
             alt="bg-landing "
             width={80}
             height={80}
-            className="opacity-70"
+            className="opacity-20"
             priority
           />
         </DashedCircles>
       </div>
 
-      <div className="left-10 top-72 hidden md:block sm:opacity-100 opacity-35 absolute -z-10">
+      {/* Left Bottom */}
+      <div className="left-[10vw] top-[55vh] hidden lg:block sm:opacity-100 opacity-35 absolute -z-10">
         <DashedCircles
           count={4}
           baseSize={250}
@@ -69,13 +71,14 @@ export const LandingBackground = () => {
             alt="bg-landing "
             width={100}
             height={100}
-            className="opacity-70"
+            className="opacity-20"
             priority
           />
         </DashedCircles>
       </div>
 
-      <div className="right-10 top-5 hidden md:block sm:opacity-100 opacity-35 absolute -z-10 ">
+      {/* Right Top */}
+      <div className="-right-8 top-5 hidden lg:block sm:opacity-100 opacity-35 absolute -z-30 ">
         <DashedCircles
           count={4}
           baseSize={250}
@@ -96,13 +99,14 @@ export const LandingBackground = () => {
             alt="bg-landing"
             width={100}
             height={100}
-            className="opacity-70"
+            className="opacity-20"
             priority
           />
         </DashedCircles>
       </div>
 
-      <div className="right-36 top-80 hidden md:block sm:opacity-100 absolute">
+      {/* Right Bottom */}
+      <div className="right-4 top-[65vh] hidden lg:block sm:opacity-100 absolute -z-30">
         <DashedCircles
           count={4}
           baseSize={250}
@@ -123,7 +127,7 @@ export const LandingBackground = () => {
             alt="bg-landing"
             width={100}
             height={100}
-            className="opacity-70 "
+            className="opacity-20"
             priority
           />
         </DashedCircles>

@@ -9,11 +9,18 @@ import LinkedinIcon from "../../../../packages/icons/src/components/linkedin";
 import MenuNavigation from "./_components/mobile-menu/menu-navigation";
 import HamburgerMenu from "./_components/mobile-menu/hamburger-menu";
 import Navbar from "./_components/desktop-navbar/navbar";
+import { getAuthTokens } from "@repo/apis/utils/cookies";
 
 function Layout({ children }: { children: React.ReactNode }): JSX.Element {
+  // isLoggedIn
+  const { access } = getAuthTokens();
+  const isLoggedIn = !!access;
+
+  console.log({ isLoggedIn, access });
+
   return (
     <div className="min-h-full flex flex-col">
-      <Navbar isLogin={false} />
+      <Navbar isLogin={true} />
       <HamburgerMenu />
 
       <div className="relative z-10 bg-background pb-6 flex-1 md:mb-[532px] mb-[580px] min-h-screen overflow-x-hidden">

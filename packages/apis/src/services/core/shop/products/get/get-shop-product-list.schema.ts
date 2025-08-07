@@ -10,7 +10,7 @@ export const getShopProductListRequestSchemaTransformed = z
   .transform((data) => ({ ...data, page_size: data.pageSize }));
 
 // Response
-export const getShopProductListResponseSchemaTransofrmed = apiResponseSchema
+export const getShopProductListResponseSchemaTransformed = apiResponseSchema
   .extend({
     data: z.object({
       count: z.number(),
@@ -35,9 +35,9 @@ export const getShopProductListResponseSchemaTransofrmed = apiResponseSchema
               description: z.string(),
               live_preview: z.string(),
               embed: z.string(),
-              price: z.string(),
+              price: z.number().nullable().optional(),
               highlights: z.object({}),
-              discount: z.number(),
+              discount: z.number().nullable().optional(),
               tags: z.array(
                 z.object({
                   id: z.number(),
@@ -93,6 +93,6 @@ export const getShopProductListResponseSchemaTransofrmed = apiResponseSchema
   .transform((data) => data);
 
 export const getShopProductListSchema = {
-  response: getShopProductListResponseSchemaTransofrmed,
+  response: getShopProductListResponseSchemaTransformed,
   request: getShopProductListRequestSchemaTransformed,
 };

@@ -1,14 +1,14 @@
 import { z } from "zod";
 import { {{method}}{{pascalCase name}}Schema } from "./{{method}}-{{kebabCase name}}.schema";
 
-// Response
+// Request
 export type {{pascalCase method}}{{pascalCase name}}Request = z.input<typeof {{method}}{{pascalCase name}}Schema.request>;
 
-export type {{pascalCase method}}{{pascalCase name}}RequestTransofrmed = z.infer<
+export type {{pascalCase method}}{{pascalCase name}}RequestTransformed = z.infer<
   typeof {{method}}{{pascalCase name}}Schema.request
 >;
 
-// Request
+// Response
 export type {{pascalCase method}}{{pascalCase name}}Response = z.input<typeof {{method}}{{pascalCase name}}Schema.response>;
 
 export type {{pascalCase method}}{{pascalCase name}}ResponseTransformed = z.infer<
