@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  Bar,
-  BarChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
-
+import dynamic from "next/dynamic";
 import React from "react";
 
 import {
@@ -19,9 +11,18 @@ import {
   CardTitle,
 } from "@repo/ui/components/atoms/card";
 import { Typography } from "@repo/ui/components/atoms/typography";
-import { ChartContainer } from "@repo/ui/components/atoms/chart";
 import { Select } from "@repo/ui/components/molecules/select";
 import Infocircleicon from "@repo/icons/info-circle";
+
+// Dynamic import for the chart component
+const EarningsChart = dynamic(() => import("./components/EarningsChart"), {
+  loading: () => (
+    <div className="h-[400px] w-full flex items-center justify-center">
+      <div className="text-gray-400">Loading chart...</div>
+    </div>
+  ),
+  ssr: false,
+});
 
 const earningsDataYear = [
   { name: "Jan", earnings: 10 },
@@ -124,20 +125,7 @@ const DashboardPage = () => {
         </CardHeader>
         <CardContent>
           <div className=" w-full">
-            <ChartContainer
-              className="h-[400px] w-full"
-              config={{ earnings: { color: "#A1A1AA", label: "Earnings" } }}
-            >
-              <BarChart data={chartData}>
-                <XAxis dataKey="name" stroke="#A1A1AA" />
-                <YAxis
-                  stroke="#A1A1AA"
-                  tickFormatter={(value) => `$${value}`}
-                />
-                <Tooltip formatter={(value) => `$${value}`} />
-                <Bar dataKey="earnings" fill="#A1A1AA" radius={[6, 6, 0, 0]} />
-              </BarChart>
-            </ChartContainer>
+            <EarningsChart data={chartData} />
           </div>
         </CardContent>
       </Card>
