@@ -12,6 +12,7 @@ const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   transpilePackages: ["@repo/ui"],
   images: {
@@ -23,13 +24,25 @@ const nextConfig = {
     ],
   },
   output: "standalone",
+  swcMinify: true,
 
   // Disable styled-jsx during server-side rendering to avoid useContext issues
   compiler: {
     styledComponents: true, // Enable styled-components instead
+    // Remove console calls in production to reduce client bundle size
+    removeConsole:
+      process.env.NODE_ENV === "production" ? { exclude: ["error"] } : false,
   },
 
   serverExternalPackages: ["styled-jsx"], // Push styled-jsx to client side only
+  experimental: {
+    // Tree-shake named imports from these packages into per-module imports
+    // to avoid pulling in entire libraries
+    optimizePackageImports: ["lucide-react", "recharts", "framer-motion"],
+  },
 };
 
-export default withBundleAnalyzer(nextConfig);
+/** @type {import('next').NextConfig} */
+const config = withBundleAnalyzer(nextConfig);
+
+export default config;
