@@ -7,10 +7,13 @@ on:
       - dev
   pull_request:
     types: [opened, synchronize, reopened, closed]
+  workflow_dispatch:  
 
 concurrency:
   group: "CI-${{ github.ref_name }}-${{ github.event.number || github.sha }}"
   cancel-in-progress: true
+
+
 
 permissions:
   contents: read
@@ -20,7 +23,7 @@ permissions:
 jobs:
   # Build job for all scenarios
   build:
-    runs-on: [self-hosted, core]
+    runs-on: [self-hosted, cicd]
     if: github.event.action != 'closed'
     outputs:
       image-tag: ${{ steps.image-tag.outputs.tag }}
