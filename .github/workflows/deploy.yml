@@ -61,17 +61,18 @@ jobs:
         run: docker login -u mrbadri -p ${{ secrets.DOCKER_TOKEN }}
 
       - name: Build Docker Image
-        run: |
-          TAG=${{ steps.image-tag.outputs.tag }}
-          if [ "${{ github.ref_name }}" = "main" ]; then
-            docker compose -f docker-compose.prod.yml build
-          elif [ "${{ github.ref_name }}" = "dev" ]; then
-            docker compose -f docker-compose.dev.yml build
-            docker tag mrbadri/pixel-client:dev mrbadri/pixel-client:$TAG
-          else
-            # For PR - build and tag
-            docker build -t mrbadri/pixel-client:$TAG -f ./apps/core/Dockerfile .
-          fi
+          run: |
+            TAG=${{ steps.image-tag.outputs.tag }}
+            if [ "${{ github.ref_name }}" = "main" ]; then
+              docker-compose -f docker-compose.prod.yml build  # Use docker-compose here
+            elif [ "${{ github.ref_name }}" = "dev" ]; then
+              docker-compose -f docker-compose.dev.yml build  # Use docker-compose here
+              docker tag mrbadri/pixel-client:dev mrbadri/pixel-client:$TAG
+            else
+              # For PR - build and tag
+              docker build -t mrbadri/pixel-client:$TAG -f ./apps/core/Dockerfile .
+            fi
+
 
       - name: Push Docker Image to Docker Hub
         run: |
