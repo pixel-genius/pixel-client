@@ -1,5 +1,12 @@
 import Link from "next/link";
 
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@repo/ui/components/atoms/navigation-menu";
 import { Typography } from "@repo/ui/components/atoms/typography";
 
 import { useMegaMenuStore } from "./../../store/mega-menu";
@@ -15,14 +22,23 @@ const NavbarLinks = () => {
   };
 
   return (
-    <div className="flex items-center gap-4">
-      <Typography onClick={onClick} variant="label/sm">
-        Browse
-      </Typography>
-      <Link href="/become-auther" aria-label="become an author">
-        <Typography variant="label/sm">Become an author</Typography>
-      </Link>
-    </div>
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger onClick={onClick}>
+            <Typography variant="label/sm">Browse</Typography>
+          </NavigationMenuTrigger>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink
+            href="/become-auther"
+            aria-label="become an author"
+          >
+            <Typography variant="label/sm">Become an author</Typography>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 };
 
